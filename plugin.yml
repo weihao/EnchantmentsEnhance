@@ -1,0 +1,32 @@
+name: Enhancement
+version: 1.0
+description: This is a Black Desert Online Style of Enchantment enhancing
+author: Feier
+
+main: me.bukkit.feier.Main
+database: false
+
+
+
+commands:
+    enhance:
+        usage: /<command>
+        description: use /enhance to upgrade your armor.
+                     use /enhance version to check the version.
+                     use /enhance maxRate to check the success rate.
+        
+permissions:
+    enhancement.*:
+        description: Gives access to all enhancement permissions and commands
+    enhancement.armor:
+        description: Allows you to enhance diamond armors
+        default: true
+    enhancement.weapon:
+        description: Allows you to enhance diamond weapons
+        default: true
+    enhancement.version:
+        description: Allows you to see the version of the plugin
+        default: op
+    enhancement.chance:
+        description: Allows you to check the success rate of item that you are holding
+        default: true

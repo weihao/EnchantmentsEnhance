@@ -1,0 +1,8 @@
+checkingVersion: 你正在使用的插件版本是v%version%.
+successRate: 你手中的物品的成功率为%chance%%.
+onEnable: 黑色沙漠强化插件已开启!
+onDisable: 黑色沙漠强化插件已禁用!
+consoleCommand: 服务器不可以使用这个指令哟!
+enhanceSuccess: 强化成功!
+enhanceFailed: 强化失败!你失去了当前强化等级!
+itemInvalid: 你手里拿着的武器不可以强化!
