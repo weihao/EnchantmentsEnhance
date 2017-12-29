@@ -41,23 +41,7 @@ public class SettingsManager {
                 if (!p.getDataFolder().exists()) {
                     p.getDataFolder().mkdir();
                 }
-                
-                langfile = new File(p.getDataFolder(), "lang.yml");
-                
-                if (!langfile.exists()) {
-                    try {
-                    		langfile.createNewFile();
-                    }
-                    catch (IOException e) {
-                            Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create lang.yml!");
-                    }
-                }
-            
-                lang = YamlConfiguration.loadConfiguration(langfile);
-                
-                Language language = new Language();
-                language.addCnDefault(this);
-                
+
                 if (!p.getDataFolder().exists()) {
                         p.getDataFolder().mkdir();
                 }
@@ -75,6 +59,10 @@ public class SettingsManager {
                 
                 data = YamlConfiguration.loadConfiguration(dfile);
                 
+                langfile = new File(p.getDataFolder(), "lang.yml");
+                lang = YamlConfiguration.loadConfiguration(langfile);
+                Language language = new Language();
+                language.addCnDefault(this);
         }
        
         public FileConfiguration getData() {
@@ -117,15 +105,15 @@ public class SettingsManager {
    
         public void saveLang() {
             try {
-                    config.save(langfile);
+                    lang.save(langfile);
             }
             catch (IOException e) {
-                    Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save config.yml!");
+                    Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not save lang.yml!");
             }
         }
    
         public void reloadLang() {
-        	config = YamlConfiguration.loadConfiguration(langfile);
+        	lang = YamlConfiguration.loadConfiguration(langfile);
         }
     
         public PluginDescriptionFile getDesc() {

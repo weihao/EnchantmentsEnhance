@@ -10,7 +10,7 @@ public class Annoucer implements Listener{
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-		p.sendMessage(ChatColor.GREEN + "Text");
+		p.sendMessage(ChatColor.GREEN + "Hello World");
 	}
 	
 }

@@ -12,5 +12,8 @@ public class Language {
        	s.lang.addDefault("enhanceSuccess", "强化成功!");
        	s.lang.addDefault("enhanceFailed", "强化失败!你失去了当前强化等级!");
        	s.lang.addDefault("itemInvalid", "你手里拿着的武器不可以强化!");
+       	
+        s.lang.options().copyDefaults(true);
+        s.saveLang();
 	}
 }
