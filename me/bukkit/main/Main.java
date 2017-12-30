@@ -44,13 +44,8 @@ public class Main extends JavaPlugin {
 		}
 
 		Player player = (Player) sender;
-		if (onConfirmation.containsKey(sender.getName())) {
-			return true;
-		}
-
 		ItemStack item = player.getItemInHand();
 		Enchantment enchant;
-		double chance;
 
 		if (cmd.getName().equalsIgnoreCase("enhance")) {
 			if (args.length == 0) {
@@ -67,31 +62,44 @@ public class Main extends JavaPlugin {
 				enchant = Enchantment.PROTECTION_ENVIRONMENTAL;
 			} else {
 				player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemInvalid"));
-				return true;
-			}
-
-			if (item.getItemMeta().getEnchantLevel(enchant) == 0) {
-				chance = 1.0;
-			} else {
-				chance = (1 / (Math.pow((item.getItemMeta().getEnchantLevel(enchant)), 1.05))
-						+ ((item.getItemMeta().getEnchantLevel(enchant) - 1)
-								* settings.getLang().getDouble("baseMultiplier")));
+				enchant = null;
 			}
 
 			if (args[0].equalsIgnoreCase("hand")) {
-				double random = Math.random();
+				if (!onConfirmation.containsKey(player.getName())) {
+					onConfirmation.put(player.getName(), true);
+				}
+				player.sendMessage(ChatColor.GREEN + "请输入/enhance confirm确认本次强化");
+				return true;
+			}
 
-				if (random < chance) {
-					item.addUnsafeEnchantment(enchant, item.getEnchantmentLevel(Enchantment.DAMAGE_ALL) + 1);
-					player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.enhanceSuccess"));
-					Data.addLore(item, player, ChatColor.translateAlternateColorCodes('&',
-							settings.getLang().getString("Lore.UntradeableLore")), settings.getLang(), true);
-					return true;
+			if (args[0].equalsIgnoreCase("confirm")) {
+				if (onConfirmation.containsKey(player.getName())) {
+					onConfirmation.remove(player.getName());
+					double random = Math.random();
+
+					if (random < getChance(item, enchant)) {
+						item.addUnsafeEnchantment(enchant, item.getEnchantmentLevel(Enchantment.DAMAGE_ALL) + 1);
+						player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.enhanceSuccess"));
+						Data.addLore(item, player,
+								ChatColor.translateAlternateColorCodes('&',
+										settings.getLang().getString("Lore.UntradeableLore")),
+								settings.getLang(), true);
+						return true;
+					} else {
+						item.removeEnchantment(enchant);
+						player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.enhanceFailed"));
+						return true;
+					}
 				} else {
-					item.removeEnchantment(enchant);
-					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.enhanceFailed"));
+					player.sendMessage(ChatColor.RED + "你没有什么要确认的!");
 					return true;
 				}
+			}
+
+			if (onConfirmation.containsKey(player.getName())) {
+				onConfirmation.remove(player.getName());
+				player.sendMessage(ChatColor.GREEN + "您未输入确认指令，本次强化已取消!");
 			}
 
 			if ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase("version"))
@@ -102,9 +110,13 @@ public class Main extends JavaPlugin {
 			}
 
 			if (args[0].equalsIgnoreCase("chance") && permissions.commandChance(this, player)) {
-				player.sendMessage(ChatColor.GOLD + settings.getLang().getString("Enhance.successRate")
-						.replaceAll("%chance%", Double.toString(chance * 100)));
-				return true;
+				if (enchant != null) {
+					player.sendMessage(ChatColor.GOLD + settings.getLang().getString("Enhance.successRate")
+							.replaceAll("%chance%", Double.toString(getChance(item, enchant) * 100)));
+					return true;
+				} else {
+					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemInvalid"));
+				}
 			}
 			if (args[0].equalsIgnoreCase("reload") && permissions.commandReload(this, player)) {
 				settings.reloadConfig();
@@ -117,12 +129,11 @@ public class Main extends JavaPlugin {
 				return true;
 			}
 
-			if (args[0].equalsIgnoreCase("lore") && permissions.commandLore(this, player)) {
-				if (args[1].equalsIgnoreCase("remove")) {
-					Data.removeLore(item, player, getConfig());
-				}
-
+			if (args[0].equalsIgnoreCase("help") && permissions.commandHelp(this, player)) {
+				printHelp(this, player);
+				return true;
 			}
+
 		}
 
 		return true;
@@ -168,4 +179,19 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new playerdeath(this), this);
 		pm.registerEvents(new ItemInChest(this), this);
 	}
+
+	/**
+	 * This calculate the chance of the item success rate.
+	 * 
+	 * @param item
+	 *            the item of enhancing.
+	 * @param enchant
+	 *            enchantment of the item.
+	 * @return return the chance.
+	 */
+	public double getChance(ItemStack item, Enchantment enchant) {
+		return (1 / (Math.pow((item.getItemMeta().getEnchantLevel(enchant)), 1.05))
+				+ ((item.getItemMeta().getEnchantLevel(enchant) - 1) * settings.getLang().getDouble("baseMultiplier")));
+	}
+
 }
