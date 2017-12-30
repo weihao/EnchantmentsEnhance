@@ -1,9 +1,9 @@
 name: EnchantmentsEnhance
-version: 1.0.2
+version: 1.2.0
 description: This is a Black Desert Online Style of Enchantment enhancing
 author: Feier
 
-main: me.bukkit.feier.Main
+main: me.bukkit.main.Main
 database: false
 website: https://github.com/HealPot
 

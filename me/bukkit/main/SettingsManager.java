@@ -1,4 +1,4 @@
-package me.bukkit.feier;
+package me.bukkit.main;
 
 import java.io.File;
 import java.io.IOException;

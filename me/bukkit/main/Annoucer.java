@@ -1,4 +1,4 @@
-package me.bukkit.feier;
+package me.bukkit.main;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
