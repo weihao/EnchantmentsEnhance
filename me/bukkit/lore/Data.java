@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class Data {
 	public static String pluginName(FileConfiguration lang) {
-		String pluginName = ChatColor.translateAlternateColorCodes('&', lang.getString("Config.PluginTag"));
+		String pluginName = ChatColor.translateAlternateColorCodes('&', lang.getString("Config.pluginTag"));
 
 		return pluginName;
 	}

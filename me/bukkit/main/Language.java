@@ -2,12 +2,13 @@ package me.bukkit.main;
 
 public class Language {
 	public void addCnDefault(SettingsManager s) {
-		s.lang.addDefault("Config.PluginTag", "&f[&6强化插件&f]");
+		s.lang.addDefault("Config.pluginTag", "&f[&6强化插件&f]");
 		s.lang.addDefault("Config.checkingVersion", "你正在使用的插件版本是v%version%.");
 		s.lang.addDefault("Config.onEnable", "强化插件已开启!");
 		s.lang.addDefault("Config.onDisable", "强化插件已禁用!");
 		s.lang.addDefault("Config.consoleCommand", "服务器不可以使用这个指令哟!");
 		s.lang.addDefault("Config.reload", "插件重载成功!");
+		s.lang.addDefault("Config.welcome", "&a欢迎你, %player%勇士!使用&6/enhance help&a查看武器装备强化的指南!");
 
 		s.lang.addDefault("Enhance.successRate", "你手中的物品的成功率为%chance%%.");
 		s.lang.addDefault("Enhance.itemInvalid", "你手里拿着的武器不可以强化!");

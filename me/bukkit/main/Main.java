@@ -29,7 +29,7 @@ public class Main extends JavaPlugin {
 		settings.setup(this);
 		this.registerLoreCore();
 		Bukkit.getServer().getLogger().info(settings.getLang().getString("Config.onEnable"));
-		Bukkit.getServer().getPluginManager().registerEvents(n = new Annoucer(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(n = new Annoucer(this), this);
 	}
 
 	public void onDisable() {
@@ -107,7 +107,12 @@ public class Main extends JavaPlugin {
 				return true;
 			}
 			if (args[0].equalsIgnoreCase("reload") && permissions.commandReload(this, player)) {
-				reloadConfig();
+				settings.reloadConfig();
+				settings.reloadData();
+				settings.reloadLang();
+				settings.saveConfig();
+				settings.saveData();
+				settings.saveLang();
 				player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.reload"));
 				return true;
 			}
