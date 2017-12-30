@@ -125,9 +125,6 @@ public class Main extends JavaPlugin {
 			settings.reloadConfig();
 			settings.reloadData();
 			settings.reloadLang();
-			settings.saveConfig();
-			settings.saveData();
-			settings.saveLang();
 			player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.reload"));
 			return true;
 		}
@@ -195,7 +192,8 @@ public class Main extends JavaPlugin {
 	 */
 	public double getChance(ItemStack item, Enchantment enchant) {
 		return (1 / (Math.pow((item.getItemMeta().getEnchantLevel(enchant)), 1.05))
-				+ ((item.getItemMeta().getEnchantLevel(enchant) - 1) * settings.getLang().getDouble("baseMultiplier")));
+				+ ((item.getItemMeta().getEnchantLevel(enchant) - 1)
+						* settings.getConfig().getDouble("baseMultiplier")));
 	}
 
 }

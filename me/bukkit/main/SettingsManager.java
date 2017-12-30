@@ -42,10 +42,6 @@ public class SettingsManager {
 			p.getDataFolder().mkdir();
 		}
 
-		if (!p.getDataFolder().exists()) {
-			p.getDataFolder().mkdir();
-		}
-
 		dfile = new File(p.getDataFolder(), "data.yml");
 
 		if (!dfile.exists()) {
@@ -55,7 +51,6 @@ public class SettingsManager {
 				Bukkit.getServer().getLogger().severe(ChatColor.RED + "Could not create data.yml!");
 			}
 		}
-
 		data = YamlConfiguration.loadConfiguration(dfile);
 
 		langfile = new File(p.getDataFolder(), "lang.yml");
