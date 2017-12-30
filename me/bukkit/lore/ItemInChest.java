@@ -23,9 +23,6 @@ public class ItemInChest implements Listener {
 
 	@EventHandler
 	public void onInvClick(InventoryClickEvent e) {
-		/*
-		 * if (e.getWhoClicked().hasPermission("enhance.store")) { return; }
-		 */
 		List<String> loreList = new ArrayList<String>();
 		if ((e.getInventory().getType() != InventoryType.CRAFTING)
 				&& (e.getInventory().getType() != InventoryType.PLAYER)) {

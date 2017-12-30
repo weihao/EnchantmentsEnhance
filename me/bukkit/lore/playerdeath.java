@@ -41,12 +41,12 @@ public class playerdeath implements Listener {
 					&& (((ItemStack) e.getDrops().get(i)).getItemMeta().hasLore())) {
 				if ((((ItemStack) e.getDrops().get(i)).getItemMeta().getLore()
 						.contains(ChatColor.translateAlternateColorCodes('&',
-								this.plugin.getConfig().getString("Config.UntradeableLore"))))
+								this.plugin.settings.getLang().getString("Lore.UntradeableLore"))))
 						||
 
 						(((ItemStack) e.getDrops().get(i)).getItemMeta().getLore()
 								.contains(ChatColor.translateAlternateColorCodes('&',
-										this.plugin.getConfig().getString("Config.TradeableLore"))))) {
+										this.plugin.settings.getLang().getString("Lore.TradeableLore"))))) {
 					newInventory.add((ItemStack) e.getDrops().get(i));
 				}
 			}

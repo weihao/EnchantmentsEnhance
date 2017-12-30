@@ -45,7 +45,7 @@ public class Main extends JavaPlugin {
 
 		Player player = (Player) sender;
 		ItemStack item = player.getItemInHand();
-		Enchantment enchant;
+		Enchantment enchant = null;
 
 		if (cmd.getName().equalsIgnoreCase("enhance")) {
 			if (args.length == 0) {
@@ -60,83 +60,87 @@ public class Main extends JavaPlugin {
 					|| item.getType() == Material.DIAMOND_LEGGINGS || item.getType() == Material.DIAMOND_BOOTS)
 					&& permissions.enhancingArmor(this, player)) {
 				enchant = Enchantment.PROTECTION_ENVIRONMENTAL;
-			} else {
-				player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemInvalid"));
-				enchant = null;
 			}
-
 			if (args[0].equalsIgnoreCase("hand")) {
+				if (enchant == null) {
+					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemInvalid"));
+					return true;
+				}
 				if (!onConfirmation.containsKey(player.getName())) {
 					onConfirmation.put(player.getName(), true);
 				}
-				player.sendMessage(ChatColor.GREEN + "请输入/enhance confirm确认本次强化");
+				player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.confirm"));
 				return true;
 			}
 
 			if (args[0].equalsIgnoreCase("confirm")) {
-				if (onConfirmation.containsKey(player.getName())) {
-					onConfirmation.remove(player.getName());
-					double random = Math.random();
-
-					if (random < getChance(item, enchant)) {
-						item.addUnsafeEnchantment(enchant, item.getEnchantmentLevel(Enchantment.DAMAGE_ALL) + 1);
-						player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.enhanceSuccess"));
-						Data.addLore(item, player,
-								ChatColor.translateAlternateColorCodes('&',
-										settings.getLang().getString("Lore.UntradeableLore")),
-								settings.getLang(), true);
-						return true;
-					} else {
-						item.removeEnchantment(enchant);
-						player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.enhanceFailed"));
-						return true;
-					}
-				} else {
-					player.sendMessage(ChatColor.RED + "你没有什么要确认的!");
+				if (!onConfirmation.containsKey(player.getName())) {
+					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.nothingToConfirm"));
 					return true;
 				}
-			}
-
-			if (onConfirmation.containsKey(player.getName())) {
-				onConfirmation.remove(player.getName());
-				player.sendMessage(ChatColor.GREEN + "您未输入确认指令，本次强化已取消!");
-			}
-
-			if ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase("version"))
-					&& permissions.commandVersion(this, player)) {
-				player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.checkingVersion")
-						.replaceAll("%version%", getDescription().getVersion()));
-				return true;
-			}
-
-			if (args[0].equalsIgnoreCase("chance") && permissions.commandChance(this, player)) {
-				if (enchant != null) {
-					player.sendMessage(ChatColor.GOLD + settings.getLang().getString("Enhance.successRate")
-							.replaceAll("%chance%", Double.toString(getChance(item, enchant) * 100)));
-					return true;
-				} else {
+				if (enchant == null) {
 					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemInvalid"));
+					return true;
 				}
-			}
-			if (args[0].equalsIgnoreCase("reload") && permissions.commandReload(this, player)) {
-				settings.reloadConfig();
-				settings.reloadData();
-				settings.reloadLang();
-				settings.saveConfig();
-				settings.saveData();
-				settings.saveLang();
-				player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.reload"));
-				return true;
-			}
+				onConfirmation.remove(player.getName());
+				double random = Math.random();
 
-			if (args[0].equalsIgnoreCase("help") && permissions.commandHelp(this, player)) {
-				printHelp(this, player);
-				return true;
+				if (random < getChance(item, enchant)) {
+					item.addUnsafeEnchantment(enchant, item.getEnchantmentLevel(Enchantment.DAMAGE_ALL) + 1);
+					player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.enhanceSuccess"));
+					Data.addLore(item, player, ChatColor.translateAlternateColorCodes('&',
+							settings.getLang().getString("Lore.UntradeableLore")), settings.getLang(), true);
+					return true;
+				} else {
+					item.removeEnchantment(enchant);
+					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.enhanceFailed"));
+					return true;
+				}
 			}
 
 		}
 
+		if (onConfirmation.containsKey(player.getName())) {
+			onConfirmation.remove(player.getName());
+			player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.cancel"));
+		}
+
+		if ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase("version"))
+				&& permissions.commandVersion(this, player)) {
+			player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.checkingVersion")
+					.replaceAll("%version%", getDescription().getVersion()));
+			return true;
+		}
+
+		if (args[0].equalsIgnoreCase("chance") && permissions.commandChance(this, player)) {
+			if (enchant != null) {
+				player.sendMessage(ChatColor.GOLD + settings.getLang().getString("Enhance.successRate")
+						.replaceAll("%chance%", Double.toString(getChance(item, enchant) * 100)));
+				return true;
+			} else {
+				player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemInvalid"));
+			}
+		}
+		if (args[0].equalsIgnoreCase("reload") && permissions.commandReload(this, player)) {
+			settings.reloadConfig();
+			settings.reloadData();
+			settings.reloadLang();
+			settings.saveConfig();
+			settings.saveData();
+			settings.saveLang();
+			player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.reload"));
+			return true;
+		}
+
+		if (args[0].equalsIgnoreCase("help") && permissions.commandHelp(this, player)) {
+			printHelp(this, player);
+			return true;
+		}
+
+		player.sendMessage(
+				ChatColor.translateAlternateColorCodes('&', settings.getLang().getString("Config.invalidCommand")));
 		return true;
+
 	}
 
 	/**
@@ -157,17 +161,17 @@ public class Main extends JavaPlugin {
 	private void printHelp(Main m, Player player) {
 		String help = "&b&l&m          &d EnchantmentsEnhance&b&l&m          ";
 		if (permissions.commandHelp(m, player))
-			help += "\n&6/enhance help &7- 查看插件命令帮助.";
+			help += "\n&6/enhance help &7- " + settings.getLang().getString("Help.help");
 		if (permissions.enhancingArmor(m, player) || permissions.enhancingWeapon(m, player))
-			help += "\n&6/enhance hand &7- 突破手中物品的潜力";
+			help += "\n&6/enhance hand &7- " + settings.getLang().getString("Help.hand");
 		if (permissions.commandReload(m, player))
-			help += "\n&6/enhance reload &7- 重新载入插件配置文件.";
+			help += "\n&6/enhance reload &7- " + settings.getLang().getString("Help.reload");
 		if (permissions.commandChance(m, player))
-			help += "\n&6/enhance chance &7- 了解潜力突破机率.";
+			help += "\n&6/enhance chance &7- " + settings.getLang().getString("Help.chance");
 		if (permissions.commandVersion(m, player))
-			help += "\n&6/enhance version &7- 检测当前文件版本.";
+			help += "\n&6/enhance version &7- " + settings.getLang().getString("Help.version");
 
-		player.sendMessage(ChatColor.GOLD + ChatColor.translateAlternateColorCodes('&', help));
+		player.sendMessage(ChatColor.translateAlternateColorCodes('&', help));
 	}
 
 	/**
