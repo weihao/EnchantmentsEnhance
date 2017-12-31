@@ -1,5 +1,5 @@
 baseMultiplier: 0.015
-baseMultiplier:
+baseChance:
   0: 100.0
   1: 100.0
   2: 100.0

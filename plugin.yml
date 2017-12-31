@@ -1,5 +1,5 @@
 name: EnchantmentsEnhance
-version: 1.3.3
+version: 1.3.4
 description: This is a Black Desert Online Style of Enchantment enhancing
 author: Feier
 
@@ -11,22 +11,30 @@ website: https://github.com/HealPot
 commands:
     enhance:
         usage: /<command>
-        description: use /enhance to upgrade your armor.
-                     use /enhance version to check the version.
-                     use /enhance maxRate to check the success rate.
+        description: use /enhance help to get to know the plugin.
+
         
 permissions:
     enhancement.*:
         description: Gives access to all enhancement permissions and commands
+    enhancement.help:
+        description: Allows you to use help command.
+        default: true
+    enhancement.reload:
+        description: Allows you to reload the config.
+        default: op
+    enhancement.lore:
+        description: Allows you to remove or add lore tags to the item.
+        default: true
     enhancement.armor:
-        description: Allows you to enhance diamond armors
+        description: Allows you to enhance diamond armors.
         default: true
     enhancement.weapon:
-        description: Allows you to enhance diamond weapons
+        description: Allows you to enhance diamond weapons.
         default: true
     enhancement.version:
-        description: Allows you to see the version of the plugin
+        description: Allows you to see the version of the plugin.
         default: op
     enhancement.chance:
-        description: Allows you to check the success rate of item that you are holding
+        description: Allows you to check the success rate of item that you are holding.
         default: true
