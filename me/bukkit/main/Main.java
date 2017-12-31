@@ -14,22 +14,23 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.bukkit.failstack.Failstack;
+import me.bukkit.failstack.Handler;
 import me.bukkit.lore.Data;
 import me.bukkit.lore.ItemDrop;
 import me.bukkit.lore.ItemInChest;
 import me.bukkit.lore.playerdeath;
 
 public class Main extends JavaPlugin {
-	private Annoucer n;
 	private Map<String, Boolean> onConfirmation = new HashMap<String, Boolean>();
 	public SettingsManager settings = SettingsManager.getInstance();
 	public Permissions permissions = new Permissions();
+	public Failstack failstack;
 
 	public void onEnable() {
 		settings.setup(this);
 		this.registerLoreCore();
-		Bukkit.getServer().getLogger().info(settings.getLang().getString("Config.onEnable"));
-		Bukkit.getServer().getPluginManager().registerEvents(n = new Annoucer(this), this);
+
 	}
 
 	public void onDisable() {
@@ -141,15 +142,6 @@ public class Main extends JavaPlugin {
 	}
 
 	/**
-	 * this is a getter method.
-	 * 
-	 * @return the notifier.
-	 */
-	public Annoucer getAnnoucer() {
-		return n;
-	}
-
-	/**
 	 * this is a helper method.
 	 * 
 	 * @param sender
@@ -176,9 +168,12 @@ public class Main extends JavaPlugin {
 	 */
 	public void registerLoreCore() {
 		PluginManager pm = Bukkit.getPluginManager();
+		Bukkit.getServer().getLogger().info(settings.getLang().getString("Config.onEnable"));
+		pm.registerEvents(new Annoucer(this), this);
 		pm.registerEvents(new ItemDrop(this), this);
 		pm.registerEvents(new playerdeath(this), this);
 		pm.registerEvents(new ItemInChest(this), this);
+		pm.registerEvents(new Handler(this), this);
 	}
 
 	/**

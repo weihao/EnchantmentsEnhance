@@ -44,9 +44,10 @@ public class Failstack {
 
 	public double getChance(Main m, int enchantLevel, int failstack) {
 		int fs = failstack;
-		int maximumFailstack = m.settings.getConfig().getInt(Integer.toString(enchantLevel));
-		double baseChance = m.settings.getConfig().getDouble(Integer.toString(enchantLevel));
-		double increasePerFailstack = m.settings.getConfig().getDouble(Integer.toString(enchantLevel));
+		int maximumFailstack = m.settings.getConfig().getInt("maximumFailstack." + Integer.toString(enchantLevel));
+		double baseChance = m.settings.getConfig().getDouble("baseChance." + Integer.toString(enchantLevel));
+		double increasePerFailstack = m.settings.getConfig()
+				.getDouble("increasePerFailstack." + Integer.toString(enchantLevel));
 
 		if (fs > maximumFailstack) {
 			fs = maximumFailstack;
