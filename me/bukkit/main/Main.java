@@ -11,6 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -95,22 +96,21 @@ public class Main extends JavaPlugin {
 				double random = Math.random();
 				int enchantLevel = item.getEnchantmentLevel(enchant);
 				if (random < failstack.getChance(this, player, enchantLevel)) {
-					item.getItemMeta()
-							.setDisplayName(settings.getLang().getString("Name." + Integer.toString(enchantLevel)));
 					item.addUnsafeEnchantment(enchant, enchantLevel + 1);
 					player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.enhanceSuccess"));
 					failstack.resetLevel(this, player);
 					Data.addLore(item, player, ChatColor.translateAlternateColorCodes('&',
 							settings.getLang().getString("Lore.UntradeableLore")), settings.getLang(), true);
-
+					renameItem(item, enchantLevel);
 					return true;
 				} else {
-					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.enhanceFailed"));
+					String str = settings.getLang().getString("Enhance.enhanceFailed");
 					if (enchantLevel > 15) {
 						item.addUnsafeEnchantment(enchant, enchantLevel - 1);
+						renameItem(item, enchantLevel - 1);
+						str += settings.getLang().getString("Enhance.downgraded");
 					}
-					item.getItemMeta()
-							.setDisplayName(settings.getLang().getString("Name." + Integer.toString(enchantLevel)));
+					player.sendMessage(ChatColor.RED + str);
 					failstack.addLevel(this, player, settings.getConfig().getInt("failstackGained." + enchantLevel));
 					return true;
 				}
@@ -194,6 +194,13 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new playerdeath(this), this);
 		pm.registerEvents(new ItemInChest(this), this);
 		pm.registerEvents(new Handler(this), this);
+	}
+
+	private void renameItem(ItemStack item, int enchantLevel) {
+		ItemMeta im = item.getItemMeta();
+		im.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+				(settings.getLang().getString("Name." + Integer.toString(enchantLevel)))));
+		item.setItemMeta(im);
 	}
 
 }
