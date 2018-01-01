@@ -5,12 +5,17 @@ import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
+import org.bukkit.FireworkEffect.Type;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -97,6 +102,7 @@ public class Main extends JavaPlugin {
 				int enchantLevel = item.getEnchantmentLevel(enchant);
 				if (random < failstack.getChance(this, player, enchantLevel)) {
 					item.addUnsafeEnchantment(enchant, enchantLevel + 1);
+					spawnFirework(player);
 					player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.enhanceSuccess"));
 					failstack.resetLevel(this, player);
 					Data.addLore(item, player, ChatColor.translateAlternateColorCodes('&',
@@ -203,4 +209,13 @@ public class Main extends JavaPlugin {
 		item.setItemMeta(im);
 	}
 
+	private void spawnFirework(Player player) {
+		Firework f = (Firework) player.getWorld().spawn(player.getLocation(), Firework.class);
+
+		FireworkMeta fm = f.getFireworkMeta();
+		fm.addEffect(FireworkEffect.builder().flicker(false).trail(true).with(Type.CREEPER).withColor(Color.GREEN)
+				.withFade(Color.BLUE).build());
+		fm.setPower(3);
+		f.setFireworkMeta(fm);
+	}
 }

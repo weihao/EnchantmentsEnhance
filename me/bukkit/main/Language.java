@@ -41,6 +41,7 @@ public class Language {
 		s.lang.addDefault("Help.chance", "了解潜力突破机率.");
 		s.lang.addDefault("Help.version", "检测当前文件版本.");
 
+		s.lang.addDefault("Name.0", "&1+1 ");
 		s.lang.addDefault("Name.1", "&1+2 ");
 		s.lang.addDefault("Name.2", "&1+3 ");
 		s.lang.addDefault("Name.3", "&1+4 ");
