@@ -30,4 +30,5 @@ public class Handler implements Listener {
 	public void onKick(PlayerKickEvent event) {
 		m.failstack.saveLevels(m, event.getPlayer(), false);
 	}
+
 }

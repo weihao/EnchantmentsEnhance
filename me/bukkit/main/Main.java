@@ -25,7 +25,7 @@ public class Main extends JavaPlugin {
 	private Map<String, Boolean> onConfirmation = new HashMap<String, Boolean>();
 	public SettingsManager settings = SettingsManager.getInstance();
 	public Permissions permissions = new Permissions();
-	public Failstack failstack;
+	public Failstack failstack = new Failstack();
 
 	public void onEnable() {
 		settings.setup(this);
@@ -85,16 +85,23 @@ public class Main extends JavaPlugin {
 				}
 				onConfirmation.remove(player.getName());
 				double random = Math.random();
-
-				if (random < getChance(item, enchant)) {
-					item.addUnsafeEnchantment(enchant, item.getEnchantmentLevel(Enchantment.DAMAGE_ALL) + 1);
+				int enchantLevel = item.getEnchantmentLevel(enchant);
+				if (random < failstack.getChance(this, player, enchantLevel)) {
+					item.addUnsafeEnchantment(enchant, enchantLevel + 1);
 					player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.enhanceSuccess"));
+					failstack.resetLevel(this, player);
+
 					Data.addLore(item, player, ChatColor.translateAlternateColorCodes('&',
 							settings.getLang().getString("Lore.UntradeableLore")), settings.getLang(), true);
+
 					return true;
 				} else {
-					item.removeEnchantment(enchant);
 					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.enhanceFailed"));
+					if (enchantLevel > 15) {
+						item.addUnsafeEnchantment(enchant, enchantLevel - 1);
+					}
+
+					failstack.addLevel(this, player, settings.getConfig().getInt("failstackGained." + enchantLevel));
 					return true;
 				}
 			}
@@ -115,8 +122,10 @@ public class Main extends JavaPlugin {
 
 		if (args[0].equalsIgnoreCase("chance") && permissions.commandChance(this, player)) {
 			if (enchant != null) {
-				player.sendMessage(ChatColor.GOLD + settings.getLang().getString("Enhance.successRate")
-						.replaceAll("%chance%", Double.toString(getChance(item, enchant) * 100)));
+				player.sendMessage(ChatColor.GOLD + settings.getLang().getString("Enhance.currentFailstack"));
+				player.sendMessage(ChatColor.GOLD + settings.getLang().getString("Enhance.successRate").replaceAll(
+						"%chance%",
+						Double.toString(failstack.getChance(this, player, item.getEnchantmentLevel(enchant)) * 100)));
 				return true;
 			} else {
 				player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemInvalid"));
@@ -174,21 +183,6 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new playerdeath(this), this);
 		pm.registerEvents(new ItemInChest(this), this);
 		pm.registerEvents(new Handler(this), this);
-	}
-
-	/**
-	 * This calculate the chance of the item success rate.
-	 * 
-	 * @param item
-	 *            the item of enhancing.
-	 * @param enchant
-	 *            enchantment of the item.
-	 * @return return the chance.
-	 */
-	public double getChance(ItemStack item, Enchantment enchant) {
-		return (1 / (Math.pow((item.getItemMeta().getEnchantLevel(enchant)), 1.05))
-				+ ((item.getItemMeta().getEnchantLevel(enchant) - 1)
-						* settings.getConfig().getDouble("baseMultiplier")));
 	}
 
 }

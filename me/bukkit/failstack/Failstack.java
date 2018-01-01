@@ -42,17 +42,17 @@ public class Failstack {
 		return 0;
 	}
 
-	public double getChance(Main m, int enchantLevel, int failstack) {
-		int fs = failstack;
+	public double getChance(Main m, Player p, int enchantLevel) {
+		int failstack = this.failstack.get(p);
 		int maximumFailstack = m.settings.getConfig().getInt("maximumFailstack." + Integer.toString(enchantLevel));
 		double baseChance = m.settings.getConfig().getDouble("baseChance." + Integer.toString(enchantLevel));
 		double increasePerFailstack = m.settings.getConfig()
 				.getDouble("increasePerFailstack." + Integer.toString(enchantLevel));
 
-		if (fs > maximumFailstack) {
-			fs = maximumFailstack;
+		if (failstack > maximumFailstack) {
+			failstack = maximumFailstack;
 		}
 
-		return baseChance + fs * increasePerFailstack;
+		return baseChance + failstack * increasePerFailstack;
 	}
 }
