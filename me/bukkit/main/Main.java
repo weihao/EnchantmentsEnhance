@@ -30,10 +30,14 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 		settings.setup(this);
 		this.registerLoreCore();
-
+		Bukkit.getServer().getLogger().info(settings.getLang().getString("Config.onEnable"));
 	}
 
 	public void onDisable() {
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			this.failstack.saveLevels(this, player, false);
+		}
+		settings.saveData();
 		Bukkit.getServer().getLogger().info(settings.getLang().getString("Config.onDisable"));
 	}
 
@@ -67,6 +71,10 @@ public class Main extends JavaPlugin {
 					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemInvalid"));
 					return true;
 				}
+				if (item.getEnchantmentLevel(enchant) > 20) {
+					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemMax"));
+					return true;
+				}
 				if (!onConfirmation.containsKey(player.getName())) {
 					onConfirmation.put(player.getName(), true);
 				}
@@ -87,10 +95,11 @@ public class Main extends JavaPlugin {
 				double random = Math.random();
 				int enchantLevel = item.getEnchantmentLevel(enchant);
 				if (random < failstack.getChance(this, player, enchantLevel)) {
+					item.getItemMeta()
+							.setDisplayName(settings.getLang().getString("Name." + Integer.toString(enchantLevel)));
 					item.addUnsafeEnchantment(enchant, enchantLevel + 1);
 					player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.enhanceSuccess"));
 					failstack.resetLevel(this, player);
-
 					Data.addLore(item, player, ChatColor.translateAlternateColorCodes('&',
 							settings.getLang().getString("Lore.UntradeableLore")), settings.getLang(), true);
 
@@ -100,7 +109,8 @@ public class Main extends JavaPlugin {
 					if (enchantLevel > 15) {
 						item.addUnsafeEnchantment(enchant, enchantLevel - 1);
 					}
-
+					item.getItemMeta()
+							.setDisplayName(settings.getLang().getString("Name." + Integer.toString(enchantLevel)));
 					failstack.addLevel(this, player, settings.getConfig().getInt("failstackGained." + enchantLevel));
 					return true;
 				}
@@ -122,10 +132,12 @@ public class Main extends JavaPlugin {
 
 		if (args[0].equalsIgnoreCase("chance") && permissions.commandChance(this, player)) {
 			if (enchant != null) {
-				player.sendMessage(ChatColor.GOLD + settings.getLang().getString("Enhance.currentFailstack"));
-				player.sendMessage(ChatColor.GOLD + settings.getLang().getString("Enhance.successRate").replaceAll(
-						"%chance%",
-						Double.toString(failstack.getChance(this, player, item.getEnchantmentLevel(enchant)) * 100)));
+				player.sendMessage(ChatColor.GOLD + settings.getLang().getString("Enhance.currentFailstack")
+						+ failstack.getLevel(this, player));
+				String chance = String.format("%.2f",
+						failstack.getChance(this, player, item.getEnchantmentLevel(enchant)) * 100);
+				player.sendMessage(ChatColor.GOLD
+						+ settings.getLang().getString("Enhance.successRate").replaceAll("%chance%", chance));
 				return true;
 			} else {
 				player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemInvalid"));
@@ -143,7 +155,7 @@ public class Main extends JavaPlugin {
 			printHelp(this, player);
 			return true;
 		}
-
+		player.sendMessage(item.getItemMeta().getDisplayName());
 		player.sendMessage(
 				ChatColor.translateAlternateColorCodes('&', settings.getLang().getString("Config.invalidCommand")));
 		return true;
@@ -175,9 +187,8 @@ public class Main extends JavaPlugin {
 	/**
 	 * This part includes the initialization of the lore.
 	 */
-	public void registerLoreCore() {
+	private void registerLoreCore() {
 		PluginManager pm = Bukkit.getPluginManager();
-		Bukkit.getServer().getLogger().info(settings.getLang().getString("Config.onEnable"));
 		pm.registerEvents(new Annoucer(this), this);
 		pm.registerEvents(new ItemDrop(this), this);
 		pm.registerEvents(new playerdeath(this), this);
