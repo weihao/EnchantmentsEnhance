@@ -15,7 +15,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.bukkit.effect.PlaySound;
 import me.bukkit.effect.SpawnFirework;
 import me.bukkit.failstack.Failstack;
 import me.bukkit.failstack.Handler;
@@ -31,7 +30,6 @@ public class Main extends JavaPlugin {
 	public Permissions permissions = new Permissions();
 	public Failstack failstack = new Failstack();
 	public SpawnFirework spawnFirework = new SpawnFirework();
-	public PlaySound playSound = new PlaySound();
 
 	public void onEnable() {
 		settings.setup(this);
@@ -112,7 +110,6 @@ public class Main extends JavaPlugin {
 				}
 				if (random < chance) {
 					item.addUnsafeEnchantment(enchant, enchantLevel + 1);
-					playSound.playSound(player, "SUCCESS");
 					spawnFirework.launch(this, player, getConfig().getInt("fireworkCount." + enchantLevel),
 							getConfig().getInt("fireworkRounds." + enchantLevel), getConfig().getInt("fireworkDelay"));
 					player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.enhanceSuccess"));
@@ -127,9 +124,7 @@ public class Main extends JavaPlugin {
 						item.addUnsafeEnchantment(enchant, enchantLevel - 1);
 						renameItem(item, enchantLevel - 1);
 						str += settings.getLang().getString("Enhance.downgraded");
-						playSound.playSound(player, "DOWNGRADED");
 					}
-					playSound.playSound(player, "FAILED");
 					player.sendMessage(ChatColor.RED + str);
 					failstack.addLevel(this, player, settings.getConfig().getInt("failstackGained." + enchantLevel));
 					return true;
