@@ -99,7 +99,8 @@ public class Main extends JavaPlugin {
 				int enchantLevel = item.getEnchantmentLevel(enchant);
 				if (random < failstack.getChance(this, player, enchantLevel)) {
 					item.addUnsafeEnchantment(enchant, enchantLevel + 1);
-					spawnFirework.launch(player, getConfig().getInt("fireworkRounds." + enchantLevel));
+					spawnFirework.launch(this, player, getConfig().getInt("fireworkCount." + enchantLevel),
+							getConfig().getInt("fireworkRounds." + enchantLevel), getConfig().getInt("fireworkDelay"));
 					player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.enhanceSuccess"));
 					failstack.resetLevel(this, player);
 					Data.addLore(item, player, ChatColor.translateAlternateColorCodes('&',

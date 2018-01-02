@@ -20,4 +20,8 @@ public class Annoucer implements Listener {
 				m.settings.getLang().getString("Config.welcome").replaceAll("%player%", p.getName())));
 	}
 
+	public void broadcast() {
+
+	}
+
 }

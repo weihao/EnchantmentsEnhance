@@ -10,6 +10,8 @@ import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
 
+import me.bukkit.main.Main;
+
 public class SpawnFirework {
 
 	private final Random random = new Random();
@@ -18,8 +20,8 @@ public class SpawnFirework {
 			Color.NAVY, Color.OLIVE, Color.ORANGE, Color.PURPLE, Color.RED, Color.SILVER, Color.WHITE, Color.TEAL,
 			Color.YELLOW };
 
-	public void launch(Player player, int times) {
-		for (int i = 0; i < times; i++) {
+	public void launch(Player player, int fireworkCount) {
+		for (int i = 0; i < fireworkCount; i++) {
 			Firework fw = (Firework) player.getWorld().spawn(player.getLocation(), Firework.class);
 			FireworkMeta fwMeta = fw.getFireworkMeta();
 			fwMeta.addEffect(FireworkEffect.builder().flicker(random.nextBoolean())
@@ -28,5 +30,17 @@ public class SpawnFirework {
 			fwMeta.setPower(random.nextInt(3));
 			fw.setFireworkMeta(fwMeta);
 		}
+	}
+
+	public void launch(Main m, Player player, int fireworkCount, int fireWorkRounds, int delay) {
+		long delayTicks = Long.parseLong(Integer.toString(delay));
+
+		m.getServer().getScheduler().scheduleSyncDelayedTask(m, new Runnable() {
+			public void run() {
+				for (int i = 0; i < fireWorkRounds; i++) {
+					launch(player, fireworkCount);
+				}
+			}
+		}, delayTicks);
 	}
 }
