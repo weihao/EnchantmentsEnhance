@@ -25,6 +25,7 @@ import me.bukkit.lore.playerdeath;
 
 public class Main extends JavaPlugin {
 	private Map<String, Boolean> onConfirmation = new HashMap<String, Boolean>();
+	private Map<String, Boolean> forceEnhance = new HashMap<String, Boolean>();
 	public SettingsManager settings = SettingsManager.getInstance();
 	public Permissions permissions = new Permissions();
 	public Failstack failstack = new Failstack();
@@ -69,12 +70,12 @@ public class Main extends JavaPlugin {
 					&& permissions.enhancingArmor(this, player)) {
 				enchant = Enchantment.PROTECTION_ENVIRONMENTAL;
 			}
-			if (args[0].equalsIgnoreCase("hand")) {
+			if (args[0].equalsIgnoreCase("hand") || args[0].equalsIgnoreCase("force")) {
 				if (enchant == null) {
 					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemInvalid"));
 					return true;
 				}
-				if (item.getEnchantmentLevel(enchant) > 20) {
+				if (item.getEnchantmentLevel(enchant) > 19) {
 					player.sendMessage(ChatColor.RED + settings.getLang().getString("Enhance.itemMax"));
 					return true;
 				}
@@ -82,6 +83,9 @@ public class Main extends JavaPlugin {
 					onConfirmation.put(player.getName(), true);
 				}
 				player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.confirm"));
+				if (args[0].equalsIgnoreCase("force") && !forceEnhance.containsKey(player.getName())) {
+					forceEnhance.put(player.getName(), true);
+				}
 				return true;
 			}
 
@@ -95,9 +99,16 @@ public class Main extends JavaPlugin {
 					return true;
 				}
 				onConfirmation.remove(player.getName());
-				double random = Math.random();
 				int enchantLevel = item.getEnchantmentLevel(enchant);
-				if (random < failstack.getChance(this, player, enchantLevel)) {
+				double random = Math.random();
+				double chance;
+				if (forceEnhance.containsKey(player.getName())) {
+					chance = 1.0;
+					forceEnhance.remove(player.getName());
+				} else {
+					chance = failstack.getChance(this, player, enchantLevel);
+				}
+				if (random < chance) {
 					item.addUnsafeEnchantment(enchant, enchantLevel + 1);
 					spawnFirework.launch(this, player, getConfig().getInt("fireworkCount." + enchantLevel),
 							getConfig().getInt("fireworkRounds." + enchantLevel), getConfig().getInt("fireworkDelay"));
@@ -159,7 +170,6 @@ public class Main extends JavaPlugin {
 			printHelp(this, player);
 			return true;
 		}
-		player.sendMessage(item.getItemMeta().getDisplayName());
 		player.sendMessage(
 				ChatColor.translateAlternateColorCodes('&', settings.getLang().getString("Config.invalidCommand")));
 		return true;

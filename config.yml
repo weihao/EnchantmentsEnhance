@@ -1,4 +1,4 @@
-fireworkDelay: 20
+fireworkDelay: 0
 baseChance:
   0: 100.0
   1: 100.0

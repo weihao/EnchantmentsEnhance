@@ -34,13 +34,12 @@ public class SpawnFirework {
 
 	public void launch(Main m, Player player, int fireworkCount, int fireWorkRounds, int delay) {
 		long delayTicks = Long.parseLong(Integer.toString(delay));
-
-		m.getServer().getScheduler().scheduleSyncDelayedTask(m, new Runnable() {
-			public void run() {
-				for (int i = 0; i < fireWorkRounds; i++) {
+		for (int i = 0; i < fireWorkRounds; i++) {
+			m.getServer().getScheduler().scheduleSyncDelayedTask(m, new Runnable() {
+				public void run() {
 					launch(player, fireworkCount);
 				}
-			}
-		}, delayTicks);
+			}, delayTicks);
+		}
 	}
 }
