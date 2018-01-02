@@ -1,4 +1,4 @@
-package me.bukkit.lore;
+package com.github.healpot.plugin.enhancement.me.lore;
 
 import java.util.ArrayList;
 import java.util.Arrays;

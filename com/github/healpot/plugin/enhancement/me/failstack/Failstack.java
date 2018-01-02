@@ -1,10 +1,10 @@
-package me.bukkit.failstack;
+package com.github.healpot.plugin.enhancement.me.failstack;
 
 import java.util.HashMap;
 
 import org.bukkit.entity.Player;
 
-import me.bukkit.main.Main;
+import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class Failstack {
 	private HashMap<Player, Integer> failstack = new HashMap<Player, Integer>();

@@ -1,4 +1,4 @@
-package me.bukkit.effect;
+package com.github.healpot.plugin.enhancement.me.effect;
 
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

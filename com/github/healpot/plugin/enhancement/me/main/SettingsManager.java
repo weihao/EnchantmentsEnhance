@@ -1,4 +1,4 @@
-package me.bukkit.main;
+package com.github.healpot.plugin.enhancement.me.main;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package me.bukkit.lore;
+package com.github.healpot.plugin.enhancement.me.lore;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +17,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 
-import me.bukkit.main.Main;
+import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class playerdeath implements Listener {
 	private Main plugin;

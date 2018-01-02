@@ -1,4 +1,4 @@
-package me.bukkit.lore;
+package com.github.healpot.plugin.enhancement.me.lore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 
-import me.bukkit.main.Main;
+import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class ItemInChest implements Listener {
 	private Main plugin;

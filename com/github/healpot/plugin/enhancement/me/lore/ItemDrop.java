@@ -1,4 +1,4 @@
-package me.bukkit.lore;
+package com.github.healpot.plugin.enhancement.me.lore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 
-import me.bukkit.main.Main;
+import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class ItemDrop implements Listener {
 	private Main plugin;

@@ -1,5 +1,5 @@
 //Thanks to Omniscimus.
-package me.bukkit.effect;
+package com.github.healpot.plugin.enhancement.me.effect;
 
 import java.util.Random;
 
@@ -10,7 +10,7 @@ import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
 
-import me.bukkit.main.Main;
+import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class SpawnFirework {
 

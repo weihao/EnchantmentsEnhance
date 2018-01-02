@@ -1,4 +1,4 @@
-package me.bukkit.main;
+package com.github.healpot.plugin.enhancement.me.main;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

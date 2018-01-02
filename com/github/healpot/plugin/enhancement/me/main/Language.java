@@ -1,4 +1,4 @@
-package me.bukkit.main;
+package com.github.healpot.plugin.enhancement.me.main;
 
 public class Language {
 	public void addCnDefault(SettingsManager s) {

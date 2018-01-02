@@ -3,7 +3,7 @@ version: 1.4.0
 description: This is a Black Desert Online Style of Enchantment enhancing
 author: Feier
 
-main: me.bukkit.main.Main
+main: com.github.healpot.plugin.enhancement.me.main.Main
 database: false
 website: https://github.com/HealPot
 

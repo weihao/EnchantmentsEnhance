@@ -1,4 +1,4 @@
-package me.bukkit.failstack;
+package com.github.healpot.plugin.enhancement.me.failstack;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -6,7 +6,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import me.bukkit.main.Main;
+import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class Handler implements Listener {
 
