@@ -146,11 +146,16 @@ public class Main extends JavaPlugin {
 	 * @return false if the player have not yet confirmed an action. false true if
 	 *         the player have confirmed an action.
 	 */
-	public boolean onConfirmation(Player player) {
+	public boolean onForceEnhance(Player player) {
 		return forceEnhance.containsKey(player.getName());
 	}
 
-	public void removeOnConfirmation(Player player) {
+	public void removeOnForceEnhance(Player player) {
 		forceEnhance.remove(player.getName());
+	}
+
+	public boolean onConfirmation(Player player) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

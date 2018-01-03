@@ -3,8 +3,8 @@ package com.github.healpot.plugin.enhancement.me.visual;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,14 +28,25 @@ public class MenuHandler implements Listener {
 
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent e) {
+		if (e.getSlot() < 0) {
+			return;
+		}
+		if (!(e.getWhoClicked() instanceof Player)) {
+			return;
+		}
+		if (e.getCurrentItem().getType() == (Material.AIR)) {
+			return;
+		}
+		Player player = (Player) e.getWhoClicked();
+
 		if (!e.getInventory().getName().equalsIgnoreCase(m.menu.getScreen().getName())) {
 			List<String> loreList = new ArrayList<String>();
 			if ((e.getInventory().getType() != InventoryType.CRAFTING)
 					&& (e.getInventory().getType() != InventoryType.PLAYER)) {
 				if ((e.getClick().equals(ClickType.NUMBER_KEY))
-						&& (e.getWhoClicked().getInventory().getItem(e.getHotbarButton()) != null)) {
-					ItemStack itemMoved = e.getWhoClicked().getInventory().getItem(e.getHotbarButton());
-					if ((itemMoved.hasItemMeta()) && (itemMoved.getItemMeta().hasLore())) {
+						&& (player.getInventory().getItem(e.getHotbarButton()) != null)) {
+					ItemStack itemMoved = player.getInventory().getItem(e.getHotbarButton());
+					if ((itemMoved.getItemMeta().hasLore())) {
 						int loreSize = itemMoved.getItemMeta().getLore().size();
 						for (int i = 0; i < loreSize; i++) {
 							loreList.add((String) itemMoved.getItemMeta().getLore().get(i));
@@ -43,7 +54,7 @@ public class MenuHandler implements Listener {
 						if (loreList.contains(ChatColor.translateAlternateColorCodes('&',
 								m.getConfig().getString("Lore.UntradeableLore")))) {
 							e.setCancelled(true);
-							Data.sendMessage(m.getConfig().getString("Messages.NoStorage"), e.getWhoClicked());
+							Data.sendMessage(m.getConfig().getString("Messages.NoStorage"), player);
 						}
 					}
 				}
@@ -56,39 +67,34 @@ public class MenuHandler implements Listener {
 						if (loreList.contains(ChatColor.translateAlternateColorCodes('&',
 								m.getConfig().getString("Lore.UntradeableLore")))) {
 							e.setCancelled(true);
-							Data.sendMessage(m.getConfig().getString("Messages.NoStorage"), e.getWhoClicked());
+							Data.sendMessage(m.getConfig().getString("Messages.NoStorage"), player);
 						}
 					}
 				}
 			}
-		}
-		if (!(e.getWhoClicked() instanceof Player))
-
-		{
-			return;
-		}
-
-		if (!e.getCurrentItem().hasItemMeta()) {
-			return;
-		}
-		Player player = (Player) e.getWhoClicked();
-
-		if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Enhance")) {
+		} else {
 			e.setCancelled(true);
-			return;
-		}
+			if (e.getCurrentItem().hasItemMeta()) {
+				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Enhance")) {
+					return;
+				}
 
-		if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Stats")) {
-			e.setCancelled(true);
-			return;
+				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Stats")) {
+					return;
+				}
+				if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem()) == true)
+					;
+				{
+					m.menu.updateLore(m, e.getCurrentItem(), player);
+				}
+			}
 		}
 
 	}
 
 	@EventHandler
 	public void onInventoryClose(InventoryCloseEvent e) {
-		if (!e.getInventory().getName().equalsIgnoreCase(
-				((Main) Bukkit.getPluginManager().getPlugin("EnchantmentsEnhance")).menu.getScreen().getName())) {
+		if (!e.getInventory().getName().equalsIgnoreCase(m.menu.getScreen().getName())) {
 			return;
 		}
 	}

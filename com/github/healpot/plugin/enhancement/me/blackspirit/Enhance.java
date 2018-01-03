@@ -34,12 +34,12 @@ public class Enhance {
 		if (getItemEnchantmentType(m, player, item) == null) {
 			player.sendMessage(ChatColor.RED + m.settings.getLang().getString("Enhance.itemInvalid"));
 			return false;
-		}
-		if (getItemEnchantLevel(m, player, item) > 19) {
+		} else if (getItemEnchantLevel(m, player, item) > 19) {
 			player.sendMessage(ChatColor.RED + m.settings.getLang().getString("Enhance.itemMax"));
 			return false;
+		} else {
+			return true;
 		}
-		return true;
 	}
 
 	public void enhanceSuccess(Main m, ItemStack item, Player player) {
@@ -77,9 +77,9 @@ public class Enhance {
 		int enchantLevel = getItemEnchantLevel(m, player, item);
 		double random = Math.random();
 		double chance;
-		if (m.onConfirmation(player)) {
+		if (m.onForceEnhance(player)) {
 			chance = 1.0;
-			m.removeOnConfirmation(player);
+			m.removeOnForceEnhance(player);
 		} else {
 			chance = m.failstack.getChance(m, player, enchantLevel);
 		}

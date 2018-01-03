@@ -54,6 +54,8 @@ public class Menu {
 	}
 
 	public void updateLore(Main m, ItemStack item, Player player) {
-		stats.getItemMeta().setLore(m.enhance.getChanceAsList(m, item, player));
+		ItemMeta im = item.getItemMeta();
+		im.setLore(m.enhance.getChanceAsList(m, item, player));
+		stats.setItemMeta(im);
 	}
 }
