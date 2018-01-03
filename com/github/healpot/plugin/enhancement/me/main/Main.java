@@ -14,6 +14,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.healpot.plugin.enhancement.me.blackspirit.Enhance;
+import com.github.healpot.plugin.enhancement.me.effect.Glow;
 import com.github.healpot.plugin.enhancement.me.effect.PlaySound;
 import com.github.healpot.plugin.enhancement.me.effect.SpawnFirework;
 import com.github.healpot.plugin.enhancement.me.failstack.Failstack;
@@ -33,6 +34,7 @@ public class Main extends JavaPlugin {
 	public PlaySound playSound = new PlaySound();
 	public Enhance enhance = new Enhance();
 	public Menu menu = new Menu();
+	public Glow glow = new Glow();
 
 	public void onEnable() {
 		settings.setup(this);

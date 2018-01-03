@@ -57,6 +57,9 @@ public class Menu {
 		ItemMeta im = item.getItemMeta();
 		im.setLore(m.enhance.getChanceAsList(m, item, player));
 		stats.setItemMeta(im);
-		screen.setItem(getSlot(5, 1), stats);
+		screen.setItem(getSlot(5, 1), m.glow.addGlow(stats));
+		screen.setItem(getSlot(4, 3), m.glow.addGlow(enhance));
+		screen.setItem(getSlot(6, 3), m.glow.addGlow(force));
+
 	}
 }
