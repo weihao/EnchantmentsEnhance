@@ -1,7 +1,9 @@
 package com.github.healpot.plugin.enhancement.me.visual;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -19,7 +21,7 @@ import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class MenuHandler implements Listener {
 	private Main m;
-	private ItemStack enhancingItem;
+	private Map<Player, ItemStack> itemOnEnhancingSlot = new HashMap<Player, ItemStack>();
 	Data data = new Data();
 
 	public MenuHandler(Main m) {
@@ -73,20 +75,29 @@ public class MenuHandler implements Listener {
 				}
 			}
 		} else {
-
 			if (e.getCurrentItem().hasItemMeta()) {
-				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Enhance")) {
+				if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem()) == true
+						&& !itemOnEnhancingSlot.containsKey(player)) {
+					m.menu.updateInv(m, e.getCurrentItem(), player);
+					itemOnEnhancingSlot.put(player, e.getCurrentItem());
+				}
+				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Enhance")
+						&& itemOnEnhancingSlot.containsKey(player)) {
+					m.enhance.diceToEnhancement(m, itemOnEnhancingSlot.get(player), player);
+					m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
+					m.menu.updateInSlotItem(m, itemOnEnhancingSlot.get(player), player);
+					e.setCancelled(true);
 					return;
 				}
 
-				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Stats")) {
+				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Force")
+						&& itemOnEnhancingSlot.containsKey(player)) {
 					return;
 				}
-			}
-			if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem()) == true)
-				;
-			{
-				m.menu.updateLore(m, e.getCurrentItem(), player);
+			} else if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem()) == true
+					&& !itemOnEnhancingSlot.containsKey(player)) {
+				m.menu.updateInv(m, e.getCurrentItem(), player);
+				itemOnEnhancingSlot.put(player, e.getCurrentItem());
 			}
 		}
 		e.setCancelled(true);
@@ -94,6 +105,9 @@ public class MenuHandler implements Listener {
 
 	@EventHandler
 	public void onInventoryClose(InventoryCloseEvent e) {
+		if (itemOnEnhancingSlot.containsKey(e.getPlayer())) {
+			itemOnEnhancingSlot.remove(e.getPlayer());
+		}
 		if (!e.getInventory().getName().equalsIgnoreCase(m.menu.getScreen().getName())) {
 			return;
 		}

@@ -32,10 +32,12 @@ public class Enhance {
 
 	public boolean getValidationOfItem(Main m, Player player, ItemStack item) {
 		if (getItemEnchantmentType(m, player, item) == null) {
-			player.sendMessage(ChatColor.RED + m.settings.getLang().getString("Enhance.itemInvalid"));
+			// player.sendMessage(ChatColor.RED +
+			// m.settings.getLang().getString("Enhance.itemInvalid"));
 			return false;
 		} else if (getItemEnchantLevel(m, player, item) > 19) {
-			player.sendMessage(ChatColor.RED + m.settings.getLang().getString("Enhance.itemMax"));
+			// player.sendMessage(ChatColor.RED +
+			// m.settings.getLang().getString("Enhance.itemMax"));
 			return false;
 		} else {
 			return true;

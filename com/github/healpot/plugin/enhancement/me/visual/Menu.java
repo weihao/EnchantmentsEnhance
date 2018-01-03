@@ -53,13 +53,22 @@ public class Menu {
 		return screen;
 	}
 
-	public void updateLore(Main m, ItemStack item, Player player) {
-		ItemMeta im = item.getItemMeta();
-		im.setLore(m.enhance.getChanceAsList(m, item, player));
-		stats.setItemMeta(im);
+	public void updateInv(Main m, ItemStack item, Player player) {
+		updateFailstack(m, item, player);
 		screen.setItem(getSlot(5, 1), m.glow.addGlow(stats));
 		screen.setItem(getSlot(4, 3), m.glow.addGlow(enhance));
 		screen.setItem(getSlot(6, 3), m.glow.addGlow(force));
+		screen.setItem(getSlot(1, 2), item);
+	}
 
+	public void updateFailstack(Main m, ItemStack item, Player player) {
+		ItemMeta im = stats.getItemMeta();
+		im.setLore(m.enhance.getChanceAsList(m, item, player));
+		stats.setItemMeta(im);
+		screen.setItem(getSlot(5, 1), m.glow.addGlow(stats));
+	}
+
+	public void updateInSlotItem(Main m, ItemStack item, Player player) {
+		screen.setItem(getSlot(1, 2), item);
 	}
 }
