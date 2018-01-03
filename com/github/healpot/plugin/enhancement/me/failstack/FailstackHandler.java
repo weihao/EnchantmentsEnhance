@@ -8,11 +8,11 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.github.healpot.plugin.enhancement.me.main.Main;
 
-public class Handler implements Listener {
+public class FailstackHandler implements Listener {
 
 	public Main m;
 
-	public Handler(Main m) {
+	public FailstackHandler(Main m) {
 		this.m = m;
 	}
 

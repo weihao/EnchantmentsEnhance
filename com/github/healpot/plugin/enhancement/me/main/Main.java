@@ -17,7 +17,7 @@ import com.github.healpot.plugin.enhancement.me.blackspirit.Enhance;
 import com.github.healpot.plugin.enhancement.me.effect.PlaySound;
 import com.github.healpot.plugin.enhancement.me.effect.SpawnFirework;
 import com.github.healpot.plugin.enhancement.me.failstack.Failstack;
-import com.github.healpot.plugin.enhancement.me.failstack.Handler;
+import com.github.healpot.plugin.enhancement.me.failstack.FailstackHandler;
 import com.github.healpot.plugin.enhancement.me.lore.ItemDrop;
 import com.github.healpot.plugin.enhancement.me.lore.ItemInChest;
 import com.github.healpot.plugin.enhancement.me.lore.playerdeath;
@@ -124,8 +124,8 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new ItemDrop(this), this);
 		pm.registerEvents(new playerdeath(this), this);
 		pm.registerEvents(new ItemInChest(this), this);
-		pm.registerEvents(new Handler(this), this);
-		pm.registerEvents(new MenuHandler(), this);
+		pm.registerEvents(new FailstackHandler(this), this);
+		pm.registerEvents(new MenuHandler(this), this);
 	}
 
 	/**
