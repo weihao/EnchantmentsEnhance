@@ -19,7 +19,6 @@ import com.github.healpot.plugin.enhancement.me.effect.SpawnFirework;
 import com.github.healpot.plugin.enhancement.me.failstack.Failstack;
 import com.github.healpot.plugin.enhancement.me.failstack.FailstackHandler;
 import com.github.healpot.plugin.enhancement.me.lore.ItemDrop;
-import com.github.healpot.plugin.enhancement.me.lore.ItemInChest;
 import com.github.healpot.plugin.enhancement.me.lore.playerdeath;
 import com.github.healpot.plugin.enhancement.me.visual.Menu;
 import com.github.healpot.plugin.enhancement.me.visual.MenuHandler;
@@ -123,7 +122,6 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new Annoucer(this), this);
 		pm.registerEvents(new ItemDrop(this), this);
 		pm.registerEvents(new playerdeath(this), this);
-		pm.registerEvents(new ItemInChest(this), this);
 		pm.registerEvents(new FailstackHandler(this), this);
 		pm.registerEvents(new MenuHandler(this), this);
 	}

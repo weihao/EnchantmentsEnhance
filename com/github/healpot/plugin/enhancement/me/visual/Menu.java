@@ -35,7 +35,7 @@ public class Menu {
 		confirm = createItem(DyeColor.GREEN, ChatColor.YELLOW + "Confirm");
 		no = createItem(DyeColor.RED, ChatColor.RED + "Decline");
 		force = createItem(DyeColor.BLACK, ChatColor.RED + "Force");
-		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.RED + "stats");
+		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.RED + "Stats");
 
 		enhance.getItemMeta().setLore(Arrays.asList("", ""));
 		screen.setItem(getSlot(1, 1), stats);

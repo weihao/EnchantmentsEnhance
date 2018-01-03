@@ -1,4 +1,3 @@
-//Thanks to Omniscimus.
 package com.github.healpot.plugin.enhancement.me.effect;
 
 import java.util.Random;
