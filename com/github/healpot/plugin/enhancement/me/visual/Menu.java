@@ -40,13 +40,17 @@ public class Menu {
 		enhance.getItemMeta().setLore(Arrays.asList("", ""));
 		stats.getItemMeta().setLore(m.enhance.getChanceAsList(m, item, player));
 		screen.setItem(getSlot(1, 1), stats);
-		screen.setItem(getSlot(1, 5), enhance);
-		screen.setItem(getSlot(3, 5), force);
+		screen.setItem(getSlot(1, 2), enhance);
+		screen.setItem(getSlot(1, 3), force);
 
 		player.openInventory(screen);
 	}
 
 	public static int getSlot(int x, int y) {
 		return (y * 9) - (9 - x) - 1;
+	}
+
+	public Inventory getScreen() {
+		return screen;
 	}
 }

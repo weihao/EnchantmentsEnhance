@@ -22,6 +22,7 @@ import com.github.healpot.plugin.enhancement.me.lore.ItemDrop;
 import com.github.healpot.plugin.enhancement.me.lore.ItemInChest;
 import com.github.healpot.plugin.enhancement.me.lore.playerdeath;
 import com.github.healpot.plugin.enhancement.me.visual.Menu;
+import com.github.healpot.plugin.enhancement.me.visual.MenuHandler;
 
 public class Main extends JavaPlugin {
 	private Map<String, Boolean> onConfirmation = new HashMap<String, Boolean>();
@@ -32,7 +33,7 @@ public class Main extends JavaPlugin {
 	public SpawnFirework spawnFirework = new SpawnFirework();
 	public PlaySound playSound = new PlaySound();
 	public Enhance enhance = new Enhance();
-	public Menu menu = new Menu(this);
+	public Menu menu = new Menu();
 
 	public void onEnable() {
 		settings.setup(this);
@@ -124,7 +125,7 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new playerdeath(this), this);
 		pm.registerEvents(new ItemInChest(this), this);
 		pm.registerEvents(new Handler(this), this);
-		pm.registerEvents(menu = new Menu(this), this);
+		pm.registerEvents(new MenuHandler(), this);
 	}
 
 	/**

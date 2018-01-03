@@ -1,52 +1,37 @@
 package com.github.healpot.plugin.enhancement.me.visual;
 
-import org.bukkit.GameMode;
-import org.bukkit.entity.Player;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 
 import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class MenuHandler implements Listener {
 
-	private Inventory screen;
-	private ItemStack item;
-	private Player player;
-	private Main m;
-
-	public MenuHandler() {
-
-	}
-
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent e) {
-		if (!e.getInventory().getName().equalsIgnoreCase(screen.getName()))
+		if (!e.getInventory().getName().equalsIgnoreCase(
+				((Main) Bukkit.getPluginManager().getPlugin("EnchantmentsEnhance")).menu.getScreen().getName())) {
 			return;
-		if (e.getCurrentItem().getItemMeta() == null)
-			return;
-		if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Enhance")) {
+		}
+		if (e.getCurrentItem().getItemMeta().getDisplayName().contains("")) {
 			e.setCancelled(true);
 
-			if (!e.getWhoClicked().equals(player)) {
-				return;
-			}
-			m.enhance.diceToEnhancement(m, item, player);
-			e.getWhoClicked().closeInventory();
+		}
 
-		}
-		if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Survival")) {
-			e.setCancelled(true);
-			e.getWhoClicked().setGameMode(GameMode.SURVIVAL);
-			e.getWhoClicked().closeInventory();
-		}
 	}
 
 	@EventHandler
-	public void onInventoryDrag(InventoryDragEvent e) {
+	public void onInventoryClose(InventoryCloseEvent e) {
+		if (!e.getInventory().getName().equalsIgnoreCase(
+				((Main) Bukkit.getPluginManager().getPlugin("EnchantmentsEnhance")).menu.getScreen().getName())) {
+			return;
+		}
+	}
 
+	public static int getSlot(int x, int y) {
+		return (y * 9) - (9 - x) - 1;
 	}
 }
