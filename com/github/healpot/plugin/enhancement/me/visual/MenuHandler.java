@@ -73,7 +73,7 @@ public class MenuHandler implements Listener {
 				}
 			}
 		} else {
-			e.setCancelled(true);
+
 			if (e.getCurrentItem().hasItemMeta()) {
 				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Enhance")) {
 					return;
@@ -82,14 +82,14 @@ public class MenuHandler implements Listener {
 				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Stats")) {
 					return;
 				}
-				if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem()) == true)
-					;
-				{
-					m.menu.updateLore(m, e.getCurrentItem(), player);
-				}
+			}
+			if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem()) == true)
+				;
+			{
+				m.menu.updateLore(m, e.getCurrentItem(), player);
 			}
 		}
-
+		e.setCancelled(true);
 	}
 
 	@EventHandler

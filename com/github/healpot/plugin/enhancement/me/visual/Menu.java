@@ -38,9 +38,9 @@ public class Menu {
 		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.RED + "Stats");
 
 		enhance.getItemMeta().setLore(Arrays.asList("", ""));
-		screen.setItem(getSlot(1, 1), stats);
-		screen.setItem(getSlot(1, 2), enhance);
-		screen.setItem(getSlot(1, 3), force);
+		screen.setItem(getSlot(5, 1), stats);
+		screen.setItem(getSlot(4, 3), enhance);
+		screen.setItem(getSlot(6, 3), force);
 
 		player.openInventory(screen);
 	}
@@ -57,5 +57,6 @@ public class Menu {
 		ItemMeta im = item.getItemMeta();
 		im.setLore(m.enhance.getChanceAsList(m, item, player));
 		stats.setItemMeta(im);
+		screen.setItem(getSlot(5, 1), stats);
 	}
 }
