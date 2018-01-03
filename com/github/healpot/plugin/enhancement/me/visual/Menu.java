@@ -16,7 +16,7 @@ import com.github.healpot.plugin.enhancement.me.main.Main;
 public class Menu {
 
 	private Inventory screen;
-	private ItemStack enhance, confirm, no, force, stats;
+	private ItemStack enhance, confirm, no, force, stats, remove;
 	private ItemStack item;
 	private Player player;
 
@@ -30,19 +30,21 @@ public class Menu {
 
 	public void showEnhancingMenu(Main m, Player player, ItemStack item) {
 		screen = Bukkit.getServer().createInventory(null, 27, "Enhancement Menu");
+		createMenu();
+		player.openInventory(screen);
+	}
 
+	public void createMenu() {
+		screen.clear();
 		enhance = createItem(DyeColor.YELLOW, ChatColor.GREEN + "Enhance");
-		confirm = createItem(DyeColor.GREEN, ChatColor.YELLOW + "Confirm");
-		no = createItem(DyeColor.RED, ChatColor.RED + "Decline");
 		force = createItem(DyeColor.BLACK, ChatColor.RED + "Force");
 		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.RED + "Stats");
-
+		remove = createItem(DyeColor.RED, ChatColor.RED + "Remove");
 		enhance.getItemMeta().setLore(Arrays.asList("", ""));
+
 		screen.setItem(getSlot(5, 1), stats);
 		screen.setItem(getSlot(4, 3), enhance);
 		screen.setItem(getSlot(6, 3), force);
-
-		player.openInventory(screen);
 	}
 
 	public static int getSlot(int x, int y) {
@@ -71,4 +73,9 @@ public class Menu {
 	public void updateInSlotItem(Main m, ItemStack item, Player player) {
 		screen.setItem(getSlot(1, 2), item);
 	}
+
+	public void addRemoveButton() {
+		screen.setItem(getSlot(1, 3), remove);
+	}
+
 }

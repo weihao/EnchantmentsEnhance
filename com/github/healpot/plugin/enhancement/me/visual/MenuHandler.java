@@ -80,6 +80,7 @@ public class MenuHandler implements Listener {
 						&& !itemOnEnhancingSlot.containsKey(player)) {
 					m.menu.updateInv(m, e.getCurrentItem(), player);
 					itemOnEnhancingSlot.put(player, e.getCurrentItem());
+					m.menu.addRemoveButton();
 				}
 				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Enhance")
 						&& itemOnEnhancingSlot.containsKey(player)) {
@@ -89,7 +90,11 @@ public class MenuHandler implements Listener {
 					e.setCancelled(true);
 					return;
 				}
-
+				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Remove")
+						&& itemOnEnhancingSlot.containsKey(player)) {
+					itemOnEnhancingSlot.remove(player);
+					m.menu.createMenu();
+				}
 				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Force")
 						&& itemOnEnhancingSlot.containsKey(player)) {
 					return;
@@ -98,6 +103,7 @@ public class MenuHandler implements Listener {
 					&& !itemOnEnhancingSlot.containsKey(player)) {
 				m.menu.updateInv(m, e.getCurrentItem(), player);
 				itemOnEnhancingSlot.put(player, e.getCurrentItem());
+				m.menu.addRemoveButton();
 			}
 		}
 		e.setCancelled(true);
