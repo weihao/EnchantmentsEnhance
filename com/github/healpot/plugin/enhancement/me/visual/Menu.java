@@ -5,11 +5,7 @@ import java.util.Arrays;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
-import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -17,26 +13,12 @@ import org.bukkit.material.Wool;
 
 import com.github.healpot.plugin.enhancement.me.main.Main;
 
-public class Menu implements Listener {
+public class Menu {
 
 	private Inventory screen;
 	private ItemStack enhance, confirm, no, force, stats;
-
-	public Menu(Main m) {
-		screen = Bukkit.getServer().createInventory(null, 27, "Gamemode Chooser");
-
-		enhance = createItem(DyeColor.YELLOW, ChatColor.GREEN + "Enhance");
-		confirm = createItem(DyeColor.GREEN, ChatColor.YELLOW + "Confirm");
-		no = createItem(DyeColor.RED, ChatColor.RED + "Decline");
-		force = createItem(DyeColor.BLACK, ChatColor.RED + "Force");
-		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.RED + "stats");
-
-		enhance.getItemMeta().setLore(Arrays.asList("", ""));
-
-		screen.setItem(getSlot(1, 1), stats);
-		screen.setItem(getSlot(1, 5), enhance);
-		screen.setItem(getSlot(3, 5), force);
-	}
+	private ItemStack item;
+	private Player player;
 
 	private ItemStack createItem(DyeColor dc, String name) {
 		ItemStack i = new Wool(dc).toItemStack(1);
@@ -46,31 +28,22 @@ public class Menu implements Listener {
 		return i;
 	}
 
-	public void show(Player p) {
-		p.openInventory(screen);
-	}
+	public void showEnhancingMenu(Main m, Player player, ItemStack item) {
+		screen = Bukkit.getServer().createInventory(null, 27, "Enhancement Menu");
 
-	@EventHandler
-	public void onInventoryClick(InventoryClickEvent e) {
-		if (!e.getInventory().getName().equalsIgnoreCase(screen.getName()))
-			return;
-		if (e.getCurrentItem().getItemMeta() == null)
-			return;
-		if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Creative")) {
-			e.setCancelled(true);
-			e.getWhoClicked().setGameMode(GameMode.CREATIVE);
-			e.getWhoClicked().closeInventory();
-		}
-		if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Survival")) {
-			e.setCancelled(true);
-			e.getWhoClicked().setGameMode(GameMode.SURVIVAL);
-			e.getWhoClicked().closeInventory();
-		}
-		if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Adventure")) {
-			e.setCancelled(true);
-			e.getWhoClicked().setGameMode(GameMode.ADVENTURE);
-			e.getWhoClicked().closeInventory();
-		}
+		enhance = createItem(DyeColor.YELLOW, ChatColor.GREEN + "Enhance");
+		confirm = createItem(DyeColor.GREEN, ChatColor.YELLOW + "Confirm");
+		no = createItem(DyeColor.RED, ChatColor.RED + "Decline");
+		force = createItem(DyeColor.BLACK, ChatColor.RED + "Force");
+		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.RED + "stats");
+
+		enhance.getItemMeta().setLore(Arrays.asList("", ""));
+		stats.getItemMeta().setLore(m.enhance.getChanceAsList(m, item, player));
+		screen.setItem(getSlot(1, 1), stats);
+		screen.setItem(getSlot(1, 5), enhance);
+		screen.setItem(getSlot(3, 5), force);
+
+		player.openInventory(screen);
 	}
 
 	public static int getSlot(int x, int y) {

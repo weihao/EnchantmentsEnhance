@@ -1,5 +1,8 @@
 package com.github.healpot.plugin.enhancement.me.blackspirit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -98,6 +101,24 @@ public class Enhance {
 					+ m.settings.getLang().getString("Enhance.successRate").replaceAll("%chance%", chance));
 		} else {
 			player.sendMessage(ChatColor.RED + m.settings.getLang().getString("Enhance.itemInvalid"));
+		}
+	}
+
+	public List<String> getChanceAsList(Main m, ItemStack item, Player player) {
+		Enchantment enchant = getItemEnchantmentType(m, player, item);
+		ArrayList<String> result = new ArrayList<String>();
+		if (enchant != null) {
+			String fs = (m.settings.getLang().getString("Enhance.currentFailstack") + m.failstack.getLevel(m, player));
+			String placeholder = String.format("%.2f",
+					m.failstack.getChance(m, player, item.getEnchantmentLevel(enchant)) * 100);
+			String chance = m.settings.getLang().getString("Enhance.successRate").replaceAll("%chance%", placeholder);
+			result.add(fs);
+			result.add(chance);
+			return result;
+
+		} else {
+			result.add(m.settings.getLang().getString("Enhance.itemInvalid"));
+			return result;
 		}
 	}
 }

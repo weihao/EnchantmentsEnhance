@@ -5,10 +5,8 @@ import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -20,7 +18,6 @@ import com.github.healpot.plugin.enhancement.me.effect.PlaySound;
 import com.github.healpot.plugin.enhancement.me.effect.SpawnFirework;
 import com.github.healpot.plugin.enhancement.me.failstack.Failstack;
 import com.github.healpot.plugin.enhancement.me.failstack.Handler;
-import com.github.healpot.plugin.enhancement.me.lore.Data;
 import com.github.healpot.plugin.enhancement.me.lore.ItemDrop;
 import com.github.healpot.plugin.enhancement.me.lore.ItemInChest;
 import com.github.healpot.plugin.enhancement.me.lore.playerdeath;
@@ -35,6 +32,7 @@ public class Main extends JavaPlugin {
 	public SpawnFirework spawnFirework = new SpawnFirework();
 	public PlaySound playSound = new PlaySound();
 	public Enhance enhance = new Enhance();
+	public Menu menu = new Menu(this);
 
 	public void onEnable() {
 		settings.setup(this);
@@ -58,39 +56,41 @@ public class Main extends JavaPlugin {
 		}
 
 		Player player = (Player) sender;
-		ItemStack item = player.getItemInHand();
 
 		if (cmd.getName().equalsIgnoreCase("enhance")) {
 			if (args.length == 0) {
 				printHelp(this, player);
 				return true;
 			}
-		if (onConfirmation.containsKey(player.getName())) {
-			onConfirmation.remove(player.getName());
-			player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.cancel"));
-		}
-
-		if ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase("version"))
-				&& permissions.commandVersion(this, player)) {
-			player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.checkingVersion")
-					.replaceAll("%version%", getDescription().getVersion()));
-			return true;
-		}
-		if (args[0].equalsIgnoreCase("reload") && permissions.commandReload(this, player)) {
-			settings.reloadConfig();
-			settings.reloadData();
-			settings.reloadLang();
-			player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.reload"));
-			return true;
-		}
-		if (args[0].equalsIgnoreCase("help") && permissions.commandHelp(this, player)) {
-			printHelp(this, player);
-			return true;
+			if (onConfirmation.containsKey(player.getName())) {
+				onConfirmation.remove(player.getName());
+				player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.cancel"));
+			}
+			if ((args[0].equalsIgnoreCase("menu")) && permissions.commandMenu(this, player)) {
+				menu.showEnhancingMenu(this, player, player.getItemInHand());
+				return true;
+			}
+			if ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase("version"))
+					&& permissions.commandVersion(this, player)) {
+				player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.checkingVersion")
+						.replaceAll("%version%", getDescription().getVersion()));
+				return true;
+			}
+			if (args[0].equalsIgnoreCase("reload") && permissions.commandReload(this, player)) {
+				settings.reloadConfig();
+				settings.reloadData();
+				settings.reloadLang();
+				player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.reload"));
+				return true;
+			}
+			if (args[0].equalsIgnoreCase("help") && permissions.commandHelp(this, player)) {
+				printHelp(this, player);
+				return true;
+			}
 		}
 		player.sendMessage(
 				ChatColor.translateAlternateColorCodes('&', settings.getLang().getString("Config.invalidCommand")));
 		return true;
-
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new playerdeath(this), this);
 		pm.registerEvents(new ItemInChest(this), this);
 		pm.registerEvents(new Handler(this), this);
-		pm.registerEvents(new Menu(this), this);
+		pm.registerEvents(menu = new Menu(this), this);
 	}
 
 	/**

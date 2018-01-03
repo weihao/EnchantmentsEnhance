@@ -32,4 +32,7 @@ public class Permissions {
 		return player.hasPermission("Enchantmentsenhance.lore") || player.hasPermission("Enchantmentsenhance.*");
 	}
 
+	public boolean commandMenu(Main m, Player player) {
+		return player.hasPermission("Enchantmentsenhance.menu") || player.hasPermission("Enchantmentsenhance.*");
+	}
 }
