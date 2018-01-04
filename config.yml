@@ -3,6 +3,9 @@ language: en
 
 lore:
   bound: Tradeable
+#supported bound type: Tradeable, Untradeable
+#Tradeable: keep-item-on-death, personal trading is allowed.
+#Untradeable: keep-item-on-death, cannot be stored, cannot be dropped.
   sendBoundingMessage: false
 fireworkDelay: 0
 baseChance:

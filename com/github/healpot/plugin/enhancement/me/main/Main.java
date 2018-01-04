@@ -37,6 +37,7 @@ public class Main extends JavaPlugin {
 	public Data data = new Data();
 
 	public void onEnable() {
+		saveDefaultConfig();
 		settings.setup(this);
 		this.registerCore();
 		Bukkit.getServer().getLogger().info(settings.getLang().getString("Config.onEnable"));
