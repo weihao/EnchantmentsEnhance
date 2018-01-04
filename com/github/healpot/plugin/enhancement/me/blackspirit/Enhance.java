@@ -122,6 +122,8 @@ public class Enhance {
 			String chance = m.settings.getLang().getString("Enhance.successRate").replaceAll("%chance%", placeholder);
 			result.add(fs);
 			result.add(chance);
+			result.add(m.settings.getLang().getString("Menu.lore.stats1"));
+			result.add(m.settings.getLang().getString("Menu.lore.stats2"));
 			return result;
 
 		} else {

@@ -42,6 +42,20 @@ public class Language {
 		s.lang.addDefault("Help.chance", "了解潜力突破机率.");
 		s.lang.addDefault("Help.version", "检测当前文件版本.");
 
+		s.lang.addDefault("Menu.title", "潜力突破界面");
+		s.lang.addDefault("Menu.enhance", "强化");
+		s.lang.addDefault("Menu.force", "强突");
+		s.lang.addDefault("Menu.stats", "信息");
+		s.lang.addDefault("Menu.remove", "取消");
+		s.lang.addDefault("Menu.lore.force", "");
+		s.lang.addDefault("Menu.lore.remove", "");
+		s.lang.addDefault("Menu.lore.stats1", "潜力突破会强化你的装备");
+		s.lang.addDefault("Menu.lore.stats2", "玩家突破失败的次数会增加下次潜力突破的成功机率");
+		s.lang.addDefault("Menu.lore.ifFail", "潜力突破可能会失败");
+		s.lang.addDefault("Menu.lore.ifSuccess", "潜力突破可能会成功");
+		s.lang.addDefault("Menu.lore.ifDowngrade", "潜力突破失败会使物品降级");
+		s.lang.addDefault("Menu.lore.ifDestroy", "潜力突破失败会使物品炸裂");
+
 		s.lang.addDefault("Name.0", "+1 ");
 		s.lang.addDefault("Name.1", "+2 ");
 		s.lang.addDefault("Name.2", "+3 ");

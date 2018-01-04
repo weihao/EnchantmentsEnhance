@@ -58,7 +58,7 @@ public class MenuHandler implements Listener {
 					if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Remove")
 							&& itemOnEnhancingSlot.containsKey(player)) {
 						itemOnEnhancingSlot.remove(player);
-						m.menu.createMenu();
+						m.menu.createMenu(m);
 						return;
 					}
 					if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Force")
