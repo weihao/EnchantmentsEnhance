@@ -14,15 +14,17 @@ import com.github.healpot.plugin.enhancement.me.main.Main;
 public class Enhance {
 
 	public Enchantment getItemEnchantmentType(Main m, Player player, ItemStack item) {
-		if ((item.getType() == Material.DIAMOND_SWORD || item.getType() == Material.DIAMOND_AXE)
-				&& m.permissions.enhancingWeapon(m, player)) {
-			return Enchantment.DAMAGE_ALL;
-		} else if ((item.getType() == Material.DIAMOND_CHESTPLATE || item.getType() == Material.DIAMOND_HELMET
-				|| item.getType() == Material.DIAMOND_LEGGINGS || item.getType() == Material.DIAMOND_BOOTS)
-				&& m.permissions.enhancingArmor(m, player)) {
-			return Enchantment.PROTECTION_ENVIRONMENTAL;
-		} else
-			return null;
+		if (m.permissions.commandEnhance(m, player)) {
+			if ((item.getType() == Material.DIAMOND_SWORD || item.getType() == Material.DIAMOND_AXE)) {
+				return Enchantment.DAMAGE_ALL;
+			} else if ((item.getType() == Material.DIAMOND_CHESTPLATE || item.getType() == Material.DIAMOND_HELMET
+					|| item.getType() == Material.DIAMOND_LEGGINGS || item.getType() == Material.DIAMOND_BOOTS)) {
+				return Enchantment.PROTECTION_ENVIRONMENTAL;
+			}
+		} else {
+			player.sendMessage(m.settings.getLang().getString("Config.noPerm"));
+		}
+		return null;
 	}
 
 	public int getItemEnchantLevel(Main m, Player player, ItemStack item) {
@@ -98,7 +100,7 @@ public class Enhance {
 	}
 
 	public void forceToEnhancement(Main m, ItemStack item, Player player) {
-		if (getValidationOfItem(m, player, item)) {
+		if (getValidationOfItem(m, player, item) && m.permissions.commandForce(m, player)) {
 			enhanceSuccess(m, item, player, true);
 		}
 	}

@@ -9,7 +9,8 @@ public class Language {
 		s.lang.addDefault("Config.consoleCommand", "服务器不可以使用这个指令哟!");
 		s.lang.addDefault("Config.reload", "插件重载成功!");
 		s.lang.addDefault("Config.welcome", "&a欢迎您, %player%勇士!使用&6/enhance help&a查看武器装备强化的指南!");
-		s.lang.addDefault("Config.invalidCommand", "&a您输入的指令无效!使用&6/enhance help&a查看帮助");
+		s.lang.addDefault("Config.invalidCommand", "&a您输入的指令无效!使用&6/enhance help&a查看帮助!");
+		s.lang.addDefault("Config.noPerm", "&a你没有权限这么做!");
 
 		s.lang.addDefault("Enhance.successRate", "您手中的物品的成功率为%chance%%.");
 		s.lang.addDefault("Enhance.itemInvalid", "您手里拿着的武器不可以强化!");

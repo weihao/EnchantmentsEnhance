@@ -12,27 +12,19 @@ public class Permissions {
 		return player.hasPermission("Enchantmentsenhance.reload") || player.hasPermission("Enchantmentsenhance.*");
 	}
 
-	public boolean commandChance(Main m, Player player) {
-		return player.hasPermission("Enchantmentsenhance.chance") || player.hasPermission("Enchantmentsenhance.*");
-	}
-
 	public boolean commandVersion(Main m, Player player) {
 		return player.hasPermission("Enchantmentsenhance.version") || player.hasPermission("Enchantmentsenhance.*");
 	}
 
-	public boolean enhancingArmor(Main m, Player player) {
-		return player.hasPermission("Enchantmentsenhance.armor") || player.hasPermission("Enchantmentsenhance.*");
-	}
-
-	public boolean enhancingWeapon(Main m, Player player) {
-		return player.hasPermission("Enchantmentsenhance.weapon") || player.hasPermission("Enchantmentsenhance.*");
+	public boolean commandEnhance(Main m, Player player) {
+		return player.hasPermission("Enchantmentsenhance.enhance") || player.hasPermission("Enchantmentsenhance.*");
 	}
 
 	public boolean commandLore(Main m, Player player) {
 		return player.hasPermission("Enchantmentsenhance.lore") || player.hasPermission("Enchantmentsenhance.*");
 	}
 
-	public boolean commandMenu(Main m, Player player) {
-		return player.hasPermission("Enchantmentsenhance.menu") || player.hasPermission("Enchantmentsenhance.*");
+	public boolean commandForce(Main m, Player player) {
+		return player.hasPermission("Enchantmentsenhance.force") || player.hasPermission("Enchantmentsenhance.*");
 	}
 }

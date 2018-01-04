@@ -17,23 +17,29 @@ commands:
 
         
 permissions:
-    enhancement.*:
+    Enchantmentsenhance.*:
         description: Gives access to all enhancement permissions and commands
-    enhancement.help:
+    Enchantmentsenhance.help:
         description: Allows you to use help command.
         default: true
-    enhancement.reload:
+    Enchantmentsenhance.reload:
         description: Allows you to reload the config.
         default: op
-    enhancement.lore:
+    Enchantmentsenhance.lore:
         description: Allows you to remove or add lore tags to the item
         default: true
-    enhancement.armor:
+    Enchantmentsenhance.armor:
         description: Allows you to enhance diamond armors
         default: true
-    enhancement.weapon:
+    Enchantmentsenhance.weapon:
         description: Allows you to enhance diamond weapons
         default: true
-    enhancement.version:
+    Enchantmentsenhance.version:
         description: Allows you to see the version of the plugin
+        default: op
+    Enchantmentsenhance.menu:
+        description: Allows you to use the enhancement menu.
+        default: true
+    Enchantmentsenhance.force:
+        description: Allows you to use the enhancement menu.
         default: op

@@ -64,7 +64,7 @@ public class Main extends JavaPlugin {
 				printHelp(this, player);
 				return true;
 			}
-			if ((args[0].equalsIgnoreCase("menu")) && permissions.commandMenu(this, player)) {
+			if ((args[0].equalsIgnoreCase("menu")) && permissions.commandEnhance(this, player)) {
 				menu.showEnhancingMenu(this, player, player.getItemInHand());
 				return true;
 			}
@@ -100,7 +100,7 @@ public class Main extends JavaPlugin {
 		String help = "&b&l&m          &d EnchantmentsEnhance&b&l&m          ";
 		if (permissions.commandHelp(m, player))
 			help += "\n&6/enhance help &7- " + settings.getLang().getString("Help.help");
-		if (permissions.enhancingArmor(m, player) || permissions.enhancingWeapon(m, player))
+		if (permissions.commandEnhance(m, player))
 			help += "\n&6/enhance menu &7- " + settings.getLang().getString("Help.menu");
 		if (permissions.commandReload(m, player))
 			help += "\n&6/enhance reload &7- " + settings.getLang().getString("Help.reload");
