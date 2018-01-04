@@ -10,17 +10,23 @@ This is a personal project made to enhance playability of a server.
 - [x] Keep-item-on-death
 - [x] Localization
 - [x] Lore
+- [x] Customized Name
+- [x] GUI
+- [x] Force Enhancement
 
 ## Planned
-- Item Rename
-- GUI
-- Force enhancement
-- Loosing Durability
-- Restoring Durability
-- Extracting
+- [x] Advice of Valks
+- A special item that can give you failstacks depending on the level of the advice. 
+- [x] Blacksmith’s Secret Book
+- Allows you to store failstacks by creating Advice of Valks. 
+- [x] Loosing Durability
+- You lose some durability on a failed enhancing attempt
+- [x] Restoring Durability
+- Use Artisan’s Memory to restore an item's durability.
+- [x] Extracting
 
 ## Compatibility
-Version: `1.8.x`
+Version: `1.8.x` (more version compatibility `upon request`)
 - [x] [Bukkit](https://bukkit.org)
 - [x] [Spigot](https://spigotmc.org)
 - [x] [PaperSpigot](https://ci.destroystokyo.com/view/All/job/PaperSpigot/)
@@ -29,3 +35,6 @@ Version: `1.8.x`
 1. Stop the server
 2. Place jar file in the `plugins` folder
 3. Start the server
+
+## Problems
+Please use: https://github.com/HealPot/EnchantmentsEnhance/issues
