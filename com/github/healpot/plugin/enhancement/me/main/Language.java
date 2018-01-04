@@ -15,6 +15,7 @@ public class Language {
 		s.lang.addDefault("Enhance.itemInvalid", "您手里拿着的武器不可以强化!");
 		s.lang.addDefault("Enhance.itemMax", "您手里拿着的道具已是最高级");
 		s.lang.addDefault("Enhance.enhanceSuccess", "强化成功!");
+		s.lang.addDefault("Enhance.forceEnhanceSuccess", "强制突破成功!");
 		s.lang.addDefault("Enhance.enhanceFailed", "强化失败!");
 		s.lang.addDefault("Enhance.downgraded", "您的道具降级了!");
 		s.lang.addDefault("Enhance.confirm", "请输入/enhance confirm确认本次强化");

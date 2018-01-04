@@ -44,7 +44,7 @@ public class Enhance {
 		}
 	}
 
-	public void enhanceSuccess(Main m, ItemStack item, Player player) {
+	public void enhanceSuccess(Main m, ItemStack item, Player player, boolean forceEnhanced) {
 		Enchantment enchant = getItemEnchantmentType(m, player, item);
 		int enchantLevel = getItemEnchantLevel(m, player, item);
 		item.addUnsafeEnchantment(enchant, enchantLevel + 1);
@@ -52,8 +52,12 @@ public class Enhance {
 		m.spawnFirework.launch(m, player, m.getConfig().getInt("fireworkCount." + enchantLevel),
 				m.settings.getConfig().getInt("fireworkRounds." + enchantLevel),
 				m.settings.getConfig().getInt("fireworkDelay"));
-		player.sendMessage(ChatColor.GREEN + m.settings.getLang().getString("Enhance.enhanceSuccess"));
-		m.failstack.resetLevel(m, player);
+		if (forceEnhanced) {
+			player.sendMessage(ChatColor.GREEN + m.settings.getLang().getString("Enhance.forceEnhanceSuccess"));
+		} else {
+			m.failstack.resetLevel(m, player);
+			player.sendMessage(ChatColor.GREEN + m.settings.getLang().getString("Enhance.enhanceSuccess"));
+		}
 		Data.addLore(item, player,
 				ChatColor.translateAlternateColorCodes('&', m.settings.getLang().getString("Lore.UntradeableLore")),
 				m.settings.getLang(), true);
@@ -64,7 +68,7 @@ public class Enhance {
 		Enchantment enchant = getItemEnchantmentType(m, player, item);
 		int enchantLevel = getItemEnchantLevel(m, player, item);
 		String str = m.settings.getLang().getString("Enhance.enhanceFailed");
-		if (enchantLevel > 15) {
+		if (enchantLevel > 16) {
 			item.addUnsafeEnchantment(enchant, enchantLevel - 1);
 			m.renameItem(item, enchantLevel - 1);
 			str += m.settings.getLang().getString("Enhance.downgraded");
@@ -79,17 +83,16 @@ public class Enhance {
 		int enchantLevel = getItemEnchantLevel(m, player, item);
 		double random = Math.random();
 		double chance;
-		if (m.onForceEnhance(player)) {
-			chance = 1.0;
-			m.removeOnForceEnhance(player);
-		} else {
-			chance = m.failstack.getChance(m, player, enchantLevel);
-		}
+		chance = m.failstack.getChance(m, player, enchantLevel);
 		if (random < chance) {
-			enhanceSuccess(m, item, player);
+			enhanceSuccess(m, item, player, false);
 		} else {
 			enhanceFail(m, item, player);
 		}
+	}
+
+	public void forceToEnhancement(Main m, ItemStack item, Player player) {
+		enhanceSuccess(m, item, player, true);
 	}
 
 	public void getChance(Main m, ItemStack item, Player player) {

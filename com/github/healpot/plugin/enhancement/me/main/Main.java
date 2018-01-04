@@ -26,7 +26,6 @@ import com.github.healpot.plugin.enhancement.me.visual.MenuHandler;
 
 public class Main extends JavaPlugin {
 	private Map<String, Boolean> onConfirmation = new HashMap<String, Boolean>();
-	private Map<String, Boolean> forceEnhance = new HashMap<String, Boolean>();
 	public SettingsManager settings = SettingsManager.getInstance();
 	public Permissions permissions = new Permissions();
 	public Failstack failstack = new Failstack();
@@ -148,13 +147,6 @@ public class Main extends JavaPlugin {
 	 * @return false if the player have not yet confirmed an action. false true if
 	 *         the player have confirmed an action.
 	 */
-	public boolean onForceEnhance(Player player) {
-		return forceEnhance.containsKey(player.getName());
-	}
-
-	public void removeOnForceEnhance(Player player) {
-		forceEnhance.remove(player.getName());
-	}
 
 	public boolean onConfirmation(Player player) {
 		// TODO Auto-generated method stub

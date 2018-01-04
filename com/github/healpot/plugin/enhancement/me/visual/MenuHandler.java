@@ -75,6 +75,7 @@ public class MenuHandler implements Listener {
 				}
 			}
 		} else {
+			e.setCancelled(true);
 			if (e.getCurrentItem().hasItemMeta()) {
 				if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem()) == true
 						&& !itemOnEnhancingSlot.containsKey(player)) {
@@ -87,16 +88,19 @@ public class MenuHandler implements Listener {
 					m.enhance.diceToEnhancement(m, itemOnEnhancingSlot.get(player), player);
 					m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
 					m.menu.updateInSlotItem(m, itemOnEnhancingSlot.get(player), player);
-					e.setCancelled(true);
 					return;
 				}
 				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Remove")
 						&& itemOnEnhancingSlot.containsKey(player)) {
 					itemOnEnhancingSlot.remove(player);
 					m.menu.createMenu();
+					return;
 				}
 				if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Force")
 						&& itemOnEnhancingSlot.containsKey(player)) {
+					m.enhance.forceToEnhancement(m, itemOnEnhancingSlot.get(player), player);
+					m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
+					m.menu.updateInSlotItem(m, itemOnEnhancingSlot.get(player), player);
 					return;
 				}
 			} else if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem()) == true
@@ -106,7 +110,6 @@ public class MenuHandler implements Listener {
 				m.menu.addRemoveButton();
 			}
 		}
-		e.setCancelled(true);
 	}
 
 	@EventHandler
