@@ -26,7 +26,13 @@ public class Enhance {
 	}
 
 	public int getItemEnchantLevel(Main m, Player player, ItemStack item) {
-		return item.getEnchantmentLevel(getItemEnchantmentType(m, player, item));
+		if ((getItemEnchantmentType(m, player, item)) != null) {
+			return item.getEnchantmentLevel(getItemEnchantmentType(m, player, item));
+		} else {
+			player.sendMessage("error");
+			return 0;
+
+		}
 	}
 
 	public boolean getValidationOfItem(Main m, Player player, ItemStack item) {
@@ -34,7 +40,7 @@ public class Enhance {
 			// player.sendMessage(ChatColor.RED +
 			// m.settings.getLang().getString("Enhance.itemInvalid"));
 			return false;
-		} else if (getItemEnchantLevel(m, player, item) > 19) {
+		} else if (getItemEnchantLevel(m, player, item) >= 19) {
 			// player.sendMessage(ChatColor.RED +
 			// m.settings.getLang().getString("Enhance.itemMax"));
 			return false;
@@ -46,6 +52,7 @@ public class Enhance {
 	public void enhanceSuccess(Main m, ItemStack item, Player player, boolean forceEnhanced) {
 		Enchantment enchant = getItemEnchantmentType(m, player, item);
 		int enchantLevel = getItemEnchantLevel(m, player, item);
+		m.renameItem(item, enchantLevel + 1);
 		item.addUnsafeEnchantment(enchant, enchantLevel + 1);
 		m.playSound.playSound(player, "SUCCESS");
 		m.spawnFirework.launch(m, player, m.getConfig().getInt("fireworkCount." + enchantLevel),
@@ -60,30 +67,28 @@ public class Enhance {
 		m.data.addLore(m, item, player,
 				ChatColor.translateAlternateColorCodes('&', m.settings.getLang().getString("Lore.UntradeableLore")),
 				true);
-		m.renameItem(item, enchantLevel);
 	}
 
 	public void enhanceFail(Main m, ItemStack item, Player player) {
 		Enchantment enchant = getItemEnchantmentType(m, player, item);
 		int enchantLevel = getItemEnchantLevel(m, player, item);
 		String str = m.settings.getLang().getString("Enhance.enhanceFailed");
-		if (enchantLevel > 16) {
-			item.addUnsafeEnchantment(enchant, enchantLevel - 1);
-			m.renameItem(item, enchantLevel - 1);
+		m.playSound.playSound(player, "FAILED");
+		m.failstack.addLevel(m, player, m.settings.getConfig().getInt("failstackGained." + enchantLevel));
+		if (enchantLevel > 15) {
 			str += m.settings.getLang().getString("Enhance.downgraded");
 			m.playSound.playSound(player, "DOWNGRADED");
+			m.renameItem(item, (enchantLevel - 1));
+			item.addUnsafeEnchantment(enchant, enchantLevel - 1);
 		}
-		m.playSound.playSound(player, "FAILED");
 		player.sendMessage(ChatColor.RED + str);
-		m.failstack.addLevel(m, player, m.settings.getConfig().getInt("failstackGained." + enchantLevel));
 	}
 
 	public void diceToEnhancement(Main m, ItemStack item, Player player) {
-		if (getValidationOfItem(m, player, item) == true) {
-			int enchantLevel = getItemEnchantLevel(m, player, item);
+		if (getValidationOfItem(m, player, item)) {
 			double random = Math.random();
 			double chance;
-			chance = m.failstack.getChance(m, player, enchantLevel);
+			chance = m.failstack.getChance(m, player, getItemEnchantLevel(m, player, item));
 			if (random < chance) {
 				enhanceSuccess(m, item, player, false);
 			} else {
@@ -93,7 +98,7 @@ public class Enhance {
 	}
 
 	public void forceToEnhancement(Main m, ItemStack item, Player player) {
-		if (getValidationOfItem(m, player, item) == true) {
+		if (getValidationOfItem(m, player, item)) {
 			enhanceSuccess(m, item, player, true);
 		}
 	}

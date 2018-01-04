@@ -48,27 +48,28 @@ public class MenuHandler implements Listener {
 						itemOnEnhancingSlot.put(player, e.getCurrentItem());
 						m.menu.addRemoveButton();
 					}
-					if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Enhance")
+					if (e.getCurrentItem().getItemMeta().getDisplayName()
+							.contains(m.settings.getLang().getString("Menu.enhance"))
 							&& itemOnEnhancingSlot.containsKey(player)) {
 						m.enhance.diceToEnhancement(m, itemOnEnhancingSlot.get(player), player);
 						m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
 						m.menu.updateInSlotItem(m, itemOnEnhancingSlot.get(player), player);
 						return;
 					}
-					if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Remove")
-							&& itemOnEnhancingSlot.containsKey(player)) {
+					if (e.getCurrentItem().getItemMeta().getDisplayName().contains(
+							m.settings.getLang().getString("Menu.remove")) && itemOnEnhancingSlot.containsKey(player)) {
 						itemOnEnhancingSlot.remove(player);
 						m.menu.createMenu(m);
 						return;
 					}
-					if (e.getCurrentItem().getItemMeta().getDisplayName().contains("Force")
-							&& itemOnEnhancingSlot.containsKey(player)) {
+					if (e.getCurrentItem().getItemMeta().getDisplayName().contains(
+							m.settings.getLang().getString("Menu.force")) && itemOnEnhancingSlot.containsKey(player)) {
 						m.enhance.forceToEnhancement(m, itemOnEnhancingSlot.get(player), player);
 						m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
 						m.menu.updateInSlotItem(m, itemOnEnhancingSlot.get(player), player);
 						return;
 					}
-				} else if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem()) == true
+				} else if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem())
 						&& !itemOnEnhancingSlot.containsKey(player)) {
 					m.menu.updateInv(m, e.getCurrentItem(), player);
 					itemOnEnhancingSlot.put(player, e.getCurrentItem());

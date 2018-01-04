@@ -34,16 +34,20 @@ public class Menu {
 	}
 
 	public void createMenu(Main m) {
-		enhance = createItem(DyeColor.YELLOW, ChatColor.GREEN + "Enhance");
+		screen.clear();
+		enhance = createItem(DyeColor.YELLOW, ChatColor.GREEN + m.settings.getLang().getString("Menu.enhance"));
 		ItemMeta im = enhance.getItemMeta();
 		List<String> update = new ArrayList<String>();
 		update.add(m.settings.getLang().getString("Menu.lore.ifSuccess"));
 		update.add(m.settings.getLang().getString("Menu.lore.ifFail"));
+		update.add(m.settings.getLang().getString("Menu.lore.ifDowngrade"));
+		update.add(m.settings.getLang().getString("Menu.lore.ifDestroy"));
 		im.setLore(update);
+		enhance.setItemMeta(im);
 
-		force = createItem(DyeColor.BLACK, ChatColor.RED + "Force");
-		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.RED + "Stats");
-		remove = createItem(DyeColor.RED, ChatColor.RED + "Remove");
+		force = createItem(DyeColor.BLACK, ChatColor.RED + m.settings.getLang().getString("Menu.force"));
+		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.RED + m.settings.getLang().getString("Menu.stats"));
+		remove = createItem(DyeColor.RED, ChatColor.RED + m.settings.getLang().getString("Menu.remove"));
 
 		screen.setItem(getSlot(5, 1), stats);
 		screen.setItem(getSlot(4, 3), enhance);
@@ -82,6 +86,7 @@ public class Menu {
 			update.add(m.settings.getLang().getString("Menu.lore.ifDowngrade"));
 		}
 		im.setLore(update);
+		enhance.setItemMeta(im);
 		screen.setItem(getSlot(4, 3), m.glow.addGlow(enhance));
 	}
 
