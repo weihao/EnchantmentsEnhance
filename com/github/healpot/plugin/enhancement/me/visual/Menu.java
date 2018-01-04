@@ -36,18 +36,37 @@ public class Menu {
 	public void createMenu(Main m) {
 		screen.clear();
 		enhance = createItem(DyeColor.YELLOW, ChatColor.GREEN + m.settings.getLang().getString("Menu.enhance"));
-		ItemMeta im = enhance.getItemMeta();
-		List<String> update = new ArrayList<String>();
-		update.add(m.settings.getLang().getString("Menu.lore.ifSuccess"));
-		update.add(m.settings.getLang().getString("Menu.lore.ifFail"));
-		update.add(m.settings.getLang().getString("Menu.lore.ifDowngrade"));
-		update.add(m.settings.getLang().getString("Menu.lore.ifDestroy"));
-		im.setLore(update);
-		enhance.setItemMeta(im);
+		ItemMeta enhanceim = enhance.getItemMeta();
+		List<String> enhanceStr = new ArrayList<String>();
+		enhanceStr.add(m.settings.getLang().getString("Menu.lore.ifSuccess"));
+		enhanceStr.add(m.settings.getLang().getString("Menu.lore.ifFail"));
+		enhanceStr.add(m.settings.getLang().getString("Menu.lore.ifDowngrade"));
+		enhanceStr.add(m.settings.getLang().getString("Menu.lore.ifDestroy"));
+		enhanceim.setLore(enhanceStr);
+		enhance.setItemMeta(enhanceim);
 
 		force = createItem(DyeColor.BLACK, ChatColor.RED + m.settings.getLang().getString("Menu.force"));
+		ItemMeta forceim = force.getItemMeta();
+		List<String> forceStr = new ArrayList<String>();
+		forceStr.add(m.settings.getLang().getString("Menu.lore.force1"));
+		forceStr.add(m.settings.getLang().getString("Menu.lore.force2"));
+		forceim.setLore(forceStr);
+		force.setItemMeta(forceim);
+
 		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.RED + m.settings.getLang().getString("Menu.stats"));
+		ItemMeta statsim = force.getItemMeta();
+		List<String> statsStr = new ArrayList<String>();
+		statsStr.add(m.settings.getLang().getString("Menu.lore.stats1"));
+		statsStr.add(m.settings.getLang().getString("Menu.lore.stats2"));
+		statsim.setLore(forceStr);
+		force.setItemMeta(statsim);
+
 		remove = createItem(DyeColor.RED, ChatColor.RED + m.settings.getLang().getString("Menu.remove"));
+		ItemMeta removeim = force.getItemMeta();
+		List<String> removeStr = new ArrayList<String>();
+		removeStr.add(m.settings.getLang().getString("Menu.lore.remove"));
+		removeim.setLore(forceStr);
+		remove.setItemMeta(removeim);
 
 		screen.setItem(getSlot(5, 1), stats);
 		screen.setItem(getSlot(4, 3), enhance);

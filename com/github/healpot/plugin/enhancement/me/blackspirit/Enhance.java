@@ -66,8 +66,8 @@ public class Enhance {
 			m.failstack.resetLevel(m, player);
 			player.sendMessage(ChatColor.GREEN + m.settings.getLang().getString("Enhance.enhanceSuccess"));
 		}
-		m.data.addLore(m, item, player,
-				ChatColor.translateAlternateColorCodes('&', m.settings.getLang().getString("Lore.UntradeableLore")),
+		m.data.addLore(m, item, player, ChatColor.translateAlternateColorCodes('&',
+				m.settings.getLang().getString("Lore." + m.settings.getConfig().getString("lore.bound") + "Lore")),
 				true);
 	}
 

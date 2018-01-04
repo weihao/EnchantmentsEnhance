@@ -1,4 +1,8 @@
+language: en
+#supported language: cn, en.
+
 lore:
+  bound: Tradeable
   sendBoundingMessage: false
 fireworkDelay: 0
 baseChance:

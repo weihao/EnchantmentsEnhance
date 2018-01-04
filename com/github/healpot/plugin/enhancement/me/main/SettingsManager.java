@@ -56,7 +56,7 @@ public class SettingsManager {
 		langfile = new File(p.getDataFolder(), "lang.yml");
 		lang = YamlConfiguration.loadConfiguration(langfile);
 		Language language = new Language();
-		language.addCnDefault(this);
+		language.iniLanguage(this, getConfig().getString("language"));
 	}
 
 	public FileConfiguration getData() {
