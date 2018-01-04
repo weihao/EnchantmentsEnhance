@@ -80,19 +80,23 @@ public class Enhance {
 	}
 
 	public void diceToEnhancement(Main m, ItemStack item, Player player) {
-		int enchantLevel = getItemEnchantLevel(m, player, item);
-		double random = Math.random();
-		double chance;
-		chance = m.failstack.getChance(m, player, enchantLevel);
-		if (random < chance) {
-			enhanceSuccess(m, item, player, false);
-		} else {
-			enhanceFail(m, item, player);
+		if (getValidationOfItem(m, player, item) == true) {
+			int enchantLevel = getItemEnchantLevel(m, player, item);
+			double random = Math.random();
+			double chance;
+			chance = m.failstack.getChance(m, player, enchantLevel);
+			if (random < chance) {
+				enhanceSuccess(m, item, player, false);
+			} else {
+				enhanceFail(m, item, player);
+			}
 		}
 	}
 
 	public void forceToEnhancement(Main m, ItemStack item, Player player) {
-		enhanceSuccess(m, item, player, true);
+		if (getValidationOfItem(m, player, item) == true) {
+			enhanceSuccess(m, item, player, true);
+		}
 	}
 
 	public void getChance(Main m, ItemStack item, Player player) {

@@ -1,7 +1,9 @@
 name: EnchantmentsEnhance
-version: 1.4.0
+version: 1.5.0
 description: This is a Black Desert Online Style of Enchantment enhancing
 author: Feier
+load: postworld
+prefix: EnchantmentsEnhance
 
 main: com.github.healpot.plugin.enhancement.me.main.Main
 database: false
@@ -24,17 +26,14 @@ permissions:
         description: Allows you to reload the config.
         default: op
     enhancement.lore:
-        description: Allows you to remove or add lore tags to the item.
+        description: Allows you to remove or add lore tags to the item
         default: true
     enhancement.armor:
-        description: Allows you to enhance diamond armors.
+        description: Allows you to enhance diamond armors
         default: true
     enhancement.weapon:
-        description: Allows you to enhance diamond weapons.
+        description: Allows you to enhance diamond weapons
         default: true
     enhancement.version:
-        description: Allows you to see the version of the plugin.
+        description: Allows you to see the version of the plugin
         default: op
-    enhancement.chance:
-        description: Allows you to check the success rate of item that you are holding.
-        default: true
