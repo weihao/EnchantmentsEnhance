@@ -19,9 +19,4 @@ public class Annoucer implements Listener {
 		p.sendMessage(ChatColor.translateAlternateColorCodes('&',
 				m.settings.getLang().getString("Config.welcome").replaceAll("%player%", p.getName())));
 	}
-
-	public void broadcast() {
-
-	}
-
 }

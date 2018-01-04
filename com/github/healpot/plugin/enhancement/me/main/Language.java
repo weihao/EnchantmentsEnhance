@@ -37,7 +37,7 @@ public class Language {
 		s.lang.addDefault("Messages.NoStorage", "&4这个道具不可被储存!");
 
 		s.lang.addDefault("Help.help", "查看插件命令帮助.");
-		s.lang.addDefault("Help.hand", "突破手中物品的潜力.");
+		s.lang.addDefault("Help.menu", "突破物品潜力界面.");
 		s.lang.addDefault("Help.reload", "重新载入插件配置文件.");
 		s.lang.addDefault("Help.chance", "了解潜力突破机率.");
 		s.lang.addDefault("Help.version", "检测当前文件版本.");

@@ -1,7 +1,7 @@
 package com.github.healpot.plugin.enhancement.me.main;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -26,7 +26,6 @@ import com.github.healpot.plugin.enhancement.me.visual.Menu;
 import com.github.healpot.plugin.enhancement.me.visual.MenuHandler;
 
 public class Main extends JavaPlugin {
-	private Map<String, Boolean> onConfirmation = new HashMap<String, Boolean>();
 	public SettingsManager settings = SettingsManager.getInstance();
 	public Permissions permissions = new Permissions();
 	public Failstack failstack = new Failstack();
@@ -65,10 +64,6 @@ public class Main extends JavaPlugin {
 				printHelp(this, player);
 				return true;
 			}
-			if (onConfirmation.containsKey(player.getName())) {
-				onConfirmation.remove(player.getName());
-				player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Enhance.cancel"));
-			}
 			if ((args[0].equalsIgnoreCase("menu")) && permissions.commandMenu(this, player)) {
 				menu.showEnhancingMenu(this, player, player.getItemInHand());
 				return true;
@@ -106,11 +101,9 @@ public class Main extends JavaPlugin {
 		if (permissions.commandHelp(m, player))
 			help += "\n&6/enhance help &7- " + settings.getLang().getString("Help.help");
 		if (permissions.enhancingArmor(m, player) || permissions.enhancingWeapon(m, player))
-			help += "\n&6/enhance hand &7- " + settings.getLang().getString("Help.hand");
+			help += "\n&6/enhance menu &7- " + settings.getLang().getString("Help.menu");
 		if (permissions.commandReload(m, player))
 			help += "\n&6/enhance reload &7- " + settings.getLang().getString("Help.reload");
-		if (permissions.commandChance(m, player))
-			help += "\n&6/enhance chance &7- " + settings.getLang().getString("Help.chance");
 		if (permissions.commandVersion(m, player))
 			help += "\n&6/enhance version &7- " + settings.getLang().getString("Help.version");
 
@@ -143,15 +136,15 @@ public class Main extends JavaPlugin {
 		item.setItemMeta(im);
 	}
 
-	/**
-	 * 
-	 * @param player
-	 * @return false if the player have not yet confirmed an action. false true if
-	 *         the player have confirmed an action.
-	 */
-
-	public boolean onConfirmation(Player player) {
-		// TODO Auto-generated method stub
-		return false;
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+		List<String> str = new ArrayList<String>();
+		if (cmd.getName().equalsIgnoreCase("enhance")) {
+			str.add("help");
+			str.add("menu");
+			str.add("reload");
+			str.add("version");
+		}
+		return str;
 	}
 }
