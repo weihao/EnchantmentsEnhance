@@ -62,7 +62,7 @@ public class Menu {
 		force.setItemMeta(statsim);
 
 		remove = createItem(DyeColor.RED, ChatColor.RED + m.settings.getLang().getString("Menu.remove"));
-		ItemMeta removeim = force.getItemMeta();
+		ItemMeta removeim = remove.getItemMeta();
 		List<String> removeStr = new ArrayList<String>();
 		removeStr.add(m.settings.getLang().getString("Menu.lore.remove"));
 		removeim.setLore(forceStr);
