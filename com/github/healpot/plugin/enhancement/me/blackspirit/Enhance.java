@@ -56,7 +56,7 @@ public class Enhance {
 		int enchantLevel = getItemEnchantLevel(m, player, item);
 		m.renameItem(item, enchantLevel + 1);
 		item.addUnsafeEnchantment(enchant, enchantLevel + 1);
-		m.playSound.playSound(player, "SUCCESS");
+		m.compatibility.playsound.playSound(player, "SUCCESS");
 		m.spawnFirework.launch(m, player, m.getConfig().getInt("fireworkCount." + enchantLevel),
 				m.settings.getConfig().getInt("fireworkRounds." + enchantLevel),
 				m.settings.getConfig().getInt("fireworkDelay"));
@@ -75,11 +75,11 @@ public class Enhance {
 		Enchantment enchant = getItemEnchantmentType(m, player, item);
 		int enchantLevel = getItemEnchantLevel(m, player, item);
 		String str = m.settings.getLang().getString("Enhance.enhanceFailed");
-		m.playSound.playSound(player, "FAILED");
+		m.compatibility.playsound.playSound(player, "FAILED");
 		m.failstack.addLevel(m, player, m.settings.getConfig().getInt("failstackGained." + enchantLevel));
 		if (enchantLevel > 15) {
 			str += m.settings.getLang().getString("Enhance.downgraded");
-			m.playSound.playSound(player, "DOWNGRADED");
+			m.compatibility.playsound.playSound(player, "DOWNGRADED");
 			m.renameItem(item, (enchantLevel - 1));
 			item.addUnsafeEnchantment(enchant, enchantLevel - 1);
 		}

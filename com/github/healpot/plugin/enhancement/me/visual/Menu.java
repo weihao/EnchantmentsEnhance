@@ -83,9 +83,9 @@ public class Menu {
 
 	public void updateInv(Main m, ItemStack item, Player player) {
 		updateFailstack(m, item, player);
-		screen.setItem(getSlot(5, 1), m.glow.addGlow(stats));
-		screen.setItem(getSlot(4, 3), m.glow.addGlow(enhance));
-		screen.setItem(getSlot(6, 3), m.glow.addGlow(force));
+		screen.setItem(getSlot(5, 1), m.compatibility.glow.addGlow(stats));
+		screen.setItem(getSlot(4, 3), m.compatibility.glow.addGlow(enhance));
+		screen.setItem(getSlot(6, 3), m.compatibility.glow.addGlow(force));
 		screen.setItem(getSlot(1, 2), item);
 	}
 
@@ -93,7 +93,7 @@ public class Menu {
 		ItemMeta im = stats.getItemMeta();
 		im.setLore(m.enhance.getChanceAsList(m, item, player));
 		stats.setItemMeta(im);
-		screen.setItem(getSlot(5, 1), m.glow.addGlow(stats));
+		screen.setItem(getSlot(5, 1), m.compatibility.glow.addGlow(stats));
 	}
 
 	public void updateEnhance(Main m, ItemStack item, Player player) {
@@ -106,7 +106,7 @@ public class Menu {
 		}
 		im.setLore(update);
 		enhance.setItemMeta(im);
-		screen.setItem(getSlot(4, 3), m.glow.addGlow(enhance));
+		screen.setItem(getSlot(4, 3), m.compatibility.glow.addGlow(enhance));
 	}
 
 	public void updateInSlotItem(Main m, ItemStack item, Player player) {

@@ -14,14 +14,13 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.healpot.plugin.enhancement.me.blackspirit.Enhance;
-import com.github.healpot.plugin.enhancement.me.effect.Glow;
-import com.github.healpot.plugin.enhancement.me.effect.PlaySound;
 import com.github.healpot.plugin.enhancement.me.effect.SpawnFirework;
 import com.github.healpot.plugin.enhancement.me.failstack.Failstack;
 import com.github.healpot.plugin.enhancement.me.failstack.FailstackHandler;
 import com.github.healpot.plugin.enhancement.me.lore.Data;
 import com.github.healpot.plugin.enhancement.me.lore.ItemDrop;
 import com.github.healpot.plugin.enhancement.me.lore.playerdeath;
+import com.github.healpot.plugin.enhancement.me.modular.Compatibility;
 import com.github.healpot.plugin.enhancement.me.visual.Menu;
 import com.github.healpot.plugin.enhancement.me.visual.MenuHandler;
 
@@ -30,16 +29,16 @@ public class Main extends JavaPlugin {
 	public Permissions permissions = new Permissions();
 	public Failstack failstack = new Failstack();
 	public SpawnFirework spawnFirework = new SpawnFirework();
-	public PlaySound playSound = new PlaySound();
 	public Enhance enhance = new Enhance();
 	public Menu menu = new Menu();
-	public Glow glow = new Glow();
 	public Data data = new Data();
+	public Compatibility compatibility = new Compatibility();
 
 	public void onEnable() {
 		saveDefaultConfig();
 		settings.setup(this);
-		this.registerCore();
+		registerCore();
+		registerNMS();
 		Bukkit.getServer().getLogger().info(settings.getLang().getString("Config.onEnable"));
 	}
 
@@ -121,6 +120,27 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new playerdeath(this), this);
 		pm.registerEvents(new FailstackHandler(this), this);
 		pm.registerEvents(new MenuHandler(this), this);
+	}
+
+	private void registerNMS() {
+		if (compatibility.setupGlow()) {
+			getLogger().info("Enhancement Glower setup was successful!");
+		} else {
+
+			getLogger().severe("Failed to setup Enhancement Glower!");
+			getLogger().severe("Your server version is not compatible with this plugin!");
+
+			Bukkit.getPluginManager().disablePlugin(this);
+		}
+
+		if (compatibility.setupSound()) {
+			getLogger().info("Enhancement Sound setup was successful!");
+		} else {
+
+			getLogger().severe("Failed to setup Enhancement Sound!");
+			getLogger().severe("Your server version is not compatible with this plugin!");
+			Bukkit.getPluginManager().disablePlugin(this);
+		}
 	}
 
 	/**
