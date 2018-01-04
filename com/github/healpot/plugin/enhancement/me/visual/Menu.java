@@ -15,10 +15,8 @@ import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class Menu {
 
-	private Inventory screen;
-	private ItemStack enhance, confirm, no, force, stats, remove;
-	private ItemStack item;
-	private Player player;
+	private Inventory screen = null;
+	private ItemStack enhance, force, stats, remove;
 
 	private ItemStack createItem(DyeColor dc, String name) {
 		ItemStack i = new Wool(dc).toItemStack(1);

@@ -51,7 +51,7 @@ public class playerdeath implements Listener {
 				}
 			}
 		}
-		ItemStack[] newStack = (ItemStack[]) newInventory.toArray(new ItemStack[newInventory.size()]);
+		ItemStack[] newStack = newInventory.toArray(new ItemStack[newInventory.size()]);
 		pFile.set("Items", newStack);
 		try {
 			pFile.save(playerFile);
@@ -70,7 +70,7 @@ public class playerdeath implements Listener {
 		File playerFile = new File(this.plugin.getDataFolder() + "/Data" + "/Players/" + uuid.toString() + ".yml");
 		FileConfiguration pFile = YamlConfiguration.loadConfiguration(playerFile);
 		if (playerFile.exists()) {
-			ItemStack[] content = (ItemStack[]) ((List) pFile.get("Items")).toArray(new ItemStack[0]);
+			ItemStack[] content = (ItemStack[]) ((List<?>) pFile.get("Items")).toArray(new ItemStack[0]);
 			p.getInventory().addItem(content);
 			playerFile.delete();
 		}

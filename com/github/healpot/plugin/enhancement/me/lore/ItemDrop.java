@@ -14,10 +14,10 @@ import org.bukkit.inventory.ItemStack;
 import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class ItemDrop implements Listener {
-	private Main plugin;
+	private Main m;
 
-	public ItemDrop(Main pl) {
-		this.plugin = pl;
+	public ItemDrop(Main m) {
+		this.m = m;
 	}
 
 	@EventHandler
@@ -32,9 +32,9 @@ public class ItemDrop implements Listener {
 				loreList.add((String) DroppedItemStack.getItemMeta().getLore().get(i));
 			}
 			if (loreList.contains(ChatColor.translateAlternateColorCodes('&',
-					this.plugin.settings.getLang().getString("Lore.UntradeableLore")))) {
+					m.settings.getLang().getString("Lore.UntradeableLore")))) {
 				e.setCancelled(true);
-				Data.sendMessage(this.plugin.settings.getLang().getString("Messages.NoDrop"), p);
+				m.data.sendMessage(m.settings.getLang().getString("Messages.NoDrop"), p);
 				return;
 			}
 		}

@@ -9,7 +9,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.github.healpot.plugin.enhancement.me.lore.Data;
 import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class Enhance {
@@ -58,9 +57,9 @@ public class Enhance {
 			m.failstack.resetLevel(m, player);
 			player.sendMessage(ChatColor.GREEN + m.settings.getLang().getString("Enhance.enhanceSuccess"));
 		}
-		Data.addLore(item, player,
+		m.data.addLore(m, item, player,
 				ChatColor.translateAlternateColorCodes('&', m.settings.getLang().getString("Lore.UntradeableLore")),
-				m.settings.getLang(), true);
+				true);
 		m.renameItem(item, enchantLevel);
 	}
 

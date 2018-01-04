@@ -1,3 +1,5 @@
+lore:
+  sendBoundingMessage: false
 fireworkDelay: 0
 baseChance:
   0: 100.0

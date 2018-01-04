@@ -19,6 +19,7 @@ import com.github.healpot.plugin.enhancement.me.effect.PlaySound;
 import com.github.healpot.plugin.enhancement.me.effect.SpawnFirework;
 import com.github.healpot.plugin.enhancement.me.failstack.Failstack;
 import com.github.healpot.plugin.enhancement.me.failstack.FailstackHandler;
+import com.github.healpot.plugin.enhancement.me.lore.Data;
 import com.github.healpot.plugin.enhancement.me.lore.ItemDrop;
 import com.github.healpot.plugin.enhancement.me.lore.playerdeath;
 import com.github.healpot.plugin.enhancement.me.visual.Menu;
@@ -34,6 +35,7 @@ public class Main extends JavaPlugin {
 	public Enhance enhance = new Enhance();
 	public Menu menu = new Menu();
 	public Glow glow = new Glow();
+	public Data data = new Data();
 
 	public void onEnable() {
 		settings.setup(this);
