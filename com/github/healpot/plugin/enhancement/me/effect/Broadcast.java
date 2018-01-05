@@ -10,17 +10,17 @@ import com.github.healpot.plugin.enhancement.me.main.Main;
 public class Broadcast {
 	public void broadcast(Main m, Player player, ItemStack item, int enchantLevel, boolean success) {
 		if (success) {
-			Bukkit.broadcastMessage(m.toColor(m.settings.getLang().getString("Config.pluginTag"))
+			Bukkit.broadcastMessage(m.toColor(m.settings.getLang().getString("Config.pluginTag")
 					+ (m.settings.getLang().getString("Annoucer.success") + player.getDisplayName()
 							+ m.settings.getLang().getString("Annoucer.got")
 							+ m.settings.getLang().getString("Name." + Integer.toString(enchantLevel + 1)) + " "
-							+ getFriendlyName(item)));
+							+ getFriendlyName(item))));
 		} else {
-			Bukkit.broadcastMessage(m.toColor(m.settings.getLang().getString("Config.pluginTag"))
+			Bukkit.broadcastMessage(m.toColor(m.settings.getLang().getString("Config.pluginTag")
 					+ (m.settings.getLang().getString("Annoucer.failed") + player.getDisplayName()
 							+ m.settings.getLang().getString("Annoucer.lost")
 							+ m.settings.getLang().getString("Name." + Integer.toString(enchantLevel + 1)) + " "
-							+ getFriendlyName(item)));
+							+ getFriendlyName(item))));
 		}
 	}
 

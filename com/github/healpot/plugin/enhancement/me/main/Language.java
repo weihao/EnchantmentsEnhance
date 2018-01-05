@@ -14,7 +14,7 @@ public class Language {
 		s.lang.addDefault("Config.checkingVersion", "&a您正在使用的插件版本是v%version%.");
 		s.lang.addDefault("Config.onEnable", "强化插件已开启!");
 		s.lang.addDefault("Config.onDisable", "强化插件已禁用!");
-		s.lang.addDefault("Config.consoleCommand", "&c服务器不可以使用这个指令哟!");
+		s.lang.addDefault("Config.consoleCommand", "服务器不可以使用这个指令哟!");
 		s.lang.addDefault("Config.reload", "&a插件重载成功!");
 		s.lang.addDefault("Config.welcome", "&a欢迎您, %player%勇士!使用&6/enhance help&a查看武器装备强化的指南!");
 		s.lang.addDefault("Config.invalidCommand", "&a您输入的指令无效!使用&6/enhance help&a查看帮助!");
@@ -58,7 +58,7 @@ public class Language {
 		s.lang.addDefault("Menu.gui.stats", "信息");
 		s.lang.addDefault("Menu.gui.remove", "取消");
 		s.lang.addDefault("Menu.lore.force1", "&c强制突破百分百成功突破物品的潜力");
-		s.lang.addDefault("Menu.lore.force2", "&c只对管理开放");
+		s.lang.addDefault("Menu.lore.force2", "&c需达到指定条件");
 		s.lang.addDefault("Menu.lore.remove", "&6取消选择当前强化物品");
 		s.lang.addDefault("Menu.lore.stats1", "&b潜力突破会强化你的装备");
 		s.lang.addDefault("Menu.lore.stats2", "&b玩家突破失败的次数会增加下次潜力突破的成功机率");
@@ -92,32 +92,32 @@ public class Language {
 	}
 
 	public void addEnDefault(SettingsManager s) {
-		s.lang.addDefault("Config.pluginTag", "&f[&6EnchantmentsEnhance&f]");
-		s.lang.addDefault("Config.checkingVersion", "You are using EnchantmentsEnhance v%version%.");
+		s.lang.addDefault("Config.pluginTag", "&f[&6EnchantmentsEnhance&f] ");
+		s.lang.addDefault("Config.checkingVersion", "&aYou are using EnchantmentsEnhance v%version%.");
 		s.lang.addDefault("Config.onEnable", "EnchantmentsEnhance is enabled!");
 		s.lang.addDefault("Config.onDisable", "EnchantmentsEnhance is disabled!");
 		s.lang.addDefault("Config.consoleCommand", "Console cannot use this!");
-		s.lang.addDefault("Config.reload", "EnchantmentsEnhance is reloaded!");
+		s.lang.addDefault("Config.reload", "&aEnchantmentsEnhance is reloaded!");
 		s.lang.addDefault("Config.welcome",
 				"&aWelcome, Adventurer %player%! Use &6/enhance help&a to view enhancing guides!");
 		s.lang.addDefault("Config.invalidCommand", "&aInvalid commands! use &6/enhance help&a to get helps!");
 		s.lang.addDefault("Config.noPerm", "&aYou don't have permissions!");
 
-		s.lang.addDefault("Annoucer.success", "Enhance Success: ");
-		s.lang.addDefault("Annoucer.failed", "Enhance Failed: ");
-		s.lang.addDefault("Annoucer.got", " got ");
-		s.lang.addDefault("Annoucer.lost", " failed ");
+		s.lang.addDefault("Annoucer.success", "&6Enhance Success: ");
+		s.lang.addDefault("Annoucer.failed", "&6Enhance Failed: ");
+		s.lang.addDefault("Annoucer.got", " &6got ");
+		s.lang.addDefault("Annoucer.lost", " &6failed ");
 
-		s.lang.addDefault("Enhance.successRate", "Success rate is %chance%%.");
-		s.lang.addDefault("Enhance.itemInvalid", "This item cannot be enhanced!");
-		s.lang.addDefault("Enhance.itemMax", "Maximum enhancement level reached.");
-		s.lang.addDefault("Enhance.enhanceSuccess", "Enhancement was successful!");
-		s.lang.addDefault("Enhance.forceEnhanceSuccess", "Forcing enhancement was successful!");
-		s.lang.addDefault("Enhance.enhanceFailed", "Enhancement failed!");
-		s.lang.addDefault("Enhance.downgraded", "Item has downgraded!");
-		s.lang.addDefault("Enhance.currentFailstack", "Failstack: ");
+		s.lang.addDefault("Enhance.successRate", "&bSuccess rate is %chance%%.");
+		s.lang.addDefault("Enhance.itemInvalid", "&cThis item cannot be enhanced!");
+		s.lang.addDefault("Enhance.itemMax", "&6Maximum enhancement level reached.");
+		s.lang.addDefault("Enhance.enhanceSuccess", "&6Enhancement was successful!");
+		s.lang.addDefault("Enhance.forceEnhanceSuccess", "&6Forcing enhancement was successful!");
+		s.lang.addDefault("Enhance.enhanceFailed", "&cEnhancement failed!");
+		s.lang.addDefault("Enhance.downgraded", "&4Item has downgraded!");
+		s.lang.addDefault("Enhance.currentFailstack", "&bFailstack: ");
 
-		s.lang.addDefault("Lore.UntradeableLore", "&8[&6Keep-on-death&8]&8[&4Character Bound&8]&f");
+		s.lang.addDefault("Lore.UntradeableLore", "&8[&6Keep-On-Death&8]&8[&4Character Bound&8]&f");
 		s.lang.addDefault("Lore.TradeableLore", "&8[&6Keep-on-death&8]&8[&2Trade Available&8]&f");
 
 		s.lang.addDefault("Messages.NoItemInHand", "&4No item in hand!");
@@ -130,25 +130,25 @@ public class Language {
 		s.lang.addDefault("Messages.NoDrop", "&4This item cannot be dropped!");
 		s.lang.addDefault("Messages.NoStorage", "&4This item cannot be stored!");
 
-		s.lang.addDefault("Help.help", "view help.");
-		s.lang.addDefault("Help.menu", "open enhancement menu.");
-		s.lang.addDefault("Help.reload", "reload plugin.");
-		s.lang.addDefault("Help.version", "check version.");
+		s.lang.addDefault("Help.help", "&6view help.");
+		s.lang.addDefault("Help.menu", "&6open enhancement menu.");
+		s.lang.addDefault("Help.reload", "&6reload plugin.");
+		s.lang.addDefault("Help.version", "&6check version.");
 
-		s.lang.addDefault("Menu.title", "Enhancement");
-		s.lang.addDefault("Menu.enhance", "Enhance");
-		s.lang.addDefault("Menu.force", "Force");
-		s.lang.addDefault("Menu.stats", "Info");
-		s.lang.addDefault("Menu.remove", "Deselect-Item");
-		s.lang.addDefault("Menu.lore.force1", "Force guarantees a successful enhancement");
-		s.lang.addDefault("Menu.lore.force2", "Default accessible to admins");
-		s.lang.addDefault("Menu.lore.remove", "Remove current enhancing item");
-		s.lang.addDefault("Menu.lore.stats1", "Enhancing is the act of increasing the stats of your items.");
-		s.lang.addDefault("Menu.lore.stats2", "Failstacks increase the chance of a successful enhancement attempt.");
-		s.lang.addDefault("Menu.lore.ifFail", "Enhancement could fail");
-		s.lang.addDefault("Menu.lore.ifSuccess", "Enhancement could succeed");
-		s.lang.addDefault("Menu.lore.ifDowngrade", "Item will be downgraded if failed");
-		s.lang.addDefault("Menu.lore.ifDestroy", "Item will be destroyed if failed");
+		s.lang.addDefault("Menu.gui.title", "Enhancement");
+		s.lang.addDefault("Menu.gui.enhance", "Enhance");
+		s.lang.addDefault("Menu.gui.force", "Force");
+		s.lang.addDefault("Menu.gui.stats", "Info");
+		s.lang.addDefault("Menu.gui.remove", "Deselect-Item");
+		s.lang.addDefault("Menu.lore.force1", "&cForce guarantees a successful enhancement");
+		s.lang.addDefault("Menu.lore.force2", "&cCertain requirements must be met");
+		s.lang.addDefault("Menu.lore.remove", "&6Remove current enhancing item");
+		s.lang.addDefault("Menu.lore.stats1", "&bEnhancing is the act of increasing the stats of your items.");
+		s.lang.addDefault("Menu.lore.stats2", "&bFailstacks increase the chance of a successful enhancement attempt.");
+		s.lang.addDefault("Menu.lore.ifFail", "&6Enhancement could &9fail&6");
+		s.lang.addDefault("Menu.lore.ifSuccess", "&6Enhancement could succeed");
+		s.lang.addDefault("Menu.lore.ifDowngrade", "&6Item will be &cdowngraded&6 if failed");
+		s.lang.addDefault("Menu.lore.ifDestroy", "&6Item will be &4destroyed&6 if failed");
 
 		s.lang.addDefault("Name.0", "+1 ");
 		s.lang.addDefault("Name.1", "+2 ");
@@ -172,5 +172,6 @@ public class Language {
 		s.lang.addDefault("Name.19", "V PEN");
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
+
 	}
 }

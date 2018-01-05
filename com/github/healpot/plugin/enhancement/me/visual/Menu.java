@@ -85,7 +85,11 @@ public class Menu {
 		updateFailstack(m, item, player);
 		screen.setItem(getSlot(5, 1), m.compatibility.glow.addGlow(stats));
 		screen.setItem(getSlot(4, 3), m.compatibility.glow.addGlow(enhance));
-		screen.setItem(getSlot(6, 3), m.compatibility.glow.addGlow(force));
+		if (m.permissions.commandForce(m, player)) {
+			screen.setItem(getSlot(6, 3), m.compatibility.glow.addGlow(force));
+		} else {
+			screen.setItem(getSlot(6, 3), null);
+		}
 		screen.setItem(getSlot(1, 2), item);
 	}
 
