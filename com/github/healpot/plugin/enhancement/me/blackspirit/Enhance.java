@@ -78,7 +78,7 @@ public class Enhance {
 		m.compatibility.playsound.playSound(player, "FAILED");
 		m.failstack.addLevel(m, player, m.settings.getConfig().getInt("failstackGained." + enchantLevel));
 		if (enchantLevel > 15) {
-			str += m.settings.getLang().getString("Enhance.downgraded");
+			str += (" " + m.settings.getLang().getString("Enhance.downgraded"));
 			m.compatibility.playsound.playSound(player, "DOWNGRADED");
 			m.renameItem(item, (enchantLevel - 1));
 			item.addUnsafeEnchantment(enchant, enchantLevel - 1);
@@ -90,10 +90,17 @@ public class Enhance {
 		if (getValidationOfItem(m, player, item)) {
 			double random = Math.random();
 			double chance;
-			chance = m.failstack.getChance(m, player, getItemEnchantLevel(m, player, item));
+			int enchantLevel = getItemEnchantLevel(m, player, item);
+			chance = m.failstack.getChance(m, player, enchantLevel);
 			if (random < chance) {
+				if (enchantLevel > 15) {
+					m.broadcast.broadcast(m, player, item, enchantLevel, true);
+				}
 				enhanceSuccess(m, item, player, false);
 			} else {
+				if (enchantLevel > 15) {
+					m.broadcast.broadcast(m, player, item, enchantLevel, false);
+				}
 				enhanceFail(m, item, player);
 			}
 		}
@@ -101,6 +108,7 @@ public class Enhance {
 
 	public void forceToEnhancement(Main m, ItemStack item, Player player) {
 		if (getValidationOfItem(m, player, item) && m.permissions.commandForce(m, player)) {
+			m.broadcast.broadcast(m, player, item, this.getItemEnchantLevel(m, player, item), true);
 			enhanceSuccess(m, item, player, true);
 		}
 	}

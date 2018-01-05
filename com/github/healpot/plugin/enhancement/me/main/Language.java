@@ -21,6 +21,11 @@ public class Language {
 		s.lang.addDefault("Config.invalidCommand", "&a您输入的指令无效!使用&6/enhance help&a查看帮助!");
 		s.lang.addDefault("Config.noPerm", "&a你没有权限这么做!");
 
+		s.lang.addDefault("Annoucer.success", "强化成功: ");
+		s.lang.addDefault("Annoucer.failed", "强化失败: ");
+		s.lang.addDefault("Annoucer.got", " 获得了 ");
+		s.lang.addDefault("Annoucer.failed", " 潜力突破失败了 ");
+
 		s.lang.addDefault("Enhance.successRate", "物品的成功率为%chance%%.");
 		s.lang.addDefault("Enhance.itemInvalid", "不可以强化!");
 		s.lang.addDefault("Enhance.itemMax", "物品已是最高级");
@@ -102,9 +107,14 @@ public class Language {
 		s.lang.addDefault("Config.invalidCommand", "&aInvalid commands! use &6/enhance help&a to get helps!");
 		s.lang.addDefault("Config.noPerm", "&aYou don't have permissions!");
 
+		s.lang.addDefault("Annoucer.success", "Enhance Success: ");
+		s.lang.addDefault("Annoucer.failed", "Enhance Failed: ");
+		s.lang.addDefault("Annoucer.got", " got ");
+		s.lang.addDefault("Annoucer.lost", " failed ");
+
 		s.lang.addDefault("Enhance.successRate", "Success rate is %chance%%.");
 		s.lang.addDefault("Enhance.itemInvalid", "This item cannot be enhanced!");
-		s.lang.addDefault("Enhance.itemMax", "Maximum enhancement level reached");
+		s.lang.addDefault("Enhance.itemMax", "Maximum enhancement level reached.");
 		s.lang.addDefault("Enhance.enhanceSuccess", "Enhancement was successful!");
 		s.lang.addDefault("Enhance.forceEnhanceSuccess", "Forcing enhancement was successful!");
 		s.lang.addDefault("Enhance.enhanceFailed", "Enhancement failed!");

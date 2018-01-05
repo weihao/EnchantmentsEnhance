@@ -14,6 +14,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.healpot.plugin.enhancement.me.blackspirit.Enhance;
+import com.github.healpot.plugin.enhancement.me.effect.Broadcast;
 import com.github.healpot.plugin.enhancement.me.effect.SpawnFirework;
 import com.github.healpot.plugin.enhancement.me.failstack.Failstack;
 import com.github.healpot.plugin.enhancement.me.failstack.FailstackHandler;
@@ -33,6 +34,7 @@ public class Main extends JavaPlugin {
 	public Menu menu = new Menu();
 	public Data data = new Data();
 	public Compatibility compatibility = new Compatibility();
+	public Broadcast broadcast = new Broadcast();
 
 	public void onEnable() {
 		saveDefaultConfig();
