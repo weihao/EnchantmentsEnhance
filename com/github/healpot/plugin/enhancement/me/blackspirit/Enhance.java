@@ -108,7 +108,9 @@ public class Enhance {
 
 	public void forceToEnhancement(Main m, ItemStack item, Player player) {
 		if (getValidationOfItem(m, player, item) && m.permissions.commandForce(m, player)) {
-			m.broadcast.broadcast(m, player, item, this.getItemEnchantLevel(m, player, item), true);
+			if (this.getItemEnchantLevel(m, player, item) > 15) {
+				m.broadcast.broadcast(m, player, item, this.getItemEnchantLevel(m, player, item), true);
+			}
 			enhanceSuccess(m, item, player, true);
 		}
 	}
