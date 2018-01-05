@@ -28,44 +28,44 @@ public class Menu {
 	}
 
 	public void showEnhancingMenu(Main m, Player player, ItemStack item) {
-		screen = Bukkit.getServer().createInventory(null, 27, m.settings.getLang().getString("Menu.title"));
+		screen = Bukkit.getServer().createInventory(null, 27, m.settings.getLang().getString("Menu.gui.title"));
 		createMenu(m);
 		player.openInventory(screen);
 	}
 
 	public void createMenu(Main m) {
 		screen.clear();
-		enhance = createItem(DyeColor.YELLOW, ChatColor.GREEN + m.settings.getLang().getString("Menu.enhance"));
+		enhance = createItem(DyeColor.YELLOW, ChatColor.YELLOW + m.settings.getLang().getString("Menu.gui.enhance"));
 		ItemMeta enhanceim = enhance.getItemMeta();
 		List<String> enhanceStr = new ArrayList<String>();
-		enhanceStr.add(m.settings.getLang().getString("Menu.lore.ifSuccess"));
-		enhanceStr.add(m.settings.getLang().getString("Menu.lore.ifFail"));
-		enhanceStr.add(m.settings.getLang().getString("Menu.lore.ifDowngrade"));
-		enhanceStr.add(m.settings.getLang().getString("Menu.lore.ifDestroy"));
+		enhanceStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.ifSuccess")));
+		enhanceStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.ifFail")));
+		enhanceStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.ifDowngrade")));
+		enhanceStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.ifDestroy")));
 		enhanceim.setLore(enhanceStr);
 		enhance.setItemMeta(enhanceim);
 
-		force = createItem(DyeColor.BLACK, ChatColor.RED + m.settings.getLang().getString("Menu.force"));
+		force = createItem(DyeColor.PURPLE, ChatColor.RED + m.settings.getLang().getString("Menu.gui.force"));
 		ItemMeta forceim = force.getItemMeta();
 		List<String> forceStr = new ArrayList<String>();
-		forceStr.add(m.settings.getLang().getString("Menu.lore.force1"));
-		forceStr.add(m.settings.getLang().getString("Menu.lore.force2"));
+		forceStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.force1")));
+		forceStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.force2")));
 		forceim.setLore(forceStr);
 		force.setItemMeta(forceim);
 
-		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.RED + m.settings.getLang().getString("Menu.stats"));
-		ItemMeta statsim = force.getItemMeta();
+		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.AQUA + m.settings.getLang().getString("Menu.gui.stats"));
+		ItemMeta statsim = stats.getItemMeta();
 		List<String> statsStr = new ArrayList<String>();
-		statsStr.add(m.settings.getLang().getString("Menu.lore.stats1"));
-		statsStr.add(m.settings.getLang().getString("Menu.lore.stats2"));
-		statsim.setLore(forceStr);
-		force.setItemMeta(statsim);
+		statsStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.stats1")));
+		statsStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.stats2")));
+		statsim.setLore(statsStr);
+		stats.setItemMeta(statsim);
 
-		remove = createItem(DyeColor.RED, ChatColor.RED + m.settings.getLang().getString("Menu.remove"));
+		remove = createItem(DyeColor.RED, ChatColor.RED + m.settings.getLang().getString("Menu.gui.remove"));
 		ItemMeta removeim = remove.getItemMeta();
 		List<String> removeStr = new ArrayList<String>();
-		removeStr.add(m.settings.getLang().getString("Menu.lore.remove"));
-		removeim.setLore(forceStr);
+		removeStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.remove")));
+		removeim.setLore(removeStr);
 		remove.setItemMeta(removeim);
 
 		screen.setItem(getSlot(5, 1), stats);
@@ -99,10 +99,10 @@ public class Menu {
 	public void updateEnhance(Main m, ItemStack item, Player player) {
 		ItemMeta im = enhance.getItemMeta();
 		List<String> update = new ArrayList<String>();
-		update.add(m.settings.getLang().getString("Menu.lore.ifSuccess"));
-		update.add(m.settings.getLang().getString("Menu.lore.ifFail"));
+		update.add(m.toColor(m.settings.getLang().getString("Menu.lore.ifSuccess")));
+		update.add(m.toColor(m.settings.getLang().getString("Menu.lore.ifFail")));
 		if (m.enhance.getItemEnchantLevel(m, player, item) > 16) {
-			update.add(m.settings.getLang().getString("Menu.lore.ifDowngrade"));
+			update.add(m.toColor(m.settings.getLang().getString("Menu.lore.ifDowngrade")));
 		}
 		im.setLore(update);
 		enhance.setItemMeta(im);

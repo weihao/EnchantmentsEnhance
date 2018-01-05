@@ -2,41 +2,37 @@ package com.github.healpot.plugin.enhancement.me.main;
 
 public class Language {
 	public void iniLanguage(SettingsManager s, String language) {
-		if (language == "cn") {
+		if (language.equals("cn")) {
 			addCnDefault(s);
 		} else {
 			addEnDefault(s);
 		}
-
 	}
 
 	public void addCnDefault(SettingsManager s) {
 		s.lang.addDefault("Config.pluginTag", "&f[&6强化插件&f] ");
-		s.lang.addDefault("Config.checkingVersion", "您正在使用的插件版本是v%version%.");
+		s.lang.addDefault("Config.checkingVersion", "&a您正在使用的插件版本是v%version%.");
 		s.lang.addDefault("Config.onEnable", "强化插件已开启!");
 		s.lang.addDefault("Config.onDisable", "强化插件已禁用!");
-		s.lang.addDefault("Config.consoleCommand", "服务器不可以使用这个指令哟!");
-		s.lang.addDefault("Config.reload", "插件重载成功!");
+		s.lang.addDefault("Config.consoleCommand", "&c服务器不可以使用这个指令哟!");
+		s.lang.addDefault("Config.reload", "&a插件重载成功!");
 		s.lang.addDefault("Config.welcome", "&a欢迎您, %player%勇士!使用&6/enhance help&a查看武器装备强化的指南!");
 		s.lang.addDefault("Config.invalidCommand", "&a您输入的指令无效!使用&6/enhance help&a查看帮助!");
-		s.lang.addDefault("Config.noPerm", "&a你没有权限这么做!");
+		s.lang.addDefault("Config.noPerm", "&c你没有权限这么做!");
 
-		s.lang.addDefault("Annoucer.success", "强化成功: ");
-		s.lang.addDefault("Annoucer.failed", "强化失败: ");
-		s.lang.addDefault("Annoucer.got", " 获得了 ");
-		s.lang.addDefault("Annoucer.failed", " 潜力突破失败了 ");
+		s.lang.addDefault("Annoucer.success", "&6强化成功: ");
+		s.lang.addDefault("Annoucer.failed", "&6强化失败: ");
+		s.lang.addDefault("Annoucer.got", " &6获得了 ");
+		s.lang.addDefault("Annoucer.failed", " &6潜力突破失败了 ");
 
-		s.lang.addDefault("Enhance.successRate", "物品的成功率为%chance%%.");
-		s.lang.addDefault("Enhance.itemInvalid", "不可以强化!");
-		s.lang.addDefault("Enhance.itemMax", "物品已是最高级");
-		s.lang.addDefault("Enhance.enhanceSuccess", "强化成功!");
-		s.lang.addDefault("Enhance.forceEnhanceSuccess", "强制突破成功!");
-		s.lang.addDefault("Enhance.enhanceFailed", "强化失败!");
-		s.lang.addDefault("Enhance.downgraded", "您的物品降级了!");
-		s.lang.addDefault("Enhance.confirm", "请输入/enhance confirm确认本次强化");
-		s.lang.addDefault("Enhance.nothingToConfirm", "您没有什么要确认的!");
-		s.lang.addDefault("Enhance.cancel", "您未输入确认指令，本次强化已取消!");
-		s.lang.addDefault("Enhance.currentFailstack", "您目前的失败次数是: ");
+		s.lang.addDefault("Enhance.successRate", "&b物品的成功率为%chance%%.");
+		s.lang.addDefault("Enhance.itemInvalid", "&c不可以强化!");
+		s.lang.addDefault("Enhance.itemMax", "&6物品已是最高级");
+		s.lang.addDefault("Enhance.enhanceSuccess", "&6强化成功!");
+		s.lang.addDefault("Enhance.forceEnhanceSuccess", "&6强制突破成功!");
+		s.lang.addDefault("Enhance.enhanceFailed", "&c强化失败!");
+		s.lang.addDefault("Enhance.downgraded", "&4您的物品降级了!");
+		s.lang.addDefault("Enhance.currentFailstack", "&b您目前的失败次数是: ");
 
 		s.lang.addDefault("Lore.UntradeableLore", "&8[&6死亡不掉落&8]&8[&4不可交易&8]&f");
 		s.lang.addDefault("Lore.TradeableLore", "&8[&6死亡不掉落&8]&8[&2可交易&8]&f");
@@ -51,25 +47,25 @@ public class Language {
 		s.lang.addDefault("Messages.NoDrop", "&4这个物品不可被丢弃!");
 		s.lang.addDefault("Messages.NoStorage", "&4这个物品不可被储存!");
 
-		s.lang.addDefault("Help.help", "查看插件命令帮助.");
-		s.lang.addDefault("Help.menu", "突破物品潜力界面.");
-		s.lang.addDefault("Help.reload", "重新载入插件配置文件.");
-		s.lang.addDefault("Help.version", "检测当前文件版本.");
+		s.lang.addDefault("Help.help", "&6查看插件命令帮助.");
+		s.lang.addDefault("Help.menu", "&6突破物品潜力界面.");
+		s.lang.addDefault("Help.reload", "&6重新载入插件配置文件.");
+		s.lang.addDefault("Help.version", "&6检测当前文件版本.");
 
-		s.lang.addDefault("Menu.title", "潜力突破界面");
-		s.lang.addDefault("Menu.enhance", "强化");
-		s.lang.addDefault("Menu.force", "强突");
-		s.lang.addDefault("Menu.stats", "信息");
-		s.lang.addDefault("Menu.remove", "取消");
-		s.lang.addDefault("Menu.lore.force1", "强制突破百分百成功突破物品的潜力");
-		s.lang.addDefault("Menu.lore.force2", "只对管理开放");
-		s.lang.addDefault("Menu.lore.remove", "取消选择当前强化物品");
-		s.lang.addDefault("Menu.lore.stats1", "潜力突破会强化你的装备");
-		s.lang.addDefault("Menu.lore.stats2", "玩家突破失败的次数会增加下次潜力突破的成功机率");
-		s.lang.addDefault("Menu.lore.ifFail", "潜力突破可能会失败");
-		s.lang.addDefault("Menu.lore.ifSuccess", "潜力突破可能会成功");
-		s.lang.addDefault("Menu.lore.ifDowngrade", "潜力突破失败会使物品降级");
-		s.lang.addDefault("Menu.lore.ifDestroy", "潜力突破失败会使物品炸裂");
+		s.lang.addDefault("Menu.gui.title", "潜力突破界面");
+		s.lang.addDefault("Menu.gui.enhance", "强化");
+		s.lang.addDefault("Menu.gui.force", "强突");
+		s.lang.addDefault("Menu.gui.stats", "信息");
+		s.lang.addDefault("Menu.gui.remove", "取消");
+		s.lang.addDefault("Menu.lore.force1", "&c强制突破百分百成功突破物品的潜力");
+		s.lang.addDefault("Menu.lore.force2", "&c只对管理开放");
+		s.lang.addDefault("Menu.lore.remove", "&6取消选择当前强化物品");
+		s.lang.addDefault("Menu.lore.stats1", "&b潜力突破会强化你的装备");
+		s.lang.addDefault("Menu.lore.stats2", "&b玩家突破失败的次数会增加下次潜力突破的成功机率");
+		s.lang.addDefault("Menu.lore.ifFail", "&6潜力突破可能会&9失败");
+		s.lang.addDefault("Menu.lore.ifSuccess", "&6潜力突破可能会成功");
+		s.lang.addDefault("Menu.lore.ifDowngrade", "&6潜力突破失败会使物品&c降级");
+		s.lang.addDefault("Menu.lore.ifDestroy", "&6潜力突破失败会使物品&4炸裂");
 
 		s.lang.addDefault("Name.0", "+1 ");
 		s.lang.addDefault("Name.1", "+2 ");

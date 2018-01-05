@@ -178,4 +178,8 @@ public class Main extends JavaPlugin {
 		String message = ChatColor.translateAlternateColorCodes('&', msg);
 		sender.sendMessage(message);
 	}
+
+	public String toColor(String str) {
+		return ChatColor.translateAlternateColorCodes('&', str);
+	}
 }

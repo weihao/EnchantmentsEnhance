@@ -137,10 +137,10 @@ public class Enhance {
 			String placeholder = String.format("%.2f",
 					m.failstack.getChance(m, player, item.getEnchantmentLevel(enchant)) * 100);
 			String chance = m.settings.getLang().getString("Enhance.successRate").replaceAll("%chance%", placeholder);
-			result.add(fs);
-			result.add(chance);
-			result.add(m.settings.getLang().getString("Menu.lore.stats1"));
-			result.add(m.settings.getLang().getString("Menu.lore.stats2"));
+			result.add(m.toColor(fs));
+			result.add(m.toColor(chance));
+			result.add(m.toColor(m.settings.getLang().getString("Menu.lore.stats1")));
+			result.add(m.toColor(m.settings.getLang().getString("Menu.lore.stats2")));
 			return result;
 
 		} else {
