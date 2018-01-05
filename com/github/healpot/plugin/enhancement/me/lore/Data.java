@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -14,17 +13,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import com.github.healpot.plugin.enhancement.me.main.Main;
 
 public class Data {
-	public String pluginName(FileConfiguration lang) {
-		String pluginName = ChatColor.translateAlternateColorCodes('&', lang.getString("Config.pluginTag"));
-
-		return pluginName;
-	}
-
-	public void sendMessage(String msg, CommandSender sender) {
-		String message = ChatColor.translateAlternateColorCodes('&', msg);
-		sender.sendMessage(message);
-	}
-
 	@SuppressWarnings("deprecation")
 	public void addLore(Main m, ItemStack is, Player p, String lore, boolean tradeable) {
 		ItemMeta im = is.getItemMeta();
@@ -47,7 +35,8 @@ public class Data {
 			}
 			if (loreList.contains(lore)) {
 				if (m.settings.getConfig().getBoolean("lore.sendBoundingMessage")) {
-					sendMessage(m.settings.getLang().getString("Messages.Already" + x), p);
+					m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+							+ m.settings.getLang().getString("Messages.Already" + x), p);
 				}
 				return;
 			}
@@ -60,7 +49,8 @@ public class Data {
 			im.setLore(loreList);
 			is.setItemMeta(im);
 			if (m.settings.getConfig().getBoolean("lore.sendBoundingMessage")) {
-				sendMessage(m.settings.getLang().getString("Messages.Made" + x), p);
+				m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+						+ m.settings.getLang().getString("Messages.Made" + x), p);
 			}
 			return;
 		}
@@ -68,12 +58,12 @@ public class Data {
 		is.setItemMeta(im);
 		p.updateInventory();
 		if (m.settings.getConfig().getBoolean("lore.sendBoundingMessage")) {
-			sendMessage(m.settings.getLang().getString("Messages.Made" + x), p);
+			m.sendMessage(m.settings.getLang().getString("Messages.Made" + x), p);
 		}
 
 	}
 
-	public void removeLore(ItemStack is, Player p, FileConfiguration lang) {
+	public void removeLore(Main m, ItemStack is, Player p, FileConfiguration lang) {
 		ItemMeta im = is.getItemMeta();
 		List<String> loreList = new ArrayList<String>();
 		String x = ChatColor.translateAlternateColorCodes('&', lang.getString("Lore.TradeableLore"));
@@ -89,9 +79,11 @@ public class Data {
 			}
 			im.setLore(loreList);
 			is.setItemMeta(im);
-			sendMessage(lang.getString("Messages.MadeUnbound"), p);
+			m.sendMessage(m.settings.getLang().getString("Config.pluginTag") + lang.getString("Messages.MadeUnbound"),
+					p);
 			return;
 		}
-		sendMessage(lang.getString("Messages.AlreadyUnbound"), p);
+		m.sendMessage(m.settings.getLang().getString("Config.pluginTag") + lang.getString("Messages.AlreadyUnbound"),
+				p);
 	}
 }

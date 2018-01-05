@@ -55,7 +55,8 @@ public class Main extends JavaPlugin {
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 
 		if (!(sender instanceof Player)) {
-			sender.sendMessage(ChatColor.RED + settings.getLang().getString("Config.consoleCommand"));
+			sendMessage(settings.getLang().getString("Config.pluginTag")
+					+ settings.getLang().getString("Config.consoleCommand"), sender);
 			return true;
 		}
 
@@ -72,15 +73,17 @@ public class Main extends JavaPlugin {
 			}
 			if ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase("version"))
 					&& permissions.commandVersion(this, player)) {
-				player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.checkingVersion")
-						.replaceAll("%version%", getDescription().getVersion()));
+				sendMessage(settings.getLang().getString("Config.pluginTag") + settings.getLang()
+						.getString("Config.checkingVersion").replaceAll("%version%", getDescription().getVersion()),
+						player);
 				return true;
 			}
 			if (args[0].equalsIgnoreCase("reload") && permissions.commandReload(this, player)) {
 				settings.reloadConfig();
 				settings.reloadData();
 				settings.reloadLang();
-				player.sendMessage(ChatColor.GREEN + settings.getLang().getString("Config.reload"));
+				sendMessage(settings.getLang().getString("Config.pluginTag")
+						+ settings.getLang().getString("Config.reload"), player);
 				return true;
 			}
 			if (args[0].equalsIgnoreCase("help") && permissions.commandHelp(this, player)) {
@@ -88,8 +91,8 @@ public class Main extends JavaPlugin {
 				return true;
 			}
 		}
-		player.sendMessage(
-				ChatColor.translateAlternateColorCodes('&', settings.getLang().getString("Config.invalidCommand")));
+		sendMessage(settings.getLang().getString("Config.pluginTag")
+				+ settings.getLang().getString("Config.invalidCommand"), player);
 		return true;
 	}
 
@@ -109,7 +112,7 @@ public class Main extends JavaPlugin {
 		if (permissions.commandVersion(m, player))
 			help += "\n&6/enhance version &7- " + settings.getLang().getString("Help.version");
 
-		player.sendMessage(ChatColor.translateAlternateColorCodes('&', help));
+		sendMessage(m.settings.getLang().getString("Config.pluginTag") + help, player);
 	}
 
 	/**
@@ -169,5 +172,10 @@ public class Main extends JavaPlugin {
 			str.add("version");
 		}
 		return str;
+	}
+
+	public void sendMessage(String msg, CommandSender sender) {
+		String message = ChatColor.translateAlternateColorCodes('&', msg);
+		sender.sendMessage(message);
 	}
 }

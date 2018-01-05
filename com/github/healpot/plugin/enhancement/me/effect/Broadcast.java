@@ -11,16 +11,22 @@ import com.github.healpot.plugin.enhancement.me.main.Main;
 public class Broadcast {
 	public void broadcast(Main m, Player player, ItemStack item, int enchantLevel, boolean success) {
 		if (success) {
-			Bukkit.broadcastMessage(ChatColor.GOLD + (m.settings.getLang().getString("Annoucer.success")
-					+ player.getDisplayName() + m.settings.getLang().getString("Annoucer.got")
-					+ m.settings.getLang().getString("Name." + Integer.toString(enchantLevel + 1)) + " "
-					+ getFriendlyName(item)));
+			Bukkit.broadcastMessage(toColor(m.settings.getLang().getString("Config.pluginTag"))
+					+ (m.settings.getLang().getString("Annoucer.success") + player.getDisplayName()
+							+ m.settings.getLang().getString("Annoucer.got")
+							+ m.settings.getLang().getString("Name." + Integer.toString(enchantLevel + 1)) + " "
+							+ getFriendlyName(item)));
 		} else {
-			Bukkit.broadcastMessage(ChatColor.GOLD + (m.settings.getLang().getString("Annoucer.failed")
-					+ player.getDisplayName() + m.settings.getLang().getString("Annoucer.lost")
-					+ m.settings.getLang().getString("Name." + Integer.toString(enchantLevel + 1)) + " "
-					+ getFriendlyName(item)));
+			Bukkit.broadcastMessage(toColor(m.settings.getLang().getString("Config.pluginTag"))
+					+ (m.settings.getLang().getString("Annoucer.failed") + player.getDisplayName()
+							+ m.settings.getLang().getString("Annoucer.lost")
+							+ m.settings.getLang().getString("Name." + Integer.toString(enchantLevel + 1)) + " "
+							+ getFriendlyName(item)));
 		}
+	}
+
+	public String toColor(String str) {
+		return ChatColor.translateAlternateColorCodes('&', str);
 	}
 
 	public String format(String s) {

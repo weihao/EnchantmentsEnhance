@@ -92,7 +92,9 @@ public class MenuHandler implements Listener {
 						if (loreList.contains(ChatColor.translateAlternateColorCodes('&',
 								m.settings.getLang().getString("Lore.UntradeableLore")))) {
 							e.setCancelled(true);
-							m.data.sendMessage(m.settings.getLang().getString("Messages.NoStorage"), e.getWhoClicked());
+							m.sendMessage(ChatColor.translateAlternateColorCodes('&',
+									m.settings.getLang().getString("Config.pluginTag"))
+									+ m.settings.getLang().getString("Messages.NoStorage"), e.getWhoClicked());
 						}
 					}
 				}
@@ -105,7 +107,9 @@ public class MenuHandler implements Listener {
 						if (loreList.contains(ChatColor.translateAlternateColorCodes('&',
 								m.settings.getLang().getString("Lore.UntradeableLore")))) {
 							e.setCancelled(true);
-							m.data.sendMessage(m.settings.getLang().getString("Messages.NoStorage"), e.getWhoClicked());
+							m.sendMessage(ChatColor.translateAlternateColorCodes('&',
+									m.settings.getLang().getString("Config.pluginTag"))
+									+ m.settings.getLang().getString("Messages.NoStorage"), e.getWhoClicked());
 						}
 					}
 				}

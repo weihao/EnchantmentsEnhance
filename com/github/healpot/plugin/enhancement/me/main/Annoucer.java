@@ -1,6 +1,5 @@
 package com.github.healpot.plugin.enhancement.me.main;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,8 +14,10 @@ public class Annoucer implements Listener {
 
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
-		Player p = e.getPlayer();
-		p.sendMessage(ChatColor.translateAlternateColorCodes('&',
-				m.settings.getLang().getString("Config.welcome").replaceAll("%player%", p.getName())));
+		Player player = e.getPlayer();
+		m.sendMessage(
+				m.settings.getLang().getString("Config.pluginTag")
+						+ m.settings.getLang().getString("Config.welcome").replaceAll("%player%", player.getName()),
+				player);
 	}
 }

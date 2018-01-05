@@ -34,7 +34,8 @@ public class ItemDrop implements Listener {
 			if (loreList.contains(ChatColor.translateAlternateColorCodes('&',
 					m.settings.getLang().getString("Lore.UntradeableLore")))) {
 				e.setCancelled(true);
-				m.data.sendMessage(m.settings.getLang().getString("Messages.NoDrop"), p);
+				m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+						+ m.settings.getLang().getString("Messages.NoDrop"), p);
 				return;
 			}
 		}

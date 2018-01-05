@@ -11,7 +11,7 @@ public class Language {
 	}
 
 	public void addCnDefault(SettingsManager s) {
-		s.lang.addDefault("Config.pluginTag", "&f[&6强化插件&f]");
+		s.lang.addDefault("Config.pluginTag", "&f[&6强化插件&f] ");
 		s.lang.addDefault("Config.checkingVersion", "您正在使用的插件版本是v%version%.");
 		s.lang.addDefault("Config.onEnable", "强化插件已开启!");
 		s.lang.addDefault("Config.onDisable", "强化插件已禁用!");
