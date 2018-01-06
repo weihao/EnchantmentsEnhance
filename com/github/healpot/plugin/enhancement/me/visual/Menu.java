@@ -6,6 +6,7 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -17,7 +18,7 @@ import com.github.healpot.plugin.enhancement.me.main.Main;
 public class Menu {
 
 	private Inventory screen = null;
-	private ItemStack enhance, force, stats, remove;
+	private ItemStack enhance, force, stats, remove, store;
 
 	private ItemStack createItem(DyeColor dc, String name) {
 		ItemStack i = new Wool(dc).toItemStack(1);
@@ -68,6 +69,15 @@ public class Menu {
 		removeim.setLore(removeStr);
 		remove.setItemMeta(removeim);
 
+		store = new ItemStack(Material.BOOK_AND_QUILL);
+		ItemMeta storeim = store.getItemMeta();
+		storeim.setDisplayName(m.settings.getLang().getString("Menu.gui.store"));
+		List<String> storeStr = new ArrayList<String>();
+		storeStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.store1")));
+		storeStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.store2")));
+		storeim.setLore(storeStr);
+		store.setItemMeta(storeim);
+
 		screen.setItem(getSlot(5, 1), stats);
 		screen.setItem(getSlot(4, 3), enhance);
 		screen.setItem(getSlot(6, 3), force);
@@ -91,6 +101,9 @@ public class Menu {
 			screen.setItem(getSlot(6, 3), null);
 		}
 		screen.setItem(getSlot(1, 2), item);
+		if (m.failstack.getLevel(m, player) > 0) {
+			m.menu.addStoreButton();
+		}
 	}
 
 	public void updateFailstack(Main m, ItemStack item, Player player) {
@@ -119,6 +132,10 @@ public class Menu {
 
 	public void addRemoveButton() {
 		screen.setItem(getSlot(1, 3), remove);
+	}
+
+	public void addStoreButton() {
+		screen.setItem(getSlot(6, 1), store);
 	}
 
 }

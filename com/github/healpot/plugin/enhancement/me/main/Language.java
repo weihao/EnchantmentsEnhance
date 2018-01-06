@@ -32,7 +32,7 @@ public class Language {
 		s.lang.addDefault("Enhance.forceEnhanceSuccess", "&6强制突破成功!");
 		s.lang.addDefault("Enhance.enhanceFailed", "&c强化失败!");
 		s.lang.addDefault("Enhance.downgraded", "&4您的物品降级了!");
-		s.lang.addDefault("Enhance.currentFailstack", "&b您目前的失败次数是: ");
+		s.lang.addDefault("Enhance.currentFailstack", "&b您目前的垫子是: ");
 
 		s.lang.addDefault("Lore.UntradeableLore", "&8[&6死亡不掉落&8]&8[&4不可交易&8]&f");
 		s.lang.addDefault("Lore.TradeableLore", "&8[&6死亡不掉落&8]&8[&2可交易&8]&f");
@@ -57,6 +57,9 @@ public class Language {
 		s.lang.addDefault("Menu.gui.force", "强突");
 		s.lang.addDefault("Menu.gui.stats", "信息");
 		s.lang.addDefault("Menu.gui.remove", "取消");
+		s.lang.addDefault("Menu.gui.store", "保存垫子");
+		s.lang.addDefault("Menu.lore.store1", "使用铁匠的秘笈创造巴尔克斯的忠告");
+		s.lang.addDefault("Menu.lore.store2", "以保留当前的垫子");
 		s.lang.addDefault("Menu.lore.force1", "&c强制突破百分百成功突破物品的潜力");
 		s.lang.addDefault("Menu.lore.force2", "&c需达到指定条件");
 		s.lang.addDefault("Menu.lore.remove", "&6取消选择当前强化物品");
@@ -140,6 +143,9 @@ public class Language {
 		s.lang.addDefault("Menu.gui.force", "Force");
 		s.lang.addDefault("Menu.gui.stats", "Info");
 		s.lang.addDefault("Menu.gui.remove", "Deselect-Item");
+		s.lang.addDefault("Menu.gui.store", "Save Failstack");
+		s.lang.addDefault("Menu.lore.store1", "Use Blacksmith’s Secret Book");
+		s.lang.addDefault("Menu.lore.store2", "to store failstacks by creating Advice of Valks");
 		s.lang.addDefault("Menu.lore.force1", "&cForce guarantees a successful enhancement");
 		s.lang.addDefault("Menu.lore.force2", "&cCertain requirements must be met");
 		s.lang.addDefault("Menu.lore.remove", "&6Remove current enhancing item");

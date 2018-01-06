@@ -47,9 +47,9 @@ public class Enhance {
 
 	public void enhanceSuccess(Main m, ItemStack item, Player player, boolean forceEnhanced) {
 		Enchantment enchant = getItemEnchantmentType(m, player, item);
-		int enchantLevel = getItemEnchantLevel(m, player, item);
-		m.renameItem(item, enchantLevel + 1);
-		item.addUnsafeEnchantment(enchant, enchantLevel + 1);
+		int enchantLevel = getItemEnchantLevel(m, player, item) + 1;
+		item.addUnsafeEnchantment(enchant, enchantLevel);
+		m.renameItem(item, enchantLevel);
 		m.compatibility.playsound.playSound(player, "SUCCESS");
 		m.spawnFirework.launch(m, player, m.getConfig().getInt("fireworkCount." + enchantLevel),
 				m.settings.getConfig().getInt("fireworkRounds." + enchantLevel),
@@ -76,8 +76,8 @@ public class Enhance {
 		if (enchantLevel > 15) {
 			str += (" " + m.settings.getLang().getString("Enhance.downgraded"));
 			m.compatibility.playsound.playSound(player, "DOWNGRADED");
-			m.renameItem(item, (enchantLevel - 1));
 			item.addUnsafeEnchantment(enchant, enchantLevel - 1);
+			m.renameItem(item, (enchantLevel - 1));
 		}
 		m.sendMessage(m.settings.getLang().getString("Config.pluginTag") + str, player);
 	}
@@ -88,15 +88,12 @@ public class Enhance {
 			double chance;
 			int enchantLevel = getItemEnchantLevel(m, player, item);
 			chance = m.failstack.getChance(m, player, enchantLevel);
+			if (enchantLevel > 16) {
+				m.broadcast.broadcast(m, player, item, enchantLevel, random < chance);
+			}
 			if (random < chance) {
-				if (enchantLevel > 15) {
-					m.broadcast.broadcast(m, player, item, enchantLevel, true);
-				}
 				enhanceSuccess(m, item, player, false);
 			} else {
-				if (enchantLevel > 15) {
-					m.broadcast.broadcast(m, player, item, enchantLevel, false);
-				}
 				enhanceFail(m, item, player);
 			}
 		}
@@ -104,9 +101,6 @@ public class Enhance {
 
 	public void forceToEnhancement(Main m, ItemStack item, Player player) {
 		if (getValidationOfItem(m, player, item) && m.permissions.commandForce(m, player)) {
-			if (this.getItemEnchantLevel(m, player, item) > 15) {
-				m.broadcast.broadcast(m, player, item, this.getItemEnchantLevel(m, player, item), true);
-			}
 			enhanceSuccess(m, item, player, true);
 		}
 	}
