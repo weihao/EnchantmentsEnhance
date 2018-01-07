@@ -47,6 +47,11 @@ public class Language {
 		s.lang.addDefault("Messages.NoDrop", "&4这个物品不可被丢弃!");
 		s.lang.addDefault("Messages.NoStorage", "&4这个物品不可被储存!");
 
+		s.lang.addDefault("Save.createFailstack", "&6你创造了&c巴尔克斯的忠告+%failstack%");
+		s.lang.addDefault("Save.noFailstack", "&c你没有保留任何巴尔克斯的忠告.");
+		s.lang.addDefault("Save.failstackTitle", "&e-- 拥有的巴尔克斯的忠告  %page% --");
+		s.lang.addDefault("Save.listing", "&e%NUMBER% &f- &c%FAILSTACK%");
+
 		s.lang.addDefault("Help.help", "&6查看插件命令帮助.");
 		s.lang.addDefault("Help.menu", "&6突破物品潜力界面.");
 		s.lang.addDefault("Help.reload", "&6重新载入插件配置文件.");
@@ -132,6 +137,11 @@ public class Language {
 		s.lang.addDefault("Messages.MadeUnbound", "&2It is now unbound!");
 		s.lang.addDefault("Messages.NoDrop", "&4This item cannot be dropped!");
 		s.lang.addDefault("Messages.NoStorage", "&4This item cannot be stored!");
+
+		s.lang.addDefault("Save.createFailstack", "&6You created &cAdvice Of Valks+%failstack%");
+		s.lang.addDefault("Save.noFailstack", "&cYou don't have any Advice of Valks!");
+		s.lang.addDefault("Save.failstackTitle", "&e-- Saved Advice of Valks %page% --");
+		s.lang.addDefault("Save.listing", "&e%NUMBER% &f- &c%FAILSTACK%");
 
 		s.lang.addDefault("Help.help", "&6view help.");
 		s.lang.addDefault("Help.menu", "&6open enhancement menu.");

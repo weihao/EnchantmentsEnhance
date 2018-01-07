@@ -30,11 +30,11 @@ public class Menu {
 
 	public void showEnhancingMenu(Main m, Player player, ItemStack item) {
 		screen = Bukkit.getServer().createInventory(null, 27, m.settings.getLang().getString("Menu.gui.title"));
-		createMenu(m);
+		createMenu(m, player);
 		player.openInventory(screen);
 	}
 
-	public void createMenu(Main m) {
+	public void createMenu(Main m, Player player) {
 		screen.clear();
 		enhance = createItem(DyeColor.YELLOW, ChatColor.YELLOW + m.settings.getLang().getString("Menu.gui.enhance"));
 		ItemMeta enhanceim = enhance.getItemMeta();
@@ -57,6 +57,8 @@ public class Menu {
 		stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.AQUA + m.settings.getLang().getString("Menu.gui.stats"));
 		ItemMeta statsim = stats.getItemMeta();
 		List<String> statsStr = new ArrayList<String>();
+		String fs = (m.settings.getLang().getString("Enhance.currentFailstack") + m.failstack.getLevel(m, player));
+		statsStr.add(m.toColor(fs));
 		statsStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.stats1")));
 		statsStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.stats2")));
 		statsim.setLore(statsStr);
@@ -81,6 +83,11 @@ public class Menu {
 		screen.setItem(getSlot(5, 1), stats);
 		screen.setItem(getSlot(4, 3), enhance);
 		screen.setItem(getSlot(6, 3), force);
+		if (m.failstack.getLevel(m, player) != 0) {
+			addStoreButton();
+		} else {
+			screen.setItem(getSlot(6, 1), null);
+		}
 	}
 
 	public static int getSlot(int x, int y) {
@@ -108,6 +115,11 @@ public class Menu {
 		im.setLore(m.enhance.getChanceAsList(m, item, player));
 		stats.setItemMeta(im);
 		screen.setItem(getSlot(5, 1), m.compatibility.glow.addGlow(stats));
+		if (m.failstack.getLevel(m, player) != 0) {
+			addStoreButton();
+		} else {
+			screen.setItem(getSlot(6, 1), null);
+		}
 	}
 
 	public void updateEnhance(Main m, ItemStack item, Player player) {

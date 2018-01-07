@@ -61,7 +61,7 @@ public class MenuHandler implements Listener {
 							.contains(m.settings.getLang().getString("Menu.gui.remove"))
 							&& itemOnEnhancingSlot.containsKey(player)) {
 						itemOnEnhancingSlot.remove(player);
-						m.menu.createMenu(m);
+						m.menu.createMenu(m, player);
 						return;
 					}
 					if (e.getCurrentItem().getItemMeta().getDisplayName()
@@ -75,7 +75,11 @@ public class MenuHandler implements Listener {
 					if (e.getCurrentItem().getItemMeta().getDisplayName()
 							.contains(m.settings.getLang().getString("Menu.gui.store"))) {
 						m.secretbook.addFailstackToStorage(m, player);
-						m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
+						if (itemOnEnhancingSlot.get(player) == null) {
+							m.menu.createMenu(m, player);
+						} else {
+							m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
+						}
 						return;
 					}
 				} else if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem())

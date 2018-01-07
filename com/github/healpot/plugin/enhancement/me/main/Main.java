@@ -44,11 +44,20 @@ public class Main extends JavaPlugin {
 		registerCore();
 		registerNMS();
 		Bukkit.getServer().getLogger().info(settings.getLang().getString("Config.onEnable"));
+		if (Bukkit.getOnlinePlayers() != null) {
+			for (Player player : Bukkit.getOnlinePlayers()) {
+				failstack.loadLevels(this, player);
+				secretbook.loadStorage(this, player);
+			}
+		}
 	}
 
 	public void onDisable() {
-		for (Player player : Bukkit.getOnlinePlayers()) {
-			this.failstack.saveLevels(this, player, false);
+		if (Bukkit.getOnlinePlayers() != null) {
+			for (Player player : Bukkit.getOnlinePlayers()) {
+				this.failstack.saveLevels(this, player, false);
+				this.secretbook.saveStorageToDisk(this, player, false);
+			}
 		}
 		settings.saveData();
 		Bukkit.getServer().getLogger().info(settings.getLang().getString("Config.onDisable"));
@@ -91,6 +100,25 @@ public class Main extends JavaPlugin {
 			}
 			if (args[0].equalsIgnoreCase("help") && permissions.commandHelp(this, player)) {
 				printHelp(this, player);
+				return true;
+			}
+			if (args.length == 1) {
+				if (args[0].equalsIgnoreCase("list")) {
+					secretbook.list(this, player, 0);
+					return true;
+				}
+				if (args[0].equalsIgnoreCase("select")) {
+					secretbook.select(this, player, 1);
+					return true;
+				}
+			}
+			if (args.length == 2)
+				if (args[0].equalsIgnoreCase("list")) {
+					secretbook.list(this, player, Integer.parseInt(args[1]));
+					return true;
+				}
+			if (args[0].equalsIgnoreCase("select")) {
+				secretbook.select(this, player, Integer.parseInt(args[1]));
 				return true;
 			}
 		}
@@ -150,6 +178,30 @@ public class Main extends JavaPlugin {
 		}
 	}
 
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+		List<String> str = new ArrayList<String>();
+		if (cmd.getName().equalsIgnoreCase("enhance")) {
+			Player player = (Player) sender;
+			if (permissions.commandHelp(this, player)) {
+				str.add("help");
+			}
+			if (permissions.commandEnhance(this, player)) {
+				str.add("menu");
+				str.add("list");
+				str.add("select");
+			}
+			if (permissions.commandReload(this, player)) {
+				str.add("reload");
+			}
+			if (permissions.commandVersion(this, player)) {
+				str.add("version");
+			}
+
+		}
+		return str;
+	}
+
 	/**
 	 * 
 	 * @param item
@@ -162,18 +214,6 @@ public class Main extends JavaPlugin {
 		im.setDisplayName(ChatColor.translateAlternateColorCodes('&',
 				(settings.getLang().getString("Name." + Integer.toString(enchantLevel)))));
 		item.setItemMeta(im);
-	}
-
-	@Override
-	public List<String> onTabComplete(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-		List<String> str = new ArrayList<String>();
-		if (cmd.getName().equalsIgnoreCase("enhance")) {
-			str.add("help");
-			str.add("menu");
-			str.add("reload");
-			str.add("version");
-		}
-		return str;
 	}
 
 	public void sendMessage(String msg, CommandSender sender) {
