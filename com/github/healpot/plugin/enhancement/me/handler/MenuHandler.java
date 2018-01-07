@@ -1,4 +1,4 @@
-package com.github.healpot.plugin.enhancement.me.visual;
+package com.github.healpot.plugin.enhancement.me.handler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,6 +41,7 @@ public class MenuHandler implements Listener {
 		if (m.menu.getScreen() != null) {
 			if (e.getInventory().getName().equalsIgnoreCase(m.menu.getScreen().getName())) {
 				e.setCancelled(true);
+
 				if (e.getCurrentItem().hasItemMeta()) {
 					if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem()) == true
 							&& !itemOnEnhancingSlot.containsKey(player)) {
@@ -69,6 +70,12 @@ public class MenuHandler implements Listener {
 						m.enhance.forceToEnhancement(m, itemOnEnhancingSlot.get(player), player);
 						m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
 						m.menu.updateInSlotItem(m, itemOnEnhancingSlot.get(player), player);
+						return;
+					}
+					if (e.getCurrentItem().getItemMeta().getDisplayName()
+							.contains(m.settings.getLang().getString("Menu.gui.store"))) {
+						m.secretbook.addFailstackToStorage(m, player);
+						m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
 						return;
 					}
 				} else if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem())

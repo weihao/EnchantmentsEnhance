@@ -101,9 +101,6 @@ public class Menu {
 			screen.setItem(getSlot(6, 3), null);
 		}
 		screen.setItem(getSlot(1, 2), item);
-		if (m.failstack.getLevel(m, player) > 0) {
-			m.menu.addStoreButton();
-		}
 	}
 
 	public void updateFailstack(Main m, ItemStack item, Player player) {

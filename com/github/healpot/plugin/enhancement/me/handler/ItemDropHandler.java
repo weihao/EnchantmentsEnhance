@@ -1,4 +1,4 @@
-package com.github.healpot.plugin.enhancement.me.lore;
+package com.github.healpot.plugin.enhancement.me.handler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +13,10 @@ import org.bukkit.inventory.ItemStack;
 
 import com.github.healpot.plugin.enhancement.me.main.Main;
 
-public class ItemDrop implements Listener {
+public class ItemDropHandler implements Listener {
 	private Main m;
 
-	public ItemDrop(Main m) {
+	public ItemDropHandler(Main m) {
 		this.m = m;
 	}
 

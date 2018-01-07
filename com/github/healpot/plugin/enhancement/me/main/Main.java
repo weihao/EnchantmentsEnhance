@@ -13,17 +13,18 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.github.healpot.plugin.enhancement.me.blacksmith.SecretBook;
 import com.github.healpot.plugin.enhancement.me.blackspirit.Enhance;
 import com.github.healpot.plugin.enhancement.me.effect.Broadcast;
 import com.github.healpot.plugin.enhancement.me.effect.SpawnFirework;
 import com.github.healpot.plugin.enhancement.me.failstack.Failstack;
-import com.github.healpot.plugin.enhancement.me.failstack.FailstackHandler;
+import com.github.healpot.plugin.enhancement.me.handler.FailstackHandler;
+import com.github.healpot.plugin.enhancement.me.handler.ItemDropHandler;
+import com.github.healpot.plugin.enhancement.me.handler.MenuHandler;
+import com.github.healpot.plugin.enhancement.me.handler.PlayerDeathHandler;
 import com.github.healpot.plugin.enhancement.me.lore.Data;
-import com.github.healpot.plugin.enhancement.me.lore.ItemDrop;
-import com.github.healpot.plugin.enhancement.me.lore.playerdeath;
 import com.github.healpot.plugin.enhancement.me.modular.Compatibility;
 import com.github.healpot.plugin.enhancement.me.visual.Menu;
-import com.github.healpot.plugin.enhancement.me.visual.MenuHandler;
 
 public class Main extends JavaPlugin {
 	public SettingsManager settings = SettingsManager.getInstance();
@@ -35,6 +36,7 @@ public class Main extends JavaPlugin {
 	public Data data = new Data();
 	public Compatibility compatibility = new Compatibility();
 	public Broadcast broadcast = new Broadcast();
+	public SecretBook secretbook = new SecretBook();
 
 	public void onEnable() {
 		saveDefaultConfig();
@@ -67,6 +69,7 @@ public class Main extends JavaPlugin {
 				printHelp(this, player);
 				return true;
 			}
+
 			if ((args[0].equalsIgnoreCase("menu")) && permissions.commandEnhance(this, player)) {
 				menu.showEnhancingMenu(this, player, player.getItemInHand());
 				return true;
@@ -120,9 +123,8 @@ public class Main extends JavaPlugin {
 	 */
 	private void registerCore() {
 		PluginManager pm = Bukkit.getPluginManager();
-		pm.registerEvents(new Annoucer(this), this);
-		pm.registerEvents(new ItemDrop(this), this);
-		pm.registerEvents(new playerdeath(this), this);
+		pm.registerEvents(new ItemDropHandler(this), this);
+		pm.registerEvents(new PlayerDeathHandler(this), this);
 		pm.registerEvents(new FailstackHandler(this), this);
 		pm.registerEvents(new MenuHandler(this), this);
 	}
