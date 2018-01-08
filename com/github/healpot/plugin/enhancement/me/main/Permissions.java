@@ -27,4 +27,8 @@ public class Permissions {
 	public boolean commandForce(Main m, Player player) {
 		return player.hasPermission("Enchantmentsenhance.force") || player.hasPermission("Enchantmentsenhance.*");
 	}
+
+	public boolean commandInventory(Main m, Player player) {
+		return player.hasPermission("Enchantmentsenhance.inventory") || player.hasPermission("Enchantmentsenhance.*");
+	}
 }

@@ -18,12 +18,14 @@ import com.github.healpot.plugin.enhancement.me.blackspirit.Enhance;
 import com.github.healpot.plugin.enhancement.me.effect.Broadcast;
 import com.github.healpot.plugin.enhancement.me.effect.SpawnFirework;
 import com.github.healpot.plugin.enhancement.me.failstack.Failstack;
-import com.github.healpot.plugin.enhancement.me.handler.FailstackHandler;
 import com.github.healpot.plugin.enhancement.me.handler.ItemDropHandler;
+import com.github.healpot.plugin.enhancement.me.handler.LifeskillingHandler;
 import com.github.healpot.plugin.enhancement.me.handler.MenuHandler;
 import com.github.healpot.plugin.enhancement.me.handler.PlayerDeathHandler;
+import com.github.healpot.plugin.enhancement.me.handler.PlayerStreamHandler;
 import com.github.healpot.plugin.enhancement.me.lore.Data;
 import com.github.healpot.plugin.enhancement.me.modular.Compatibility;
+import com.github.healpot.plugin.enhancement.me.player.Inventory;
 import com.github.healpot.plugin.enhancement.me.visual.Menu;
 
 public class Main extends JavaPlugin {
@@ -37,6 +39,7 @@ public class Main extends JavaPlugin {
 	public Compatibility compatibility = new Compatibility();
 	public Broadcast broadcast = new Broadcast();
 	public SecretBook secretbook = new SecretBook();
+	public Inventory inventory = new Inventory();
 
 	public void onEnable() {
 		saveDefaultConfig();
@@ -48,6 +51,7 @@ public class Main extends JavaPlugin {
 			for (Player player : Bukkit.getOnlinePlayers()) {
 				failstack.loadLevels(this, player);
 				secretbook.loadStorage(this, player);
+				inventory.loadInventory(this, player);
 			}
 		}
 	}
@@ -57,6 +61,7 @@ public class Main extends JavaPlugin {
 			for (Player player : Bukkit.getOnlinePlayers()) {
 				this.failstack.saveLevels(this, player, false);
 				this.secretbook.saveStorageToDisk(this, player, false);
+				this.inventory.saveInventoryToDisk(this, player, false);
 			}
 		}
 		settings.saveData();
@@ -102,6 +107,10 @@ public class Main extends JavaPlugin {
 				printHelp(this, player);
 				return true;
 			}
+			if (args[0].equalsIgnoreCase("inventory") && permissions.commandInventory(this, player)) {
+				inventory.printInventory(this, player);
+				return true;
+			}
 			if (args.length == 1) {
 				if (args[0].equalsIgnoreCase("list")) {
 					secretbook.list(this, player, 0);
@@ -143,7 +152,7 @@ public class Main extends JavaPlugin {
 		if (permissions.commandVersion(m, player))
 			help += "\n&6/enhance version &7- " + settings.getLang().getString("Help.version");
 
-		sendMessage(m.settings.getLang().getString("Config.pluginTag") + help, player);
+		sendMessage(help, player);
 	}
 
 	/**
@@ -153,8 +162,9 @@ public class Main extends JavaPlugin {
 		PluginManager pm = Bukkit.getPluginManager();
 		pm.registerEvents(new ItemDropHandler(this), this);
 		pm.registerEvents(new PlayerDeathHandler(this), this);
-		pm.registerEvents(new FailstackHandler(this), this);
+		pm.registerEvents(new PlayerStreamHandler(this), this);
 		pm.registerEvents(new MenuHandler(this), this);
+		pm.registerEvents(new LifeskillingHandler(this), this);
 	}
 
 	private void registerNMS() {

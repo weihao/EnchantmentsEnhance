@@ -95,6 +95,13 @@ public class Language {
 		s.lang.addDefault("Name.17", "III 高");
 		s.lang.addDefault("Name.18", "IV 有");
 		s.lang.addDefault("Name.19", "V 同");
+
+		s.lang.addDefault("Item.title", "You Have Collected Those Items:");
+		s.lang.addDefault("Item.listing", "&e%ITEM% &f: &c%COUNT%");
+		s.lang.addDefault("Item.0", "Black Stone (Weapon)");
+		s.lang.addDefault("Item.1", "Black Stone (Armor)");
+		s.lang.addDefault("Item.2", "Concentrated Magical Black Stone (Weapon)");
+		s.lang.addDefault("Item.3", "Concentrated Magical Black Stone (Armor)");
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
 	}
@@ -186,6 +193,12 @@ public class Language {
 		s.lang.addDefault("Name.17", "III TRI");
 		s.lang.addDefault("Name.18", "IV TET");
 		s.lang.addDefault("Name.19", "V PEN");
+		s.lang.addDefault("Item.title", "You Have Collected Those Items:");
+		s.lang.addDefault("Item.listing", "&e%ITEM% &f: &c%COUNT%");
+		s.lang.addDefault("Item.0", "Black Stone (Weapon)");
+		s.lang.addDefault("Item.1", "Black Stone (Armor)");
+		s.lang.addDefault("Item.2", "Concentrated Magical Black Stone (Weapon)");
+		s.lang.addDefault("Item.3", "Concentrated Magical Black Stone (Armor)");
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
 

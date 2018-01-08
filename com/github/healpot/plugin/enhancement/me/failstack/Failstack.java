@@ -29,10 +29,9 @@ public class Failstack {
 		failstack.put(player, level);
 	}
 
-	public int addLevel(Main m, Player player, int levelsToAdd) {
+	public void addLevel(Main m, Player player, int levelsToAdd) {
 		int newLevel = getLevel(m, player) + levelsToAdd;
 		setLevel(m, player, newLevel);
-		return newLevel;
 	}
 
 	public int getLevel(Main m, Player player) {
