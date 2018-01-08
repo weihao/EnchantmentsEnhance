@@ -23,6 +23,24 @@ public class Enhance {
 		return null;
 	}
 
+	public int getStoneId(Main m, Player player, ItemStack item, int level) {
+		if ((item.getType() == Material.DIAMOND_SWORD || item.getType() == Material.DIAMOND_AXE)) {
+			if (level > 13) {
+				return 2;
+			} else {
+				return 0;
+			}
+		} else if ((item.getType() == Material.DIAMOND_CHESTPLATE || item.getType() == Material.DIAMOND_HELMET
+				|| item.getType() == Material.DIAMOND_LEGGINGS || item.getType() == Material.DIAMOND_BOOTS)) {
+			if (level > 13) {
+				return 3;
+			} else {
+				return 1;
+			}
+		}
+		return -1;
+	}
+
 	public int getItemEnchantLevel(Main m, Player player, ItemStack item) {
 		if ((getItemEnchantmentType(m, player, item)) != null) {
 			return item.getEnchantmentLevel(getItemEnchantmentType(m, player, item));
@@ -84,18 +102,26 @@ public class Enhance {
 
 	public void diceToEnhancement(Main m, ItemStack item, Player player) {
 		if (getValidationOfItem(m, player, item)) {
-			double random = Math.random();
-			double chance;
 			int enchantLevel = getItemEnchantLevel(m, player, item);
-			chance = m.failstack.getChance(m, player, enchantLevel);
-			if (enchantLevel > 16) {
-				m.broadcast.broadcast(m, player, item, enchantLevel, random < chance);
-			}
-			if (random < chance) {
-				enhanceSuccess(m, item, player, false);
+			int stoneId = getStoneId(m, player, item, enchantLevel);
+			if (m.inventory.getLevel(m, stoneId, player) > 0) {
+				m.inventory.addLevel(m, player, stoneId, -1);
+				m.sendMessage("You used a " + m.settings.getLang().getString("Item." + stoneId), player);
+				double random = Math.random();
+				double chance = m.failstack.getChance(m, player, enchantLevel);
+				if (enchantLevel > 16) {
+					m.broadcast.broadcast(m, player, item, enchantLevel, random < chance);
+				}
+				if (random < chance) {
+					enhanceSuccess(m, item, player, false);
+				} else {
+					enhanceFail(m, item, player);
+				}
 			} else {
-				enhanceFail(m, item, player);
+				m.sendMessage("No stone", player);
 			}
+		} else {
+			m.sendMessage("Invalid item", player);
 		}
 	}
 

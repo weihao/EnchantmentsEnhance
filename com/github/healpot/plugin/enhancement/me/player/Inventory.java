@@ -67,4 +67,12 @@ public class Inventory {
 
 		}
 	}
+
+	public String getOneStoneCountAsString(Main m, Player player, int stoneId) {
+		int[] inv = backpack.get(player);
+		return (m.settings.getLang().getString("Item.listing")
+				.replaceAll("%ITEM%", m.settings.getLang().getString("Item." + stoneId))
+				.replaceAll("%COUNT%", Integer.toString(inv[stoneId])));
+
+	}
 }

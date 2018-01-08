@@ -102,6 +102,7 @@ public class Language {
 		s.lang.addDefault("Item.1", "Black Stone (Armor)");
 		s.lang.addDefault("Item.2", "Concentrated Magical Black Stone (Weapon)");
 		s.lang.addDefault("Item.3", "Concentrated Magical Black Stone (Armor)");
+		s.lang.addDefault("Item.get", "You got a ");
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
 	}
@@ -199,6 +200,8 @@ public class Language {
 		s.lang.addDefault("Item.1", "Black Stone (Armor)");
 		s.lang.addDefault("Item.2", "Concentrated Magical Black Stone (Weapon)");
 		s.lang.addDefault("Item.3", "Concentrated Magical Black Stone (Armor)");
+		s.lang.addDefault("Item.get", "You got a ");
+
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
 

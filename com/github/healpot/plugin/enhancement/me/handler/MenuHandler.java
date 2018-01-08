@@ -55,6 +55,7 @@ public class MenuHandler implements Listener {
 						m.enhance.diceToEnhancement(m, itemOnEnhancingSlot.get(player), player);
 						m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
 						m.menu.updateInSlotItem(m, itemOnEnhancingSlot.get(player), player);
+						m.menu.addStone(m, itemOnEnhancingSlot.get(player), player);
 						return;
 					}
 					if (e.getCurrentItem().getItemMeta().getDisplayName()

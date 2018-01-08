@@ -107,7 +107,8 @@ public class Menu {
 		} else {
 			screen.setItem(getSlot(6, 3), null);
 		}
-		screen.setItem(getSlot(1, 2), item);
+		updateInSlotItem(m, item, player);
+		addStone(m, item, player);
 	}
 
 	public void updateFailstack(Main m, ItemStack item, Player player) {
@@ -136,15 +137,32 @@ public class Menu {
 	}
 
 	public void updateInSlotItem(Main m, ItemStack item, Player player) {
-		screen.setItem(getSlot(1, 2), item);
+		screen.setItem(getSlot(9, 2), item);
 	}
 
 	public void addRemoveButton() {
-		screen.setItem(getSlot(1, 3), remove);
+		screen.setItem(getSlot(9, 3), remove);
 	}
 
 	public void addStoreButton() {
 		screen.setItem(getSlot(6, 1), store);
 	}
 
+	public ItemStack stoneVisualized(Main m, int stoneId, Player player) {
+		Material[] stoneType = new Material[] { Material.GHAST_TEAR, Material.GOLD_NUGGET, Material.SUGAR,
+				Material.GLOWSTONE_DUST };
+		ItemStack stone = new ItemStack(stoneType[stoneId]);
+		ItemMeta im = stone.getItemMeta();
+		im.setDisplayName(m.settings.getLang().getString("Item." + stoneId));
+		List<String> lore = new ArrayList<String>();
+		lore.add(m.toColor(m.inventory.getOneStoneCountAsString(m, player, stoneId)));
+		im.setLore(lore);
+		stone.setItemMeta(im);
+		return stone;
+	}
+
+	public void addStone(Main m, ItemStack item, Player player) {
+		screen.setItem(getSlot(1, 2), stoneVisualized(m,
+				m.enhance.getStoneId(m, player, item, m.enhance.getItemEnchantLevel(m, player, item)), player));
+	}
 }

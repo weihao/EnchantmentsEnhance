@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.bukkit.GameMode;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -45,13 +46,15 @@ public class LifeskillingHandler implements Listener {
 
 	@EventHandler
 	public void onFish(PlayerFishEvent e) {
-		Player player = e.getPlayer();
-		String[] stoneType = new String[] { m.settings.getLang().getString("Item.0"),
-				m.settings.getLang().getString("Item.1") };
-		if (Math.random() < m.settings.getConfig().getDouble("dropWeaponNArmor.fishing.ratePerFish")) {
-			int dice = new Random().nextInt(2);
-			m.inventory.addLevel(m, player, dice, 1);
-			m.sendMessage("you got a " + stoneType[dice] + "weapon", player);
+		if ((e.getCaught() instanceof Item)) {
+			Player player = e.getPlayer();
+			String[] stoneType = new String[] { m.settings.getLang().getString("Item.0"),
+					m.settings.getLang().getString("Item.1") };
+			if (0 < m.settings.getConfig().getDouble("dropWeaponNArmor.fishing.ratePerFish")) {
+				int dice = new Random().nextInt(2);
+				m.inventory.addLevel(m, player, dice, 1);
+				m.sendMessage(m.settings.getLang().getString("Item.get") + stoneType[dice], player);
+			}
 		}
 	}
 
@@ -62,26 +65,28 @@ public class LifeskillingHandler implements Listener {
 				String[] stoneType = new String[] { m.settings.getLang().getString("Item.0"),
 						m.settings.getLang().getString("Item.1") };
 				Player player = e.getEntity().getKiller();
-				if (Math.random() < m.settings.getConfig().getDouble("dropWeaponNArmor.allMob.ratePerKill")) {
+				if (0 < m.settings.getConfig().getDouble("dropWeaponNArmor.allMob.ratePerKill")) {
 					int dice = new Random().nextInt(2);
 					m.inventory.addLevel(m, player, dice, 1);
-					m.sendMessage("you got a " + stoneType[dice] + "weapon", player);
+					m.sendMessage(m.settings.getLang().getString("Item.get") + stoneType[dice], player);
 				}
 			}
 		}
 	}
 
 	public void randomDropConcWeapon(Main m, Player player) {
-		if (Math.random() < m.settings.getConfig().getDouble("dropConcWeapon.ratePerBlock")) {
+		if (0 < m.settings.getConfig().getDouble("dropConcWeapon.ratePerBlock")) {
 			m.inventory.addLevel(m, player, 2, 1);
-			m.sendMessage("you got a conc weapon", player);
+			m.sendMessage(m.settings.getLang().getString("Item.get") + m.settings.getLang().getString("Item.2"),
+					player);
 		}
 	}
 
 	public void randomDropConcArmor(Main m, Player player) {
-		if (Math.random() < m.settings.getConfig().getDouble("dropConcWeapon.ratePerBlock")) {
+		if (0 < m.settings.getConfig().getDouble("dropConcWeapon.ratePerBlock")) {
 			m.inventory.addLevel(m, player, 3, 1);
-			m.sendMessage("you got a conc armor", player);
+			m.sendMessage(m.settings.getLang().getString("Item.get") + m.settings.getLang().getString("Item.3"),
+					player);
 		}
 	}
 }
