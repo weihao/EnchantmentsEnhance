@@ -104,7 +104,7 @@ public class Enhance {
 		if (getValidationOfItem(m, player, item)) {
 			int enchantLevel = getItemEnchantLevel(m, player, item);
 			int stoneId = getStoneId(m, player, item, enchantLevel);
-			if (m.inventory.getLevel(m, stoneId, player) > 0) {
+			if (m.inventory.getLevel(m, stoneId, player) - 1 >= 0) {
 				m.inventory.addLevel(m, player, stoneId, -1);
 				m.sendMessage("You used a " + m.settings.getLang().getString("Item." + stoneId), player);
 				double random = Math.random();
@@ -127,7 +127,17 @@ public class Enhance {
 
 	public void forceToEnhancement(Main m, ItemStack item, Player player) {
 		if (getValidationOfItem(m, player, item) && m.permissions.commandForce(m, player)) {
-			enhanceSuccess(m, item, player, true);
+			int enchantLevel = getItemEnchantLevel(m, player, item);
+			int stoneId = getStoneId(m, player, item, enchantLevel);
+			int costToEnhance = m.settings.getConfig().getInt("costToForce." + enchantLevel);
+			if (m.inventory.getLevel(m, stoneId, player) - costToEnhance > 0) {
+				m.inventory.addLevel(m, player, stoneId, -costToEnhance);
+				enhanceSuccess(m, item, player, true);
+			} else {
+				m.sendMessage("No stone", player);
+			}
+		} else {
+			m.sendMessage("Inva", player);
 		}
 	}
 

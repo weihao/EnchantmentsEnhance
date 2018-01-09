@@ -111,6 +111,13 @@ public class Main extends JavaPlugin {
 				inventory.printInventory(this, player);
 				return true;
 			}
+			if (args[0].equalsIgnoreCase("add") && permissions.commandInventory(this, player)) {
+				inventory.addLevel(this, player, 0, 999);
+				inventory.addLevel(this, player, 1, 999);
+				inventory.addLevel(this, player, 2, 999);
+				inventory.addLevel(this, player, 3, 999);
+				return true;
+			}
 			if (args.length == 1) {
 				if (args[0].equalsIgnoreCase("list")) {
 					secretbook.list(this, player, 0);

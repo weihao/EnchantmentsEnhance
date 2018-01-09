@@ -41,21 +41,19 @@ public class MenuHandler implements Listener {
 		if (m.menu.getScreen() != null) {
 			if (e.getInventory().getName().equalsIgnoreCase(m.menu.getScreen().getName())) {
 				e.setCancelled(true);
-
 				if (e.getCurrentItem().hasItemMeta()) {
-					if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem()) == true
+					if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem())
 							&& !itemOnEnhancingSlot.containsKey(player)) {
-						m.menu.updateInv(m, e.getCurrentItem(), player);
 						itemOnEnhancingSlot.put(player, e.getCurrentItem());
-						m.menu.addRemoveButton();
+						m.menu.updateInv(m, e.getCurrentItem(), player, itemOnEnhancingSlot.containsKey(player), true,
+								itemOnEnhancingSlot.get(player));
 					}
 					if (e.getCurrentItem().getItemMeta().getDisplayName()
 							.contains(m.settings.getLang().getString("Menu.gui.enhance"))
 							&& itemOnEnhancingSlot.containsKey(player)) {
 						m.enhance.diceToEnhancement(m, itemOnEnhancingSlot.get(player), player);
-						m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
-						m.menu.updateInSlotItem(m, itemOnEnhancingSlot.get(player), player);
-						m.menu.addStone(m, itemOnEnhancingSlot.get(player), player);
+						m.menu.updateInv(m, e.getCurrentItem(), player, itemOnEnhancingSlot.containsKey(player), false,
+								itemOnEnhancingSlot.get(player));
 						return;
 					}
 					if (e.getCurrentItem().getItemMeta().getDisplayName()
@@ -69,8 +67,8 @@ public class MenuHandler implements Listener {
 							.contains(m.settings.getLang().getString("Menu.gui.force"))
 							&& itemOnEnhancingSlot.containsKey(player)) {
 						m.enhance.forceToEnhancement(m, itemOnEnhancingSlot.get(player), player);
-						m.menu.updateFailstack(m, itemOnEnhancingSlot.get(player), player);
-						m.menu.updateInSlotItem(m, itemOnEnhancingSlot.get(player), player);
+						m.menu.updateInv(m, e.getCurrentItem(), player, itemOnEnhancingSlot.containsKey(player), false,
+								itemOnEnhancingSlot.get(player));
 						return;
 					}
 					if (e.getCurrentItem().getItemMeta().getDisplayName()
@@ -85,9 +83,9 @@ public class MenuHandler implements Listener {
 					}
 				} else if (m.enhance.getValidationOfItem(m, player, e.getCurrentItem())
 						&& !itemOnEnhancingSlot.containsKey(player)) {
-					m.menu.updateInv(m, e.getCurrentItem(), player);
 					itemOnEnhancingSlot.put(player, e.getCurrentItem());
-					m.menu.addRemoveButton();
+					m.menu.updateInv(m, e.getCurrentItem(), player, itemOnEnhancingSlot.containsKey(player), true,
+							itemOnEnhancingSlot.get(player));
 				}
 			}
 		}

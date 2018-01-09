@@ -84,7 +84,7 @@ public class Menu {
 		screen.setItem(getSlot(4, 3), enhance);
 		screen.setItem(getSlot(6, 3), force);
 		if (m.failstack.getLevel(m, player) != 0) {
-			addStoreButton();
+			screen.setItem(getSlot(6, 1), store);
 		} else {
 			screen.setItem(getSlot(6, 1), null);
 		}
@@ -98,17 +98,27 @@ public class Menu {
 		return screen;
 	}
 
-	public void updateInv(Main m, ItemStack item, Player player) {
-		updateFailstack(m, item, player);
-		screen.setItem(getSlot(5, 1), m.compatibility.glow.addGlow(stats));
-		screen.setItem(getSlot(4, 3), m.compatibility.glow.addGlow(enhance));
-		if (m.permissions.commandForce(m, player)) {
-			screen.setItem(getSlot(6, 3), m.compatibility.glow.addGlow(force));
-		} else {
-			screen.setItem(getSlot(6, 3), null);
+	public void updateInv(Main m, ItemStack item, Player player, boolean itemReady, boolean change,
+			ItemStack enhancingItem) {
+		if (itemReady) {
+			if (change) {
+				screen.setItem(getSlot(9, 2), item);
+			} else {
+				screen.setItem(getSlot(9, 2), enhancingItem);
+			}
+			updateFailstack(m, enhancingItem, player);
+			screen.setItem(getSlot(5, 1), m.compatibility.glow.addGlow(stats));
+			screen.setItem(getSlot(4, 3), m.compatibility.glow.addGlow(enhance));
+			if (m.permissions.commandForce(m, player)) {
+				screen.setItem(getSlot(6, 3), m.compatibility.glow.addGlow(force));
+			} else {
+				screen.setItem(getSlot(6, 3), null);
+			}
+			updateEnhance(m, enhancingItem, player);
+			screen.setItem(getSlot(1, 2), stoneVisualized(m, m.enhance.getStoneId(m, player, enhancingItem,
+					m.enhance.getItemEnchantLevel(m, player, enhancingItem)), player));
+			screen.setItem(getSlot(9, 3), remove);
 		}
-		updateInSlotItem(m, item, player);
-		addStone(m, item, player);
 	}
 
 	public void updateFailstack(Main m, ItemStack item, Player player) {
@@ -117,7 +127,7 @@ public class Menu {
 		stats.setItemMeta(im);
 		screen.setItem(getSlot(5, 1), m.compatibility.glow.addGlow(stats));
 		if (m.failstack.getLevel(m, player) != 0) {
-			addStoreButton();
+			screen.setItem(getSlot(6, 1), store);
 		} else {
 			screen.setItem(getSlot(6, 1), null);
 		}
@@ -136,18 +146,6 @@ public class Menu {
 		screen.setItem(getSlot(4, 3), m.compatibility.glow.addGlow(enhance));
 	}
 
-	public void updateInSlotItem(Main m, ItemStack item, Player player) {
-		screen.setItem(getSlot(9, 2), item);
-	}
-
-	public void addRemoveButton() {
-		screen.setItem(getSlot(9, 3), remove);
-	}
-
-	public void addStoreButton() {
-		screen.setItem(getSlot(6, 1), store);
-	}
-
 	public ItemStack stoneVisualized(Main m, int stoneId, Player player) {
 		Material[] stoneType = new Material[] { Material.GHAST_TEAR, Material.GOLD_NUGGET, Material.SUGAR,
 				Material.GLOWSTONE_DUST };
@@ -159,10 +157,5 @@ public class Menu {
 		im.setLore(lore);
 		stone.setItemMeta(im);
 		return stone;
-	}
-
-	public void addStone(Main m, ItemStack item, Player player) {
-		screen.setItem(getSlot(1, 2), stoneVisualized(m,
-				m.enhance.getStoneId(m, player, item, m.enhance.getItemEnchantLevel(m, player, item)), player));
 	}
 }
