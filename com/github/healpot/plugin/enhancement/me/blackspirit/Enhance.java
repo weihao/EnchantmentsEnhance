@@ -118,10 +118,11 @@ public class Enhance {
 					enhanceFail(m, item, player);
 				}
 			} else {
-				m.sendMessage("No stone", player);
+				m.sendMessage(m.settings.getLang().getString("Item.noItem").replaceAll("%STONE%",
+						m.settings.getLang().getString("Item." + stoneId)), player);
 			}
 		} else {
-			m.sendMessage("Invalid item", player);
+			m.sendMessage(m.settings.getLang().getString("Item.invalid"), player);
 		}
 	}
 
@@ -134,10 +135,11 @@ public class Enhance {
 				m.inventory.addLevel(m, player, stoneId, -costToEnhance);
 				enhanceSuccess(m, item, player, true);
 			} else {
-				m.sendMessage("No stone", player);
+				m.sendMessage(m.settings.getLang().getString("Item.noItem").replaceAll("%STONE",
+						m.settings.getLang().getString("Item." + stoneId)), player);
 			}
 		} else {
-			m.sendMessage("Inva", player);
+			m.sendMessage(m.settings.getLang().getString("Item.invalid"), player);
 		}
 	}
 

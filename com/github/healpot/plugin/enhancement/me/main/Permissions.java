@@ -31,4 +31,8 @@ public class Permissions {
 	public boolean commandInventory(Main m, Player player) {
 		return player.hasPermission("Enchantmentsenhance.inventory") || player.hasPermission("Enchantmentsenhance.*");
 	}
+
+	public boolean commandAdd(Main m, Player player) {
+		return player.hasPermission("Enchantmentsenhance.add") || player.hasPermission("Enchantmentsenhance.*");
+	}
 }

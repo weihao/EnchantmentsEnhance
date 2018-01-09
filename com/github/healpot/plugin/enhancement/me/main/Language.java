@@ -56,6 +56,9 @@ public class Language {
 		s.lang.addDefault("Help.menu", "&6突破物品潜力界面.");
 		s.lang.addDefault("Help.reload", "&6重新载入插件配置文件.");
 		s.lang.addDefault("Help.version", "&6检测当前文件版本.");
+		s.lang.addDefault("Help.lore", "&6删除或添加道具绑定标签.");
+		s.lang.addDefault("Help.inventory", "&6查看你已收集的道具.");
+		s.lang.addDefault("Help.add", "&6G给予你所有黑石999个.");
 
 		s.lang.addDefault("Menu.gui.title", "潜力突破界面");
 		s.lang.addDefault("Menu.gui.enhance", "强化");
@@ -66,7 +69,7 @@ public class Language {
 		s.lang.addDefault("Menu.lore.store1", "使用铁匠的秘笈创造巴尔克斯的忠告");
 		s.lang.addDefault("Menu.lore.store2", "以保留当前的垫子");
 		s.lang.addDefault("Menu.lore.force1", "&c强制突破百分百成功突破物品的潜力");
-		s.lang.addDefault("Menu.lore.force2", "&c需达到指定条件");
+		s.lang.addDefault("Menu.lore.force2", "&c需要%COUNT%个%ITEM%");
 		s.lang.addDefault("Menu.lore.remove", "&6取消选择当前强化物品");
 		s.lang.addDefault("Menu.lore.stats1", "&b潜力突破会强化你的装备");
 		s.lang.addDefault("Menu.lore.stats2", "&b玩家突破失败的次数会增加下次潜力突破的成功机率");
@@ -96,13 +99,15 @@ public class Language {
 		s.lang.addDefault("Name.18", "IV 有");
 		s.lang.addDefault("Name.19", "V 同");
 
-		s.lang.addDefault("Item.title", "You Have Collected Those Items:");
+		s.lang.addDefault("Item.title", "&6你已收集以下道具:");
 		s.lang.addDefault("Item.listing", "&e%ITEM% &f: &c%COUNT%");
-		s.lang.addDefault("Item.0", "Black Stone (Weapon)");
-		s.lang.addDefault("Item.1", "Black Stone (Armor)");
-		s.lang.addDefault("Item.2", "Concentrated Magical Black Stone (Weapon)");
-		s.lang.addDefault("Item.3", "Concentrated Magical Black Stone (Armor)");
-		s.lang.addDefault("Item.get", "You got a ");
+		s.lang.addDefault("Item.0", "&6黑石 (武器)");
+		s.lang.addDefault("Item.1", "&6黑石 (防具)");
+		s.lang.addDefault("Item.2", "&6凝聚魔力的黑石 (武器)");
+		s.lang.addDefault("Item.3", "&6凝聚魔力的黑石 (防具)");
+		s.lang.addDefault("Item.get", "&aYou got a ");
+		s.lang.addDefault("Item.noItem", "&cYou don't have enough &6%STONE%&c to perform an enhancement");
+		s.lang.addDefault("Item.invalid", "&cYou cannot enhance this item.");
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
 	}
@@ -155,6 +160,9 @@ public class Language {
 		s.lang.addDefault("Help.menu", "&6open enhancement menu.");
 		s.lang.addDefault("Help.reload", "&6reload plugin.");
 		s.lang.addDefault("Help.version", "&6check version.");
+		s.lang.addDefault("Help.lore", "&6remove/add lore to an item.");
+		s.lang.addDefault("Help.inventory", "&6see items that you have collected.");
+		s.lang.addDefault("Help.add", "&6Give you 999 items of every enhancement stone.");
 
 		s.lang.addDefault("Menu.gui.title", "Enhancement");
 		s.lang.addDefault("Menu.gui.enhance", "Enhance");
@@ -165,7 +173,7 @@ public class Language {
 		s.lang.addDefault("Menu.lore.store1", "Use Blacksmith’s Secret Book");
 		s.lang.addDefault("Menu.lore.store2", "to store failstacks by creating Advice of Valks");
 		s.lang.addDefault("Menu.lore.force1", "&cForce guarantees a successful enhancement");
-		s.lang.addDefault("Menu.lore.force2", "&cCertain requirements must be met");
+		s.lang.addDefault("Menu.lore.force2", "&cNeeded %ITEM% x%COUNT%");
 		s.lang.addDefault("Menu.lore.remove", "&6Remove current enhancing item");
 		s.lang.addDefault("Menu.lore.stats1", "&bEnhancing is the act of increasing the stats of your items.");
 		s.lang.addDefault("Menu.lore.stats2", "&bFailstacks increase the chance of a successful enhancement attempt.");
@@ -194,14 +202,16 @@ public class Language {
 		s.lang.addDefault("Name.17", "III TRI");
 		s.lang.addDefault("Name.18", "IV TET");
 		s.lang.addDefault("Name.19", "V PEN");
-		s.lang.addDefault("Item.title", "You Have Collected Those Items:");
-		s.lang.addDefault("Item.listing", "&e%ITEM% &f: &c%COUNT%");
-		s.lang.addDefault("Item.0", "Black Stone (Weapon)");
-		s.lang.addDefault("Item.1", "Black Stone (Armor)");
-		s.lang.addDefault("Item.2", "Concentrated Magical Black Stone (Weapon)");
-		s.lang.addDefault("Item.3", "Concentrated Magical Black Stone (Armor)");
-		s.lang.addDefault("Item.get", "You got a ");
 
+		s.lang.addDefault("Item.title", "&6You Have Collected Those Items:");
+		s.lang.addDefault("Item.listing", "&e%ITEM% &f: &c%COUNT%");
+		s.lang.addDefault("Item.0", "&6Black Stone (Weapon)");
+		s.lang.addDefault("Item.1", "&6Black Stone (Armor)");
+		s.lang.addDefault("Item.2", "&6Concentrated Magical Black Stone (Weapon)");
+		s.lang.addDefault("Item.3", "&6Concentrated Magical Black Stone (Armor)");
+		s.lang.addDefault("Item.get", "&aYou got a ");
+		s.lang.addDefault("Item.noItem", "&cYou don't have enough &6%STONE%&c to perform an enhancement");
+		s.lang.addDefault("Item.invalid", "&cYou cannot enhance this item.");
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
 

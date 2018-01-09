@@ -111,7 +111,7 @@ public class Main extends JavaPlugin {
 				inventory.printInventory(this, player);
 				return true;
 			}
-			if (args[0].equalsIgnoreCase("add") && permissions.commandInventory(this, player)) {
+			if (args[0].equalsIgnoreCase("add") && permissions.commandAdd(this, player)) {
 				inventory.addLevel(this, player, 0, 999);
 				inventory.addLevel(this, player, 1, 999);
 				inventory.addLevel(this, player, 2, 999);
@@ -154,10 +154,16 @@ public class Main extends JavaPlugin {
 			help += "\n&6/enhance help &7- " + settings.getLang().getString("Help.help");
 		if (permissions.commandEnhance(m, player))
 			help += "\n&6/enhance menu &7- " + settings.getLang().getString("Help.menu");
+		if (permissions.commandLore(m, player))
+			help += "\n&6/enhance lore &7- " + settings.getLang().getString("Help.lore");
+		if (permissions.commandInventory(m, player))
+			help += "\n&6/enhance inventory &7- " + settings.getLang().getString("Help.inventory");
 		if (permissions.commandReload(m, player))
 			help += "\n&6/enhance reload &7- " + settings.getLang().getString("Help.reload");
 		if (permissions.commandVersion(m, player))
 			help += "\n&6/enhance version &7- " + settings.getLang().getString("Help.version");
+		if (permissions.commandAdd(m, player))
+			help += "\n&6/enhance add &7- " + settings.getLang().getString("Help.add");
 
 		sendMessage(help, player);
 	}
@@ -214,7 +220,12 @@ public class Main extends JavaPlugin {
 			if (permissions.commandVersion(this, player)) {
 				str.add("version");
 			}
-
+			if (permissions.commandInventory(this, player)) {
+				str.add("inventory");
+			}
+			if (permissions.commandAdd(this, player)) {
+				str.add("add");
+			}
 		}
 		return str;
 	}

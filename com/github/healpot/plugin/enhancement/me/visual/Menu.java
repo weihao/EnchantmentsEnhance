@@ -50,7 +50,6 @@ public class Menu {
 		ItemMeta forceim = force.getItemMeta();
 		List<String> forceStr = new ArrayList<String>();
 		forceStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.force1")));
-		forceStr.add(m.toColor(m.settings.getLang().getString("Menu.lore.force2")));
 		forceim.setLore(forceStr);
 		force.setItemMeta(forceim);
 
@@ -109,11 +108,7 @@ public class Menu {
 			updateFailstack(m, enhancingItem, player);
 			screen.setItem(getSlot(5, 1), m.compatibility.glow.addGlow(stats));
 			screen.setItem(getSlot(4, 3), m.compatibility.glow.addGlow(enhance));
-			if (m.permissions.commandForce(m, player)) {
-				screen.setItem(getSlot(6, 3), m.compatibility.glow.addGlow(force));
-			} else {
-				screen.setItem(getSlot(6, 3), null);
-			}
+			updateForce(m, enhancingItem, player);
 			updateEnhance(m, enhancingItem, player);
 			screen.setItem(getSlot(1, 2), stoneVisualized(m, m.enhance.getStoneId(m, player, enhancingItem,
 					m.enhance.getItemEnchantLevel(m, player, enhancingItem)), player));
@@ -130,6 +125,29 @@ public class Menu {
 			screen.setItem(getSlot(6, 1), store);
 		} else {
 			screen.setItem(getSlot(6, 1), null);
+		}
+	}
+
+	public void updateForce(Main m, ItemStack item, Player player) {
+		if (m.permissions.commandForce(m, player)) {
+			int enchantLevel = m.enhance.getItemEnchantLevel(m, player, item);
+			int stoneId = m.enhance.getStoneId(m, player, item, enchantLevel);
+			int costToEnhance = m.settings.getConfig().getInt("costToForce." + enchantLevel);
+			if (enchantLevel < 7 || enchantLevel > 16) {
+				screen.setItem(getSlot(6, 3), null);
+			} else {
+				ItemMeta im = force.getItemMeta();
+				List<String> update = new ArrayList<String>();
+				update.add(m.toColor(m.settings.getLang().getString("Menu.lore.force1")));
+				update.add(m.toColor(m.settings.getLang().getString("Menu.lore.force2")
+						.replaceAll("%COUNT%", Integer.toString(costToEnhance))
+						.replaceAll("%ITEM%", m.settings.getLang().getString("Item." + stoneId))));
+				im.setLore(update);
+				force.setItemMeta(im);
+				screen.setItem(getSlot(6, 3), m.compatibility.glow.addGlow(force));
+			}
+		} else {
+			m.sendMessage(m.settings.getConfig().getString("Config.noPerm"), player);
 		}
 	}
 
@@ -151,7 +169,7 @@ public class Menu {
 				Material.GLOWSTONE_DUST };
 		ItemStack stone = new ItemStack(stoneType[stoneId]);
 		ItemMeta im = stone.getItemMeta();
-		im.setDisplayName(m.settings.getLang().getString("Item." + stoneId));
+		im.setDisplayName(m.toColor(m.settings.getLang().getString("Item." + stoneId)));
 		List<String> lore = new ArrayList<String>();
 		lore.add(m.toColor(m.inventory.getOneStoneCountAsString(m, player, stoneId)));
 		im.setLore(lore);
