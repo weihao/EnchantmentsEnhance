@@ -13,8 +13,10 @@ public class SecretBook {
 	private HashMap<Player, List<Integer>> storage = new HashMap<Player, List<Integer>>();
 
 	public void addFailstackToStorage(Main m, Player player) {
-		m.sendMessage(m.settings.getLang().getString("Save.createFailstack").replaceAll("%failstack%",
-				Integer.toString(m.failstack.getLevel(m, player))), player);
+		m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+				+ m.settings.getLang().getString("Save.createFailstack").replaceAll("%failstack%",
+						Integer.toString(m.failstack.getLevel(m, player))),
+				player);
 		storage.get(player).add(m.failstack.getLevel(m, player));
 		m.failstack.resetLevel(m, player);
 	}
@@ -49,7 +51,8 @@ public class SecretBook {
 		List<Integer> adviceOfValks = storage.get(player);
 
 		if (adviceOfValks.size() <= 0 || adviceOfValks == null) {
-			player.sendMessage(m.settings.getLang().getString("Save.noFailstack"));
+			m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+					+ m.settings.getLang().getString("Save.noFailstack"), player);
 			return;
 		}
 
@@ -66,13 +69,15 @@ public class SecretBook {
 
 		int count = 0;
 
-		m.sendMessage(
-				m.settings.getLang().getString("Save.failstackTitle").replaceAll("%page%", Integer.toString(page)),
+		m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+				+ m.settings.getLang().getString("Save.failstackTitle").replaceAll("%page%", Integer.toString(page)),
 				player);
 		for (Integer fs : adviceOfValks) {
 			count++;
-			m.sendMessage(m.settings.getLang().getString("Save.listing").replaceAll("%NUMBER%", Integer.toString(count))
-					.replaceAll("%FAILSTACK%", Integer.toString(fs)), player);
+			m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+					+ m.settings.getLang().getString("Save.listing").replaceAll("%NUMBER%", Integer.toString(count))
+							.replaceAll("%FAILSTACK%", Integer.toString(fs)),
+					player);
 
 		}
 
@@ -84,9 +89,11 @@ public class SecretBook {
 				m.failstack.addLevel(m, player, m.secretbook.storage.get(player).get(selectedFailstack - 1));
 				m.secretbook.storage.get(player).remove(selectedFailstack - 1);
 			} catch (Exception e) {
-				m.sendMessage("Do you have any Advice of Valks?", player);
+				m.sendMessage(m.settings.getLang().getString("Config.pluginTag") + "Do you have any Advice of Valks?",
+						player);
 			}
 		} else
-			m.sendMessage("You can't use Advice of Valks if you have failstacks", player);
+			m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+					+ "You can't use Advice of Valks if you have failstacks", player);
 	}
 }

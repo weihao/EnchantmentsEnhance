@@ -106,10 +106,11 @@ public class Enhance {
 			int stoneId = getStoneId(m, player, item, enchantLevel);
 			if (m.inventory.getLevel(m, stoneId, player) - 1 >= 0) {
 				m.inventory.addLevel(m, player, stoneId, -1);
-				m.sendMessage("You used a " + m.settings.getLang().getString("Item." + stoneId), player);
+				m.sendMessage(m.settings.getLang().getString("Config.pluginTag") + "You used a "
+						+ m.settings.getLang().getString("Item." + stoneId), player);
 				double random = Math.random();
 				double chance = m.failstack.getChance(m, player, enchantLevel);
-				if (enchantLevel > 16) {
+				if (enchantLevel > 15) {
 					m.broadcast.broadcast(m, player, item, enchantLevel, random < chance);
 				}
 				if (random < chance) {
@@ -118,11 +119,15 @@ public class Enhance {
 					enhanceFail(m, item, player);
 				}
 			} else {
-				m.sendMessage(m.settings.getLang().getString("Item.noItem").replaceAll("%STONE%",
-						m.settings.getLang().getString("Item." + stoneId)), player);
+				m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+						+ m.settings.getLang().getString("Item.noItem").replaceAll("%STONE%",
+								m.settings.getLang().getString("Item." + stoneId)),
+						player);
 			}
 		} else {
-			m.sendMessage(m.settings.getLang().getString("Item.invalid"), player);
+			m.sendMessage(
+					m.settings.getLang().getString("Config.pluginTag") + m.settings.getLang().getString("Item.invalid"),
+					player);
 		}
 	}
 
@@ -134,12 +139,19 @@ public class Enhance {
 			if (m.inventory.getLevel(m, stoneId, player) - costToEnhance > 0) {
 				m.inventory.addLevel(m, player, stoneId, -costToEnhance);
 				enhanceSuccess(m, item, player, true);
+				if (enchantLevel > 15) {
+					m.broadcast.broadcast(m, player, item, enchantLevel, true);
+				}
 			} else {
-				m.sendMessage(m.settings.getLang().getString("Item.noItem").replaceAll("%STONE",
-						m.settings.getLang().getString("Item." + stoneId)), player);
+				m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+						+ m.settings.getLang().getString("Item.noItem").replaceAll("%STONE",
+								m.settings.getLang().getString("Item." + stoneId)),
+						player);
 			}
 		} else {
-			m.sendMessage(m.settings.getLang().getString("Item.invalid"), player);
+			m.sendMessage(
+					m.settings.getLang().getString("Config.pluginTag") + m.settings.getLang().getString("Item.invalid"),
+					player);
 		}
 	}
 

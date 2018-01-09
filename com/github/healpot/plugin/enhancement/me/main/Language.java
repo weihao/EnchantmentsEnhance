@@ -55,6 +55,7 @@ public class Language {
 		s.lang.addDefault("Help.help", "&6查看插件命令帮助.");
 		s.lang.addDefault("Help.menu", "&6突破物品潜力界面.");
 		s.lang.addDefault("Help.reload", "&6重新载入插件配置文件.");
+		s.lang.addDefault("Help.list", "&6查看存储的巴尔克斯的忠告.");
 		s.lang.addDefault("Help.version", "&6检测当前文件版本.");
 		s.lang.addDefault("Help.lore", "&6删除或添加道具绑定标签.");
 		s.lang.addDefault("Help.inventory", "&6查看你已收集的道具.");
@@ -159,6 +160,7 @@ public class Language {
 		s.lang.addDefault("Help.help", "&6view help.");
 		s.lang.addDefault("Help.menu", "&6open enhancement menu.");
 		s.lang.addDefault("Help.reload", "&6reload plugin.");
+		s.lang.addDefault("Help.list", "&6View saved Advice of Valks.");
 		s.lang.addDefault("Help.version", "&6check version.");
 		s.lang.addDefault("Help.lore", "&6remove/add lore to an item.");
 		s.lang.addDefault("Help.inventory", "&6see items that you have collected.");

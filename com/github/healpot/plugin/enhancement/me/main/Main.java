@@ -23,7 +23,7 @@ import com.github.healpot.plugin.enhancement.me.handler.LifeskillingHandler;
 import com.github.healpot.plugin.enhancement.me.handler.MenuHandler;
 import com.github.healpot.plugin.enhancement.me.handler.PlayerDeathHandler;
 import com.github.healpot.plugin.enhancement.me.handler.PlayerStreamHandler;
-import com.github.healpot.plugin.enhancement.me.lore.Data;
+import com.github.healpot.plugin.enhancement.me.lore.Lore;
 import com.github.healpot.plugin.enhancement.me.modular.Compatibility;
 import com.github.healpot.plugin.enhancement.me.player.Inventory;
 import com.github.healpot.plugin.enhancement.me.visual.Menu;
@@ -35,7 +35,7 @@ public class Main extends JavaPlugin {
 	public SpawnFirework spawnFirework = new SpawnFirework();
 	public Enhance enhance = new Enhance();
 	public Menu menu = new Menu();
-	public Data data = new Data();
+	public Lore data = new Lore();
 	public Compatibility compatibility = new Compatibility();
 	public Broadcast broadcast = new Broadcast();
 	public SecretBook secretbook = new SecretBook();
@@ -154,6 +154,8 @@ public class Main extends JavaPlugin {
 			help += "\n&6/enhance help &7- " + settings.getLang().getString("Help.help");
 		if (permissions.commandEnhance(m, player))
 			help += "\n&6/enhance menu &7- " + settings.getLang().getString("Help.menu");
+		if (permissions.commandList(m, player))
+			help += "\n&6/enhance list &7- " + settings.getLang().getString("Help.list");
 		if (permissions.commandLore(m, player))
 			help += "\n&6/enhance lore &7- " + settings.getLang().getString("Help.lore");
 		if (permissions.commandInventory(m, player))

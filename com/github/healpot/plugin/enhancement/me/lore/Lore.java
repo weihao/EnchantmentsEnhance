@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.github.healpot.plugin.enhancement.me.main.Main;
 
-public class Data {
+public class Lore {
 	@SuppressWarnings("deprecation")
 	public void addLore(Main m, ItemStack is, Player p, String lore, boolean tradeable) {
 		ItemMeta im = is.getItemMeta();
@@ -58,7 +58,8 @@ public class Data {
 		is.setItemMeta(im);
 		p.updateInventory();
 		if (m.settings.getConfig().getBoolean("lore.sendBoundingMessage")) {
-			m.sendMessage(m.settings.getLang().getString("Messages.Made" + x), p);
+			m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+					+ m.settings.getLang().getString("Messages.Made" + x), p);
 		}
 
 	}

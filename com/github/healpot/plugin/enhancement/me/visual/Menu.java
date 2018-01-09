@@ -147,7 +147,8 @@ public class Menu {
 				screen.setItem(getSlot(6, 3), m.compatibility.glow.addGlow(force));
 			}
 		} else {
-			m.sendMessage(m.settings.getConfig().getString("Config.noPerm"), player);
+			m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+					+ m.settings.getConfig().getString("Config.noPerm"), player);
 		}
 	}
 
