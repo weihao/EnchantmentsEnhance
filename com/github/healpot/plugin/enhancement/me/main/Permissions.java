@@ -28,6 +28,10 @@ public class Permissions {
 		return player.hasPermission("Enchantmentsenhance.force") || player.hasPermission("Enchantmentsenhance.*");
 	}
 
+	public boolean commandSelect(Main m, Player player) {
+		return player.hasPermission("Enchantmentsenhance.select") || player.hasPermission("Enchantmentsenhance.*");
+	}
+
 	public boolean commandInventory(Main m, Player player) {
 		return player.hasPermission("Enchantmentsenhance.inventory") || player.hasPermission("Enchantmentsenhance.*");
 	}
