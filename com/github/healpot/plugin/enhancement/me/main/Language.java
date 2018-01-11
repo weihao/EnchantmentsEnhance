@@ -19,6 +19,8 @@ public class Language {
 		s.lang.addDefault("Config.welcome", "&a欢迎您, %player%勇士!使用&6/enhance help&a查看武器装备强化的指南!");
 		s.lang.addDefault("Config.invalidCommand", "&a您输入的指令无效!使用&6/enhance help&a查看帮助!");
 		s.lang.addDefault("Config.noPerm", "&c你没有权限这么做!");
+		s.lang.addDefault("Config.playerNotFound", "&c无此在线玩家!");
+		s.lang.addDefault("Config.invalidNumber", "&c无效数字");
 
 		s.lang.addDefault("Annoucer.success", "&6强化成功: ");
 		s.lang.addDefault("Annoucer.failed", "&6强化失败: ");
@@ -113,7 +115,7 @@ public class Language {
 		s.lang.addDefault("Item.use", "&a你使用了一个%ITEM%.");
 
 		s.lang.addDefault("Valks.noAdvicce", "你不拥有巴尔克斯的忠告.");
-		s.lang.addDefault("Valks.noAdvicce", "你目前的垫子不为零，为此你不能使用巴尔克斯的忠告.");
+		s.lang.addDefault("Valks.hasFailstack", "你目前的垫子不为零，为此你不能使用巴尔克斯的忠告.");
 
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
@@ -130,6 +132,8 @@ public class Language {
 				"&aWelcome, Adventurer %player%! Use &6/enhance help&a to view enhancing guides!");
 		s.lang.addDefault("Config.invalidCommand", "&aInvalid commands! use &6/enhance help&a to get helps!");
 		s.lang.addDefault("Config.noPerm", "&aYou don't have permissions!");
+		s.lang.addDefault("Config.playerNotFound", "&cOnline player not found!");
+		s.lang.addDefault("Config.invalidNumber", "&cInvalid Number!");
 
 		s.lang.addDefault("Annoucer.success", "&6Enhance Success: ");
 		s.lang.addDefault("Annoucer.failed", "&6Enhance Failed: ");

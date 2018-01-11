@@ -112,11 +112,34 @@ public class Main extends JavaPlugin {
 				return true;
 			}
 			if (args[0].equalsIgnoreCase("add") && permissions.commandAdd(this, player)) {
-				inventory.addLevel(this, player, 0, 999);
-				inventory.addLevel(this, player, 1, 999);
-				inventory.addLevel(this, player, 2, 999);
-				inventory.addLevel(this, player, 3, 999);
-				return true;
+				if (args.length == 4) {
+					boolean success = false;
+					Player p = null;
+					int stoneType = -1, level = -1;
+					try {
+						p = Bukkit.getServer().getPlayer(args[1]);
+						success = true;
+					} catch (Exception e) {
+						sendMessage(settings.getLang().getString("Config.playerNotFound"), player);
+						return true;
+					}
+					if (success) {
+						try {
+							stoneType = Integer.parseInt(args[2]);
+							level = Integer.parseInt(args[3]);
+						} catch (Exception e) {
+							sendMessage(settings.getLang().getString("Config.invalidNumber"), player);
+							return true;
+						}
+					}
+					if (stoneType != -1 && level != -1 && p != null) {
+						inventory.addLevel(this, p, stoneType, level);
+					}
+					return true;
+				} else {
+					sendMessage(settings.getLang().getString("Config.invalidCommand"), player);
+					return true;
+				}
 			}
 			if (args.length == 1) {
 				if (args[0].equalsIgnoreCase("list")) {
@@ -207,31 +230,60 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-		List<String> str = new ArrayList<String>();
+		List<String> commands = new ArrayList<String>();
 		if (cmd.getName().equalsIgnoreCase("enhance")) {
 			Player player = (Player) sender;
+			List<String> str = new ArrayList<String>();
 			if (permissions.commandHelp(this, player)) {
-				str.add("help");
+				commands.add("help");
 			}
 			if (permissions.commandEnhance(this, player)) {
-				str.add("menu");
-				str.add("list");
-				str.add("select");
+				commands.add("menu");
+				commands.add("list");
+				commands.add("select");
 			}
 			if (permissions.commandReload(this, player)) {
-				str.add("reload");
+				commands.add("reload");
 			}
 			if (permissions.commandVersion(this, player)) {
-				str.add("version");
+				commands.add("version");
 			}
 			if (permissions.commandInventory(this, player)) {
-				str.add("inventory");
+				commands.add("inventory");
 			}
 			if (permissions.commandAdd(this, player)) {
-				str.add("add");
+				commands.add("add");
+			}
+			if (permissions.commandLore(this, player)) {
+				commands.add("lore");
+			}
+			if (args.length == 0) {
+				return commands;
+			}
+			if (args.length == 1) {
+				for (int i = 0; i < commands.size(); i++) {
+					if (commands.get(i).startsWith(args[0])) {
+						str.add(commands.get(i));
+					}
+				}
+				return str;
+			}
+			if (args[0].equals("add")) {
+				if (args.length == 2) {
+					for (Player p : Bukkit.getOnlinePlayers()) {
+						if (p.getName().startsWith(args[1])) {
+							str.add(p.getName());
+						}
+					}
+					return str;
+				}
+				if (args.length > 2) {
+					sendMessage("/enhance add <player> <stone> <number>", player);
+					return null;
+				}
 			}
 		}
-		return str;
+		return commands;
 	}
 
 	/**
