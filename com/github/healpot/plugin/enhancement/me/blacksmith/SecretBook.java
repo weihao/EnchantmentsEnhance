@@ -89,11 +89,11 @@ public class SecretBook {
 				m.failstack.addLevel(m, player, m.secretbook.storage.get(player).get(selectedFailstack - 1));
 				m.secretbook.storage.get(player).remove(selectedFailstack - 1);
 			} catch (Exception e) {
-				m.sendMessage(m.settings.getLang().getString("Config.pluginTag") + "Do you have any Advice of Valks?",
-						player);
+				m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
+						+ m.settings.getLang().getString("Valks.noAdvice"), player);
 			}
 		} else
-			m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
-					+ "You can't use Advice of Valks if you have failstacks", player);
+			m.sendMessage(m.settings.getLang().getString("Valks.noAdvicce")
+					+ m.settings.getLang().getString("Valks.hasFailstack"), player);
 	}
 }

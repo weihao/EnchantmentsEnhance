@@ -157,7 +157,7 @@ public class Menu {
 		List<String> update = new ArrayList<String>();
 		update.add(m.toColor(m.settings.getLang().getString("Menu.lore.ifSuccess")));
 		update.add(m.toColor(m.settings.getLang().getString("Menu.lore.ifFail")));
-		if (m.enhance.getItemEnchantLevel(m, player, item) > 16) {
+		if (m.enhance.getItemEnchantLevel(m, player, item) > 15) {
 			update.add(m.toColor(m.settings.getLang().getString("Menu.lore.ifDowngrade")));
 		}
 		im.setLore(update);

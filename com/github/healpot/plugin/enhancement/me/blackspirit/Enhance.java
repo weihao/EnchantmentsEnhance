@@ -106,8 +106,9 @@ public class Enhance {
 			int stoneId = getStoneId(m, player, item, enchantLevel);
 			if (m.inventory.getLevel(m, stoneId, player) - 1 >= 0) {
 				m.inventory.addLevel(m, player, stoneId, -1);
-				m.sendMessage(m.settings.getLang().getString("Config.pluginTag") + "You used a "
-						+ m.settings.getLang().getString("Item." + stoneId), player);
+				m.sendMessage(m.settings.getLang().getString("Config.pluginTag") + m.settings.getLang()
+						.getString("Item.use").replaceAll("%ITEM%", m.settings.getLang().getString("Item." + stoneId)),
+						player);
 				double random = Math.random();
 				double chance = m.failstack.getChance(m, player, enchantLevel);
 				if (enchantLevel > 15) {
@@ -144,7 +145,7 @@ public class Enhance {
 				}
 			} else {
 				m.sendMessage(m.settings.getLang().getString("Config.pluginTag")
-						+ m.settings.getLang().getString("Item.noItem").replaceAll("%STONE",
+						+ m.settings.getLang().getString("Item.noItem").replaceAll("%STONE%",
 								m.settings.getLang().getString("Item." + stoneId)),
 						player);
 			}

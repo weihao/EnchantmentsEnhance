@@ -22,8 +22,8 @@ public class Language {
 
 		s.lang.addDefault("Annoucer.success", "&6强化成功: ");
 		s.lang.addDefault("Annoucer.failed", "&6强化失败: ");
-		s.lang.addDefault("Annoucer.got", " &6获得了 ");
-		s.lang.addDefault("Annoucer.failed", " &6潜力突破失败了 ");
+		s.lang.addDefault("Annoucer.got", "&6获得了 ");
+		s.lang.addDefault("Annoucer.lost", "&6潜力突破失败了 ");
 
 		s.lang.addDefault("Enhance.successRate", "&b物品的成功率为%chance%%.");
 		s.lang.addDefault("Enhance.itemInvalid", "&c不可以强化!");
@@ -48,9 +48,9 @@ public class Language {
 		s.lang.addDefault("Messages.NoStorage", "&4这个物品不可被储存!");
 
 		s.lang.addDefault("Save.createFailstack", "&6你创造了&c巴尔克斯的忠告+%failstack%");
-		s.lang.addDefault("Save.noFailstack", "&c你没有保留任何巴尔克斯的忠告.");
-		s.lang.addDefault("Save.failstackTitle", "&e-- 拥有的巴尔克斯的忠告  %page% --");
-		s.lang.addDefault("Save.listing", "&e%NUMBER% &f- &c%FAILSTACK%");
+		s.lang.addDefault("Save.noFailstack", "&c你不存有任何巴尔克斯的忠告.");
+		s.lang.addDefault("Save.failstackTitle", "&e-- 拥有的巴尔克斯的忠告  第%page%页 --");
+		s.lang.addDefault("Save.listing", "顺序&e%NUMBER% &f- 等级&c%FAILSTACK%");
 
 		s.lang.addDefault("Help.help", "&6查看插件命令帮助.");
 		s.lang.addDefault("Help.menu", "&6突破物品潜力界面.");
@@ -59,8 +59,8 @@ public class Language {
 		s.lang.addDefault("Help.version", "&6检测当前文件版本.");
 		s.lang.addDefault("Help.lore", "&6删除或添加道具绑定标签.");
 		s.lang.addDefault("Help.inventory", "&6查看你已收集的道具.");
-		s.lang.addDefault("Help.select", "&/enhance select {n} 来使用巴尔克斯的忠告.");
-		s.lang.addDefault("Help.add", "&6G给予你所有黑石999个.");
+		s.lang.addDefault("Help.select", "&6/enhance select {n} 来使用巴尔克斯的忠告.");
+		s.lang.addDefault("Help.add", "&6给予你所有黑石999个.");
 
 		s.lang.addDefault("Menu.gui.title", "潜力突破界面");
 		s.lang.addDefault("Menu.gui.enhance", "强化");
@@ -107,9 +107,14 @@ public class Language {
 		s.lang.addDefault("Item.1", "&6黑石 (防具)");
 		s.lang.addDefault("Item.2", "&6凝聚魔力的黑石 (武器)");
 		s.lang.addDefault("Item.3", "&6凝聚魔力的黑石 (防具)");
-		s.lang.addDefault("Item.get", "&aYou got a ");
-		s.lang.addDefault("Item.noItem", "&cYou don't have enough &6%STONE%&c to perform an enhancement");
-		s.lang.addDefault("Item.invalid", "&cYou cannot enhance this item.");
+		s.lang.addDefault("Item.get", "&a你获得了一个%ITEM%.");
+		s.lang.addDefault("Item.noItem", "&c你没有足够的 &6%STONE%&c来进行本次强化.");
+		s.lang.addDefault("Item.invalid", "&c你不能强化改道具.");
+		s.lang.addDefault("Item.use", "&a你使用了一个%ITEM%.");
+
+		s.lang.addDefault("Valks.noAdvicce", "你不拥有巴尔克斯的忠告.");
+		s.lang.addDefault("Valks.noAdvicce", "你目前的垫子不为零，为此你不能使用巴尔克斯的忠告.");
+
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
 	}
@@ -216,6 +221,9 @@ public class Language {
 		s.lang.addDefault("Item.get", "&aYou got a ");
 		s.lang.addDefault("Item.noItem", "&cYou don't have enough &6%STONE%&c to perform an enhancement");
 		s.lang.addDefault("Item.invalid", "&cYou cannot enhance this item.");
+
+		s.lang.addDefault("Valks.noAdvicce", "You do not own any Advice of Valks.");
+		s.lang.addDefault("Valks.hasFailstack", "You can't use Advice of Valks if you have failstacks.");
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
 

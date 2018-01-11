@@ -157,7 +157,7 @@ public class Main extends JavaPlugin {
 		if (permissions.commandList(m, player))
 			help += "\n&6/enhance list &7- " + settings.getLang().getString("Help.list");
 		if (permissions.commandSelect(m, player))
-			help += "\n&6/enhance list &7- " + settings.getLang().getString("Help.select");
+			help += "\n&6/enhance select &7- " + settings.getLang().getString("Help.select");
 		if (permissions.commandLore(m, player))
 			help += "\n&6/enhance lore &7- " + settings.getLang().getString("Help.lore");
 		if (permissions.commandInventory(m, player))
