@@ -116,6 +116,8 @@ public class Language {
 
 		s.lang.addDefault("Valks.noAdvicce", "你不拥有巴尔克斯的忠告.");
 		s.lang.addDefault("Valks.hasFailstack", "你目前的垫子不为零，为此你不能使用巴尔克斯的忠告.");
+		s.lang.addDefault("Example.command.add.guide", "enhance add <玩家> <附魔石类型> <数量>");
+		s.lang.addDefault("Example.command.add.stone", "0 = 黑石 (武器), 1 = 黑石 (防具), 2 = 凝聚魔力的黑石 (武器), 3 = 凝聚魔力的黑石 (防具)");
 
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
@@ -228,6 +230,10 @@ public class Language {
 
 		s.lang.addDefault("Valks.noAdvicce", "You do not own any Advice of Valks.");
 		s.lang.addDefault("Valks.hasFailstack", "You can't use Advice of Valks if you have failstacks.");
+
+		s.lang.addDefault("Example.command.add.guide", "/enhance add <player> <stone> <number>");
+		s.lang.addDefault("Example.command.add.stone",
+				"0 = weapon stone, 1 = armor stone, 2 = conc weapon, 3 = conc armor");
 		s.lang.options().copyDefaults(true);
 		s.saveLang();
 

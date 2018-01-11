@@ -1,6 +1,7 @@
 package com.github.healpot.plugin.enhancement.me.main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -277,10 +278,15 @@ public class Main extends JavaPlugin {
 					}
 					return str;
 				}
-				if (args.length > 2) {
-					sendMessage("/enhance add <player> <stone> <number>", player);
+				if (args.length == 3) {
+					sendMessage(settings.getLang().getString("Example.command.add.stone"), player);
+					return Arrays.asList("0", "1", "2", "3");
+				}
+				if (args.length == 4) {
+					sendMessage(settings.getLang().getString("Example.command.add.guide"), player);
 					return null;
 				}
+
 			}
 		}
 		return commands;
