@@ -37,7 +37,7 @@ permissions:
     Enchantmentsenhance.select:
         description: Allows you to use the select command.
     Enchantmentsenhance.inventory:
-        description: Allows you to use the iventory command.
+        description: Allows you to use the inventory command.
     Enchantmentsenhance.add:
         description: Allows you to use the add command.
     Enchantmentsenhance.list:
