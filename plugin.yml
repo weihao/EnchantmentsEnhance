@@ -1,5 +1,5 @@
 name: EnchantmentsEnhance
-version: 2.1
+version: 2.3
 description: This is a Black Desert Online Style of Enchantment enhancing
 author: Feier
 load: postworld
@@ -27,13 +27,18 @@ permissions:
         default: op
     Enchantmentsenhance.lore:
         description: Allows you to remove or add lore tags to the item.
-        default: true
+        default: op
     Enchantmentsenhance.version:
         description: Allows you to see the version of the plugin.
         default: op
     Enchantmentsenhance.enhance:
         description: Allows you to use the enhancement menu.
         default: true
-    Enchantmentsenhance.force:
-        description: Allows you to use the force enhance.
-        default: op
+    Enchantmentsenhance.select:
+        description: Allows you to use the select command.
+    Enchantmentsenhance.inventory:
+        description: Allows you to use the iventory command.
+    Enchantmentsenhance.add:
+        description: Allows you to use the add command.
+    Enchantmentsenhance.list:
+        description: Allows you to use the list command.

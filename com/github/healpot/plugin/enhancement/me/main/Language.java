@@ -62,7 +62,7 @@ public class Language {
 		s.lang.addDefault("Help.lore", "&6删除或添加道具绑定标签.");
 		s.lang.addDefault("Help.inventory", "&6查看你已收集的道具.");
 		s.lang.addDefault("Help.select", "&6/enhance select {n} 来使用巴尔克斯的忠告.");
-		s.lang.addDefault("Help.add", "&6给予你所有黑石999个.");
+		s.lang.addDefault("Help.add", "&6给予一个玩家指定黑石.");
 
 		s.lang.addDefault("Menu.gui.title", "潜力突破界面");
 		s.lang.addDefault("Menu.gui.enhance", "强化");
@@ -173,11 +173,11 @@ public class Language {
 		s.lang.addDefault("Help.menu", "&6open enhancement menu.");
 		s.lang.addDefault("Help.reload", "&6reload plugin.");
 		s.lang.addDefault("Help.list", "&6View saved Advice of Valks.");
-		s.lang.addDefault("Help.select", "&/enhance select {n} to use an Advice of Valks ");
+		s.lang.addDefault("Help.select", "&6/enhance select {n} to use an Advice of Valks ");
 		s.lang.addDefault("Help.version", "&6check version.");
 		s.lang.addDefault("Help.lore", "&6remove/add lore to an item.");
 		s.lang.addDefault("Help.inventory", "&6see items that you have collected.");
-		s.lang.addDefault("Help.add", "&6Give you 999 items of every enhancement stone.");
+		s.lang.addDefault("Help.add", "&6Give a player an enhancing items.");
 
 		s.lang.addDefault("Menu.gui.title", "Enhancement");
 		s.lang.addDefault("Menu.gui.enhance", "Enhance");
