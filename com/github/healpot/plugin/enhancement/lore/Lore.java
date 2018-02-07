@@ -14,7 +14,6 @@ import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
 
 public class Lore {
-	@SuppressWarnings("deprecation")
 	public void addLore(Main m, ItemStack is, Player p, String lore, boolean tradeable) {
 		ItemMeta im = is.getItemMeta();
 		List<String> loreList = new ArrayList<String>();

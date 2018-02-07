@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
+import com.github.healpot.plugin.enhancement.player.Inventory;
 
 public class Enhance {
 
@@ -105,8 +106,8 @@ public class Enhance {
 		if (getValidationOfItem(m, player, item)) {
 			int enchantLevel = getItemEnchantLevel(m, player, item);
 			int stoneId = getStoneId(m, player, item, enchantLevel);
-			if (m.inventory.getLevel(m, stoneId, player) - 1 >= 0) {
-				m.inventory.addLevel(m, player, stoneId, -1);
+			if (Inventory.getLevel(m, stoneId, player) - 1 >= 0) {
+			    Inventory.addLevel(m, player, stoneId, -1);
 				Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + SettingsManager.lang
 						.getString("Item.use").replaceAll("%ITEM%", SettingsManager.lang.getString("Item." + stoneId)),
 						player);
@@ -138,8 +139,8 @@ public class Enhance {
 			int enchantLevel = getItemEnchantLevel(m, player, item);
 			int stoneId = getStoneId(m, player, item, enchantLevel);
 			int costToEnhance = SettingsManager.config.getInt("costToForce." + enchantLevel);
-			if (m.inventory.getLevel(m, stoneId, player) - costToEnhance > 0) {
-				m.inventory.addLevel(m, player, stoneId, -costToEnhance);
+			if (Inventory.getLevel(m, stoneId, player) - costToEnhance > 0) {
+				Inventory.addLevel(m, player, stoneId, -costToEnhance);
 				enhanceSuccess(m, item, player, true);
 				if (enchantLevel > 15) {
 					m.broadcast.broadcast(m, player, item, enchantLevel, true);

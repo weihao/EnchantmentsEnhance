@@ -1,6 +1,6 @@
 package com.github.healpot.plugin.enhancement.main.language;
 
-import com.github.healpot.plugin.enhancement.main.Readable;
+import com.github.healpot.plugin.enhancement.interfaces.Readable;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 
 public class Language_English implements Readable {

@@ -9,6 +9,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
+import com.github.healpot.plugin.enhancement.player.Inventory;
 
 public class PlayerStreamHandler implements Listener {
 
@@ -27,7 +28,7 @@ public class PlayerStreamHandler implements Listener {
 				player);
 		m.failstack.loadLevels(m, player);
 		m.secretbook.loadStorage(m, player);
-		m.inventory.loadInventory(m, player);
+		Inventory.loadInventory(m, player);
 	}
 
 	@EventHandler
@@ -35,7 +36,7 @@ public class PlayerStreamHandler implements Listener {
 		Player player = e.getPlayer();
 		m.failstack.saveLevels(m, player, false);
 		m.secretbook.saveStorageToDisk(m, player, false);
-		m.inventory.saveInventoryToDisk(m, player, false);
+		Inventory.saveInventoryToDisk(m, player, false);
 	}
 
 	@EventHandler
@@ -43,7 +44,7 @@ public class PlayerStreamHandler implements Listener {
 		Player player = e.getPlayer();
 		m.failstack.saveLevels(m, player, false);
 		m.secretbook.saveStorageToDisk(m, player, false);
-		m.inventory.saveInventoryToDisk(m, player, false);
+		Inventory.saveInventoryToDisk(m, player, false);
 	}
 
 }

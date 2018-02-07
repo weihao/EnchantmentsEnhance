@@ -16,12 +16,12 @@ import org.bukkit.event.player.PlayerFishEvent;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
+import com.github.healpot.plugin.enhancement.player.Inventory;
 
 public class LifeskillingHandler implements Listener {
 	private Main m;
 
-	public LifeskillingHandler(Main m) {
-		this.m = m;
+	public LifeskillingHandler() {
 	}
 
 	@EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
@@ -53,7 +53,7 @@ public class LifeskillingHandler implements Listener {
 					SettingsManager.lang.getString("Item.1") };
 			if (Math.random() < SettingsManager.config.getDouble("dropWeaponNArmor.fishing.ratePerFish")) {
 				int dice = new Random().nextInt(2);
-				m.inventory.addLevel(m, player, dice, 1);
+				Inventory.addLevel(m, player, dice, 1);
 				Util.sendMessage(
 						SettingsManager.lang.getString("Config.pluginTag")
 								+ SettingsManager.lang.getString("Item.get").replaceAll("%ITEM%", stoneType[dice]),
@@ -71,7 +71,7 @@ public class LifeskillingHandler implements Listener {
 				Player player = e.getEntity().getKiller();
 				if (Math.random() < SettingsManager.config.getDouble("dropWeaponNArmor.allMob.ratePerKill")) {
 					int dice = new Random().nextInt(2);
-					m.inventory.addLevel(m, player, dice, 1);
+					Inventory.addLevel(m, player, dice, 1);
 					Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 							+ SettingsManager.lang.getString("Item.get") + stoneType[dice], player);
 				}
@@ -81,7 +81,7 @@ public class LifeskillingHandler implements Listener {
 
 	public void randomDropConcWeapon(Main m, Player player) {
 		if (Math.random() < SettingsManager.config.getDouble("dropConcWeapon.ratePerBlock")) {
-			m.inventory.addLevel(m, player, 2, 1);
+			Inventory.addLevel(m, player, 2, 1);
 			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Item.get") + SettingsManager.lang.getString("Item.2"), player);
 		}
@@ -89,7 +89,7 @@ public class LifeskillingHandler implements Listener {
 
 	public void randomDropConcArmor(Main m, Player player) {
 		if (Math.random() < SettingsManager.config.getDouble("dropConcWeapon.ratePerBlock")) {
-			m.inventory.addLevel(m, player, 3, 1);
+			Inventory.addLevel(m, player, 3, 1);
 			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Item.get") + SettingsManager.lang.getString("Item.3"), player);
 		}

@@ -15,10 +15,7 @@ import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
 
 public class ItemDropHandler implements Listener {
-	private Main m;
-
-	public ItemDropHandler(Main m) {
-		this.m = m;
+	public ItemDropHandler() {
 	}
 
 	@EventHandler
