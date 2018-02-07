@@ -11,7 +11,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
+import com.github.healpot.plugin.enhancement.failstack.Failstack;
 import com.github.healpot.plugin.enhancement.main.Main;
+import com.github.healpot.plugin.enhancement.main.Permissions;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
 
@@ -69,7 +71,7 @@ public class Menu {
         ItemMeta statsim = stats.getItemMeta();
         List<String> statsStr = new ArrayList<String>();
         String fs = (SettingsManager.lang.getString("Enhance.currentFailstack")
-            + m.failstack.getLevel(m, player));
+            + Failstack.getLevel(player));
         statsStr.add(Util.toColor(fs));
         statsStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.stats1")));
@@ -102,7 +104,7 @@ public class Menu {
         screen.setItem(Util.getSlot(5, 1), stats);
         screen.setItem(Util.getSlot(4, 3), enhance);
         screen.setItem(Util.getSlot(6, 3), force);
-        if (m.failstack.getLevel(m, player) != 0) {
+        if (Failstack.getLevel(player) != 0) {
             screen.setItem(Util.getSlot(6, 1), store);
         }
         else {
@@ -150,7 +152,7 @@ public class Menu {
         im.setLore(m.enhance.getChanceAsList(m, item, player));
         stats.setItemMeta(im);
         screen.setItem(Util.getSlot(5, 1), m.compatibility.glow.addGlow(stats));
-        if (m.failstack.getLevel(m, player) != 0) {
+        if (Failstack.getLevel(player) != 0) {
             screen.setItem(Util.getSlot(6, 1), store);
         }
         else {
@@ -160,7 +162,7 @@ public class Menu {
 
 
     public void updateForce(Main m, ItemStack item, Player player) {
-        if (m.permissions.commandForce(m, player)) {
+        if (Permissions.commandEnhance(player)) {
             int enchantLevel = m.enhance.getItemEnchantLevel(m, player, item);
             int stoneId = m.enhance.getStoneId(m, player, item, enchantLevel);
             int costToEnhance = SettingsManager.config.getInt("costToForce."

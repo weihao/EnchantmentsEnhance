@@ -8,7 +8,9 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import com.github.healpot.plugin.enhancement.failstack.Failstack;
 import com.github.healpot.plugin.enhancement.main.Main;
+import com.github.healpot.plugin.enhancement.main.Permissions;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
 import com.github.healpot.plugin.enhancement.player.Inventory;
@@ -78,7 +80,7 @@ public class Enhance {
 			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Enhance.forceEnhanceSuccess"), player);
 		} else {
-			m.failstack.resetLevel(m, player);
+			Failstack.resetLevel(player);
 			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Enhance.enhanceSuccess"), player);
 		}
@@ -92,7 +94,7 @@ public class Enhance {
 		int enchantLevel = getItemEnchantLevel(m, player, item);
 		String str = SettingsManager.lang.getString("Enhance.enhanceFailed");
 		m.compatibility.playsound.playSound(player, "FAILED");
-		m.failstack.addLevel(m, player, SettingsManager.config.getInt("failstackGained." + enchantLevel));
+		Failstack.addLevel(player, SettingsManager.config.getInt("failstackGained." + enchantLevel));
 		if (enchantLevel > 15) {
 			str += (" " + SettingsManager.lang.getString("Enhance.downgraded"));
 			m.compatibility.playsound.playSound(player, "DOWNGRADED");
@@ -106,13 +108,13 @@ public class Enhance {
 		if (getValidationOfItem(m, player, item)) {
 			int enchantLevel = getItemEnchantLevel(m, player, item);
 			int stoneId = getStoneId(m, player, item, enchantLevel);
-			if (Inventory.getLevel(m, stoneId, player) - 1 >= 0) {
-			    Inventory.addLevel(m, player, stoneId, -1);
+			if (Inventory.getLevel(stoneId, player) - 1 >= 0) {
+			    Inventory.addLevel(player, stoneId, -1);
 				Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + SettingsManager.lang
 						.getString("Item.use").replaceAll("%ITEM%", SettingsManager.lang.getString("Item." + stoneId)),
 						player);
 				double random = Math.random();
-				double chance = m.failstack.getChance(m, player, enchantLevel);
+				double chance = Failstack.getChance(player, enchantLevel);
 				if (enchantLevel > 15) {
 					m.broadcast.broadcast(m, player, item, enchantLevel, random < chance);
 				}
@@ -135,12 +137,12 @@ public class Enhance {
 	}
 
 	public void forceToEnhancement(Main m, ItemStack item, Player player) {
-		if (getValidationOfItem(m, player, item) && m.permissions.commandForce(m, player)) {
+		if (getValidationOfItem(m, player, item) && Permissions.commandEnhance(player)) {
 			int enchantLevel = getItemEnchantLevel(m, player, item);
 			int stoneId = getStoneId(m, player, item, enchantLevel);
 			int costToEnhance = SettingsManager.config.getInt("costToForce." + enchantLevel);
-			if (Inventory.getLevel(m, stoneId, player) - costToEnhance > 0) {
-				Inventory.addLevel(m, player, stoneId, -costToEnhance);
+			if (Inventory.getLevel(stoneId, player) - costToEnhance > 0) {
+				Inventory.addLevel(player, stoneId, -costToEnhance);
 				enhanceSuccess(m, item, player, true);
 				if (enchantLevel > 15) {
 					m.broadcast.broadcast(m, player, item, enchantLevel, true);
@@ -162,10 +164,10 @@ public class Enhance {
 		Enchantment enchant = getItemEnchantmentType(m, player, item);
 		if (enchant != null) {
 			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-					+ SettingsManager.lang.getString("Enhance.currentFailstack") + m.failstack.getLevel(m, player),
+					+ SettingsManager.lang.getString("Enhance.currentFailstack") + Failstack.getLevel(player),
 					player);
 			String chance = String.format("%.2f",
-					m.failstack.getChance(m, player, item.getEnchantmentLevel(enchant)) * 100);
+					Failstack.getChance(player, item.getEnchantmentLevel(enchant)) * 100);
 			Util.sendMessage(
 					SettingsManager.lang.getString("Config.pluginTag")
 							+ SettingsManager.lang.getString("Enhance.successRate").replaceAll("%chance%", chance),
@@ -180,9 +182,9 @@ public class Enhance {
 		Enchantment enchant = getItemEnchantmentType(m, player, item);
 		ArrayList<String> result = new ArrayList<String>();
 		if (enchant != null) {
-			String fs = (SettingsManager.lang.getString("Enhance.currentFailstack") + m.failstack.getLevel(m, player));
+			String fs = (SettingsManager.lang.getString("Enhance.currentFailstack") + Failstack.getLevel(player));
 			String placeholder = String.format("%.2f",
-					m.failstack.getChance(m, player, item.getEnchantmentLevel(enchant)) * 100);
+					Failstack.getChance(player, item.getEnchantmentLevel(enchant)) * 100);
 			String chance = SettingsManager.lang.getString("Enhance.successRate").replaceAll("%chance%", placeholder);
 			result.add(Util.toColor(fs));
 			result.add(Util.toColor(chance));

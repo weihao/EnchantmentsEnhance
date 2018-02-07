@@ -29,7 +29,6 @@ import com.github.healpot.plugin.enhancement.player.Inventory;
 import com.github.healpot.plugin.enhancement.visual.Menu;
 
 public class Main extends JavaPlugin {
-    public Failstack failstack = new Failstack();
     public SpawnFirework spawnFirework = new SpawnFirework();
     public Enhance enhance = new Enhance();
     public Menu menu = new Menu();
@@ -48,8 +47,8 @@ public class Main extends JavaPlugin {
             "Config.onEnable"));
         if (Bukkit.getOnlinePlayers() != null) {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                failstack.loadLevels(player);
-                secretbook.loadStorage(player);
+                Failstack.loadLevels(player);
+                SecretBook.loadStorage(player);
                 Inventory.loadInventory(player);
             }
         }
@@ -59,9 +58,9 @@ public class Main extends JavaPlugin {
     public void onDisable() {
         if (Bukkit.getOnlinePlayers() != null) {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                this.failstack.saveLevels(this, player, false);
-                this.secretbook.saveStorageToDisk(this, player, false);
-                Inventory.saveInventoryToDisk(this, player, false);
+                Failstack.saveLevels(player, false);
+                SecretBook.saveStorageToDisk(player, false);
+                Inventory.saveInventoryToDisk(player, false);
             }
         }
         SettingsManager.saveData();
@@ -151,7 +150,7 @@ public class Main extends JavaPlugin {
                         }
                     }
                     if (stoneType != -1 && level != -1 && p != null) {
-                        Inventory.addLevel(this, p, stoneType, level);
+                        Inventory.addLevel(p, stoneType, level);
                     }
                     return true;
                 }
@@ -163,21 +162,21 @@ public class Main extends JavaPlugin {
             }
             if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("list")) {
-                    secretbook.list(this, player, 0);
+                    SecretBook.list(player, 0);
                     return true;
                 }
                 if (args[0].equalsIgnoreCase("select")) {
-                    secretbook.select(this, player, 1);
+                    SecretBook.select(player, 1);
                     return true;
                 }
             }
             if (args.length == 2)
                 if (args[0].equalsIgnoreCase("list")) {
-                    secretbook.list(this, player, Integer.parseInt(args[1]));
+                    SecretBook.list(player, Integer.parseInt(args[1]));
                     return true;
                 }
             if (args[0].equalsIgnoreCase("select")) {
-                secretbook.select(this, player, Integer.parseInt(args[1]));
+                SecretBook.select(player, Integer.parseInt(args[1]));
                 return true;
             }
         }

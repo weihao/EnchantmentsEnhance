@@ -5,26 +5,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import org.bukkit.entity.Player;
+import com.github.healpot.plugin.enhancement.failstack.Failstack;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
 
 public class SecretBook {
-    private HashMap<Player, List<Integer>> storage =
+    private static HashMap<Player, List<Integer>> storage =
         new HashMap<Player, List<Integer>>();
 
 
-    public void addFailstackToStorage(Main m, Player player) {
+    public static void addFailstackToStorage(Player player) {
         Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
             + SettingsManager.lang.getString("Save.createFailstack").replaceAll(
-                "%failstack%", Integer.toString(m.failstack.getLevel(m,
+                "%failstack%", Integer.toString(Failstack.getLevel(
                     player))), player);
-        storage.get(player).add(m.failstack.getLevel(m, player));
-        m.failstack.resetLevel(m, player);
+        storage.get(player).add(Failstack.getLevel(player));
+        Failstack.resetLevel(player);
     }
 
 
-    public void loadStorage(Main m, Player player) {
+    public static void loadStorage(Player player) {
         List<Integer> adviceOfValks = new ArrayList<Integer>();
         if (SettingsManager.data.contains("AdviceOfValks." + player.getName())
             || storage.containsKey(player)) {
@@ -39,7 +40,7 @@ public class SecretBook {
     }
 
 
-    public void saveStorageToDisk(Main m, Player player, boolean save) {
+    public static void saveStorageToDisk(Player player, boolean save) {
         List<Integer> working = storage.get(player);
         String result = "";
         if (working.size() > 0) {
@@ -55,7 +56,7 @@ public class SecretBook {
     }
 
 
-    public void list(Main m, Player player, int pageNumber) {
+    public static void list(Player player, int pageNumber) {
         List<Integer> adviceOfValks = storage.get(player);
 
         if (adviceOfValks.size() <= 0 || adviceOfValks == null) {
@@ -93,12 +94,12 @@ public class SecretBook {
     }
 
 
-    public void select(Main m, Player player, int selectedFailstack) {
-        if (selectedFailstack > 0 && m.failstack.getLevel(m, player) == 0) {
+    public static void select(Player player, int selectedFailstack) {
+        if (selectedFailstack > 0 && Failstack.getLevel(player) == 0) {
             try {
-                m.failstack.addLevel(m, player, m.secretbook.storage.get(player)
+                Failstack.addLevel(player, SecretBook.storage.get(player)
                     .get(selectedFailstack - 1));
-                m.secretbook.storage.get(player).remove(selectedFailstack - 1);
+                SecretBook.storage.get(player).remove(selectedFailstack - 1);
             }
             catch (Exception e) {
                 Util.sendMessage(SettingsManager.lang.getString(

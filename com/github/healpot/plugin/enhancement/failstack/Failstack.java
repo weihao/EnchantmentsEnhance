@@ -6,10 +6,10 @@ import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 
 public class Failstack {
-    private HashMap<Player, Integer> failstack = new HashMap<Player, Integer>();
+    private static HashMap<Player, Integer> failstack = new HashMap<Player, Integer>();
 
 
-    public void loadLevels(Main m, Player player) {
+    public static void loadLevels(Player player) {
         if (SettingsManager.data.contains("Failstack." + player.getName())
             || failstack.containsKey(player)) {
             failstack.put(player, SettingsManager.data.getInt("Failstack."
@@ -18,31 +18,31 @@ public class Failstack {
     }
 
 
-    public void saveLevels(Main m, Player player, boolean save) {
-        SettingsManager.data.set("Failstack." + player.getName(), getLevel(m,
+    public static void saveLevels(Player player, boolean save) {
+        SettingsManager.data.set("Failstack." + player.getName(), getLevel(
             player));
         if (save)
             SettingsManager.saveData();
     }
 
 
-    public void resetLevel(Main m, Player player) {
-        setLevel(m, player, 0);
+    public static void resetLevel(Player player) {
+        setLevel(player, 0);
     }
 
 
-    public void setLevel(Main m, Player player, int level) {
+    public static void setLevel(Player player, int level) {
         failstack.put(player, level);
     }
 
 
-    public void addLevel(Main m, Player player, int levelsToAdd) {
-        int newLevel = getLevel(m, player) + levelsToAdd;
-        setLevel(m, player, newLevel);
+    public static void addLevel(Player player, int levelsToAdd) {
+        int newLevel = getLevel(player) + levelsToAdd;
+        setLevel(player, newLevel);
     }
 
 
-    public int getLevel(Main m, Player player) {
+    public static int getLevel(Player player) {
         if (failstack.containsKey(player)) {
             return failstack.get(player);
         }
@@ -50,8 +50,8 @@ public class Failstack {
     }
 
 
-    public double getChance(Main m, Player p, int enchantLevel) {
-        int failstack = getLevel(m, p);
+    public static double getChance(Player p, int enchantLevel) {
+        int failstack = getLevel(p);
         int maximumFailstack = SettingsManager.config.getInt("maximumFailstack."
             + Integer.toString(enchantLevel));
         double baseChance = SettingsManager.config.getDouble("baseChance."

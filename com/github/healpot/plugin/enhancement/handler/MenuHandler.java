@@ -14,6 +14,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
+import com.github.healpot.plugin.enhancement.blacksmith.SecretBook;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
@@ -83,7 +84,7 @@ public class MenuHandler implements Listener {
                     }
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.store"))) {
-                        m.secretbook.addFailstackToStorage(m, player);
+                        SecretBook.addFailstackToStorage(player);
                         if (itemOnEnhancingSlot.get(player) == null) {
                             m.menu.createMenu(m, player);
                         }

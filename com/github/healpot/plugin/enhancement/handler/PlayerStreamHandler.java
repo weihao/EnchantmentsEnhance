@@ -6,6 +6,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import com.github.healpot.plugin.enhancement.blacksmith.SecretBook;
+import com.github.healpot.plugin.enhancement.failstack.Failstack;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
@@ -26,25 +28,25 @@ public class PlayerStreamHandler implements Listener {
 				SettingsManager.lang.getString("Config.pluginTag")
 						+ SettingsManager.lang.getString("Config.welcome").replaceAll("%player%", player.getName()),
 				player);
-		m.failstack.loadLevels(m, player);
-		m.secretbook.loadStorage(m, player);
-		Inventory.loadInventory(m, player);
+		Failstack.loadLevels(player);
+		SecretBook.loadStorage(player);
+		Inventory.loadInventory(player);
 	}
 
 	@EventHandler
 	public void onQuit(PlayerQuitEvent e) {
 		Player player = e.getPlayer();
-		m.failstack.saveLevels(m, player, false);
-		m.secretbook.saveStorageToDisk(m, player, false);
-		Inventory.saveInventoryToDisk(m, player, false);
+		Failstack.saveLevels(player, false);
+		SecretBook.saveStorageToDisk(player, false);
+		Inventory.saveInventoryToDisk(player, false);
 	}
 
 	@EventHandler
 	public void onKick(PlayerKickEvent e) {
 		Player player = e.getPlayer();
-		m.failstack.saveLevels(m, player, false);
-		m.secretbook.saveStorageToDisk(m, player, false);
-		Inventory.saveInventoryToDisk(m, player, false);
+		Failstack.saveLevels(player, false);
+		SecretBook.saveStorageToDisk(player, false);
+		Inventory.saveInventoryToDisk(player, false);
 	}
 
 }

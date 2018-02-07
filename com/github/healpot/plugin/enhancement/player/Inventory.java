@@ -13,7 +13,7 @@ public class Inventory {
     private static Map<Player, int[]> backpack = new HashMap<Player, int[]>();
 
 
-    public static void loadInventory(Main m, Player player) {
+    public static void loadInventory(Player player) {
         int[] temp = new int[] { 0, 0, 0, 0 };
         if (SettingsManager.data.contains("backpack." + player.getName())
             || backpack.containsKey(player)) {
@@ -31,10 +31,10 @@ public class Inventory {
     }
 
 
-    public static void saveInventoryToDisk(Main m, Player player, boolean save) {
+    public static void saveInventoryToDisk(Player player, boolean save) {
         String str = "";
         for (int i = 0; i < 4; i++) {
-            str += getLevel(m, i, player) + " ";
+            str += getLevel(i, player) + " ";
         }
         SettingsManager.data.set("backpack." + player.getName(), str);
 
@@ -45,18 +45,18 @@ public class Inventory {
     }
 
 
-    public static void setLevel(Main m, Player player, int type, int level) {
+    public static void setLevel(Player player, int type, int level) {
         backpack.get(player)[type] = level;
     }
 
 
-    public static void addLevel(Main m, Player player, int type, int levelsToAdd) {
-        int newLevel = getLevel(m, type, player) + levelsToAdd;
-        setLevel(m, player, type, newLevel);
+    public static void addLevel(Player player, int type, int levelsToAdd) {
+        int newLevel = getLevel(type, player) + levelsToAdd;
+        setLevel(player, type, newLevel);
     }
 
 
-    public static int getLevel(Main m, int type, Player player) {
+    public static int getLevel(int type, Player player) {
         if (backpack.containsKey(player)) {
             return backpack.get(player)[type];
         }
@@ -65,7 +65,7 @@ public class Inventory {
 
 
 
-    public static String getOneStoneCountAsString(Main m, Player player, int stoneId) {
+    public static String getOneStoneCountAsString(Player player, int stoneId) {
         int[] inv = backpack.get(player);
         return (SettingsManager.lang.getString("Item.listing").replaceAll(
             "%ITEM%", SettingsManager.lang.getString("Item." + stoneId))
