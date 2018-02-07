@@ -16,15 +16,6 @@ public class SettingsManager {
     private SettingsManager() {
     }
 
-    static SettingsManager instance = new SettingsManager();
-
-
-    public static SettingsManager getInstance() {
-        return instance;
-    }
-
-    public static Plugin p;
-
     public static FileConfiguration config;
     public static File cfile;
 
@@ -35,14 +26,14 @@ public class SettingsManager {
     public static File langfile;
 
 
-    public static void setup() {
-        cfile = new File(p.getDataFolder(), "config.yml");
-        config = p.getConfig();
-        if (!p.getDataFolder().exists()) {
-            p.getDataFolder().mkdir();
+    public static void setup(Main m) {
+        cfile = new File(m.getDataFolder(), "config.yml");
+        config = m.getConfig();
+        if (!m.getDataFolder().exists()) {
+            m.getDataFolder().mkdir();
         }
 
-        dfile = new File(p.getDataFolder(), "data.yml");
+        dfile = new File(m.getDataFolder(), "data.yml");
 
         if (!dfile.exists()) {
             try {
@@ -55,7 +46,7 @@ public class SettingsManager {
         }
         data = YamlConfiguration.loadConfiguration(dfile);
 
-        langfile = new File(p.getDataFolder(), "lang.yml");
+        langfile = new File(m.getDataFolder(), "lang.yml");
         lang = YamlConfiguration.loadConfiguration(langfile);
 
         if (config.getString("language") == "CN") {

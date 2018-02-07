@@ -15,6 +15,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
+import com.github.healpot.plugin.enhancement.main.util.Util;
 
 public class LifeskillingHandler implements Listener {
 	private Main m;
@@ -53,7 +54,7 @@ public class LifeskillingHandler implements Listener {
 			if (Math.random() < SettingsManager.config.getDouble("dropWeaponNArmor.fishing.ratePerFish")) {
 				int dice = new Random().nextInt(2);
 				m.inventory.addLevel(m, player, dice, 1);
-				m.sendMessage(
+				Util.sendMessage(
 						SettingsManager.lang.getString("Config.pluginTag")
 								+ SettingsManager.lang.getString("Item.get").replaceAll("%ITEM%", stoneType[dice]),
 						player);
@@ -71,7 +72,7 @@ public class LifeskillingHandler implements Listener {
 				if (Math.random() < SettingsManager.config.getDouble("dropWeaponNArmor.allMob.ratePerKill")) {
 					int dice = new Random().nextInt(2);
 					m.inventory.addLevel(m, player, dice, 1);
-					m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+					Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 							+ SettingsManager.lang.getString("Item.get") + stoneType[dice], player);
 				}
 			}
@@ -81,7 +82,7 @@ public class LifeskillingHandler implements Listener {
 	public void randomDropConcWeapon(Main m, Player player) {
 		if (Math.random() < SettingsManager.config.getDouble("dropConcWeapon.ratePerBlock")) {
 			m.inventory.addLevel(m, player, 2, 1);
-			m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Item.get") + SettingsManager.lang.getString("Item.2"), player);
 		}
 	}
@@ -89,7 +90,7 @@ public class LifeskillingHandler implements Listener {
 	public void randomDropConcArmor(Main m, Player player) {
 		if (Math.random() < SettingsManager.config.getDouble("dropConcWeapon.ratePerBlock")) {
 			m.inventory.addLevel(m, player, 3, 1);
-			m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Item.get") + SettingsManager.lang.getString("Item.3"), player);
 		}
 	}

@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
+import com.github.healpot.plugin.enhancement.main.util.Util;
 
 public class Enhance {
 
@@ -67,17 +68,17 @@ public class Enhance {
 		Enchantment enchant = getItemEnchantmentType(m, player, item);
 		int enchantLevel = getItemEnchantLevel(m, player, item) + 1;
 		item.addUnsafeEnchantment(enchant, enchantLevel);
-		m.renameItem(item, enchantLevel);
+		Util.renameItem(item, enchantLevel);
 		m.compatibility.playsound.playSound(player, "SUCCESS");
 		m.spawnFirework.launch(m, player, m.getConfig().getInt("fireworkCount." + enchantLevel),
 				SettingsManager.config.getInt("fireworkRounds." + enchantLevel),
 				SettingsManager.config.getInt("fireworkDelay"));
 		if (forceEnhanced) {
-			m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Enhance.forceEnhanceSuccess"), player);
 		} else {
 			m.failstack.resetLevel(m, player);
-			m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Enhance.enhanceSuccess"), player);
 		}
 		m.data.addLore(m, item, player, ChatColor.translateAlternateColorCodes('&',
@@ -95,9 +96,9 @@ public class Enhance {
 			str += (" " + SettingsManager.lang.getString("Enhance.downgraded"));
 			m.compatibility.playsound.playSound(player, "DOWNGRADED");
 			item.addUnsafeEnchantment(enchant, enchantLevel - 1);
-			m.renameItem(item, (enchantLevel - 1));
+			Util.renameItem(item, (enchantLevel - 1));
 		}
-		m.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + str, player);
+		Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + str, player);
 	}
 
 	public void diceToEnhancement(Main m, ItemStack item, Player player) {
@@ -106,7 +107,7 @@ public class Enhance {
 			int stoneId = getStoneId(m, player, item, enchantLevel);
 			if (m.inventory.getLevel(m, stoneId, player) - 1 >= 0) {
 				m.inventory.addLevel(m, player, stoneId, -1);
-				m.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + SettingsManager.lang
+				Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + SettingsManager.lang
 						.getString("Item.use").replaceAll("%ITEM%", SettingsManager.lang.getString("Item." + stoneId)),
 						player);
 				double random = Math.random();
@@ -120,13 +121,13 @@ public class Enhance {
 					enhanceFail(m, item, player);
 				}
 			} else {
-				m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+				Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 						+ SettingsManager.lang.getString("Item.noItem").replaceAll("%STONE%",
 								SettingsManager.lang.getString("Item." + stoneId)),
 						player);
 			}
 		} else {
-			m.sendMessage(
+			Util.sendMessage(
 					SettingsManager.lang.getString("Config.pluginTag") + SettingsManager.lang.getString("Item.invalid"),
 					player);
 		}
@@ -144,13 +145,13 @@ public class Enhance {
 					m.broadcast.broadcast(m, player, item, enchantLevel, true);
 				}
 			} else {
-				m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+				Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 						+ SettingsManager.lang.getString("Item.noItem").replaceAll("%STONE%",
 								SettingsManager.lang.getString("Item." + stoneId)),
 						player);
 			}
 		} else {
-			m.sendMessage(
+			Util.sendMessage(
 					SettingsManager.lang.getString("Config.pluginTag") + SettingsManager.lang.getString("Item.invalid"),
 					player);
 		}
@@ -159,17 +160,17 @@ public class Enhance {
 	public void getChance(Main m, ItemStack item, Player player) {
 		Enchantment enchant = getItemEnchantmentType(m, player, item);
 		if (enchant != null) {
-			m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Enhance.currentFailstack") + m.failstack.getLevel(m, player),
 					player);
 			String chance = String.format("%.2f",
 					m.failstack.getChance(m, player, item.getEnchantmentLevel(enchant)) * 100);
-			m.sendMessage(
+			Util.sendMessage(
 					SettingsManager.lang.getString("Config.pluginTag")
 							+ SettingsManager.lang.getString("Enhance.successRate").replaceAll("%chance%", chance),
 					player);
 		} else {
-			m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Enhance.itemInvalid"), player);
 		}
 	}
@@ -182,10 +183,10 @@ public class Enhance {
 			String placeholder = String.format("%.2f",
 					m.failstack.getChance(m, player, item.getEnchantmentLevel(enchant)) * 100);
 			String chance = SettingsManager.lang.getString("Enhance.successRate").replaceAll("%chance%", placeholder);
-			result.add(m.toColor(fs));
-			result.add(m.toColor(chance));
-			result.add(m.toColor(SettingsManager.lang.getString("Menu.lore.stats1")));
-			result.add(m.toColor(SettingsManager.lang.getString("Menu.lore.stats2")));
+			result.add(Util.toColor(fs));
+			result.add(Util.toColor(chance));
+			result.add(Util.toColor(SettingsManager.lang.getString("Menu.lore.stats1")));
+			result.add(Util.toColor(SettingsManager.lang.getString("Menu.lore.stats2")));
 			return result;
 
 		} else {

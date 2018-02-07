@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
+import com.github.healpot.plugin.enhancement.main.util.Util;
 
 public class PlayerStreamHandler implements Listener {
 
@@ -20,7 +21,7 @@ public class PlayerStreamHandler implements Listener {
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
 		Player player = e.getPlayer();
-		m.sendMessage(
+		Util.sendMessage(
 				SettingsManager.lang.getString("Config.pluginTag")
 						+ SettingsManager.lang.getString("Config.welcome").replaceAll("%player%", player.getName()),
 				player);

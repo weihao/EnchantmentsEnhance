@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
+import com.github.healpot.plugin.enhancement.main.util.Util;
 
 public class ItemDropHandler implements Listener {
 	private Main m;
@@ -34,7 +35,7 @@ public class ItemDropHandler implements Listener {
 			if (loreList.contains(ChatColor.translateAlternateColorCodes('&',
 					SettingsManager.lang.getString("Lore.UntradeableLore")))) {
 				e.setCancelled(true);
-				m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+				Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 						+ SettingsManager.lang.getString("Messages.NoDrop"), p);
 				return;
 			}

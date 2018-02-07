@@ -23,6 +23,7 @@ import com.github.healpot.plugin.enhancement.handler.MenuHandler;
 import com.github.healpot.plugin.enhancement.handler.PlayerDeathHandler;
 import com.github.healpot.plugin.enhancement.handler.PlayerStreamHandler;
 import com.github.healpot.plugin.enhancement.lore.Lore;
+import com.github.healpot.plugin.enhancement.main.util.Util;
 import com.github.healpot.plugin.enhancement.modular.Compatibility;
 import com.github.healpot.plugin.enhancement.player.Inventory;
 import com.github.healpot.plugin.enhancement.visual.Menu;
@@ -42,7 +43,7 @@ public class Main extends JavaPlugin {
 
     public void onEnable() {
         saveDefaultConfig();
-        SettingsManager.setup();
+        SettingsManager.setup(this);
         registerCore();
         registerNMS();
         Bukkit.getServer().getLogger().info(SettingsManager.lang.getString(
@@ -78,7 +79,7 @@ public class Main extends JavaPlugin {
         String[] args) {
 
         if (!(sender instanceof Player)) {
-            sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
                 + SettingsManager.lang.getString("Config.consoleCommand"),
                 sender);
             return true;
@@ -99,7 +100,7 @@ public class Main extends JavaPlugin {
             }
             if ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase(
                 "version")) && permissions.commandVersion(this, player)) {
-                sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+                Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
                     + SettingsManager.lang.getString("Config.checkingVersion")
                         .replaceAll("%version%", getDescription().getVersion()),
                     player);
@@ -110,7 +111,7 @@ public class Main extends JavaPlugin {
                 SettingsManager.reloadConfig();
                 SettingsManager.reloadData();
                 SettingsManager.reloadLang();
-                sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+                Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
                     + SettingsManager.lang.getString("Config.reload"), player);
                 return true;
             }
@@ -135,7 +136,7 @@ public class Main extends JavaPlugin {
                         success = true;
                     }
                     catch (Exception e) {
-                        sendMessage(SettingsManager.lang.getString(
+                        Util.sendMessage(SettingsManager.lang.getString(
                             "Config.playerNotFound"), player);
                         return true;
                     }
@@ -145,7 +146,7 @@ public class Main extends JavaPlugin {
                             level = Integer.parseInt(args[3]);
                         }
                         catch (Exception e) {
-                            sendMessage(SettingsManager.lang.getString(
+                            Util.sendMessage(SettingsManager.lang.getString(
                                 "Config.invalidNumber"), player);
                             return true;
                         }
@@ -156,7 +157,7 @@ public class Main extends JavaPlugin {
                     return true;
                 }
                 else {
-                    sendMessage(SettingsManager.lang.getString(
+                    Util.sendMessage(SettingsManager.lang.getString(
                         "Config.invalidCommand"), player);
                     return true;
                 }
@@ -181,7 +182,7 @@ public class Main extends JavaPlugin {
                 return true;
             }
         }
-        sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+        Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
             + SettingsManager.lang.getString("Config.invalidCommand"), player);
         return true;
     }
@@ -222,7 +223,7 @@ public class Main extends JavaPlugin {
             help += "\n&6/enhance add &7- " + SettingsManager.lang.getString(
                 "Help.add");
 
-        sendMessage(help, player);
+        Util.sendMessage(help, player);
     }
 
 
@@ -319,12 +320,12 @@ public class Main extends JavaPlugin {
                     return str;
                 }
                 if (args.length == 3) {
-                    sendMessage(SettingsManager.lang.getString(
+                    Util.sendMessage(SettingsManager.lang.getString(
                         "Example.command.add.stone"), player);
                     return Arrays.asList("0", "1", "2", "3");
                 }
                 if (args.length == 4) {
-                    sendMessage(SettingsManager.lang.getString(
+                    Util.sendMessage(SettingsManager.lang.getString(
                         "Example.command.add.guide"), player);
                     return null;
                 }
@@ -332,32 +333,5 @@ public class Main extends JavaPlugin {
             }
         }
         return commands;
-    }
-
-
-    /**
-     * 
-     * @param item
-     *            this is the item you want to rename.
-     * @param enchantLevel
-     *            this determines the corresponding name for the item.
-     */
-    public void renameItem(ItemStack item, int enchantLevel) {
-        ItemMeta im = item.getItemMeta();
-        im.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-            (SettingsManager.lang.getString("Name." + Integer.toString(
-                enchantLevel)))));
-        item.setItemMeta(im);
-    }
-
-
-    public void sendMessage(String msg, CommandSender sender) {
-        String message = ChatColor.translateAlternateColorCodes('&', msg);
-        sender.sendMessage(message);
-    }
-
-
-    public String toColor(String str) {
-        return ChatColor.translateAlternateColorCodes('&', str);
     }
 }

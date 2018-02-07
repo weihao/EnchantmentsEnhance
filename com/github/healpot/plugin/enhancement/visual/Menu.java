@@ -44,13 +44,13 @@ public class Menu {
             + SettingsManager.lang.getString("Menu.gui.enhance"));
         ItemMeta enhanceim = enhance.getItemMeta();
         List<String> enhanceStr = new ArrayList<String>();
-        enhanceStr.add(m.toColor(SettingsManager.lang.getString(
+        enhanceStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.ifSuccess")));
-        enhanceStr.add(m.toColor(SettingsManager.lang.getString(
+        enhanceStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.ifFail")));
-        enhanceStr.add(m.toColor(SettingsManager.lang.getString(
+        enhanceStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.ifDowngrade")));
-        enhanceStr.add(m.toColor(SettingsManager.lang.getString(
+        enhanceStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.ifDestroy")));
         enhanceim.setLore(enhanceStr);
         enhance.setItemMeta(enhanceim);
@@ -59,7 +59,7 @@ public class Menu {
             .getString("Menu.gui.force"));
         ItemMeta forceim = force.getItemMeta();
         List<String> forceStr = new ArrayList<String>();
-        forceStr.add(m.toColor(SettingsManager.lang.getString(
+        forceStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.force1")));
         forceim.setLore(forceStr);
         force.setItemMeta(forceim);
@@ -70,10 +70,10 @@ public class Menu {
         List<String> statsStr = new ArrayList<String>();
         String fs = (SettingsManager.lang.getString("Enhance.currentFailstack")
             + m.failstack.getLevel(m, player));
-        statsStr.add(m.toColor(fs));
-        statsStr.add(m.toColor(SettingsManager.lang.getString(
+        statsStr.add(Util.toColor(fs));
+        statsStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.stats1")));
-        statsStr.add(m.toColor(SettingsManager.lang.getString(
+        statsStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.stats2")));
         statsim.setLore(statsStr);
         stats.setItemMeta(statsim);
@@ -82,7 +82,7 @@ public class Menu {
             .getString("Menu.gui.remove"));
         ItemMeta removeim = remove.getItemMeta();
         List<String> removeStr = new ArrayList<String>();
-        removeStr.add(m.toColor(SettingsManager.lang.getString(
+        removeStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.remove")));
         removeim.setLore(removeStr);
         remove.setItemMeta(removeim);
@@ -92,9 +92,9 @@ public class Menu {
         storeim.setDisplayName(SettingsManager.lang.getString(
             "Menu.gui.store"));
         List<String> storeStr = new ArrayList<String>();
-        storeStr.add(m.toColor(SettingsManager.lang.getString(
+        storeStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.store1")));
-        storeStr.add(m.toColor(SettingsManager.lang.getString(
+        storeStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.store2")));
         storeim.setLore(storeStr);
         store.setItemMeta(storeim);
@@ -171,9 +171,9 @@ public class Menu {
             else {
                 ItemMeta im = force.getItemMeta();
                 List<String> update = new ArrayList<String>();
-                update.add(m.toColor(SettingsManager.lang.getString(
+                update.add(Util.toColor(SettingsManager.lang.getString(
                     "Menu.lore.force1")));
-                update.add(m.toColor(SettingsManager.lang.getString(
+                update.add(Util.toColor(SettingsManager.lang.getString(
                     "Menu.lore.force2").replaceAll("%COUNT%", Integer.toString(
                         costToEnhance)).replaceAll("%ITEM%",
                             SettingsManager.lang.getString("Item."
@@ -185,7 +185,7 @@ public class Menu {
             }
         }
         else {
-            m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
                 + SettingsManager.config.getString("Config.noPerm"), player);
         }
     }
@@ -194,12 +194,12 @@ public class Menu {
     public void updateEnhance(Main m, ItemStack item, Player player) {
         ItemMeta im = enhance.getItemMeta();
         List<String> update = new ArrayList<String>();
-        update.add(m.toColor(SettingsManager.lang.getString(
+        update.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.ifSuccess")));
-        update.add(m.toColor(SettingsManager.lang.getString(
+        update.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.ifFail")));
         if (m.enhance.getItemEnchantLevel(m, player, item) > 15) {
-            update.add(m.toColor(SettingsManager.lang.getString(
+            update.add(Util.toColor(SettingsManager.lang.getString(
                 "Menu.lore.ifDowngrade")));
         }
         im.setLore(update);
@@ -212,10 +212,10 @@ public class Menu {
     public ItemStack stoneVisualized(Main m, int stoneId, Player player) {
         ItemStack stone = new ItemStack(Util.stoneTypes[stoneId]);
         ItemMeta im = stone.getItemMeta();
-        im.setDisplayName(m.toColor(SettingsManager.lang.getString("Item."
+        im.setDisplayName(Util.toColor(SettingsManager.lang.getString("Item."
             + stoneId)));
         List<String> lore = new ArrayList<String>();
-        lore.add(m.toColor(m.inventory.getOneStoneCountAsString(m, player,
+        lore.add(Util.toColor(m.inventory.getOneStoneCountAsString(m, player,
             stoneId)));
         im.setLore(lore);
         stone.setItemMeta(im);

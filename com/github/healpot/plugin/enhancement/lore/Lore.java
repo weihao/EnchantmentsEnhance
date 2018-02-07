@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
+import com.github.healpot.plugin.enhancement.main.util.Util;
 
 public class Lore {
 	@SuppressWarnings("deprecation")
@@ -35,7 +36,7 @@ public class Lore {
 			}
 			if (loreList.contains(lore)) {
 				if (SettingsManager.config.getBoolean("lore.sendBoundingMessage")) {
-					m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+					Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 							+ SettingsManager.lang.getString("Messages.Already" + x), p);
 				}
 				return;
@@ -49,7 +50,7 @@ public class Lore {
 			im.setLore(loreList);
 			is.setItemMeta(im);
 			if (SettingsManager.config.getBoolean("lore.sendBoundingMessage")) {
-				m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+				Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 						+ SettingsManager.lang.getString("Messages.Made" + x), p);
 			}
 			return;
@@ -58,7 +59,7 @@ public class Lore {
 		is.setItemMeta(im);
 		p.updateInventory();
 		if (SettingsManager.config.getBoolean("lore.sendBoundingMessage")) {
-			m.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
+			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Messages.Made" + x), p);
 		}
 
@@ -80,11 +81,11 @@ public class Lore {
 			}
 			im.setLore(loreList);
 			is.setItemMeta(im);
-			m.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + lang.getString("Messages.MadeUnbound"),
+			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + lang.getString("Messages.MadeUnbound"),
 					p);
 			return;
 		}
-		m.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + lang.getString("Messages.AlreadyUnbound"),
+		Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + lang.getString("Messages.AlreadyUnbound"),
 				p);
 	}
 }

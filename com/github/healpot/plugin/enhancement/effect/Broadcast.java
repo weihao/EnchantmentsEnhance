@@ -6,17 +6,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
+import com.github.healpot.plugin.enhancement.main.util.Util;
 
 public class Broadcast {
 	public void broadcast(Main m, Player player, ItemStack item, int enchantLevel, boolean success) {
 		if (success) {
-			Bukkit.broadcastMessage(m.toColor(SettingsManager.lang.getString("Config.pluginTag")
+			Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString("Config.pluginTag")
 					+ (SettingsManager.lang.getString("Annoucer.success") + player.getDisplayName()
 							+ SettingsManager.lang.getString("Annoucer.got")
 							+ SettingsManager.lang.getString("Name." + Integer.toString(enchantLevel + 1)) + " "
 							+ getFriendlyName(item))));
 		} else {
-			Bukkit.broadcastMessage(m.toColor(SettingsManager.lang.getString("Config.pluginTag")
+			Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString("Config.pluginTag")
 					+ (SettingsManager.lang.getString("Annoucer.failed") + player.getDisplayName()
 							+ SettingsManager.lang.getString("Annoucer.lost")
 							+ SettingsManager.lang.getString("Name." + Integer.toString(enchantLevel + 1)) + " "

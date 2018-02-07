@@ -9,12 +9,11 @@ import com.github.healpot.plugin.enhancement.main.SettingsManager;
 
 public class Inventory {
     // int[0] = weapon stone, int[1] = armor stone, int[2] = conc weapon; int[3]
-    // =
-    // conc armor.
-    private Map<Player, int[]> backpack = new HashMap<Player, int[]>();
+    // =conc armor.
+    private static Map<Player, int[]> backpack = new HashMap<Player, int[]>();
 
 
-    public void loadInventory(Main m, Player player) {
+    public static void loadInventory(Main m, Player player) {
         int[] temp = new int[] { 0, 0, 0, 0 };
         if (SettingsManager.data.contains("backpack." + player.getName())
             || backpack.containsKey(player)) {
@@ -32,7 +31,7 @@ public class Inventory {
     }
 
 
-    public void saveInventoryToDisk(Main m, Player player, boolean save) {
+    public static void saveInventoryToDisk(Main m, Player player, boolean save) {
         String str = "";
         for (int i = 0; i < 4; i++) {
             str += getLevel(m, i, player) + " ";
@@ -46,18 +45,18 @@ public class Inventory {
     }
 
 
-    public void setLevel(Main m, Player player, int type, int level) {
+    public static void setLevel(Main m, Player player, int type, int level) {
         backpack.get(player)[type] = level;
     }
 
 
-    public void addLevel(Main m, Player player, int type, int levelsToAdd) {
+    public static void addLevel(Main m, Player player, int type, int levelsToAdd) {
         int newLevel = getLevel(m, type, player) + levelsToAdd;
         setLevel(m, player, type, newLevel);
     }
 
 
-    public int getLevel(Main m, int type, Player player) {
+    public static int getLevel(Main m, int type, Player player) {
         if (backpack.containsKey(player)) {
             return backpack.get(player)[type];
         }
@@ -65,25 +64,17 @@ public class Inventory {
     }
 
 
-    public void printInventory(Main m, Player player) {
-        int[] inv = backpack.get(player);
 
-        m.sendMessage(SettingsManager.lang.getString("Item.title"), player);
-        for (int i = 0; i < inv.length; i++) {
-            m.sendMessage(SettingsManager.lang.getString("Item.listing")
-                .replaceAll("%ITEM%", SettingsManager.lang.getString("Item."
-                    + i)).replaceAll("%COUNT%", Integer.toString(inv[i])),
-                player);
-
-        }
-    }
-
-
-    public String getOneStoneCountAsString(Main m, Player player, int stoneId) {
+    public static String getOneStoneCountAsString(Main m, Player player, int stoneId) {
         int[] inv = backpack.get(player);
         return (SettingsManager.lang.getString("Item.listing").replaceAll(
             "%ITEM%", SettingsManager.lang.getString("Item." + stoneId))
             .replaceAll("%COUNT%", Integer.toString(inv[stoneId])));
 
+    }
+    
+    public static int[] getPlayer(Player player)
+    {
+        return Inventory.backpack.get(player);
     }
 }
