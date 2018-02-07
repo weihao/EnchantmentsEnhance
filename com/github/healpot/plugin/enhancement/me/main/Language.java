@@ -227,7 +227,8 @@ public class Language {
 		s.lang.addDefault("Item.get", "&aYou got a ");
 		s.lang.addDefault("Item.noItem", "&cYou don't have enough &6%STONE%&c to perform an enhancement");
 		s.lang.addDefault("Item.invalid", "&cYou cannot enhance this item.");
-
+        s.lang.addDefault("Item.use", "&aYou used a %ITEM%.");
+		
 		s.lang.addDefault("Valks.noAdvicce", "You do not own any Advice of Valks.");
 		s.lang.addDefault("Valks.hasFailstack", "You can't use Advice of Valks if you have failstacks.");
 
