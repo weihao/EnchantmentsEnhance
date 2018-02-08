@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 import org.bukkit.entity.Player;
 import com.github.healpot.plugin.enhancement.failstack.Failstack;
-import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
 

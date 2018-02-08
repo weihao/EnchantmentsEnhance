@@ -11,6 +11,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
+import com.github.healpot.plugin.enhancement.blackspirit.Enhance;
 import com.github.healpot.plugin.enhancement.failstack.Failstack;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.Permissions;
@@ -19,11 +20,11 @@ import com.github.healpot.plugin.enhancement.main.util.Util;
 
 public class Menu {
 
-    private Inventory screen = null;
-    private ItemStack enhance, force, stats, remove, store;
+    private static Inventory screen = null;
+    private static ItemStack enhance, force, stats, remove, store;
 
 
-    private ItemStack createItem(DyeColor dc, String name) {
+    private static ItemStack createItem(DyeColor dc, String name) {
         ItemStack i = new Wool(dc).toItemStack(1);
         ItemMeta im = i.getItemMeta();
         im.setDisplayName(name);
@@ -32,15 +33,15 @@ public class Menu {
     }
 
 
-    public void showEnhancingMenu(Main m, Player player, ItemStack item) {
+    public static void showEnhancingMenu(Player player) {
         screen = Bukkit.getServer().createInventory(null, 27,
             SettingsManager.lang.getString("Menu.gui.title"));
-        createMenu(m, player);
+        createMenu(player);
         player.openInventory(screen);
     }
 
 
-    public void createMenu(Main m, Player player) {
+    public static void createMenu(Player player) {
         screen.clear();
         enhance = createItem(DyeColor.YELLOW, ChatColor.YELLOW
             + SettingsManager.lang.getString("Menu.gui.enhance"));
@@ -113,13 +114,12 @@ public class Menu {
     }
 
 
-    public Inventory getScreen() {
+    public static Inventory getScreen() {
         return screen;
     }
 
 
-    public void updateInv(
-        Main m,
+    public static void updateInv(
         ItemStack item,
         Player player,
         boolean itemReady,
@@ -132,26 +132,27 @@ public class Menu {
             else {
                 screen.setItem(Util.getSlot(9, 2), enhancingItem);
             }
-            updateFailstack(m, enhancingItem, player);
-            screen.setItem(Util.getSlot(5, 1), m.compatibility.glow.addGlow(
+            updateFailstack(enhancingItem, player);
+            screen.setItem(Util.getSlot(5, 1), Main.compatibility.glow.addGlow(
                 stats));
-            screen.setItem(Util.getSlot(4, 3), m.compatibility.glow.addGlow(
+            screen.setItem(Util.getSlot(4, 3), Main.compatibility.glow.addGlow(
                 enhance));
-            updateForce(m, enhancingItem, player);
-            updateEnhance(m, enhancingItem, player);
-            screen.setItem(Util.getSlot(1, 2), stoneVisualized(m, m.enhance
-                .getStoneId(m, player, enhancingItem, m.enhance
-                    .getItemEnchantLevel(m, player, enhancingItem)), player));
+            updateForce(enhancingItem, player);
+            updateEnhance(enhancingItem, player);
+            screen.setItem(Util.getSlot(1, 2), stoneVisualized(Enhance
+                .getStoneId(player, enhancingItem, Enhance.getItemEnchantLevel(
+                    player, enhancingItem)), player));
             screen.setItem(Util.getSlot(9, 3), remove);
         }
     }
 
 
-    public void updateFailstack(Main m, ItemStack item, Player player) {
+    public static void updateFailstack(ItemStack item, Player player) {
         ItemMeta im = stats.getItemMeta();
-        im.setLore(m.enhance.getChanceAsList(m, item, player));
+        im.setLore(Enhance.getChanceAsList(item, player));
         stats.setItemMeta(im);
-        screen.setItem(Util.getSlot(5, 1), m.compatibility.glow.addGlow(stats));
+        screen.setItem(Util.getSlot(5, 1), Main.compatibility.glow.addGlow(
+            stats));
         if (Failstack.getLevel(player) != 0) {
             screen.setItem(Util.getSlot(6, 1), store);
         }
@@ -161,10 +162,10 @@ public class Menu {
     }
 
 
-    public void updateForce(Main m, ItemStack item, Player player) {
+    public static void updateForce(ItemStack item, Player player) {
         if (Permissions.commandEnhance(player)) {
-            int enchantLevel = m.enhance.getItemEnchantLevel(m, player, item);
-            int stoneId = m.enhance.getStoneId(m, player, item, enchantLevel);
+            int enchantLevel = Enhance.getItemEnchantLevel(player, item);
+            int stoneId = Enhance.getStoneId(player, item, enchantLevel);
             int costToEnhance = SettingsManager.config.getInt("costToForce."
                 + enchantLevel);
             if (enchantLevel < 7 || enchantLevel > 16) {
@@ -182,8 +183,8 @@ public class Menu {
                                 + stoneId))));
                 im.setLore(update);
                 force.setItemMeta(im);
-                screen.setItem(Util.getSlot(6, 3), m.compatibility.glow.addGlow(
-                    force));
+                screen.setItem(Util.getSlot(6, 3), Main.compatibility.glow
+                    .addGlow(force));
             }
         }
         else {
@@ -193,31 +194,31 @@ public class Menu {
     }
 
 
-    public void updateEnhance(Main m, ItemStack item, Player player) {
+    public static void updateEnhance(ItemStack item, Player player) {
         ItemMeta im = enhance.getItemMeta();
         List<String> update = new ArrayList<String>();
         update.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.ifSuccess")));
         update.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.ifFail")));
-        if (m.enhance.getItemEnchantLevel(m, player, item) > 15) {
+        if (Enhance.getItemEnchantLevel(player, item) > 15) {
             update.add(Util.toColor(SettingsManager.lang.getString(
                 "Menu.lore.ifDowngrade")));
         }
         im.setLore(update);
         enhance.setItemMeta(im);
-        screen.setItem(Util.getSlot(4, 3), m.compatibility.glow.addGlow(
+        screen.setItem(Util.getSlot(4, 3), Main.compatibility.glow.addGlow(
             enhance));
     }
 
 
-    public ItemStack stoneVisualized(Main m, int stoneId, Player player) {
+    public static ItemStack stoneVisualized(int stoneId, Player player) {
         ItemStack stone = new ItemStack(Util.stoneTypes[stoneId]);
         ItemMeta im = stone.getItemMeta();
         im.setDisplayName(Util.toColor(SettingsManager.lang.getString("Item."
             + stoneId)));
         List<String> lore = new ArrayList<String>();
-        lore.add(Util.toColor(Inventory.getOneStoneCountAsString(m, player,
+        lore.add(Util.toColor(Main.InventoryText.getOneStoneCountAsString(player,
             stoneId)));
         im.setLore(lore);
         stone.setItemMeta(im);

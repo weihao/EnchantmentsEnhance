@@ -8,7 +8,10 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import com.github.healpot.plugin.enhancement.effect.Broadcast;
+import com.github.healpot.plugin.enhancement.effect.SpawnFirework;
 import com.github.healpot.plugin.enhancement.failstack.Failstack;
+import com.github.healpot.plugin.enhancement.lore.Lore;
 import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.Permissions;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
@@ -17,7 +20,7 @@ import com.github.healpot.plugin.enhancement.player.Inventory;
 
 public class Enhance {
 
-	public Enchantment getItemEnchantmentType(Main m, Player player, ItemStack item) {
+	public static Enchantment getItemEnchantmentType(Player player, ItemStack item) {
 		if ((item.getType() == Material.DIAMOND_SWORD || item.getType() == Material.DIAMOND_AXE)) {
 			return Enchantment.DAMAGE_ALL;
 		} else if ((item.getType() == Material.DIAMOND_CHESTPLATE || item.getType() == Material.DIAMOND_HELMET
@@ -27,7 +30,7 @@ public class Enhance {
 		return null;
 	}
 
-	public int getStoneId(Main m, Player player, ItemStack item, int level) {
+	public static int getStoneId(Player player, ItemStack item, int level) {
 		if ((item.getType() == Material.DIAMOND_SWORD || item.getType() == Material.DIAMOND_AXE)) {
 			if (level > 13) {
 				return 2;
@@ -45,20 +48,20 @@ public class Enhance {
 		return -1;
 	}
 
-	public int getItemEnchantLevel(Main m, Player player, ItemStack item) {
-		if ((getItemEnchantmentType(m, player, item)) != null) {
-			return item.getEnchantmentLevel(getItemEnchantmentType(m, player, item));
+	public static int getItemEnchantLevel(Player player, ItemStack item) {
+		if ((getItemEnchantmentType(player, item)) != null) {
+			return item.getEnchantmentLevel(getItemEnchantmentType(player, item));
 		} else {
 			return 0;
 		}
 	}
 
-	public boolean getValidationOfItem(Main m, Player player, ItemStack item) {
-		if (getItemEnchantmentType(m, player, item) == null) {
+	public static boolean getValidationOfItem(Player player, ItemStack item) {
+		if (getItemEnchantmentType(player, item) == null) {
 			// sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 			// + SettingsManager.lang.getString("Enhance.itemInvalid"), player);
 			return false;
-		} else if (getItemEnchantLevel(m, player, item) >= 19) {
+		} else if (getItemEnchantLevel(player, item) >= 19) {
 			// sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 			// + SettingsManager.lang.getString("Enhance.itemMax"), player);
 			return false;
@@ -67,13 +70,13 @@ public class Enhance {
 		}
 	}
 
-	public void enhanceSuccess(Main m, ItemStack item, Player player, boolean forceEnhanced) {
-		Enchantment enchant = getItemEnchantmentType(m, player, item);
-		int enchantLevel = getItemEnchantLevel(m, player, item) + 1;
+	public static void enhanceSuccess(ItemStack item, Player player, boolean forceEnhanced) {
+		Enchantment enchant = getItemEnchantmentType(player, item);
+		int enchantLevel = getItemEnchantLevel(player, item) + 1;
 		item.addUnsafeEnchantment(enchant, enchantLevel);
 		Util.renameItem(item, enchantLevel);
-		m.compatibility.playsound.playSound(player, "SUCCESS");
-		m.spawnFirework.launch(m, player, m.getConfig().getInt("fireworkCount." + enchantLevel),
+		Main.compatibility.playsound.playSound(player, "SUCCESS");
+		SpawnFirework.launch(player, SettingsManager.config.getInt("fireworkCount." + enchantLevel),
 				SettingsManager.config.getInt("fireworkRounds." + enchantLevel),
 				SettingsManager.config.getInt("fireworkDelay"));
 		if (forceEnhanced) {
@@ -84,30 +87,30 @@ public class Enhance {
 			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Enhance.enhanceSuccess"), player);
 		}
-		m.data.addLore(m, item, player, ChatColor.translateAlternateColorCodes('&',
+		Lore.addLore(item, player, ChatColor.translateAlternateColorCodes('&',
 				SettingsManager.lang.getString("Lore." + SettingsManager.config.getString("lore.bound") + "Lore")),
 				true);
 	}
 
-	public void enhanceFail(Main m, ItemStack item, Player player) {
-		Enchantment enchant = getItemEnchantmentType(m, player, item);
-		int enchantLevel = getItemEnchantLevel(m, player, item);
+	public static void enhanceFail(ItemStack item, Player player) {
+		Enchantment enchant = getItemEnchantmentType(player, item);
+		int enchantLevel = getItemEnchantLevel(player, item);
 		String str = SettingsManager.lang.getString("Enhance.enhanceFailed");
-		m.compatibility.playsound.playSound(player, "FAILED");
+		Main.compatibility.playsound.playSound(player, "FAILED");
 		Failstack.addLevel(player, SettingsManager.config.getInt("failstackGained." + enchantLevel));
 		if (enchantLevel > 15) {
 			str += (" " + SettingsManager.lang.getString("Enhance.downgraded"));
-			m.compatibility.playsound.playSound(player, "DOWNGRADED");
+			Main.compatibility.playsound.playSound(player, "DOWNGRADED");
 			item.addUnsafeEnchantment(enchant, enchantLevel - 1);
 			Util.renameItem(item, (enchantLevel - 1));
 		}
 		Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + str, player);
 	}
 
-	public void diceToEnhancement(Main m, ItemStack item, Player player) {
-		if (getValidationOfItem(m, player, item)) {
-			int enchantLevel = getItemEnchantLevel(m, player, item);
-			int stoneId = getStoneId(m, player, item, enchantLevel);
+	public static void diceToEnhancement(ItemStack item, Player player) {
+		if (getValidationOfItem(player, item)) {
+			int enchantLevel = getItemEnchantLevel(player, item);
+			int stoneId = getStoneId(player, item, enchantLevel);
 			if (Inventory.getLevel(stoneId, player) - 1 >= 0) {
 			    Inventory.addLevel(player, stoneId, -1);
 				Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag") + SettingsManager.lang
@@ -116,12 +119,12 @@ public class Enhance {
 				double random = Math.random();
 				double chance = Failstack.getChance(player, enchantLevel);
 				if (enchantLevel > 15) {
-					m.broadcast.broadcast(m, player, item, enchantLevel, random < chance);
+					Broadcast.broadcast(player, item, enchantLevel, random < chance);
 				}
 				if (random < chance) {
-					enhanceSuccess(m, item, player, false);
+					enhanceSuccess(item, player, false);
 				} else {
-					enhanceFail(m, item, player);
+					enhanceFail(item, player);
 				}
 			} else {
 				Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
@@ -136,16 +139,16 @@ public class Enhance {
 		}
 	}
 
-	public void forceToEnhancement(Main m, ItemStack item, Player player) {
-		if (getValidationOfItem(m, player, item) && Permissions.commandEnhance(player)) {
-			int enchantLevel = getItemEnchantLevel(m, player, item);
-			int stoneId = getStoneId(m, player, item, enchantLevel);
+	public static void forceToEnhancement(ItemStack item, Player player) {
+		if (getValidationOfItem(player, item) && Permissions.commandEnhance(player)) {
+			int enchantLevel = getItemEnchantLevel(player, item);
+			int stoneId = getStoneId(player, item, enchantLevel);
 			int costToEnhance = SettingsManager.config.getInt("costToForce." + enchantLevel);
 			if (Inventory.getLevel(stoneId, player) - costToEnhance > 0) {
 				Inventory.addLevel(player, stoneId, -costToEnhance);
-				enhanceSuccess(m, item, player, true);
+				enhanceSuccess(item, player, true);
 				if (enchantLevel > 15) {
-					m.broadcast.broadcast(m, player, item, enchantLevel, true);
+					Broadcast.broadcast(player, item, enchantLevel, true);
 				}
 			} else {
 				Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
@@ -160,8 +163,8 @@ public class Enhance {
 		}
 	}
 
-	public void getChance(Main m, ItemStack item, Player player) {
-		Enchantment enchant = getItemEnchantmentType(m, player, item);
+	public static void getChance(ItemStack item, Player player) {
+		Enchantment enchant = getItemEnchantmentType(player, item);
 		if (enchant != null) {
 			Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
 					+ SettingsManager.lang.getString("Enhance.currentFailstack") + Failstack.getLevel(player),
@@ -178,8 +181,8 @@ public class Enhance {
 		}
 	}
 
-	public List<String> getChanceAsList(Main m, ItemStack item, Player player) {
-		Enchantment enchant = getItemEnchantmentType(m, player, item);
+	public static List<String> getChanceAsList(ItemStack item, Player player) {
+		Enchantment enchant = getItemEnchantmentType(player, item);
 		ArrayList<String> result = new ArrayList<String>();
 		if (enchant != null) {
 			String fs = (SettingsManager.lang.getString("Enhance.currentFailstack") + Failstack.getLevel(player));

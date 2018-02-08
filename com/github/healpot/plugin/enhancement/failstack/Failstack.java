@@ -2,7 +2,6 @@ package com.github.healpot.plugin.enhancement.failstack;
 
 import java.util.HashMap;
 import org.bukkit.entity.Player;
-import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 
 public class Failstack {

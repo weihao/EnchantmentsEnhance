@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import org.bukkit.entity.Player;
-import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 
 public class Inventory {
@@ -61,16 +60,6 @@ public class Inventory {
             return backpack.get(player)[type];
         }
         return 0;
-    }
-
-
-
-    public static String getOneStoneCountAsString(Player player, int stoneId) {
-        int[] inv = backpack.get(player);
-        return (SettingsManager.lang.getString("Item.listing").replaceAll(
-            "%ITEM%", SettingsManager.lang.getString("Item." + stoneId))
-            .replaceAll("%COUNT%", Integer.toString(inv[stoneId])));
-
     }
     
     public static int[] getPlayer(Player player)

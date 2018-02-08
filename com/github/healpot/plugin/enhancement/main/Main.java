@@ -4,41 +4,41 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import com.github.healpot.plugin.enhancement.blacksmith.SecretBook;
-import com.github.healpot.plugin.enhancement.blackspirit.Enhance;
-import com.github.healpot.plugin.enhancement.effect.Broadcast;
-import com.github.healpot.plugin.enhancement.effect.SpawnFirework;
 import com.github.healpot.plugin.enhancement.failstack.Failstack;
 import com.github.healpot.plugin.enhancement.handler.ItemDropHandler;
 import com.github.healpot.plugin.enhancement.handler.LifeskillingHandler;
 import com.github.healpot.plugin.enhancement.handler.MenuHandler;
 import com.github.healpot.plugin.enhancement.handler.PlayerDeathHandler;
 import com.github.healpot.plugin.enhancement.handler.PlayerStreamHandler;
-import com.github.healpot.plugin.enhancement.lore.Lore;
+import com.github.healpot.plugin.enhancement.interfaces.Displayable;
 import com.github.healpot.plugin.enhancement.main.util.Util;
 import com.github.healpot.plugin.enhancement.modular.Compatibility;
 import com.github.healpot.plugin.enhancement.player.Inventory;
+import com.github.healpot.plugin.enhancement.player.Inventory_Gui;
+import com.github.healpot.plugin.enhancement.player.Inventory_Text;
 import com.github.healpot.plugin.enhancement.visual.Menu;
 
 public class Main extends JavaPlugin {
-    public SpawnFirework spawnFirework = new SpawnFirework();
-    public Enhance enhance = new Enhance();
-    public Menu menu = new Menu();
-    public Lore data = new Lore();
-    public Compatibility compatibility = new Compatibility();
-    public Broadcast broadcast = new Broadcast();
-    public SecretBook secretbook = new SecretBook();
+    public static Compatibility compatibility = new Compatibility();
+    public static Displayable InventoryText = new Inventory_Text();
+    public static Displayable InventoryGui = new Inventory_Gui();
+
+    private static Main main;
+
+
+    public static Main getMain() {
+        return main;
+    }
 
 
     public void onEnable() {
+        main = this;
         saveDefaultConfig();
         SettingsManager.setup(this);
         registerCore();
@@ -92,7 +92,7 @@ public class Main extends JavaPlugin {
 
             if ((args[0].equalsIgnoreCase("menu")) && Permissions
                 .commandEnhance(player)) {
-                menu.showEnhancingMenu(this, player, player.getItemInHand());
+                Menu.showEnhancingMenu(player);
                 return true;
             }
             if ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase(
@@ -120,7 +120,7 @@ public class Main extends JavaPlugin {
             }
             if (args[0].equalsIgnoreCase("inventory") && Permissions
                 .commandEnhance(player)) {
-                Inventory.printInventory(player);
+                Main.InventoryText.openInventory(player);
                 return true;
             }
             if (args[0].equalsIgnoreCase("add") && Permissions.commandAdd(
@@ -186,7 +186,6 @@ public class Main extends JavaPlugin {
     }
 
 
-
     /**
      * This part includes the initialization of the lore.
      */
@@ -195,7 +194,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new ItemDropHandler(), this);
         pm.registerEvents(new PlayerDeathHandler(this), this);
         pm.registerEvents(new PlayerStreamHandler(this), this);
-        pm.registerEvents(new MenuHandler(this), this);
+        pm.registerEvents(new MenuHandler(), this);
         pm.registerEvents(new LifeskillingHandler(), this);
     }
 

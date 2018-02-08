@@ -15,20 +15,14 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import com.github.healpot.plugin.enhancement.blacksmith.SecretBook;
-import com.github.healpot.plugin.enhancement.main.Main;
+import com.github.healpot.plugin.enhancement.blackspirit.Enhance;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
+import com.github.healpot.plugin.enhancement.visual.Menu;
 
 public class MenuHandler implements Listener {
-    private Main m;
     private Map<Player, ItemStack> itemOnEnhancingSlot =
         new HashMap<Player, ItemStack>();
-
-
-    public MenuHandler(Main m) {
-        this.m = m;
-    }
-
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
@@ -42,25 +36,25 @@ public class MenuHandler implements Listener {
             return;
         }
         Player player = (Player)e.getWhoClicked();
-        if (m.menu.getScreen() != null) {
-            if (e.getInventory().getName().equalsIgnoreCase(m.menu.getScreen()
+        if (Menu.getScreen() != null) {
+            if (e.getInventory().getName().equalsIgnoreCase(Menu.getScreen()
                 .getName())) {
                 e.setCancelled(true);
                 if (e.getCurrentItem().hasItemMeta()) {
-                    if (m.enhance.getValidationOfItem(m, player, e
+                    if (Enhance.getValidationOfItem(player, e
                         .getCurrentItem()) && !itemOnEnhancingSlot.containsKey(
                             player)) {
                         itemOnEnhancingSlot.put(player, e.getCurrentItem());
-                        m.menu.updateInv(m, e.getCurrentItem(), player,
+                        Menu.updateInv(e.getCurrentItem(), player,
                             itemOnEnhancingSlot.containsKey(player), true,
                             itemOnEnhancingSlot.get(player));
                     }
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.enhance"))
                         && itemOnEnhancingSlot.containsKey(player)) {
-                        m.enhance.diceToEnhancement(m, itemOnEnhancingSlot.get(
+                        Enhance.diceToEnhancement(itemOnEnhancingSlot.get(
                             player), player);
-                        m.menu.updateInv(m, e.getCurrentItem(), player,
+                        Menu.updateInv(e.getCurrentItem(), player,
                             itemOnEnhancingSlot.containsKey(player), false,
                             itemOnEnhancingSlot.get(player));
                         return;
@@ -69,15 +63,15 @@ public class MenuHandler implements Listener {
                         SettingsManager.lang.getString("Menu.gui.remove"))
                         && itemOnEnhancingSlot.containsKey(player)) {
                         itemOnEnhancingSlot.remove(player);
-                        m.menu.createMenu(m, player);
+                        Menu.createMenu(player);
                         return;
                     }
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.force"))
                         && itemOnEnhancingSlot.containsKey(player)) {
-                        m.enhance.forceToEnhancement(m, itemOnEnhancingSlot.get(
+                        Enhance.forceToEnhancement(itemOnEnhancingSlot.get(
                             player), player);
-                        m.menu.updateInv(m, e.getCurrentItem(), player,
+                        Menu.updateInv(e.getCurrentItem(), player,
                             itemOnEnhancingSlot.containsKey(player), false,
                             itemOnEnhancingSlot.get(player));
                         return;
@@ -86,20 +80,20 @@ public class MenuHandler implements Listener {
                         SettingsManager.lang.getString("Menu.gui.store"))) {
                         SecretBook.addFailstackToStorage(player);
                         if (itemOnEnhancingSlot.get(player) == null) {
-                            m.menu.createMenu(m, player);
+                            Menu.createMenu(player);
                         }
                         else {
-                            m.menu.updateFailstack(m, itemOnEnhancingSlot.get(
+                            Menu.updateFailstack(itemOnEnhancingSlot.get(
                                 player), player);
                         }
                         return;
                     }
                 }
-                else if (m.enhance.getValidationOfItem(m, player, e
+                else if (Enhance.getValidationOfItem(player, e
                     .getCurrentItem()) && !itemOnEnhancingSlot.containsKey(
                         player)) {
                     itemOnEnhancingSlot.put(player, e.getCurrentItem());
-                    m.menu.updateInv(m, e.getCurrentItem(), player,
+                    Menu.updateInv(e.getCurrentItem(), player,
                         itemOnEnhancingSlot.containsKey(player), true,
                         itemOnEnhancingSlot.get(player));
                 }

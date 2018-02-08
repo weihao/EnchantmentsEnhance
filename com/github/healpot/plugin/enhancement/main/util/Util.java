@@ -1,19 +1,56 @@
 package com.github.healpot.plugin.enhancement.main.util;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.Permissions;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 
 public class Util {
 
-    public static Material[] stoneTypes = new Material[] { Material.GHAST_TEAR,
-        Material.GOLD_NUGGET, Material.SUGAR, Material.GLOWSTONE_DUST };
+    public static final Material[] stoneTypes = new Material[] {
+        Material.GHAST_TEAR, Material.GOLD_NUGGET, Material.SUGAR,
+        Material.GLOWSTONE_DUST };
+
+    public static final Material[] armor = { Material.DIAMOND_HELMET,
+        Material.DIAMOND_CHESTPLATE, Material.DIAMOND_LEGGINGS,
+        Material.DIAMOND_BOOTS, Material.IRON_HELMET, Material.IRON_CHESTPLATE,
+        Material.IRON_LEGGINGS, Material.IRON_BOOTS, Material.GOLD_HELMET,
+        Material.GOLD_CHESTPLATE, Material.GOLD_LEGGINGS, Material.GOLD_BOOTS,
+        Material.LEATHER_HELMET, Material.LEATHER_CHESTPLATE,
+        Material.LEATHER_LEGGINGS, Material.LEATHER_BOOTS,
+        Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE,
+        Material.CHAINMAIL_LEGGINGS, Material.CHAINMAIL_BOOTS };
+    public static final Material[] weapon = { Material.DIAMOND_SWORD,
+        Material.GOLD_SWORD, Material.STONE_SWORD, Material.WOOD_SWORD,
+        Material.DIAMOND_AXE, Material.GOLD_AXE, Material.STONE_AXE,
+        Material.WOOD_AXE, Material.IRON_SWORD, Material.IRON_AXE,
+        Material.WOOD_AXE };
+    public static final Material[] sword = { Material.DIAMOND_SWORD,
+        Material.GOLD_SWORD, Material.WOOD_SWORD, Material.STONE_SWORD,
+        Material.IRON_SWORD };
+    public static final Material[] axe = { Material.DIAMOND_AXE,
+        Material.IRON_AXE, Material.WOOD_AXE, Material.STONE_AXE,
+        Material.GOLD_AXE };
+    public static final Material[] helmet = { Material.DIAMOND_HELMET,
+        Material.GOLD_HELMET, Material.IRON_HELMET, Material.LEATHER_HELMET,
+        Material.CHAINMAIL_HELMET };
+    public static final Material[] boot = { Material.DIAMOND_BOOTS,
+        Material.IRON_BOOTS, Material.GOLD_BOOTS, Material.LEATHER_BOOTS,
+        Material.CHAINMAIL_BOOTS };
+    public static final Material[] chestplate = { Material.DIAMOND_CHESTPLATE,
+        Material.IRON_CHESTPLATE, Material.GOLD_CHESTPLATE,
+        Material.LEATHER_CHESTPLATE, Material.CHAINMAIL_CHESTPLATE };
+    public static final Material[] pick = { Material.DIAMOND_PICKAXE,
+        Material.IRON_PICKAXE, Material.GOLD_PICKAXE, Material.STONE_PICKAXE,
+        Material.WOOD_PICKAXE };
+    public static final Material[] hoe = { Material.DIAMOND_HOE,
+        Material.IRON_HOE, Material.GOLD_HOE, Material.STONE_HOE,
+        Material.WOOD_HOE };
 
 
     public static int getSlot(int x, int y) {
@@ -90,4 +127,20 @@ public class Util {
 
         Util.sendMessage(help, player);
     }
+
+
+    public static Player getPlayer(String str) {
+        return Bukkit.getServer().getPlayer(str);
+    }
+
+
+    public static String getPlayerUsername(Player player) {
+        return player.getName();
+    }
+
+
+    public static int extractNumber(String str) {
+        return Integer.parseInt(str.replaceAll("[^0-9]", ""));
+    }
+
 }

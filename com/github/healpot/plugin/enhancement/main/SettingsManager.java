@@ -6,8 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
 import com.github.healpot.plugin.enhancement.main.language.Language_Chinese;
 import com.github.healpot.plugin.enhancement.main.language.Language_English;
 

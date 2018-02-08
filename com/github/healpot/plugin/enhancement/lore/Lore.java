@@ -9,12 +9,11 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import com.github.healpot.plugin.enhancement.main.Main;
 import com.github.healpot.plugin.enhancement.main.SettingsManager;
 import com.github.healpot.plugin.enhancement.main.util.Util;
 
 public class Lore {
-	public void addLore(Main m, ItemStack is, Player p, String lore, boolean tradeable) {
+	public static void addLore(ItemStack is, Player p, String lore, boolean tradeable) {
 		ItemMeta im = is.getItemMeta();
 		List<String> loreList = new ArrayList<String>();
 
@@ -64,7 +63,7 @@ public class Lore {
 
 	}
 
-	public void removeLore(Main m, ItemStack is, Player p, FileConfiguration lang) {
+	public static void removeLore(ItemStack is, Player p, FileConfiguration lang) {
 		ItemMeta im = is.getItemMeta();
 		List<String> loreList = new ArrayList<String>();
 		String x = ChatColor.translateAlternateColorCodes('&', lang.getString("Lore.TradeableLore"));
