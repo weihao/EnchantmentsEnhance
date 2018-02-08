@@ -118,6 +118,5 @@ public class Language_English implements Readable {
                 "0 = weapon stone, 1 = armor stone, 2 = conc weapon, 3 = conc armor");
         SettingsManager.lang.options().copyDefaults(true);
         SettingsManager.saveLang();
-
     }
 }

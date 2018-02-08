@@ -113,7 +113,6 @@ public class Language_Chinese implements Readable{
         SettingsManager.lang.addDefault("Valks.hasFailstack", "你目前的垫子不为零，为此你不能使用巴尔克斯的忠告.");
         SettingsManager.lang.addDefault("Example.command.add.guide", "enhance add <玩家> <附魔石类型> <数量>");
         SettingsManager.lang.addDefault("Example.command.add.stone", "0 = 黑石 (武器), 1 = 黑石 (防具), 2 = 凝聚魔力的黑石 (武器), 3 = 凝聚魔力的黑石 (防具)");
-
         SettingsManager.lang.options().copyDefaults(true);
         SettingsManager.saveLang();
     }

@@ -49,6 +49,7 @@ public class SettingsManager {
 
         if (config.getString("language") == "CN") {
             Language_Chinese.addLang();
+            Language_English.addLang();
         }
         else {
             Language_English.addLang();

@@ -89,7 +89,6 @@ public class Main extends JavaPlugin {
                 Util.printHelp(player);
                 return true;
             }
-
             if ((args[0].equalsIgnoreCase("menu")) && Permissions
                 .commandEnhance(player)) {
                 Menu.showEnhancingMenu(player);
@@ -223,7 +222,6 @@ public class Main extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
     }
-
 
     @Override
     public List<String> onTabComplete(

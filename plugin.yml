@@ -1,5 +1,5 @@
 name: EnchantmentsEnhance
-version: 2.4
+version: 2.5
 description: This is a Black Desert Online Style of Enchantment enhancing
 author: Feier
 load: postworld
@@ -34,11 +34,5 @@ permissions:
     Enchantmentsenhance.enhance:
         description: Allows you to use the enhancement menu.
         default: true
-    Enchantmentsenhance.select:
-        description: Allows you to use the select command.
-    Enchantmentsenhance.inventory:
-        description: Allows you to use the inventory command.
     Enchantmentsenhance.add:
         description: Allows you to use the add command.
-    Enchantmentsenhance.list:
-        description: Allows you to use the list command.
