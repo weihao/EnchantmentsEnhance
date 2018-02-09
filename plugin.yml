@@ -2,10 +2,11 @@ name: EnchantmentsEnhance
 version: 2.5
 description: This is a Black Desert Online Style of Enchantment enhancing
 author: Feier
+authors: [Feier, lgou2w]
 load: postworld
 prefix: EnchantmentsEnhance
 
-main: com.github.healpot.plugin.enhancement.main.Main
+main: org.pixeltime.healpot.enhancement.Main
 database: false
 website: https://github.com/HealPot
 

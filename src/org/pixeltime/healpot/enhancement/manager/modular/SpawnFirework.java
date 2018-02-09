@@ -7,7 +7,7 @@ import org.bukkit.FireworkEffect.Type;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
-import org.pixeltime.healpot.enhancement.tasks.Main;
+import org.pixeltime.healpot.enhancement.Main;
 
 public class SpawnFirework {
 

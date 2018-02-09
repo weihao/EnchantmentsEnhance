@@ -1,14 +1,15 @@
 package org.pixeltime.healpot.enhancement.manager;
 
-import java.io.File;
-import java.io.IOException;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.manager.language.Language_Chinese;
 import org.pixeltime.healpot.enhancement.manager.language.Language_English;
-import org.pixeltime.healpot.enhancement.tasks.Main;
+
+import java.io.File;
+import java.io.IOException;
 
 public class SettingsManager {
 

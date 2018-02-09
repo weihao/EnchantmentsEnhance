@@ -1,8 +1,5 @@
-package org.pixeltime.healpot.enhancement.tasks;
+package org.pixeltime.healpot.enhancement;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -16,15 +13,15 @@ import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory_Gui;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory_Text;
 import org.pixeltime.healpot.enhancement.interfaces.Displayable;
-import org.pixeltime.healpot.enhancement.listeners.ItemDropHandler;
-import org.pixeltime.healpot.enhancement.listeners.LifeskillingHandler;
-import org.pixeltime.healpot.enhancement.listeners.MenuHandler;
-import org.pixeltime.healpot.enhancement.listeners.PlayerDeathHandler;
-import org.pixeltime.healpot.enhancement.listeners.PlayerStreamHandler;
+import org.pixeltime.healpot.enhancement.listeners.*;
 import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.util.Util;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main extends JavaPlugin {
     public static Compatibility compatibility = new Compatibility();

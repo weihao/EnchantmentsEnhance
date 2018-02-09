@@ -16,7 +16,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
-import org.pixeltime.healpot.enhancement.tasks.Main;
+import org.pixeltime.healpot.enhancement.Main;
 
 public class PlayerDeathHandler implements Listener {
     private Main m;

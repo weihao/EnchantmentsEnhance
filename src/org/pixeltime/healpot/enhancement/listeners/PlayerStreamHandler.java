@@ -10,7 +10,7 @@ import org.pixeltime.healpot.enhancement.events.blacksmith.SecretBook;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
-import org.pixeltime.healpot.enhancement.tasks.Main;
+import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.util.Util;
 
 public class PlayerStreamHandler implements Listener {

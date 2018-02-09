@@ -1,10 +1,11 @@
 package org.pixeltime.healpot.enhancement.events.inventory;
 
+import org.bukkit.entity.Player;
+import org.pixeltime.healpot.enhancement.manager.SettingsManager;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import org.bukkit.entity.Player;
-import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 
 public class Inventory {
     // int[0] = weapon stone, int[1] = armor stone, int[2] = conc weapon; int[3]

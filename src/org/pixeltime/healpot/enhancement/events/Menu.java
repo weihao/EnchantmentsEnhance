@@ -15,7 +15,7 @@ import org.pixeltime.healpot.enhancement.events.blackspirit.Enhance;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
-import org.pixeltime.healpot.enhancement.tasks.Main;
+import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.util.Util;
 
 public class Menu {
