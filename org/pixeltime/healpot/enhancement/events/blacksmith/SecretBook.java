@@ -17,8 +17,8 @@ public class SecretBook {
     public static void addFailstackToStorage(Player player) {
         Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
             + SettingsManager.lang.getString("Save.createFailstack").replaceAll(
-                "%failstack%", Integer.toString(Failstack.getLevel(
-                    player))), player);
+                "%failstack%", Integer.toString(Failstack.getLevel(player))),
+            player);
         storage.get(player).add(Failstack.getLevel(player));
         Failstack.resetLevel(player);
     }
@@ -55,6 +55,12 @@ public class SecretBook {
     }
 
 
+    /**
+     * Displays the current list of the advices.
+     * 
+     * @param player
+     * @param pageNumber
+     */
     public static void list(Player player, int pageNumber) {
         List<Integer> adviceOfValks = storage.get(player);
 
@@ -93,11 +99,17 @@ public class SecretBook {
     }
 
 
+    /**
+     * Uses an advice from the list.
+     * 
+     * @param player
+     * @param selectedFailstack
+     */
     public static void select(Player player, int selectedFailstack) {
         if (selectedFailstack > 0 && Failstack.getLevel(player) == 0) {
             try {
-                Failstack.addLevel(player, SecretBook.storage.get(player)
-                    .get(selectedFailstack - 1));
+                Failstack.addLevel(player, SecretBook.storage.get(player).get(
+                    selectedFailstack - 1));
                 SecretBook.storage.get(player).remove(selectedFailstack - 1);
             }
             catch (Exception e) {

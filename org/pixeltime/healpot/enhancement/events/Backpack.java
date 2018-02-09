@@ -7,6 +7,13 @@ import org.bukkit.inventory.ItemStack;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.util.Util;
 
+/**
+ * Incomplete.
+ * 
+ * @author HealPot
+ * @version Feb 9, 2018
+ *
+ */
 public class Backpack {
 
     private static Inventory screen = null;

@@ -1,4 +1,4 @@
-package org.pixeltime.healpot.enhancement.events;
+package org.pixeltime.healpot.enhancement.events.inventory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -61,9 +61,9 @@ public class Inventory {
         }
         return 0;
     }
-    
-    public static int[] getPlayer(Player player)
-    {
+
+
+    public static int[] getPlayer(Player player) {
         return Inventory.backpack.get(player);
     }
 }

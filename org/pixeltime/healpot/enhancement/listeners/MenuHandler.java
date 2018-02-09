@@ -24,6 +24,12 @@ public class MenuHandler implements Listener {
     private Map<Player, ItemStack> itemOnEnhancingSlot =
         new HashMap<Player, ItemStack>();
 
+
+    /**
+     * Handles Gui.
+     * 
+     * @param e
+     */
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
         if (e.getSlot() < 0) {
@@ -41,9 +47,8 @@ public class MenuHandler implements Listener {
                 .getName())) {
                 e.setCancelled(true);
                 if (e.getCurrentItem().hasItemMeta()) {
-                    if (Enhance.getValidationOfItem(player, e
-                        .getCurrentItem()) && !itemOnEnhancingSlot.containsKey(
-                            player)) {
+                    if (Enhance.getValidationOfItem(player, e.getCurrentItem())
+                        && !itemOnEnhancingSlot.containsKey(player)) {
                         itemOnEnhancingSlot.put(player, e.getCurrentItem());
                         Menu.updateInv(e.getCurrentItem(), player,
                             itemOnEnhancingSlot.containsKey(player), true,
@@ -89,9 +94,8 @@ public class MenuHandler implements Listener {
                         return;
                     }
                 }
-                else if (Enhance.getValidationOfItem(player, e
-                    .getCurrentItem()) && !itemOnEnhancingSlot.containsKey(
-                        player)) {
+                else if (Enhance.getValidationOfItem(player, e.getCurrentItem())
+                    && !itemOnEnhancingSlot.containsKey(player)) {
                     itemOnEnhancingSlot.put(player, e.getCurrentItem());
                     Menu.updateInv(e.getCurrentItem(), player,
                         itemOnEnhancingSlot.containsKey(player), true,
@@ -153,16 +157,15 @@ public class MenuHandler implements Listener {
     }
 
 
+    /**
+     * Removes current item placed on the enhancing slot.
+     * 
+     * @param e
+     */
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent e) {
         if (itemOnEnhancingSlot.containsKey(e.getPlayer())) {
             itemOnEnhancingSlot.remove(e.getPlayer());
         }
     }
-
-
-    public static int getSlot(int x, int y) {
-        return (y * 9) - (9 - x) - 1;
-    }
-
 }

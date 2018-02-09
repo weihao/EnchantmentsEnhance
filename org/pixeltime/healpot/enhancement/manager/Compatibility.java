@@ -19,7 +19,10 @@ import org.pixeltime.healpot.enhancement.manager.modular.PlaySound_1_9_R2;
 public class Compatibility {
 	public Glow glow;
 	public PlaySound playsound;
-
+	/**
+	 * Finds the right version for item glower.
+	 * @return
+	 */
 	public boolean setupGlow() {
 
 		String version;
@@ -50,7 +53,10 @@ public class Compatibility {
 
 		return glow != null;
 	}
-
+	/**
+	 * Finds the right version for play sound.
+	 * @return
+	 */
 	public boolean setupSound() {
 
 		String version;

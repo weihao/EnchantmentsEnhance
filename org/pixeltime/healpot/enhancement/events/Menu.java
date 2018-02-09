@@ -19,11 +19,23 @@ import org.pixeltime.healpot.enhancement.tasks.Main;
 import org.pixeltime.healpot.enhancement.util.Util;
 
 public class Menu {
-
+    /**
+     * This is the inventory.
+     */
     private static Inventory screen = null;
+    /**
+     * These are buttons.
+     */
     private static ItemStack enhance, force, stats, remove, store;
 
 
+    /**
+     * Creates a GUI button made of a wool.
+     * 
+     * @param dc
+     * @param name
+     * @return
+     */
     private static ItemStack createItem(DyeColor dc, String name) {
         ItemStack i = new Wool(dc).toItemStack(1);
         ItemMeta im = i.getItemMeta();
@@ -33,6 +45,11 @@ public class Menu {
     }
 
 
+    /**
+     * Opens GUI to a player.
+     * 
+     * @param player
+     */
     public static void showEnhancingMenu(Player player) {
         screen = Bukkit.getServer().createInventory(null, 27,
             SettingsManager.lang.getString("Menu.gui.title"));
@@ -41,6 +58,11 @@ public class Menu {
     }
 
 
+    /**
+     * Creates an enhancement gui.
+     * 
+     * @param player
+     */
     public static void createMenu(Player player) {
         screen.clear();
         enhance = createItem(DyeColor.YELLOW, ChatColor.YELLOW
@@ -119,6 +141,15 @@ public class Menu {
     }
 
 
+    /**
+     * Updates the inventory.
+     * 
+     * @param item
+     * @param player
+     * @param itemReady
+     * @param change
+     * @param enhancingItem
+     */
     public static void updateInv(
         ItemStack item,
         Player player,
@@ -147,6 +178,12 @@ public class Menu {
     }
 
 
+    /**
+     * Updates the failstack button's desc in the GUI menu.
+     * 
+     * @param item
+     * @param player
+     */
     public static void updateFailstack(ItemStack item, Player player) {
         ItemMeta im = stats.getItemMeta();
         im.setLore(Enhance.getChanceAsList(item, player));
@@ -162,6 +199,12 @@ public class Menu {
     }
 
 
+    /**
+     * Updates the force button's desc in the GUI menu.
+     * 
+     * @param item
+     * @param player
+     */
     public static void updateForce(ItemStack item, Player player) {
         if (Permissions.commandEnhance(player)) {
             int enchantLevel = Enhance.getItemEnchantLevel(player, item);
@@ -194,6 +237,12 @@ public class Menu {
     }
 
 
+    /**
+     * Updates the enhance button's desc in the GUI menu.
+     * 
+     * @param item
+     * @param player
+     */
     public static void updateEnhance(ItemStack item, Player player) {
         ItemMeta im = enhance.getItemMeta();
         List<String> update = new ArrayList<String>();
@@ -212,14 +261,21 @@ public class Menu {
     }
 
 
+    /**
+     * Displays enhancement stone as a itemstack on GUI
+     * 
+     * @param stoneId
+     * @param player
+     * @return
+     */
     public static ItemStack stoneVisualized(int stoneId, Player player) {
         ItemStack stone = new ItemStack(Util.stoneTypes[stoneId]);
         ItemMeta im = stone.getItemMeta();
         im.setDisplayName(Util.toColor(SettingsManager.lang.getString("Item."
             + stoneId)));
         List<String> lore = new ArrayList<String>();
-        lore.add(Util.toColor(Main.InventoryText.getOneStoneCountAsString(player,
-            stoneId)));
+        lore.add(Util.toColor(Main.InventoryText.getOneStoneCountAsString(
+            player, stoneId)));
         im.setLore(lore);
         stone.setItemMeta(im);
         return stone;

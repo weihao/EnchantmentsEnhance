@@ -4,6 +4,9 @@ import org.pixeltime.healpot.enhancement.interfaces.Readable;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 
 public class Language_English implements Readable {
+    /**
+     * Adds English localization file to the plugin.
+     */
     public static void addLang() {
         SettingsManager.lang.addDefault("Config.pluginTag", "&f[&6EnchantmentsEnhance&f] ");
         SettingsManager.lang.addDefault("Config.checkingVersion", "&aYou are using EnchantmentsEnhance v%version%.");

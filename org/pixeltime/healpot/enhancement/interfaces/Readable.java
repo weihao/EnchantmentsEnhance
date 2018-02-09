@@ -1,5 +1,9 @@
 package org.pixeltime.healpot.enhancement.interfaces;
 
 public interface Readable {
-	public static void addLang() {};
+    /**
+     * This determines the localization of the plugin.
+     */
+    public static void addLang() {
+    };
 }

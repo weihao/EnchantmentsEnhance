@@ -1,6 +1,7 @@
-package org.pixeltime.healpot.enhancement.events;
+package org.pixeltime.healpot.enhancement.events.inventory;
 
 import org.bukkit.entity.Player;
+import org.pixeltime.healpot.enhancement.events.Backpack;
 import org.pixeltime.healpot.enhancement.interfaces.Displayable;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 

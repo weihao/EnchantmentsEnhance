@@ -5,7 +5,8 @@ import org.bukkit.entity.Player;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 
 public class Failstack {
-    private static HashMap<Player, Integer> failstack = new HashMap<Player, Integer>();
+    private static HashMap<Player, Integer> failstack =
+        new HashMap<Player, Integer>();
 
 
     public static void loadLevels(Player player) {

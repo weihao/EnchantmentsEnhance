@@ -1,6 +1,5 @@
 package org.pixeltime.healpot.enhancement.tasks;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,12 +9,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.pixeltime.healpot.enhancement.events.Inventory;
-import org.pixeltime.healpot.enhancement.events.Inventory_Gui;
-import org.pixeltime.healpot.enhancement.events.Inventory_Text;
 import org.pixeltime.healpot.enhancement.events.Menu;
 import org.pixeltime.healpot.enhancement.events.blacksmith.SecretBook;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
+import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
+import org.pixeltime.healpot.enhancement.events.inventory.Inventory_Gui;
+import org.pixeltime.healpot.enhancement.events.inventory.Inventory_Text;
 import org.pixeltime.healpot.enhancement.interfaces.Displayable;
 import org.pixeltime.healpot.enhancement.listeners.ItemDropHandler;
 import org.pixeltime.healpot.enhancement.listeners.LifeskillingHandler;
@@ -189,7 +188,7 @@ public class Main extends JavaPlugin {
 
 
     /**
-     * This part includes the initialization of the lore.
+     * Includes the initialization of the plugin.
      */
     private void registerCore() {
         PluginManager pm = Bukkit.getPluginManager();
@@ -201,6 +200,9 @@ public class Main extends JavaPlugin {
     }
 
 
+    /**
+     * Detects the version of the server is currently running.
+     */
     private void registerNMS() {
         if (compatibility.setupGlow()) {
             getLogger().info("Enhancement Glower setup was successful!");
@@ -225,6 +227,7 @@ public class Main extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
     }
+
 
     @Override
     public List<String> onTabComplete(

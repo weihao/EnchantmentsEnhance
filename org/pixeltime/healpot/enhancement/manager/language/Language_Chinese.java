@@ -4,6 +4,9 @@ import org.pixeltime.healpot.enhancement.interfaces.Readable;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 
 public class Language_Chinese implements Readable{
+    /**
+     * Adds Chinese localization file to the plugin.
+     */
     public static void addLang() {
         SettingsManager.lang.addDefault("Config.pluginTag", "&f[&6强化插件&f] ");
         SettingsManager.lang.addDefault("Config.checkingVersion", "&a您正在使用的插件版本是v%version%.");
