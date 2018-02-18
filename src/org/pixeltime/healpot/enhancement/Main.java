@@ -18,7 +18,6 @@ import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.util.Util;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -74,6 +73,7 @@ public class Main extends JavaPlugin {
         String commandLabel,
         String[] args) {
 
+        // Checking if the command sender is console
         if (!(sender instanceof Player)) {
             Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
                 + SettingsManager.lang.getString("Config.consoleCommand"),
@@ -82,8 +82,9 @@ public class Main extends JavaPlugin {
         }
 
         Player player = (Player)sender;
-
+        // Handling commands
         if (cmd.getName().equalsIgnoreCase("enhance")) {
+            // If the command does not have arguments
             if (args.length == 0) {
                 Util.printHelp(player);
                 return true;
@@ -158,6 +159,7 @@ public class Main extends JavaPlugin {
                     return true;
                 }
             }
+            // If the command has one arguments
             if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("list")) {
                     SecretBook.list(player, 0);
@@ -168,16 +170,19 @@ public class Main extends JavaPlugin {
                     return true;
                 }
             }
-            if (args.length == 2)
+            // If the command has two arguments
+            if (args.length == 2) {
                 if (args[0].equalsIgnoreCase("list")) {
                     SecretBook.list(player, Integer.parseInt(args[1]));
                     return true;
                 }
-            if (args[0].equalsIgnoreCase("select")) {
-                SecretBook.select(player, Integer.parseInt(args[1]));
-                return true;
+                if (args[0].equalsIgnoreCase("select")) {
+                    SecretBook.select(player, Integer.parseInt(args[1]));
+                    return true;
+                }
             }
         }
+        // No Commands Found
         Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
             + SettingsManager.lang.getString("Config.invalidCommand"), player);
         return true;

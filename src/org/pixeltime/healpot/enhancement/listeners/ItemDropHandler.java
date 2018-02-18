@@ -31,6 +31,7 @@ public class ItemDropHandler implements Listener {
                 loreList.add((String)DroppedItemStack.getItemMeta().getLore()
                     .get(i));
             }
+            // Checks if the item is a bounded item
             if (loreList.contains(ChatColor.translateAlternateColorCodes('&',
                 SettingsManager.lang.getString("Lore.UntradeableLore")))) {
                 e.setCancelled(true);

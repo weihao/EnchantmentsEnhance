@@ -183,6 +183,7 @@ public class Enhance {
      * @param player
      */
     public static void diceToEnhancement(ItemStack item, Player player) {
+        // If the item is a valid item
         if (getValidationOfItem(player, item)) {
             int enchantLevel = getItemEnchantLevel(player, item);
             int stoneId = getStoneId(player, item, enchantLevel);

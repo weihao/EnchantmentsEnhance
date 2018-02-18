@@ -31,18 +31,23 @@ public class LifeskillingHandler implements Listener {
             return;
         }
         Block block = e.getBlock();
-        for (String listedBlock : SettingsManager.config.getStringList(
-            "dropConcWeapon.block")) {
-            if (block.getType().toString().equals(listedBlock)) {
-                randomDropConcWeapon(player);
-                return;
+        Random random = new Random();
+        if (random.nextInt(2) == 1) {
+            for (String listedBlock : SettingsManager.config.getStringList(
+                "dropConcWeapon.block")) {
+                if (block.getType().toString().equals(listedBlock)) {
+                    randomDropConcWeapon(player);
+                    return;
+                }
             }
         }
-        for (String listedBlock : SettingsManager.config.getStringList(
-            "dropConcArmor.block")) {
-            if (block.getType().toString().equals(listedBlock)) {
-                randomDropConcArmor(player);
-                return;
+        else {
+            for (String listedBlock : SettingsManager.config.getStringList(
+                "dropConcArmor.block")) {
+                if (block.getType().toString().equals(listedBlock)) {
+                    randomDropConcArmor(player);
+                    return;
+                }
             }
         }
     }
@@ -55,6 +60,7 @@ public class LifeskillingHandler implements Listener {
      */
     @EventHandler
     public void onFish(PlayerFishEvent e) {
+        // If the fishing is successful
         if ((e.getCaught() instanceof Item)) {
             Player player = e.getPlayer();
             String[] stoneType = new String[] { SettingsManager.lang.getString(
@@ -79,6 +85,7 @@ public class LifeskillingHandler implements Listener {
      */
     @EventHandler
     public void onEntityDeath(EntityDeathEvent e) {
+        // If the killed entity is a monster
         if (e.getEntity() instanceof Monster) {
             if (e.getEntity().getKiller() instanceof Player) {
                 String[] stoneType = new String[] { SettingsManager.lang

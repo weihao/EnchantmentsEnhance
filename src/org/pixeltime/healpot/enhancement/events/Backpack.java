@@ -20,6 +20,11 @@ public class Backpack {
     private static ItemStack[] items = new ItemStack[3];
 
 
+    /**
+     * Opens a GUI to a player.
+     * 
+     * @param player
+     */
     public static void showBackpack(Player player) {
         screen = Bukkit.getServer().createInventory(null, 27,
             SettingsManager.lang.getString("Inventory.gui.title"));
