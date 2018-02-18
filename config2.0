@@ -1,0 +1,47 @@
+configVersion: 2.0
+language: en
+#supported language: cn, en.
+
+lore:
+  bound: Tradeable
+#supported bound type: Tradeable, Untradeable
+#Tradeable: keep-item-on-death, personal trading is allowed.
+#Untradeable: keep-item-on-death, cannot be stored, cannot be dropped.
+  sendBoundingMessage: false
+  
+lifeskilling:
+  dropConcWeapon:
+    ratePerBlock: 0.01
+#In range of 0.01 means player will possibly get 1 conc Weapon out of 100 ores mined.
+    block:
+      - DIAMOND_ORE
+      - EMERALD_ORE
+      - EMERALD_ORE
+      - GLOWING_REDSTONE_ORE
+      - GOLD_ORE
+      - IRON_ORE
+      - LAPIS_ORE
+      - QUARTZ_ORE
+      - REDSTONE_ORE
+  dropConcArmor:
+    ratePerBlock: 0.01
+    block:
+      - LOG
+  dropWeaponNArmor:
+    fishing:
+      enabled: true
+      ratePerFish: 0.05
+    allMob:
+      enabled: true
+      ratePerKill: 0.01
+fireworkDelay: 0
+level:
+  1:
+    baseChance:
+    chanceIncreasePerFailstack:
+    maximumFailstackApplied:
+    failstackGainedPerFail:
+    costToForceEnchant:
+    fireworkIfSuccessful:
+    fireworkRounds:
+  
