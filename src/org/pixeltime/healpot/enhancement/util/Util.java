@@ -235,4 +235,12 @@ public class Util {
         return Integer.parseInt(str.replaceAll("[^0-9]", ""));
     }
 
+    public static boolean isValid(ItemStack item, Material[] comparable) {
+        for (int i = 0; i < comparable.length; i++) {
+            if (comparable[i].equals(item.getType())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
