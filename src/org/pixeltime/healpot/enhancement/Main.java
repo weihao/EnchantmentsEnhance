@@ -21,6 +21,7 @@ import org.pixeltime.healpot.enhancement.util.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public class Main extends JavaPlugin {
     public static Compatibility compatibility = new Compatibility();
@@ -48,6 +49,17 @@ public class Main extends JavaPlugin {
                 Failstack.loadLevels(player);
                 SecretBook.loadStorage(player);
                 Inventory.loadInventory(player);
+            }
+        }
+        
+        //Bukkit.getServer().getLogger().info(this.getConfig().getConfigurationSection("testing").getKeys(false).size() + "");
+        Set<String> temp = this.getConfig().getConfigurationSection("testing").getKeys(false);
+        for (String key: temp)
+        {
+            Set<String> temp2 = this.getConfig().getConfigurationSection("testing." + key).getKeys(false);
+            for (String key2 : temp2)
+            {
+                Bukkit.getServer().getLogger().info(key2);
             }
         }
     }

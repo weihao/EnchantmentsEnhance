@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class SettingsManager {
 
-    private SettingsManager() {
+    public SettingsManager() {
     }
 
     public static FileConfiguration config;
