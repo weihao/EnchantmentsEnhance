@@ -6,6 +6,7 @@ branches:
     - master
 install:
   - cd BuildTools
+  - if [ -e "craftbukkit-1.7.10.jar" ]; then echo "CraftBukkit-1.7.10.jar OK."; else java -jar BuildTools.jar --rev 1.8.8; fi
   - if [ -e "craftbukkit-1.8.8.jar" ]; then echo "CraftBukkit-1.8.8.jar OK."; else java -jar BuildTools.jar --rev 1.8.8; fi
   - if [ -e "craftbukkit-1.9.4.jar" ]; then echo "CraftBukkit-1.9.4.jar OK."; else java -jar BuildTools.jar --rev 1.9.4; fi
   - if [ -e "craftbukkit-1.10.2.jar" ]; then echo "CraftBukkit-1.10.2.jar OK."; else java -jar BuildTools.jar --rev 1.10.2; fi

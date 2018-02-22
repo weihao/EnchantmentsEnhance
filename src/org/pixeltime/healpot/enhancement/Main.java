@@ -51,17 +51,6 @@ public class Main extends JavaPlugin {
                 Inventory.loadInventory(player);
             }
         }
-        
-        //Bukkit.getServer().getLogger().info(this.getConfig().getConfigurationSection("testing").getKeys(false).size() + "");
-        Set<String> temp = this.getConfig().getConfigurationSection("testing").getKeys(false);
-        for (String key: temp)
-        {
-            Set<String> temp2 = this.getConfig().getConfigurationSection("testing." + key).getKeys(false);
-            for (String key2 : temp2)
-            {
-                Bukkit.getServer().getLogger().info(key2);
-            }
-        }
     }
 
 
