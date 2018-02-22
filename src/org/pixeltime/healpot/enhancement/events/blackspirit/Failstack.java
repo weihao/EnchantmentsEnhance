@@ -2,6 +2,7 @@ package org.pixeltime.healpot.enhancement.events.blackspirit;
 
 import java.util.HashMap;
 import org.bukkit.entity.Player;
+import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 
 public class Failstack {
@@ -52,12 +53,9 @@ public class Failstack {
 
     public static double getChance(Player p, int enchantLevel) {
         int failstack = getLevel(p);
-        int maximumFailstack = SettingsManager.config.getInt("maximumFailstack."
-            + Integer.toString(enchantLevel));
-        double baseChance = SettingsManager.config.getDouble("baseChance."
-            + Integer.toString(enchantLevel));
-        double increasePerFailstack = SettingsManager.config.getDouble(
-            "increasePerFailstack." + Integer.toString(enchantLevel));
+        int maximumFailstack = DataManager.maximumFailstackApplied[enchantLevel];
+        double baseChance = DataManager.baseChance[enchantLevel];
+        double increasePerFailstack = DataManager.chanceIncreasePerFailstack[enchantLevel];
 
         if (failstack > maximumFailstack) {
             failstack = maximumFailstack;

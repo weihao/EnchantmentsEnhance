@@ -10,11 +10,11 @@ public class DataManager {
     public static int levels;
     public static double[] baseChance;
     public static double[] chanceIncreasePerFailstack;
-    public static double[] maximumFailstackApplied;
-    public static double[] failstackGainedPerFail;
-    public static double[] costToForceEnchant;
+    public static int[] maximumFailstackApplied;
+    public static int[] failstackGainedPerFail;
+    public static int[] costToForceEnchant;
     public static boolean[] fireworks;
-    public static double[] fireworkRounds;
+    public static int[] fireworkRounds;
     public static String[] name;
 
 
@@ -24,11 +24,11 @@ public class DataManager {
         levels = temp.size();
         DataManager.baseChance = new double[levels];
         DataManager.chanceIncreasePerFailstack = new double[levels];
-        DataManager.maximumFailstackApplied = new double[levels];
-        DataManager.failstackGainedPerFail = new double[levels];
-        DataManager.costToForceEnchant = new double[levels];
+        DataManager.maximumFailstackApplied = new int[levels];
+        DataManager.failstackGainedPerFail = new int[levels];
+        DataManager.costToForceEnchant = new int[levels];
         DataManager.fireworks = new boolean[levels];
-        DataManager.fireworkRounds = new double[levels];
+        DataManager.fireworkRounds = new int[levels];
         DataManager.name = new String[levels];
 
         Set<String> temp2 = SettingsManager.config.getConfigurationSection(
@@ -46,17 +46,17 @@ public class DataManager {
                 }
                 else if (key2.equalsIgnoreCase("maximumFailstackApplied")) {
                     DataManager.chanceIncreasePerFailstack[i] =
-                        SettingsManager.config.getDouble("enhance." + i + "."
+                        SettingsManager.config.getInt("enhance." + i + "."
                             + key2);
                 }
                 else if (key2.equalsIgnoreCase("failstackGainedPerFail")) {
                     DataManager.failstackGainedPerFail[i] =
-                        SettingsManager.config.getDouble("enhance." + i + "."
+                        SettingsManager.config.getInt("enhance." + i + "."
                             + key2);
                 }
                 else if (key2.equalsIgnoreCase("costToForceEnchant")) {
                     DataManager.costToForceEnchant[i] = SettingsManager.config
-                        .getDouble("enhance." + i + "." + key2);
+                        .getInt("enhance." + i + "." + key2);
                 }
                 else if (key2.equalsIgnoreCase("fireworks")) {
                     DataManager.fireworks[i] = SettingsManager.config
@@ -64,7 +64,7 @@ public class DataManager {
                 }
                 else if (key2.equalsIgnoreCase("fireworkRounds")) {
                     DataManager.fireworkRounds[i] = SettingsManager.config
-                        .getDouble("enhance." + i + "." + key2);
+                        .getInt("enhance." + i + "." + key2);
                 }
                 else if (key2.equalsIgnoreCase("name")) {
                     DataManager.name[i] = SettingsManager.config.getString(

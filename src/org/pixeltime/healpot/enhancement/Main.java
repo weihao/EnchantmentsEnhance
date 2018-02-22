@@ -15,6 +15,7 @@ import org.pixeltime.healpot.enhancement.events.inventory.Inventory_Text;
 import org.pixeltime.healpot.enhancement.interfaces.Displayable;
 import org.pixeltime.healpot.enhancement.listeners.*;
 import org.pixeltime.healpot.enhancement.manager.Compatibility;
+import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.util.Util;
@@ -200,6 +201,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new PlayerStreamHandler(this), this);
         pm.registerEvents(new MenuHandler(), this);
         pm.registerEvents(new LifeskillingHandler(), this);
+        DataManager DM = new DataManager();
     }
 
 

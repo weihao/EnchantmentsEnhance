@@ -128,11 +128,9 @@ public class Enhance {
         // Play sound
         Main.compatibility.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
-        SpawnFirework.launch(player, SettingsManager.config.getInt(
-            "fireworkCount." + enchantLevelBeforeAttemptEnhancing),
-            SettingsManager.config.getInt("fireworkRounds."
-                + enchantLevelBeforeAttemptEnhancing), SettingsManager.config
-                    .getInt("fireworkDelay"));
+        SpawnFirework.launch(player, 1,
+            DataManager.fireworkRounds[enchantLevelBeforeAttemptEnhancing],
+            SettingsManager.config.getInt("fireworkDelay"));
         // Do not clear failstack if force enhanced
         if (forceEnhanced) {
             Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
@@ -167,8 +165,7 @@ public class Enhance {
         Enchantment enchant = getItemEnchantmentType(player, item);
         String str = SettingsManager.lang.getString("Enhance.enhanceFailed");
         Main.compatibility.playsound.playSound(player, "FAILED");
-        Failstack.addLevel(player, SettingsManager.config.getInt(
-            "failstackGained." + enchantLevelBeforeAttemptEnhancing));
+        Failstack.addLevel(player, DataManager.failstackGainedPerFail[enchantLevelBeforeAttemptEnhancing]);
         if (enchantLevelBeforeAttemptEnhancing > 15) {
             str += (" " + SettingsManager.lang.getString("Enhance.downgraded"));
             Main.compatibility.playsound.playSound(player, "DOWNGRADED");
@@ -250,8 +247,7 @@ public class Enhance {
             // Finds the stone used in the enhancement
             int stoneId = getStoneId(player, item, enchantLevel);
             // Gets the cost of force enhancing
-            int costToEnhance = SettingsManager.config.getInt("costToForce."
-                + enchantLevel);
+            int costToEnhance = DataManager.costToForceEnchant[enchantLevel];
             // Checks if player has enough enchant stone
             if (Inventory.getLevel(stoneId, player) - costToEnhance > 0) {
                 Inventory.addLevel(player, stoneId, -costToEnhance);
