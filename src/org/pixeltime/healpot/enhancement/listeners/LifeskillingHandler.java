@@ -114,8 +114,7 @@ public class LifeskillingHandler implements Listener {
         if (Math.random() < SettingsManager.config.getDouble(
             "dropConcWeapon.ratePerBlock")) {
             Inventory.addLevel(player, 2, 1);
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + SettingsManager.lang.getString("Item.get")
+            Util.sendMessage(SettingsManager.lang.getString("Item.get")
                 + SettingsManager.lang.getString("Item.2"), player);
         }
     }
@@ -130,8 +129,7 @@ public class LifeskillingHandler implements Listener {
         if (Math.random() < SettingsManager.config.getDouble(
             "dropConcWeapon.ratePerBlock")) {
             Inventory.addLevel(player, 3, 1);
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + SettingsManager.lang.getString("Item.get")
+            Util.sendMessage(SettingsManager.lang.getString("Item.get")
                 + SettingsManager.lang.getString("Item.3"), player);
         }
     }

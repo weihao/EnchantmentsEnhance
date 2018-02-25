@@ -31,8 +31,7 @@ public class PlayerStreamHandler implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-            + SettingsManager.lang.getString("Config.welcome").replaceAll(
+        Util.sendMessage(SettingsManager.lang.getString("Config.welcome").replaceAll(
                 "%player%", player.getName()), player);
         Failstack.loadLevels(player);
         SecretBook.loadStorage(player);

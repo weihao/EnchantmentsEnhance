@@ -77,8 +77,7 @@ public class Main extends JavaPlugin {
 
         // Checking if the command sender is console
         if (!(sender instanceof Player)) {
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + SettingsManager.lang.getString("Config.consoleCommand"),
+            Util.sendMessage(SettingsManager.lang.getString("Config.consoleCommand"),
                 sender);
             return true;
         }
@@ -152,12 +151,13 @@ public class Main extends JavaPlugin {
                     }
                     if (stoneType != -1 && level != -1 && p != null) {
                         Inventory.addLevel(p, stoneType, level);
+                        Util.sendMessage("&2✔", sender);
                     }
                     return true;
                 }
                 else {
                     Util.sendMessage(SettingsManager.lang.getString(
-                        "Config.invalidCommand"), player);
+                        "Example.command.add.guide"), player);
                     return true;
                 }
             }
@@ -185,8 +185,7 @@ public class Main extends JavaPlugin {
             }
         }
         // No Commands Found
-        Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-            + SettingsManager.lang.getString("Config.invalidCommand"), player);
+        Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player);
         return true;
     }
 

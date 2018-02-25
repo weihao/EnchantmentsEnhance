@@ -3,13 +3,11 @@ package org.pixeltime.healpot.enhancement.events.blackspirit;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
-import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.manager.modular.SpawnFirework;
 import org.pixeltime.healpot.enhancement.Main;
@@ -47,7 +45,7 @@ public class Enhance {
      */
     public static int getStoneId(Player player, ItemStack item, int level) {
         if (Util.isValid(item, Util.weapon)) {
-            if (level > 13) {
+            if (isPhaseTwo(level)) {
                 return 2;
             }
             else {
@@ -55,7 +53,7 @@ public class Enhance {
             }
         }
         else if (Util.isValid(item, Util.armor)) {
-            if (level > 13) {
+            if ((isPhaseTwo(level))) {
                 return 3;
             }
             else {
@@ -122,27 +120,25 @@ public class Enhance {
         // Enchant level after a successful enhancement
         int enchantLevel = enchantLevelBeforeAttemptEnhancing + 1;
         // Upgrading the item
-        item.addUnsafeEnchantment(enchant, enchantLevelBeforeAttemptEnhancing);
+        item.addUnsafeEnchantment(enchant, enchantLevel);
         // Rename the item
-        Util.renameItem(item, enchantLevelBeforeAttemptEnhancing);
+        Util.renameItem(item, enchantLevel);
         // Play sound
         Main.compatibility.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
         SpawnFirework.launch(player, 1,
-            DataManager.fireworkRounds[enchantLevelBeforeAttemptEnhancing],
+            DataManager.fireworkRounds[enchantLevel],
             SettingsManager.config.getInt("fireworkDelay"));
         // Do not clear failstack if force enhanced
         if (forceEnhanced) {
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + SettingsManager.lang.getString("Enhance.forceEnhanceSuccess"),
-                player);
+            Util.sendMessage(SettingsManager.lang.getString(
+                "Enhance.forceEnhanceSuccess"), player);
         }
         else {
             // Clear used failstack
             Failstack.resetLevel(player);
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + SettingsManager.lang.getString("Enhance.enhanceSuccess"),
-                player);
+            Util.sendMessage(SettingsManager.lang.getString(
+                "Enhance.enhanceSuccess"), player);
         }
         // Bounding item
         Lore.addLore(item, player, ChatColor.translateAlternateColorCodes('&',
@@ -165,16 +161,16 @@ public class Enhance {
         Enchantment enchant = getItemEnchantmentType(player, item);
         String str = SettingsManager.lang.getString("Enhance.enhanceFailed");
         Main.compatibility.playsound.playSound(player, "FAILED");
-        Failstack.addLevel(player, DataManager.failstackGainedPerFail[enchantLevelBeforeAttemptEnhancing]);
-        if (enchantLevelBeforeAttemptEnhancing > 15) {
+        Failstack.addLevel(player,
+            DataManager.failstackGainedPerFail[enchantLevelBeforeAttemptEnhancing]);
+        if (isPhaseDowngrade(enchantLevelBeforeAttemptEnhancing)) {
             str += (" " + SettingsManager.lang.getString("Enhance.downgraded"));
             Main.compatibility.playsound.playSound(player, "DOWNGRADED");
             item.addUnsafeEnchantment(enchant,
                 enchantLevelBeforeAttemptEnhancing - 1);
             Util.renameItem(item, (enchantLevelBeforeAttemptEnhancing - 1));
         }
-        Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-            + str, player);
+        Util.sendMessage(str, player);
     }
 
 
@@ -205,7 +201,7 @@ public class Enhance {
                 // Enhancement result
                 boolean success = random < chance;
                 // Broadcast if attempting enhancement meet enchant level
-                if (enchantLevel > 15) {
+                if (isPhaseDowngrade(enchantLevel)) {
                     Broadcast.broadcast(player, item, enchantLevel, success);
                 }
                 // Proceed to enhance
@@ -227,8 +223,8 @@ public class Enhance {
         }
         // Not a valid item
         else {
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + SettingsManager.lang.getString("Item.invalid"), player);
+            Util.sendMessage(SettingsManager.lang.getString("Item.invalid"),
+                player);
         }
     }
 
@@ -249,7 +245,7 @@ public class Enhance {
             // Gets the cost of force enhancing
             int costToEnhance = DataManager.costToForceEnchant[enchantLevel];
             // Checks if player has enough enchant stone
-            if (Inventory.getLevel(stoneId, player) - costToEnhance > 0) {
+            if (Inventory.getLevel(stoneId, player) - costToEnhance >= 0) {
                 Inventory.addLevel(player, stoneId, -costToEnhance);
                 enhanceSuccess(item, player, true, enchantLevel);
                 // Broadcast if attempting enhancement meet enchant level
@@ -268,8 +264,8 @@ public class Enhance {
         }
         // Not a valid item
         else {
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + SettingsManager.lang.getString("Item.invalid"), player);
+            Util.sendMessage(SettingsManager.lang.getString("Item.invalid"),
+                player);
         }
     }
 
@@ -308,5 +304,20 @@ public class Enhance {
             result.add(SettingsManager.lang.getString("Enhance.itemInvalid"));
             return result;
         }
+    }
+
+
+    public static boolean isPhaseTwo(int lvl) {
+        return (lvl >= DataManager.secondPhase);
+    }
+
+
+    public static boolean isPhaseDowngrade(int lvl) {
+        return (lvl >= DataManager.downgradePhase);
+    }
+
+
+    public static boolean isPhaseOne(int lvl) {
+        return (lvl >= DataManager.firstPhase);
     }
 }

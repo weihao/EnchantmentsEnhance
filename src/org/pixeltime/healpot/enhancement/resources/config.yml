@@ -33,6 +33,11 @@ dropWeaponNArmor:
     ratePerKill: 0.01
 fireworkDelay: 0
 fireworkCount: 1
+
+FirstPhaseStarts: 0
+SecondPhaseStarts: 15
+DowngradePhaseStarts: 17
+
 enhance:
   0:
     baseChance: 100
@@ -51,7 +56,7 @@ enhance:
     costToForceEnchant: -1
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+1"
   2:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -60,7 +65,7 @@ enhance:
     costToForceEnchant: -1
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+2"
   3:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -69,7 +74,7 @@ enhance:
     costToForceEnchant: -1
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+3"
   4:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -78,7 +83,7 @@ enhance:
     costToForceEnchant: -1
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+4"
   5:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -87,7 +92,7 @@ enhance:
     costToForceEnchant: -1
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+5"
   6:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -96,7 +101,7 @@ enhance:
     costToForceEnchant: -1
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+6"
   7:
     baseChance: 20
     chanceIncreasePerFailstack: 2.5
@@ -105,7 +110,7 @@ enhance:
     costToForceEnchant: 3
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+7"
   8:
     baseChance: 17.5
     chanceIncreasePerFailstack: 2.0
@@ -114,7 +119,7 @@ enhance:
     costToForceEnchant: 4
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+8"
   9:
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -123,7 +128,7 @@ enhance:
     costToForceEnchant: 5
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+9"
   10:
     baseChance: 12.5
     chanceIncreasePerFailstack: 1.25
@@ -132,7 +137,7 @@ enhance:
     costToForceEnchant: 7
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+10"
   11:
     baseChance: 10
     chanceIncreasePerFailstack: 0.75
@@ -141,7 +146,7 @@ enhance:
     costToForceEnchant: 9
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+11"
   12:
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.63
@@ -150,7 +155,7 @@ enhance:
     costToForceEnchant: 12
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+12"
   13:
     baseChance: 5
     chanceIncreasePerFailstack: 0.5
@@ -159,7 +164,7 @@ enhance:
     costToForceEnchant: 15
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+13"
   14:
     baseChance: 2.5
     chanceIncreasePerFailstack: 0.5
@@ -168,7 +173,7 @@ enhance:
     costToForceEnchant: 18
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+14"
   15:
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -177,7 +182,7 @@ enhance:
     costToForceEnchant: 22
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "+15"
   16:
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.75
@@ -186,7 +191,7 @@ enhance:
     costToForceEnchant: 27
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "PRI"
   17:
     baseChance: 5.0
     chanceIncreasePerFailstack: 0.5
@@ -195,7 +200,7 @@ enhance:
     costToForceEnchant: -1
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "DUO"
   18:
     baseChance: 2.0
     chanceIncreasePerFailstack: 0.25
@@ -204,7 +209,7 @@ enhance:
     costToForceEnchant: -1
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "TRI"
   19:
     baseChance: 1.5
     chanceIncreasePerFailstack: 0.25
@@ -213,7 +218,7 @@ enhance:
     costToForceEnchant: -1
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
+    name: "TET"
   20:
     baseChance: -1
     chanceIncreasePerFailstack: -1
@@ -222,4 +227,4 @@ enhance:
     costToForceEnchant: -1
     fireworkIfSuccessful: false
     fireworkRounds: -1
-    name: ""
+    name: "PEN"

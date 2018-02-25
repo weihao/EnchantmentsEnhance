@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 
@@ -18,6 +19,8 @@ import org.pixeltime.healpot.enhancement.manager.SettingsManager;
  *
  */
 public class Util {
+    public static String pluginTag = ChatColor.translateAlternateColorCodes('&',
+        SettingsManager.lang.getString("Config.pluginTag"));
     /**
      * Lists all the enhancement stone possible.
      */
@@ -132,8 +135,7 @@ public class Util {
     public static void renameItem(ItemStack item, int enchantLevel) {
         ItemMeta im = item.getItemMeta();
         im.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-            (SettingsManager.lang.getString("Name." + Integer.toString(
-                enchantLevel)))));
+            DataManager.name[enchantLevel]));
         item.setItemMeta(im);
     }
 
@@ -146,10 +148,19 @@ public class Util {
      */
     public static void sendMessage(String msg, CommandSender sender) {
         String message = ChatColor.translateAlternateColorCodes('&', msg);
-        sender.sendMessage(message);
+        sender.sendMessage(pluginTag + message);
     }
 
-
+    /**
+     * Sends a colored message to a CommandSender.
+     * 
+     * @param msg
+     * @param sender
+     */
+    public static void sendMessage(String msg, CommandSender sender, boolean addPlugintag) {
+        String message = ChatColor.translateAlternateColorCodes('&', msg);
+        sender.sendMessage(message);
+    }
     /**
      * Translates color codes.
      * 
@@ -199,7 +210,7 @@ public class Util {
                 "Help.add");
         }
 
-        Util.sendMessage(help, player);
+        Util.sendMessage(help, player, false);
     }
 
 
@@ -234,6 +245,7 @@ public class Util {
     public static int extractNumber(String str) {
         return Integer.parseInt(str.replaceAll("[^0-9]", ""));
     }
+
 
     public static boolean isValid(ItemStack item, Material[] comparable) {
         for (int i = 0; i < comparable.length; i++) {

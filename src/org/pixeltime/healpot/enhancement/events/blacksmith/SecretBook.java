@@ -15,8 +15,7 @@ public class SecretBook {
 
 
     public static void addFailstackToStorage(Player player) {
-        Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-            + SettingsManager.lang.getString("Save.createFailstack").replaceAll(
+        Util.sendMessage(SettingsManager.lang.getString("Save.createFailstack").replaceAll(
                 "%failstack%", Integer.toString(Failstack.getLevel(player))),
             player);
         storage.get(player).add(Failstack.getLevel(player));
@@ -65,8 +64,7 @@ public class SecretBook {
         List<Integer> adviceOfValks = storage.get(player);
 
         if (adviceOfValks.size() <= 0 || adviceOfValks == null) {
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + SettingsManager.lang.getString("Save.noFailstack"), player);
+            Util.sendMessage(SettingsManager.lang.getString("Save.noFailstack"), player);
             return;
         }
 
@@ -84,13 +82,11 @@ public class SecretBook {
 
         int count = 0;
 
-        Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-            + SettingsManager.lang.getString("Save.failstackTitle").replaceAll(
+        Util.sendMessage(SettingsManager.lang.getString("Save.failstackTitle").replaceAll(
                 "%page%", Integer.toString(page)), player);
         for (Integer fs : adviceOfValks) {
             count++;
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + SettingsManager.lang.getString("Save.listing").replaceAll(
+            Util.sendMessage(SettingsManager.lang.getString("Save.listing").replaceAll(
                     "%NUMBER%", Integer.toString(count)).replaceAll(
                         "%FAILSTACK%", Integer.toString(fs)), player);
 

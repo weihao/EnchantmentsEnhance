@@ -73,8 +73,7 @@ public class Lore {
         is.setItemMeta(im);
         p.updateInventory();
         if (SettingsManager.config.getBoolean("lore.sendBoundingMessage")) {
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + SettingsManager.lang.getString("Messages.Made" + x), p);
+            Util.sendMessage(SettingsManager.lang.getString("Messages.Made" + x), p);
         }
 
     }

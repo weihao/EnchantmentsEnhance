@@ -17,8 +17,17 @@ public class DataManager {
     public static int[] fireworkRounds;
     public static String[] name;
 
-
+    public static int firstPhase;
+    public static int secondPhase;
+    public static int downgradePhase;
+    
     public DataManager() {
+        firstPhase = SettingsManager.config.getInt("FirstPhaseStarts");
+        secondPhase = SettingsManager.config.getInt("SecondPhaseStarts");
+        downgradePhase = SettingsManager.config.getInt("DowngradePhaseStarts");
+        
+        
+        
         Set<String> temp = SettingsManager.config.getConfigurationSection(
             "enhance").getKeys(false);
         levels = temp.size();
@@ -45,7 +54,7 @@ public class DataManager {
                             + key2);
                 }
                 else if (key2.equalsIgnoreCase("maximumFailstackApplied")) {
-                    DataManager.chanceIncreasePerFailstack[i] =
+                    DataManager.maximumFailstackApplied[i] =
                         SettingsManager.config.getInt("enhance." + i + "."
                             + key2);
                 }

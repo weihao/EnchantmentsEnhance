@@ -81,6 +81,7 @@ public class MenuHandler implements Listener {
                             itemOnEnhancingSlot.get(player));
                         return;
                     }
+                    
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.store"))) {
                         SecretBook.addFailstackToStorage(player);
@@ -124,8 +125,7 @@ public class MenuHandler implements Listener {
                                 SettingsManager.lang.getString(
                                     "Lore.UntradeableLore")))) {
                             e.setCancelled(true);
-                            Util.sendMessage(SettingsManager.lang.getString(
-                                "Config.pluginTag") + SettingsManager.lang
+                            Util.sendMessage(SettingsManager.lang
                                     .getString("Messages.NoStorage"), e
                                         .getWhoClicked());
                         }
@@ -145,8 +145,7 @@ public class MenuHandler implements Listener {
                                 SettingsManager.lang.getString(
                                     "Lore.UntradeableLore")))) {
                             e.setCancelled(true);
-                            Util.sendMessage(SettingsManager.lang.getString(
-                                "Config.pluginTag") + SettingsManager.lang
+                            Util.sendMessage(SettingsManager.lang
                                     .getString("Messages.NoStorage"), e
                                         .getWhoClicked());
                         }

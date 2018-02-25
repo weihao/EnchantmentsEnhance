@@ -114,7 +114,7 @@ public class Menu {
 
         store = new ItemStack(Material.BOOK_AND_QUILL);
         ItemMeta storeim = store.getItemMeta();
-        storeim.setDisplayName(SettingsManager.lang.getString(
+        storeim.setDisplayName(ChatColor.DARK_PURPLE + SettingsManager.lang.getString(
             "Menu.gui.store"));
         List<String> storeStr = new ArrayList<String>();
         storeStr.add(Util.toColor(SettingsManager.lang.getString(
@@ -231,8 +231,7 @@ public class Menu {
             }
         }
         else {
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + SettingsManager.config.getString("Config.noPerm"), player);
+            Util.sendMessage(SettingsManager.config.getString("Config.noPerm"), player);
         }
     }
 
