@@ -109,6 +109,6 @@ public class Lore {
             Util.sendMessage(lang.getString("Messages.MadeUnbound"), p);
             return;
         }
-        Util.sendMessage(SettingsManager.lang.getString(lang.getString("Messages.AlreadyUnbound"), p);
+        Util.sendMessage(lang.getString("Messages.AlreadyUnbound"), p);
     }
 }

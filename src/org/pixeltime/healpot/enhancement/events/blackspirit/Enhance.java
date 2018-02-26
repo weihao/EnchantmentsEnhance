@@ -127,8 +127,8 @@ public class Enhance {
         Main.compatibility.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
         SpawnFirework.launch(player, 1,
-            DataManager.fireworkRounds[enchantLevel],
-            SettingsManager.config.getInt("fireworkDelay"));
+            DataManager.fireworkRounds[enchantLevel], SettingsManager.config
+                .getInt("fireworkDelay"));
         // Do not clear failstack if force enhanced
         if (forceEnhanced) {
             Util.sendMessage(SettingsManager.lang.getString(
@@ -190,9 +190,9 @@ public class Enhance {
             // Checks if player has enough enchant stone
             if (Inventory.getLevel(stoneId, player) - 1 >= 0) {
                 Inventory.addLevel(player, stoneId, -1);
-                Util.sendMessage(SettingsManager.lang.getString(
-                        "Item.use").replaceAll("%ITEM%", SettingsManager.lang
-                            .getString("Item." + stoneId)), player);
+                Util.sendMessage(SettingsManager.lang.getString("Item.use")
+                    .replaceAll("%ITEM%", SettingsManager.lang.getString("Item."
+                        + stoneId)), player);
                 // Randomly generate a double between 0 to 1
                 double random = Math.random();
                 // Calculate the chance
@@ -213,10 +213,9 @@ public class Enhance {
             }
             // Not enough enchant stone
             else {
-                Util.sendMessage(SettingsManager.lang.getString(
-                        "Item.noItem").replaceAll("%STONE%",
-                            SettingsManager.lang.getString("Item." + stoneId)),
-                    player);
+                Util.sendMessage(SettingsManager.lang.getString("Item.noItem")
+                    .replaceAll("%STONE%", SettingsManager.lang.getString(
+                        "Item." + stoneId)), player);
             }
         }
         // Not a valid item
@@ -247,16 +246,15 @@ public class Enhance {
                 Inventory.addLevel(player, stoneId, -costToEnhance);
                 enhanceSuccess(item, player, true, enchantLevel);
                 // Broadcast if attempting enhancement meet enchant level
-                if (enchantLevel > 15) {
+                if (isPhaseTwo(enchantLevel)) {
                     Broadcast.broadcast(player, item, enchantLevel, true);
                 }
             }
             // Not enough enchant stone
             else {
-                Util.sendMessage(SettingsManager.lang.getString(
-                        "Item.noItem").replaceAll("%STONE%",
-                            SettingsManager.lang.getString("Item." + stoneId)),
-                    player);
+                Util.sendMessage(SettingsManager.lang.getString("Item.noItem")
+                    .replaceAll("%STONE%", SettingsManager.lang.getString(
+                        "Item." + stoneId)), player);
             }
         }
         // Not a valid item

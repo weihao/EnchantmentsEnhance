@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Enhance;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
+import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.Main;
@@ -114,8 +115,8 @@ public class Menu {
 
         store = new ItemStack(Material.BOOK_AND_QUILL);
         ItemMeta storeim = store.getItemMeta();
-        storeim.setDisplayName(ChatColor.DARK_PURPLE + SettingsManager.lang.getString(
-            "Menu.gui.store"));
+        storeim.setDisplayName(ChatColor.DARK_PURPLE + SettingsManager.lang
+            .getString("Menu.gui.store"));
         List<String> storeStr = new ArrayList<String>();
         storeStr.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.store1")));
@@ -211,7 +212,8 @@ public class Menu {
             int stoneId = Enhance.getStoneId(player, item, enchantLevel);
             int costToEnhance = SettingsManager.config.getInt("costToForce."
                 + enchantLevel);
-            if (enchantLevel < 7 || enchantLevel > 16) {
+            if (DataManager.maximumFailstackApplied[enchantLevel] != -1
+                || DataManager.costToForceEnchant[enchantLevel] != -1) {
                 screen.setItem(Util.getSlot(6, 3), null);
             }
             else {
@@ -231,7 +233,8 @@ public class Menu {
             }
         }
         else {
-            Util.sendMessage(SettingsManager.config.getString("Config.noPerm"), player);
+            Util.sendMessage(SettingsManager.config.getString("Config.noPerm"),
+                player);
         }
     }
 
@@ -247,9 +250,13 @@ public class Menu {
         List<String> update = new ArrayList<String>();
         update.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.ifSuccess")));
-        update.add(Util.toColor(SettingsManager.lang.getString(
-            "Menu.lore.ifFail")));
-        if (Enhance.getItemEnchantLevel(player, item) > 15) {
+        if (DataManager.maximumFailstackApplied[Enhance.getItemEnchantLevel(
+            player, item)] != -1) {
+            update.add(Util.toColor(SettingsManager.lang.getString(
+                "Menu.lore.ifFail")));
+        }
+        if (Enhance.getItemEnchantLevel(player,
+            item) > DataManager.downgradePhase) {
             update.add(Util.toColor(SettingsManager.lang.getString(
                 "Menu.lore.ifDowngrade")));
         }

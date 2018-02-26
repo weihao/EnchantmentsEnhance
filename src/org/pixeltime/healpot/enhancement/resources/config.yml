@@ -34,7 +34,7 @@ dropWeaponNArmor:
 fireworkDelay: 0
 fireworkCount: 1
 
-FirstPhaseStarts: 0
+FirstPhaseStarts: 7
 SecondPhaseStarts: 15
 DowngradePhaseStarts: 17
 
