@@ -98,7 +98,6 @@ public class Main extends JavaPlugin {
             if ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase(
                 "version")) && Permissions.commandVersion(player)) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.pluginTag") + SettingsManager.lang.getString(
                         "Config.checkingVersion").replaceAll("%version%",
                             getDescription().getVersion()), player);
                 return true;
@@ -109,7 +108,6 @@ public class Main extends JavaPlugin {
                 SettingsManager.reloadData();
                 SettingsManager.reloadLang();
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.pluginTag") + SettingsManager.lang.getString(
                         "Config.reload"), player);
                 return true;
             }

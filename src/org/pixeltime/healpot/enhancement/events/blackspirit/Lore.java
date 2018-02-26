@@ -49,7 +49,6 @@ public class Lore {
                 if (SettingsManager.config.getBoolean(
                     "lore.sendBoundingMessage")) {
                     Util.sendMessage(SettingsManager.lang.getString(
-                        "Config.pluginTag") + SettingsManager.lang.getString(
                             "Messages.Already" + x), p);
                 }
                 return;
@@ -64,7 +63,6 @@ public class Lore {
             is.setItemMeta(im);
             if (SettingsManager.config.getBoolean("lore.sendBoundingMessage")) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.pluginTag") + SettingsManager.lang.getString(
                         "Messages.Made" + x), p);
             }
             return;
@@ -108,11 +106,9 @@ public class Lore {
             }
             im.setLore(loreList);
             is.setItemMeta(im);
-            Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-                + lang.getString("Messages.MadeUnbound"), p);
+            Util.sendMessage(lang.getString("Messages.MadeUnbound"), p);
             return;
         }
-        Util.sendMessage(SettingsManager.lang.getString("Config.pluginTag")
-            + lang.getString("Messages.AlreadyUnbound"), p);
+        Util.sendMessage(SettingsManager.lang.getString(lang.getString("Messages.AlreadyUnbound"), p);
     }
 }

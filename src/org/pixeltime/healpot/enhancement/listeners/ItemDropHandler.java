@@ -36,7 +36,6 @@ public class ItemDropHandler implements Listener {
                 SettingsManager.lang.getString("Lore.UntradeableLore")))) {
                 e.setCancelled(true);
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.pluginTag") + SettingsManager.lang.getString(
                         "Messages.NoDrop"), p);
                 return;
             }

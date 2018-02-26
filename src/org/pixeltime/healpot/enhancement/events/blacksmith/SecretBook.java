@@ -110,7 +110,6 @@ public class SecretBook {
             }
             catch (Exception e) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.pluginTag") + SettingsManager.lang.getString(
                         "Valks.noAdvice"), player);
             }
         }

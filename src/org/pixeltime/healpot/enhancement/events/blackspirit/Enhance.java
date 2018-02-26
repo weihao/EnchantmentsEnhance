@@ -191,7 +191,6 @@ public class Enhance {
             if (Inventory.getLevel(stoneId, player) - 1 >= 0) {
                 Inventory.addLevel(player, stoneId, -1);
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.pluginTag") + SettingsManager.lang.getString(
                         "Item.use").replaceAll("%ITEM%", SettingsManager.lang
                             .getString("Item." + stoneId)), player);
                 // Randomly generate a double between 0 to 1
@@ -215,7 +214,6 @@ public class Enhance {
             // Not enough enchant stone
             else {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.pluginTag") + SettingsManager.lang.getString(
                         "Item.noItem").replaceAll("%STONE%",
                             SettingsManager.lang.getString("Item." + stoneId)),
                     player);
@@ -256,7 +254,6 @@ public class Enhance {
             // Not enough enchant stone
             else {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.pluginTag") + SettingsManager.lang.getString(
                         "Item.noItem").replaceAll("%STONE%",
                             SettingsManager.lang.getString("Item." + stoneId)),
                     player);
