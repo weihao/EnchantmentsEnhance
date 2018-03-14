@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
+import com.meowj.langutils.lang.LanguageHelper;
 
 /**
  * 
@@ -32,7 +33,7 @@ public class Broadcast {
                     "Annoucer.success") + player.getDisplayName()
                     + SettingsManager.lang.getString("Annoucer.got")
                     + SettingsManager.lang.getString("Name." + Integer.toString(
-                        enchantLevel + 1)) + " " + getFriendlyName(item))));
+                        enchantLevel + 1)) + " " + getLocalizedName(item))));
         }
         else {
             Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString(
@@ -40,7 +41,7 @@ public class Broadcast {
                     "Annoucer.failed") + player.getDisplayName()
                     + SettingsManager.lang.getString("Annoucer.lost")
                     + SettingsManager.lang.getString("Name." + Integer.toString(
-                        enchantLevel + 1)) + " " + getFriendlyName(item))));
+                        enchantLevel + 1)) + " " + getLocalizedName(item))));
         }
     }
 
@@ -83,7 +84,7 @@ public class Broadcast {
 
 
     /**
-     * this
+     * This will return a formatted name of a item.
      * 
      * @param item
      * @return
@@ -92,5 +93,15 @@ public class Broadcast {
         Material m = item.getType();
         String name = format(m.name());
         return name;
+    }
+
+    /**
+     * This will return a localized name of a item.
+     * @param item
+     * @return
+     */
+    public static String getLocalizedName(ItemStack item) {
+        return LanguageHelper.getItemDisplayName(item, SettingsManager.config
+            .getString("language"));
     }
 }

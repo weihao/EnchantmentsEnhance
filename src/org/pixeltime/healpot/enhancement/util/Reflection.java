@@ -9,11 +9,11 @@ import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-public final class ReflectionUtils {
+public final class Reflection {
 
     public static int getMinecraftClientVersion(Player player)
         throws Exception {
-        Object handle = ReflectionUtils.getHandle(player);
+        Object handle = Reflection.getHandle(player);
 
         Field playerConnection_field = handle.getClass().getDeclaredField(
             "playerConnection");
@@ -23,7 +23,7 @@ public final class ReflectionUtils {
             .getDeclaredField("networkManager");
         Object networkManager = networkManager_field.get(playerConnection);
 
-        Method getVersion = ReflectionUtils.getMethod(networkManager.getClass(),
+        Method getVersion = Reflection.getMethod(networkManager.getClass(),
             "getVersion", 0);
 
         if (getVersion == null)

@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
-import org.pixeltime.healpot.enhancement.manager.modular.SpawnFirework;
+import org.pixeltime.healpot.enhancement.manager.modular.SpawnFirework_Safe;
 import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.util.Broadcast;
 import org.pixeltime.healpot.enhancement.util.Util;
@@ -126,7 +126,7 @@ public class Enhance {
         // Play sound
         Main.compatibility.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
-        SpawnFirework.launch(player, 1,
+        Main.compatibility.spawnFirework.launch(player, 1,
             DataManager.fireworkRounds[enchantLevel], SettingsManager.config
                 .getInt("fireworkDelay"));
         // Do not clear failstack if force enhanced

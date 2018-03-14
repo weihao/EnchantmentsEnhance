@@ -1,4 +1,4 @@
-package org.pixeltime.healpot.enhancement.manager.modular;
+package org.pixeltime.healpot.enhancement.interfaces;
 
 import org.bukkit.entity.Player;
 

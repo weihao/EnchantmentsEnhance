@@ -1,8 +1,10 @@
 package org.pixeltime.healpot.enhancement.manager.modular;
 
 import org.bukkit.entity.Player;
+import org.pixeltime.healpot.enhancement.interfaces.PlaySound;
+import org.pixeltime.healpot.enhancement.util.Sounds;
 
-public class PlaySound_1_8_R3 implements PlaySound {
+public class PlaySound_Safe implements PlaySound {
     public enum Types {
         SUCCESS, FAILED, DOWNGRADED
     }

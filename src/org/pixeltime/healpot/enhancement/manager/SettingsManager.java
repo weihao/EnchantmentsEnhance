@@ -5,9 +5,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.pixeltime.healpot.enhancement.Main;
-import org.pixeltime.healpot.enhancement.manager.language.Language_Chinese;
-import org.pixeltime.healpot.enhancement.manager.language.Language_English;
-
+import org.pixeltime.healpot.enhancement.manager.language.Language_zh_cn;
+import org.pixeltime.healpot.enhancement.manager.language.Language_en_us;
 import java.io.File;
 import java.io.IOException;
 
@@ -48,13 +47,9 @@ public class SettingsManager {
 
         langfile = new File(m.getDataFolder(), "lang.yml");
         lang = YamlConfiguration.loadConfiguration(langfile);
-
-        if (config.getString("language") == "CN") {
-            Language_Chinese.addLang();
-            Language_English.addLang();
-        }
-        else {
-            Language_English.addLang();
+        Language_en_us.addLang();
+        if (config.getString("language").equalsIgnoreCase("zh_cn")) {
+            Language_zh_cn.addLang();
         }
     }
 

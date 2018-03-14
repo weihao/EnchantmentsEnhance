@@ -210,10 +210,9 @@ public class Menu {
         if (Permissions.commandEnhance(player)) {
             int enchantLevel = Enhance.getItemEnchantLevel(player, item);
             int stoneId = Enhance.getStoneId(player, item, enchantLevel);
-            int costToEnhance = SettingsManager.config.getInt("costToForce."
-                + enchantLevel);
-            if (DataManager.maximumFailstackApplied[enchantLevel] != -1
-                || DataManager.costToForceEnchant[enchantLevel] != -1) {
+            int costToEnhance = DataManager.costToForceEnchant[enchantLevel];
+            if (DataManager.maximumFailstackApplied[enchantLevel] == -1
+                || DataManager.costToForceEnchant[enchantLevel] == -1) {
                 screen.setItem(Util.getSlot(6, 3), null);
             }
             else {
@@ -250,8 +249,8 @@ public class Menu {
         List<String> update = new ArrayList<String>();
         update.add(Util.toColor(SettingsManager.lang.getString(
             "Menu.lore.ifSuccess")));
-        if (DataManager.maximumFailstackApplied[Enhance.getItemEnchantLevel(
-            player, item)] != -1) {
+        if (DataManager.baseChance[Enhance.getItemEnchantLevel(
+            player, item)] != 100) {
             update.add(Util.toColor(SettingsManager.lang.getString(
                 "Menu.lore.ifFail")));
         }

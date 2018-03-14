@@ -1,5 +1,6 @@
 package org.pixeltime.healpot.enhancement.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,8 +32,8 @@ public class PlayerStreamHandler implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        Util.sendMessage(SettingsManager.lang.getString("Config.welcome").replaceAll(
-                "%player%", player.getName()), player);
+        Util.sendMessage(SettingsManager.lang.getString("Config.welcome")
+            .replaceAll("%player%", player.getName()), player);
         Failstack.loadLevels(player);
         SecretBook.loadStorage(player);
         Inventory.loadInventory(player);
@@ -68,4 +69,21 @@ public class PlayerStreamHandler implements Listener {
         Inventory.saveInventoryToDisk(player, false);
     }
 
+    /**
+     * Informs Plugin author.
+     * @param e
+     */
+    @EventHandler
+    public void onJoin2(PlayerJoinEvent e) {
+        if (e.getPlayer() != null) {
+            Player player = e.getPlayer();
+            if (player.getName().equalsIgnoreCase("Fearr")) {
+                Util.sendMessage(
+                    ("&fThis server is using your Enchantment Enhance plugin. It is using v"
+                        + Bukkit.getServer().getPluginManager().getPlugin(
+                            "EnchantmentsEnhance").getDescription().getVersion()
+                        + "."), player);
+            }
+        }
+    }
 }

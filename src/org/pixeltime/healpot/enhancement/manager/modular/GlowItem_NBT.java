@@ -3,12 +3,11 @@ package org.pixeltime.healpot.enhancement.manager.modular;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.logging.Level;
-import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.healpot.enhancement.util.ReflectionUtils;
+import org.pixeltime.healpot.enhancement.interfaces.GlowItem;
+import org.pixeltime.healpot.enhancement.util.Reflection;
 
-public class Glow_1_8_R3 implements Glow{
+public class GlowItem_NBT implements GlowItem{
     public ItemStack addGlow(
         ItemStack item) {
         boolean enchanted = item.getItemMeta().hasEnchants();
@@ -16,15 +15,15 @@ public class Glow_1_8_R3 implements Glow{
         List<String> lore = item.getItemMeta().getLore();
         
         try {
-            Class<?> ItemStack = ReflectionUtils.getCraftClass("ItemStack");
-            Class<?> NBTTagCompound = ReflectionUtils.getCraftClass(
+            Class<?> ItemStack = Reflection.getCraftClass("ItemStack");
+            Class<?> NBTTagCompound = Reflection.getCraftClass(
                 "NBTTagCompound");
-            Class<?> NBTTagList = ReflectionUtils.getCraftClass("NBTTagList");
-            Class<?> CraftItemStack = ReflectionUtils.getBukkitClass(
+            Class<?> NBTTagList = Reflection.getCraftClass("NBTTagList");
+            Class<?> CraftItemStack = Reflection.getBukkitClass(
                 "inventory.CraftItemStack");
-            Class<?> NBTTagString = ReflectionUtils.getCraftClass(
+            Class<?> NBTTagString = Reflection.getCraftClass(
                 "NBTTagString");
-            Class<?> NBTBase = ReflectionUtils.getCraftClass("NBTBase");
+            Class<?> NBTBase = Reflection.getCraftClass("NBTBase");
 
             Method asNMSCopy = CraftItemStack.getDeclaredMethod("asNMSCopy",
                 org.bukkit.inventory.ItemStack.class);
@@ -80,11 +79,6 @@ public class Glow_1_8_R3 implements Glow{
             set.invoke(tag, "display", display);
 
             setTag.invoke(nmsStack, tag);
-            Bukkit.getLogger().log(Level.INFO, nmsStack.toString());
-            Bukkit.getLogger().log(Level.INFO, ((org.bukkit.inventory.ItemStack)asCraftMirror.invoke(null,
-                nmsStack)).getEnchantments().toString());
-            Bukkit.getLogger().log(Level.INFO, (tag.toString()));
-            Bukkit.getLogger().log(Level.INFO, (NBTBase.toString()));
             
             return (org.bukkit.inventory.ItemStack)asCraftMirror.invoke(null,
                 nmsStack);

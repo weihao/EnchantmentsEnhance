@@ -11,8 +11,8 @@ public enum Sounds {
     ANVIL_USE("ANVIL_USE", "BLOCK_ANVIL_USE"),
     ARROW_HIT("ARROW_HIT", "ENTITY_ARROW_HIT"),
     BURP("BURP", "ENTITY_PLAYER_BURP"),
-    CHEST_CLOSE("CHEST_CLOSE", "ENTITY_CHEST_CLOSE"),
-    CHEST_OPEN("CHEST_OPEN", "ENTITY_CHEST_OPEN"),
+    CHEST_CLOSE("CHEST_CLOSE", "BLOCK_CHEST_CLOSE"),
+    CHEST_OPEN("CHEST_OPEN", "BLOCK_CHEST_OPEN"),
     CLICK("CLICK", "UI_BUTTON_CLICK"),
     DOOR_CLOSE("DOOR_CLOSE", "BLOCK_WOODEN_DOOR_CLOSE"),
     DOOR_OPEN("DOOR_OPEN", "BLOCK_WOODEN_DOOR_OPEN"),
@@ -200,30 +200,27 @@ public enum Sounds {
     VILLAGER_NO("VILLAGER_NO", "ENTITY_VILLAGER_NO"),
     VILLAGER_YES("VILLAGER_YES", "ENTITY_VILLAGER_YES");
 
-    static {
-        for (Sounds sound : Sounds.values()) {
-            try {
-                sound.bukkitSound = Sound.valueOf(sound.post19Sound);
-            }
-            catch (IllegalArgumentException e) {
-                sound.bukkitSound = Sound.valueOf(sound.pre19Sound);
-            }
+    private String pre19sound;
+    private String post19sound;
+    private Sound resolvedSound = null;
+
+
+    Sounds(String pre19sound, String post19sound) {
+        this.pre19sound = pre19sound;
+        this.post19sound = post19sound;
+    }
+
+
+    public Sound bukkitSound() {
+        if (resolvedSound != null)
+            return resolvedSound;
+
+        try {
+            return resolvedSound = Sound.valueOf(post19sound);
+        }
+        catch (IllegalArgumentException e) {
+            // Try 1.8 sound
+            return resolvedSound = Sound.valueOf(pre19sound);
         }
     }
-
-    private final String pre19Sound;
-    private final String post19Sound;
-    private Sound bukkitSound;
-
-
-    Sounds(String pre19Sound, String post19Sound) {
-        this.pre19Sound = pre19Sound;
-        this.post19Sound = post19Sound;
-    }
-
-
-    public Sound get() {
-        return this.bukkitSound;
-    }
-
 }

@@ -1,8 +1,8 @@
-package org.pixeltime.healpot.enhancement.manager.modular;
+package org.pixeltime.healpot.enhancement.interfaces;
 
 import org.bukkit.inventory.ItemStack;
 
-public interface Glow {
+public interface GlowItem {
     /**
      * Makes an item glowing.
      * 

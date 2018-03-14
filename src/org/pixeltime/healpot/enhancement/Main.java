@@ -23,6 +23,7 @@ import org.pixeltime.healpot.enhancement.util.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 
 public class Main extends JavaPlugin {
     public static Compatibility compatibility = new Compatibility();
@@ -42,7 +43,7 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
         SettingsManager.setup(this);
         registerCore();
-        registerNMS();
+        registerCompatibility();
         Bukkit.getServer().getLogger().info(SettingsManager.lang.getString(
             "Config.onEnable"));
         if (Bukkit.getOnlinePlayers() != null) {
@@ -208,13 +209,18 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new MenuHandler(), this);
         pm.registerEvents(new LifeskillingHandler(), this);
         DataManager DM = new DataManager();
+        if (getServer().getName().contains("Cauldron") || getServer().getName()
+            .contains("MCPC")) {
+            Bukkit.getLogger().log(Level.INFO,
+                "Enchantments Enhance runs fine on Cauldron/KCauldron.");
+        }
     }
 
 
     /**
      * Detects the version of the server is currently running.
      */
-    private void registerNMS() {
+    private void registerCompatibility() {
         if (compatibility.setupGlow()) {
             getLogger().info("Enhancement Glower setup was successful!");
         }
@@ -233,6 +239,17 @@ public class Main extends JavaPlugin {
         else {
 
             getLogger().severe("Failed to setup Enhancement Sound!");
+            getLogger().severe(
+                "Error in Enchantments Enhance! (Outdated plugin?)");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
+
+        if (compatibility.setupFirework()) {
+            getLogger().info("Enhancement firework setup was successful!");
+        }
+        else {
+
+            getLogger().severe("Failed to setup Enhancement Firework!");
             getLogger().severe(
                 "Error in Enchantments Enhance! (Outdated plugin?)");
             Bukkit.getPluginManager().disablePlugin(this);

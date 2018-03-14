@@ -8,8 +8,9 @@ import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.pixeltime.healpot.enhancement.Main;
+import org.pixeltime.healpot.enhancement.interfaces.SpawnFirework;
 
-public class SpawnFirework {
+public class SpawnFirework_Safe implements SpawnFirework{
 
     private static final Random random = new Random();
     private static final Type[] types = { Type.BALL, Type.BALL_LARGE,
@@ -20,7 +21,7 @@ public class SpawnFirework {
         Color.WHITE, Color.TEAL, Color.YELLOW };
 
 
-    public static void launch(Player player, int fireworkCount) {
+    public void launch(Player player, int fireworkCount) {
         for (int i = 0; i < fireworkCount; i++) {
             Firework fw = (Firework)player.getWorld().spawn(player
                 .getLocation(), Firework.class);
@@ -35,7 +36,7 @@ public class SpawnFirework {
     }
 
 
-    public static void launch(
+    public void launch(
         Player player,
         int fireworkCount,
         int fireWorkRounds,

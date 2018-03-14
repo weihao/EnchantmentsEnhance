@@ -76,7 +76,11 @@ public class UnsafeGlow extends EnchantmentWrapper {
         }
 
         glow = new UnsafeGlow(255);
-        Enchantment.registerEnchantment(glow);
+        try {
+            Enchantment.registerEnchantment(glow);
+        }
+        catch (IllegalArgumentException e) {
+        }
         return glow;
     }
 

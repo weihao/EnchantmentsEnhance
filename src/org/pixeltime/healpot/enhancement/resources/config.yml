@@ -1,5 +1,5 @@
-language: en
-#supported language: cn, en.
+language: en_us
+#supported language: zh_cn, en_us.
 
 lore:
   bound: Tradeable
@@ -197,7 +197,7 @@ enhance:
     chanceIncreasePerFailstack: 0.5
     maximumFailstackApplied: 44
     failstackGainedPerFail: 4
-    costToForceEnchant: -1
+    costToForceEnchant: 45
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "DUO"

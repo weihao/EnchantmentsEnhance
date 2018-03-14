@@ -53,13 +53,20 @@ public class Failstack {
 
     public static double getChance(Player p, int enchantLevel) {
         int failstack = getLevel(p);
-        int maximumFailstack = DataManager.maximumFailstackApplied[enchantLevel];
+        int maximumFailstack =
+            DataManager.maximumFailstackApplied[enchantLevel];
         double baseChance = DataManager.baseChance[enchantLevel];
-        double increasePerFailstack = DataManager.chanceIncreasePerFailstack[enchantLevel];
+        double increasePerFailstack =
+            DataManager.chanceIncreasePerFailstack[enchantLevel];
 
         if (failstack > maximumFailstack) {
             failstack = maximumFailstack;
         }
-        return (baseChance + failstack * increasePerFailstack) / 100;
+        if (increasePerFailstack == -1 || maximumFailstack == -1) {
+            return baseChance / 100;
+        }
+        else {
+            return (baseChance + failstack * increasePerFailstack) / 100;
+        }
     }
 }
