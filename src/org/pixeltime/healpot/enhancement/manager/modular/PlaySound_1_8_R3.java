@@ -1,6 +1,5 @@
 package org.pixeltime.healpot.enhancement.manager.modular;
 
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 public class PlaySound_1_8_R3 implements PlaySound {
@@ -14,16 +13,20 @@ public class PlaySound_1_8_R3 implements PlaySound {
 
         switch (playingType) {
             case SUCCESS:
-                p.playSound(p.getLocation(), Sound.NOTE_PLING, 1.0F, 2.0F);
+                p.playSound(p.getLocation(), Sounds.NOTE_PLING.bukkitSound(),
+                    1.0F, 2.0F);
                 break;
             case FAILED:
-                p.playSound(p.getLocation(), Sound.ANVIL_BREAK, 1.0F, 2.0F);
+                p.playSound(p.getLocation(), Sounds.ANVIL_BREAK.bukkitSound(),
+                    1.0F, 2.0F);
                 break;
             case DOWNGRADED:
-                p.playSound(p.getLocation(), Sound.EXPLODE, 1.0F, 2.0F);
+                p.playSound(p.getLocation(), Sounds.EXPLODE.bukkitSound(), 1.0F,
+                    2.0F);
                 break;
             default:
-                p.playSound(p.getLocation(), Sound.ANVIL_USE, 1.0F, 2.0F);
+                p.playSound(p.getLocation(), Sounds.ANVIL_USE.bukkitSound(),
+                    1.0F, 2.0F);
         }
     }
 }

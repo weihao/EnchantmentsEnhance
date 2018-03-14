@@ -3,8 +3,10 @@ package org.pixeltime.healpot.enhancement.manager;
 import org.bukkit.Bukkit;
 import org.pixeltime.healpot.enhancement.manager.modular.Glow;
 import org.pixeltime.healpot.enhancement.manager.modular.Glow_1_8_R3;
+import org.pixeltime.healpot.enhancement.manager.modular.Glower;
 import org.pixeltime.healpot.enhancement.manager.modular.PlaySound;
 import org.pixeltime.healpot.enhancement.manager.modular.PlaySound_1_8_R3;
+
 public class Compatibility {
     public Glow glow;
     public PlaySound playsound;
@@ -35,6 +37,10 @@ public class Compatibility {
         if (version.equals("v1_8_R3")) {
             glow = new Glow_1_8_R3();
         }
+        else
+        {
+            glow = new Glower();
+        }
 
         return glow != null;
     }
@@ -58,10 +64,7 @@ public class Compatibility {
         catch (ArrayIndexOutOfBoundsException whatVersionAreYouUsingException) {
             return false;
         }
-        if (version.equals("v1_8_R3")) {
-            playsound = new PlaySound_1_8_R3();
-        }
-
+        playsound = new PlaySound_1_8_R3();
         return playsound != null;
     }
 

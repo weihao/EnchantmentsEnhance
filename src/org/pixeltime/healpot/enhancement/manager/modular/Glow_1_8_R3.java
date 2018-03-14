@@ -1,20 +1,38 @@
 package org.pixeltime.healpot.enhancement.manager.modular;
 
-import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
+import java.lang.reflect.Method;
+import java.util.logging.Level;
+import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
-import net.minecraft.server.v1_8_R3.NBTTagCompound;
-import net.minecraft.server.v1_8_R3.NBTTagList;
+import de.tr7zw.itemnbtapi.NBTReflectionUtil;
 
 public class Glow_1_8_R3 implements Glow {
+    @SuppressWarnings("unchecked")
     public ItemStack addGlow(ItemStack item) {
-        net.minecraft.server.v1_8_R3.ItemStack nmsItem = CraftItemStack
-            .asNMSCopy(item);
-        NBTTagCompound nbt = nmsItem.getTag() == null
-            ? new NBTTagCompound()
-            : nmsItem.getTag();
-        NBTTagList ench = new NBTTagList();
-        nbt.set("ench", ench);
-        nmsItem.setTag(nbt);
-        return CraftItemStack.asBukkitCopy(nmsItem);
+        Object nmsItem = NBTReflectionUtil.getNMSItemStack(item);
+        Object nbt;
+        Method method;
+        try {
+            method = NBTReflectionUtil.getNMSItemStack().getMethod("getTag",
+                null);
+            if (method.invoke(nmsItem, null) == null) {
+                nbt = NBTReflectionUtil.getNBTTagCompound().newInstance();
+            }
+            else {
+                nbt = method.invoke(nmsItem, null);
+            }
+            Object ench = NBTReflectionUtil.getNBTTagList().newInstance();
+            NBTReflectionUtil.getNBTTagCompound().getMethod("set", String.class,
+                NBTReflectionUtil.getNBTBase()).invoke(nbt, "ench", ench);
+            NBTReflectionUtil.setNBTTag(nbt, nmsItem);
+            Object glowingItem = NBTReflectionUtil.getCraftItemStack()
+                .getMethod("asBukkitCopy", NBTReflectionUtil.getNMSItemStack())
+                .invoke(null, nmsItem);
+            return (ItemStack)glowingItem;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

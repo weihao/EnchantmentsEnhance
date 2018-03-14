@@ -77,8 +77,8 @@ public class Main extends JavaPlugin {
 
         // Checking if the command sender is console
         if (!(sender instanceof Player)) {
-            Util.sendMessage(SettingsManager.lang.getString("Config.consoleCommand"),
-                sender);
+            Util.sendMessage(SettingsManager.lang.getString(
+                "Config.consoleCommand"), sender);
             return true;
         }
 
@@ -98,8 +98,8 @@ public class Main extends JavaPlugin {
             if ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase(
                 "version")) && Permissions.commandVersion(player)) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "Config.checkingVersion").replaceAll("%version%",
-                            getDescription().getVersion()), player);
+                    "Config.checkingVersion").replaceAll("%version%",
+                        getDescription().getVersion()), player);
                 return true;
             }
             if (args[0].equalsIgnoreCase("reload") && Permissions.commandReload(
@@ -108,7 +108,7 @@ public class Main extends JavaPlugin {
                 SettingsManager.reloadData();
                 SettingsManager.reloadLang();
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "Config.reload"), player);
+                    "Config.reload"), player);
                 return true;
             }
             if (args[0].equalsIgnoreCase("help") && Permissions.commandHelp(
@@ -183,7 +183,8 @@ public class Main extends JavaPlugin {
             }
         }
         // No Commands Found
-        Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player);
+        Util.sendMessage(SettingsManager.lang.getString(
+            "Config.invalidCommand"), player);
         return true;
     }
 
@@ -213,7 +214,7 @@ public class Main extends JavaPlugin {
 
             getLogger().severe("Failed to setup Enhancement Glower!");
             getLogger().severe(
-                "Your server version is not compatible with this plugin!");
+                "Error in Enchantments Enhance! (Outdated plugin?)");
 
             Bukkit.getPluginManager().disablePlugin(this);
         }
@@ -225,7 +226,7 @@ public class Main extends JavaPlugin {
 
             getLogger().severe("Failed to setup Enhancement Sound!");
             getLogger().severe(
-                "Your server version is not compatible with this plugin!");
+                "Error in Enchantments Enhance! (Outdated plugin?)");
             Bukkit.getPluginManager().disablePlugin(this);
         }
     }

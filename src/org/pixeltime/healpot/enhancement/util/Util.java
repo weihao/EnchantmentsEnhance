@@ -151,16 +151,21 @@ public class Util {
         sender.sendMessage(pluginTag + message);
     }
 
+
     /**
      * Sends a colored message to a CommandSender.
      * 
      * @param msg
      * @param sender
      */
-    public static void sendMessage(String msg, CommandSender sender, boolean addPlugintag) {
+    public static void sendMessage(
+        String msg,
+        CommandSender sender,
+        boolean addPlugintag) {
         String message = ChatColor.translateAlternateColorCodes('&', msg);
         sender.sendMessage(message);
     }
+
     /**
      * Translates color codes.
      * 
