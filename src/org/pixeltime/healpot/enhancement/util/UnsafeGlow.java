@@ -1,4 +1,4 @@
-package org.pixeltime.healpot.enhancement.manager.modular;
+package org.pixeltime.healpot.enhancement.util;
 
 import java.lang.reflect.Field;
 import org.bukkit.enchantments.Enchantment;

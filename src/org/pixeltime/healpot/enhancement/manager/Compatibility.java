@@ -3,6 +3,7 @@ package org.pixeltime.healpot.enhancement.manager;
 import org.bukkit.Bukkit;
 import org.pixeltime.healpot.enhancement.manager.modular.Glow;
 import org.pixeltime.healpot.enhancement.manager.modular.Glow_1_8_R3;
+import org.pixeltime.healpot.enhancement.manager.modular.Glow_Unsafe;
 import org.pixeltime.healpot.enhancement.manager.modular.PlaySound;
 import org.pixeltime.healpot.enhancement.manager.modular.PlaySound_1_8_R3;
 
@@ -37,7 +38,7 @@ public class Compatibility {
             glow = new Glow_1_8_R3();
         }
         else {
-            glow = new Glow_1_8_R3();
+            glow = new Glow_Unsafe();
         }
 
         return glow != null;
