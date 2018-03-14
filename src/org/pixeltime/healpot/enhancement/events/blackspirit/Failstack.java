@@ -1,11 +1,9 @@
 package org.pixeltime.healpot.enhancement.events.blackspirit;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import org.bukkit.entity.Player;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
-import org.pixeltime.healpot.enhancement.util.Util;
 
 public class Failstack {
     private static HashMap<Player, Integer> failstack =

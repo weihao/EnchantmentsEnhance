@@ -3,7 +3,6 @@ package org.pixeltime.healpot.enhancement.manager;
 import org.bukkit.Bukkit;
 import org.pixeltime.healpot.enhancement.manager.modular.Glow;
 import org.pixeltime.healpot.enhancement.manager.modular.Glow_1_8_R3;
-import org.pixeltime.healpot.enhancement.manager.modular.Glower;
 import org.pixeltime.healpot.enhancement.manager.modular.PlaySound;
 import org.pixeltime.healpot.enhancement.manager.modular.PlaySound_1_8_R3;
 
@@ -37,9 +36,8 @@ public class Compatibility {
         if (version.equals("v1_8_R3")) {
             glow = new Glow_1_8_R3();
         }
-        else
-        {
-            glow = new Glower();
+        else {
+            glow = new Glow_1_8_R3();
         }
 
         return glow != null;

@@ -1,10 +1,6 @@
 package org.pixeltime.healpot.enhancement.manager;
 
-import java.util.HashMap;
 import java.util.Set;
-import org.bukkit.Bukkit;
-import org.pixeltime.healpot.enhancement.Main;
-import org.pixeltime.healpot.enhancement.util.ArrayBag;
 
 public class DataManager {
     public static int levels;

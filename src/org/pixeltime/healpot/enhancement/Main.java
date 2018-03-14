@@ -18,11 +18,11 @@ import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
+import org.pixeltime.healpot.enhancement.manager.modular.UnsafeGlow;
 import org.pixeltime.healpot.enhancement.util.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 public class Main extends JavaPlugin {
     public static Compatibility compatibility = new Compatibility();
@@ -83,11 +83,13 @@ public class Main extends JavaPlugin {
         }
 
         Player player = (Player)sender;
+        
         // Handling commands
         if (cmd.getName().equalsIgnoreCase("enhance")) {
             // If the command does not have arguments
             if (args.length == 0) {
-                Util.printHelp(player);
+                UnsafeGlow.addGlow(player.getItemInHand());
+             //   Util.printHelp(player);
                 return true;
             }
             if ((args[0].equalsIgnoreCase("menu")) && Permissions
