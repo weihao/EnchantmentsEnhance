@@ -15,9 +15,9 @@ public class SecretBook {
 
 
     public static void addFailstackToStorage(Player player) {
-        Util.sendMessage(SettingsManager.lang.getString("Save.createFailstack").replaceAll(
-                "%failstack%", Integer.toString(Failstack.getLevel(player))),
-            player);
+        Util.sendMessage(SettingsManager.lang.getString("Save.createFailstack")
+            .replaceAll("%failstack%", Integer.toString(Failstack.getLevel(
+                player))), player);
         storage.get(player).add(Failstack.getLevel(player));
         Failstack.resetLevel(player);
     }
@@ -64,7 +64,8 @@ public class SecretBook {
         List<Integer> adviceOfValks = storage.get(player);
 
         if (adviceOfValks.size() <= 0 || adviceOfValks == null) {
-            Util.sendMessage(SettingsManager.lang.getString("Save.noFailstack"), player);
+            Util.sendMessage(SettingsManager.lang.getString("Save.noFailstack"),
+                player);
             return;
         }
 
@@ -82,13 +83,13 @@ public class SecretBook {
 
         int count = 0;
 
-        Util.sendMessage(SettingsManager.lang.getString("Save.failstackTitle").replaceAll(
-                "%page%", Integer.toString(page)), player);
+        Util.sendMessage(SettingsManager.lang.getString("Save.failstackTitle")
+            .replaceAll("%page%", Integer.toString(page)), player);
         for (Integer fs : adviceOfValks) {
             count++;
-            Util.sendMessage(SettingsManager.lang.getString("Save.listing").replaceAll(
-                    "%NUMBER%", Integer.toString(count)).replaceAll(
-                        "%FAILSTACK%", Integer.toString(fs)), player);
+            Util.sendMessage(SettingsManager.lang.getString("Save.listing")
+                .replaceAll("%NUMBER%", Integer.toString(count)).replaceAll(
+                    "%FAILSTACK%", Integer.toString(fs)), player);
 
         }
 
@@ -102,19 +103,37 @@ public class SecretBook {
      * @param selectedFailstack
      */
     public static void select(Player player, int selectedFailstack) {
-        if (selectedFailstack > 0 && Failstack.getLevel(player) == 0) {
-            try {
-                Failstack.addLevel(player, SecretBook.storage.get(player).get(
-                    selectedFailstack - 1));
-                SecretBook.storage.get(player).remove(selectedFailstack - 1);
+        if (selectedFailstack > 0) {
+            if (selectedFailstack <= SecretBook.storage.get(player).size()) {
+                if (Failstack.getLevel(player) == 0) {
+                    try {
+                        int levelOfAdvice = SecretBook.storage.get(player).get(
+                            selectedFailstack - 1);
+                        Failstack.addLevel(player, levelOfAdvice);
+                        SecretBook.storage.get(player).remove(selectedFailstack
+                            - 1);
+                        Util.sendMessage(SettingsManager.lang.getString(
+                            "Valks.used").replaceAll("%LEVEL%", Integer
+                                .toString(levelOfAdvice)), player);
+                    }
+                    catch (Exception e) {
+                        Util.sendMessage(SettingsManager.lang.getString(
+                            "Valks.noAdvice"), player);
+                    }
+                }
+
+                else {
+                    Util.sendMessage(SettingsManager.lang.getString(
+                        "Valks.hasFailstack"), player);
+                }
             }
-            catch (Exception e) {
+            else {
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "Valks.noAdvice"), player);
+                    "Config.invalidNumber"), player);
             }
         }
         else
-            Util.sendMessage(SettingsManager.lang.getString("Valks.noAdvicce")
-                + SettingsManager.lang.getString("Valks.hasFailstack"), player);
+            Util.sendMessage(SettingsManager.lang.getString(
+                "Config.invalidNumber"), player);
     }
 }

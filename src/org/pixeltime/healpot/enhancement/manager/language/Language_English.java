@@ -113,9 +113,11 @@ public class Language_English implements Readable {
         SettingsManager.lang.addDefault("Item.invalid", "&cYou cannot enhance this item.");
         SettingsManager.lang.addDefault("Item.use", "&aYou used a %ITEM%.");
         
-        SettingsManager.lang.addDefault("Valks.noAdvicce", "You do not own any Advice of Valks.");
+        SettingsManager.lang.addDefault("Valks.noAdvice", "You do not own any Advice of Valks.");
         SettingsManager.lang.addDefault("Valks.hasFailstack", "You can't use Advice of Valks if you have failstacks.");
+        SettingsManager.lang.addDefault("Valks.used", "You used an Advice of Valks and Level%LEVEL% failstacks is applied.");
 
+        
         SettingsManager.lang.addDefault("Example.command.add.guide", "/enhance add <player> <stone> <number>");
         SettingsManager.lang.addDefault("Example.command.add.stone",
                 "0 = weapon stone, 1 = armor stone, 2 = conc weapon, 3 = conc armor");

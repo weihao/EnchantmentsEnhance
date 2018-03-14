@@ -83,7 +83,7 @@ public class Main extends JavaPlugin {
         }
 
         Player player = (Player)sender;
-        
+
         // Handling commands
         if (cmd.getName().equalsIgnoreCase("enhance")) {
             // If the command does not have arguments
@@ -178,7 +178,14 @@ public class Main extends JavaPlugin {
                     return true;
                 }
                 if (args[0].equalsIgnoreCase("select")) {
-                    SecretBook.select(player, Integer.parseInt(args[1]));
+                    try {
+                        int selected = Integer.parseInt(args[1]);
+                        SecretBook.select(player, selected);
+                    }
+                    catch (NumberFormatException e) {
+                        Util.sendMessage(SettingsManager.lang.getString(
+                            "Config.invalidNumber"), sender);
+                    }
                     return true;
                 }
             }
