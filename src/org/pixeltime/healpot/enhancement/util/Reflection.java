@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+import javax.annotation.Nonnull;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
@@ -13,6 +14,7 @@ public final class Reflection {
 
     public static int getMinecraftClientVersion(Player player)
         throws Exception {
+        
         Object handle = Reflection.getHandle(player);
 
         Field playerConnection_field = handle.getClass().getDeclaredField(

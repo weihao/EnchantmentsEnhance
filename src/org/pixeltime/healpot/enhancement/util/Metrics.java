@@ -201,6 +201,7 @@ public class Metrics {
      *
      * @return The plugin specific data.
      */
+    @SuppressWarnings("unchecked")
     public JSONObject getPluginData() {
         JSONObject data = new JSONObject();
 
@@ -230,6 +231,7 @@ public class Metrics {
      *
      * @return The server specific data.
      */
+    @SuppressWarnings("unchecked")
     private JSONObject getServerData() {
         // Minecraft specific data
         int playerAmount;
@@ -286,6 +288,7 @@ public class Metrics {
     /**
      * Collects the data and sends it afterwards.
      */
+    @SuppressWarnings("unchecked")
     private void submitData() {
         final JSONObject data = getServerData();
 
@@ -434,6 +437,7 @@ public class Metrics {
         }
 
 
+        @SuppressWarnings("unchecked")
         private JSONObject getRequestJsonObject() {
             JSONObject chart = new JSONObject();
             chart.put("chartId", chartId);
@@ -484,6 +488,7 @@ public class Metrics {
         }
 
 
+        @SuppressWarnings("unchecked")
         @Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
@@ -522,6 +527,7 @@ public class Metrics {
         }
 
 
+        @SuppressWarnings("unchecked")
         @Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
@@ -573,6 +579,7 @@ public class Metrics {
         }
 
 
+        @SuppressWarnings("unchecked")
         @Override
         public JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
@@ -629,6 +636,7 @@ public class Metrics {
         }
 
 
+        @SuppressWarnings("unchecked")
         @Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
@@ -668,6 +676,7 @@ public class Metrics {
         }
 
 
+        @SuppressWarnings("unchecked")
         @Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
@@ -720,6 +729,7 @@ public class Metrics {
         }
 
 
+        @SuppressWarnings("unchecked")
         @Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();
@@ -765,6 +775,7 @@ public class Metrics {
         }
 
 
+        @SuppressWarnings("unchecked")
         @Override
         protected JSONObject getChartData() throws Exception {
             JSONObject data = new JSONObject();

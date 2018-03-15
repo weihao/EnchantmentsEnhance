@@ -16,11 +16,10 @@ import org.pixeltime.healpot.enhancement.util.Util;
 
 public class PlayerStreamHandler implements Listener {
 
-    public Main m;
+    public static final Main m = Main.getMain();
 
 
-    public PlayerStreamHandler(Main m) {
-        this.m = m;
+    public PlayerStreamHandler() {
     }
 
 

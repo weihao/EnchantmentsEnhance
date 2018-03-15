@@ -9,7 +9,6 @@ import org.bukkit.inventory.ItemStack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
-import org.pixeltime.healpot.enhancement.manager.modular.SpawnFirework_Safe;
 import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.util.Broadcast;
 import org.pixeltime.healpot.enhancement.util.Util;
@@ -91,11 +90,9 @@ public class Enhance {
      */
     public static boolean getValidationOfItem(Player player, ItemStack item) {
         // If item cannot be enhanced
-        if (getItemEnchantmentType(player, item) == null) {
-            return false;
-        }
         // If item level exceeds the maximum levels allowed
-        else if (getItemEnchantLevel(player, item) >= DataManager.levels) {
+        if ((getItemEnchantmentType(player, item) == null)
+            || (getItemEnchantLevel(player, item) >= DataManager.levels)) {
             return false;
         }
         return true;

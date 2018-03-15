@@ -279,7 +279,7 @@ public class Menu {
         im.setDisplayName(Util.toColor(SettingsManager.lang.getString("Item."
             + stoneId)));
         List<String> lore = new ArrayList<String>();
-        lore.add(Util.toColor(Main.InventoryText.getOneStoneCountAsString(
+        lore.add(Util.toColor(Main.inventoryText.getOneStoneCountAsString(
             player, stoneId)));
         im.setLore(lore);
         stone.setItemMeta(im);

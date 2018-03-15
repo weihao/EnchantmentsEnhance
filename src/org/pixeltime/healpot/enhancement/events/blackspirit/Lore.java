@@ -20,6 +20,7 @@ public class Lore {
      * @param lore
      * @param tradeable
      */
+    @SuppressWarnings("deprecation")
     public static void addLore(
         ItemStack is,
         Player p,

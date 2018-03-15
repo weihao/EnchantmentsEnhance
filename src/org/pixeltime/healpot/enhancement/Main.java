@@ -26,9 +26,9 @@ import java.util.List;
 import java.util.logging.Level;
 
 public class Main extends JavaPlugin {
-    public static Compatibility compatibility = new Compatibility();
-    public static Displayable InventoryText = new Inventory_Text();
-    public static Displayable InventoryGui = new Inventory_Gui();
+    public static final Compatibility compatibility = new Compatibility();
+    public static final Displayable inventoryText = new Inventory_Text();
+    public static final Displayable inventoryGui = new Inventory_Gui();
 
     private static Main main;
 
@@ -70,6 +70,8 @@ public class Main extends JavaPlugin {
     }
 
 
+    @SuppressWarnings("deprecation")
+    @Override
     public boolean onCommand(
         CommandSender sender,
         Command cmd,
@@ -120,7 +122,7 @@ public class Main extends JavaPlugin {
             }
             if (args[0].equalsIgnoreCase("inventory") && Permissions
                 .commandEnhance(player)) {
-                Main.InventoryText.openInventory(player);
+                Main.inventoryText.openInventory(player);
                 return true;
             }
             if (args[0].equalsIgnoreCase("add") && Permissions.commandAdd(
@@ -128,7 +130,8 @@ public class Main extends JavaPlugin {
                 if (args.length == 4) {
                     boolean success = false;
                     Player p = null;
-                    int stoneType = -1, level = -1;
+                    int stoneType = -1;
+                    int level = -1;
                     try {
                         p = Bukkit.getServer().getPlayer(args[1]);
                         success = true;
@@ -206,11 +209,12 @@ public class Main extends JavaPlugin {
     /**
      * Includes the initialization of the plugin.
      */
+    @SuppressWarnings("unused")
     private void registerCore() {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new ItemDropHandler(), this);
-        pm.registerEvents(new PlayerDeathHandler(this), this);
-        pm.registerEvents(new PlayerStreamHandler(this), this);
+        pm.registerEvents(new PlayerDeathHandler(), this);
+        pm.registerEvents(new PlayerStreamHandler(), this);
         pm.registerEvents(new MenuHandler(), this);
         pm.registerEvents(new LifeskillingHandler(), this);
         DataManager DM = new DataManager();

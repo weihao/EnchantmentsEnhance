@@ -225,6 +225,7 @@ public class Util {
      * @param str
      * @return
      */
+    @SuppressWarnings("deprecation")
     public static Player getPlayer(String str) {
         return Bukkit.getServer().getPlayer(str);
     }

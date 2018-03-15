@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -19,11 +21,10 @@ import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.Main;
 
 public class PlayerDeathHandler implements Listener {
-    private Main m;
+    private static final Main m = Main.getMain();
 
 
-    public PlayerDeathHandler(Main m) {
-        this.m = m;
+    public PlayerDeathHandler() {
     }
 
 
@@ -67,7 +68,6 @@ public class PlayerDeathHandler implements Listener {
             pFile.save(playerFile);
         }
         catch (IOException e1) {
-            e1.printStackTrace();
         }
         e.getDrops().removeAll(newInventory);
     }
@@ -92,7 +92,12 @@ public class PlayerDeathHandler implements Listener {
             ItemStack[] content = (ItemStack[])((List<?>)pFile.get("Items"))
                 .toArray(new ItemStack[0]);
             p.getInventory().addItem(content);
-            playerFile.delete();
+
+            if (playerFile.delete()) {
+                // file delete failed.
+                Bukkit.getLogger().log(Level.SEVERE,
+                    "Unable to delete a file.");
+            }
         }
     }
 }

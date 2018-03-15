@@ -4,15 +4,14 @@ import org.bukkit.Bukkit;
 import org.pixeltime.healpot.enhancement.interfaces.GlowItem;
 import org.pixeltime.healpot.enhancement.interfaces.PlaySound;
 import org.pixeltime.healpot.enhancement.interfaces.SpawnFirework;
-import org.pixeltime.healpot.enhancement.manager.modular.GlowItem_NBT;
 import org.pixeltime.healpot.enhancement.manager.modular.GlowItem_Unsafe;
 import org.pixeltime.healpot.enhancement.manager.modular.PlaySound_Safe;
 import org.pixeltime.healpot.enhancement.manager.modular.SpawnFirework_Safe;
 
 public class Compatibility {
-    public GlowItem glow;
-    public PlaySound playsound;
-    public SpawnFirework spawnFirework;
+    public static GlowItem glow;
+    public static PlaySound playsound;
+    public static SpawnFirework spawnFirework;
 
 
     /**
