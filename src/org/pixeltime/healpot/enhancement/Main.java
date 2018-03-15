@@ -18,6 +18,7 @@ import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
+import org.pixeltime.healpot.enhancement.util.Metrics;
 import org.pixeltime.healpot.enhancement.util.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -218,6 +219,7 @@ public class Main extends JavaPlugin {
             Bukkit.getLogger().log(Level.INFO,
                 "Enchantments Enhance runs fine on Cauldron/KCauldron.");
         }
+        Metrics metrics = new Metrics(this);
     }
 
 
