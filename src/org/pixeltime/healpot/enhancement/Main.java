@@ -18,7 +18,6 @@ import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
-import org.pixeltime.healpot.enhancement.util.UnsafeGlow;
 import org.pixeltime.healpot.enhancement.util.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -149,9 +148,14 @@ public class Main extends JavaPlugin {
                             return true;
                         }
                     }
-                    if (stoneType != -1 && level != -1 && p != null) {
+                    if (stoneType != -1 && level != -1 && p != null
+                        && stoneType <= Util.stoneTypes.length) {
                         Inventory.addLevel(p, stoneType, level);
                         Util.sendMessage("&2✔", sender);
+                    }
+                    else {
+                        Util.sendMessage(SettingsManager.lang.getString(
+                            "Config.invalidNumber"), player);
                     }
                     return true;
                 }
