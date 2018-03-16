@@ -115,7 +115,7 @@ public class Language_en_us implements Readable {
         
         SettingsManager.lang.addDefault("Valks.noAdvice", "You do not own any Advice of Valks.");
         SettingsManager.lang.addDefault("Valks.hasFailstack", "You can't use Advice of Valks if you have failstacks.");
-        SettingsManager.lang.addDefault("Valks.used", "You used an Advice of Valks and Level%LEVEL% failstacks is applied.");
+        SettingsManager.lang.addDefault("Valks.used", "You used an Advice of Valks and Level %LEVEL% failstacks is applied.");
 
         
         SettingsManager.lang.addDefault("Example.command.add.guide", "/enhance add <player> <stone> <number>");

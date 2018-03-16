@@ -1,6 +1,7 @@
 package org.pixeltime.healpot.enhancement.manager;
 
 import org.bukkit.Bukkit;
+import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.interfaces.GlowItem;
 import org.pixeltime.healpot.enhancement.interfaces.PlaySound;
 import org.pixeltime.healpot.enhancement.interfaces.SpawnFirework;
@@ -33,7 +34,7 @@ public class Compatibility {
             return false;
         }
 
-        Bukkit.getServer().getLogger().info("Your server is running version "
+        Main.getMain().getLogger().info("Your server is running version "
             + version);
         /*
          * if (version.equals("v1_8_R3")) {

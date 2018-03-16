@@ -1,8 +1,9 @@
 package org.pixeltime.healpot.enhancement.events.inventory;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
-
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -14,16 +15,23 @@ public class Inventory {
 
 
     public static void loadInventory(Player player) {
-        int[] temp = new int[] { 0, 0, 0, 0 };
-        if (SettingsManager.data.contains("backpack." + player.getName())
+        if (SettingsManager.data.contains(player.getName() + ".backpack")
             || backpack.containsKey(player)) {
-            Scanner sc = new Scanner(SettingsManager.data.getString("backpack."
-                + player.getName()));
+            String[] temp = SettingsManager.data.getString(player.getName()
+                + ".backpack").replace("[", "").replace("]", "").split(
+                    ", ");
+            int[] inventory = new int[temp.length];
             for (int i = 0; i < temp.length; i++) {
-                temp[i] = sc.nextInt();
+                try {
+                    inventory[i] = Integer.parseInt(temp[i]);
+                }
+                catch (Exception e) {
+                    Bukkit.getLogger().severe("Error in loading " + player
+                        .getDisplayName() + "'s" + " inventory.");
+                }
             }
-            sc.close();
-            backpack.put(player, temp);
+
+            backpack.put(player, inventory);
         }
         else {
             backpack.put(player, new int[] { 0, 0, 0, 0 });
@@ -32,11 +40,8 @@ public class Inventory {
 
 
     public static void saveInventoryToDisk(Player player, boolean save) {
-        String str = "";
-        for (int i = 0; i < 4; i++) {
-            str += getLevel(i, player) + " ";
-        }
-        SettingsManager.data.set("backpack." + player.getName(), str);
+        String str = Arrays.toString(backpack.get(player));
+        SettingsManager.data.set(player.getName() + ".backpack", str);
 
         if (save) {
             SettingsManager.saveData();
@@ -65,6 +70,6 @@ public class Inventory {
 
 
     public static int[] getPlayer(Player player) {
-        return Inventory.backpack.get(player);
+        return backpack.get(player);
     }
 }

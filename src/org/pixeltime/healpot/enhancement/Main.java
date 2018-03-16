@@ -39,6 +39,7 @@ public class Main extends JavaPlugin {
 
 
     public void onEnable() {
+        final long startTime = System.currentTimeMillis();
         main = this;
         saveDefaultConfig();
         SettingsManager.setup(this);
@@ -53,6 +54,8 @@ public class Main extends JavaPlugin {
                 Inventory.loadInventory(player);
             }
         }
+        Bukkit.getLogger().info("EnchantmentsEnhance took " + (System
+            .currentTimeMillis() - startTime) + "ms to setup.");
     }
 
 
@@ -182,19 +185,22 @@ public class Main extends JavaPlugin {
             }
             // If the command has two arguments
             if (args.length == 2) {
+                int num;
+                try {
+                    num = Integer.parseInt(args[1]);
+                }
+                catch (NumberFormatException e) {
+                    Util.sendMessage(SettingsManager.lang.getString(
+                        "Config.invalidNumber"), sender);
+                    return true;
+                }
+
                 if (args[0].equalsIgnoreCase("list")) {
-                    SecretBook.list(player, Integer.parseInt(args[1]));
+                    SecretBook.list(player, num);
                     return true;
                 }
                 if (args[0].equalsIgnoreCase("select")) {
-                    try {
-                        int selected = Integer.parseInt(args[1]);
-                        SecretBook.select(player, selected);
-                    }
-                    catch (NumberFormatException e) {
-                        Util.sendMessage(SettingsManager.lang.getString(
-                            "Config.invalidNumber"), sender);
-                    }
+                    SecretBook.select(player, num);
                     return true;
                 }
             }
@@ -220,8 +226,8 @@ public class Main extends JavaPlugin {
         DataManager DM = new DataManager();
         if (getServer().getName().contains("Cauldron") || getServer().getName()
             .contains("MCPC")) {
-            Bukkit.getLogger().log(Level.INFO,
-                "Enchantments Enhance runs fine on Cauldron/KCauldron.");
+            getLogger().info(
+                "EnchantmentsEnhance runs fine on Cauldron/KCauldron.");
         }
         Metrics metrics = new Metrics(this);
     }
@@ -238,7 +244,7 @@ public class Main extends JavaPlugin {
 
             getLogger().severe("Failed to setup Enhancement Glower!");
             getLogger().severe(
-                "Error in Enchantments Enhance! (Outdated plugin?)");
+                "Error in EnchantmentsEnhance! (Outdated plugin?)");
 
             Bukkit.getPluginManager().disablePlugin(this);
         }
@@ -250,18 +256,18 @@ public class Main extends JavaPlugin {
 
             getLogger().severe("Failed to setup Enhancement Sound!");
             getLogger().severe(
-                "Error in Enchantments Enhance! (Outdated plugin?)");
+                "Error in EnchantmentsEnhance! (Outdated plugin?)");
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
         if (compatibility.setupFirework()) {
-            getLogger().info("Enhancement firework setup was successful!");
+            getLogger().info("Enhancement Firework setup was successful!");
         }
         else {
 
             getLogger().severe("Failed to setup Enhancement Firework!");
             getLogger().severe(
-                "Error in Enchantments Enhance! (Outdated plugin?)");
+                "Error in EnchantmentsEnhance! (Outdated plugin?)");
             Bukkit.getPluginManager().disablePlugin(this);
         }
     }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
@@ -25,30 +26,29 @@ public class SecretBook {
 
     public static void loadStorage(Player player) {
         List<Integer> adviceOfValks = new ArrayList<Integer>();
-        if (SettingsManager.data.contains("AdviceOfValks." + player.getName())
+        if (SettingsManager.data.contains(player.getName() + ".advice of valks")
             || storage.containsKey(player)) {
-            Scanner sc = new Scanner(SettingsManager.data.getString(
-                "AdviceOfValks." + player.getName()));
-            while (sc.hasNext()) {
-                adviceOfValks.add(sc.nextInt());
+            String[] temp = SettingsManager.data.getString(player.getName()
+                + ".advice of valks").replace("[", "").replace("]", "").split(
+                    ", ");
+            for (int i = 0; i < temp.length; i++) {
+                try {
+                    adviceOfValks.add(Integer.parseInt(temp[i]));
+                }
+                catch (Exception e) {
+                    Bukkit.getLogger().severe("Error in loading " + player
+                        .getDisplayName() + "'s" + " failstack.");
+                }
             }
-            sc.close();
         }
         storage.put(player, adviceOfValks);
     }
 
 
     public static void saveStorageToDisk(Player player, boolean save) {
-        List<Integer> working = storage.get(player);
-        String result = "";
-        if (working.size() > 0) {
-            for (int i = 0; i < working.size(); i++) {
-                result += storage.get(player).get(i) + " ";
-            }
-            SettingsManager.data.set("AdviceOfValks." + player.getName(),
-                result);
-        }
-
+        List<Integer> temp = storage.get(player);
+        SettingsManager.data.set(player.getName() + ".advice of valks", temp
+            .toString());
         if (save)
             SettingsManager.saveData();
     }

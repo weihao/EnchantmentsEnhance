@@ -11,16 +11,15 @@ public class Failstack {
 
 
     public static void loadLevels(Player player) {
-        if (SettingsManager.data.contains("Failstack." + player.getName())
+        if (SettingsManager.data.contains(player.getName() + ".failstack")
             || failstack.containsKey(player)) {
-            failstack.put(player, SettingsManager.data.getInt("Failstack."
-                + player.getName()));
+            failstack.put(player, SettingsManager.data.getInt(player.getName() + ".failstack"));
         }
     }
 
 
     public static void saveLevels(Player player, boolean save) {
-        SettingsManager.data.set("Failstack." + player.getName(), getLevel(
+        SettingsManager.data.set(player.getName() + ".failstack", getLevel(
             player));
         if (save)
             SettingsManager.saveData();

@@ -7,6 +7,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
+import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.Main;
@@ -121,9 +122,9 @@ public class Enhance {
         // Rename the item
         Util.renameItem(item, enchantLevel);
         // Play sound
-        Main.compatibility.playsound.playSound(player, "SUCCESS");
+        Compatibility.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
-        Main.compatibility.spawnFirework.launch(player, 1,
+        Compatibility.spawnFirework.launch(player, 1,
             DataManager.fireworkRounds[enchantLevel], SettingsManager.config
                 .getInt("fireworkDelay"));
         // Do not clear failstack if force enhanced
@@ -157,12 +158,12 @@ public class Enhance {
         // Enchantment type
         Enchantment enchant = getItemEnchantmentType(player, item);
         String str = SettingsManager.lang.getString("Enhance.enhanceFailed");
-        Main.compatibility.playsound.playSound(player, "FAILED");
+        Compatibility.playsound.playSound(player, "FAILED");
         Failstack.addLevel(player,
             DataManager.failstackGainedPerFail[enchantLevelBeforeAttemptEnhancing]);
         if (isPhaseDowngrade(enchantLevelBeforeAttemptEnhancing)) {
             str += (" " + SettingsManager.lang.getString("Enhance.downgraded"));
-            Main.compatibility.playsound.playSound(player, "DOWNGRADED");
+            Compatibility.playsound.playSound(player, "DOWNGRADED");
             item.addUnsafeEnchantment(enchant,
                 enchantLevelBeforeAttemptEnhancing - 1);
             Util.renameItem(item, (enchantLevelBeforeAttemptEnhancing - 1));
