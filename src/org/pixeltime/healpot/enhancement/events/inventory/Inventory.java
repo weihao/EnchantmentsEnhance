@@ -6,7 +6,6 @@ import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Inventory {
     // int[0] = weapon stone, int[1] = armor stone, int[2] = conc weapon; int[3]

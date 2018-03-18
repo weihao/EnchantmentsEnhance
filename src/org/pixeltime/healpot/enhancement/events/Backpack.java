@@ -1,49 +1,25 @@
 package org.pixeltime.healpot.enhancement.events;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
+import org.pixeltime.healpot.enhancement.manager.ItemManager;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
+import org.pixeltime.healpot.enhancement.util.GUI;
 import org.pixeltime.healpot.enhancement.util.Util;
 
 /**
  * Incomplete.
- * 
+ *
  * @author HealPot
  * @version Feb 9, 2018
  *
  */
-public class Backpack {
+public class Backpack extends GUI {
 
-    private static Inventory screen = null;
-    private static ItemStack[] items = new ItemStack[3];
-
-
-    /**
-     * Opens a GUI to a player.
-     * 
-     * @param player
-     */
-    public static void showBackpack(Player player) {
-        screen = Bukkit.getServer().createInventory(null, 27,
-            SettingsManager.lang.getString("Inventory.gui.title"));
-        createMenu(player);
-        player.openInventory(screen);
-    }
-
-
-    public static void createMenu(Player player) {
-        screen.clear();
-        for (int i = 0; i < items.length; i++) {
-            items[i] = new ItemStack(Util.stoneTypes[i]);
-            screen.setItem(Util.getSlot(1, i + 1), items[i]);
+    public Backpack(Player p) {
+        super(27, SettingsManager.lang.getString("Menu.gui.title"));
+        for (int i = 0; i < Util.stoneTypes.length; i++) {
+            setItem(Util.getSlot(i + 1, 1 + (i / 9)), ItemManager
+                .stoneVisualized(i, p, true));
         }
     }
-
-
-    public static Inventory getScreen() {
-        return screen;
-    }
-
 }

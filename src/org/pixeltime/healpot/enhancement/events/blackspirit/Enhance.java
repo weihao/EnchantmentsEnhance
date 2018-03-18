@@ -10,7 +10,6 @@ import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
 import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
-import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.util.Broadcast;
 import org.pixeltime.healpot.enhancement.util.Util;
 

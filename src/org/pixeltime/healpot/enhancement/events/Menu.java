@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Enhance;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
+import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
@@ -165,9 +166,9 @@ public class Menu {
                 screen.setItem(Util.getSlot(9, 2), enhancingItem);
             }
             updateFailstack(enhancingItem, player);
-            screen.setItem(Util.getSlot(5, 1), Main.compatibility.glow.addGlow(
+            screen.setItem(Util.getSlot(5, 1), Compatibility.glow.addGlow(
                 stats));
-            screen.setItem(Util.getSlot(4, 3), Main.compatibility.glow.addGlow(
+            screen.setItem(Util.getSlot(4, 3), Compatibility.glow.addGlow(
                 enhance));
             updateForce(enhancingItem, player);
             updateEnhance(enhancingItem, player);
@@ -189,7 +190,7 @@ public class Menu {
         ItemMeta im = stats.getItemMeta();
         im.setLore(Enhance.getChanceAsList(item, player));
         stats.setItemMeta(im);
-        screen.setItem(Util.getSlot(5, 1), Main.compatibility.glow.addGlow(
+        screen.setItem(Util.getSlot(5, 1), Compatibility.glow.addGlow(
             stats));
         if (Failstack.getLevel(player) != 0) {
             screen.setItem(Util.getSlot(6, 1), store);
@@ -227,7 +228,7 @@ public class Menu {
                                 + stoneId))));
                 im.setLore(update);
                 force.setItemMeta(im);
-                screen.setItem(Util.getSlot(6, 3), Main.compatibility.glow
+                screen.setItem(Util.getSlot(6, 3), Compatibility.glow
                     .addGlow(force));
             }
         }
@@ -261,7 +262,7 @@ public class Menu {
         }
         im.setLore(update);
         enhance.setItemMeta(im);
-        screen.setItem(Util.getSlot(4, 3), Main.compatibility.glow.addGlow(
+        screen.setItem(Util.getSlot(4, 3), Compatibility.glow.addGlow(
             enhance));
     }
 

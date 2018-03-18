@@ -1,5 +1,6 @@
 package org.pixeltime.healpot.enhancement.util;
 
+import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -261,4 +262,20 @@ public class Util {
         }
         return false;
     }
+    
+    public static String rainbowlize(String string) {
+        int lastColor = 0;
+        int currColor;
+        String newString = "";
+        String colors = "123456789abcde";
+        for (int i = 0; i < string.length(); i++) {
+            do {
+                currColor = new Random().nextInt(colors.length() - 1) + 1;
+            }
+            while (currColor == lastColor);
+            newString += ChatColor.RESET.toString() + ChatColor.getByChar(colors.charAt(currColor)) + "" + string.charAt(i);
+        }
+        return newString;
+    }
+
 }

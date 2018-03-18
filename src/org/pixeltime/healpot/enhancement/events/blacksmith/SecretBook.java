@@ -3,7 +3,6 @@ package org.pixeltime.healpot.enhancement.events.blacksmith;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;

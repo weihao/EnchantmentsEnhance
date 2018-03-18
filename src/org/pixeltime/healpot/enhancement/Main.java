@@ -6,11 +6,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.pixeltime.healpot.enhancement.events.Backpack;
 import org.pixeltime.healpot.enhancement.events.Menu;
 import org.pixeltime.healpot.enhancement.events.blacksmith.SecretBook;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
-import org.pixeltime.healpot.enhancement.events.inventory.Inventory_Gui;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory_Text;
 import org.pixeltime.healpot.enhancement.interfaces.Displayable;
 import org.pixeltime.healpot.enhancement.listeners.*;
@@ -23,13 +23,10 @@ import org.pixeltime.healpot.enhancement.util.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
 
 public class Main extends JavaPlugin {
     public static final Compatibility compatibility = new Compatibility();
     public static final Displayable inventoryText = new Inventory_Text();
-    public static final Displayable inventoryGui = new Inventory_Gui();
-
     private static Main main;
 
 
@@ -229,7 +226,7 @@ public class Main extends JavaPlugin {
             getLogger().info(
                 "EnchantmentsEnhance runs fine on Cauldron/KCauldron.");
         }
-        Metrics metrics = new Metrics(this);
+        new Metrics(this);
     }
 
 
