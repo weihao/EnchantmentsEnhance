@@ -1,28 +1,32 @@
 package org.pixeltime.healpot.enhancement;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.pixeltime.healpot.enhancement.events.Backpack;
 import org.pixeltime.healpot.enhancement.events.Menu;
 import org.pixeltime.healpot.enhancement.events.blacksmith.SecretBook;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory_Text;
 import org.pixeltime.healpot.enhancement.interfaces.Displayable;
-import org.pixeltime.healpot.enhancement.listeners.*;
+import org.pixeltime.healpot.enhancement.listeners.ItemDropHandler;
+import org.pixeltime.healpot.enhancement.listeners.LifeskillingHandler;
+import org.pixeltime.healpot.enhancement.listeners.MenuHandler;
+import org.pixeltime.healpot.enhancement.listeners.PlayerDeathHandler;
+import org.pixeltime.healpot.enhancement.listeners.PlayerStreamHandler;
 import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
+import org.pixeltime.healpot.enhancement.util.AnimalBreeding;
 import org.pixeltime.healpot.enhancement.util.Metrics;
 import org.pixeltime.healpot.enhancement.util.Util;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Main extends JavaPlugin {
     public static final Compatibility compatibility = new Compatibility();
@@ -212,7 +216,6 @@ public class Main extends JavaPlugin {
     /**
      * Includes the initialization of the plugin.
      */
-    @SuppressWarnings("unused")
     private void registerCore() {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new ItemDropHandler(), this);
@@ -220,12 +223,14 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new PlayerStreamHandler(), this);
         pm.registerEvents(new MenuHandler(), this);
         pm.registerEvents(new LifeskillingHandler(), this);
-        DataManager DM = new DataManager();
+        new DataManager();
         if (getServer().getName().contains("Cauldron") || getServer().getName()
             .contains("MCPC")) {
             getLogger().info(
                 "EnchantmentsEnhance runs fine on Cauldron/KCauldron.");
         }
+        new AnimalBreeding();
+        new DataManager();
         new Metrics(this);
     }
 

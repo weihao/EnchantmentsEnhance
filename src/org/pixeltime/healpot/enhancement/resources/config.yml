@@ -7,10 +7,8 @@ lore:
 #Tradeable: keep-item-on-death, personal trading is allowed.
 #Untradeable: keep-item-on-death, cannot be stored, cannot be dropped.
   sendBoundingMessage: false
-dropConcWeapon:
-  ratePerBlock: 0.01
-#In range of 0.01 means player will possibly get 1 conc Weapon out of 100 ores mined.
-  block:
+lifeskill:
+  mining:
     - DIAMOND_ORE
     - EMERALD_ORE
     - EMERALD_ORE
@@ -20,17 +18,46 @@ dropConcWeapon:
     - LAPIS_ORE
     - QUARTZ_ORE
     - REDSTONE_ORE
-dropConcArmor:
-  ratePerBlock: 0.01
-  block:
+  chopping:
     - LOG
-dropWeaponNArmor:
+  fishing: 
+    - CAUGHT_FISH
+  killing:
+    - MONSTER
+  breeding:
+    - ANIMAL
+#Stones ID: 0 = weapon stone, 1 = armor stone, 2 = concentrated weapon stone, 3 = concentrated armor stone
+#In range of 0.01 means player will possibly get 1 out of 100 lifeskill event.
+reward:
+  mining:
+    chance: 0.01
+    drops:
+      - 0
+      - 1
+  chopping:
+    chance: 0.01
+    drops:
+      - 0
+      - 1
   fishing:
-    enabled: true
-    ratePerFish: 0.05
-  allMob:
-    enabled: true
-    ratePerKill: 0.01
+    chance: 0.01
+    drops:
+      - 0
+      - 1
+  killing:
+    chance: 0.01
+    drops:
+      - 0
+      - 1
+      - 2
+      - 3
+  breeding:
+    chance: 0.01
+    drops:
+      - 0
+      - 1
+      - 2
+      - 3
 fireworkDelay: 0
 fireworkCount: 1
 
