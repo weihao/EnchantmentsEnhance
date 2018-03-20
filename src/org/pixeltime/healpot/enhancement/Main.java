@@ -223,7 +223,6 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new PlayerStreamHandler(), this);
         pm.registerEvents(new MenuHandler(), this);
         pm.registerEvents(new LifeskillingHandler(), this);
-        new DataManager();
         if (getServer().getName().contains("Cauldron") || getServer().getName()
             .contains("MCPC")) {
             getLogger().info(

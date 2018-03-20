@@ -25,22 +25,28 @@ lifeskill:
   killing:
     - MONSTER
   breeding:
-    - ANIMAL
+    - ANIMALS
+  smelting:
+    - ITEM
 #Stones ID: 0 = weapon stone, 1 = armor stone, 2 = concentrated weapon stone, 3 = concentrated armor stone
 #In range of 0.01 means player will possibly get 1 out of 100 lifeskill event.
 reward:
   mining:
-    chance: 0.01
+    chance: 0.03
     drops:
       - 0
       - 1
+      - 2
+      - 3
   chopping:
-    chance: 0.01
+    chance: 0.02
     drops:
       - 0
       - 1
+      - 2
+      - 3
   fishing:
-    chance: 0.01
+    chance: 0.05
     drops:
       - 0
       - 1
@@ -52,12 +58,20 @@ reward:
       - 2
       - 3
   breeding:
+    chance: 0.08
+    drops:
+      - 0
+      - 1
+      - 2
+      - 3
+  smelting:
     chance: 0.01
     drops:
       - 0
       - 1
       - 2
       - 3
+
 fireworkDelay: 0
 fireworkCount: 1
 
