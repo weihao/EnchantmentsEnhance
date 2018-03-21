@@ -79,12 +79,12 @@ public class Enhance {
         boolean forceEnhanced,
         int enchantLevelBeforeAttemptEnhancing) {
         // Enchant level after a successful enhancement
-        int enchantLevel = enchantLevelBeforeAttemptEnhancing + 1;
-        player.getInventory().removeItem(item);
 
-        ItemStack enhancedItem = ItemManager.forgeItem(item, enchantLevel);
-        player.getInventory().addItem(enhancedItem);
-        MenuHandler.updateItem(player, enhancedItem);
+        int enchantLevel = enchantLevelBeforeAttemptEnhancing + 1;
+
+        MenuHandler.updateItem(player,  ItemManager.forgeItem(item, enchantLevel));
+
+
         // Play sound
         Compatibility.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
@@ -102,10 +102,6 @@ public class Enhance {
             Util.sendMessage(SettingsManager.lang.getString(
                 "Enhance.enhanceSuccess"), player);
         }
-        // Bounding item
-        Lore.addLore(item, player, ChatColor.translateAlternateColorCodes('&',
-            SettingsManager.lang.getString("Lore." + SettingsManager.config
-                .getString("lore.bound") + "Lore")), true);
     }
 
 
@@ -124,10 +120,14 @@ public class Enhance {
         Failstack.addLevel(player,
             DataManager.failstackGainedPerFail[enchantLevelBeforeAttemptEnhancing]);
         if (isPhaseDowngrade(enchantLevelBeforeAttemptEnhancing)) {
-            str += (" " + SettingsManager.lang.getString("Enhance.downgraded"));
+            str += ("\n" + SettingsManager.lang.getString(
+                "Enhance.downgraded"));
             Compatibility.playsound.playSound(player, "DOWNGRADED");
             int enchantLevel = enchantLevelBeforeAttemptEnhancing - 1;
-            ItemManager.forgeItem(item, enchantLevel);
+            player.getInventory().removeItem(item);
+            ItemStack enhancedItem = ItemManager.forgeItem(item, enchantLevel);
+            player.getInventory().addItem(enhancedItem);
+            MenuHandler.updateItem(player, enhancedItem);
         }
         Util.sendMessage(str, player);
     }

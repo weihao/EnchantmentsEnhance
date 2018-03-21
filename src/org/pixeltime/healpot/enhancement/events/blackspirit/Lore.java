@@ -20,7 +20,6 @@ public class Lore {
      * @param lore
      * @param tradeable
      */
-    @SuppressWarnings("deprecation")
     public static void addLore(
         ItemStack is,
         Player p,
@@ -50,7 +49,7 @@ public class Lore {
                 if (SettingsManager.config.getBoolean(
                     "lore.sendBoundingMessage")) {
                     Util.sendMessage(SettingsManager.lang.getString(
-                            "Messages.Already" + x), p);
+                        "Messages.Already" + x), p);
                 }
                 return;
             }
@@ -63,8 +62,8 @@ public class Lore {
             im.setLore(loreList);
             is.setItemMeta(im);
             if (SettingsManager.config.getBoolean("lore.sendBoundingMessage")) {
-                Util.sendMessage(SettingsManager.lang.getString(
-                        "Messages.Made" + x), p);
+                Util.sendMessage(SettingsManager.lang.getString("Messages.Made"
+                    + x), p);
             }
             return;
         }
@@ -72,9 +71,45 @@ public class Lore {
         is.setItemMeta(im);
         p.updateInventory();
         if (SettingsManager.config.getBoolean("lore.sendBoundingMessage")) {
-            Util.sendMessage(SettingsManager.lang.getString("Messages.Made" + x), p);
+            Util.sendMessage(SettingsManager.lang.getString("Messages.Made"
+                + x), p);
+        }
+    }
+
+
+    public static void addLore(ItemStack is, String lore, boolean tradeable) {
+        ItemMeta im = is.getItemMeta();
+        List<String> loreList = new ArrayList<String>();
+
+        String y = null;
+        if (tradeable) {
+            y = "Untradeable";
+        }
+        else {
+            y = "Tradeable";
         }
 
+        if ((is.hasItemMeta()) && (is.getItemMeta().hasLore())) {
+            int loreSize = is.getItemMeta().getLore().size();
+            for (int i = 0; i < loreSize; i++) {
+                loreList.add(ChatColor.translateAlternateColorCodes('&',
+                    (String)is.getItemMeta().getLore().get(i)));
+            }
+            if (loreList.contains(lore)) {
+                return;
+            }
+            if (loreList.contains(ChatColor.translateAlternateColorCodes('&',
+                SettingsManager.lang.getString("Lore." + y + "Lore")))) {
+                loreList.remove(ChatColor.translateAlternateColorCodes('&',
+                    SettingsManager.lang.getString("Lore." + y + "Lore")));
+            }
+            loreList.add(lore);
+            im.setLore(loreList);
+            is.setItemMeta(im);
+            return;
+        }
+        im.setLore(Arrays.asList(new String[] { lore }));
+        is.setItemMeta(im);
     }
 
 

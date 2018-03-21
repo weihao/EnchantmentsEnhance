@@ -2,12 +2,14 @@ package org.pixeltime.healpot.enhancement.manager;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.junit.experimental.theories.Theories;
 import org.pixeltime.healpot.enhancement.Main;
+import org.pixeltime.healpot.enhancement.events.blackspirit.Lore;
 import org.pixeltime.healpot.enhancement.util.ItemBuilder;
 import org.pixeltime.healpot.enhancement.util.ItemTypes;
 import org.pixeltime.healpot.enhancement.util.NBTItem;
@@ -116,25 +118,32 @@ public class ItemManager {
             item.addUnsafeEnchantment(Enchantment.getByName(a[0]), Integer
                 .parseInt(a[1]));
         }
-//        List<String> temp2 = SettingsManager.config.getStringList("grade."
-//            + gradeLevel + ".enchantments." + type.toString());
-//        {
-//            for (String s : temp2) {
-//                String[] b = s.split(":");
-//                Enchantment ench = Enchantment.getByName(b[0]);
-//                item.addUnsafeEnchantment(ench, Integer.parseInt(b[1]) + item
-//                    .getEnchantmentLevel(ench));
-//            }
-//        }
+        List<String> temp2 = SettingsManager.config.getStringList("grade."
+            + gradeLevel + ".enchantments." + type.toString());
+        {
+            for (String s : temp2) {
+                String[] b = s.split(":");
+                Enchantment ench = Enchantment.getByName(b[0]);
+                item.addUnsafeEnchantment(ench, Integer.parseInt(b[1]) + item
+                    .getEnchantmentLevel(ench));
+            }
+        }
         return item;
     }
 
 
     public static ItemStack renameItem(ItemStack item) {
-        String s = "";
+        String levelName = SettingsManager.config.getString("enhance." + ItemManager
+            .getItemEnchantLevel(item) + ".name");
+        String gradePrefix = SettingsManager.config.getString("grade." + ItemManager.getItemGradeLevel(item) + ".name");
+        
         int i = getItemGradeLevel(item);
 
-        item.getItemMeta().setDisplayName(s);
+        item.getItemMeta().setDisplayName(levelName);
+
+        Lore.addLore(item, ChatColor.translateAlternateColorCodes('&',
+            SettingsManager.lang.getString("Lore." + SettingsManager.config
+                .getString("lore.bound") + "Lore")), true);
         return item;
     }
 
