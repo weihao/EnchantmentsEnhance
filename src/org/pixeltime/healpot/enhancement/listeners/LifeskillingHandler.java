@@ -197,8 +197,9 @@ public class LifeskillingHandler implements Listener {
      * @param e
      * @return
      */
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onSmelting2(InventoryClickEvent e) {
-        Inventory clickedInventory;
+        Inventory clickedInventory = null;
         if (e.getSlot() < 0) {
             clickedInventory = null;
         }
@@ -209,8 +210,12 @@ public class LifeskillingHandler implements Listener {
         else {
             clickedInventory = e.getView().getBottomInventory();
         }
-        if (!clickedInventory.getType().equals(InventoryType.FURNACE))
+        if (clickedInventory == null) {
             return;
+        }
+        if (!clickedInventory.getType().equals(InventoryType.FURNACE)) {
+            return;
+        }
         FurnaceInventory fi = (FurnaceInventory)clickedInventory;
         boolean click = e.getClick().isShiftClick() || e.getClick()
             .isLeftClick() && e.getRawSlot() == 2;

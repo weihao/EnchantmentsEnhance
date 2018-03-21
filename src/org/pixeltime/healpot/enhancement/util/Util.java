@@ -127,19 +127,6 @@ public class Util {
     }
 
 
-    /**
-     * Renames an enhanced item.
-     * 
-     * @param item
-     * @param enchantLevel
-     */
-    public static void renameItem(ItemStack item, int enchantLevel) {
-        ItemMeta im = item.getItemMeta();
-        im.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-            DataManager.name[enchantLevel]));
-        item.setItemMeta(im);
-    }
-
 
     /**
      * Sends a colored message to a CommandSender.
@@ -253,16 +240,6 @@ public class Util {
         return Integer.parseInt(str.replaceAll("[^0-9]", ""));
     }
 
-
-    public static boolean isValid(ItemStack item, Material[] comparable) {
-        for (int i = 0; i < comparable.length; i++) {
-            if (comparable[i].equals(item.getType())) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
     public static String rainbowlize(String string) {
         int lastColor = 0;
         int currColor;
@@ -277,5 +254,4 @@ public class Util {
         }
         return newString;
     }
-
 }

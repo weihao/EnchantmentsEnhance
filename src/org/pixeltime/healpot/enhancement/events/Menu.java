@@ -15,6 +15,7 @@ import org.pixeltime.healpot.enhancement.events.blackspirit.Enhance;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
 import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
+import org.pixeltime.healpot.enhancement.manager.ItemManager;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.Main;
@@ -173,8 +174,8 @@ public class Menu {
             updateForce(enhancingItem, player);
             updateEnhance(enhancingItem, player);
             screen.setItem(Util.getSlot(1, 2), stoneVisualized(Enhance
-                .getStoneId(player, enhancingItem, Enhance.getItemEnchantLevel(
-                    player, enhancingItem)), player));
+                .getStoneId(player, enhancingItem, ItemManager
+                    .getItemEnchantLevel(enhancingItem)), player));
             screen.setItem(Util.getSlot(9, 3), remove);
         }
     }
@@ -190,8 +191,7 @@ public class Menu {
         ItemMeta im = stats.getItemMeta();
         im.setLore(Enhance.getChanceAsList(item, player));
         stats.setItemMeta(im);
-        screen.setItem(Util.getSlot(5, 1), Compatibility.glow.addGlow(
-            stats));
+        screen.setItem(Util.getSlot(5, 1), Compatibility.glow.addGlow(stats));
         if (Failstack.getLevel(player) != 0) {
             screen.setItem(Util.getSlot(6, 1), store);
         }
@@ -209,7 +209,7 @@ public class Menu {
      */
     public static void updateForce(ItemStack item, Player player) {
         if (Permissions.commandEnhance(player)) {
-            int enchantLevel = Enhance.getItemEnchantLevel(player, item);
+            int enchantLevel = ItemManager.getItemEnchantLevel(item);
             int stoneId = Enhance.getStoneId(player, item, enchantLevel);
             int costToEnhance = DataManager.costToForceEnchant[enchantLevel];
             if (DataManager.maximumFailstackApplied[enchantLevel] == -1
@@ -228,8 +228,8 @@ public class Menu {
                                 + stoneId))));
                 im.setLore(update);
                 force.setItemMeta(im);
-                screen.setItem(Util.getSlot(6, 3), Compatibility.glow
-                    .addGlow(force));
+                screen.setItem(Util.getSlot(6, 3), Compatibility.glow.addGlow(
+                    force));
             }
         }
         else {
@@ -246,24 +246,30 @@ public class Menu {
      * @param player
      */
     public static void updateEnhance(ItemStack item, Player player) {
-        ItemMeta im = enhance.getItemMeta();
-        List<String> update = new ArrayList<String>();
-        update.add(Util.toColor(SettingsManager.lang.getString(
-            "Menu.lore.ifSuccess")));
-        if (DataManager.baseChance[Enhance.getItemEnchantLevel(
-            player, item)] != 100) {
+        if (Permissions.commandEnhance(player)) {
+            ItemMeta im = enhance.getItemMeta();
+            List<String> update = new ArrayList<String>();
             update.add(Util.toColor(SettingsManager.lang.getString(
-                "Menu.lore.ifFail")));
+                "Menu.lore.ifSuccess")));
+            if (DataManager.baseChance[ItemManager.getItemEnchantLevel(
+                item)] != 100) {
+                update.add(Util.toColor(SettingsManager.lang.getString(
+                    "Menu.lore.ifFail")));
+            }
+            if (ItemManager.getItemEnchantLevel(
+                item) >= DataManager.downgradePhase) {
+                update.add(Util.toColor(SettingsManager.lang.getString(
+                    "Menu.lore.ifDowngrade")));
+            }
+            im.setLore(update);
+            enhance.setItemMeta(im);
+            screen.setItem(Util.getSlot(4, 3), Compatibility.glow.addGlow(
+                enhance));
         }
-        if (Enhance.getItemEnchantLevel(player,
-            item) >= DataManager.downgradePhase) {
-            update.add(Util.toColor(SettingsManager.lang.getString(
-                "Menu.lore.ifDowngrade")));
+        else {
+            Util.sendMessage(SettingsManager.config.getString("Config.noPerm"),
+                player);
         }
-        im.setLore(update);
-        enhance.setItemMeta(im);
-        screen.setItem(Util.getSlot(4, 3), Compatibility.glow.addGlow(
-            enhance));
     }
 
 
