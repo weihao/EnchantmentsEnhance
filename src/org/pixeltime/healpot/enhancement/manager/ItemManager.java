@@ -102,12 +102,12 @@ public class ItemManager {
 
     public static ItemStack forgeItem(ItemStack item, int enchantLevel) {
         return renameItem(applyEnchantments(levelUpdate(item, enchantLevel)));
-
     }
 
 
     public static ItemStack applyEnchantments(ItemStack item) {
         int enchantLevel = getItemEnchantLevel(item);
+        int gradeLevel = getItemGradeLevel(item);
         ItemTypes type = getItemEnchantmentType(item);
         List<String> temp = SettingsManager.config.getStringList("enhance."
             + enchantLevel + ".enchantments." + type.toString());
@@ -116,16 +116,16 @@ public class ItemManager {
             item.addUnsafeEnchantment(Enchantment.getByName(a[0]), Integer
                 .parseInt(a[1]));
         }
-        List<String> temp2 = SettingsManager.config.getStringList("grade."
-            + enchantLevel + ".enchantments." + type.toString());
-        {
-            for (String s : temp2) {
-                String[] b = s.split(":");
-                Enchantment ench = Enchantment.getByName(b[0]);
-                item.addUnsafeEnchantment(ench, Integer.parseInt(b[1]) + item
-                    .getEnchantmentLevel(ench));
-            }
-        }
+//        List<String> temp2 = SettingsManager.config.getStringList("grade."
+//            + gradeLevel + ".enchantments." + type.toString());
+//        {
+//            for (String s : temp2) {
+//                String[] b = s.split(":");
+//                Enchantment ench = Enchantment.getByName(b[0]);
+//                item.addUnsafeEnchantment(ench, Integer.parseInt(b[1]) + item
+//                    .getEnchantmentLevel(ench));
+//            }
+//        }
         return item;
     }
 

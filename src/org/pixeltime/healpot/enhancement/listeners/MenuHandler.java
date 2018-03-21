@@ -21,10 +21,13 @@ import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.util.Util;
 
 public class MenuHandler implements Listener {
-    private Map<Player, ItemStack> itemOnEnhancingSlot =
+    private static Map<Player, ItemStack> itemOnEnhancingSlot =
         new HashMap<Player, ItemStack>();
 
-
+    public static void updateItem(Player player, ItemStack item)
+    {
+        itemOnEnhancingSlot.put(player, item);
+    }
     /**
      * Handles Gui.
      * 

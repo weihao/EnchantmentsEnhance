@@ -88,9 +88,8 @@ enhance:
     costToForceEnchant: -1
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: ""
-    enchantments:
-      - 
+    name: "+0"
+    enchantments: []
   1:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -116,9 +115,9 @@ enhance:
     name: "+2"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:2
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:2
   3:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -130,9 +129,9 @@ enhance:
     name: "+3"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:3
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:3
   4:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -144,9 +143,9 @@ enhance:
     name: "+4"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:4
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:4
   5:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -158,9 +157,9 @@ enhance:
     name: "+5"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:5
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:5
   6:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -172,9 +171,9 @@ enhance:
     name: "+6"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:6
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:6
   7:
     baseChance: 20
     chanceIncreasePerFailstack: 2.5
@@ -186,9 +185,9 @@ enhance:
     name: "+7"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:7
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:7
   8:
     baseChance: 17.5
     chanceIncreasePerFailstack: 2.0
@@ -200,9 +199,9 @@ enhance:
     name: "+8"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:8
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:8
   9:
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -214,9 +213,9 @@ enhance:
     name: "+9"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:9
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:9
   10:
     baseChance: 12.5
     chanceIncreasePerFailstack: 1.25
@@ -228,9 +227,9 @@ enhance:
     name: "+10"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:10
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:10
   11:
     baseChance: 10
     chanceIncreasePerFailstack: 0.75
@@ -242,9 +241,9 @@ enhance:
     name: "+11"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:11
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:11
   12:
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.63
@@ -256,9 +255,9 @@ enhance:
     name: "+12"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:12
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:12
   13:
     baseChance: 5
     chanceIncreasePerFailstack: 0.5
@@ -270,9 +269,9 @@ enhance:
     name: "+13"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:13
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:13
   14:
     baseChance: 2.5
     chanceIncreasePerFailstack: 0.5
@@ -284,9 +283,9 @@ enhance:
     name: "+14"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:14
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:14
   15:
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -298,9 +297,9 @@ enhance:
     name: "+15"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:15
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:15
   16:
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.75
@@ -312,9 +311,9 @@ enhance:
     name: "PRI"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:16
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:16
   17:
     baseChance: 5.0
     chanceIncreasePerFailstack: 0.5
@@ -326,9 +325,9 @@ enhance:
     name: "DUO"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:17
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:17
   18:
     baseChance: 2.0
     chanceIncreasePerFailstack: 0.25
@@ -340,9 +339,9 @@ enhance:
     name: "TRI"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:18
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:18
   19:
     baseChance: 1.5
     chanceIncreasePerFailstack: 0.25
@@ -354,9 +353,9 @@ enhance:
     name: "TET"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:19
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:19
   20:
     baseChance: -1
     chanceIncreasePerFailstack: -1
@@ -368,9 +367,9 @@ enhance:
     name: "PEN"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+        - DAMAGE_ALL:20
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - PROTECTION_ENVIRONMENTAL:20
 grade:
   0:
     name: "Crimson Flame"

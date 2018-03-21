@@ -7,6 +7,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
+import org.pixeltime.healpot.enhancement.listeners.MenuHandler;
 import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.ItemManager;
@@ -79,7 +80,11 @@ public class Enhance {
         int enchantLevelBeforeAttemptEnhancing) {
         // Enchant level after a successful enhancement
         int enchantLevel = enchantLevelBeforeAttemptEnhancing + 1;
-        ItemManager.forgeItem(item, enchantLevel);
+        player.getInventory().removeItem(item);
+
+        ItemStack enhancedItem = ItemManager.forgeItem(item, enchantLevel);
+        player.getInventory().addItem(enhancedItem);
+        MenuHandler.updateItem(player, enhancedItem);
         // Play sound
         Compatibility.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
