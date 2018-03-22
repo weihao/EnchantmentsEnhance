@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.junit.experimental.theories.Theories;
 import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Lore;
@@ -118,9 +119,19 @@ public class ItemManager {
             item.addUnsafeEnchantment(Enchantment.getByName(a[0]), Integer
                 .parseInt(a[1]));
         }
-        List<String> temp2 = SettingsManager.config.getStringList("grade."
-            + gradeLevel + ".enchantments." + type.toString());
-        {
+        List<String> temp2 = null;
+        switch (getItemEnchantmentType(item)) {
+            case WEAPON:
+                temp2 = SettingsManager.config.getStringList("weaponGrade."
+                    + gradeLevel + ".enchantments");
+            case ARMOR:
+                temp2 = SettingsManager.config.getStringList("armorGrade."
+                    + gradeLevel + ".enchantments");
+            default:
+                break;
+        }
+
+        if (temp2 != null) {
             for (String s : temp2) {
                 String[] b = s.split(":");
                 Enchantment ench = Enchantment.getByName(b[0]);
@@ -128,19 +139,53 @@ public class ItemManager {
                     .getEnchantmentLevel(ench));
             }
         }
+
         return item;
     }
 
 
     public static ItemStack renameItem(ItemStack item) {
-        String levelName = SettingsManager.config.getString("enhance." + ItemManager
-            .getItemEnchantLevel(item) + ".name");
-        String gradePrefix = SettingsManager.config.getString("grade." + ItemManager.getItemGradeLevel(item) + ".name");
-        
-        int i = getItemGradeLevel(item);
+        int enchantLevel = ItemManager.getItemEnchantLevel(item);
+        int gradeLevel = ItemManager.getItemGradeLevel(item);
+        switch (getItemEnchantmentType(item)) {
+            case WEAPON:
+                String levelName = SettingsManager.config.getString("enhance."
+                    + enchantLevel + ".name");
+                String gradePrefix = SettingsManager.config.getString("grade."
+                    + gradeLevel + ".name");
+                String itemName = "";
+                if (item.getType().toString().toLowerCase().contains("axe")) {
+                    itemName = SettingsManager.config.getString("name.axe");
+                }
+                else if (item.getType().toString().toLowerCase().contains(
+                    "sword")) {
+                    itemName = SettingsManager.config.getString("name.sword");
+                }
+                else if (item.getType().toString().toLowerCase().contains(
+                    "bow")) {
+                    itemName = SettingsManager.config.getString("name.bow");
+                }
+                String name = "";
+                if (levelName != null) {
+                    name += levelName + " ";
+                }
+                if (gradePrefix != null) {
+                    name += gradePrefix + " ";
+                }
+                if (itemName != null) {
+                    name += itemName;
+                }
+                ItemMeta im = item.getItemMeta();
+                im.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                    name));
+                item.setItemMeta(im);
+            case TOOL:
 
-        item.getItemMeta().setDisplayName(levelName);
+            case MASK:
 
+            default:
+
+        }
         Lore.addLore(item, ChatColor.translateAlternateColorCodes('&',
             SettingsManager.lang.getString("Lore." + SettingsManager.config
                 .getString("lore.bound") + "Lore")), true);

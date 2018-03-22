@@ -84,7 +84,6 @@ public class Enhance {
 
         MenuHandler.updateItem(player,  ItemManager.forgeItem(item, enchantLevel));
 
-
         // Play sound
         Compatibility.playsound.playSound(player, "SUCCESS");
         // Launch fireworks

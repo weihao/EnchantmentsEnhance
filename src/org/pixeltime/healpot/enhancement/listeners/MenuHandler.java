@@ -24,10 +24,15 @@ public class MenuHandler implements Listener {
     private static Map<Player, ItemStack> itemOnEnhancingSlot =
         new HashMap<Player, ItemStack>();
 
-    public static void updateItem(Player player, ItemStack item)
-    {
+
+    public static void updateItem(Player player, ItemStack item) {
+        player.getInventory().removeItem(itemOnEnhancingSlot.get(player));
         itemOnEnhancingSlot.put(player, item);
+        player.getInventory().addItem(item);
+
     }
+
+
     /**
      * Handles Gui.
      * 
@@ -84,7 +89,7 @@ public class MenuHandler implements Listener {
                             itemOnEnhancingSlot.get(player));
                         return;
                     }
-                    
+
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.store"))) {
                         SecretBook.addFailstackToStorage(player);
@@ -128,9 +133,8 @@ public class MenuHandler implements Listener {
                                 SettingsManager.lang.getString(
                                     "Lore.UntradeableLore")))) {
                             e.setCancelled(true);
-                            Util.sendMessage(SettingsManager.lang
-                                    .getString("Messages.NoStorage"), e
-                                        .getWhoClicked());
+                            Util.sendMessage(SettingsManager.lang.getString(
+                                "Messages.NoStorage"), e.getWhoClicked());
                         }
                     }
                 }
@@ -148,9 +152,8 @@ public class MenuHandler implements Listener {
                                 SettingsManager.lang.getString(
                                     "Lore.UntradeableLore")))) {
                             e.setCancelled(true);
-                            Util.sendMessage(SettingsManager.lang
-                                    .getString("Messages.NoStorage"), e
-                                        .getWhoClicked());
+                            Util.sendMessage(SettingsManager.lang.getString(
+                                "Messages.NoStorage"), e.getWhoClicked());
                         }
                     }
                 }

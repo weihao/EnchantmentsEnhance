@@ -370,49 +370,60 @@ enhance:
         - DAMAGE_ALL:20
       ARMOR:
         - PROTECTION_ENVIRONMENTAL:20
-grade:
+weaponGrade:
   0:
+    name: ""
+    enchantments: []
+  1:
     name: "Crimson Flame"
     enchantments:
-      WEAPON:
-        - DAMAGE_ALL:1
-      ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
-  1:
+        - FIRE_ASPECT:1
+  2:
     name: "Destruction"
     enchantments:
-      WEAPON:
         - DAMAGE_ALL:1
-      ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
-  2:
+  3:
     name: "Temptation"
     enchantments:
-      WEAPON:
-        - DAMAGE_ALL:1
-      ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
-  3:
+        - LOOT_BONUS_MOBS:1
+  4:
     name: "Ultimate"
     enchantments:
-      WEAPON:
-        - DAMAGE_ALL:1
-      ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
-  4:
+        - DAMAGE_ALL:2
+        - DURABILITY:2
+  5:
     name: "Kzarka"
     enchantments:
-      WEAPON:
-        - DAMAGE_ALL:1
-      ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
-  5:
+        - DAMAGE_ALL:3
+        - DURABILITY:3
+  6:
     name: "Dandelion"
     enchantments:
-      WEAPON:
-        - DAMAGE_ALL:1
-      ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+        - DAMAGE_ARTHROPODS:3
+        - DAMAGE_UNDEAD:3
+        - DURABILITY:3
+        - LOOT_BONUS_MOBS:3
+armorGrade:
+  0:
+    name: ""
+    enchantments: []
+  1:
+    name: "Agility"
+    enchantments:
+        - PROTECTION_FALL:1
+  2:
+    name: "Intimidation"
+    enchantments:
+        - THORNS:1
+  3:
+    name: "Iron Wall"
+    enchantments:
+        - PROTECTION_EXPLOSIONS:1
+  4:
+    name: "Ultimate"
+    enchantments:
+        - PROTECTION_ENVIRONMENTAL:2
+        - DURABILITY:2
 name:
   axe: "Ain Axe"
   sword: "Great Sword"
