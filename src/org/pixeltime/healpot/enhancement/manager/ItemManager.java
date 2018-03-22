@@ -8,9 +8,8 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.junit.experimental.theories.Theories;
-import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Lore;
+import org.pixeltime.healpot.enhancement.events.inventory.Backpack;
 import org.pixeltime.healpot.enhancement.util.ItemBuilder;
 import org.pixeltime.healpot.enhancement.util.ItemTypes;
 import org.pixeltime.healpot.enhancement.util.NBTItem;
@@ -59,7 +58,7 @@ public class ItemManager {
         Boolean count) {
         List<String> lore = new ArrayList<String>();
         if (player != null) {
-            lore.add(Util.toColor(Main.inventoryText.getOneStoneCountAsString(
+            lore.add(Util.toColor(Backpack.getOneStoneCountAsString(
                 player, stoneId)));
         }
         return new ItemBuilder(Util.stoneTypes[stoneId]).setName(Util.toColor(

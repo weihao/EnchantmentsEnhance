@@ -1,9 +1,8 @@
 package org.pixeltime.healpot.enhancement.manager.language;
 
-import org.pixeltime.healpot.enhancement.interfaces.Readable;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 
-public class Language_en_us implements Readable {
+public class Language_en_us {
     /**
      * Adds English localization file to the plugin.
      */

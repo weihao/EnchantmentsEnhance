@@ -13,8 +13,6 @@ import org.pixeltime.healpot.enhancement.commands.CommandEnhance;
 import org.pixeltime.healpot.enhancement.events.blacksmith.SecretBook;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
-import org.pixeltime.healpot.enhancement.events.inventory.Inventory_Text;
-import org.pixeltime.healpot.enhancement.interfaces.Displayable;
 import org.pixeltime.healpot.enhancement.listeners.ItemDropHandler;
 import org.pixeltime.healpot.enhancement.listeners.LifeskillingHandler;
 import org.pixeltime.healpot.enhancement.listeners.MenuHandler;
@@ -30,13 +28,11 @@ import org.pixeltime.healpot.enhancement.util.Util;
 
 public class Main extends JavaPlugin {
     public static final Compatibility compatibility = new Compatibility();
-    public static final Displayable inventoryText = new Inventory_Text();
     private static Main main;
 
     public static Main getMain() {
         return main;
     }
-
 
     public void onEnable() {
         final long startTime = System.currentTimeMillis();

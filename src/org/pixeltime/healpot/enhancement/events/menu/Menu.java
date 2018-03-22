@@ -1,4 +1,4 @@
-package org.pixeltime.healpot.enhancement.events;
+package org.pixeltime.healpot.enhancement.events.menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +13,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Enhance;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
+import org.pixeltime.healpot.enhancement.events.inventory.Backpack;
 import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.ItemManager;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
-import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.util.Util;
 
 public class Menu {
@@ -286,7 +286,7 @@ public class Menu {
         im.setDisplayName(Util.toColor(SettingsManager.lang.getString("Item."
             + stoneId)));
         List<String> lore = new ArrayList<String>();
-        lore.add(Util.toColor(Main.inventoryText.getOneStoneCountAsString(
+        lore.add(Util.toColor(Backpack.getOneStoneCountAsString(
             player, stoneId)));
         im.setLore(lore);
         stone.setItemMeta(im);

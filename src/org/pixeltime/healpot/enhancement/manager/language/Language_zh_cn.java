@@ -1,9 +1,8 @@
 package org.pixeltime.healpot.enhancement.manager.language;
 
-import org.pixeltime.healpot.enhancement.interfaces.Readable;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 
-public class Language_zh_cn implements Readable{
+public class Language_zh_cn {
     /**
      * Adds Chinese localization file to the plugin.
      */

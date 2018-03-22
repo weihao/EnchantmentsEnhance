@@ -6,9 +6,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.pixeltime.healpot.enhancement.Main;
-import org.pixeltime.healpot.enhancement.events.Menu;
 import org.pixeltime.healpot.enhancement.events.blacksmith.SecretBook;
+import org.pixeltime.healpot.enhancement.events.inventory.Backpack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
+import org.pixeltime.healpot.enhancement.events.menu.Menu;
 import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.util.Util;
@@ -51,8 +52,8 @@ public class CommandEnhance implements CommandExecutor {
             if ((args[0].equalsIgnoreCase("ver") || args[0].equalsIgnoreCase(
                 "version")) && Permissions.commandVersion(player)) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.checkingVersion").replaceAll("%version%",
-                        Main.getMain().getDescription().getVersion()), player);
+                    "Config.checkingVersion").replaceAll("%version%", Main
+                        .getMain().getDescription().getVersion()), player);
                 return true;
             }
             if (args[0].equalsIgnoreCase("reload") && Permissions.commandReload(
@@ -71,7 +72,7 @@ public class CommandEnhance implements CommandExecutor {
             }
             if (args[0].equalsIgnoreCase("inventory") && Permissions
                 .commandEnhance(player)) {
-                Main.inventoryText.openInventory(player);
+                Backpack.sendInventoryAsText(player);
                 return true;
             }
             if (args[0].equalsIgnoreCase("add") && Permissions.commandAdd(

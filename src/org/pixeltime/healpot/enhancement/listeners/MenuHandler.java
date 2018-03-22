@@ -14,9 +14,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.healpot.enhancement.events.Menu;
 import org.pixeltime.healpot.enhancement.events.blacksmith.SecretBook;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Enhance;
+import org.pixeltime.healpot.enhancement.events.menu.Menu;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.util.Util;
 
