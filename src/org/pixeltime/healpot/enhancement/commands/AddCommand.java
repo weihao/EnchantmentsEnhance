@@ -16,7 +16,7 @@ public class AddCommand extends SubCommand {
             int stoneType = -1;
             int level = -1;
             try {
-                p = Bukkit.getServer().getPlayer(args[1]);
+                p = Bukkit.getServer().getPlayer(args[0]);
                 success = true;
             }
             catch (Exception e) {
@@ -25,8 +25,8 @@ public class AddCommand extends SubCommand {
             }
             if (success) {
                 try {
-                    stoneType = Integer.parseInt(args[2]);
-                    level = Integer.parseInt(args[3]);
+                    stoneType = Integer.parseInt(args[1]);
+                    level = Integer.parseInt(args[2]);
                 }
                 catch (Exception e) {
                     Util.sendMessage(SettingsManager.lang.getString(

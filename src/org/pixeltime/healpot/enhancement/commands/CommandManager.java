@@ -84,6 +84,7 @@ public class CommandManager implements CommandExecutor {
             if (!player.hasPermission(target.getPermission())) {
                 Util.sendMessage(SettingsManager.lang.getString(
                     "Config.noPerm"), player);
+                return true;
             }
 
             try {

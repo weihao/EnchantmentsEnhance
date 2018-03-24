@@ -33,10 +33,10 @@ public class ItemDropHandler implements Listener {
             }
             // Checks if the item is a bounded item
             if (loreList.contains(ChatColor.translateAlternateColorCodes('&',
-                SettingsManager.lang.getString("Lore.UntradeableLore")))) {
+                SettingsManager.lang.getString("Lore.untradeableLore")))) {
                 e.setCancelled(true);
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "Messages.NoDrop"), p);
+                        "Messages.noDrop"), p);
                 return;
             }
         }
