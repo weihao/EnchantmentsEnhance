@@ -21,13 +21,14 @@ import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.util.Util;
 
 public class MenuHandler implements Listener {
-    private static Map<Player, ItemStack> itemOnEnhancingSlot =
-        new HashMap<Player, ItemStack>();
+    private static Map<String, ItemStack> itemOnEnhancingSlot =
+        new HashMap<String, ItemStack>();
 
 
     public static void updateItem(Player player, ItemStack item) {
-        player.getInventory().removeItem(itemOnEnhancingSlot.get(player));
-        itemOnEnhancingSlot.put(player, item);
+        player.getInventory().removeItem(itemOnEnhancingSlot.get(player
+            .getDisplayName()));
+        itemOnEnhancingSlot.put(player.getDisplayName(), item);
         player.getInventory().addItem(item);
 
     }
@@ -56,63 +57,75 @@ public class MenuHandler implements Listener {
                 e.setCancelled(true);
                 if (e.getCurrentItem().hasItemMeta()) {
                     if (Enhance.getValidationOfItem(player, e.getCurrentItem())
-                        && !itemOnEnhancingSlot.containsKey(player)) {
-                        itemOnEnhancingSlot.put(player, e.getCurrentItem());
+                        && !itemOnEnhancingSlot.containsKey(player
+                            .getDisplayName())) {
+                        itemOnEnhancingSlot.put(player.getDisplayName(), e
+                            .getCurrentItem());
                         Menu.updateInv(e.getCurrentItem(), player,
-                            itemOnEnhancingSlot.containsKey(player), true,
-                            itemOnEnhancingSlot.get(player));
+                            itemOnEnhancingSlot.containsKey(player
+                                .getDisplayName()), true, itemOnEnhancingSlot
+                                    .get(player.getDisplayName()));
                     }
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.enhance"))
-                        && itemOnEnhancingSlot.containsKey(player)) {
-                        Enhance.diceToEnhancement(itemOnEnhancingSlot.get(
-                            player), player);
+                        && itemOnEnhancingSlot.containsKey(player
+                            .getDisplayName())) {
+                        Enhance.diceToEnhancement(itemOnEnhancingSlot.get(player
+                            .getDisplayName()), player);
                         Menu.updateInv(e.getCurrentItem(), player,
-                            itemOnEnhancingSlot.containsKey(player), false,
-                            itemOnEnhancingSlot.get(player));
+                            itemOnEnhancingSlot.containsKey(player
+                                .getDisplayName()), false, itemOnEnhancingSlot
+                                    .get(player.getDisplayName()));
                         return;
                     }
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.remove"))
-                        && itemOnEnhancingSlot.containsKey(player)) {
-                        itemOnEnhancingSlot.remove(player);
+                        && itemOnEnhancingSlot.containsKey(player
+                            .getDisplayName())) {
+                        itemOnEnhancingSlot.remove(player.getDisplayName());
                         Menu.createMenu(player);
                         return;
                     }
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.force"))
-                        && itemOnEnhancingSlot.containsKey(player)) {
+                        && itemOnEnhancingSlot.containsKey(player
+                            .getDisplayName())) {
                         Enhance.forceToEnhancement(itemOnEnhancingSlot.get(
-                            player), player);
+                            player.getDisplayName()), player);
                         Menu.updateInv(e.getCurrentItem(), player,
-                            itemOnEnhancingSlot.containsKey(player), false,
-                            itemOnEnhancingSlot.get(player));
+                            itemOnEnhancingSlot.containsKey(player
+                                .getDisplayName()), false, itemOnEnhancingSlot
+                                    .get(player.getDisplayName()));
                         return;
                     }
 
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.store"))) {
                         SecretBook.addFailstackToStorage(player);
-                        if (itemOnEnhancingSlot.get(player) == null) {
+                        if (itemOnEnhancingSlot.get(player
+                            .getDisplayName()) == null) {
                             Menu.createMenu(player);
                         }
                         else {
-                            Menu.updateFailstack(itemOnEnhancingSlot.get(
-                                player), player);
+                            Menu.updateFailstack(itemOnEnhancingSlot.get(player
+                                .getDisplayName()), player);
                         }
                         return;
                     }
                 }
                 else if (Enhance.getValidationOfItem(player, e.getCurrentItem())
-                    && !itemOnEnhancingSlot.containsKey(player)) {
-                    itemOnEnhancingSlot.put(player, e.getCurrentItem());
+                    && !itemOnEnhancingSlot.containsKey(player
+                        .getDisplayName())) {
+                    itemOnEnhancingSlot.put(player.getDisplayName(), e
+                        .getCurrentItem());
                     Menu.updateInv(e.getCurrentItem(), player,
-                        itemOnEnhancingSlot.containsKey(player), true,
-                        itemOnEnhancingSlot.get(player));
+                        itemOnEnhancingSlot.containsKey(player
+                            .getDisplayName()), true, itemOnEnhancingSlot.get(
+                                player.getDisplayName()));
                 }
             }
         }
-        if (!itemOnEnhancingSlot.containsKey(player)) {
+        if (!itemOnEnhancingSlot.containsKey(player.getDisplayName())) {
             List<String> loreList = new ArrayList<String>();
             if ((e.getInventory().getType() != InventoryType.CRAFTING) && (e
                 .getInventory().getType() != InventoryType.PLAYER)) {
@@ -169,8 +182,9 @@ public class MenuHandler implements Listener {
      */
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent e) {
-        if (itemOnEnhancingSlot.containsKey(e.getPlayer())) {
-            itemOnEnhancingSlot.remove(e.getPlayer());
+        Player player = (Player)e.getPlayer();
+        if (itemOnEnhancingSlot.containsKey(player.getDisplayName())) {
+            itemOnEnhancingSlot.remove(player.getDisplayName());
         }
     }
 }

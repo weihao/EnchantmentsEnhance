@@ -10,14 +10,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.Wool;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Enhance;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
 import org.pixeltime.healpot.enhancement.events.inventory.Backpack;
 import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.ItemManager;
-import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.util.Util;
 
@@ -30,22 +28,6 @@ public class Menu {
      * These are buttons.
      */
     private static ItemStack enhance, force, stats, remove, store;
-
-
-    /**
-     * Creates a GUI button made of a wool.
-     * 
-     * @param dc
-     * @param name
-     * @return
-     */
-    private static ItemStack createItem(DyeColor dc, String name) {
-        ItemStack i = new Wool(dc).toItemStack(1);
-        ItemMeta im = i.getItemMeta();
-        im.setDisplayName(name);
-        i.setItemMeta(im);
-        return i;
-    }
 
 
     /**
@@ -68,7 +50,7 @@ public class Menu {
      */
     public static void createMenu(Player player) {
         screen.clear();
-        enhance = createItem(DyeColor.YELLOW, ChatColor.YELLOW
+        enhance = Util.createButton(DyeColor.YELLOW, ChatColor.YELLOW
             + SettingsManager.lang.getString("Menu.gui.enhance"));
         ItemMeta enhanceim = enhance.getItemMeta();
         List<String> enhanceStr = new ArrayList<String>();
@@ -83,8 +65,8 @@ public class Menu {
         enhanceim.setLore(enhanceStr);
         enhance.setItemMeta(enhanceim);
 
-        force = createItem(DyeColor.PURPLE, ChatColor.RED + SettingsManager.lang
-            .getString("Menu.gui.force"));
+        force = Util.createButton(DyeColor.PURPLE, ChatColor.RED
+            + SettingsManager.lang.getString("Menu.gui.force"));
         ItemMeta forceim = force.getItemMeta();
         List<String> forceStr = new ArrayList<String>();
         forceStr.add(Util.toColor(SettingsManager.lang.getString(
@@ -92,7 +74,7 @@ public class Menu {
         forceim.setLore(forceStr);
         force.setItemMeta(forceim);
 
-        stats = createItem(DyeColor.LIGHT_BLUE, ChatColor.AQUA
+        stats = Util.createButton(DyeColor.LIGHT_BLUE, ChatColor.AQUA
             + SettingsManager.lang.getString("Menu.gui.stats"));
         ItemMeta statsim = stats.getItemMeta();
         List<String> statsStr = new ArrayList<String>();
@@ -106,8 +88,8 @@ public class Menu {
         statsim.setLore(statsStr);
         stats.setItemMeta(statsim);
 
-        remove = createItem(DyeColor.RED, ChatColor.RED + SettingsManager.lang
-            .getString("Menu.gui.remove"));
+        remove = Util.createButton(DyeColor.RED, ChatColor.RED
+            + SettingsManager.lang.getString("Menu.gui.remove"));
         ItemMeta removeim = remove.getItemMeta();
         List<String> removeStr = new ArrayList<String>();
         removeStr.add(Util.toColor(SettingsManager.lang.getString(

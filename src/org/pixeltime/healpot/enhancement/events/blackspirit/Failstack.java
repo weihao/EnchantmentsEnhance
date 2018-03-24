@@ -6,21 +6,22 @@ import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 
 public class Failstack {
-    private static HashMap<Player, Integer> failstack =
-        new HashMap<Player, Integer>();
+    private static HashMap<String, Integer> failstack =
+        new HashMap<String, Integer>();
 
 
     public static void loadLevels(Player player) {
-        if (SettingsManager.data.contains(player.getName() + ".failstack")
-            || failstack.containsKey(player)) {
-            failstack.put(player, SettingsManager.data.getInt(player.getName() + ".failstack"));
+        if (SettingsManager.data.contains(player.getDisplayName()
+            + ".failstack") || failstack.containsKey(player.getDisplayName())) {
+            failstack.put(player.getDisplayName(), SettingsManager.data.getInt(
+                player.getName() + ".failstack"));
         }
     }
 
 
     public static void saveLevels(Player player, boolean save) {
-        SettingsManager.data.set(player.getName() + ".failstack", getLevel(
-            player));
+        SettingsManager.data.set(player.getDisplayName() + ".failstack",
+            getLevel(player));
         if (save)
             SettingsManager.saveData();
     }
@@ -32,7 +33,7 @@ public class Failstack {
 
 
     public static void setLevel(Player player, int level) {
-        failstack.put(player, level);
+        failstack.put(player.getDisplayName(), level);
     }
 
 
@@ -43,8 +44,8 @@ public class Failstack {
 
 
     public static int getLevel(Player player) {
-        if (failstack.containsKey(player)) {
-            return failstack.get(player);
+        if (failstack.containsKey(player.getDisplayName())) {
+            return failstack.get(player.getDisplayName());
         }
         return 0;
     }

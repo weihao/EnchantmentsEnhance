@@ -19,7 +19,6 @@ import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.FurnaceInventory;
 import org.bukkit.inventory.Inventory;
-import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.util.AnimalBreeding;
 import org.pixeltime.healpot.enhancement.util.Util;
@@ -75,8 +74,7 @@ public class LifeskillingHandler implements Listener {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onMining(BlockBreakEvent e) {
         Player player = e.getPlayer();
-        if (player.getGameMode() != GameMode.SURVIVAL || !Permissions
-            .commandEnhance(player)) {
+        if (player.getGameMode() != GameMode.SURVIVAL) {
             return;
         }
         if (mining.contains(e.getBlock().getType().toString()))
@@ -104,8 +102,7 @@ public class LifeskillingHandler implements Listener {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onChopping(BlockBreakEvent e) {
         Player player = e.getPlayer();
-        if (player.getGameMode() != GameMode.SURVIVAL || !Permissions
-            .commandEnhance(player)) {
+        if (player.getGameMode() != GameMode.SURVIVAL) {
             return;
         }
         if (chopping.contains(e.getBlock().getType().toString()))

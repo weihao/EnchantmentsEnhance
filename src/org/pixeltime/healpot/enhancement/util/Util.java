@@ -3,13 +3,14 @@ package org.pixeltime.healpot.enhancement.util;
 import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.material.Wool;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
-import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 
 /**
@@ -165,64 +166,6 @@ public class Util {
     }
 
 
-    /**
-     * Sends player a guide of all the commands that are available.
-     * 
-     * @param player
-     */
-    public static void printHelp(Player player) {
-        String help = "&b&l&m          &d EnchantmentsEnhance&b&l&m          ";
-        if (Permissions.commandHelp(player)) {
-            help += "\n&6/enhance help &7- " + SettingsManager.lang.getString(
-                "Help.help");
-        }
-        if (Permissions.commandEnhance(player)) {
-            help += "\n&6/enhance menu &7- " + SettingsManager.lang.getString(
-                "Help.menu");
-            help += "\n&6/enhance inventory &7- " + SettingsManager.lang
-                .getString("Help.inventory");
-            help += "\n&6/enhance list &7- " + SettingsManager.lang.getString(
-                "Help.list");
-            help += "\n&6/enhance select &7- " + SettingsManager.lang.getString(
-                "Help.select");
-        }
-        if (Permissions.commandLore(player)) {
-            help += "\n&6/enhance lore &7- " + SettingsManager.lang.getString(
-                "Help.lore");
-        }
-        if (Permissions.commandReload(player)) {
-            help += "\n&6/enhance reload &7- " + SettingsManager.lang.getString(
-                "Help.reload");
-        }
-        if (Permissions.commandVersion(player)) {
-            help += "\n&6/enhance version &7- " + SettingsManager.lang
-                .getString("Help.version");
-        }
-        if (Permissions.commandAdd(player)) {
-            help += "\n&6/enhance add &7- " + SettingsManager.lang.getString(
-                "Help.add");
-        }
-
-        Util.sendMessage(help, player, false);
-    }
-
-    /**
-     * Print help for console.
-     * @param sender
-     */
-    public static void printHelp(CommandSender sender) {
-        String help = "&b&l&m          &d EnchantmentsEnhance&b&l&m          ";
-        help += "\n&6/enhance help &7- " + SettingsManager.lang.getString(
-            "Help.help");
-        help += "\n&6/enhance reload &7- " + SettingsManager.lang.getString(
-            "Help.reload");
-        help += "\n&6/enhance version &7- " + SettingsManager.lang.getString(
-            "Help.version");
-        help += "\n&6/enhance add &7- " + SettingsManager.lang.getString(
-            "Help.add");
-        Util.sendMessage(help, sender, false);
-    }
-
 
     /**
      * Gets a player as a Player entity.
@@ -230,7 +173,6 @@ public class Util {
      * @param str
      * @return
      */
-    @SuppressWarnings("deprecation")
     public static Player getPlayer(String str) {
         return Bukkit.getServer().getPlayer(str);
     }
@@ -272,5 +214,21 @@ public class Util {
                 .charAt(currColor)) + "" + string.charAt(i);
         }
         return newString;
+    }
+
+
+    /**
+     * Creates a GUI button made of a wool.
+     * 
+     * @param dc
+     * @param name
+     * @return
+     */
+    public static ItemStack createButton(DyeColor dc, String name) {
+        ItemStack i = new Wool(dc).toItemStack(1);
+        ItemMeta im = i.getItemMeta();
+        im.setDisplayName(name);
+        i.setItemMeta(im);
+        return i;
     }
 }

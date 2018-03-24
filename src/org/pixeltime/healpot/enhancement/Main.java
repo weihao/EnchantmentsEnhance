@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.pixeltime.healpot.enhancement.commands.CommandEnhance;
+import org.pixeltime.healpot.enhancement.commands.CommandManager;
 import org.pixeltime.healpot.enhancement.events.blacksmith.SecretBook;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
@@ -20,7 +21,6 @@ import org.pixeltime.healpot.enhancement.listeners.PlayerDeathHandler;
 import org.pixeltime.healpot.enhancement.listeners.PlayerStreamHandler;
 import org.pixeltime.healpot.enhancement.manager.Compatibility;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
-import org.pixeltime.healpot.enhancement.manager.Permissions;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import org.pixeltime.healpot.enhancement.util.AnimalBreeding;
 import org.pixeltime.healpot.enhancement.util.Metrics;
@@ -29,10 +29,13 @@ import org.pixeltime.healpot.enhancement.util.Util;
 public class Main extends JavaPlugin {
     public static final Compatibility compatibility = new Compatibility();
     private static Main main;
+    public CommandManager commandManager;
+
 
     public static Main getMain() {
         return main;
     }
+
 
     public void onEnable() {
         final long startTime = System.currentTimeMillis();
@@ -69,7 +72,6 @@ public class Main extends JavaPlugin {
     }
 
 
-
     /**
      * Includes the initialization of the plugin.
      */
@@ -88,7 +90,7 @@ public class Main extends JavaPlugin {
         new AnimalBreeding();
         new DataManager();
         new Metrics(this);
-        this.getCommand("enhance").setExecutor(new CommandEnhance());
+        this.commandManager = new CommandManager();
     }
 
 
@@ -131,71 +133,70 @@ public class Main extends JavaPlugin {
         }
     }
 
-
-    @Override
-    public List<String> onTabComplete(
-        CommandSender sender,
-        Command cmd,
-        String commandLabel,
-        String[] args) {
-        List<String> commands = new ArrayList<String>();
-        if (cmd.getName().equalsIgnoreCase("enhance")) {
-            Player player = (Player)sender;
-            List<String> str = new ArrayList<String>();
-            if (Permissions.commandHelp(player)) {
-                commands.add("help");
-            }
-            if (Permissions.commandEnhance(player)) {
-                commands.add("menu");
-                commands.add("list");
-                commands.add("select");
-                commands.add("inventory");
-            }
-            if (Permissions.commandReload(player)) {
-                commands.add("reload");
-            }
-            if (Permissions.commandVersion(player)) {
-                commands.add("version");
-            }
-            if (Permissions.commandAdd(player)) {
-                commands.add("add");
-            }
-            if (Permissions.commandLore(player)) {
-                commands.add("lore");
-            }
-            if (args.length == 0) {
-                return commands;
-            }
-            if (args.length == 1) {
-                for (int i = 0; i < commands.size(); i++) {
-                    if (commands.get(i).startsWith(args[0])) {
-                        str.add(commands.get(i));
-                    }
-                }
-                return str;
-            }
-            if (args[0].equals("add")) {
-                if (args.length == 2) {
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        if (p.getName().startsWith(args[1])) {
-                            str.add(p.getName());
-                        }
-                    }
-                    return str;
-                }
-                if (args.length == 3) {
-                    Util.sendMessage(SettingsManager.lang.getString(
-                        "Example.command.add.stone"), player);
-                    return Arrays.asList("0", "1", "2", "3");
-                }
-                if (args.length == 4) {
-                    Util.sendMessage(SettingsManager.lang.getString(
-                        "Example.command.add.guide"), player);
-                    return null;
-                }
-
-            }
-        }
-        return commands;
-    }
+// @Override
+// public List<String> onTabComplete(
+// CommandSender sender,
+// Command cmd,
+// String commandLabel,
+// String[] args) {
+// List<String> commands = new ArrayList<String>();
+// if (cmd.getName().equalsIgnoreCase("enhance")) {
+// Player player = (Player)sender;
+// List<String> str = new ArrayList<String>();
+// if (Permissions.commandHelp(player)) {
+// commands.add("help");
+// }
+// if (Permissions.commandEnhance(player)) {
+// commands.add("menu");
+// commands.add("list");
+// commands.add("select");
+// commands.add("inventory");
+// }
+// if (Permissions.commandReload(player)) {
+// commands.add("reload");
+// }
+// if (Permissions.commandVersion(player)) {
+// commands.add("version");
+// }
+// if (Permissions.commandAdd(player)) {
+// commands.add("add");
+// }
+// if (Permissions.commandLore(player)) {
+// commands.add("lore");
+// }
+// if (args.length == 0) {
+// return commands;
+// }
+// if (args.length == 1) {
+// for (int i = 0; i < commands.size(); i++) {
+// if (commands.get(i).startsWith(args[0])) {
+// str.add(commands.get(i));
+// }
+// }
+// return str;
+// }
+// if (args[0].equals("add")) {
+// if (args.length == 2) {
+// for (Player p : Bukkit.getOnlinePlayers()) {
+// if (p.getName().startsWith(args[1])) {
+// str.add(p.getName());
+// }
+// }
+// return str;
+// }
+// if (args.length == 3) {
+// Util.sendMessage(SettingsManager.lang.getString(
+// "Example.command.add.stone"), player);
+// return Arrays.asList("0", "1", "2", "3");
+// }
+// if (args.length == 4) {
+// Util.sendMessage(SettingsManager.lang.getString(
+// "Example.command.add.guide"), player);
+// return null;
+// }
+//
+// }
+// }
+// return commands;
+// }
 }

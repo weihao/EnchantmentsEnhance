@@ -122,6 +122,9 @@ public class Language_en_us {
                 "0 = weapon stone, 1 = armor stone, 2 = conc weapon, 3 = conc armor");
         
         SettingsManager.lang.addDefault("Add.successful", "You gave %player% %number% of %stone%.");
+        
+        SettingsManager.lang.addDefault("Reform.gui.title", "Item Reform");
+        SettingsManager.lang.addDefault("Reform.reform", "Reform Item");
         SettingsManager.lang.options().copyDefaults(true);
         SettingsManager.saveLang();
     }
