@@ -9,18 +9,20 @@ public class ListCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        if (args.length == 1) {
+        Exception error = null;
+        int num = 0;
+        try {
+            num = Integer.parseInt(args[1]);
+        }
+        catch (NumberFormatException e) {
+            Util.sendMessage(SettingsManager.lang.getString(
+                "Config.invalidNumber"), player);
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            error = e;
             SecretBook.list(player, 0);
         }
-        if (args.length == 2) {
-            int num = 0;
-            try {
-                num = Integer.parseInt(args[1]);
-            }
-            catch (NumberFormatException e) {
-                Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player);
-            }
+        if (error != null) {
             SecretBook.list(player, num);
         }
     }

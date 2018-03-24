@@ -86,13 +86,10 @@ public class CommandManager implements CommandExecutor {
                     "Config.noPerm"), player);
             }
 
-            ArrayList<String> arrayList = new ArrayList<String>();
-
-            arrayList.addAll(Arrays.asList(args));
-            arrayList.remove(0);
-
             try {
-                target.onCommand(player, args);
+                //This removes the first argument.
+                target.onCommand(player, Arrays.copyOfRange(args, 1,
+                    args.length));
             }
             catch (Exception e) {
                 player.sendMessage(ChatColor.RED + "An error has occurred.");

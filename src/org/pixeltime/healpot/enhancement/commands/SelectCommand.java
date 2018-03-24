@@ -9,25 +9,21 @@ public class SelectCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        // TODO Auto-generated method stub
-        if (args.length == 1) {
-            if (args[0].equalsIgnoreCase("select")) {
-                SecretBook.select(player, 1);
-            }
+        Exception error = null;
+        int num = 1;
+        try {
+            num = Integer.parseInt(args[1]);
         }
-        if (args.length == 2) {
-            int num = 0;
-            try {
-                num = Integer.parseInt(args[1]);
-            }
-            catch (NumberFormatException e) {
-                Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player);
-            }
-
-            if (args[0].equalsIgnoreCase("select")) {
-                SecretBook.select(player, num);
-            }
+        catch (NumberFormatException e) {
+            Util.sendMessage(SettingsManager.lang.getString(
+                "Config.invalidNumber"), player);
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            error = e;
+            SecretBook.select(player, num);
+        }
+        if (error != null) {
+            SecretBook.select(player, num);
         }
     }
 

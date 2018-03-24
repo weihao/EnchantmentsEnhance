@@ -10,7 +10,7 @@ public class AddCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        if (args.length == 4) {
+        if (args.length == 3) {
             boolean success = false;
             Player p = null;
             int stoneType = -1;
