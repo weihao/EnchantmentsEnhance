@@ -23,7 +23,7 @@ public class LoreCommand extends SubCommand {
         }
         else {
             Util.sendMessage(SettingsManager.lang.getString(
-                "Config.invalidNumber"), player);
+                "Config.invalidCommand"), player);
         }
     }
 
@@ -38,7 +38,7 @@ public class LoreCommand extends SubCommand {
     @Override
     public String info() {
         // TODO Auto-generated method stub
-        return "\n&6/enhance lore &7- " + SettingsManager.lang.getString(
+        return "\n&6/enhance lore { addhand | removehand }&7- " + SettingsManager.lang.getString(
             "Help.lore");
     }
 

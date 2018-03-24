@@ -22,7 +22,7 @@ public class ListCommand extends SubCommand {
             error = e;
             SecretBook.list(player, 0);
         }
-        if (error != null) {
+        if (error == null) {
             SecretBook.list(player, num);
         }
     }

@@ -14,14 +14,14 @@ public class HelpCommand extends SubCommand {
 
     @Override
     public String name() {
-        return "\n&6/enhance help &7- " + SettingsManager.lang.getString(
-            "Help.help");
+        return "help";
     }
 
 
     @Override
     public String info() {
-        return null;
+        return "\n&6/enhance help &7- " + SettingsManager.lang.getString(
+            "Help.help");
     }
 
 

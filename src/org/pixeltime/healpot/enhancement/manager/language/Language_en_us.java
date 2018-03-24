@@ -55,12 +55,12 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("Help.help", "&6view help.");
         SettingsManager.lang.addDefault("Help.menu", "&6open enhancement menu.");
         SettingsManager.lang.addDefault("Help.reload", "&6reload plugin.");
-        SettingsManager.lang.addDefault("Help.list", "&6View saved Advice of Valks.");
-        SettingsManager.lang.addDefault("Help.select", "&6/enhance select {n} to use an Advice of Valks ");
+        SettingsManager.lang.addDefault("Help.list", "&6view saved Advice of Valks.");
+        SettingsManager.lang.addDefault("Help.select", "&6select an Advice of Valks to use.");
         SettingsManager.lang.addDefault("Help.version", "&6check version.");
         SettingsManager.lang.addDefault("Help.lore", "&6remove/add lore to an item.");
         SettingsManager.lang.addDefault("Help.inventory", "&6see items that you have collected.");
-        SettingsManager.lang.addDefault("Help.add", "&6Give a player an enhancing items.");
+        SettingsManager.lang.addDefault("Help.add", "&6Give a player an enhancing items.\n0 = weapon stone, 1 = armor stone, 2 = conc weapon, 3 = conc armor");
 
         SettingsManager.lang.addDefault("Menu.gui.title", "Enhancement");
         SettingsManager.lang.addDefault("Menu.gui.enhance", "Enhance");

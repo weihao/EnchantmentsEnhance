@@ -22,7 +22,7 @@ public class SelectCommand extends SubCommand {
             error = e;
             SecretBook.select(player, num);
         }
-        if (error != null) {
+        if (error == null) {
             SecretBook.select(player, num);
         }
     }
@@ -37,7 +37,7 @@ public class SelectCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "\n&6/enhance select &7- " + SettingsManager.lang.getString(
+        return "\n&6/enhance select { n } &7- " + SettingsManager.lang.getString(
             "Help.select");
     }
 

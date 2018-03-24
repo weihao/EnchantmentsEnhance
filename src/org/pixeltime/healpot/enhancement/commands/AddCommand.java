@@ -47,6 +47,10 @@ public class AddCommand extends SubCommand {
                     "Config.invalidNumber"), player);
             }
         }
+        else {
+            Util.sendMessage(SettingsManager.lang.getString(
+                "Config.invalidCommand"), player);
+        }
     }
 
 
@@ -58,7 +62,7 @@ public class AddCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "\n&6/enhance add &7- " + SettingsManager.lang.getString(
+        return "\n&6/enhance add { player } { stone } { amount } &7- " + SettingsManager.lang.getString(
             "Help.add");
     }
 

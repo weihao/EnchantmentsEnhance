@@ -84,6 +84,7 @@ public class Main extends JavaPlugin {
         new DataManager();
         new Metrics(this);
         this.commandManager = new CommandManager();
+        commandManager.setup();
     }
 
 
