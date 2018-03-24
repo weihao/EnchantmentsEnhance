@@ -58,8 +58,8 @@ public class ItemManager {
         Boolean count) {
         List<String> lore = new ArrayList<String>();
         if (player != null) {
-            lore.add(Util.toColor(Backpack.getOneStoneCountAsString(
-                player, stoneId)));
+            lore.add(Util.toColor(Backpack.getOneStoneCountAsString(player,
+                stoneId)));
         }
         return new ItemBuilder(Util.stoneTypes[stoneId]).setName(Util.toColor(
             SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
@@ -187,7 +187,8 @@ public class ItemManager {
         }
         Lore.addLore(item, ChatColor.translateAlternateColorCodes('&',
             SettingsManager.lang.getString("Lore." + SettingsManager.config
-                .getString("lore.bound") + "Lore")), true);
+                .getString("lore.bound") + "Lore")), SettingsManager.config
+                    .getBoolean("lore.bound"));
         return item;
     }
 

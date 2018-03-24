@@ -34,18 +34,18 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("Enhance.downgraded", "&4Item has downgraded!");
         SettingsManager.lang.addDefault("Enhance.currentFailstack", "&bFailstack: ");
 
-        SettingsManager.lang.addDefault("Lore.UntradeableLore", "&8[&6Keep-On-Death&8]&8[&4Character Bound&8]&f");
-        SettingsManager.lang.addDefault("Lore.TradeableLore", "&8[&6Keep-on-death&8]&8[&2Trade Available&8]&f");
+        SettingsManager.lang.addDefault("Lore.untradeableLore", "&8[&6Keep-On-Death&8]&8[&4Character Bound&8]&f");
+        SettingsManager.lang.addDefault("Lore.tradeableLore", "&8[&6Keep-on-death&8]&8[&2Trade Available&8]&f");
 
-        SettingsManager.lang.addDefault("Messages.NoItemInHand", "&4No item in hand!");
-        SettingsManager.lang.addDefault("Messages.AlreadyUntradeable", "&4Already character bound!");
-        SettingsManager.lang.addDefault("Messages.AlreadyTradeable", "&4Already trade available!");
-        SettingsManager.lang.addDefault("Messages.AlreadyUnbound", "&4Already unbound!");
-        SettingsManager.lang.addDefault("Messages.MadeUntradeable", "&2It is now character bound!");
-        SettingsManager.lang.addDefault("Messages.MadeTradeable", "&2It is now trade available!");
-        SettingsManager.lang.addDefault("Messages.MadeUnbound", "&2It is now unbound!");
-        SettingsManager.lang.addDefault("Messages.NoDrop", "&4This item cannot be dropped!");
-        SettingsManager.lang.addDefault("Messages.NoStorage", "&4This item cannot be stored!");
+        SettingsManager.lang.addDefault("Messages.noItemInHand", "&4No item in hand!");
+        SettingsManager.lang.addDefault("Messages.alreadyUntradeable", "&4Already character bound!");
+        SettingsManager.lang.addDefault("Messages.alreadyTradeable", "&4Already trade available!");
+        SettingsManager.lang.addDefault("Messages.alreadyUnbound", "&4Already unbound!");
+        SettingsManager.lang.addDefault("Messages.madeUntradeable", "&2It is now character bound!");
+        SettingsManager.lang.addDefault("Messages.madeTradeable", "&2It is now trade available!");
+        SettingsManager.lang.addDefault("Messages.madeUnbound", "&2It is now unbound!");
+        SettingsManager.lang.addDefault("Messages.noDrop", "&4This item cannot be dropped!");
+        SettingsManager.lang.addDefault("Messages.moStorage", "&4This item cannot be stored!");
 
         SettingsManager.lang.addDefault("Save.createFailstack", "&6You created &cAdvice Of Valks+%failstack%");
         SettingsManager.lang.addDefault("Save.noFailstack", "&cYou don't have any Advice of Valks!");
@@ -120,6 +120,8 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("Example.command.add.guide", "/enhance add <player> <stone> <number>");
         SettingsManager.lang.addDefault("Example.command.add.stone",
                 "0 = weapon stone, 1 = armor stone, 2 = conc weapon, 3 = conc armor");
+        
+        SettingsManager.lang.addDefault("Add.successful", "You gave %player% %number% of %stone%.");
         SettingsManager.lang.options().copyDefaults(true);
         SettingsManager.saveLang();
     }

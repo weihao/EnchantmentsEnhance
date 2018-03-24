@@ -52,7 +52,7 @@ public final class Reflection_V2 {
             else if ("obc".equalsIgnoreCase(variable))
                 replacement = OBC_PREFIX;
             else if ("version".equalsIgnoreCase(variable))
-                replacement = VERSION;
+                replacement = getVERSION();
             else
                 throw new IllegalArgumentException("Unknown variable: "
                     + variable);
@@ -481,6 +481,22 @@ public final class Reflection_V2 {
             e.printStackTrace();
             return null;
         }
+    }
+
+
+    /**
+     * @return the vERSION
+     */
+    public static String getVERSION() {
+        return VERSION;
+    }
+
+
+    /**
+     * @param vERSION the vERSION to set
+     */
+    public static void setVERSION(String vERSION) {
+        VERSION = vERSION;
     }
 
 

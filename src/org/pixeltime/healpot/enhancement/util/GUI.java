@@ -30,6 +30,11 @@ public abstract class GUI {
     }
 
 
+    public Inventory getBackpack() {
+        return inventory;
+    }
+
+
     public UUID getUuid() {
         return uuid;
     }
@@ -86,10 +91,8 @@ public abstract class GUI {
             UUID inventoryUUID = GUI.openInventories.get(playerUUID);
             if (inventoryUUID != null) {
                 e.setCancelled(true);
-                GUI gui = GUI.getInventoriesByUUID().get(
-                    inventoryUUID);
-                GUI.GUIAction action = gui.getActions().get(e
-                    .getSlot());
+                GUI gui = GUI.getInventoriesByUUID().get(inventoryUUID);
+                GUI.GUIAction action = gui.getActions().get(e.getSlot());
 
                 if (action != null) {
                     action.click(player);

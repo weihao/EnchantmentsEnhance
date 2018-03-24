@@ -31,12 +31,12 @@ public class Lore {
         String x = null;
         String y = null;
         if (tradeable) {
-            x = "Tradeable";
-            y = "Untradeable";
+            x = "tradeable";
+            y = "untradeable";
         }
         else {
-            x = "Untradeable";
-            y = "Tradeable";
+            x = "untradeable";
+            y = "tradeable";
         }
 
         if ((is.hasItemMeta()) && (is.getItemMeta().hasLore())) {
@@ -49,7 +49,7 @@ public class Lore {
                 if (SettingsManager.config.getBoolean(
                     "lore.sendBoundingMessage")) {
                     Util.sendMessage(SettingsManager.lang.getString(
-                        "Messages.Already" + x), p);
+                        "Messages.already" + x), p);
                 }
                 return;
             }
@@ -62,7 +62,7 @@ public class Lore {
             im.setLore(loreList);
             is.setItemMeta(im);
             if (SettingsManager.config.getBoolean("lore.sendBoundingMessage")) {
-                Util.sendMessage(SettingsManager.lang.getString("Messages.Made"
+                Util.sendMessage(SettingsManager.lang.getString("Messages.made"
                     + x), p);
             }
             return;
@@ -71,7 +71,7 @@ public class Lore {
         is.setItemMeta(im);
         p.updateInventory();
         if (SettingsManager.config.getBoolean("lore.sendBoundingMessage")) {
-            Util.sendMessage(SettingsManager.lang.getString("Messages.Made"
+            Util.sendMessage(SettingsManager.lang.getString("Messages.made"
                 + x), p);
         }
     }
@@ -83,10 +83,10 @@ public class Lore {
 
         String y = null;
         if (tradeable) {
-            y = "Untradeable";
+            y = "untradeable";
         }
         else {
-            y = "Tradeable";
+            y = "tradeable";
         }
 
         if ((is.hasItemMeta()) && (is.getItemMeta().hasLore())) {
@@ -120,16 +120,13 @@ public class Lore {
      * @param p
      * @param lang
      */
-    public static void removeLore(
-        ItemStack is,
-        Player p,
-        FileConfiguration lang) {
+    public static void removeLore(ItemStack is, Player p) {
         ItemMeta im = is.getItemMeta();
         List<String> loreList = new ArrayList<String>();
-        String x = ChatColor.translateAlternateColorCodes('&', lang.getString(
-            "Lore.TradeableLore"));
-        String y = ChatColor.translateAlternateColorCodes('&', lang.getString(
-            "Lore.UntradeableLore"));
+        String x = ChatColor.translateAlternateColorCodes('&',
+            SettingsManager.lang.getString("Lore.tradeableLore"));
+        String y = ChatColor.translateAlternateColorCodes('&',
+            SettingsManager.lang.getString("Lore.untradeableLore"));
         if ((is.hasItemMeta()) && (is.getItemMeta().hasLore())) {
             int loreSize = is.getItemMeta().getLore().size();
             for (int i = 0; i < loreSize; i++) {
@@ -142,9 +139,11 @@ public class Lore {
             }
             im.setLore(loreList);
             is.setItemMeta(im);
-            Util.sendMessage(lang.getString("Messages.MadeUnbound"), p);
+            Util.sendMessage(SettingsManager.lang.getString(
+                "Messages.madeUnbound"), p);
             return;
         }
-        Util.sendMessage(lang.getString("Messages.AlreadyUnbound"), p);
+        Util.sendMessage(SettingsManager.lang.getString(
+            "Messages.alreadyUnbound"), p);
     }
 }

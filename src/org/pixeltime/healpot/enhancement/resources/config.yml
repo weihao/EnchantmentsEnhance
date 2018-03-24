@@ -2,8 +2,8 @@ language: en_us
 #supported language: zh_cn, en_us.
 
 lore:
-  bound: Tradeable
-#supported bound type: Tradeable, Untradeable
+  bound: tradeable
+#supported bound type: tradeable, untradeable
 #Tradeable: keep-item-on-death, personal trading is allowed.
 #Untradeable: keep-item-on-death, cannot be stored, cannot be dropped.
   sendBoundingMessage: false

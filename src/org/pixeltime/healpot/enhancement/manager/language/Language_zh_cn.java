@@ -33,18 +33,18 @@ public class Language_zh_cn {
         SettingsManager.lang.addDefault("Enhance.downgraded", "&4您的物品降级了!");
         SettingsManager.lang.addDefault("Enhance.currentFailstack", "&b您目前的垫子是: ");
 
-        SettingsManager.lang.addDefault("Lore.UntradeableLore", "&8[&6死亡不掉落&8]&8[&4不可交易&8]&f");
-        SettingsManager.lang.addDefault("Lore.TradeableLore", "&8[&6死亡不掉落&8]&8[&2可交易&8]&f");
+        SettingsManager.lang.addDefault("Lore.untradeableLore", "&8[&6死亡不掉落&8]&8[&4不可交易&8]&f");
+        SettingsManager.lang.addDefault("Lore.tradeableLore", "&8[&6死亡不掉落&8]&8[&2可交易&8]&f");
 
-        SettingsManager.lang.addDefault("Messages.NoItemInHand", "&4手中物品不符合强化标准!");
-        SettingsManager.lang.addDefault("Messages.AlreadyUntradeable", "&4已是不可交易物品!");
-        SettingsManager.lang.addDefault("Messages.AlreadyTradeable", "&4已是可交易物品!");
-        SettingsManager.lang.addDefault("Messages.AlreadyUnbound", "&4已是解绑物品!");
-        SettingsManager.lang.addDefault("Messages.MadeUntradeable", "&2现是不可交易物品!");
-        SettingsManager.lang.addDefault("Messages.MadeTradeable", "&现是可交易物品!");
-        SettingsManager.lang.addDefault("Messages.MadeUnbound", "&2现是解绑物品!");
-        SettingsManager.lang.addDefault("Messages.NoDrop", "&4这个物品不可被丢弃!");
-        SettingsManager.lang.addDefault("Messages.NoStorage", "&4这个物品不可被储存!");
+        SettingsManager.lang.addDefault("Messages.noItemInHand", "&4手中物品不符合强化标准!");
+        SettingsManager.lang.addDefault("Messages.alreadyUntradeable", "&4已是不可交易物品!");
+        SettingsManager.lang.addDefault("Messages.alreadyTradeable", "&4已是可交易物品!");
+        SettingsManager.lang.addDefault("Messages.alreadyUnbound", "&4已是解绑物品!");
+        SettingsManager.lang.addDefault("Messages.madeUntradeable", "&2现是不可交易物品!");
+        SettingsManager.lang.addDefault("Messages.madeTradeable", "&现是可交易物品!");
+        SettingsManager.lang.addDefault("Messages.madeUnbound", "&2现是解绑物品!");
+        SettingsManager.lang.addDefault("Messages.noDrop", "&4这个物品不可被丢弃!");
+        SettingsManager.lang.addDefault("Messages.noStorage", "&4这个物品不可被储存!");
 
         SettingsManager.lang.addDefault("Save.createFailstack", "&6你创造了&c巴尔克斯的忠告+%failstack%");
         SettingsManager.lang.addDefault("Save.noFailstack", "&c你不存有任何巴尔克斯的忠告.");
@@ -117,6 +117,7 @@ public class Language_zh_cn {
         
         SettingsManager.lang.addDefault("Example.command.add.guide", "enhance add <玩家> <附魔石类型> <数量>");
         SettingsManager.lang.addDefault("Example.command.add.stone", "0 = 黑石 (武器), 1 = 黑石 (防具), 2 = 凝聚魔力的黑石 (武器), 3 = 凝聚魔力的黑石 (防具)");
+        SettingsManager.lang.addDefault("Add.successful", "你给%player%了%number%个%stone%.");
         SettingsManager.lang.options().copyDefaults(true);
         SettingsManager.saveLang();
     }

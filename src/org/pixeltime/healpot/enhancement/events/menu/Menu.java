@@ -208,33 +208,26 @@ public class Menu {
      * @param player
      */
     public static void updateForce(ItemStack item, Player player) {
-        if (Permissions.commandEnhance(player)) {
-            int enchantLevel = ItemManager.getItemEnchantLevel(item);
-            int stoneId = Enhance.getStoneId(player, item, enchantLevel);
-            int costToEnhance = DataManager.costToForceEnchant[enchantLevel];
-            if (DataManager.maximumFailstackApplied[enchantLevel] == -1
-                || DataManager.costToForceEnchant[enchantLevel] == -1) {
-                screen.setItem(Util.getSlot(6, 3), null);
-            }
-            else {
-                ItemMeta im = force.getItemMeta();
-                List<String> update = new ArrayList<String>();
-                update.add(Util.toColor(SettingsManager.lang.getString(
-                    "Menu.lore.force1")));
-                update.add(Util.toColor(SettingsManager.lang.getString(
-                    "Menu.lore.force2").replaceAll("%COUNT%", Integer.toString(
-                        costToEnhance)).replaceAll("%ITEM%",
-                            SettingsManager.lang.getString("Item."
-                                + stoneId))));
-                im.setLore(update);
-                force.setItemMeta(im);
-                screen.setItem(Util.getSlot(6, 3), Compatibility.glow.addGlow(
-                    force));
-            }
+        int enchantLevel = ItemManager.getItemEnchantLevel(item);
+        int stoneId = Enhance.getStoneId(player, item, enchantLevel);
+        int costToEnhance = DataManager.costToForceEnchant[enchantLevel];
+        if (DataManager.maximumFailstackApplied[enchantLevel] == -1
+            || DataManager.costToForceEnchant[enchantLevel] == -1) {
+            screen.setItem(Util.getSlot(6, 3), null);
         }
         else {
-            Util.sendMessage(SettingsManager.config.getString("Config.noPerm"),
-                player);
+            ItemMeta im = force.getItemMeta();
+            List<String> update = new ArrayList<String>();
+            update.add(Util.toColor(SettingsManager.lang.getString(
+                "Menu.lore.force1")));
+            update.add(Util.toColor(SettingsManager.lang.getString(
+                "Menu.lore.force2").replaceAll("%COUNT%", Integer.toString(
+                    costToEnhance)).replaceAll("%ITEM%", SettingsManager.lang
+                        .getString("Item." + stoneId))));
+            im.setLore(update);
+            force.setItemMeta(im);
+            screen.setItem(Util.getSlot(6, 3), Compatibility.glow.addGlow(
+                force));
         }
     }
 
@@ -246,30 +239,23 @@ public class Menu {
      * @param player
      */
     public static void updateEnhance(ItemStack item, Player player) {
-        if (Permissions.commandEnhance(player)) {
-            ItemMeta im = enhance.getItemMeta();
-            List<String> update = new ArrayList<String>();
+        ItemMeta im = enhance.getItemMeta();
+        List<String> update = new ArrayList<String>();
+        update.add(Util.toColor(SettingsManager.lang.getString(
+            "Menu.lore.ifSuccess")));
+        if (DataManager.baseChance[ItemManager.getItemEnchantLevel(
+            item)] != 100) {
             update.add(Util.toColor(SettingsManager.lang.getString(
-                "Menu.lore.ifSuccess")));
-            if (DataManager.baseChance[ItemManager.getItemEnchantLevel(
-                item)] != 100) {
-                update.add(Util.toColor(SettingsManager.lang.getString(
-                    "Menu.lore.ifFail")));
-            }
-            if (ItemManager.getItemEnchantLevel(
-                item) >= DataManager.downgradePhase) {
-                update.add(Util.toColor(SettingsManager.lang.getString(
-                    "Menu.lore.ifDowngrade")));
-            }
-            im.setLore(update);
-            enhance.setItemMeta(im);
-            screen.setItem(Util.getSlot(4, 3), Compatibility.glow.addGlow(
-                enhance));
+                "Menu.lore.ifFail")));
         }
-        else {
-            Util.sendMessage(SettingsManager.config.getString("Config.noPerm"),
-                player);
+        if (ItemManager.getItemEnchantLevel(
+            item) >= DataManager.downgradePhase) {
+            update.add(Util.toColor(SettingsManager.lang.getString(
+                "Menu.lore.ifDowngrade")));
         }
+        im.setLore(update);
+        enhance.setItemMeta(im);
+        screen.setItem(Util.getSlot(4, 3), Compatibility.glow.addGlow(enhance));
     }
 
 
@@ -286,8 +272,8 @@ public class Menu {
         im.setDisplayName(Util.toColor(SettingsManager.lang.getString("Item."
             + stoneId)));
         List<String> lore = new ArrayList<String>();
-        lore.add(Util.toColor(Backpack.getOneStoneCountAsString(
-            player, stoneId)));
+        lore.add(Util.toColor(Backpack.getOneStoneCountAsString(player,
+            stoneId)));
         im.setLore(lore);
         stone.setItemMeta(im);
         return stone;

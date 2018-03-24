@@ -127,7 +127,6 @@ public class Util {
     }
 
 
-
     /**
      * Sends a colored message to a CommandSender.
      * 
@@ -153,6 +152,7 @@ public class Util {
         String message = ChatColor.translateAlternateColorCodes('&', msg);
         sender.sendMessage(message);
     }
+
 
     /**
      * Translates color codes.
@@ -206,6 +206,23 @@ public class Util {
         Util.sendMessage(help, player, false);
     }
 
+    /**
+     * Print help for console.
+     * @param sender
+     */
+    public static void printHelp(CommandSender sender) {
+        String help = "&b&l&m          &d EnchantmentsEnhance&b&l&m          ";
+        help += "\n&6/enhance help &7- " + SettingsManager.lang.getString(
+            "Help.help");
+        help += "\n&6/enhance reload &7- " + SettingsManager.lang.getString(
+            "Help.reload");
+        help += "\n&6/enhance version &7- " + SettingsManager.lang.getString(
+            "Help.version");
+        help += "\n&6/enhance add &7- " + SettingsManager.lang.getString(
+            "Help.add");
+        Util.sendMessage(help, sender, false);
+    }
+
 
     /**
      * Gets a player as a Player entity.
@@ -240,6 +257,7 @@ public class Util {
         return Integer.parseInt(str.replaceAll("[^0-9]", ""));
     }
 
+
     public static String rainbowlize(String string) {
         int lastColor = 0;
         int currColor;
@@ -250,7 +268,8 @@ public class Util {
                 currColor = new Random().nextInt(colors.length() - 1) + 1;
             }
             while (currColor == lastColor);
-            newString += ChatColor.RESET.toString() + ChatColor.getByChar(colors.charAt(currColor)) + "" + string.charAt(i);
+            newString += ChatColor.RESET.toString() + ChatColor.getByChar(colors
+                .charAt(currColor)) + "" + string.charAt(i);
         }
         return newString;
     }

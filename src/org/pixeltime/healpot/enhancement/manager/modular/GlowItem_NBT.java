@@ -7,13 +7,12 @@ import org.bukkit.inventory.ItemStack;
 import org.pixeltime.healpot.enhancement.interfaces.GlowItem;
 import org.pixeltime.healpot.enhancement.util.Reflection;
 
-public class GlowItem_NBT implements GlowItem{
-    public ItemStack addGlow(
-        ItemStack item) {
+public class GlowItem_NBT implements GlowItem {
+    public ItemStack addGlow(ItemStack item) {
         boolean enchanted = item.getItemMeta().hasEnchants();
         String name = item.getItemMeta().getDisplayName();
         List<String> lore = item.getItemMeta().getLore();
-        
+
         try {
             Class<?> ItemStack = Reflection.getCraftClass("ItemStack");
             Class<?> NBTTagCompound = Reflection.getCraftClass(
@@ -21,8 +20,7 @@ public class GlowItem_NBT implements GlowItem{
             Class<?> NBTTagList = Reflection.getCraftClass("NBTTagList");
             Class<?> CraftItemStack = Reflection.getBukkitClass(
                 "inventory.CraftItemStack");
-            Class<?> NBTTagString = Reflection.getCraftClass(
-                "NBTTagString");
+            Class<?> NBTTagString = Reflection.getCraftClass("NBTTagString");
             Class<?> NBTBase = Reflection.getCraftClass("NBTBase");
 
             Method asNMSCopy = CraftItemStack.getDeclaredMethod("asNMSCopy",
@@ -79,7 +77,7 @@ public class GlowItem_NBT implements GlowItem{
             set.invoke(tag, "display", display);
 
             setTag.invoke(nmsStack, tag);
-            
+
             return (org.bukkit.inventory.ItemStack)asCraftMirror.invoke(null,
                 nmsStack);
         }
