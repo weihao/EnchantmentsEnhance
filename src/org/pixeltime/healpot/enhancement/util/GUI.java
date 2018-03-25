@@ -30,7 +30,7 @@ public abstract class GUI {
     }
 
 
-    public Inventory getBackpack() {
+    public Inventory getInventory() {
         return inventory;
     }
 

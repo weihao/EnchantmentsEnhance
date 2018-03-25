@@ -144,10 +144,10 @@ public class MenuHandler implements Listener {
                         if (loreList.contains(ChatColor
                             .translateAlternateColorCodes('&',
                                 SettingsManager.lang.getString(
-                                    "Lore.UntradeableLore")))) {
+                                    "Lore.untradeableLore")))) {
                             e.setCancelled(true);
                             Util.sendMessage(SettingsManager.lang.getString(
-                                "Messages.NoStorage"), e.getWhoClicked());
+                                "Messages.noStorage"), e.getWhoClicked());
                         }
                     }
                 }
@@ -163,10 +163,10 @@ public class MenuHandler implements Listener {
                         if (loreList.contains(ChatColor
                             .translateAlternateColorCodes('&',
                                 SettingsManager.lang.getString(
-                                    "Lore.UntradeableLore")))) {
+                                    "Lore.untradeableLore")))) {
                             e.setCancelled(true);
                             Util.sendMessage(SettingsManager.lang.getString(
-                                "Messages.NoStorage"), e.getWhoClicked());
+                                "Messages.noStorage"), e.getWhoClicked());
                         }
                     }
                 }

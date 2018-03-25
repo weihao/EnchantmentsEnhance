@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.pixeltime.healpot.enhancement.commands.CommandManager;
 import org.pixeltime.healpot.enhancement.events.blacksmith.SecretBook;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
+import org.pixeltime.healpot.enhancement.events.blackspirit.Reform;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
 import org.pixeltime.healpot.enhancement.listeners.ItemDropHandler;
 import org.pixeltime.healpot.enhancement.listeners.LifeskillingHandler;
@@ -75,6 +76,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new PlayerStreamHandler(), this);
         pm.registerEvents(new MenuHandler(), this);
         pm.registerEvents(new LifeskillingHandler(), this);
+        pm.registerEvents(new Reform(), this);
         if (getServer().getName().contains("Cauldron") || getServer().getName()
             .contains("MCPC")) {
             getLogger().info(
@@ -126,73 +128,4 @@ public class Main extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
     }
-
-
-//    @Override
-//    public List<String> onTabComplete(
-//        CommandSender sender,
-//        Command cmd,
-//        String commandLabel,
-//        String[] args) {
-//        List<String> commands = new ArrayList<String>();
-//        if (cmd.getName().equalsIgnoreCase("enhance")) {
-//            Player player = (Player)sender;
-//            List<String> str = new ArrayList<String>();
-//            if (Permissions.commandHelp(player)) {
-//                commands.add("help");
-//            }
-//            if (Permissions.commandEnhance(player)) {
-//                commands.add("menu");
-//                commands.add("list");
-//                commands.add("select");
-//                commands.add("inventory");
-//            }
-//            if (Permissions.commandReload(player)) {
-//                commands.add("reload");
-//            }
-//            if (Permissions.commandVersion(player)) {
-//                commands.add("version");
-//            }
-//            if (Permissions.commandAdd(player)) {
-//                commands.add("add");
-//            }
-//            if (Permissions.commandLore(player)) {
-//                commands.add("lore");
-//            }
-//            if (args.length == 0) {
-//                return commands;
-//            }
-//            if (args.length == 1) {
-//                for (int i = 0; i < commands.size(); i++) {
-//                    if (commands.get(i).startsWith(args[0])) {
-//                        str.add(commands.get(i));
-//                    }
-//                }
-//                return str;
-//            }
-//            if (args[0].equals("add")) {
-//                if (args.length == 2) {
-//                    for (Player p : Bukkit.getOnlinePlayers()) {
-//                        if (p.getName().startsWith(args[1])) {
-//                            str.add(p.getName());
-//                        }
-//                    }
-//                    return str;
-//                }
-//                if (args.length == 3) {
-//                    Util.sendMessage(SettingsManager.lang.getString(
-//                        "Example.command.add.stone"), player);
-//                    return Arrays.asList("0", "1", "2", "3");
-//                }
-//                if (args.length == 4) {
-//                    Util.sendMessage(SettingsManager.lang.getString(
-//                        "Example.command.add.guide"), player);
-//                    return null;
-//                }
-//
-//            }
-//        }
-//        return commands;
-//    }
-
 }

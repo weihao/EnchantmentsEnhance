@@ -128,8 +128,15 @@ public class SecretBook {
                 }
             }
             else {
-                Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player);
+                if (SecretBook.storage.get(player.getDisplayName())
+                    .size() == 0) {
+                    Util.sendMessage(SettingsManager.lang.getString(
+                        "Valks.noAdvice"), player);
+                }
+                else {
+                    Util.sendMessage(SettingsManager.lang.getString(
+                        "Config.invalidNumber"), player);
+                }
             }
         }
         else

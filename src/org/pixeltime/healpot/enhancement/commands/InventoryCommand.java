@@ -9,7 +9,7 @@ public class InventoryCommand extends SubCommand {
     @Override
     public void onCommand(Player player, String[] args) {
         Backpack backpack = new Backpack(player);
-        player.openInventory(backpack.getBackpack());
+        player.openInventory(backpack.getInventory());
     }
 
 
