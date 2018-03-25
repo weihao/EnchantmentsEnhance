@@ -2,13 +2,11 @@ package org.pixeltime.healpot.enhancement.events.blackspirit;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.bukkit.ChatColor;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.healpot.enhancement.events.inventory.Inventory;
 import org.pixeltime.healpot.enhancement.listeners.MenuHandler;
-import org.pixeltime.healpot.enhancement.manager.Compatibility;
+import org.pixeltime.healpot.enhancement.manager.CompatibilityManager;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.ItemManager;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
@@ -82,12 +80,13 @@ public class Enhance {
 
         int enchantLevel = enchantLevelBeforeAttemptEnhancing + 1;
 
-        MenuHandler.updateItem(player,  ItemManager.forgeItem(item, enchantLevel));
+        MenuHandler.updateItem(player, ItemManager.forgeItem(item,
+            enchantLevel));
 
         // Play sound
-        Compatibility.playsound.playSound(player, "SUCCESS");
+        CompatibilityManager.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
-        Compatibility.spawnFirework.launch(player, 1,
+        CompatibilityManager.spawnFirework.launch(player, 1,
             DataManager.fireworkRounds[enchantLevel], SettingsManager.config
                 .getInt("fireworkDelay"));
         // Do not clear failstack if force enhanced
@@ -115,13 +114,13 @@ public class Enhance {
         Player player,
         int enchantLevelBeforeAttemptEnhancing) {
         String str = SettingsManager.lang.getString("Enhance.enhanceFailed");
-        Compatibility.playsound.playSound(player, "FAILED");
+        CompatibilityManager.playsound.playSound(player, "FAILED");
         Failstack.addLevel(player,
             DataManager.failstackGainedPerFail[enchantLevelBeforeAttemptEnhancing]);
         if (isPhaseDowngrade(enchantLevelBeforeAttemptEnhancing)) {
             str += ("\n" + SettingsManager.lang.getString(
                 "Enhance.downgraded"));
-            Compatibility.playsound.playSound(player, "DOWNGRADED");
+            CompatibilityManager.playsound.playSound(player, "DOWNGRADED");
             int enchantLevel = enchantLevelBeforeAttemptEnhancing - 1;
             player.getInventory().removeItem(item);
             ItemStack enhancedItem = ItemManager.forgeItem(item, enchantLevel);

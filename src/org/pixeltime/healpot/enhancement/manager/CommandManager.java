@@ -1,4 +1,4 @@
-package org.pixeltime.healpot.enhancement.commands;
+package org.pixeltime.healpot.enhancement.manager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +10,16 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.pixeltime.healpot.enhancement.Main;
-import org.pixeltime.healpot.enhancement.manager.SettingsManager;
+import org.pixeltime.healpot.enhancement.commands.AddCommand;
+import org.pixeltime.healpot.enhancement.commands.HelpCommand;
+import org.pixeltime.healpot.enhancement.commands.InventoryCommand;
+import org.pixeltime.healpot.enhancement.commands.ListCommand;
+import org.pixeltime.healpot.enhancement.commands.LoreCommand;
+import org.pixeltime.healpot.enhancement.commands.MenuCommand;
+import org.pixeltime.healpot.enhancement.commands.ReloadCommand;
+import org.pixeltime.healpot.enhancement.commands.SelectCommand;
+import org.pixeltime.healpot.enhancement.commands.SubCommand;
+import org.pixeltime.healpot.enhancement.commands.VersionCommand;
 import org.pixeltime.healpot.enhancement.util.Util;
 
 public class CommandManager implements CommandExecutor {

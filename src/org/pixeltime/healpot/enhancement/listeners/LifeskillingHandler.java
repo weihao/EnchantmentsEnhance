@@ -28,12 +28,16 @@ public class LifeskillingHandler implements Listener {
         "lifeskill.mining");
     private final List<String> chopping = SettingsManager.config.getStringList(
         "lifeskill.chopping");
+    @SuppressWarnings("unused")
     private final List<String> fishing = SettingsManager.config.getStringList(
         "lifeskill.fishing");
+    @SuppressWarnings("unused")
     private final List<String> killing = SettingsManager.config.getStringList(
         "lifeskill.killing");
+    @SuppressWarnings("unused")
     private final List<String> breeding = SettingsManager.config.getStringList(
         "lifeskill.breeding");
+    @SuppressWarnings("unused")
     private final List<String> smelting = SettingsManager.config.getStringList(
         "lifeskill.smelting");
 

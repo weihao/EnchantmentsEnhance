@@ -155,6 +155,7 @@ public class NBTReflectionUtil {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private static Object getNewBlockPosition(int x, int y, int z) {
         String version = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
         try {
@@ -339,6 +340,7 @@ public class NBTReflectionUtil {
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     public static Object getTileEntityNBTTagCompound(BlockState tile) {
         Method method;
         try {
@@ -358,6 +360,7 @@ public class NBTReflectionUtil {
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     public static void setTileEntityNBTTagCompound(BlockState tile, Object comp) {
         Method method;
         try {

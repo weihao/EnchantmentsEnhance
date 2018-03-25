@@ -1,6 +1,5 @@
 package org.pixeltime.healpot.enhancement.manager;
 
-import org.bukkit.Bukkit;
 import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.interfaces.GlowItem;
 import org.pixeltime.healpot.enhancement.interfaces.PlaySound;
@@ -10,7 +9,7 @@ import org.pixeltime.healpot.enhancement.manager.modular.PlaySound_Safe;
 import org.pixeltime.healpot.enhancement.manager.modular.SpawnFirework_Safe;
 import org.pixeltime.healpot.enhancement.util.Reflection_V2;
 
-public class Compatibility {
+public class CompatibilityManager {
     public static GlowItem glow;
     public static PlaySound playsound;
     public static SpawnFirework spawnFirework;

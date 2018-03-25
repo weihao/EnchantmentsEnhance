@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.pixeltime.healpot.enhancement.commands.CommandManager;
 import org.pixeltime.healpot.enhancement.events.blacksmith.SecretBook;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Failstack;
 import org.pixeltime.healpot.enhancement.events.blackspirit.Reform;
@@ -14,14 +13,17 @@ import org.pixeltime.healpot.enhancement.listeners.LifeskillingHandler;
 import org.pixeltime.healpot.enhancement.listeners.MenuHandler;
 import org.pixeltime.healpot.enhancement.listeners.PlayerDeathHandler;
 import org.pixeltime.healpot.enhancement.listeners.PlayerStreamHandler;
-import org.pixeltime.healpot.enhancement.manager.Compatibility;
+import org.pixeltime.healpot.enhancement.manager.CommandManager;
+import org.pixeltime.healpot.enhancement.manager.CompatibilityManager;
 import org.pixeltime.healpot.enhancement.manager.DataManager;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
+import org.pixeltime.healpot.enhancement.manager.UpdateManager;
 import org.pixeltime.healpot.enhancement.util.AnimalBreeding;
 import org.pixeltime.healpot.enhancement.util.Metrics;
 
 public class Main extends JavaPlugin {
-    public static final Compatibility compatibility = new Compatibility();
+    public static final CompatibilityManager compatibility =
+        new CompatibilityManager();
     private static Main main;
     public CommandManager commandManager;
 
@@ -34,6 +36,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         final long startTime = System.currentTimeMillis();
         main = this;
+        UpdateManager.versionChecker();
         saveDefaultConfig();
         SettingsManager.setup(this);
         registerCore();
