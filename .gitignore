@@ -6,12 +6,10 @@
 
 # ignore intellij idea setting folder
 /lib/
-/.idea/
 /.metadata/
 /doc/
 /META-INF/
 *.iml
-
 .project
 .classpath
 /bin/

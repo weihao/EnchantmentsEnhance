@@ -7,7 +7,6 @@ import org.pixeltime.healpot.enhancement.util.GUI;
 import org.pixeltime.healpot.enhancement.util.Util;
 
 /**
- * Incomplete.
  *
  * @author HealPot
  * @version Feb 9, 2018
