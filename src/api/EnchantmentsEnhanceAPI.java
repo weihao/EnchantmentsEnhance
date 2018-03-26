@@ -1,4 +1,4 @@
-package org.pixeltime.healpot.enhancement.api;
+package api;
 
 import org.bukkit.Bukkit;
 import org.pixeltime.healpot.enhancement.Main;

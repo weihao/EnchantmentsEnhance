@@ -25,14 +25,14 @@ public class SettingsManager {
     public static File langfile;
 
 
-    public static void setup(Main m) {
-        cfile = new File(m.getDataFolder(), "config.yml");
-        config = m.getConfig();
-        if (!m.getDataFolder().exists()) {
-            m.getDataFolder().mkdir();
+    public static void setup() {
+        cfile = new File(Main.getMain().getDataFolder(), "config.yml");
+        config = Main.getMain().getConfig();
+        if (!Main.getMain().getDataFolder().exists()) {
+            Main.getMain().getDataFolder().mkdir();
         }
 
-        dfile = new File(m.getDataFolder(), "data.yml");
+        dfile = new File(Main.getMain().getDataFolder(), "data.yml");
 
         if (!dfile.exists()) {
             try {
@@ -45,7 +45,7 @@ public class SettingsManager {
         }
         data = YamlConfiguration.loadConfiguration(dfile);
 
-        langfile = new File(m.getDataFolder(), "lang.yml");
+        langfile = new File(Main.getMain().getDataFolder(), "lang.yml");
         lang = YamlConfiguration.loadConfiguration(langfile);
         Language_en_us.addLang();
         if (config.getString("language").equalsIgnoreCase("zh_cn")) {

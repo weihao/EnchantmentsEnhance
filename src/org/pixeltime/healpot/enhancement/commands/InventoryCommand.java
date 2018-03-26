@@ -1,15 +1,19 @@
 package org.pixeltime.healpot.enhancement.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.events.inventory.Backpack;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
+import org.pixeltime.healpot.enhancement.util.GUIListener;
 
 public class InventoryCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
         Backpack backpack = new Backpack(player);
-        player.openInventory(backpack.getInventory());
+        Bukkit.getPluginManager().registerEvents(new GUIListener(backpack), Main.getMain());
+        backpack.open(player);
     }
 
 

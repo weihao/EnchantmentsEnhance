@@ -46,7 +46,7 @@ public class ListCommand extends SubCommand {
     @Override
     public String[] aliases() {
         // TODO Auto-generated method stub
-        return new String[] { "list" };
+        return new String[] { "list", "ls"};
     }
 
 

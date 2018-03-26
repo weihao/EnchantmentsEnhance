@@ -10,14 +10,14 @@ public class LoreCommand extends SubCommand {
     @Override
     public void onCommand(Player player, String[] args) {
         if (args.length == 1) {
-            if (args[1].equalsIgnoreCase("addhand")) {
+            if (args[0].equalsIgnoreCase("addhand")) {
                 Lore.addLore(player.getItemInHand(), player,
                     SettingsManager.lang.getString("Lore."
                         + SettingsManager.config.getString("lore.bound")
                         + "Lore"), SettingsManager.config.getBoolean(
                             "lore.bound"));
             }
-            if (args[1].equalsIgnoreCase("removehand")) {
+            if (args[0].equalsIgnoreCase("removehand")) {
                 Lore.removeLore(player.getItemInHand(), player);
             }
         }

@@ -29,16 +29,16 @@ public class Broadcast {
         if (success) {
             Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString(
                 "Config.pluginTag") + (SettingsManager.lang.getString(
-                    "Annoucer.success") + player.getDisplayName()
-                    + SettingsManager.lang.getString("Annoucer.got")
+                    "Annoucer.success") + " " + player.getDisplayName() + " "
+                    + SettingsManager.lang.getString("Annoucer.got") + " "
                     + SettingsManager.lang.getString("Name." + Integer.toString(
                         enchantLevel + 1)) + " " + getFriendlyName(item))));
         }
         else {
             Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString(
                 "Config.pluginTag") + (SettingsManager.lang.getString(
-                    "Annoucer.failed") + player.getDisplayName()
-                    + SettingsManager.lang.getString("Annoucer.lost")
+                    "Annoucer.failed") + " " + player.getDisplayName() + " "
+                    + SettingsManager.lang.getString("Annoucer.lost") + " "
                     + SettingsManager.lang.getString("Name." + Integer.toString(
                         enchantLevel + 1)) + " " + getFriendlyName(item))));
         }

@@ -10,6 +10,8 @@ public class AddCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
+        // /enhance add <player> <stone id> <amounts>
+        // /cmd subcommand args[0] args[1] args[2]
         if (args.length == 3) {
             boolean success = false;
             Player p = null;
@@ -62,8 +64,8 @@ public class AddCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "\n&6/enhance add { player } { stone } { amount } &7- " + SettingsManager.lang.getString(
-            "Help.add");
+        return "\n&6/enhance add { player } { stone } { amount } &7- "
+            + SettingsManager.lang.getString("Help.add");
     }
 
 

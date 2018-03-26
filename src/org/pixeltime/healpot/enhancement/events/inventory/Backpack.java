@@ -18,10 +18,14 @@ public class Backpack extends GUI {
         super(27, SettingsManager.lang.getString("Menu.gui.title"));
         for (int i = 0; i < Util.stoneTypes.length; i++) {
             setItem(Util.getSlot(i + 1, 1 + (i / 9)), ItemManager
-                .stoneVisualized(i, p, true));
+                .stoneVisualized(i, p, true), player -> {
+                    Util.sendMessage("You can't take this out for now.",
+                        player);
+                });
         }
     }
-    
+
+
     public static void sendInventoryAsText(Player player) {
         int[] inv = Inventory.getPlayer(player);
         Util.sendMessage(SettingsManager.lang.getString("Item.title"), player);
@@ -33,6 +37,7 @@ public class Backpack extends GUI {
 
         }
     }
+
 
     public static String getOneStoneCountAsString(Player player, int stoneId) {
         int[] inv = Inventory.getPlayer(player);

@@ -23,9 +23,9 @@ public abstract class GUI {
 
 
     public GUI(int invSize, String invName) {
-        uuid = UUID.randomUUID();
-        inventory = Bukkit.createInventory(null, invSize, invName);
-        actions = new HashMap<>();
+        this.uuid = UUID.randomUUID();
+        this.inventory = Bukkit.createInventory(null, invSize, invName);
+        this.actions = new HashMap<>();
         inventoriesByUUID.put(getUuid(), this);
     }
 
@@ -36,7 +36,7 @@ public abstract class GUI {
 
 
     public UUID getUuid() {
-        return uuid;
+        return this.uuid;
     }
 
 
@@ -76,58 +76,5 @@ public abstract class GUI {
 
     public Map<Integer, GUIAction> getActions() {
         return actions;
-    }
-
-
-    public class GUIListener implements Listener {
-        @EventHandler
-        public void onClick(InventoryClickEvent e) {
-            if (!(e.getWhoClicked() instanceof Player)) {
-                return;
-            }
-            Player player = (Player)e.getWhoClicked();
-            String playerUUID = player.getDisplayName();
-
-            UUID inventoryUUID = GUI.openInventories.get(playerUUID);
-            if (inventoryUUID != null) {
-                e.setCancelled(true);
-                GUI gui = GUI.getInventoriesByUUID().get(inventoryUUID);
-                GUI.GUIAction action = gui.getActions().get(e.getSlot());
-
-                if (action != null) {
-                    action.click(player);
-                }
-            }
-        }
-
-
-        @EventHandler
-        public void onClose(InventoryCloseEvent e) {
-            Player player = (Player)e.getPlayer();
-            String playerUUID = player.getDisplayName();
-
-            GUI.openInventories.remove(playerUUID);
-        }
-
-
-        @EventHandler
-        public void onQuit(PlayerQuitEvent e) {
-            Player player = e.getPlayer();
-            String playerUUID = player.getDisplayName();
-
-            GUI.openInventories.remove(playerUUID);
-        }
-
-
-        public void delete() {
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                UUID u = openInventories.get(p.getDisplayName());
-                if (u.equals(getUuid())) {
-                    p.closeInventory();
-                }
-            }
-            inventoriesByUUID.remove(getUuid());
-        }
-
     }
 }

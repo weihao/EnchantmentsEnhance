@@ -14,15 +14,27 @@ public class SecretBook {
         new HashMap<String, List<Integer>>();
 
 
+    /**
+     * Adds a player's failstack to the HashMap storage.
+     * 
+     * @param player
+     *            Targeted player.
+     */
     public static void addFailstackToStorage(Player player) {
+        storage.get(player.getDisplayName()).add(Failstack.getLevel(player));
+        Failstack.resetLevel(player);
         Util.sendMessage(SettingsManager.lang.getString("Save.createFailstack")
             .replaceAll("%failstack%", Integer.toString(Failstack.getLevel(
                 player))), player);
-        storage.get(player.getDisplayName()).add(Failstack.getLevel(player));
-        Failstack.resetLevel(player);
     }
 
 
+    /**
+     * Loads the storage of a player.
+     * 
+     * @param player
+     *            Targeted player.
+     */
     public static void loadStorage(Player player) {
         List<Integer> adviceOfValks = new ArrayList<Integer>();
         if (SettingsManager.data.contains(player.getName() + ".advice of valks")
@@ -44,12 +56,22 @@ public class SecretBook {
     }
 
 
+    /**
+     * Writes data to the disk.
+     * 
+     * @param player
+     *            Targeted player.
+     * @param save
+     *            If true, data will be written in the disk. If false, data will
+     *            be stored in the memory.
+     */
     public static void saveStorageToDisk(Player player, boolean save) {
         List<Integer> temp = storage.get(player.getDisplayName());
         SettingsManager.data.set(player.getName() + ".advice of valks", temp
             .toString());
-        if (save)
+        if (save) {
             SettingsManager.saveData();
+        }
     }
 
 
@@ -57,7 +79,9 @@ public class SecretBook {
      * Displays the current list of the advices.
      * 
      * @param player
+     *            Targeted player.
      * @param pageNumber
+     *            Selected page number.
      */
     public static void list(Player player, int pageNumber) {
         List<Integer> adviceOfValks = storage.get(player.getDisplayName());
@@ -99,7 +123,9 @@ public class SecretBook {
      * Uses an advice from the list.
      * 
      * @param player
+     *            Targeted player.
      * @param selectedFailstack
+     *            Selected failstack index.
      */
     public static void select(Player player, int selectedFailstack) {
         if (selectedFailstack > 0) {

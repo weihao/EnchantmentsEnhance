@@ -24,7 +24,7 @@ public class UpdateManager implements Listener {
                 .getImplementationVersion())) {
                 for (int i = 0; i < 30; i++) {
                     Main.getMain().getLogger().warning(
-                        "Enchantments Enhance is OUTDATED!");
+                        "EnchantmentsEnhance is OUTDATED!");
                 }   
             }
             else {

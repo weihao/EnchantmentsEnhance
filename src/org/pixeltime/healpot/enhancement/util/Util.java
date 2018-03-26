@@ -165,7 +165,6 @@ public class Util {
     }
 
 
-
     /**
      * Gets a player as a Player entity.
      * 
@@ -199,6 +198,12 @@ public class Util {
     }
 
 
+    /**
+     * Make a string colorful.
+     * 
+     * @param string
+     * @return
+     */
     public static String rainbowlize(String string) {
         int lastColor = 0;
         int currColor;

@@ -1,13 +1,11 @@
 package org.pixeltime.healpot.enhancement.manager;
 
-import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.interfaces.GlowItem;
 import org.pixeltime.healpot.enhancement.interfaces.PlaySound;
 import org.pixeltime.healpot.enhancement.interfaces.SpawnFirework;
 import org.pixeltime.healpot.enhancement.manager.modular.GlowItem_Unsafe;
 import org.pixeltime.healpot.enhancement.manager.modular.PlaySound_Safe;
 import org.pixeltime.healpot.enhancement.manager.modular.SpawnFirework_Safe;
-import org.pixeltime.healpot.enhancement.util.Reflection_V2;
 
 public class CompatibilityManager {
     public static GlowItem glow;
@@ -21,8 +19,6 @@ public class CompatibilityManager {
      * @return
      */
     public boolean setupGlow() {
-        Main.getMain().getLogger().info("Your server is running version "
-            + Reflection_V2.getVERSION());
         /*
          * if (version.equals("v1_8_R3")) {
          * glow = new GlowItem_NBT();
