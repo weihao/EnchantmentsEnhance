@@ -46,6 +46,15 @@ public class SettingsManager {
         data = YamlConfiguration.loadConfiguration(dfile);
 
         langfile = new File(Main.getMain().getDataFolder(), "lang.yml");
+        if (!langfile.exists()) {
+            try {
+                langfile.createNewFile();
+            }
+            catch (IOException e) {
+                Bukkit.getServer().getLogger().severe(ChatColor.RED
+                    + "Could not create lang.yml!");
+            }
+        }
         lang = YamlConfiguration.loadConfiguration(langfile);
         Language_en_us.addLang();
         if (config.getString("language").equalsIgnoreCase("zh_cn")) {

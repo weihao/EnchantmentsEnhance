@@ -2,6 +2,7 @@ package org.pixeltime.healpot.enhancement.events.inventory;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.pixeltime.healpot.enhancement.Main;
 import org.pixeltime.healpot.enhancement.manager.SettingsManager;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -49,7 +50,13 @@ public class Inventory {
 
 
     public static void setLevel(Player player, int type, int level) {
-        backpack.get(player.getDisplayName())[type] = level;
+        try {
+            backpack.get(player.getDisplayName())[type] = level;
+        }
+        catch (Exception e) {
+            Main.getMain().getLogger().info(
+                "Error when setting the player data.");
+        }
     }
 
 
