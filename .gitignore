@@ -13,6 +13,5 @@
 .project
 .classpath
 /bin/
-/.idea/libraries/
 *.DS_Store
 /target/

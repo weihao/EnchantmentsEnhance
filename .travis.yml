@@ -12,8 +12,14 @@ install:
   - if [ -e "craftbukkit-1.11.2.jar" ]; then echo "CraftBukkit-1.11.2.jar OK."; else java -jar BuildTools.jar --rev 1.11.2; fi
   - if [ -e "craftbukkit-1.12.2.jar" ]; then echo "CraftBukkit-1.12.2.jar OK."; else java -jar BuildTools.jar --rev 1.12.2; fi
   - cd ..
+
+
+install:
+  - mvn test-compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-  - mvn test
+  - mvn test jacoco:report
+after_success:
+  - mvn clean test saga:coverage cobertura:cobertura coveralls:report
 cache:
   directories:
     - $HOME/.m2

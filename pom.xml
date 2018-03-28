@@ -91,7 +91,59 @@
 					</archive>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+				<version>4.3.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<format>xml</format>
+					<maxmem>256m</maxmem>
+					<!-- aggregated reports for multi-module projects -->
+					<aggregate>true</aggregate>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.timurstrekalov</groupId>
+				<artifactId>saga-maven-plugin</artifactId>
+				<version>1.5.5</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>coverage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<baseDir>http://10.0.2.2:80</baseDir>
+					<outputDir>${project.build.directory}/saga-coverage</outputDir>
+					<noInstrumentPatterns>
+						<pattern>.*/spec/.*</pattern>
+						<pattern>.*/classpath/.*</pattern>
+						<pattern>.*/webjars/.*</pattern>
+					</noInstrumentPatterns>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.6.201602180812</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
+		<sourceDirectory>src/main</sourceDirectory>
+		<testSourceDirectory>src/test</testSourceDirectory>
 		<resources>
 			<resource>
 				<directory>src/main/java/org/pixeltime/enchantmentsenhance/resources/</directory>
