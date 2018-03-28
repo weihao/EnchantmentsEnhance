@@ -122,10 +122,8 @@ public class Enhance {
                 "Enhance.downgraded"));
             CompatibilityManager.playsound.playSound(player, "DOWNGRADED");
             int enchantLevel = enchantLevelBeforeAttemptEnhancing - 1;
-            player.getInventory().removeItem(item);
-            ItemStack enhancedItem = ItemManager.forgeItem(item, enchantLevel);
-            player.getInventory().addItem(enhancedItem);
-            MenuHandler.updateItem(player, enhancedItem);
+            MenuHandler.updateItem(player, ItemManager.forgeItem(item,
+                enchantLevel));
         }
         Util.sendMessage(str, player);
     }
