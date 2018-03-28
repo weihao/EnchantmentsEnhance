@@ -27,8 +27,8 @@ public class MenuHandler implements Listener {
 
     public static void updateItem(Player player, ItemStack item) {
         player.getInventory().removeItem(itemOnEnhancingSlot.get(player
-            .getDisplayName()));
-        itemOnEnhancingSlot.put(player.getDisplayName(), item);
+            .getName()));
+        itemOnEnhancingSlot.put(player.getName(), item);
         player.getInventory().addItem(item);
 
     }
@@ -58,44 +58,44 @@ public class MenuHandler implements Listener {
                 if (e.getCurrentItem().hasItemMeta()) {
                     if (Enhance.getValidationOfItem(player, e.getCurrentItem())
                         && !itemOnEnhancingSlot.containsKey(player
-                            .getDisplayName())) {
-                        itemOnEnhancingSlot.put(player.getDisplayName(), e
+                            .getName())) {
+                        itemOnEnhancingSlot.put(player.getName(), e
                             .getCurrentItem());
                         Menu.updateInv(e.getCurrentItem(), player,
                             itemOnEnhancingSlot.containsKey(player
-                                .getDisplayName()), true, itemOnEnhancingSlot
-                                    .get(player.getDisplayName()));
+                                .getName()), true, itemOnEnhancingSlot
+                                    .get(player.getName()));
                     }
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.enhance"))
                         && itemOnEnhancingSlot.containsKey(player
-                            .getDisplayName())) {
+                            .getName())) {
                         Enhance.diceToEnhancement(itemOnEnhancingSlot.get(player
-                            .getDisplayName()), player);
+                            .getName()), player);
                         Menu.updateInv(e.getCurrentItem(), player,
                             itemOnEnhancingSlot.containsKey(player
-                                .getDisplayName()), false, itemOnEnhancingSlot
-                                    .get(player.getDisplayName()));
+                                .getName()), false, itemOnEnhancingSlot
+                                    .get(player.getName()));
                         return;
                     }
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.remove"))
                         && itemOnEnhancingSlot.containsKey(player
-                            .getDisplayName())) {
-                        itemOnEnhancingSlot.remove(player.getDisplayName());
+                            .getName())) {
+                        itemOnEnhancingSlot.remove(player.getName());
                         Menu.createMenu(player);
                         return;
                     }
                     if (Util.isPluginItem(e.getCurrentItem(),
                         SettingsManager.lang.getString("Menu.gui.force"))
                         && itemOnEnhancingSlot.containsKey(player
-                            .getDisplayName())) {
+                            .getName())) {
                         Enhance.forceToEnhancement(itemOnEnhancingSlot.get(
-                            player.getDisplayName()), player);
+                            player.getName()), player);
                         Menu.updateInv(e.getCurrentItem(), player,
                             itemOnEnhancingSlot.containsKey(player
-                                .getDisplayName()), false, itemOnEnhancingSlot
-                                    .get(player.getDisplayName()));
+                                .getName()), false, itemOnEnhancingSlot
+                                    .get(player.getName()));
                         return;
                     }
 
@@ -103,29 +103,29 @@ public class MenuHandler implements Listener {
                         SettingsManager.lang.getString("Menu.gui.store"))) {
                         SecretBook.addFailstackToStorage(player);
                         if (itemOnEnhancingSlot.get(player
-                            .getDisplayName()) == null) {
+                            .getName()) == null) {
                             Menu.createMenu(player);
                         }
                         else {
                             Menu.updateFailstack(itemOnEnhancingSlot.get(player
-                                .getDisplayName()), player);
+                                .getName()), player);
                         }
                         return;
                     }
                 }
                 else if (Enhance.getValidationOfItem(player, e.getCurrentItem())
                     && !itemOnEnhancingSlot.containsKey(player
-                        .getDisplayName())) {
-                    itemOnEnhancingSlot.put(player.getDisplayName(), e
+                        .getName())) {
+                    itemOnEnhancingSlot.put(player.getName(), e
                         .getCurrentItem());
                     Menu.updateInv(e.getCurrentItem(), player,
                         itemOnEnhancingSlot.containsKey(player
-                            .getDisplayName()), true, itemOnEnhancingSlot.get(
-                                player.getDisplayName()));
+                            .getName()), true, itemOnEnhancingSlot.get(
+                                player.getName()));
                 }
             }
         }
-        if (!itemOnEnhancingSlot.containsKey(player.getDisplayName())) {
+        if (!itemOnEnhancingSlot.containsKey(player.getName())) {
             List<String> loreList = new ArrayList<String>();
             if ((e.getInventory().getType() != InventoryType.CRAFTING) && (e
                 .getInventory().getType() != InventoryType.PLAYER)) {
@@ -183,8 +183,8 @@ public class MenuHandler implements Listener {
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent e) {
         Player player = (Player)e.getPlayer();
-        if (itemOnEnhancingSlot.containsKey(player.getDisplayName())) {
-            itemOnEnhancingSlot.remove(player.getDisplayName());
+        if (itemOnEnhancingSlot.containsKey(player.getName())) {
+            itemOnEnhancingSlot.remove(player.getName());
         }
     }
 }

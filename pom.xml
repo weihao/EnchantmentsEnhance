@@ -6,7 +6,7 @@
 	<groupId>org.pixeltime</groupId>
 	<artifactId>enchantmentsenhance</artifactId>
 	<packaging>jar</packaging>
-	<version>3.6</version>
+	<version>3.7</version>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -94,7 +94,7 @@
 		</plugins>
 		<resources>
 			<resource>
-				<directory>src/org/pixeltime/healpot/enhancement/resources/</directory>
+				<directory>src/main/java/org/pixeltime/enchantmentsenhance/resources/</directory>
 				<filtering>true</filtering>
 			</resource>
 			<resource>

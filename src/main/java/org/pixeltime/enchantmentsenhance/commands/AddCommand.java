@@ -39,7 +39,7 @@ public class AddCommand extends SubCommand {
                 && stoneType <= Util.stoneTypes.length) {
                 Inventory.addLevel(p, stoneType, level);
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Add.successful").replace("%player%", p.getDisplayName())
+                    "Add.successful").replace("%player%", p.getName())
                     .replace("%number%", Integer.toString(level)).replace(
                         "%stone%", SettingsManager.lang.getString("Item."
                             + stoneType)), player);
@@ -71,7 +71,7 @@ public class AddCommand extends SubCommand {
 
     @Override
     public String[] aliases() {
-        return new String[] { "add" };
+        return new String[] { "add", "give" };
     }
 
 

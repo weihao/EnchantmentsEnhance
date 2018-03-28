@@ -11,6 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.commands.AddCommand;
+import org.pixeltime.enchantmentsenhance.commands.DebugCommand;
 import org.pixeltime.enchantmentsenhance.commands.HelpCommand;
 import org.pixeltime.enchantmentsenhance.commands.InventoryCommand;
 import org.pixeltime.enchantmentsenhance.commands.ListCommand;
@@ -42,6 +43,7 @@ public class CommandManager implements CommandExecutor {
     public String reload = "reload";
     public String select = "select";
     public String version = "version";
+    public String debug = "debug";
 
 
     public void setup() {
@@ -55,7 +57,7 @@ public class CommandManager implements CommandExecutor {
         this.commands.add(new ReloadCommand());
         this.commands.add(new SelectCommand());
         this.commands.add(new VersionCommand());
-
+        this.commands.add(new DebugCommand());
     }
 
 
@@ -97,7 +99,7 @@ public class CommandManager implements CommandExecutor {
             }
 
             try {
-                //This removes the first argument.
+                // This removes the first argument.
                 target.onCommand(player, Arrays.copyOfRange(args, 1,
                     args.length));
             }

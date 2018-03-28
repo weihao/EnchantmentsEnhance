@@ -11,16 +11,16 @@ public class Failstack {
 
 
     public static void loadLevels(Player player) {
-        if (SettingsManager.data.contains(player.getDisplayName()
-            + ".failstack") || failstack.containsKey(player.getDisplayName())) {
-            failstack.put(player.getDisplayName(), SettingsManager.data.getInt(
+        if (SettingsManager.data.contains(player.getName()
+            + ".failstack") || failstack.containsKey(player.getName())) {
+            failstack.put(player.getName(), SettingsManager.data.getInt(
                 player.getName() + ".failstack"));
         }
     }
 
 
     public static void saveLevels(Player player, boolean save) {
-        SettingsManager.data.set(player.getDisplayName() + ".failstack",
+        SettingsManager.data.set(player.getName() + ".failstack",
             getLevel(player));
         if (save)
             SettingsManager.saveData();
@@ -33,7 +33,7 @@ public class Failstack {
 
 
     public static void setLevel(Player player, int level) {
-        failstack.put(player.getDisplayName(), level);
+        failstack.put(player.getName(), level);
     }
 
 
@@ -44,8 +44,8 @@ public class Failstack {
 
 
     public static int getLevel(Player player) {
-        if (failstack.containsKey(player.getDisplayName())) {
-            return failstack.get(player.getDisplayName());
+        if (failstack.containsKey(player.getName())) {
+            return failstack.get(player.getName());
         }
         return 0;
     }

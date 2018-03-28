@@ -16,7 +16,7 @@ public class Inventory {
 
     public static void loadInventory(Player player) {
         if (SettingsManager.data.contains(player.getName() + ".backpack")
-            || backpack.containsKey(player.getDisplayName())) {
+            || backpack.containsKey(player.getName())) {
             String[] temp = SettingsManager.data.getString(player.getName()
                 + ".backpack").replace("[", "").replace("]", "").split(", ");
             int[] inventory = new int[temp.length];
@@ -26,20 +26,20 @@ public class Inventory {
                 }
                 catch (Exception e) {
                     Bukkit.getLogger().severe("Error in loading " + player
-                        .getDisplayName() + "'s" + " inventory.");
+                        .getName() + "'s" + " inventory.");
                 }
             }
 
-            backpack.put(player.getDisplayName(), inventory);
+            backpack.put(player.getName(), inventory);
         }
         else {
-            backpack.put(player.getDisplayName(), new int[] { 0, 0, 0, 0 });
+            backpack.put(player.getName(), new int[] { 0, 0, 0, 0 });
         }
     }
 
 
     public static void saveInventoryToDisk(Player player, boolean save) {
-        String str = Arrays.toString(backpack.get(player.getDisplayName()));
+        String str = Arrays.toString(backpack.get(player.getName()));
         SettingsManager.data.set(player.getName() + ".backpack", str);
 
         if (save) {
@@ -51,7 +51,7 @@ public class Inventory {
 
     public static void setLevel(Player player, int type, int level) {
         try {
-            backpack.get(player.getDisplayName())[type] = level;
+            backpack.get(player.getName())[type] = level;
         }
         catch (Exception e) {
             Main.getMain().getLogger().info(
@@ -67,14 +67,14 @@ public class Inventory {
 
 
     public static int getLevel(int type, Player player) {
-        if (backpack.containsKey(player.getDisplayName())) {
-            return backpack.get(player.getDisplayName())[type];
+        if (backpack.containsKey(player.getName())) {
+            return backpack.get(player.getName())[type];
         }
         return 0;
     }
 
 
     public static int[] getPlayer(Player player) {
-        return backpack.get(player.getDisplayName());
+        return backpack.get(player.getName());
     }
 }

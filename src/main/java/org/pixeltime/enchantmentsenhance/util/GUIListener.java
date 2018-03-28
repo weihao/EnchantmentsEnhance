@@ -24,7 +24,7 @@ public class GUIListener implements Listener {
             return;
         }
         Player player = (Player)e.getWhoClicked();
-        String playerUUID = player.getDisplayName();
+        String playerUUID = player.getName();
         UUID inventoryUUID = GUI.openInventories.get(playerUUID);
         if (inventoryUUID != null) {
             e.setCancelled(true);
@@ -41,7 +41,7 @@ public class GUIListener implements Listener {
     @EventHandler
     public void onClose(InventoryCloseEvent e) {
         Player player = (Player)e.getPlayer();
-        String playerUUID = player.getDisplayName();
+        String playerUUID = player.getName();
 
         GUI.openInventories.remove(playerUUID);
     }
@@ -50,7 +50,7 @@ public class GUIListener implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
         Player player = e.getPlayer();
-        String playerUUID = player.getDisplayName();
+        String playerUUID = player.getName();
 
         GUI.openInventories.remove(playerUUID);
     }
@@ -58,7 +58,7 @@ public class GUIListener implements Listener {
 
     public void delete() {
         for (Player p : Bukkit.getOnlinePlayers()) {
-            UUID u = GUI.openInventories.get(p.getDisplayName());
+            UUID u = GUI.openInventories.get(p.getName());
             if (u.equals(gui.getUuid())) {
                 p.closeInventory();
             }

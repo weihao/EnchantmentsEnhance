@@ -60,7 +60,7 @@ public abstract class GUI {
 
     public void open(Player p) {
         p.openInventory(inventory);
-        openInventories.put(p.getDisplayName(), getUuid());
+        openInventories.put(p.getName(), getUuid());
     }
 
 

@@ -44,7 +44,7 @@ public class PlayerDeathHandler implements Listener {
         FileConfiguration pFile = YamlConfiguration.loadConfiguration(
             playerFile);
 
-        pFile.set("PlayerName", p.getDisplayName());
+        pFile.set("PlayerName", p.getName());
         for (int i = 0; i < e.getDrops().size(); i++) {
             if ((((ItemStack)e.getDrops().get(i)).hasItemMeta())
                 && (((ItemStack)e.getDrops().get(i)).getItemMeta().hasLore())) {

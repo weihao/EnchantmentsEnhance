@@ -13,7 +13,6 @@ public class SecretBook {
     private static HashMap<String, List<Integer>> storage =
         new HashMap<String, List<Integer>>();
 
-
     /**
      * Adds a player's failstack to the HashMap storage.
      * 
@@ -21,7 +20,7 @@ public class SecretBook {
      *            Targeted player.
      */
     public static void addFailstackToStorage(Player player) {
-        storage.get(player.getDisplayName()).add(Failstack.getLevel(player));
+        storage.get(player.getName()).add(Failstack.getLevel(player));
         Failstack.resetLevel(player);
         Util.sendMessage(SettingsManager.lang.getString("Save.createFailstack")
             .replaceAll("%failstack%", Integer.toString(Failstack.getLevel(
@@ -38,7 +37,7 @@ public class SecretBook {
     public static void loadStorage(Player player) {
         List<Integer> adviceOfValks = new ArrayList<Integer>();
         if (SettingsManager.data.contains(player.getName() + ".advice of valks")
-            || storage.containsKey(player.getDisplayName())) {
+            || storage.containsKey(player.getName())) {
             String[] temp = SettingsManager.data.getString(player.getName()
                 + ".advice of valks").replace("[", "").replace("]", "").split(
                     ", ");
@@ -48,11 +47,11 @@ public class SecretBook {
                 }
                 catch (Exception e) {
                     Bukkit.getLogger().severe("Error in loading " + player
-                        .getDisplayName() + "'s" + " failstack.");
+                        .getName() + "'s" + " failstack.");
                 }
             }
         }
-        storage.put(player.getDisplayName(), adviceOfValks);
+        storage.put(player.getName(), adviceOfValks);
     }
 
 
@@ -66,7 +65,7 @@ public class SecretBook {
      *            be stored in the memory.
      */
     public static void saveStorageToDisk(Player player, boolean save) {
-        List<Integer> temp = storage.get(player.getDisplayName());
+        List<Integer> temp = storage.get(player.getName());
         SettingsManager.data.set(player.getName() + ".advice of valks", temp
             .toString());
         if (save) {
@@ -84,7 +83,7 @@ public class SecretBook {
      *            Selected page number.
      */
     public static void list(Player player, int pageNumber) {
-        List<Integer> adviceOfValks = storage.get(player.getDisplayName());
+        List<Integer> adviceOfValks = storage.get(player.getName());
 
         if (adviceOfValks.size() <= 0 || adviceOfValks == null) {
             Util.sendMessage(SettingsManager.lang.getString("Save.noFailstack"),
@@ -130,13 +129,13 @@ public class SecretBook {
     public static void select(Player player, int selectedFailstack) {
         if (selectedFailstack > 0) {
             if (selectedFailstack <= SecretBook.storage.get(player
-                .getDisplayName()).size()) {
+                .getName()).size()) {
                 if (Failstack.getLevel(player) == 0) {
                     try {
                         int levelOfAdvice = SecretBook.storage.get(player
-                            .getDisplayName()).get(selectedFailstack - 1);
+                            .getName()).get(selectedFailstack - 1);
                         Failstack.addLevel(player, levelOfAdvice);
-                        SecretBook.storage.get(player.getDisplayName()).remove(
+                        SecretBook.storage.get(player.getName()).remove(
                             selectedFailstack - 1);
                         Util.sendMessage(SettingsManager.lang.getString(
                             "Valks.used").replaceAll("%LEVEL%", Integer
@@ -154,7 +153,7 @@ public class SecretBook {
                 }
             }
             else {
-                if (SecretBook.storage.get(player.getDisplayName())
+                if (SecretBook.storage.get(player.getName())
                     .size() == 0) {
                     Util.sendMessage(SettingsManager.lang.getString(
                         "Valks.noAdvice"), player);

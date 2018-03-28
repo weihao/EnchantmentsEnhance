@@ -4,10 +4,9 @@ import org.bukkit.entity.Player;
 
 public abstract class SubCommand {
 
-    /*
+    /**
      * /<command> <subcommand> args[0] args[1]
      */
-
     public SubCommand() {
     }
 

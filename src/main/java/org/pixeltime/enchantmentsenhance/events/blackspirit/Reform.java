@@ -22,7 +22,7 @@ public class Reform extends GUI implements Listener{
         super(27, SettingsManager.lang.getString("Reform.gui.title"));
         setItem(Util.getSlot(5, 3), Util.createButton(DyeColor.BLACK,
             SettingsManager.lang.getString("Reform.reform")), player -> {
-                if (itemOnReformingSlot.containsKey(player.getDisplayName())) {
+                if (itemOnReformingSlot.containsKey(player.getName())) {
 
                 }
             });
