@@ -263,7 +263,7 @@ public class Enhance {
 
 
     public static boolean isPhaseDowngrade(int lvl) {
-        return (lvl >= DataManager.downgradePhase);
+        return (lvl > DataManager.downgradePhase);
     }
 
 

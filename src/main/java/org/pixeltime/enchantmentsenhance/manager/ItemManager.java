@@ -192,4 +192,46 @@ public class ItemManager {
         return item;
     }
 
+
+    public static String getRenamedName(ItemStack item) {
+        String name = "";
+        int enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
+        int gradeLevel = ItemManager.getItemGradeLevel(item);
+        switch (getItemEnchantmentType(item)) {
+            case WEAPON:
+                String levelName = SettingsManager.config.getString("enhance."
+                    + enchantLevel + ".name");
+                String gradePrefix = SettingsManager.config.getString("grade."
+                    + gradeLevel + ".name");
+                String itemName = "";
+                if (item.getType().toString().toLowerCase().contains("axe")) {
+                    itemName = SettingsManager.config.getString("name.axe");
+                }
+                else if (item.getType().toString().toLowerCase().contains(
+                    "sword")) {
+                    itemName = SettingsManager.config.getString("name.sword");
+                }
+                else if (item.getType().toString().toLowerCase().contains(
+                    "bow")) {
+                    itemName = SettingsManager.config.getString("name.bow");
+                }
+                if (levelName != null) {
+                    name += levelName + " ";
+                }
+                if (gradePrefix != null) {
+                    name += gradePrefix + " ";
+                }
+                if (itemName != null) {
+                    name += itemName;
+                }
+
+            case TOOL:
+
+            case MASK:
+
+            default:
+        }
+        return name;
+    }
+
 }

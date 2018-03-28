@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 /**
@@ -31,16 +32,16 @@ public class Broadcast {
                 "Config.pluginTag") + (SettingsManager.lang.getString(
                     "Annoucer.success") + " " + player.getName() + " "
                     + SettingsManager.lang.getString("Annoucer.got") + " "
-                    + SettingsManager.lang.getString("Name." + Integer.toString(
-                        enchantLevel + 1)) + " " + getFriendlyName(item))));
+                    + ItemManager.getRenamedName(item)) + " "
+                + getFriendlyName(item)));
         }
         else {
             Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString(
                 "Config.pluginTag") + (SettingsManager.lang.getString(
                     "Annoucer.failed") + " " + player.getName() + " "
                     + SettingsManager.lang.getString("Annoucer.lost") + " "
-                    + SettingsManager.lang.getString("Name." + Integer.toString(
-                        enchantLevel + 1)) + " " + getFriendlyName(item))));
+                    + ItemManager.getRenamedName(item)) + " "
+                + getFriendlyName(item)));
         }
     }
 
