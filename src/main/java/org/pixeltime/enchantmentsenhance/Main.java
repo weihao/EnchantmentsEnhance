@@ -1,9 +1,12 @@
 package org.pixeltime.enchantmentsenhance;
 
+import java.io.File;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.java.JavaPluginLoader;
 import org.pixeltime.enchantmentsenhance.events.blacksmith.SecretBook;
 import org.pixeltime.enchantmentsenhance.events.blackspirit.Failstack;
 import org.pixeltime.enchantmentsenhance.events.blackspirit.Reform;
@@ -36,6 +39,20 @@ public class Main extends JavaPlugin {
      */
     public static Main getMain() {
         return main;
+    }
+
+
+    public Main() {
+        super();
+    }
+
+
+    protected Main(
+        JavaPluginLoader loader,
+        PluginDescriptionFile description,
+        File dataFolder,
+        File file) {
+        super(loader, description, dataFolder, file);
     }
 
 

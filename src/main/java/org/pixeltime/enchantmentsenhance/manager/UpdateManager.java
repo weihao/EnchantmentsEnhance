@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import org.bukkit.event.Listener;
 import org.pixeltime.enchantmentsenhance.Main;
+import net.md_5.bungee.api.ChatColor;
 
 public class UpdateManager implements Listener {
 
@@ -22,9 +23,9 @@ public class UpdateManager implements Listener {
                 .getInputStream())).readLine();
             if (!version.equals(Main.class.getPackage()
                 .getImplementationVersion())) {
-                for (int i = 0; i < 30; i++) {
+                for (int i = 0; i < 10; i++) {
                     Main.getMain().getLogger().warning(
-                        "EnchantmentsEnhance is OUTDATED!");
+                        ChatColor.RED + "EnchantmentsEnhance is OUTDATED!");
                 }   
             }
             else {
