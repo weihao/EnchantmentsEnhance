@@ -15,6 +15,10 @@
 ## Introduction
 GitHub Wiki is setting up... (Markdown)
 
+## Life Cycle
+This plugin is under active development at the stage of alpha phase.
+Completion of the plugin is currently projected at 20%, meaning the general functionality and availability are incomplete.
+You can find latest pre-release on Spigot.
 
 ## Compatibility
 Version: `all version compatible`
