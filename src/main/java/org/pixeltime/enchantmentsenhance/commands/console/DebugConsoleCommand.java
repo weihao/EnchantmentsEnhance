@@ -1,13 +1,14 @@
-package org.pixeltime.enchantmentsenhance.commands;
+package org.pixeltime.enchantmentsenhance.commands.console;
 
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
-public class DebugCommand extends SubCommand {
+public class DebugConsoleCommand extends SubConsoleCommand {
 
     @Override
-    public void onCommand(Player player, String[] args) {
+    public void onCommand(CommandSender sender, String[] args) {
 // log("player custom name? :" + player.getCustomName());
 // log("player display name? :" + player.getName());
 // log("player entity name? :" + player.getName());
@@ -43,12 +44,6 @@ public class DebugCommand extends SubCommand {
     @Override
     public String[] aliases() {
         return new String[] { "debug", "tiaoshi", "ts" };
-    }
-
-
-    @Override
-    public String getPermission() {
-        return "Enchantmentsenhance.debug";
     }
 
 

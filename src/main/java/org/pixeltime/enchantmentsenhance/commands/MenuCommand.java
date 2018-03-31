@@ -27,13 +27,12 @@ public class MenuCommand extends SubCommand {
 
     @Override
     public String[] aliases() {
-        return new String[] { "menu" };
+        return new String[] { "menu" ,"yemian", "ym"};
     }
 
 
     @Override
     public String getPermission() {
-        // TODO Auto-generated method stub
         return "Enchantmentsenhance.enhance";
     }
 

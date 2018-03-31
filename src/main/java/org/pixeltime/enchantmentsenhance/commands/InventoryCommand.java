@@ -19,14 +19,12 @@ public class InventoryCommand extends SubCommand {
 
     @Override
     public String name() {
-        // TODO Auto-generated method stub
         return "inventory";
     }
 
 
     @Override
     public String info() {
-        // TODO Auto-generated method stub
         return "\n&6/enhance inventory &7- " + SettingsManager.lang
             .getString("Help.inventory");
     }
@@ -34,13 +32,12 @@ public class InventoryCommand extends SubCommand {
 
     @Override
     public String[] aliases() {
-        return new String[] { "inv", "inventory" };
+        return new String[] { "inv", "inventory", "beibao", "b" };
     }
 
 
     @Override
     public String getPermission() {
-        // TODO Auto-generated method stub
         return "Enchantmentsenhance.enhance";
     }
 

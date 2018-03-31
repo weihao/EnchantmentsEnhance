@@ -1,17 +1,17 @@
-package org.pixeltime.enchantmentsenhance.commands;
+package org.pixeltime.enchantmentsenhance.commands.console;
 
-import org.bukkit.entity.Player;
+import org.bukkit.command.CommandSender;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class VersionCommand extends SubCommand {
+public class VersionConsoleCommand extends SubConsoleCommand {
 
     @Override
-    public void onCommand(Player player, String[] args) {
+    public void onCommand(CommandSender sender, String[] args) {
         Util.sendMessage(SettingsManager.lang.getString(
             "Config.checkingVersion").replaceAll("%version%", Main.getMain()
-                .getDescription().getVersion()), player);
+                .getDescription().getVersion()), sender);
     }
 
 
@@ -31,12 +31,6 @@ public class VersionCommand extends SubCommand {
     @Override
     public String[] aliases() {
         return new String[] { "version", "ver", "banben", "bb" };
-    }
-
-
-    @Override
-    public String getPermission() {
-        return "Enchantmentsenhance.version";
     }
 
 }

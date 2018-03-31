@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
+import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 /**
@@ -128,29 +129,29 @@ public class Util {
 
 
     /**
-     * Sends a colored message to a CommandSender.
+     * Sends a colored message to a player.
      * 
      * @param msg
      * @param sender
      */
-    public static void sendMessage(String msg, CommandSender sender) {
+    public static void sendMessage(String msg, CommandSender player) {
         String message = ChatColor.translateAlternateColorCodes('&', msg);
-        sender.sendMessage(pluginTag + message);
+        player.sendMessage(pluginTag + message);
     }
 
 
     /**
-     * Sends a colored message to a CommandSender.
+     * Sends a colored message to a player.
      * 
      * @param msg
      * @param sender
      */
     public static void sendMessage(
         String msg,
-        CommandSender sender,
+        CommandSender player,
         boolean addPlugintag) {
         String message = ChatColor.translateAlternateColorCodes('&', msg);
-        sender.sendMessage(message);
+        player.sendMessage(message);
     }
 
 

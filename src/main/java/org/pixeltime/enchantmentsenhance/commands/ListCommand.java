@@ -30,14 +30,12 @@ public class ListCommand extends SubCommand {
 
     @Override
     public String name() {
-        // TODO Auto-generated method stub
         return "list";
     }
 
 
     @Override
     public String info() {
-        // TODO Auto-generated method stub
         return "\n&6/enhance list &7- " + SettingsManager.lang.getString(
             "Help.list");
     }
@@ -45,14 +43,12 @@ public class ListCommand extends SubCommand {
 
     @Override
     public String[] aliases() {
-        // TODO Auto-generated method stub
-        return new String[] { "list", "ls"};
+        return new String[] { "list", "ls", "chakan", "ck"};
     }
 
 
     @Override
     public String getPermission() {
-        // TODO Auto-generated method stub
         return "Enchantmentsenhance.enhance";
     }
 

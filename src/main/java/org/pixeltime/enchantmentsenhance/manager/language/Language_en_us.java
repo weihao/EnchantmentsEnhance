@@ -61,8 +61,11 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("Help.version", "&6check version.");
         SettingsManager.lang.addDefault("Help.lore", "&6remove/add lore to an item.");
         SettingsManager.lang.addDefault("Help.inventory", "&6see items that you have collected.");
-        SettingsManager.lang.addDefault("Help.add", "&6Give a player an enhancing items.\n0 = weapon stone, 1 = armor stone, 2 = conc weapon, 3 = conc armor");
+        SettingsManager.lang.addDefault("Help.add", "&6give a player an enhancing items.\n0 = weapon stone, 1 = armor stone, 2 = conc weapon, 3 = conc armor");
+        SettingsManager.lang.addDefault("Help.debug", "&6collect debugging information for developer to fix issues.");
+        SettingsManager.lang.addDefault("Help.reform", "&6upgrade the grade of the gear.");
 
+        
         SettingsManager.lang.addDefault("Menu.gui.title", "Enhancement");
         SettingsManager.lang.addDefault("Menu.gui.enhance", "Enhance");
         SettingsManager.lang.addDefault("Menu.gui.force", "Force");

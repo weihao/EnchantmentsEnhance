@@ -1,33 +1,34 @@
 package org.pixeltime.enchantmentsenhance.commands;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.events.blackspirit.Reform;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
-public class HelpCommand extends SubCommand {
+public class ReformCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        Main.getMain().commandManager.printHelp(player);
+        Reform newGUI = new Reform();
+        newGUI.open(player);
     }
 
 
     @Override
     public String name() {
-        return "help";
+        return "reform";
     }
 
 
     @Override
     public String info() {
-        return "\n&6/enhance help &7- " + SettingsManager.lang.getString(
-            "Help.help");
+        return "\n&6/enhance reform &7- " + SettingsManager.lang.getString(
+            "Help.form");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "help", "hl" ,"bangzhu", "bz"};
+        return new String[] { "reform", "rf", "gailiang", "gl" };
     }
 
 

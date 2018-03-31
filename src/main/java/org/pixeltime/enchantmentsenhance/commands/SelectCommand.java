@@ -30,27 +30,25 @@ public class SelectCommand extends SubCommand {
 
     @Override
     public String name() {
-        // TODO Auto-generated method stub
         return "select";
     }
 
 
     @Override
     public String info() {
-        return "\n&6/enhance select { n } &7- " + SettingsManager.lang.getString(
-            "Help.select");
+        return "\n&6/enhance select { n } &7- " + SettingsManager.lang
+            .getString("Help.select");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "select", "sl" };
+        return new String[] { "select", "sl", "xuanze", "xz" };
     }
 
 
     @Override
     public String getPermission() {
-        // TODO Auto-generated method stub
         return "Enchantmentsenhance.enhance";
     }
 

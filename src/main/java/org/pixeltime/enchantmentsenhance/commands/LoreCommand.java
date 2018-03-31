@@ -30,28 +30,25 @@ public class LoreCommand extends SubCommand {
 
     @Override
     public String name() {
-        // TODO Auto-generated method stub
         return "lore";
     }
 
 
     @Override
     public String info() {
-        // TODO Auto-generated method stub
-        return "\n&6/enhance lore { addhand | removehand }&7- " + SettingsManager.lang.getString(
-            "Help.lore");
+        return "\n&6/enhance lore { addhand | removehand }&7- "
+            + SettingsManager.lang.getString("Help.lore");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "lore" };
+        return new String[] { "lore", "shuxing", "sx" };
     }
 
 
     @Override
     public String getPermission() {
-        // TODO Auto-generated method stub
         return "Enchantmentsenhance.lore";
     }
 

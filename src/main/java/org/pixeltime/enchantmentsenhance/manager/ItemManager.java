@@ -69,7 +69,6 @@ public class ItemManager {
 
     public static ItemStack stoneVisualized(int stoneId, Player player) {
         List<String> lore = new ArrayList<String>();
-        // TODO add lore.
         return new ItemBuilder(Util.stoneTypes[stoneId]).setName(Util.toColor(
             SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
             .toItemStack();

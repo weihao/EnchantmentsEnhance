@@ -1,15 +1,16 @@
-package org.pixeltime.enchantmentsenhance.commands;
+package org.pixeltime.enchantmentsenhance.commands.console;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.events.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class AddCommand extends SubCommand {
+public class AddConsoleCommand extends SubConsoleCommand {
 
     @Override
-    public void onCommand(Player player, String[] args) {
+    public void onCommand(CommandSender sender, String[] args) {
         // /enhance add <player> <stone id> <amounts>
         // /cmd subcommand args[0] args[1] args[2]
         if (args.length == 3) {
@@ -21,7 +22,7 @@ public class AddCommand extends SubCommand {
 
             if (p == null) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.playerNotFound"), player);
+                    "Config.playerNotFound"), sender);
                 return;
             }
 
@@ -31,7 +32,7 @@ public class AddCommand extends SubCommand {
             }
             catch (Exception e) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player);
+                    "Config.invalidNumber"), sender);
                 return;
             }
 
@@ -42,16 +43,16 @@ public class AddCommand extends SubCommand {
                     "Add.successful").replace("%player%", p.getName()).replace(
                         "%number%", Integer.toString(level)).replace("%stone%",
                             SettingsManager.lang.getString("Item."
-                                + stoneType)), player);
+                                + stoneType)), sender);
             }
             else {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player);
+                    "Config.invalidNumber"), sender);
             }
         }
         else {
             Util.sendMessage(SettingsManager.lang.getString(
-                "Config.invalidCommand"), player);
+                "Config.invalidCommand"), sender);
         }
     }
 
@@ -72,12 +73,6 @@ public class AddCommand extends SubCommand {
     @Override
     public String[] aliases() {
         return new String[] { "add", "give", "tianjia", "tj" };
-    }
-
-
-    @Override
-    public String getPermission() {
-        return "Enchantmentsenhance.add";
     }
 
 }

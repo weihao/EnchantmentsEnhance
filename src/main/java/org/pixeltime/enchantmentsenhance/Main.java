@@ -25,10 +25,17 @@ import org.pixeltime.enchantmentsenhance.util.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.Metrics;
 import org.pixeltime.enchantmentsenhance.util.Reflection_V2;
 
+/**
+ * Main plugin class.
+ * 
+ * @author HealPot
+ * @version Mar 30, 2018
+ *
+ */
 public class Main extends JavaPlugin {
+    private static Main main;
     public static final CompatibilityManager compatibility =
         new CompatibilityManager();
-    private static Main main;
     public CommandManager commandManager;
 
 
@@ -42,11 +49,22 @@ public class Main extends JavaPlugin {
     }
 
 
+    /**
+     * Default constructor.
+     */
     public Main() {
         super();
     }
 
 
+    /**
+     * Mocking constructor.
+     * 
+     * @param loader
+     * @param description
+     * @param dataFolder
+     * @param file
+     */
     protected Main(
         JavaPluginLoader loader,
         PluginDescriptionFile description,
@@ -133,7 +151,7 @@ public class Main extends JavaPlugin {
         new DataManager();
         // Start bStats Metrics.
         new Metrics(this);
-        this.commandManager = new CommandManager();
+        commandManager = new CommandManager();
         commandManager.setup();
     }
 
