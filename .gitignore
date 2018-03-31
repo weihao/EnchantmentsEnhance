@@ -15,3 +15,5 @@
 /bin/
 *.DS_Store
 /target/
+/.settings/
+/.idea/
