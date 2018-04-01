@@ -15,11 +15,9 @@ install:
 
 
 install:
-  - mvn test-compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-script:
-  - mvn test jacoco:report
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 after_success:
-  - mvn clean test saga:coverage cobertura:cobertura coveralls:report
+  - mvn clean
 cache:
   directories:
     - $HOME/.m2
