@@ -1,14 +1,10 @@
 package org.pixeltime.enchantmentsenhance.commands;
 
-import org.bukkit.Bukkit;
-import org.bukkit.EntityEffect;
 import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.EnderDragon;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.GraphicsManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import net.minecraft.server.v1_8_R3.EntityEnderDragon;
 
 public class DebugCommand extends SubCommand {
     ArmorStand as;

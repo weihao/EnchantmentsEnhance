@@ -2,7 +2,6 @@ package org.pixeltime.enchantmentsenhance.commands.console;
 
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public abstract class SubConsoleCommand {
 

@@ -1,7 +1,6 @@
 package org.pixeltime.enchantmentsenhance.commands.console;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 

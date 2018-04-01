@@ -1,14 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>org.pixeltime</groupId>
-  <artifactId>enchantmentsenhance</artifactId>
-  <version>3.9</version>
-  <packaging>jar</packaging>
-
-  <name>enchantmentsenhance</name>
-  <url>http://maven.apache.org</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.pixeltime</groupId>
+	<artifactId>enchantmentsenhance</artifactId>
+	<version>3.9</version>
+	<packaging>jar</packaging>
+	<name>enchantmentsenhance</name>
+	<url>https://github.com/HealPot/EnchantmentsEnhance</url>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -16,7 +15,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!--<libraries>${project.basedir}/lib</libraries> -->
 	</properties>
-	
+
 	<repositories>
 		<repository>
 			<id>spigot-repo</id>
@@ -55,29 +54,8 @@
 			<artifactId>EffectLib</artifactId>
 			<version>d2da0ac5f1</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito -->
-		<dependency>
-			<groupId>org.powermock</groupId>
-			<artifactId>powermock-api-mockito</artifactId>
-			<version>1.7.3</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.powermock/powermock-module-junit4 -->
-		<dependency>
-			<groupId>org.powermock</groupId>
-			<artifactId>powermock-module-junit4</artifactId>
-			<version>1.7.3</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.powermock/powermock-module-testng -->
-		<dependency>
-			<groupId>org.powermock</groupId>
-			<artifactId>powermock-module-testng</artifactId>
-			<version>1.7.3</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
-		<build>
+	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -105,7 +83,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-				<sourceDirectory>src/main/java</sourceDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<resources>
 			<resource>
