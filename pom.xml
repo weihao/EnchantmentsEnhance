@@ -22,6 +22,10 @@
 			<id>bukkit-repo</id>
 			<url>http://repo.md-5.net/content/groups/public/</url>
 		</repository>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
@@ -41,6 +45,11 @@
 			<artifactId>craftbukkit</artifactId>
 			<version>1.8.8-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.Slikey</groupId>
+			<artifactId>EffectLib</artifactId>
+			<version>d2da0ac5f1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito -->
 		<dependency>
@@ -146,7 +155,7 @@
 		<testSourceDirectory>src/test</testSourceDirectory>
 		<resources>
 			<resource>
-				<directory>src/main/java/org/pixeltime/enchantmentsenhance/resources/</directory>
+				<directory>src/main/org/pixeltime/enchantmentsenhance/resources/</directory>
 				<filtering>true</filtering>
 			</resource>
 			<resource>
