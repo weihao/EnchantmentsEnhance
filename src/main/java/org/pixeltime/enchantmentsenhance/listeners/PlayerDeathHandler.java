@@ -17,6 +17,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.Main;
 
@@ -45,31 +46,33 @@ public class PlayerDeathHandler implements Listener {
             playerFile);
 
         pFile.set("PlayerName", p.getName());
-        for (int i = 0; i < e.getDrops().size(); i++) {
-        	ItemStack stack = (ItemStack)e.getDrops().get(i);
-            if (stack.hasItemMeta()){
-                if (stack.getItemMeta().hasLore()) {
-                    List<String> lore = stack.getItemMeta().getLore();
-                    for(String s : lore) {
-                    	s = ChatColor.stripColor(s);
-                    	if(s.contains(ChatColor.stripColor(SettingsManager.lang.getString(
-                                "Lore.UntradeableLore"))) || s.contains(ChatColor.stripColor(SettingsManager.lang.getString(
-                                        "Lore.TradeableLore")))) {
-                    		newInventory.add((ItemStack)e.getDrops().get(i));
-                    	}
+        if(!e.getDrops().isEmpty() || e.getDrops() != null) {
+        	for (int i = 0; i < e.getDrops().size(); i++) {
+            	ItemStack stack = (ItemStack)e.getDrops().get(i);
+                if (stack.hasItemMeta()){
+                	ItemMeta meta = stack.getItemMeta();
+                    if (meta.hasLore()) {
+                        List<String> lore = meta.getLore();
+                        for(String s : lore) {
+                        	s = ChatColor.stripColor(s);
+                        	if(s.contains(ChatColor.stripColor(SettingsManager.lang.getString(
+                                    "Lore.UntradeableLore"))) || s.contains(ChatColor.stripColor(SettingsManager.lang.getString(
+                                            "Lore.TradeableLore")))) {
+                        		newInventory.add((ItemStack)e.getDrops().get(i));
+                        	}
+                        }
                     }
                 }
             }
-        }
-        ItemStack[] newStack = newInventory.toArray(new ItemStack[newInventory
-            .size()]);
-        pFile.set("Items", newStack);
-        try {
-            pFile.save(playerFile);
-        }
-        catch (IOException e1) {
-        }
-        e.getDrops().removeAll(newInventory);
+        	ItemStack[] newStack = newInventory.toArray(new ItemStack[newInventory.size()]);
+        	pFile.set("Items", newStack);
+        	try {
+        	    pFile.save(playerFile);
+        	}catch (IOException e1) {
+        	
+        	}      	
+        	e.getDrops().removeAll(newInventory);
+        }       
     }
 
 
