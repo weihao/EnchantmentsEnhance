@@ -2,6 +2,7 @@ package org.pixeltime.enchantmentsenhance.events.inventory;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.pixeltime.enchantmentsenhance.KM;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
@@ -50,7 +51,8 @@ public class Inventory {
 
     public static void setLevel(Player player, int type, int level) {
         try {
-            backpack.get(player.getName())[type] = level;
+            int[] temp = backpack.get(player.getName());
+            temp[type] = level;
         } catch (Exception e) {
             Main.getMain().getLogger().info(
                     "Error when setting the player data.");

@@ -98,7 +98,7 @@ public class Main extends JavaPlugin {
         // Display final time at the end of the initialization.
         Bukkit.getLogger().info("EnchantmentsEnhance took " + (System
                 .currentTimeMillis() - startTime) + "ms to setup.");
-        KM.foo();
+        KM.log();
     }
 
 

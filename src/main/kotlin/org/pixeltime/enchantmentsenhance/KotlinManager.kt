@@ -5,8 +5,13 @@ import org.pixeltime.enchantmentsenhance.Main.getMain
 class KM {
     companion object {
         @JvmStatic
-        fun foo() {
+        fun log() {
             getMain().logger.info("Kotlin module is enabled: Hello World!")
+        }
+        @JvmStatic
+        fun sorting(a: IntArray)
+        {
+            a.sort()
         }
     }
 }
