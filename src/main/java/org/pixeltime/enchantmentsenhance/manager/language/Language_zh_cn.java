@@ -114,7 +114,7 @@ public class Language_zh_cn {
         SettingsManager.lang.addDefault("Valks.noAdvice", "你不拥有巴尔克斯的忠告.");
         SettingsManager.lang.addDefault("Valks.hasFailstack", "你目前的垫子不为零，为此你不能使用巴尔克斯的忠告.");
         SettingsManager.lang.addDefault("Valks.used", "你使用了巴尔克斯的忠告获得了等级为%LEVEL%的垫子.");
-        
+
         SettingsManager.lang.addDefault("Example.command.add.guide", "enhance add <玩家> <附魔石类型> <数量>");
         SettingsManager.lang.addDefault("Example.command.add.stone", "0 = 黑石 (武器), 1 = 黑石 (防具), 2 = 凝聚魔力的黑石 (武器), 3 = 凝聚魔力的黑石 (防具)");
         SettingsManager.lang.addDefault("Add.successful", "你给%player%了%number%个%stone%.");

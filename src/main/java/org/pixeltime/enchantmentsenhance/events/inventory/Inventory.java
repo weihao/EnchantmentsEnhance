@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,24 +17,22 @@ public class Inventory {
 
     public static void loadInventory(Player player) {
         if (SettingsManager.data.contains(player.getName() + ".backpack")
-            || backpack.containsKey(player.getName())) {
+                || backpack.containsKey(player.getName())) {
             String[] temp = SettingsManager.data.getString(player.getName()
-                + ".backpack").replace("[", "").replace("]", "").split(", ");
+                    + ".backpack").replace("[", "").replace("]", "").split(", ");
             int[] inventory = new int[temp.length];
             for (int i = 0; i < temp.length; i++) {
                 try {
                     inventory[i] = Integer.parseInt(temp[i]);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     Bukkit.getLogger().severe("Error in loading " + player
-                        .getName() + "'s" + " inventory.");
+                            .getName() + "'s" + " inventory.");
                 }
             }
 
             backpack.put(player.getName(), inventory);
-        }
-        else {
-            backpack.put(player.getName(), new int[] { 0, 0, 0, 0 });
+        } else {
+            backpack.put(player.getName(), new int[]{0, 0, 0, 0});
         }
     }
 
@@ -52,10 +51,9 @@ public class Inventory {
     public static void setLevel(Player player, int type, int level) {
         try {
             backpack.get(player.getName())[type] = level;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Main.getMain().getLogger().info(
-                "Error when setting the player data.");
+                    "Error when setting the player data.");
         }
     }
 

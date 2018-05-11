@@ -14,7 +14,7 @@ public class ReloadCommand extends SubCommand {
         SettingsManager.reloadLang();
         new DataManager();
         Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
-            player);
+                player);
     }
 
 
@@ -27,13 +27,13 @@ public class ReloadCommand extends SubCommand {
     @Override
     public String info() {
         return "\n&6/enhance reload &7- " + SettingsManager.lang.getString(
-            "Help.reload");
+                "Help.reload");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "reload", "rel", "chongzai", "cz" };
+        return new String[]{"reload", "rel", "chongzai", "cz"};
     }
 
 

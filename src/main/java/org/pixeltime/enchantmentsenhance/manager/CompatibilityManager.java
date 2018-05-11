@@ -15,7 +15,7 @@ public class CompatibilityManager {
 
     /**
      * Finds the right version for item glower.
-     * 
+     *
      * @return
      */
     public boolean setupGlow() {
@@ -34,7 +34,7 @@ public class CompatibilityManager {
 
     /**
      * Finds the right version for play sound.
-     * 
+     *
      * @return
      */
     public boolean setupSound() {
@@ -45,7 +45,7 @@ public class CompatibilityManager {
 
     /**
      * Finds the right version to spawn fireworks.
-     * 
+     *
      * @return
      */
     public boolean setupFirework() {

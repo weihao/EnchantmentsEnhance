@@ -22,13 +22,13 @@ public class ReformCommand extends SubCommand {
     @Override
     public String info() {
         return "\n&6/enhance reform &7- " + SettingsManager.lang.getString(
-            "Help.form");
+                "Help.form");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "reform", "rf", "gailiang", "gl" };
+        return new String[]{"reform", "rf", "gailiang", "gl"};
     }
 
 

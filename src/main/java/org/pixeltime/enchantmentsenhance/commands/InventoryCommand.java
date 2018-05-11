@@ -26,13 +26,13 @@ public class InventoryCommand extends SubCommand {
     @Override
     public String info() {
         return "\n&6/enhance inventory &7- " + SettingsManager.lang
-            .getString("Help.inventory");
+                .getString("Help.inventory");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "inv", "inventory", "beibao", "b" };
+        return new String[]{"inv", "inventory", "beibao", "b"};
     }
 
 

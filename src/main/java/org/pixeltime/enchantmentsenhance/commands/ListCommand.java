@@ -13,12 +13,10 @@ public class ListCommand extends SubCommand {
         int num = 0;
         try {
             num = Integer.parseInt(args[1]);
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             Util.sendMessage(SettingsManager.lang.getString(
-                "Config.invalidNumber"), player);
-        }
-        catch (ArrayIndexOutOfBoundsException e) {
+                    "Config.invalidNumber"), player);
+        } catch (ArrayIndexOutOfBoundsException e) {
             error = e;
             SecretBook.list(player, 0);
         }
@@ -37,13 +35,13 @@ public class ListCommand extends SubCommand {
     @Override
     public String info() {
         return "\n&6/enhance list &7- " + SettingsManager.lang.getString(
-            "Help.list");
+                "Help.list");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "list", "ls", "chakan", "ck"};
+        return new String[]{"list", "ls", "chakan", "ck"};
     }
 
 

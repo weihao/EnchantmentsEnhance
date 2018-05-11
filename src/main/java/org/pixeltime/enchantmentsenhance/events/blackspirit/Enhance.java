@@ -1,7 +1,5 @@
 package org.pixeltime.enchantmentsenhance.events.blackspirit;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.events.inventory.Inventory;
@@ -14,11 +12,14 @@ import org.pixeltime.enchantmentsenhance.util.Broadcast;
 import org.pixeltime.enchantmentsenhance.util.ItemTypes;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Enhance {
 
     /**
      * Finds the corresponding enhancement stone ID.
-     * 
+     *
      * @param player
      * @param item
      * @param level
@@ -28,16 +29,14 @@ public class Enhance {
         if (ItemManager.isValid(item, Util.weapon)) {
             if (isPhaseTwo(level)) {
                 return 2;
-            }
-            else {
+            } else {
                 return 0;
             }
         }
         if (ItemManager.isValid(item, Util.armor)) {
             if ((isPhaseTwo(level))) {
                 return 3;
-            }
-            else {
+            } else {
                 return 1;
             }
         }
@@ -47,7 +46,7 @@ public class Enhance {
 
     /**
      * Determines the enhancement eligibility of the item.
-     * 
+     *
      * @param player
      * @param item
      * @return
@@ -56,7 +55,7 @@ public class Enhance {
         // If item cannot be enhanced
         // If item level exceeds the maximum levels allowed
         if ((ItemManager.getItemEnchantmentType(item) == ItemTypes.INVALID)
-            || (ItemManager.getItemEnchantLevel(item) >= DataManager.levels)) {
+                || (ItemManager.getItemEnchantLevel(item) >= DataManager.levels)) {
             return false;
         }
         return true;
@@ -65,65 +64,64 @@ public class Enhance {
 
     /**
      * Calls when enhancement is success.
-     * 
+     *
      * @param item
      * @param player
      * @param forceEnhanced
      * @param enchantLevelBeforeAttemptEnhancing
      */
     public static void enhanceSuccess(
-        ItemStack item,
-        Player player,
-        boolean forceEnhanced,
-        int enchantLevelBeforeAttemptEnhancing) {
+            ItemStack item,
+            Player player,
+            boolean forceEnhanced,
+            int enchantLevelBeforeAttemptEnhancing) {
         // Enchant level after a successful enhancement
 
         int enchantLevel = enchantLevelBeforeAttemptEnhancing + 1;
 
         MenuHandler.updateItem(player, ItemManager.forgeItem(item,
-            enchantLevel));
+                enchantLevel));
 
         // Play sound
         CompatibilityManager.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
         CompatibilityManager.spawnFirework.launch(player, 1,
-            DataManager.fireworkRounds[enchantLevel], SettingsManager.config
-                .getInt("fireworkDelay"));
+                DataManager.fireworkRounds[enchantLevel], SettingsManager.config
+                        .getInt("fireworkDelay"));
         // Do not clear failstack if force enhanced
         if (forceEnhanced) {
             Util.sendMessage(SettingsManager.lang.getString(
-                "Enhance.forceEnhanceSuccess"), player);
-        }
-        else {
+                    "Enhance.forceEnhanceSuccess"), player);
+        } else {
             // Clear used failstack
             Failstack.resetLevel(player);
             Util.sendMessage(SettingsManager.lang.getString(
-                "Enhance.enhanceSuccess"), player);
+                    "Enhance.enhanceSuccess"), player);
         }
     }
 
 
     /**
      * Calls when enhancement is failed.
-     * 
+     *
      * @param item
      * @param player
      */
     public static void enhanceFail(
-        ItemStack item,
-        Player player,
-        int enchantLevelBeforeAttemptEnhancing) {
+            ItemStack item,
+            Player player,
+            int enchantLevelBeforeAttemptEnhancing) {
         String str = SettingsManager.lang.getString("Enhance.enhanceFailed");
         CompatibilityManager.playsound.playSound(player, "FAILED");
         Failstack.addLevel(player,
-            DataManager.failstackGainedPerFail[enchantLevelBeforeAttemptEnhancing]);
+                DataManager.failstackGainedPerFail[enchantLevelBeforeAttemptEnhancing]);
         if (isPhaseDowngrade(enchantLevelBeforeAttemptEnhancing)) {
             str += ("\n" + SettingsManager.lang.getString(
-                "Enhance.downgraded"));
+                    "Enhance.downgraded"));
             CompatibilityManager.playsound.playSound(player, "DOWNGRADED");
             int enchantLevel = enchantLevelBeforeAttemptEnhancing - 1;
             MenuHandler.updateItem(player, ItemManager.forgeItem(item,
-                enchantLevel));
+                    enchantLevel));
         }
         Util.sendMessage(str, player);
     }
@@ -131,7 +129,7 @@ public class Enhance {
 
     /**
      * Randomly generates a result to the enhancement.
-     * 
+     *
      * @param item
      * @param player
      */
@@ -146,8 +144,8 @@ public class Enhance {
             if (Inventory.getLevel(stoneId, player) - 1 >= 0) {
                 Inventory.addLevel(player, stoneId, -1);
                 Util.sendMessage(SettingsManager.lang.getString("Item.use")
-                    .replaceAll("%ITEM%", SettingsManager.lang.getString("Item."
-                        + stoneId)), player);
+                        .replaceAll("%ITEM%", SettingsManager.lang.getString("Item."
+                                + stoneId)), player);
                 // Randomly generate a double between 0 to 1
                 double random = Math.random();
                 // Calculate the chance
@@ -161,29 +159,28 @@ public class Enhance {
                 // Proceed to enhance
                 if (success) {
                     enhanceSuccess(item, player, false, enchantLevel);
-                }
-                else {
+                } else {
                     enhanceFail(item, player, enchantLevel);
                 }
             }
             // Not enough enchant stone
             else {
                 Util.sendMessage(SettingsManager.lang.getString("Item.noItem")
-                    .replaceAll("%STONE%", SettingsManager.lang.getString(
-                        "Item." + stoneId)), player);
+                        .replaceAll("%STONE%", SettingsManager.lang.getString(
+                                "Item." + stoneId)), player);
             }
         }
         // Not a valid item
         else {
             Util.sendMessage(SettingsManager.lang.getString("Item.invalid"),
-                player);
+                    player);
         }
     }
 
 
     /**
      * Guarantees a successful enhancement.
-     * 
+     *
      * @param item
      * @param player
      */
@@ -208,21 +205,21 @@ public class Enhance {
             // Not enough enchant stone
             else {
                 Util.sendMessage(SettingsManager.lang.getString("Item.noItem")
-                    .replaceAll("%STONE%", SettingsManager.lang.getString(
-                        "Item." + stoneId)), player);
+                        .replaceAll("%STONE%", SettingsManager.lang.getString(
+                                "Item." + stoneId)), player);
             }
         }
         // Not a valid item
         else {
             Util.sendMessage(SettingsManager.lang.getString("Item.invalid"),
-                player);
+                    player);
         }
     }
 
 
     /**
      * Gets chance as a list.
-     * 
+     *
      * @param item
      * @param player
      * @return
@@ -234,18 +231,18 @@ public class Enhance {
         if (type != ItemTypes.INVALID) {
             // Display failstack
             String fs = (SettingsManager.lang.getString(
-                "Enhance.currentFailstack") + Failstack.getLevel(player));
+                    "Enhance.currentFailstack") + Failstack.getLevel(player));
             String placeholder = String.format("%.2f", Failstack.getChance(
-                player, ItemManager.getItemEnchantLevel(item)) * 100);
+                    player, ItemManager.getItemEnchantLevel(item)) * 100);
             // Display chance after failstack is applied
             String chance = SettingsManager.lang.getString(
-                "Enhance.successRate").replaceAll("%chance%", placeholder);
+                    "Enhance.successRate").replaceAll("%chance%", placeholder);
             result.add(Util.toColor(fs));
             result.add(Util.toColor(chance));
             result.add(Util.toColor(SettingsManager.lang.getString(
-                "Menu.lore.stats1")));
+                    "Menu.lore.stats1")));
             result.add(Util.toColor(SettingsManager.lang.getString(
-                "Menu.lore.stats2")));
+                    "Menu.lore.stats2")));
             return result;
 
         }

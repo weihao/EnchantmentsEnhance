@@ -21,37 +21,34 @@ public class AddCommand extends SubCommand {
 
             if (p == null) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.playerNotFound"), player);
+                        "Config.playerNotFound"), player);
                 return;
             }
 
             try {
                 stoneType = Integer.parseInt(args[1]);
                 level = Integer.parseInt(args[2]);
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player);
+                        "Config.invalidNumber"), player);
                 return;
             }
 
             if (stoneType != -1 && level != -1 && p != null
-                && stoneType <= Util.stoneTypes.length) {
+                    && stoneType <= Util.stoneTypes.length) {
                 Inventory.addLevel(p, stoneType, level);
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Add.successful").replace("%player%", p.getName()).replace(
+                        "Add.successful").replace("%player%", p.getName()).replace(
                         "%number%", Integer.toString(level)).replace("%stone%",
-                            SettingsManager.lang.getString("Item."
+                        SettingsManager.lang.getString("Item."
                                 + stoneType)), player);
-            }
-            else {
+            } else {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player);
+                        "Config.invalidNumber"), player);
             }
-        }
-        else {
+        } else {
             Util.sendMessage(SettingsManager.lang.getString(
-                "Config.invalidCommand"), player);
+                    "Config.invalidCommand"), player);
         }
     }
 
@@ -65,13 +62,13 @@ public class AddCommand extends SubCommand {
     @Override
     public String info() {
         return "\n&6/enhance add { player } { stone } { amount } &7- "
-            + SettingsManager.lang.getString("Help.add");
+                + SettingsManager.lang.getString("Help.add");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "add", "give", "tianjia", "tj" };
+        return new String[]{"add", "give", "tianjia", "tj"};
     }
 
 

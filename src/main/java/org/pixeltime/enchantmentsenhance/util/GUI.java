@@ -1,12 +1,13 @@
 package org.pixeltime.enchantmentsenhance.util;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public abstract class GUI {
     public static Map<UUID, GUI> inventoriesByUUID = new HashMap<>();
@@ -24,21 +25,21 @@ public abstract class GUI {
         inventoriesByUUID.put(getUuid(), this);
     }
 
+    public static Map<UUID, GUI> getInventoriesByUUID() {
+        return inventoriesByUUID;
+    }
+
+    public static Map<String, UUID> getOpenInventories() {
+        return openInventories;
+    }
 
     public Inventory getInventory() {
         return inventory;
     }
 
-
     public UUID getUuid() {
         return this.uuid;
     }
-
-
-    public interface GUIAction {
-        void click(Player player);
-    }
-
 
     public void setItem(int slot, ItemStack stack, GUIAction action) {
         inventory.setItem(slot, stack);
@@ -47,29 +48,21 @@ public abstract class GUI {
         }
     }
 
-
     public void setItem(int slot, ItemStack stack) {
         setItem(slot, stack, null);
     }
-
 
     public void open(Player p) {
         p.openInventory(inventory);
         openInventories.put(p.getName(), getUuid());
     }
 
-
-    public static Map<UUID, GUI> getInventoriesByUUID() {
-        return inventoriesByUUID;
-    }
-
-
-    public static Map<String, UUID> getOpenInventories() {
-        return openInventories;
-    }
-
-
     public Map<Integer, GUIAction> getActions() {
         return actions;
+    }
+
+
+    public interface GUIAction {
+        void click(Player player);
     }
 }

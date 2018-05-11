@@ -1,11 +1,12 @@
 package org.pixeltime.enchantmentsenhance.manager.modular;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.util.List;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.interfaces.GlowItem;
 import org.pixeltime.enchantmentsenhance.util.Reflection;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.util.List;
 
 public class GlowItem_NBT implements GlowItem {
     public ItemStack addGlow(ItemStack item) {
@@ -16,23 +17,23 @@ public class GlowItem_NBT implements GlowItem {
         try {
             Class<?> ItemStack = Reflection.getCraftClass("ItemStack");
             Class<?> NBTTagCompound = Reflection.getCraftClass(
-                "NBTTagCompound");
+                    "NBTTagCompound");
             Class<?> NBTTagList = Reflection.getCraftClass("NBTTagList");
             Class<?> CraftItemStack = Reflection.getBukkitClass(
-                "inventory.CraftItemStack");
+                    "inventory.CraftItemStack");
             Class<?> NBTTagString = Reflection.getCraftClass("NBTTagString");
             Class<?> NBTBase = Reflection.getCraftClass("NBTBase");
 
             Method asNMSCopy = CraftItemStack.getDeclaredMethod("asNMSCopy",
-                org.bukkit.inventory.ItemStack.class);
+                    org.bukkit.inventory.ItemStack.class);
             Method asCraftMirror = CraftItemStack.getDeclaredMethod(
-                "asCraftMirror", ItemStack);
+                    "asCraftMirror", ItemStack);
             Method hasTag = ItemStack.getDeclaredMethod("hasTag");
             Method setTag = ItemStack.getDeclaredMethod("setTag",
-                NBTTagCompound);
+                    NBTTagCompound);
             Method getTag = ItemStack.getDeclaredMethod("getTag");
             Method set = NBTTagCompound.getDeclaredMethod("set", String.class,
-                NBTBase);
+                    NBTBase);
             Method add = NBTTagList.getDeclaredMethod("add", NBTBase);
 
             asNMSCopy.setAccessible(true);
@@ -43,10 +44,10 @@ public class GlowItem_NBT implements GlowItem {
             set.setAccessible(true);
 
             Constructor<?> NBTTagCompoundConstructor = NBTTagCompound
-                .getConstructor();
+                    .getConstructor();
             Constructor<?> NBTTagListConstructor = NBTTagList.getConstructor();
             Constructor<?> NBTTagStringConstructor = NBTTagString
-                .getConstructor(String.class);
+                    .getConstructor(String.class);
 
             NBTTagCompoundConstructor.setAccessible(true);
             NBTTagListConstructor.setAccessible(true);
@@ -54,7 +55,7 @@ public class GlowItem_NBT implements GlowItem {
             Object nmsStack = asNMSCopy.invoke(null, item);
             Object tag = null;
 
-            if ((Boolean)hasTag.invoke(nmsStack))
+            if ((Boolean) hasTag.invoke(nmsStack))
                 tag = getTag.invoke(nmsStack);
             else
                 tag = NBTTagCompoundConstructor.newInstance();
@@ -66,7 +67,7 @@ public class GlowItem_NBT implements GlowItem {
 
             Object display = NBTTagCompoundConstructor.newInstance();
             set.invoke(display, "Name", NBTTagStringConstructor.newInstance(
-                name));
+                    name));
 
             Object loreObj = NBTTagListConstructor.newInstance();
             for (String str : lore) {
@@ -78,10 +79,9 @@ public class GlowItem_NBT implements GlowItem {
 
             setTag.invoke(nmsStack, tag);
 
-            return (org.bukkit.inventory.ItemStack)asCraftMirror.invoke(null,
-                nmsStack);
-        }
-        catch (Exception e) {
+            return (org.bukkit.inventory.ItemStack) asCraftMirror.invoke(null,
+                    nmsStack);
+        } catch (Exception e) {
             e.printStackTrace();
             return item;
         }

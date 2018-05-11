@@ -1,7 +1,5 @@
 package org.pixeltime.enchantmentsenhance.util;
 
-import org.pixeltime.enchantmentsenhance.util.MethodNames;
-
 import java.lang.reflect.Method;
 
 public class NBTList {

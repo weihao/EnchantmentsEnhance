@@ -13,12 +13,10 @@ public class SelectCommand extends SubCommand {
         int num = 1;
         try {
             num = Integer.parseInt(args[1]);
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             Util.sendMessage(SettingsManager.lang.getString(
-                "Config.invalidNumber"), player);
-        }
-        catch (ArrayIndexOutOfBoundsException e) {
+                    "Config.invalidNumber"), player);
+        } catch (ArrayIndexOutOfBoundsException e) {
             error = e;
             SecretBook.select(player, num);
         }
@@ -37,13 +35,13 @@ public class SelectCommand extends SubCommand {
     @Override
     public String info() {
         return "\n&6/enhance select { n } &7- " + SettingsManager.lang
-            .getString("Help.select");
+                .getString("Help.select");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "select", "sl", "xuanze", "xz" };
+        return new String[]{"select", "sl", "xuanze", "xz"};
     }
 
 

@@ -1,36 +1,37 @@
 package org.pixeltime.enchantmentsenhance.util;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
+
 public final class Reflection {
 
     public static int getMinecraftClientVersion(Player player)
-        throws Exception {
-        
+            throws Exception {
+
         Object handle = Reflection.getHandle(player);
 
         Field playerConnection_field = handle.getClass().getDeclaredField(
-            "playerConnection");
+                "playerConnection");
         Object playerConnection = playerConnection_field.get(handle);
 
         Field networkManager_field = playerConnection.getClass()
-            .getDeclaredField("networkManager");
+                .getDeclaredField("networkManager");
         Object networkManager = networkManager_field.get(playerConnection);
 
         Method getVersion = Reflection.getMethod(networkManager.getClass(),
-            "getVersion", 0);
+                "getVersion", 0);
 
         if (getVersion == null)
             return 47;
 
-        int version = (int)(Integer)getVersion.invoke(networkManager);
+        int version = (int) (Integer) getVersion.invoke(networkManager);
 
         return version;
     }
@@ -41,8 +42,7 @@ public final class Reflection {
             int version = getMinecraftClientVersion(player);
 
             return version >= 47;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
 
             return false;
@@ -55,8 +55,7 @@ public final class Reflection {
             int version = getMinecraftClientVersion(player);
 
             return version < 47;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
 
             return true;
@@ -65,9 +64,9 @@ public final class Reflection {
 
 
     public static void sendPacketRadius(
-        Location loc,
-        int radius,
-        Object packet) {
+            Location loc,
+            int radius,
+            Object packet) {
         for (Player p : loc.getWorld().getPlayers()) {
             if (loc.distanceSquared(p.getLocation()) < (radius * radius)) {
                 sendPacket(p, packet);
@@ -87,24 +86,19 @@ public final class Reflection {
         try {
             Object nmsPlayer = getHandle(p);
             Field con_field = nmsPlayer.getClass().getDeclaredField(
-                "playerConnection");
+                    "playerConnection");
             Object con = con_field.get(nmsPlayer);
             Method packet_method = getMethod(con.getClass(), "sendPacket");
             packet_method.invoke(con, packet);
-        }
-        catch (SecurityException e) {
+        } catch (SecurityException e) {
             e.printStackTrace();
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
-        }
-        catch (IllegalAccessException e) {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
-        }
-        catch (InvocationTargetException e) {
+        } catch (InvocationTargetException e) {
             e.printStackTrace();
-        }
-        catch (NoSuchFieldException e) {
+        } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
     }
@@ -117,8 +111,7 @@ public final class Reflection {
         Class<?> c = null;
         try {
             c = Class.forName(className);
-        }
-        catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return c;
@@ -129,12 +122,11 @@ public final class Reflection {
         String name = Bukkit.getServer().getClass().getPackage().getName();
         String version = name.substring(name.lastIndexOf('.') + 1) + ".";
         String className = "org.bukkit.craftbukkit." + version
-            + ClassPackageName;
+                + ClassPackageName;
         Class<?> c = null;
         try {
             c = Class.forName(className);
-        }
-        catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return c;
@@ -146,14 +138,11 @@ public final class Reflection {
         Method entity_getHandle = getMethod(entity.getClass(), "getHandle");
         try {
             nms_entity = entity_getHandle.invoke(entity);
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
-        }
-        catch (IllegalAccessException e) {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
-        }
-        catch (InvocationTargetException e) {
+        } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
         return nms_entity;
@@ -165,14 +154,11 @@ public final class Reflection {
         Method entity_getHandle = getMethod(entity.getClass(), "getHandle");
         try {
             nms_entity = entity_getHandle.invoke(entity);
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
-        }
-        catch (IllegalAccessException e) {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
-        }
-        catch (InvocationTargetException e) {
+        } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
         return nms_entity;
@@ -183,11 +169,9 @@ public final class Reflection {
         try {
             Field field = cl.getDeclaredField(field_name);
             return field;
-        }
-        catch (SecurityException e) {
+        } catch (SecurityException e) {
             e.printStackTrace();
-        }
-        catch (NoSuchFieldException e) {
+        } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
         return null;
@@ -195,12 +179,12 @@ public final class Reflection {
 
 
     public static Method getMethod(
-        Class<?> cl,
-        String method,
-        Class<?>[] args) {
+            Class<?> cl,
+            String method,
+            Class<?>[] args) {
         for (Method m : cl.getMethods()) {
             if (m.getName().equals(method) && ClassListEqual(args, m
-                .getParameterTypes())) {
+                    .getParameterTypes())) {
                 return m;
             }
         }
@@ -211,7 +195,7 @@ public final class Reflection {
     public static Method getMethod(Class<?> cl, String method, Integer args) {
         for (Method m : cl.getMethods()) {
             if (m.getName().equals(method) && args.equals(Integer.valueOf(m
-                .getParameterTypes().length))) {
+                    .getParameterTypes().length))) {
                 return m;
             }
         }
@@ -230,17 +214,17 @@ public final class Reflection {
 
 
     public static Method getMethod(
-        Class<?> cl,
-        Class<?> returnType,
-        Class<?>[] parameters) {
+            Class<?> cl,
+            Class<?> returnType,
+            Class<?>[] parameters) {
         Method method = null;
         for (Method m : cl.getMethods()) {
             if (m.getReturnType().getCanonicalName().equals(returnType
-                .getCanonicalName()) && m
+                    .getCanonicalName()) && m
                     .getParameterTypes().length == parameters.length) {
                 for (int i = 0; i < parameters.length; i++) {
                     if (!m.getParameterTypes()[i].getCanonicalName().equals(
-                        parameters[i].getCanonicalName()))
+                            parameters[i].getCanonicalName()))
                         continue;
                 }
 
@@ -254,7 +238,7 @@ public final class Reflection {
 
 
     public static void setValue(Object instance, String fieldName, Object value)
-        throws Exception {
+            throws Exception {
         Field field = instance.getClass().getDeclaredField(fieldName);
         field.setAccessible(true);
         field.set(instance, value);
@@ -262,7 +246,7 @@ public final class Reflection {
 
 
     public static Object getValue(Object instance, String fieldName)
-        throws Exception {
+            throws Exception {
         Field field = instance.getClass().getDeclaredField(fieldName);
         field.setAccessible(true);
         return field.get(instance);

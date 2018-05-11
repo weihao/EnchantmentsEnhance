@@ -7,9 +7,8 @@ import org.pixeltime.enchantmentsenhance.manager.GraphicsManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 public class DebugCommand extends SubCommand {
-    ArmorStand as;
     public static int animationTask;
-
+    ArmorStand as;
 
     @Override
     public void onCommand(Player p, String[] args) {
@@ -46,13 +45,13 @@ public class DebugCommand extends SubCommand {
     @Override
     public String info() {
         return "\n&6/enhance debug &7- " + SettingsManager.lang.getString(
-            "Help.debug");
+                "Help.debug");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "debug", "tiaoshi", "ts" };
+        return new String[]{"debug", "tiaoshi", "ts"};
     }
 
 

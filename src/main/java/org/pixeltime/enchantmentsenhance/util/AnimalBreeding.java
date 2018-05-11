@@ -1,20 +1,21 @@
 package org.pixeltime.enchantmentsenhance.util;
 
-import java.util.ArrayList;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+
 public class AnimalBreeding {
 
     public static ItemStack goldenApple, goldenCarrot, wheat, carrot, seeds,
-        dandelions;
+            dandelions;
     public static EntityType horse, sheep, cow, mooshroomCow, pig, chicken,
-        rabbit;
+            rabbit;
     public static ArrayList<Material> breeadableFood =
-        new ArrayList<Material>();
+            new ArrayList<Material>();
     public static ArrayList<EntityType> breeadableAnimals =
-        new ArrayList<EntityType>();
+            new ArrayList<EntityType>();
 
 
     /**

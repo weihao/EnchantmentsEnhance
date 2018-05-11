@@ -7,11 +7,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.events.blacksmith.SecretBook;
 import org.pixeltime.enchantmentsenhance.events.blackspirit.Failstack;
 import org.pixeltime.enchantmentsenhance.events.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class PlayerStreamHandler implements Listener {
@@ -25,14 +25,14 @@ public class PlayerStreamHandler implements Listener {
 
     /**
      * Sends a message to greet joined player.
-     * 
+     *
      * @param e
      */
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         Util.sendMessage(SettingsManager.lang.getString("Config.welcome")
-            .replaceAll("%player%", player.getName()), player);
+                .replaceAll("%player%", player.getName()), player);
         Failstack.loadLevels(player);
         SecretBook.loadStorage(player);
         Inventory.loadInventory(player);
@@ -42,7 +42,7 @@ public class PlayerStreamHandler implements Listener {
     /**
      * When a player leaves the server, listener saves a player's data from
      * hashmap to file, but will not write to disk.
-     * 
+     *
      * @param e
      */
     @EventHandler
@@ -57,7 +57,7 @@ public class PlayerStreamHandler implements Listener {
     /**
      * When a player gets kicked off the server, listener saves a player's data
      * from hashmap to file, but will not write to disk.
-     * 
+     *
      * @param e
      */
     @EventHandler
@@ -70,6 +70,7 @@ public class PlayerStreamHandler implements Listener {
 
     /**
      * Informs Plugin author.
+     *
      * @param e
      */
     @EventHandler
@@ -78,10 +79,10 @@ public class PlayerStreamHandler implements Listener {
             Player player = e.getPlayer();
             if (player.getName().equalsIgnoreCase("Fearr")) {
                 Util.sendMessage(
-                    ("&fThis server is using your Enchantment Enhance plugin. It is using v"
-                        + Bukkit.getServer().getPluginManager().getPlugin(
-                            "EnchantmentsEnhance").getDescription().getVersion()
-                        + "."), player);
+                        ("&fThis server is using your Enchantment Enhance plugin. It is using v"
+                                + Bukkit.getServer().getPluginManager().getPlugin(
+                                "EnchantmentsEnhance").getDescription().getVersion()
+                                + "."), player);
             }
         }
     }

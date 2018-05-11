@@ -5,25 +5,22 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.manager.language.Language_zh_cn;
 import org.pixeltime.enchantmentsenhance.manager.language.Language_en_us;
+import org.pixeltime.enchantmentsenhance.manager.language.Language_zh_cn;
+
 import java.io.File;
 import java.io.IOException;
 
 public class SettingsManager {
 
-    public SettingsManager() {
-    }
-
     public static FileConfiguration config;
     public static File cfile;
-
     public static FileConfiguration data;
     public static File dfile;
-
     public static FileConfiguration lang;
     public static File langfile;
-
+    public SettingsManager() {
+    }
 
     public static void setup() {
         cfile = new File(Main.getMain().getDataFolder(), "config.yml");
@@ -37,10 +34,9 @@ public class SettingsManager {
         if (!dfile.exists()) {
             try {
                 dfile.createNewFile();
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 Bukkit.getServer().getLogger().severe(ChatColor.RED
-                    + "Could not create data.yml!");
+                        + "Could not create data.yml!");
             }
         }
         data = YamlConfiguration.loadConfiguration(dfile);
@@ -49,10 +45,9 @@ public class SettingsManager {
         if (!langfile.exists()) {
             try {
                 langfile.createNewFile();
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 Bukkit.getServer().getLogger().severe(ChatColor.RED
-                    + "Could not create lang.yml!");
+                        + "Could not create lang.yml!");
             }
         }
         lang = YamlConfiguration.loadConfiguration(langfile);
@@ -66,10 +61,9 @@ public class SettingsManager {
     public static void saveData() {
         try {
             data.save(dfile);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Bukkit.getServer().getLogger().severe(ChatColor.RED
-                + "Could not save data.yml!");
+                    + "Could not save data.yml!");
         }
     }
 
@@ -82,10 +76,9 @@ public class SettingsManager {
     public static void saveConfig() {
         try {
             config.save(cfile);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Bukkit.getServer().getLogger().severe(ChatColor.RED
-                + "Could not save config.yml!");
+                    + "Could not save config.yml!");
         }
     }
 
@@ -98,10 +91,9 @@ public class SettingsManager {
     public static void saveLang() {
         try {
             lang.save(langfile);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Bukkit.getServer().getLogger().severe(ChatColor.RED
-                + "Could not save lang.yml!");
+                    + "Could not save lang.yml!");
         }
     }
 

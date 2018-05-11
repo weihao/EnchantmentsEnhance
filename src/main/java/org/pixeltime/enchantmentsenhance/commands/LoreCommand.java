@@ -12,18 +12,17 @@ public class LoreCommand extends SubCommand {
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("addhand")) {
                 Lore.addLore(player.getItemInHand(), player,
-                    SettingsManager.lang.getString("Lore."
-                        + SettingsManager.config.getString("lore.bound")
-                        + "Lore"), SettingsManager.config.getBoolean(
-                            "lore.bound"));
+                        SettingsManager.lang.getString("Lore."
+                                + SettingsManager.config.getString("lore.bound")
+                                + "Lore"), SettingsManager.config.getBoolean(
+                                "lore.bound"));
             }
             if (args[0].equalsIgnoreCase("removehand")) {
                 Lore.removeLore(player.getItemInHand(), player);
             }
-        }
-        else {
+        } else {
             Util.sendMessage(SettingsManager.lang.getString(
-                "Config.invalidCommand"), player);
+                    "Config.invalidCommand"), player);
         }
     }
 
@@ -37,13 +36,13 @@ public class LoreCommand extends SubCommand {
     @Override
     public String info() {
         return "\n&6/enhance lore { addhand | removehand }&7- "
-            + SettingsManager.lang.getString("Help.lore");
+                + SettingsManager.lang.getString("Help.lore");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "lore", "shuxing", "sx" };
+        return new String[]{"lore", "shuxing", "sx"};
     }
 
 

@@ -36,13 +36,13 @@ public class DebugConsoleCommand extends SubConsoleCommand {
     @Override
     public String info() {
         return "\n&6/enhance debug &7- " + SettingsManager.lang.getString(
-            "Help.debug");
+                "Help.debug");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "debug", "tiaoshi", "ts" };
+        return new String[]{"debug", "tiaoshi", "ts"};
     }
 
 

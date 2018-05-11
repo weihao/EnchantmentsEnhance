@@ -2,8 +2,6 @@ package org.pixeltime.enchantmentsenhance.util;
 
 import java.util.Set;
 
-import org.pixeltime.enchantmentsenhance.util.MinecraftVersion;
-
 
 public class NBTCompound {
 
@@ -31,10 +29,10 @@ public class NBTCompound {
         return parent;
     }
 
-    public void mergeCompound(NBTCompound comp){
+    public void mergeCompound(NBTCompound comp) {
         NBTReflectionUtil.addOtherNBTCompound(this, comp);
     }
-    
+
     public void setString(String key, String value) {
         NBTReflectionUtil.setString(this, key, value);
     }
@@ -185,8 +183,8 @@ public class NBTCompound {
             return result + "-" + key + ": " + getContent(key) + System.lineSeparator();
         }
     }
-    
-    public String asNBTString(){
+
+    public String asNBTString() {
         return NBTReflectionUtil.gettoCompount(getCompound(), this).toString();
     }
 

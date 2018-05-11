@@ -13,7 +13,7 @@ public class ReloadConsoleCommand extends SubConsoleCommand {
         SettingsManager.reloadLang();
         new DataManager();
         Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
-            sender);
+                sender);
     }
 
 
@@ -26,13 +26,13 @@ public class ReloadConsoleCommand extends SubConsoleCommand {
     @Override
     public String info() {
         return "\n&6/enhance reload &7- " + SettingsManager.lang.getString(
-            "Help.reload");
+                "Help.reload");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "reload", "rel", "chongzai", "cz" };
+        return new String[]{"reload", "rel", "chongzai", "cz"};
     }
 
 }

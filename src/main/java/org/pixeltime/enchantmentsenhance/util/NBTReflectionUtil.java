@@ -1,5 +1,10 @@
 package org.pixeltime.enchantmentsenhance.util;
 
+import org.bukkit.Bukkit;
+import org.bukkit.block.BlockState;
+import org.bukkit.entity.Entity;
+import org.bukkit.inventory.ItemStack;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -7,15 +12,6 @@ import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.util.Set;
 import java.util.Stack;
-
-import org.bukkit.Bukkit;
-import org.bukkit.block.BlockState;
-import org.bukkit.entity.Entity;
-import org.bukkit.inventory.ItemStack;
-
-import org.pixeltime.enchantmentsenhance.util.GsonWrapper;
-import org.pixeltime.enchantmentsenhance.util.MethodNames;
-import org.pixeltime.enchantmentsenhance.util.MinecraftVersion;
 
 public class NBTReflectionUtil {
 
@@ -69,7 +65,7 @@ public class NBTReflectionUtil {
             return null;
         }
     }
-    
+
     @SuppressWarnings("rawtypes")
     protected static Class getNMSItemStack() {
         try {
@@ -105,7 +101,7 @@ public class NBTReflectionUtil {
             return null;
         }
     }
-    
+
     @SuppressWarnings("rawtypes")
     protected static Class getMojangsonParser() {
         try {
@@ -223,7 +219,7 @@ public class NBTReflectionUtil {
         }
         return null;
     }
-    
+
     @SuppressWarnings({"unchecked"})
     public static Object readNBTFile(FileInputStream stream) {
         @SuppressWarnings("rawtypes")
@@ -281,7 +277,7 @@ public class NBTReflectionUtil {
         }
         return null;
     }
-    
+
     @SuppressWarnings({"unchecked"})
     public static Object convertNBTCompoundtoNMSItem(NBTCompound nbtcompound) {
         @SuppressWarnings("rawtypes")
@@ -294,7 +290,7 @@ public class NBTReflectionUtil {
         }
         return null;
     }
-    
+
     @SuppressWarnings({"unchecked"})
     public static NBTContainer convertNMSItemtoNBTCompound(Object nmsitem) {
         @SuppressWarnings("rawtypes")
@@ -436,7 +432,7 @@ public class NBTReflectionUtil {
         }
         return nbttag;
     }
-    
+
     public static void addOtherNBTCompound(NBTCompound comp, NBTCompound nbtcompound) {
         Object rootnbttag = comp.getCompound();
         if (rootnbttag == null) {

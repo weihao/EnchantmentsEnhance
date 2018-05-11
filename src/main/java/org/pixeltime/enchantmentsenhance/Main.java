@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance;
 
-import java.io.File;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -11,42 +10,26 @@ import org.pixeltime.enchantmentsenhance.events.blacksmith.SecretBook;
 import org.pixeltime.enchantmentsenhance.events.blackspirit.Failstack;
 import org.pixeltime.enchantmentsenhance.events.blackspirit.Reform;
 import org.pixeltime.enchantmentsenhance.events.inventory.Inventory;
-import org.pixeltime.enchantmentsenhance.listeners.ItemDropHandler;
-import org.pixeltime.enchantmentsenhance.listeners.LifeskillingHandler;
-import org.pixeltime.enchantmentsenhance.listeners.MenuHandler;
-import org.pixeltime.enchantmentsenhance.listeners.PlayerDeathHandler;
-import org.pixeltime.enchantmentsenhance.listeners.PlayerStreamHandler;
-import org.pixeltime.enchantmentsenhance.manager.CommandManager;
-import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
-import org.pixeltime.enchantmentsenhance.manager.DataManager;
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.manager.UpdateManager;
+import org.pixeltime.enchantmentsenhance.listeners.*;
+import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.Metrics;
 import org.pixeltime.enchantmentsenhance.util.Reflection_V2;
 
+import java.io.File;
+
+
 /**
  * Main plugin class.
- * 
+ *
  * @author HealPot
  * @version Mar 30, 2018
- *
  */
 public class Main extends JavaPlugin {
-    private static Main main;
     public static final CompatibilityManager compatibility =
-        new CompatibilityManager();
+            new CompatibilityManager();
+    private static Main main;
     public CommandManager commandManager;
-
-
-    /**
-     * Get an instance of this plugin.
-     * 
-     * @return returns an instance of the plugin.
-     */
-    public static Main getMain() {
-        return main;
-    }
 
 
     /**
@@ -59,20 +42,28 @@ public class Main extends JavaPlugin {
 
     /**
      * Mocking constructor.
-     * 
+     *
      * @param loader
      * @param description
      * @param dataFolder
      * @param file
      */
     protected Main(
-        JavaPluginLoader loader,
-        PluginDescriptionFile description,
-        File dataFolder,
-        File file) {
+            JavaPluginLoader loader,
+            PluginDescriptionFile description,
+            File dataFolder,
+            File file) {
         super(loader, description, dataFolder, file);
     }
 
+    /**
+     * Get an instance of this plugin.
+     *
+     * @return returns an instance of the plugin.
+     */
+    public static Main getMain() {
+        return main;
+    }
 
     /**
      * When the plugin is enabled, execute following tasks.
@@ -93,7 +84,7 @@ public class Main extends JavaPlugin {
         registerCompatibility();
         // When plugin is reloaded, load all the inventory of online players.
         this.getLogger().info(SettingsManager.lang.getString(
-            "Config.onLoadingInventory"));
+                "Config.onLoadingInventory"));
         if (!Bukkit.getOnlinePlayers().isEmpty()) {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 Failstack.loadLevels(player);
@@ -103,10 +94,11 @@ public class Main extends JavaPlugin {
         }
         // Plugin fully initialized.
         Bukkit.getServer().getLogger().info(SettingsManager.lang.getString(
-            "Config.onEnable"));
+                "Config.onEnable"));
         // Display final time at the end of the initialization.
         Bukkit.getLogger().info("EnchantmentsEnhance took " + (System
-            .currentTimeMillis() - startTime) + "ms to setup.");
+                .currentTimeMillis() - startTime) + "ms to setup.");
+        KM.foo();
     }
 
 
@@ -126,7 +118,7 @@ public class Main extends JavaPlugin {
         SettingsManager.saveData();
         // Plugin fully disabled.
         Bukkit.getServer().getLogger().info(SettingsManager.lang.getString(
-            "Config.onDisable"));
+                "Config.onDisable"));
     }
 
 
@@ -143,9 +135,9 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new Reform(), this);
         // Notify Cauldron and MCPC users.
         if (getServer().getName().contains("Cauldron") || getServer().getName()
-            .contains("MCPC")) {
+                .contains("MCPC")) {
             getLogger().info(
-                "EnchantmentsEnhance runs fine on Cauldron/KCauldron.");
+                    "EnchantmentsEnhance runs fine on Cauldron/KCauldron.");
         }
         new AnimalBreeding();
         new DataManager();
@@ -161,40 +153,37 @@ public class Main extends JavaPlugin {
      */
     private void registerCompatibility() {
         Main.getMain().getLogger().info("Your server is running version "
-            + Reflection_V2.getVERSION());
+                + Reflection_V2.getVERSION());
         Main.getMain().getLogger().info("Your server is running on " + System
-            .getProperty("os.name"));
+                .getProperty("os.name"));
         if (compatibility.setupGlow()) {
             getLogger().info("Enhancement Glower setup was successful!");
-        }
-        else {
+        } else {
 
             getLogger().severe("Failed to setup Enhancement Glower!");
             getLogger().severe(
-                "Error in EnchantmentsEnhance! (Outdated plugin?)");
+                    "Error in EnchantmentsEnhance! (Outdated plugin?)");
 
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
         if (compatibility.setupSound()) {
             getLogger().info("Enhancement Sound setup was successful!");
-        }
-        else {
+        } else {
 
             getLogger().severe("Failed to setup Enhancement Sound!");
             getLogger().severe(
-                "Error in EnchantmentsEnhance! (Outdated plugin?)");
+                    "Error in EnchantmentsEnhance! (Outdated plugin?)");
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
         if (compatibility.setupFirework()) {
             getLogger().info("Enhancement Firework setup was successful!");
-        }
-        else {
+        } else {
 
             getLogger().severe("Failed to setup Enhancement Firework!");
             getLogger().severe(
-                "Error in EnchantmentsEnhance! (Outdated plugin?)");
+                    "Error in EnchantmentsEnhance! (Outdated plugin?)");
             Bukkit.getPluginManager().disablePlugin(this);
         }
     }

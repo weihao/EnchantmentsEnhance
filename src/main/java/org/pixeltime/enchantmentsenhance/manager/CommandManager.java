@@ -1,44 +1,20 @@
 package org.pixeltime.enchantmentsenhance.manager;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.commands.AddCommand;
-import org.pixeltime.enchantmentsenhance.commands.DebugCommand;
-import org.pixeltime.enchantmentsenhance.commands.HelpCommand;
-import org.pixeltime.enchantmentsenhance.commands.InventoryCommand;
-import org.pixeltime.enchantmentsenhance.commands.ListCommand;
-import org.pixeltime.enchantmentsenhance.commands.LoreCommand;
-import org.pixeltime.enchantmentsenhance.commands.MenuCommand;
-import org.pixeltime.enchantmentsenhance.commands.ReformCommand;
-import org.pixeltime.enchantmentsenhance.commands.ReloadCommand;
-import org.pixeltime.enchantmentsenhance.commands.SelectCommand;
-import org.pixeltime.enchantmentsenhance.commands.SubCommand;
-import org.pixeltime.enchantmentsenhance.commands.VersionCommand;
-import org.pixeltime.enchantmentsenhance.commands.console.AddConsoleCommand;
-import org.pixeltime.enchantmentsenhance.commands.console.DebugConsoleCommand;
-import org.pixeltime.enchantmentsenhance.commands.console.HelpConsoleCommand;
-import org.pixeltime.enchantmentsenhance.commands.console.ReloadConsoleCommand;
-import org.pixeltime.enchantmentsenhance.commands.console.SubConsoleCommand;
-import org.pixeltime.enchantmentsenhance.commands.console.VersionConsoleCommand;
+import org.pixeltime.enchantmentsenhance.commands.*;
+import org.pixeltime.enchantmentsenhance.commands.console.*;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+
 public class CommandManager implements CommandExecutor {
-
-    private ArrayList<SubCommand> commands = new ArrayList<SubCommand>();
-    private ArrayList<SubConsoleCommand> consoleCommands =
-        new ArrayList<SubConsoleCommand>();
-    private Main plugin = Main.getMain();
-
-
-    public CommandManager() {
-    }
 
     // Sub Commands
     public String main = "enhance";
@@ -53,7 +29,12 @@ public class CommandManager implements CommandExecutor {
     public String version = "version";
     public String debug = "debug";
     public String reform = "reform";
-
+    private ArrayList<SubCommand> commands = new ArrayList<SubCommand>();
+    private ArrayList<SubConsoleCommand> consoleCommands =
+            new ArrayList<SubConsoleCommand>();
+    private Main plugin = Main.getMain();
+    public CommandManager() {
+    }
 
     /**
      * Register all the commands.
@@ -80,10 +61,10 @@ public class CommandManager implements CommandExecutor {
 
 
     public boolean onCommand(
-        CommandSender sender,
-        Command command,
-        String s,
-        String[] args) {
+            CommandSender sender,
+            Command command,
+            String s,
+            String[] args) {
         if (!command.getName().equalsIgnoreCase(main)) {
             return true;
         }
@@ -98,16 +79,15 @@ public class CommandManager implements CommandExecutor {
 
             if (target == null) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.consoleCommand"), sender);
+                        "Config.consoleCommand"), sender);
                 return true;
             }
 
             try {
                 // This removes the first argument.
                 target.onCommand(sender, Arrays.copyOfRange(args, 1,
-                    args.length));
-            }
-            catch (Exception e) {
+                        args.length));
+            } catch (Exception e) {
                 sender.sendMessage(ChatColor.RED + "An error has occurred.");
 
                 e.printStackTrace();
@@ -118,7 +98,7 @@ public class CommandManager implements CommandExecutor {
 
         }
 
-        Player player = (Player)sender;
+        Player player = (Player) sender;
 
         if (args.length == 0) {
             this.get(help).onCommand(player, args);
@@ -129,21 +109,20 @@ public class CommandManager implements CommandExecutor {
 
         if (target == null) {
             Util.sendMessage(SettingsManager.lang.getString(
-                "Config.invalidCommand"), player);
+                    "Config.invalidCommand"), player);
             return true;
         }
 
         if (!player.hasPermission(target.getPermission())) {
             Util.sendMessage(SettingsManager.lang.getString("Config.noPerm"),
-                player);
+                    player);
             return true;
         }
 
         try {
             // This removes the first argument.
             target.onCommand(player, Arrays.copyOfRange(args, 1, args.length));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             player.sendMessage(ChatColor.RED + "An error has occurred.");
 
             e.printStackTrace();
@@ -157,7 +136,7 @@ public class CommandManager implements CommandExecutor {
 
     /**
      * Get a command by a string.
-     * 
+     *
      * @param name
      * @return
      */
@@ -165,7 +144,7 @@ public class CommandManager implements CommandExecutor {
         Iterator<SubCommand> subcommands = this.commands.iterator();
 
         while (subcommands.hasNext()) {
-            SubCommand sc = (SubCommand)subcommands.next();
+            SubCommand sc = (SubCommand) subcommands.next();
             if (sc.name().equalsIgnoreCase(name)) {
                 return sc;
             }
@@ -187,10 +166,10 @@ public class CommandManager implements CommandExecutor {
 
     private SubConsoleCommand getConsoleCommand(String name) {
         Iterator<SubConsoleCommand> subcommands = this.consoleCommands
-            .iterator();
+                .iterator();
 
         while (subcommands.hasNext()) {
-            SubConsoleCommand sc = (SubConsoleCommand)subcommands.next();
+            SubConsoleCommand sc = (SubConsoleCommand) subcommands.next();
 
             if (sc.name().equalsIgnoreCase(name)) {
                 return sc;
@@ -213,7 +192,7 @@ public class CommandManager implements CommandExecutor {
 
     /**
      * Print help for a player.
-     * 
+     *
      * @param player
      */
     public void printHelp(Player player) {
@@ -231,7 +210,7 @@ public class CommandManager implements CommandExecutor {
 
     /**
      * Print help for console.
-     * 
+     *
      * @param sender
      */
     public void printHelp(CommandSender sender) {

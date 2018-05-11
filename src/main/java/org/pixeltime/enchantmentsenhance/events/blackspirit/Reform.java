@@ -1,7 +1,5 @@
 package org.pixeltime.enchantmentsenhance.events.blackspirit;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,19 +11,22 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.GUI;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class Reform extends GUI implements Listener{
+import java.util.HashMap;
+import java.util.Map;
+
+public class Reform extends GUI implements Listener {
     private static Map<String, ItemStack> itemOnReformingSlot =
-        new HashMap<String, ItemStack>();
+            new HashMap<String, ItemStack>();
 
 
     public Reform() {
         super(27, SettingsManager.lang.getString("Reform.gui.title"));
         setItem(Util.getSlot(5, 3), Util.createButton(DyeColor.BLACK,
-            SettingsManager.lang.getString("Reform.reform")), player -> {
-                if (itemOnReformingSlot.containsKey(player.getName())) {
+                SettingsManager.lang.getString("Reform.reform")), player -> {
+            if (itemOnReformingSlot.containsKey(player.getName())) {
 
-                }
-            });
+            }
+        });
     }
 
     @EventHandler
@@ -39,8 +40,7 @@ public class Reform extends GUI implements Listener{
         if (e.getCurrentItem().getType() == (Material.AIR)) {
             return;
         }
-        if (this.getInventory().getName().equals(e.getInventory().getName()))
-        {
+        if (this.getInventory().getName().equals(e.getInventory().getName())) {
             e.setCancelled(true);
         }
     }

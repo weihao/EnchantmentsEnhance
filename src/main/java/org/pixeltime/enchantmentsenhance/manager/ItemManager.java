@@ -1,7 +1,5 @@
 package org.pixeltime.enchantmentsenhance.manager;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -14,6 +12,9 @@ import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.ItemTypes;
 import org.pixeltime.enchantmentsenhance.util.NBTItem;
 import org.pixeltime.enchantmentsenhance.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemManager {
 
@@ -29,7 +30,7 @@ public class ItemManager {
 
     /**
      * Determines the enchantment type for the enhancing item.
-     * 
+     *
      * @param player
      * @param item
      * @return
@@ -47,31 +48,31 @@ public class ItemManager {
 
     /**
      * Displays enhancement stone as a itemstack on GUI
-     * 
+     *
      * @param stoneId
      * @param player
      * @return
      */
     public static ItemStack stoneVisualized(
-        int stoneId,
-        Player player,
-        Boolean count) {
+            int stoneId,
+            Player player,
+            Boolean count) {
         List<String> lore = new ArrayList<String>();
         if (player != null) {
             lore.add(Util.toColor(Backpack.getOneStoneCountAsString(player,
-                stoneId)));
+                    stoneId)));
         }
         return new ItemBuilder(Util.stoneTypes[stoneId]).setName(Util.toColor(
-            SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
-            .toItemStack();
+                SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
+                .toItemStack();
     }
 
 
     public static ItemStack stoneVisualized(int stoneId, Player player) {
         List<String> lore = new ArrayList<String>();
         return new ItemBuilder(Util.stoneTypes[stoneId]).setName(Util.toColor(
-            SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
-            .toItemStack();
+                SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
+                .toItemStack();
     }
 
 
@@ -111,20 +112,20 @@ public class ItemManager {
         int gradeLevel = getItemGradeLevel(item);
         ItemTypes type = getItemEnchantmentType(item);
         List<String> temp = SettingsManager.config.getStringList("enhance."
-            + enchantLevel + ".enchantments." + type.toString());
+                + enchantLevel + ".enchantments." + type.toString());
         for (String s : temp) {
             String[] a = s.split(":");
             item.addUnsafeEnchantment(Enchantment.getByName(a[0]), Integer
-                .parseInt(a[1]));
+                    .parseInt(a[1]));
         }
         List<String> temp2 = null;
         switch (getItemEnchantmentType(item)) {
             case WEAPON:
                 temp2 = SettingsManager.config.getStringList("weaponGrade."
-                    + gradeLevel + ".enchantments");
+                        + gradeLevel + ".enchantments");
             case ARMOR:
                 temp2 = SettingsManager.config.getStringList("armorGrade."
-                    + gradeLevel + ".enchantments");
+                        + gradeLevel + ".enchantments");
             default:
                 break;
         }
@@ -134,7 +135,7 @@ public class ItemManager {
                 String[] b = s.split(":");
                 Enchantment ench = Enchantment.getByName(b[0]);
                 item.addUnsafeEnchantment(ench, Integer.parseInt(b[1]) + item
-                    .getEnchantmentLevel(ench));
+                        .getEnchantmentLevel(ench));
             }
         }
 
@@ -148,19 +149,17 @@ public class ItemManager {
         switch (getItemEnchantmentType(item)) {
             case WEAPON:
                 String levelName = SettingsManager.config.getString("enhance."
-                    + enchantLevel + ".name");
+                        + enchantLevel + ".name");
                 String gradePrefix = SettingsManager.config.getString("grade."
-                    + gradeLevel + ".name");
+                        + gradeLevel + ".name");
                 String itemName = "";
                 if (item.getType().toString().toLowerCase().contains("axe")) {
                     itemName = SettingsManager.config.getString("name.axe");
-                }
-                else if (item.getType().toString().toLowerCase().contains(
-                    "sword")) {
+                } else if (item.getType().toString().toLowerCase().contains(
+                        "sword")) {
                     itemName = SettingsManager.config.getString("name.sword");
-                }
-                else if (item.getType().toString().toLowerCase().contains(
-                    "bow")) {
+                } else if (item.getType().toString().toLowerCase().contains(
+                        "bow")) {
                     itemName = SettingsManager.config.getString("name.bow");
                 }
                 String name = "";
@@ -175,7 +174,7 @@ public class ItemManager {
                 }
                 ItemMeta im = item.getItemMeta();
                 im.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                    name));
+                        name));
                 item.setItemMeta(im);
             case TOOL:
 
@@ -185,9 +184,9 @@ public class ItemManager {
 
         }
         Lore.addLore(item, ChatColor.translateAlternateColorCodes('&',
-            SettingsManager.lang.getString("Lore." + SettingsManager.config
-                .getString("lore.bound") + "Lore")), SettingsManager.config
-                    .getBoolean("lore.bound"));
+                SettingsManager.lang.getString("Lore." + SettingsManager.config
+                        .getString("lore.bound") + "Lore")), SettingsManager.config
+                .getBoolean("lore.bound"));
         return item;
     }
 
@@ -199,19 +198,17 @@ public class ItemManager {
         switch (getItemEnchantmentType(item)) {
             case WEAPON:
                 String levelName = SettingsManager.config.getString("enhance."
-                    + enchantLevel + ".name");
+                        + enchantLevel + ".name");
                 String gradePrefix = SettingsManager.config.getString("grade."
-                    + gradeLevel + ".name");
+                        + gradeLevel + ".name");
                 String itemName = "";
                 if (item.getType().toString().toLowerCase().contains("axe")) {
                     itemName = SettingsManager.config.getString("name.axe");
-                }
-                else if (item.getType().toString().toLowerCase().contains(
-                    "sword")) {
+                } else if (item.getType().toString().toLowerCase().contains(
+                        "sword")) {
                     itemName = SettingsManager.config.getString("name.sword");
-                }
-                else if (item.getType().toString().toLowerCase().contains(
-                    "bow")) {
+                } else if (item.getType().toString().toLowerCase().contains(
+                        "bow")) {
                     itemName = SettingsManager.config.getString("name.bow");
                 }
                 if (levelName != null) {

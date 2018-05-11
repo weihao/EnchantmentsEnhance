@@ -21,13 +21,13 @@ public class HelpConsoleCommand extends SubConsoleCommand {
     @Override
     public String info() {
         return "\n&6/enhance help &7- " + SettingsManager.lang.getString(
-            "Help.help");
+                "Help.help");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "help", "hl", "bangzhu", "bz" };
+        return new String[]{"help", "hl", "bangzhu", "bz"};
     }
 
 }

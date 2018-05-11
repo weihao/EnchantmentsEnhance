@@ -8,40 +8,37 @@ import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 /**
- * 
  * @author HealPot
  * @version Feb 9, 2018
- *
  */
 public class Broadcast {
     /**
      * Sends a message to all online players.
-     * 
+     *
      * @param player
      * @param item
      * @param enchantLevel
      * @param success
      */
     public static void broadcast(
-        Player player,
-        ItemStack item,
-        int enchantLevel,
-        boolean success) {
+            Player player,
+            ItemStack item,
+            int enchantLevel,
+            boolean success) {
         if (success) {
             Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString(
-                "Config.pluginTag") + (SettingsManager.lang.getString(
+                    "Config.pluginTag") + (SettingsManager.lang.getString(
                     "Annoucer.success") + " " + player.getName() + " "
                     + SettingsManager.lang.getString("Annoucer.got") + " "
                     + ItemManager.getRenamedName(item)) + " "
-                + getFriendlyName(item)));
-        }
-        else {
+                    + getFriendlyName(item)));
+        } else {
             Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString(
-                "Config.pluginTag") + (SettingsManager.lang.getString(
+                    "Config.pluginTag") + (SettingsManager.lang.getString(
                     "Annoucer.failed") + " " + player.getName() + " "
                     + SettingsManager.lang.getString("Annoucer.lost") + " "
                     + ItemManager.getRenamedName(item)) + " "
-                + getFriendlyName(item)));
+                    + getFriendlyName(item)));
         }
     }
 
@@ -49,7 +46,7 @@ public class Broadcast {
     /**
      * Removes any underscores and capitalizes first letter of each word in the
      * string.
-     * 
+     *
      * @param s
      * @return
      */
@@ -71,7 +68,7 @@ public class Broadcast {
 
     /**
      * Capitalizes first letter of each word in the string.
-     * 
+     *
      * @param text
      * @return
      */
@@ -85,7 +82,7 @@ public class Broadcast {
 
     /**
      * This will return a formatted name of a item.
-     * 
+     *
      * @param item
      * @return
      */
@@ -98,7 +95,7 @@ public class Broadcast {
 
     /**
      * This will return a localized name of a item.
-     * 
+     *
      * @param item
      * @return
      */

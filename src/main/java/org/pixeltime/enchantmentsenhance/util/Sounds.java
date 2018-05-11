@@ -165,8 +165,8 @@ public enum Sounds {
     FIREWORK_BLAST2("FIREWORK_BLAST2", "ENTITY_FIREWORK_BLAST_FAR"),
     FIREWORK_LARGE_BLAST("FIREWORK_LARGE_BLAST", "ENTITY_FIREWORK_LARGE_BLAST"),
     FIREWORK_LARGE_BLAST2(
-        "FIREWORK_LARGE_BLAST2",
-        "ENTITY_FIREWORK_LARGE_BLAST_FAR"),
+            "FIREWORK_LARGE_BLAST2",
+            "ENTITY_FIREWORK_LARGE_BLAST_FAR"),
     FIREWORK_TWINKLE("FIREWORK_TWINKLE", "ENTITY_FIREWORK_TWINKLE"),
     FIREWORK_TWINKLE2("FIREWORK_TWINKLE2", "ENTITY_FIREWORK_TWINKLE_FAR"),
     FIREWORK_LAUNCH("FIREWORK_LAUNCH", "ENTITY_FIREWORK_LAUNCH"),
@@ -217,8 +217,7 @@ public enum Sounds {
 
         try {
             return resolvedSound = Sound.valueOf(post19sound);
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             // Try 1.8 sound
             return resolvedSound = Sound.valueOf(pre19sound);
         }

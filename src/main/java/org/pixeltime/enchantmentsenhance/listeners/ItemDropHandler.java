@@ -1,7 +1,5 @@
 package org.pixeltime.enchantmentsenhance.listeners;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -12,10 +10,13 @@ import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemDropHandler implements Listener {
     /**
      * Prevents enhanced item from dropping.
-     * 
+     *
      * @param e
      */
     @EventHandler
@@ -25,15 +26,15 @@ public class ItemDropHandler implements Listener {
         Player p = e.getPlayer();
         List<String> loreList = new ArrayList<String>();
         if ((DroppedItemStack.hasItemMeta()) && (DroppedItemStack.getItemMeta()
-            .getLore() != null)) {
+                .getLore() != null)) {
             int loreSize = DroppedItemStack.getItemMeta().getLore().size();
             for (int i = 0; i < loreSize; i++) {
-                loreList.add((String)DroppedItemStack.getItemMeta().getLore()
-                    .get(i));
+                loreList.add((String) DroppedItemStack.getItemMeta().getLore()
+                        .get(i));
             }
             // Checks if the item is a bounded item
             if (loreList.contains(ChatColor.translateAlternateColorCodes('&',
-                SettingsManager.lang.getString("Lore.untradeableLore")))) {
+                    SettingsManager.lang.getString("Lore.untradeableLore")))) {
                 e.setCancelled(true);
                 Util.sendMessage(SettingsManager.lang.getString(
                         "Messages.noDrop"), p);

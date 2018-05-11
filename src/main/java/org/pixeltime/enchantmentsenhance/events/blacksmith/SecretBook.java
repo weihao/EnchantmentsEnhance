@@ -1,53 +1,51 @@
 package org.pixeltime.enchantmentsenhance.events.blacksmith;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.events.blackspirit.Failstack;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class SecretBook {
     private static HashMap<String, List<Integer>> storage =
-        new HashMap<String, List<Integer>>();
+            new HashMap<String, List<Integer>>();
 
     /**
      * Adds a player's failstack to the HashMap storage.
-     * 
-     * @param player
-     *            Targeted player.
+     *
+     * @param player Targeted player.
      */
     public static void addFailstackToStorage(Player player) {
         storage.get(player.getName()).add(Failstack.getLevel(player));
         Failstack.resetLevel(player);
         Util.sendMessage(SettingsManager.lang.getString("Save.createFailstack")
-            .replaceAll("%failstack%", Integer.toString(Failstack.getLevel(
-                player))), player);
+                .replaceAll("%failstack%", Integer.toString(Failstack.getLevel(
+                        player))), player);
     }
 
 
     /**
      * Loads the storage of a player.
-     * 
-     * @param player
-     *            Targeted player.
+     *
+     * @param player Targeted player.
      */
     public static void loadStorage(Player player) {
         List<Integer> adviceOfValks = new ArrayList<Integer>();
         if (SettingsManager.data.contains(player.getName() + ".advice of valks")
-            || storage.containsKey(player.getName())) {
+                || storage.containsKey(player.getName())) {
             String[] temp = SettingsManager.data.getString(player.getName()
-                + ".advice of valks").replace("[", "").replace("]", "").split(
+                    + ".advice of valks").replace("[", "").replace("]", "").split(
                     ", ");
             for (int i = 0; i < temp.length; i++) {
                 try {
                     adviceOfValks.add(Integer.parseInt(temp[i]));
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     Bukkit.getLogger().severe("Error in loading " + player
-                        .getName() + "'s" + " failstack.");
+                            .getName() + "'s" + " failstack.");
                 }
             }
         }
@@ -57,17 +55,15 @@ public class SecretBook {
 
     /**
      * Writes data to the disk.
-     * 
-     * @param player
-     *            Targeted player.
-     * @param save
-     *            If true, data will be written in the disk. If false, data will
-     *            be stored in the memory.
+     *
+     * @param player Targeted player.
+     * @param save   If true, data will be written in the disk. If false, data will
+     *               be stored in the memory.
      */
     public static void saveStorageToDisk(Player player, boolean save) {
         List<Integer> temp = storage.get(player.getName());
         SettingsManager.data.set(player.getName() + ".advice of valks", temp
-            .toString());
+                .toString());
         if (save) {
             SettingsManager.saveData();
         }
@@ -76,18 +72,16 @@ public class SecretBook {
 
     /**
      * Displays the current list of the advices.
-     * 
-     * @param player
-     *            Targeted player.
-     * @param pageNumber
-     *            Selected page number.
+     *
+     * @param player     Targeted player.
+     * @param pageNumber Selected page number.
      */
     public static void list(Player player, int pageNumber) {
         List<Integer> adviceOfValks = storage.get(player.getName());
 
         if (adviceOfValks.size() <= 0 || adviceOfValks == null) {
             Util.sendMessage(SettingsManager.lang.getString("Save.noFailstack"),
-                player);
+                    player);
             return;
         }
 
@@ -95,8 +89,7 @@ public class SecretBook {
         if (pageNumber > 1) {
             try {
                 page = pageNumber;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
             }
             if (pageNumber <= 0) {
                 page = 1;
@@ -106,12 +99,12 @@ public class SecretBook {
         int count = 0;
 
         Util.sendMessage(SettingsManager.lang.getString("Save.failstackTitle")
-            .replaceAll("%page%", Integer.toString(page)), player);
+                .replaceAll("%page%", Integer.toString(page)), player);
         for (Integer fs : adviceOfValks) {
             count++;
             Util.sendMessage(SettingsManager.lang.getString("Save.listing")
-                .replaceAll("%NUMBER%", Integer.toString(count)).replaceAll(
-                    "%FAILSTACK%", Integer.toString(fs)), player);
+                    .replaceAll("%NUMBER%", Integer.toString(count)).replaceAll(
+                            "%FAILSTACK%", Integer.toString(fs)), player);
 
         }
 
@@ -120,52 +113,44 @@ public class SecretBook {
 
     /**
      * Uses an advice from the list.
-     * 
-     * @param player
-     *            Targeted player.
-     * @param selectedFailstack
-     *            Selected failstack index.
+     *
+     * @param player            Targeted player.
+     * @param selectedFailstack Selected failstack index.
      */
     public static void select(Player player, int selectedFailstack) {
         if (selectedFailstack > 0) {
             if (selectedFailstack <= SecretBook.storage.get(player
-                .getName()).size()) {
+                    .getName()).size()) {
                 if (Failstack.getLevel(player) == 0) {
                     try {
                         int levelOfAdvice = SecretBook.storage.get(player
-                            .getName()).get(selectedFailstack - 1);
+                                .getName()).get(selectedFailstack - 1);
                         Failstack.addLevel(player, levelOfAdvice);
                         SecretBook.storage.get(player.getName()).remove(
-                            selectedFailstack - 1);
+                                selectedFailstack - 1);
                         Util.sendMessage(SettingsManager.lang.getString(
-                            "Valks.used").replaceAll("%LEVEL%", Integer
+                                "Valks.used").replaceAll("%LEVEL%", Integer
                                 .toString(levelOfAdvice)), player);
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         Util.sendMessage(SettingsManager.lang.getString(
-                            "Valks.noAdvice"), player);
+                                "Valks.noAdvice"), player);
                     }
-                }
-
-                else {
+                } else {
                     Util.sendMessage(SettingsManager.lang.getString(
-                        "Valks.hasFailstack"), player);
+                            "Valks.hasFailstack"), player);
                 }
-            }
-            else {
+            } else {
                 if (SecretBook.storage.get(player.getName())
-                    .size() == 0) {
+                        .size() == 0) {
                     Util.sendMessage(SettingsManager.lang.getString(
-                        "Valks.noAdvice"), player);
-                }
-                else {
+                            "Valks.noAdvice"), player);
+                } else {
                     Util.sendMessage(SettingsManager.lang.getString(
-                        "Config.invalidNumber"), player);
+                            "Config.invalidNumber"), player);
                 }
             }
-        }
-        else
+        } else
             Util.sendMessage(SettingsManager.lang.getString(
-                "Config.invalidNumber"), player);
+                    "Config.invalidNumber"), player);
     }
 }

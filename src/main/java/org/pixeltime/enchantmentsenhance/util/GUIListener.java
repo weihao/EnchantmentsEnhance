@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance.util;
 
-import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,6 +7,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import java.util.UUID;
 
 public class GUIListener implements Listener {
     private GUI gui;
@@ -23,7 +24,7 @@ public class GUIListener implements Listener {
         if (!(e.getWhoClicked() instanceof Player)) {
             return;
         }
-        Player player = (Player)e.getWhoClicked();
+        Player player = (Player) e.getWhoClicked();
         String playerUUID = player.getName();
         UUID inventoryUUID = GUI.openInventories.get(playerUUID);
         if (inventoryUUID != null) {
@@ -40,7 +41,7 @@ public class GUIListener implements Listener {
 
     @EventHandler
     public void onClose(InventoryCloseEvent e) {
-        Player player = (Player)e.getPlayer();
+        Player player = (Player) e.getPlayer();
         String playerUUID = player.getName();
 
         GUI.openInventories.remove(playerUUID);

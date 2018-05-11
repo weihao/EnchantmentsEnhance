@@ -21,13 +21,13 @@ public class MenuCommand extends SubCommand {
     @Override
     public String info() {
         return "\n&6/enhance menu &7- " + SettingsManager.lang.getString(
-            "Help.menu");
+                "Help.menu");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "menu" ,"yemian", "ym"};
+        return new String[]{"menu", "yemian", "ym"};
     }
 
 

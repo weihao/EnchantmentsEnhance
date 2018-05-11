@@ -22,37 +22,34 @@ public class AddConsoleCommand extends SubConsoleCommand {
 
             if (p == null) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.playerNotFound"), sender);
+                        "Config.playerNotFound"), sender);
                 return;
             }
 
             try {
                 stoneType = Integer.parseInt(args[1]);
                 level = Integer.parseInt(args[2]);
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), sender);
+                        "Config.invalidNumber"), sender);
                 return;
             }
 
             if (stoneType != -1 && level != -1 && p != null
-                && stoneType <= Util.stoneTypes.length) {
+                    && stoneType <= Util.stoneTypes.length) {
                 Inventory.addLevel(p, stoneType, level);
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Add.successful").replace("%player%", p.getName()).replace(
+                        "Add.successful").replace("%player%", p.getName()).replace(
                         "%number%", Integer.toString(level)).replace("%stone%",
-                            SettingsManager.lang.getString("Item."
+                        SettingsManager.lang.getString("Item."
                                 + stoneType)), sender);
-            }
-            else {
+            } else {
                 Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), sender);
+                        "Config.invalidNumber"), sender);
             }
-        }
-        else {
+        } else {
             Util.sendMessage(SettingsManager.lang.getString(
-                "Config.invalidCommand"), sender);
+                    "Config.invalidCommand"), sender);
         }
     }
 
@@ -66,13 +63,13 @@ public class AddConsoleCommand extends SubConsoleCommand {
     @Override
     public String info() {
         return "\n&6/enhance add { player } { stone } { amount } &7- "
-            + SettingsManager.lang.getString("Help.add");
+                + SettingsManager.lang.getString("Help.add");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[] { "add", "give", "tianjia", "tj" };
+        return new String[]{"add", "give", "tianjia", "tj"};
     }
 
 }

@@ -65,7 +65,7 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("Help.debug", "&6collect debugging information for developer to fix issues.");
         SettingsManager.lang.addDefault("Help.reform", "&6upgrade the grade of the gear.");
 
-        
+
         SettingsManager.lang.addDefault("Menu.gui.title", "Enhancement");
         SettingsManager.lang.addDefault("Menu.gui.enhance", "Enhance");
         SettingsManager.lang.addDefault("Menu.gui.force", "Force");
@@ -94,18 +94,18 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("Item.noItem", "&cYou don't have enough &6%STONE%&c to perform an enhancement");
         SettingsManager.lang.addDefault("Item.invalid", "&cYou cannot enhance this item.");
         SettingsManager.lang.addDefault("Item.use", "&aYou used a %ITEM%.");
-        
+
         SettingsManager.lang.addDefault("Valks.noAdvice", "&cYou do not own any &9Advice of Valks&c.");
         SettingsManager.lang.addDefault("Valks.hasFailstack", "&cYou can't use &9Advice of Valks &cif you have failstacks.");
         SettingsManager.lang.addDefault("Valks.used", "&aYou used an &9Advice of Valks &aand Level &d%LEVEL% &afailstacks is applied.");
 
-        
+
         SettingsManager.lang.addDefault("Example.command.add.guide", "/enhance add <player> <stone> <number>");
         SettingsManager.lang.addDefault("Example.command.add.stone",
                 "0 = weapon stone, 1 = armor stone, 2 = conc weapon, 3 = conc armor");
-        
+
         SettingsManager.lang.addDefault("Add.successful", "&aYou gave %player% %number% of %stone%.");
-        
+
         SettingsManager.lang.addDefault("Reform.gui.title", "Item Reform");
         SettingsManager.lang.addDefault("Reform.reform", "Reform Item");
         SettingsManager.lang.options().copyDefaults(true);

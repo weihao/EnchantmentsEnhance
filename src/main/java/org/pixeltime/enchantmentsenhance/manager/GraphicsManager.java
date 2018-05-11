@@ -1,13 +1,16 @@
 package org.pixeltime.enchantmentsenhance.manager;
 
-import de.slikey.effectlib.*;
 import de.slikey.effectlib.Effect;
-import org.bukkit.util.*;
-import org.pixeltime.enchantmentsenhance.Main;
-import de.slikey.effectlib.util.*;
-import org.bukkit.*;
+import de.slikey.effectlib.EffectManager;
+import de.slikey.effectlib.EffectType;
+import de.slikey.effectlib.util.MathUtils;
+import de.slikey.effectlib.util.ParticleEffect;
+import de.slikey.effectlib.util.VectorUtils;
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
+import org.pixeltime.enchantmentsenhance.Main;
 
 public class GraphicsManager {
     public EffectManager em;
@@ -16,7 +19,7 @@ public class GraphicsManager {
     public void test(Player p) {
         em = new EffectManager(Main.getMain());
         final B a = new B(em);
-        a.setEntity((Entity)p);
+        a.setEntity((Entity) p);
         a.start();
     }
 
@@ -72,9 +75,9 @@ public class GraphicsManager {
                 vector.setX(this.xFactor * r * MathUtils.cos(s) + this.xOffset);
                 vector.setZ(this.zFactor * r * MathUtils.sin(s) + this.zOffset);
                 vector.setY(this.yFactor * this.size * MathUtils.cos(t)
-                    + this.yOffset);
+                        + this.yOffset);
                 VectorUtils.rotateVector(vector, this.xRotation, this.yRotation,
-                    this.zRotation);
+                        this.zRotation);
                 this.display(this.particle, location.add(vector));
                 location.subtract(vector);
             }
