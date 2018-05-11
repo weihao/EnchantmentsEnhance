@@ -8,7 +8,7 @@ import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 /**
- * @author HealPot
+ * @author HealPotion
  * @version Feb 9, 2018
  */
 public class Broadcast {

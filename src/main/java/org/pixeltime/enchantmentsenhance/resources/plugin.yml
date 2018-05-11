@@ -8,7 +8,7 @@ prefix: EnchantmentsEnhance
 
 main: org.pixeltime.enchantmentsenhance.Main
 database: false
-website: https://github.com/HealPot
+website: https://github.com/HealPotion
 
 
 commands:

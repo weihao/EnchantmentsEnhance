@@ -22,7 +22,7 @@ import java.io.File;
 /**
  * Main plugin class.
  *
- * @author HealPot
+ * @author HealPotion
  * @version Mar 30, 2018
  */
 public class Main extends JavaPlugin {

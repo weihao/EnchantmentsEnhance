@@ -7,7 +7,7 @@ import org.pixeltime.enchantmentsenhance.util.GUI;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 /**
- * @author HealPot
+ * @author HealPotion
  * @version Feb 9, 2018
  */
 public class Backpack extends GUI {

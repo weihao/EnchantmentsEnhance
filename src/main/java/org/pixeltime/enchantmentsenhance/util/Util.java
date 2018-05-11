@@ -16,10 +16,10 @@ import java.util.Random;
 /**
  * Contains a varieties of utility.
  *
- * @author HealPot
+ * @author HealPotion
  * @version Feb 9, 2018
  */
-public class Util {
+public class  Util {
     /**
      * Lists all the enhancement stone possible.
      */

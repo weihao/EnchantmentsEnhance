@@ -6,10 +6,10 @@
   <name>enchantmentsenhance</name>
   <version>3.9</version>
   <description>A plugin of enchantments enhancing system inspired by BDO.</description>
-  <url>https://github.com/HealPot/EnchantmentsEnhance</url>
+  <url>https://github.com/HealPotion/EnchantmentsEnhance</url>
   <issueManagement>
     <system>GitHub Issues</system>
-    <url>https://github.com/HealPot/EnchantmentsEnhance/issues</url>
+    <url>https://github.com/HealPotion/EnchantmentsEnhance/issues</url>
   </issueManagement>
   <build>
     <resources>
@@ -95,7 +95,7 @@
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
             </manifest>
             <manifestEntries>
-              <Built-By>HealPot</Built-By>
+              <Built-By>HealPotion</Built-By>
             </manifestEntries>
           </archive>
         </configuration>

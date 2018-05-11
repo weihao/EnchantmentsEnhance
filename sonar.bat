@@ -1,3 +1,3 @@
 mvn sonar:sonar 
-  -Dsonar.organization=healpot-github 
+  -Dsonar.organization=HealPotion-github
   -Dsonar.host.url=https://sonarcloud.io
