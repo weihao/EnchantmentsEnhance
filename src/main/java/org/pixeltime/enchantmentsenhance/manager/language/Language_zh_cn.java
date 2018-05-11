@@ -60,6 +60,8 @@ public class Language_zh_cn {
         SettingsManager.lang.addDefault("Help.inventory", "&6查看你已收集的道具.");
         SettingsManager.lang.addDefault("Help.select", "&6/enhance select {n} 来使用巴尔克斯的忠告.");
         SettingsManager.lang.addDefault("Help.add", "&6给予一个玩家指定黑石.");
+        SettingsManager.lang.addDefault("Help.debug", "&6收集数据以帮助开发者解决问题.");
+        SettingsManager.lang.addDefault("Help.reform", "&6打开改良道具的面板.");
 
         SettingsManager.lang.addDefault("Menu.gui.title", "潜力突破界面");
         SettingsManager.lang.addDefault("Menu.gui.enhance", "强化");
@@ -79,27 +81,6 @@ public class Language_zh_cn {
         SettingsManager.lang.addDefault("Menu.lore.ifDowngrade", "&6潜力突破失败会使物品&c降级");
         SettingsManager.lang.addDefault("Menu.lore.ifDestroy", "&6潜力突破失败会使物品&4炸裂");
 
-        SettingsManager.lang.addDefault("Name.0", "+1 ");
-        SettingsManager.lang.addDefault("Name.1", "+2 ");
-        SettingsManager.lang.addDefault("Name.2", "+3 ");
-        SettingsManager.lang.addDefault("Name.3", "+4 ");
-        SettingsManager.lang.addDefault("Name.4", "+5 ");
-        SettingsManager.lang.addDefault("Name.5", "+6 ");
-        SettingsManager.lang.addDefault("Name.6", "+7 ");
-        SettingsManager.lang.addDefault("Name.7", "+8 ");
-        SettingsManager.lang.addDefault("Name.8", "+9 ");
-        SettingsManager.lang.addDefault("Name.9", "+10 ");
-        SettingsManager.lang.addDefault("Name.10", "+11 ");
-        SettingsManager.lang.addDefault("Name.11", "+12 ");
-        SettingsManager.lang.addDefault("Name.12", "+13 ");
-        SettingsManager.lang.addDefault("Name.13", "+14 ");
-        SettingsManager.lang.addDefault("Name.14", "+15 ");
-        SettingsManager.lang.addDefault("Name.15", "I 场");
-        SettingsManager.lang.addDefault("Name.16", "II 光");
-        SettingsManager.lang.addDefault("Name.17", "III 高");
-        SettingsManager.lang.addDefault("Name.18", "IV 有");
-        SettingsManager.lang.addDefault("Name.19", "V 同");
-
         SettingsManager.lang.addDefault("Item.title", "&6你已收集以下道具:");
         SettingsManager.lang.addDefault("Item.listing", "&e%ITEM% &f: &c%COUNT%");
         SettingsManager.lang.addDefault("Item.0", "&6黑石 (武器)");
@@ -117,7 +98,11 @@ public class Language_zh_cn {
 
         SettingsManager.lang.addDefault("Example.command.add.guide", "enhance add <玩家> <附魔石类型> <数量>");
         SettingsManager.lang.addDefault("Example.command.add.stone", "0 = 黑石 (武器), 1 = 黑石 (防具), 2 = 凝聚魔力的黑石 (武器), 3 = 凝聚魔力的黑石 (防具)");
+
         SettingsManager.lang.addDefault("Add.successful", "你给%player%了%number%个%stone%.");
+        SettingsManager.lang.addDefault("Reform.gui.title", "道具改良");
+        SettingsManager.lang.addDefault("Reform.reform", "改良道具");
+
         SettingsManager.lang.options().copyDefaults(true);
         SettingsManager.saveLang();
     }

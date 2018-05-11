@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/EnchantmentsEnhance.iml" filepath="$PROJECT_DIR$/.idea/EnchantmentsEnhance.iml" />
-      <module fileurl="file://$PROJECT_DIR$/enchantmentsenhance (1).iml" filepath="$PROJECT_DIR$/enchantmentsenhance (1).iml" />
-      <module fileurl="file://$PROJECT_DIR$/enchantmentsenhance (2).iml" filepath="$PROJECT_DIR$/enchantmentsenhance (2).iml" />
+      <module fileurl="file://$PROJECT_DIR$/enchantmentsenhance.iml" filepath="$PROJECT_DIR$/enchantmentsenhance.iml" />
     </modules>
   </component>
 </project>

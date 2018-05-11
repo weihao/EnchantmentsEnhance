@@ -7,6 +7,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,7 +21,9 @@ public class SecretBook {
      * @param player Targeted player.
      */
     public static void addFailstackToStorage(Player player) {
-        storage.get(player.getName()).add(Failstack.getLevel(player));
+        List<Integer> temp = storage.get(player.getName());
+        temp.add(Failstack.getLevel(player));
+        Collections.sort(temp);
         Failstack.resetLevel(player);
         Util.sendMessage(SettingsManager.lang.getString("Save.createFailstack")
                 .replaceAll("%failstack%", Integer.toString(Failstack.getLevel(

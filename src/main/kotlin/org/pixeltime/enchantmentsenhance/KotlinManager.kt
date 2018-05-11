@@ -9,7 +9,7 @@ class KM {
             getMain().logger.info("Kotlin module is enabled: Hello World!")
         }
         @JvmStatic
-        fun sorting(a: IntArray)
+        fun sortArray(a: IntArray)
         {
             a.sort()
         }
