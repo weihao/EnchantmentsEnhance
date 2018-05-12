@@ -4,10 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.events.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.listeners.MenuHandler;
-import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
-import org.pixeltime.enchantmentsenhance.manager.DataManager;
-import org.pixeltime.enchantmentsenhance.manager.ItemManager;
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.Broadcast;
 import org.pixeltime.enchantmentsenhance.util.ItemTypes;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -25,14 +22,14 @@ public class Enhance {
      * @return
      */
     public static int getStoneId(ItemStack item, int level) {
-        if (ItemManager.isValid(item, Util.weapon)) {
+        if (ItemManager.isValid(item, MM.weapon)) {
             if (isPhaseTwo(level)) {
                 return 2;
             } else {
                 return 0;
             }
         }
-        if (ItemManager.isValid(item, Util.armor)) {
+        if (ItemManager.isValid(item, MM.armor)) {
             if ((isPhaseTwo(level))) {
                 return 3;
             } else {

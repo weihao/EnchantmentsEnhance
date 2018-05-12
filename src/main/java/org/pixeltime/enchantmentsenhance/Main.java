@@ -99,6 +99,7 @@ public class Main extends JavaPlugin {
         Bukkit.getLogger().info("EnchantmentsEnhance took " + (System
                 .currentTimeMillis() - startTime) + "ms to setup.");
         KM.log();
+        MM.setup();
     }
 
 

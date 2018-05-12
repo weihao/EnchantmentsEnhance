@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.events.inventory.Inventory;
+import org.pixeltime.enchantmentsenhance.manager.MM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
@@ -36,7 +37,7 @@ public class AddConsoleCommand extends SubConsoleCommand {
             }
 
             if (stoneType != -1 && level != -1 && p != null
-                    && stoneType <= Util.stoneTypes.length) {
+                    && stoneType <= MM.stoneTypes.length) {
                 Inventory.addLevel(p, stoneType, level);
                 Util.sendMessage(SettingsManager.lang.getString(
                         "Add.successful").replace("%player%", p.getName()).replace(

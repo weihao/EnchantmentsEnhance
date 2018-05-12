@@ -31,15 +31,14 @@ public class ItemManager {
     /**
      * Determines the enchantment type for the enhancing item.
      *
-     * @param player
      * @param item
      * @return
      */
     public static ItemTypes getItemEnchantmentType(ItemStack item) {
-        if (isValid(item, Util.weapon)) {
+        if (isValid(item, MM.weapon)) {
             return ItemTypes.WEAPON;
         }
-        if (isValid(item, Util.armor)) {
+        if (isValid(item, MM.armor)) {
             return ItemTypes.ARMOR;
         }
         return ItemTypes.INVALID;
@@ -62,7 +61,7 @@ public class ItemManager {
             lore.add(Util.toColor(Backpack.getOneStoneCountAsString(player,
                     stoneId)));
         }
-        return new ItemBuilder(Util.stoneTypes[stoneId]).setName(Util.toColor(
+        return new ItemBuilder(MM.stoneTypes[stoneId]).setName(Util.toColor(
                 SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
                 .toItemStack();
     }
@@ -70,7 +69,7 @@ public class ItemManager {
 
     public static ItemStack stoneVisualized(int stoneId, Player player) {
         List<String> lore = new ArrayList<String>();
-        return new ItemBuilder(Util.stoneTypes[stoneId]).setName(Util.toColor(
+        return new ItemBuilder(MM.stoneTypes[stoneId]).setName(Util.toColor(
                 SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
                 .toItemStack();
     }

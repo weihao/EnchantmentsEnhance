@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance
+package org.pixeltime.enchantmentsenhance.manager
 
 import org.pixeltime.enchantmentsenhance.Main.getMain
 

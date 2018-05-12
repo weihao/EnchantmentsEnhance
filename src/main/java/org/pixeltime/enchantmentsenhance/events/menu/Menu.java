@@ -11,10 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.events.blackspirit.Enhance;
 import org.pixeltime.enchantmentsenhance.events.blackspirit.Failstack;
 import org.pixeltime.enchantmentsenhance.events.inventory.Backpack;
-import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
-import org.pixeltime.enchantmentsenhance.manager.DataManager;
-import org.pixeltime.enchantmentsenhance.manager.ItemManager;
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.ArrayList;
@@ -246,7 +243,7 @@ public class Menu {
      * @return
      */
     public static ItemStack stoneVisualized(int stoneId, Player player) {
-        ItemStack stone = new ItemStack(Util.stoneTypes[stoneId]);
+        ItemStack stone = new ItemStack(MM.stoneTypes[stoneId]);
         ItemMeta im = stone.getItemMeta();
         im.setDisplayName(Util.toColor(SettingsManager.lang.getString("Item."
                 + stoneId)));

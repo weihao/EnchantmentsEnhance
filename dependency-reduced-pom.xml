@@ -4,7 +4,7 @@
   <groupId>org.pixeltime</groupId>
   <artifactId>enchantmentsenhance</artifactId>
   <name>enchantmentsenhance</name>
-  <version>4.0</version>
+  <version>4.0.1</version>
   <description>A plugin of enchantments enhancing system inspired by BDO.</description>
   <url>https://github.com/HealPotion/EnchantmentsEnhance</url>
   <issueManagement>

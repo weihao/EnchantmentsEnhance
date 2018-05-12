@@ -75,6 +75,51 @@ reward:
 fireworkDelay: 0
 fireworkCount: 1
 
+material:
+  stoneTypes:
+    #0
+    - GHAST_TEAR
+    #1
+    - GOLD_NUGGET
+    #2
+    - SUGAR
+    #3
+    - GLOWSTONE_DUST
+  armor:
+    - DIAMOND_HELMET
+    - DIAMOND_CHESTPLATE
+    - DIAMOND_LEGGINGS
+    - DIAMOND_BOOTS
+    - IRON_HELMET
+    - IRON_CHESTPLATE
+    - IRON_LEGGINGS
+    - IRON_BOOTS
+    - GOLD_HELMET
+    - GOLD_CHESTPLATE
+    - GOLD_LEGGINGS
+    - GOLD_BOOTS
+    - LEATHER_HELMET
+    - LEATHER_CHESTPLATE
+    - LEATHER_LEGGINGS
+    - LEATHER_BOOTS
+    - CHAINMAIL_HELMET
+    - CHAINMAIL_CHESTPLATE
+    - CHAINMAIL_LEGGINGS
+    - CHAINMAIL_BOOTS
+  weapon:
+    - DIAMOND_SWORD
+    - GOLD_SWORD
+    - STONE_SWORD
+    - WOOD_SWORD
+    - DIAMOND_AXE
+    - GOLD_AXE
+    - STONE_AXE
+    - WOOD_AXE
+    - IRON_SWORD
+    - IRON_AXE
+    - WOOD_AXE
+    
+
 FirstPhaseStarts: 7
 SecondPhaseStarts: 15
 DowngradePhaseStarts: 17
