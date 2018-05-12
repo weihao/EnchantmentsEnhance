@@ -57,7 +57,7 @@ public class MenuHandler implements Listener {
                     .getName())) {
                 e.setCancelled(true);
                 if (e.getCurrentItem().hasItemMeta()) {
-                    if (Enhance.getValidationOfItem(player, e.getCurrentItem())
+                    if (Enhance.getValidationOfItem(e.getCurrentItem())
                             && !itemOnEnhancingSlot.containsKey(player
                             .getName())) {
                         itemOnEnhancingSlot.put(player.getName(), e
@@ -112,7 +112,7 @@ public class MenuHandler implements Listener {
                         }
                         return;
                     }
-                } else if (Enhance.getValidationOfItem(player, e.getCurrentItem())
+                } else if (Enhance.getValidationOfItem(e.getCurrentItem())
                         && !itemOnEnhancingSlot.containsKey(player
                         .getName())) {
                     itemOnEnhancingSlot.put(player.getName(), e

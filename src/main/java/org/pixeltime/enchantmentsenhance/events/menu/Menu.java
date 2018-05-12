@@ -155,7 +155,7 @@ public class Menu {
             updateForce(enhancingItem, player);
             updateEnhance(enhancingItem, player);
             screen.setItem(Util.getSlot(1, 2), stoneVisualized(Enhance
-                    .getStoneId(player, enhancingItem, ItemManager
+                    .getStoneId(enhancingItem, ItemManager
                             .getItemEnchantLevel(enhancingItem)), player));
             screen.setItem(Util.getSlot(9, 3), remove);
         }
@@ -189,7 +189,7 @@ public class Menu {
      */
     public static void updateForce(ItemStack item, Player player) {
         int enchantLevel = ItemManager.getItemEnchantLevel(item);
-        int stoneId = Enhance.getStoneId(player, item, enchantLevel);
+        int stoneId = Enhance.getStoneId(item, enchantLevel);
         int costToEnhance = DataManager.costToForceEnchant[enchantLevel];
         if (DataManager.maximumFailstackApplied[enchantLevel] == -1
                 || DataManager.costToForceEnchant[enchantLevel] == -1) {

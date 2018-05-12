@@ -2,7 +2,6 @@ package org.pixeltime.enchantmentsenhance.events.inventory;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.KM;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 

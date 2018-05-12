@@ -26,9 +26,6 @@ public class  Util {
     public static final Material[] stoneTypes = new Material[]{
             Material.GHAST_TEAR, Material.GOLD_NUGGET, Material.SUGAR,
             Material.GLOWSTONE_DUST};
-    /**
-     * Lists all the armor.
-     */
     public static final Material[] armor = {Material.DIAMOND_HELMET,
             Material.DIAMOND_CHESTPLATE, Material.DIAMOND_LEGGINGS,
             Material.DIAMOND_BOOTS, Material.IRON_HELMET, Material.IRON_CHESTPLATE,
@@ -38,53 +35,29 @@ public class  Util {
             Material.LEATHER_LEGGINGS, Material.LEATHER_BOOTS,
             Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE,
             Material.CHAINMAIL_LEGGINGS, Material.CHAINMAIL_BOOTS};
-    /**
-     * Lists all the weapon.
-     */
     public static final Material[] weapon = {Material.DIAMOND_SWORD,
             Material.GOLD_SWORD, Material.STONE_SWORD, Material.WOOD_SWORD,
             Material.DIAMOND_AXE, Material.GOLD_AXE, Material.STONE_AXE,
             Material.WOOD_AXE, Material.IRON_SWORD, Material.IRON_AXE,
             Material.WOOD_AXE};
-    /**
-     * Lists all the sword.
-     */
     public static final Material[] sword = {Material.DIAMOND_SWORD,
             Material.GOLD_SWORD, Material.WOOD_SWORD, Material.STONE_SWORD,
             Material.IRON_SWORD};
-    /**
-     * Lists all the axe.
-     */
     public static final Material[] axe = {Material.DIAMOND_AXE,
             Material.IRON_AXE, Material.WOOD_AXE, Material.STONE_AXE,
             Material.GOLD_AXE};
-    /**
-     * Lists all the helmet.
-     */
     public static final Material[] helmet = {Material.DIAMOND_HELMET,
             Material.GOLD_HELMET, Material.IRON_HELMET, Material.LEATHER_HELMET,
             Material.CHAINMAIL_HELMET};
-    /**
-     * Lists all the boot.
-     */
     public static final Material[] boot = {Material.DIAMOND_BOOTS,
             Material.IRON_BOOTS, Material.GOLD_BOOTS, Material.LEATHER_BOOTS,
             Material.CHAINMAIL_BOOTS};
-    /**
-     * Lists all the chestplate.
-     */
     public static final Material[] chestplate = {Material.DIAMOND_CHESTPLATE,
             Material.IRON_CHESTPLATE, Material.GOLD_CHESTPLATE,
             Material.LEATHER_CHESTPLATE, Material.CHAINMAIL_CHESTPLATE};
-    /**
-     * Lists all the pickaxe.
-     */
     public static final Material[] pick = {Material.DIAMOND_PICKAXE,
             Material.IRON_PICKAXE, Material.GOLD_PICKAXE, Material.STONE_PICKAXE,
             Material.WOOD_PICKAXE};
-    /**
-     * Lists all the hoe.
-     */
     public static final Material[] hoe = {Material.DIAMOND_HOE,
             Material.IRON_HOE, Material.GOLD_HOE, Material.STONE_HOE,
             Material.WOOD_HOE};

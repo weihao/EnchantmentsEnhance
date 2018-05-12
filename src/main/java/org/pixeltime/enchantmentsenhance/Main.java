@@ -26,7 +26,7 @@ import java.io.File;
  * @version Mar 30, 2018
  */
 public class Main extends JavaPlugin {
-    public static final CompatibilityManager compatibility =
+    private static final CompatibilityManager compatibility =
             new CompatibilityManager();
     private static Main main;
     public CommandManager commandManager;

@@ -7,13 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="enchantmentsenhance" />
-        <module name="enchantmentsenhance (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="enchantmentsenhance" target="1.8" />
-      <module name="enchantmentsenhance (1)" target="1.8" />
-      <module name="enchantmentsenhance (2)" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -20,12 +20,11 @@ public class Enhance {
     /**
      * Finds the corresponding enhancement stone ID.
      *
-     * @param player
      * @param item
      * @param level
      * @return
      */
-    public static int getStoneId(Player player, ItemStack item, int level) {
+    public static int getStoneId(ItemStack item, int level) {
         if (ItemManager.isValid(item, Util.weapon)) {
             if (isPhaseTwo(level)) {
                 return 2;
@@ -47,11 +46,10 @@ public class Enhance {
     /**
      * Determines the enhancement eligibility of the item.
      *
-     * @param player
      * @param item
      * @return
      */
-    public static boolean getValidationOfItem(Player player, ItemStack item) {
+    public static boolean getValidationOfItem(ItemStack item) {
         // If item cannot be enhanced
         // If item level exceeds the maximum levels allowed
         if ((ItemManager.getItemEnchantmentType(item) == ItemTypes.INVALID)
@@ -135,11 +133,11 @@ public class Enhance {
      */
     public static void diceToEnhancement(ItemStack item, Player player) {
         // If the item is a valid item
-        if (getValidationOfItem(player, item)) {
+        if (getValidationOfItem(item)) {
             // Current enchant level before enhancing
             int enchantLevel = ItemManager.getItemEnchantLevel(item);
             // Finds the stone used in the enhancement
-            int stoneId = getStoneId(player, item, enchantLevel);
+            int stoneId = getStoneId(item, enchantLevel);
             // Checks if player has enough enchant stone
             if (Inventory.getLevel(stoneId, player) - 1 >= 0) {
                 Inventory.addLevel(player, stoneId, -1);
@@ -186,11 +184,11 @@ public class Enhance {
      */
     public static void forceToEnhancement(ItemStack item, Player player) {
         // If the item is a valid item
-        if (getValidationOfItem(player, item)) {
+        if (getValidationOfItem(item)) {
             // Current enchant level before enhancing
             int enchantLevel = ItemManager.getItemEnchantLevel(item);
             // Finds the stone used in the enhancement
-            int stoneId = getStoneId(player, item, enchantLevel);
+            int stoneId = getStoneId(item, enchantLevel);
             // Gets the cost of force enhancing
             int costToEnhance = DataManager.costToForceEnchant[enchantLevel];
             // Checks if player has enough enchant stone
