@@ -311,9 +311,9 @@ enhance:
     name: "PRI"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:16
+        - DAMAGE_ALL:17
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:16
+        - PROTECTION_ENVIRONMENTAL:17
   17:
     baseChance: 5.0
     chanceIncreasePerFailstack: 0.5
@@ -325,9 +325,9 @@ enhance:
     name: "DUO"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:17
+        - DAMAGE_ALL:19
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:17
+        - PROTECTION_ENVIRONMENTAL:19
   18:
     baseChance: 2.0
     chanceIncreasePerFailstack: 0.25
@@ -339,9 +339,9 @@ enhance:
     name: "TRI"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:18
+        - DAMAGE_ALL:21
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:18
+        - PROTECTION_ENVIRONMENTAL:21
   19:
     baseChance: 1.5
     chanceIncreasePerFailstack: 0.25
@@ -353,9 +353,9 @@ enhance:
     name: "TET"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:19
+        - DAMAGE_ALL:23
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:19
+        - PROTECTION_ENVIRONMENTAL:23
   20:
     baseChance: -1
     chanceIncreasePerFailstack: -1
@@ -367,9 +367,9 @@ enhance:
     name: "PEN"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:20
+        - DAMAGE_ALL:25
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:20
+        - PROTECTION_ENVIRONMENTAL:25
 weaponGrade:
   0:
     name: ""

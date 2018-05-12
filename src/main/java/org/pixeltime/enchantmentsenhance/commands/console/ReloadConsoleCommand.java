@@ -12,6 +12,7 @@ public class ReloadConsoleCommand extends SubConsoleCommand {
         SettingsManager.reloadData();
         SettingsManager.reloadLang();
         new DataManager();
+        SettingsManager.setup();
         Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
                 sender);
     }

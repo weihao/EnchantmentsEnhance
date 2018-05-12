@@ -13,6 +13,7 @@ public class ReloadCommand extends SubCommand {
         SettingsManager.reloadData();
         SettingsManager.reloadLang();
         new DataManager();
+        SettingsManager.setup();
         Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
                 player);
     }
