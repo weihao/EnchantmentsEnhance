@@ -117,25 +117,18 @@ public class ItemManager {
         ItemTypes type = getItemEnchantmentType(item);
         List<String> temp = SettingsManager.config.getStringList("enhance."
                 + enchantLevel + ".enchantments." + type.toString());
-        //Clear all the enchantments and lores.
-        ArrayList<String> newlore = new ArrayList<>();
+        //Clear All the enchantments before applying new enchantments
+        List<String> empty = new ArrayList<String>();
+        item.getItemMeta().setLore(empty);
+        for (Enchantment ench : item.getEnchantments().keySet()) {
+            item.removeEnchantment(ench);
+        }
+
         //Adding New enchantments.
         for (String s : temp) {
             String[] a = s.split(":");
-            try {
-                item.addUnsafeEnchantment(Enchantment.getByName(a[0]), Integer
-                        .parseInt(a[1]));
-            } catch (IllegalArgumentException ex) {
-                String enchantment = SettingsManager.lang.getString("enchantments." + a[0].toLowerCase());
-                if (enchantment != null) {
-                    newlore.add(enchantment + " " + Util.intToRoman(Integer
-                            .parseInt(a[1])));
-                }
-            }
+            applyEnchantmentToItem(item, a[0], Integer.parseInt(a[1]));
         }
-        ItemMeta meta = item.getItemMeta();
-        meta.setLore(newlore);
-        item.setItemMeta(meta);
 
         List<String> temp2 = null;
         switch (getItemEnchantmentType(item)) {
@@ -154,6 +147,21 @@ public class ItemManager {
                 item.addUnsafeEnchantment(ench, Integer.parseInt(b[1]) + item
                         .getEnchantmentLevel(ench));
             }
+        }
+    }
+
+    public static void applyEnchantmentToItem(ItemStack item, String ench, int level) {
+        ItemMeta meta = item.getItemMeta();
+        List<String> newlore = (meta.hasLore() ? meta.getLore() : new ArrayList<>());
+        try {
+            item.addUnsafeEnchantment(Enchantment.getByName(ench), level);
+        } catch (IllegalArgumentException ex) {
+            String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
+            if (enchantment != null) {
+                newlore.add(enchantment + " " + Util.intToRoman(level));
+            }
+            meta.setLore(newlore);
+            item.setItemMeta(meta);
         }
     }
 
