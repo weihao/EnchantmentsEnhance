@@ -6,8 +6,8 @@ import org.pixeltime.enchantmentsenhance.events.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.listeners.MenuHandler;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.Broadcast;
-import org.pixeltime.enchantmentsenhance.util.ItemTypes;
 import org.pixeltime.enchantmentsenhance.util.Util;
+import org.pixeltime.enchantmentsenhance.util.enums.ItemTypes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,8 +74,9 @@ public class Enhance {
 
         int enchantLevel = enchantLevelBeforeAttemptEnhancing + 1;
 
-        MenuHandler.updateItem(player, ItemManager.forgeItem(item,
-                enchantLevel));
+//        MenuHandler.updateItem(player, ItemManager.forgeItem(item,
+//                enchantLevel));
+        ItemManager.forgeItem(player, item, enchantLevel);
 
         // Play sound
         CompatibilityManager.playsound.playSound(player, "SUCCESS");
@@ -115,8 +116,9 @@ public class Enhance {
                     "Enhance.downgraded"));
             CompatibilityManager.playsound.playSound(player, "DOWNGRADED");
             int enchantLevel = enchantLevelBeforeAttemptEnhancing - 1;
-            MenuHandler.updateItem(player, ItemManager.forgeItem(item,
-                    enchantLevel));
+//            MenuHandler.updateItem(player, ItemManager.forgeItem(item,
+//                    enchantLevel));
+            ItemManager.forgeItem(player, item, enchantLevel);
         }
         Util.sendMessage(str, player);
     }

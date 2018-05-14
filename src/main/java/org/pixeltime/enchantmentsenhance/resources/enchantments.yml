@@ -1,0 +1,776 @@
+# Allow WorldGuard and WorldEdit to check the pvp flags.
+allow-worldguard: false
+
+# This option should be "true" for only those, who have problem with removal of potion effect on moving.
+periodic-potions: true
+
+# List of disabled enchantments:
+# By default, batvision is not disabled, but if you want to disable it remove the "#" in the starting of that line.
+# Once you disabled enchantments reload or restart your server.
+
+disabled:
+#- batvision
+
+# Enchantments' configuration:
+lifesteal:
+    level_I: 
+       chance: 25
+       health: 1
+       
+    level_II:
+       chance: 35
+       health: 2
+       
+    level_III: 
+       chance: 50
+       health: 3
+       
+assassin:
+    level_I:
+      chance: 25
+      duration: 3
+      
+    level_II:
+      chance: 35
+      duration: 5
+      
+    level_III:
+      chance: 50
+      duration: 8
+      
+kill_confirm:
+    level_I:
+      chance: 25
+      
+    level_II:
+      chance: 40
+      
+    level_III:
+      chance: 50
+      
+hex:
+    level_I:
+      chance: 25
+      duration: 3
+      
+    level_II:
+      chance: 35
+      duration: 5
+      
+    level_III:
+      chance: 50
+      duration: 7
+      
+jump:
+    level_I:
+      potion_lvl: 1
+      
+    level_II:
+      potion_lvl: 2
+      
+    level_III:
+      potion_lvl: 3
+      
+speed:
+    level_I:
+      potion_lvl: 1
+    
+    level_II:
+      potion_lvl: 2
+      
+    level_III:
+      potion_lvl: 3
+      
+zeus:
+    level_I:
+      chance: 25
+      
+    level_II:
+      chance: 35
+      
+    level_III:
+      chance: 45
+      
+demonic_aura:
+    level_I:
+      chance: 10
+      duration: 2
+      
+    level_II:
+      chance: 15
+      duration: 3
+      
+    leveL_III:
+      chance: 20
+      duration: 4
+      
+    level_IV:
+      chance: 25
+      duration: 5
+      
+    level_V:
+      chance: 35
+      duration: 7
+      
+dodge:
+    level_I:
+      chance: 10
+      
+    level_II:
+      chance: 15
+      
+    level_III:
+      chance: 20
+      
+    level_IV:
+      chance: 25
+      
+    level_V:
+      chance: 35
+      
+blessed:
+    level_I:
+      chance: 10
+      
+    level_II:
+      chance: 20
+      
+    level_III:
+      chance: 30
+      
+snare:
+    level_I:
+      duration: 5
+      potion_lvl: 1
+      
+    level_II:
+      duration: 8
+      potion_lvl: 2
+      
+    level_III:
+      duration: 9
+      potion_lvl: 2
+      
+    level_III:
+      duration: 10
+      potion_lvl: 2
+      
+    level_IV:
+      duration: 15
+      potion_lvl: 2
+      
+curse:
+    level_I:
+      chance: 10
+      duration: 2
+      potion_lvl: 1
+      
+    level_II:
+      chance: 20
+      duration: 4
+      potion_lvl: 1
+      
+    level_III:
+      chance: 30
+      duration: 6
+      potion_lvl: 1
+      
+    level_IV:
+      chance: 40
+      duration: 8
+      potion_lvl: 1 
+      
+crushing:
+    level_I:
+      chance: 10
+      
+    level_II:
+      chance: 20
+      
+    level_III:
+      chance: 25
+      
+    level_III:
+      chance: 30
+    
+    level_IV:
+      chance: 35
+    
+    level_V:
+      chance: 45
+      
+execute:
+    level_I:
+      chance: 30
+      
+    level_II:
+      chance: 40
+      
+    level_III:
+      chance: 45
+      
+    level_IV:
+      chance: 47
+      
+    level_V:
+      chance: 50
+      
+stealth:
+    level_I:
+      chance: 10
+      duration: 2
+      radius: 5
+      
+    level_II:
+      chance: 20
+      duration: 3
+      radius: 6
+      
+    level_III:
+      chance: 30
+      duration: 4
+      radius: 7
+      
+    level_IV: 
+      chance: 35
+      duration: 5
+      radius: 10
+      
+aegis:
+    level_I:
+      chance: 10
+      
+    level_II:
+      chance: 20
+      
+    level_III:
+      chance: 26
+      
+    level_IV:
+      chance: 35
+      
+    level_V:
+      chance: 40
+      
+purge:
+    level_I:
+      chance: 10
+      
+    level_II:
+      chance: 20
+      
+    level_III: 
+      chance: 30
+      
+    level_IV:
+      chance: 40
+      
+divine: 
+    level_I:
+      chance: 15
+      
+    level_II:
+      chance: 20
+      
+    level_III:
+      chance: 35
+      
+entangle:
+    level_I:
+      chance: 10
+      duration: 5
+      potion_lvL: 1
+      
+    level_II:
+      chance: 20
+      duration: 5
+      potion_lvl: 1
+      
+    level_II:
+      chance: 30
+      duration: 7
+      potion_lvl: 2
+      
+    level_IV:
+      chance: 40
+      duration: 7
+      potion_lvl: 2
+      
+pyromaniac:
+    level_I:
+      chance: 10
+      
+    level_II:
+      chance: 20
+      
+    level_III:
+      chance: 25
+      
+    level_IV:
+      chance: 30
+      
+    level_V:
+      chance: 35
+   
+flame_cloak:
+    level_I:
+      chance: 10
+      duration: 5
+      
+    level_II:
+      chance: 20
+      duration: 7
+      
+    level_III:
+      chance: 30
+      duration: 8
+      
+battlecry:
+    level_I:
+      chance: 10
+      
+    level_II:
+      chance: 15
+      
+    level_III:
+      chance: 25
+      
+corruption:
+    level_I:
+      chance: 10
+      duration: 4
+      potion_lvl: 1
+    
+    level_II:
+      chance: 15
+      duration: 4
+      potion_lvl: 1
+      
+    level_III:
+      chance: 20
+      duration: 7
+      potion_lvl: 1
+      
+    level_IV:
+      chance: 25
+      duration: 10
+      potion_lvl: 2
+      
+    level_V:
+      chance: 30
+      duration: 10
+      potion_lvl: 2
+      
+turmoil:
+    level_I:
+      chance: 10
+      duration: 5
+      potion_lvl: 1
+      
+    level_II:
+      chance: 20
+      duration: 5
+      potion_lvl: 1
+      
+    level_III:
+      chance: 30
+      duration: 8
+      potion_lvl: 1
+      
+holy_smite:
+    level_I:
+      chance: 10
+      
+    level_II:
+      chance: 20
+      
+    level_III:
+      chance: 30
+      
+    level_IV:
+      chance: 35
+      
+    level_V:
+      chance: 40
+      
+petrify:
+    level_I:
+      chance: 10
+      duration: 5
+      potion_lvl: 1
+      
+    level_II:
+      chance: 20
+      duration: 5
+      potion_lvl: 1
+      
+    level_III:
+      chance: 30
+      duration: 5
+      potion_lvl: 2
+      
+mischief:
+    level_I:
+      chance: 10
+      duration: 5
+      potion_lvl: 1
+      
+    level_II:
+      chance: 20
+      duration: 5
+      potion_lvl: 1
+      
+    level_III:
+      chance: 30
+      duration: 8
+      potion_lvl: 1
+
+# 'distance' is the distance behind the damager where the damaged player will be teleported.   
+shadowstep:
+    level_I:
+      chance: 10
+      distance: 2
+      
+    level_II:
+      chance: 20
+      distance: 2
+      
+    level_III:
+      chance: 25
+      distance: 2
+    
+demon_siphon:
+    level_I:
+      chance: 10
+      health: 2
+      
+    level_II:
+      chance: 15
+      health: 4
+      
+    level_III:
+      chance: 15
+      health: 6
+      
+# 'wolves' = number of wolves to be spawned.
+wolves:
+    level_I:
+      chance: 5
+      wolves: 2
+      
+    level_II:
+      chance: 10
+      wolves: 2
+      
+    level_III:
+      chance: 15
+      wolves: 3
+      
+    level_IV:
+      chance: 20
+      wolves: 4
+      
+    level_V:
+      chance: 25
+      wolves: 5
+      
+superman_punch:
+    level_I:
+      chance: 10
+      power: 5
+      
+    level_II:
+      chance: 15
+      power: 7
+      
+    level_III:
+      chance: 20
+      power: 8
+      
+disarm:
+    level_I:
+      chance: 10
+      
+    level_II:
+      chance: 15
+      
+    level_III:
+      chance: 25
+      
+swimmer:
+    level_I:
+      potion_lvl: 1
+      
+    level_II:
+      potion_lvl: 2
+      
+    level_III:
+      potion_lvl: 3
+
+# "money-percent" is the percentage of the money which will be stolen from the opponent's balance.
+thief:
+    level_I:
+      chance: 10
+      money-percent: 5
+      
+    level_II:
+      chance: 15
+      money-percent: 10
+      
+    level_III:
+      chance: 20
+      money-percent: 20
+     
+     
+# Default health is the health which will be restored if player removes the chestplate containing Health Boost Enchantment.
+# 2 = 1 heart so, 20 = 10 hearts     
+# modified-health is the health which will be set after wearing Health Boost chestplate.
+health_boost:
+    level_I:
+      potion_lvl: 1
+      
+    level_II:
+      potion_lvl: 2
+      
+    level_III:
+      potion_lvl: 5
+     
+reborn:
+    level_I:
+      absorption:
+          potion_lvl: 1
+          duration: 5
+          
+      regeneration:
+          potion_lvl: 1
+          duration: 5
+          
+    level_II:
+      absorption:
+          potion_lvl: 2
+          duration: 5
+          
+      regeneration:
+          potion_lvl: 2
+          duration: 5
+          
+    level_III:
+      absorption:
+          potion_lvl: 3
+          duration: 8
+          
+      regeneration:
+          potion_lvl: 3
+          duration: 8
+          
+molten:
+    level_I:
+      potion_lvl: 1
+      
+    level_II:
+      potion_lvl: 2
+      
+    level_III:
+      potion_lvl: 3
+      
+# Duration will be for how much seconds the fire will be on player(s).
+immolation:
+    level_I:
+      chance: 10
+      radius: 5
+      duration: 5
+      
+    level_II:
+      chance: 15
+      radius: 5
+      duration: 5
+      
+    level_III:
+      chance: 20
+      radius: 10
+      duration: 7
+      
+    level_IV:
+      chance: 25
+      radius: 15
+      duration: 7
+      
+    level_V:
+      chance: 30
+      radius: 15
+      duration: 10
+
+strength:
+    level_I:
+      potion_lvl: 1
+      
+    level_II:
+      potion_lvl: 2
+      
+    level_III:
+      potion_lvl: 3
+      
+# Duration will be for how much seconds the web will be on. After that web will be removed automatically.
+# If "check-wg-flag" is true, then it will check if player can build in the region.
+
+web_trap:
+    check-wg-flag: true
+    level_I:
+      chance: 10
+      duration: 5
+      
+    level_II:
+      chance: 15
+      duration: 5
+      
+    level_III:
+      chance: 25
+      duration: 7
+      
+veinminer:
+    level_I:
+      radius: 10
+      max-blocks: 30
+      
+    level_II:
+      radius: 10
+      max-blocks: 35
+      
+    level_III:
+      radius: 10
+      max-blocks: 40
+      
+paralyze:
+    level_I:
+      chance: 10
+      duration: 5
+      potion_lvl: 1
+      
+    level_II:
+      chance: 20
+      duration: 5
+      potion_lvl: 1
+      
+tnt_shooter:
+    level_I:
+      explosion: true
+      
+reversal:
+    level_I:
+      chance: 10
+      
+    level_II:
+      chance: 20
+      
+    level_III:
+      chance: 30
+     
+# 'required-health' is the maximum health required for the effect to come. In short, if I have health less than or equal to this, I will get damage resistance.
+# Remember if you set health to '2' it will mean ONE heart. So:
+# 1 heart = 2; 10 hearts = 20 
+reinforced:
+    level_I:
+      required-health: 6
+      duration: 5
+      potion_lvl: 1
+      
+    level_II:
+      required-health: 6
+      duration: 10
+      potion_lvl: 1
+      
+    level_III:
+      required-health: 6
+      duration: 15
+      potion_lvl: 1
+      
+    level_IV:
+      required-health: 8
+      duration: 15
+      potion_lvl: 2
+      
+    level_V:
+      required-health: 8
+      duration: 15
+      potion_lvl: 3
+      
+shearer:
+    level_I:
+      radius: 5
+      
+explosive:
+    level_I:
+      power: 2
+      max-blocks: 30
+      
+    level_II:
+      power: 3
+      max-blocks: 35
+      
+    level_III:
+      power: 4
+      max-blocks: 40
+      
+    level_IV:
+      power: 5
+      max-blocks: 45
+      
+    level_V:
+      power: 7
+      max-blocks: 50
+
+# Cooldown is in seconds.
+# Projectiles values:
+# For Snowball: 'snoball'
+# For Fireball: 'fireball'
+# For Egg: 'egg'
+      
+shooter:
+    level_I:
+      enable-cooldown: true
+      cooldown: 2
+      projectile: 'snowball'
+
+# power = Power of the explosion.     
+suicide:
+    level_I:
+      power: 2
+      chance: 100
+      
+arrow_rain:
+    level_I:
+      chance: 5
+      
+    level_II:
+      chance: 10
+      
+    level_III:
+      chance: 15
+      
+    level_IV:
+      chance: 20
+      
+    level_V:
+      chance: 25
+      
+angry_birds:
+
+    level_I:
+      chance: 5
+      height: 3
+      
+    level_II:
+      chance: 10
+      height: 3
+      
+    level_III:
+      chance: 15
+      height: 3
+      
+    level_IV:
+      chance: 20
+      height: 3
+      
+    level_V:
+      chance: 25
+      height: 3

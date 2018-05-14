@@ -1,7 +1,7 @@
 package org.pixeltime.enchantmentsenhance.manager
 
 import org.bukkit.Material
-import java.util.ArrayList
+import java.util.*
 
 class MM {
     companion object {
@@ -25,6 +25,7 @@ class MM {
         var armor: Array<Material>? = null
         @JvmField
         var weapon: Array<Material>? = null
+
         @JvmStatic
         fun setup() {
             val temp = ArrayList<Material>()

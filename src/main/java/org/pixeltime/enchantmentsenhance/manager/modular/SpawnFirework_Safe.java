@@ -24,7 +24,7 @@ public class SpawnFirework_Safe implements SpawnFirework {
 
     public void launch(Player player, int fireworkCount) {
         for (int i = 0; i < fireworkCount; i++) {
-            Firework fw = (Firework) player.getWorld().spawn(player
+            Firework fw = player.getWorld().spawn(player
                     .getLocation(), Firework.class);
             FireworkMeta fwMeta = fw.getFireworkMeta();
             fwMeta.addEffect(FireworkEffect.builder().flicker(random

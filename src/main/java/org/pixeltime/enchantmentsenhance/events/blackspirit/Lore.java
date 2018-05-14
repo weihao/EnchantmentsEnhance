@@ -42,7 +42,7 @@ public class Lore {
             int loreSize = is.getItemMeta().getLore().size();
             for (int i = 0; i < loreSize; i++) {
                 loreList.add(ChatColor.translateAlternateColorCodes('&',
-                        (String) is.getItemMeta().getLore().get(i)));
+                        is.getItemMeta().getLore().get(i)));
             }
             if (loreList.contains(lore)) {
                 if (SettingsManager.config.getBoolean(
@@ -91,7 +91,7 @@ public class Lore {
             int loreSize = is.getItemMeta().getLore().size();
             for (int i = 0; i < loreSize; i++) {
                 loreList.add(ChatColor.translateAlternateColorCodes('&',
-                        (String) is.getItemMeta().getLore().get(i)));
+                        is.getItemMeta().getLore().get(i)));
             }
             if (loreList.contains(lore)) {
                 return;
@@ -129,7 +129,7 @@ public class Lore {
             int loreSize = is.getItemMeta().getLore().size();
             for (int i = 0; i < loreSize; i++) {
                 loreList.add(ChatColor.translateAlternateColorCodes('&',
-                        (String) is.getItemMeta().getLore().get(i)));
+                        is.getItemMeta().getLore().get(i)));
             }
             if ((loreList.contains(x)) || (loreList.contains(y))) {
                 loreList.remove(x);

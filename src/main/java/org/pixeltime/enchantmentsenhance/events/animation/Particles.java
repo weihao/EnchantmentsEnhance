@@ -2,7 +2,6 @@ package org.pixeltime.enchantmentsenhance.events.animation;
 
 
 import net.minecraft.server.v1_8_R3.EnumParticle;
-import net.minecraft.server.v1_8_R3.Packet;
 import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -16,7 +15,7 @@ public class Particles {
         final float z = (float) loc.getZ();
         final PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(type, true, x, y, z, xOffset, yOffset, zOffset, speed, count, (int[]) null);
         for (final Player player : Bukkit.getServer().getOnlinePlayers()) {
-            ((CraftPlayer) player).getHandle().playerConnection.sendPacket((Packet) packet);
+            ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
         }
     }
 }

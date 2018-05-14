@@ -8,10 +8,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.events.blackspirit.Lore;
 import org.pixeltime.enchantmentsenhance.events.inventory.Backpack;
+import org.pixeltime.enchantmentsenhance.listeners.MenuHandler;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
-import org.pixeltime.enchantmentsenhance.util.ItemTypes;
-import org.pixeltime.enchantmentsenhance.util.NBTItem;
 import org.pixeltime.enchantmentsenhance.util.Util;
+import org.pixeltime.enchantmentsenhance.util.enums.ItemTypes;
+import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,12 +76,6 @@ public class ItemManager {
     }
 
 
-    public static ItemStack levelUpdate(ItemStack item, int enchantLevel) {
-        NBTItem nbti = new NBTItem(item);
-        nbti.setInteger("ELevel", enchantLevel);
-        return nbti.getItem();
-    }
-
 
     public static ItemStack gradeUpdate(ItemStack item, int gradeLevel) {
         NBTItem nbti = new NBTItem(item);
@@ -100,23 +95,52 @@ public class ItemManager {
         return nbti.getInteger("EGrade");
     }
 
-
-    public static ItemStack forgeItem(ItemStack item, int enchantLevel) {
-        return renameItem(applyEnchantments(levelUpdate(item, enchantLevel)));
+    public static void soulbound(ItemStack item)
+    {
+        Lore.addLore(item, ChatColor.translateAlternateColorCodes('&',
+                SettingsManager.lang.getString("Lore." + SettingsManager.config
+                        .getString("lore.bound") + "Lore")), SettingsManager.config
+                .getBoolean("lore.bound"));
     }
 
+    public static void forgeItem(Player player, ItemStack item, int enchantLevel) {
+        NBTItem nbti = new NBTItem(item);
+        nbti.setInteger("ELevel", enchantLevel);
+        ItemStack currItem = nbti.getItem();
+        applyEnchantments(currItem);
+        renameItem(currItem);
+        soulbound(currItem);
+        MenuHandler.updateItem(player, currItem);
+    }
 
-    public static ItemStack applyEnchantments(ItemStack item) {
+    public static void applyEnchantments(ItemStack item) {
         int enchantLevel = getItemEnchantLevel(item);
         int gradeLevel = getItemGradeLevel(item);
         ItemTypes type = getItemEnchantmentType(item);
         List<String> temp = SettingsManager.config.getStringList("enhance."
                 + enchantLevel + ".enchantments." + type.toString());
+        //Clear all the enchantments and lores.
+        ArrayList<String> newlore = new ArrayList<>();
+        //Adding New enchantments.
         for (String s : temp) {
             String[] a = s.split(":");
-            item.addUnsafeEnchantment(Enchantment.getByName(a[0]), Integer
-                    .parseInt(a[1]));
+            try {
+                item.addUnsafeEnchantment(Enchantment.getByName(a[0]), Integer
+                        .parseInt(a[1]));
+            }
+            catch(IllegalArgumentException ex)
+            {
+                String enchantment = SettingsManager.lang.getString("enchantments." +a[0]);
+                if (enchantment  != null) {
+                    newlore.add(enchantment + " " + Util.intToRoman(Integer
+                            .parseInt(a[1])));
+                }
+            }
         }
+        ItemMeta meta = item.getItemMeta();
+        meta.setLore(newlore);
+        item.setItemMeta(meta);
+
         List<String> temp2 = null;
         switch (getItemEnchantmentType(item)) {
             case WEAPON:
@@ -125,8 +149,6 @@ public class ItemManager {
             case ARMOR:
                 temp2 = SettingsManager.config.getStringList("armorGrade."
                         + gradeLevel + ".enchantments");
-            default:
-                break;
         }
 
         if (temp2 != null) {
@@ -137,12 +159,10 @@ public class ItemManager {
                         .getEnchantmentLevel(ench));
             }
         }
-
-        return item;
     }
 
 
-    public static ItemStack renameItem(ItemStack item) {
+    public static void renameItem(ItemStack item) {
         int enchantLevel = ItemManager.getItemEnchantLevel(item);
         int gradeLevel = ItemManager.getItemGradeLevel(item);
         switch (getItemEnchantmentType(item)) {
@@ -180,13 +200,7 @@ public class ItemManager {
             case MASK:
 
             default:
-
         }
-        Lore.addLore(item, ChatColor.translateAlternateColorCodes('&',
-                SettingsManager.lang.getString("Lore." + SettingsManager.config
-                        .getString("lore.bound") + "Lore")), SettingsManager.config
-                .getBoolean("lore.bound"));
-        return item;
     }
 
 
@@ -228,5 +242,6 @@ public class ItemManager {
         }
         return name;
     }
+
 
 }

@@ -33,6 +33,7 @@ public class CommandManager implements CommandExecutor {
     private ArrayList<SubConsoleCommand> consoleCommands =
             new ArrayList<SubConsoleCommand>();
     private Main plugin = Main.getMain();
+
     public CommandManager() {
     }
 
@@ -144,7 +145,7 @@ public class CommandManager implements CommandExecutor {
         Iterator<SubCommand> subcommands = this.commands.iterator();
 
         while (subcommands.hasNext()) {
-            SubCommand sc = (SubCommand) subcommands.next();
+            SubCommand sc = subcommands.next();
             if (sc.name().equalsIgnoreCase(name)) {
                 return sc;
             }
@@ -169,7 +170,7 @@ public class CommandManager implements CommandExecutor {
                 .iterator();
 
         while (subcommands.hasNext()) {
-            SubConsoleCommand sc = (SubConsoleCommand) subcommands.next();
+            SubConsoleCommand sc = subcommands.next();
 
             if (sc.name().equalsIgnoreCase(name)) {
                 return sc;

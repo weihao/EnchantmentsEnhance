@@ -49,7 +49,7 @@ public class PlayerDeathHandler implements Listener {
         pFile.set("PlayerName", p.getName());
         if (!e.getDrops().isEmpty() || e.getDrops() != null) {
             for (int i = 0; i < e.getDrops().size(); i++) {
-                ItemStack stack = (ItemStack) e.getDrops().get(i);
+                ItemStack stack = e.getDrops().get(i);
                 if (stack.hasItemMeta()) {
                     ItemMeta meta = stack.getItemMeta();
                     if (meta.hasLore()) {
@@ -59,7 +59,7 @@ public class PlayerDeathHandler implements Listener {
                             if (s.contains(ChatColor.stripColor(SettingsManager.lang.getString(
                                     "Lore.UntradeableLore"))) || s.contains(ChatColor.stripColor(SettingsManager.lang.getString(
                                     "Lore.TradeableLore")))) {
-                                newInventory.add((ItemStack) e.getDrops().get(i));
+                                newInventory.add(e.getDrops().get(i));
                             }
                         }
                     }
@@ -93,7 +93,7 @@ public class PlayerDeathHandler implements Listener {
         FileConfiguration pFile = YamlConfiguration.loadConfiguration(
                 playerFile);
         if (playerFile.exists()) {
-            ItemStack[] content = (ItemStack[]) ((List<?>) pFile.get("Items"))
+            ItemStack[] content = ((List<?>) pFile.get("Items"))
                     .toArray(new ItemStack[0]);
             p.getInventory().addItem(content);
 

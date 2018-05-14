@@ -1,5 +1,6 @@
 package org.pixeltime.enchantmentsenhance;
 
+import org.pixeltime.enchantmentsenhance.manager.EnchantmentsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -13,8 +14,8 @@ import org.pixeltime.enchantmentsenhance.events.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.listeners.*;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.AnimalBreeding;
-import org.pixeltime.enchantmentsenhance.util.Metrics;
-import org.pixeltime.enchantmentsenhance.util.Reflection_V2;
+import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
+import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
 
 import java.io.File;
 
@@ -142,10 +143,12 @@ public class Main extends JavaPlugin {
         }
         new AnimalBreeding();
         new DataManager();
-        // Start bStats Metrics.
+        // Start bStats metrics.
         new Metrics(this);
         commandManager = new CommandManager();
         commandManager.setup();
+        EnchantmentsManager enchantmentsManager= new EnchantmentsManager();
+        enchantmentsManager.setUp();
     }
 
 

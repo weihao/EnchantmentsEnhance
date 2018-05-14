@@ -8,9 +8,9 @@ class KM {
         fun log() {
             getMain().logger.info("Kotlin module is enabled: Hello World!")
         }
+
         @JvmStatic
-        fun sortArray(a: IntArray)
-        {
+        fun sortArray(a: IntArray) {
             a.sort()
         }
     }

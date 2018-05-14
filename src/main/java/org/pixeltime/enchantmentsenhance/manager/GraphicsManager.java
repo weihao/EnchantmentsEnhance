@@ -7,7 +7,6 @@ import de.slikey.effectlib.util.MathUtils;
 import de.slikey.effectlib.util.ParticleEffect;
 import de.slikey.effectlib.util.VectorUtils;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 import org.pixeltime.enchantmentsenhance.Main;
@@ -19,7 +18,7 @@ public class GraphicsManager {
     public void test(Player p) {
         em = new EffectManager(Main.getMain());
         final B a = new B(em);
-        a.setEntity((Entity) p);
+        a.setEntity(p);
         a.start();
     }
 

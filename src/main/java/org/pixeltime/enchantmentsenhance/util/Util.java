@@ -10,6 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
+import java.util.Hashtable;
 import java.util.Random;
 
 /**
@@ -18,12 +19,14 @@ import java.util.Random;
  * @author HealPotion
  * @version Feb 9, 2018
  */
-public class  Util {
+public class Util {
     /**
      * Lists all the enhancement stone possible.
      */
-    public static String pluginTag = ChatColor.translateAlternateColorCodes('&',
-            SettingsManager.lang.getString("Config.pluginTag"));
+    public static String pluginTag() {
+        return ChatColor.translateAlternateColorCodes('&',
+                SettingsManager.lang.getString("Config.pluginTag"));
+    }
 
     /**
      * Calculate the inventory slot.
@@ -62,11 +65,11 @@ public class  Util {
      * Sends a colored message to a player.
      *
      * @param msg
-     * @param sender
+     * @param player
      */
     public static void sendMessage(String msg, CommandSender player) {
         String message = ChatColor.translateAlternateColorCodes('&', msg);
-        player.sendMessage(pluginTag + message);
+        player.sendMessage(pluginTag() + message);
     }
 
 
@@ -74,7 +77,7 @@ public class  Util {
      * Sends a colored message to a player.
      *
      * @param msg
-     * @param sender
+     * @param player
      */
     public static void sendMessage(
             String msg,
@@ -165,5 +168,57 @@ public class  Util {
         im.setDisplayName(name);
         i.setItemMeta(im);
         return i;
+    }
+
+    public static int romanToInt(String num) {
+        Hashtable<Character, Integer> ht = new Hashtable<Character, Integer>();
+        ht.put('I', 1);
+        ht.put('X', 10);
+        ht.put('V', 5);
+        int intNum = 0;
+        int prev = 0;
+        for (int i = num.length() - 1; i >= 0; i--) {
+            try {
+                int temp = ht.get(num.charAt(i));
+                if (temp < prev)
+                    intNum -= temp;
+                else
+                    intNum += temp;
+                prev = temp;
+            } catch
+                    (NullPointerException ex) {
+                return Integer.parseInt(num);
+            }
+
+        }
+        return intNum;
+    }
+
+    public static String intToRoman(int input) {
+        if (input > 10) {
+            return Integer.toString(input);
+        }
+        String s = "";
+        while (input >= 10) {
+            s += "X";
+            input -= 10;
+        }
+        while (input >= 9) {
+            s += "IX";
+            input -= 9;
+        }
+        while (input >= 5) {
+            s += "V";
+            input -= 5;
+        }
+        while (input >= 4) {
+            s += "IV";
+            input -= 4;
+        }
+        while (input >= 1) {
+            s += "I";
+            input -= 1;
+        }
+        return s;
     }
 }

@@ -29,7 +29,7 @@ public class ItemDropHandler implements Listener {
                 .getLore() != null)) {
             int loreSize = DroppedItemStack.getItemMeta().getLore().size();
             for (int i = 0; i < loreSize; i++) {
-                loreList.add((String) DroppedItemStack.getItemMeta().getLore()
+                loreList.add(DroppedItemStack.getItemMeta().getLore()
                         .get(i));
             }
             // Checks if the item is a bounded item

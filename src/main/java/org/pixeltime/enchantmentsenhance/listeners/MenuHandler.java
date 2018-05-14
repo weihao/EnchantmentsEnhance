@@ -31,7 +31,6 @@ public class MenuHandler implements Listener {
                 .getName()));
         itemOnEnhancingSlot.put(player.getName(), item);
         player.getInventory().addItem(item);
-
     }
 
 
@@ -137,7 +136,7 @@ public class MenuHandler implements Listener {
                             .hasLore())) {
                         int loreSize = itemMoved.getItemMeta().getLore().size();
                         for (int i = 0; i < loreSize; i++) {
-                            loreList.add((String) itemMoved.getItemMeta()
+                            loreList.add(itemMoved.getItemMeta()
                                     .getLore().get(i));
                         }
                         if (loreList.contains(ChatColor
@@ -156,7 +155,7 @@ public class MenuHandler implements Listener {
                         int loreSize = e.getCurrentItem().getItemMeta()
                                 .getLore().size();
                         for (int i = 0; i < loreSize; i++) {
-                            loreList.add((String) e.getCurrentItem()
+                            loreList.add(e.getCurrentItem()
                                     .getItemMeta().getLore().get(i));
                         }
                         if (loreList.contains(ChatColor

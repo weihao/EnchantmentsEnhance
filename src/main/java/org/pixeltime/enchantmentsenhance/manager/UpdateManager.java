@@ -1,6 +1,6 @@
 package org.pixeltime.enchantmentsenhance.manager;
 
-import net.md_5.bungee.api.ChatColor;
+import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.pixeltime.enchantmentsenhance.Main;
 

@@ -2,7 +2,7 @@ package org.pixeltime.enchantmentsenhance.manager.modular;
 
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.interfaces.GlowItem;
-import org.pixeltime.enchantmentsenhance.util.Reflection;
+import org.pixeltime.enchantmentsenhance.util.reflection.Reflection;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;

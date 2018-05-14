@@ -19,6 +19,9 @@ public class SettingsManager {
     public static File dfile;
     public static FileConfiguration lang;
     public static File langfile;
+    public static FileConfiguration enchant;
+    public static File enchantfile;
+
     public SettingsManager() {
     }
 
@@ -40,7 +43,11 @@ public class SettingsManager {
             }
         }
         data = YamlConfiguration.loadConfiguration(dfile);
-
+        enchantfile = new File(Main.getMain().getDataFolder(), "enchantments.yml");
+        if (!enchantfile.exists()) {
+                Main.getMain().saveResource("enchantments.yml", true);
+        }
+        enchant = YamlConfiguration.loadConfiguration(enchantfile);
         langfile = new File(Main.getMain().getDataFolder(), "lang.yml");
         if (!langfile.exists()) {
             try {
@@ -82,7 +89,6 @@ public class SettingsManager {
         }
     }
 
-
     public static void reloadConfig() {
         config = YamlConfiguration.loadConfiguration(cfile);
     }
@@ -100,5 +106,19 @@ public class SettingsManager {
 
     public static void reloadLang() {
         lang = YamlConfiguration.loadConfiguration(langfile);
+    }
+
+    public static void saveEnchantments() {
+        try {
+            enchant.save(enchantfile);
+        } catch (IOException e) {
+            Bukkit.getServer().getLogger().severe(ChatColor.RED
+                    + "Could not save enchantments.yml!");
+        }
+    }
+
+
+    public static void reloadEnchantments() {
+        enchant = YamlConfiguration.loadConfiguration(enchantfile);
     }
 }

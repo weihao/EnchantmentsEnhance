@@ -1,5 +1,8 @@
 package org.pixeltime.enchantmentsenhance.manager;
 
+import net.milkbowl.vault.economy.Economy;
+import org.bukkit.plugin.RegisteredServiceProvider;
+import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.interfaces.GlowItem;
 import org.pixeltime.enchantmentsenhance.interfaces.PlaySound;
 import org.pixeltime.enchantmentsenhance.interfaces.SpawnFirework;
@@ -11,6 +14,7 @@ public class CompatibilityManager {
     public static GlowItem glow;
     public static PlaySound playsound;
     public static SpawnFirework spawnFirework;
+    private static Economy economy;
 
 
     /**
@@ -52,5 +56,20 @@ public class CompatibilityManager {
         spawnFirework = new SpawnFirework_Safe();
         return spawnFirework != null;
     }
+
+    /**
+     * Setup the Economy.
+     *
+     * @return
+     */
+    public boolean setupEconomy() {
+        final RegisteredServiceProvider registration = Main.getMain().getServer().getServicesManager().getRegistration((Class) Economy.class);
+        if (registration == null) {
+            return false;
+        }
+        CompatibilityManager.economy = (Economy) registration.getProvider();
+        return true;
+    }
+
 
 }
