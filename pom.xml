@@ -109,11 +109,6 @@
             <artifactId>kotlin-runtime</artifactId>
             <version>1.2.41</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.HealPotion</groupId>
-            <artifactId>StackMob-2</artifactId>
-            <version>-SNAPSHOT</version>
-        </dependency>
     </dependencies>
     <build>
         <plugins>

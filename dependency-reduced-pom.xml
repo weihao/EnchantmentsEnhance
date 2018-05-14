@@ -246,12 +246,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <dependency>
-      <groupId>com.github.HealPotion</groupId>
-      <artifactId>StackMob-2</artifactId>
-      <version>-SNAPSHOT</version>
-      <scope>compile</scope>
-    </dependency>
   </dependencies>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
