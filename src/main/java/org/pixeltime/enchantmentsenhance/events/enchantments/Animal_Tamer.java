@@ -16,8 +16,8 @@ public class Animal_Tamer implements Listener {
         if (entityDamageByEntityEvent.getDamager() instanceof Player && !(entityDamageByEntityEvent.getEntity() instanceof Player)) {
             try {
                 final Player owner = (Player) entityDamageByEntityEvent.getDamager();
-                ItemStack[] armorContents;
-                for (int length = (armorContents = owner.getInventory().getArmorContents()).length, i = 0; i < length; ++i) {
+                ItemStack[] armorContents = owner.getInventory().getArmorContents();
+                for (int length = armorContents.length, i = 0; i < length; ++i) {
                     final ItemStack itemStack = armorContents[i];
                     if (itemStack != null && itemStack.hasItemMeta() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " I") && entityDamageByEntityEvent.getEntity() instanceof Wolf) {
                         entityDamageByEntityEvent.setCancelled(true);

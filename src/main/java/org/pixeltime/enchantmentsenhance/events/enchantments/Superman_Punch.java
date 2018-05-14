@@ -27,8 +27,8 @@ public class Superman_Punch implements Listener {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.getWorld()).getApplicableRegions(player.getLocation()).queryState(null, new StateFlag[]{DefaultFlag.PVP}) == StateFlag.State.DENY) {
                     return;
                 }
-                ItemStack[] armorContents;
-                for (int length = (armorContents = player.getInventory().getArmorContents()).length, i = 0; i < length; ++i) {
+                ItemStack[] armorContents = player.getInventory().getArmorContents();
+                for (int length = armorContents.length, i = 0; i < length; ++i) {
                     final ItemStack itemStack = armorContents[i];
                     if (itemStack != null) {
                         if (itemStack.hasItemMeta() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " I") && (int) (Math.random() * 100.0) < SettingsManager.enchant.getInt("superman_punch.level_I.chance")) {

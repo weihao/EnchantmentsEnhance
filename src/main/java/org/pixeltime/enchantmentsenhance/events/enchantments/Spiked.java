@@ -25,8 +25,8 @@ public class Spiked implements Listener {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.getEntity().getWorld()).getApplicableRegions(entityDamageByEntityEvent.getEntity().getLocation()).queryState(null, new StateFlag[]{DefaultFlag.PVP}) == StateFlag.State.DENY) {
                     return;
                 }
-                ItemStack[] armorContents;
-                for (int length = (armorContents = ((Player) entityDamageByEntityEvent.getEntity()).getInventory().getArmorContents()).length, i = 0; i < length; ++i) {
+                ItemStack[] armorContents = ((Player) entityDamageByEntityEvent.getEntity()).getInventory().getArmorContents();
+                for (int length = armorContents.length, i = 0; i < length; ++i) {
                     final ItemStack itemStack = armorContents[i];
                     if (itemStack != null && itemStack.hasItemMeta() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " I")) {
                         player.damage(2.0);

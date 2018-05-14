@@ -47,8 +47,8 @@ public class MoveEvents implements Listener {
         }
         final String translateAlternateColorCodes2 = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "eyepatch"));
         try {
-            ItemStack[] armorContents;
-            for (int length = (armorContents = player.getInventory().getArmorContents()).length, i = 0; i < length; ++i) {
+            ItemStack[] armorContents =player.getInventory().getArmorContents();
+            for (int length = armorContents.length, i = 0; i < length; ++i) {
                 final ItemStack itemStack = armorContents[i];
                 if (itemStack.hasItemMeta() && itemStack.getItemMeta().hasLore() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes2) + " I") && player.hasPotionEffect(PotionEffectType.BLINDNESS)) {
                     player.removePotionEffect(PotionEffectType.BLINDNESS);

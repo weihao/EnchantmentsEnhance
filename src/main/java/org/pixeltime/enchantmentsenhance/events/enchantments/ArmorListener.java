@@ -230,8 +230,8 @@ public class ArmorListener implements Listener {
     public void playerDeathEvent(final PlayerDeathEvent playerDeathEvent) {
         try {
             final Player entity = playerDeathEvent.getEntity();
-            ItemStack[] armorContents;
-            for (int length = (armorContents = entity.getInventory().getArmorContents()).length, i = 0; i < length; ++i) {
+            ItemStack[] armorContents = entity.getInventory().getArmorContents();
+            for (int length = armorContents.length, i = 0; i < length; ++i) {
                 final ItemStack itemStack = armorContents[i];
                 if (itemStack != null && !itemStack.getType().equals(Material.AIR)) {
                     Bukkit.getServer().getPluginManager().callEvent(new ArmorEquipEvent(entity, ArmorEquipEvent.EquipMethod.DEATH, ArmorType.matchType(itemStack), itemStack, null));

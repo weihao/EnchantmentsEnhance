@@ -27,8 +27,8 @@ public class Shadowstep implements Listener {
                     return;
                 }
                 final int n = (int) (Math.random() * 100.0);
-                ItemStack[] armorContents;
-                for (int length = (armorContents = player.getInventory().getArmorContents()).length, i = 0; i < length; ++i) {
+                ItemStack[] armorContents = player.getInventory().getArmorContents();
+                for (int length = armorContents.length, i = 0; i < length; ++i) {
                     final ItemStack itemStack = armorContents[i];
                     if (itemStack != null) {
                         if (itemStack.hasItemMeta() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " I") && n < SettingsManager.enchant.getInt("shadowstep.level_I.chance")) {
