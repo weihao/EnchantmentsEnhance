@@ -58,7 +58,7 @@ public class Language_zh_cn {
         SettingsManager.lang.addDefault("Help.version", "&6检测当前文件版本.");
         SettingsManager.lang.addDefault("Help.lore", "&6删除或添加道具绑定标签.");
         SettingsManager.lang.addDefault("Help.inventory", "&6查看你已收集的道具.");
-        SettingsManager.lang.addDefault("Help.select", "&6/enhance select {n} 来使用巴尔克斯的忠告.");
+        SettingsManager.lang.addDefault("Help.select", "&6使用巴尔克斯的忠告.");
         SettingsManager.lang.addDefault("Help.add", "&6给予一个玩家指定黑石.");
         SettingsManager.lang.addDefault("Help.debug", "&6收集数据以帮助开发者解决问题.");
         SettingsManager.lang.addDefault("Help.reform", "&6打开改良道具的面板.");

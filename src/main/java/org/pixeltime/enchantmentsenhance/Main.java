@@ -189,5 +189,15 @@ public class Main extends JavaPlugin {
                     "Error in EnchantmentsEnhance! (Outdated plugin?)");
             Bukkit.getPluginManager().disablePlugin(this);
         }
+
+        if (compatibility.setupEconomy()) {
+            getLogger().info("Enhancement-Vault Hook was successful!");
+        } else {
+
+            getLogger().severe("Failed to setup Enhancement Vault Hook!");
+            getLogger().severe(
+                    "Error in EnchantmentsEnhance! (Outdated plugin?)");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
     }
 }

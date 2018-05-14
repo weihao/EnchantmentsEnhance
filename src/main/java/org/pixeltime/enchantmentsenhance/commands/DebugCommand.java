@@ -1,13 +1,13 @@
 package org.pixeltime.enchantmentsenhance.commands;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.commands.console.DebugConsoleCommand;
+import org.pixeltime.enchantmentsenhance.events.blackspirit.Enhance;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 public class DebugCommand extends SubCommand {
     @Override
     public void onCommand(Player p, String[] args) {
-        new DebugConsoleCommand().onCommand(p, args);
+        Enhance.enhanceSuccess(p.getItemInHand(), p, false, 19);
     }
 
 

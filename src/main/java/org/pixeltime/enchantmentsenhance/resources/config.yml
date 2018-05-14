@@ -20,7 +20,7 @@ lifeskill:
     - REDSTONE_ORE
   chopping:
     - LOG
-  fishing: 
+  fishing:
     - CAUGHT_FISH
   killing:
     - MONSTER
@@ -118,12 +118,12 @@ material:
     - IRON_SWORD
     - IRON_AXE
     - WOOD_AXE
-    
+
 
 FirstPhaseStarts: 7
 SecondPhaseStarts: 15
 DowngradePhaseStarts: 17
-#https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
+#https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html#
 enhance:
   0:
     baseChance: 100
@@ -146,9 +146,10 @@ enhance:
     name: "+1"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:1
+         - DAMAGE_ALL:1
+         - Assassin:1
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:1
+         - PROTECTION_ENVIRONMENTAL:1
   2:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -160,9 +161,10 @@ enhance:
     name: "+2"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:2
+         - DAMAGE_ALL:2
+         - Kill_Confirm:1
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:2
+         - PROTECTION_ENVIRONMENTAL:2
   3:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -174,9 +176,10 @@ enhance:
     name: "+3"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:3
+         - DAMAGE_ALL:3
+         - Hex:1
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:3
+         - PROTECTION_ENVIRONMENTAL:3
   4:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -188,9 +191,10 @@ enhance:
     name: "+4"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:4
+         - DAMAGE_ALL:4
+         - Riftslayer:1
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:4
+         - PROTECTION_ENVIRONMENTAL:4
   5:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -202,9 +206,10 @@ enhance:
     name: "+5"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:5
+         - DAMAGE_ALL:5
+         - Demon_Siphon:1
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:5
+         - PROTECTION_ENVIRONMENTAL:5
   6:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -216,9 +221,10 @@ enhance:
     name: "+6"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:6
+         - DAMAGE_ALL:6
+         - Lifesteal:1
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:6
+         - PROTECTION_ENVIRONMENTAL:5
   7:
     baseChance: 20
     chanceIncreasePerFailstack: 2.5
@@ -230,9 +236,9 @@ enhance:
     name: "+7"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:7
+         - DAMAGE_ALL:7
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:7
+         - PROTECTION_ENVIRONMENTAL:5
   8:
     baseChance: 17.5
     chanceIncreasePerFailstack: 2.0
@@ -244,9 +250,9 @@ enhance:
     name: "+8"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:8
+         - DAMAGE_ALL:8
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:8
+         - PROTECTION_ENVIRONMENTAL:5
   9:
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -258,9 +264,9 @@ enhance:
     name: "+9"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:9
+         - DAMAGE_ALL:9
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:9
+         - PROTECTION_ENVIRONMENTAL:5
   10:
     baseChance: 12.5
     chanceIncreasePerFailstack: 1.25
@@ -272,9 +278,9 @@ enhance:
     name: "+10"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:10
+         - DAMAGE_ALL:10
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:10
+         - PROTECTION_ENVIRONMENTAL:5
   11:
     baseChance: 10
     chanceIncreasePerFailstack: 0.75
@@ -286,9 +292,9 @@ enhance:
     name: "+11"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:11
+         - DAMAGE_ALL:11
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:11
+         - PROTECTION_ENVIRONMENTAL:5
   12:
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.63
@@ -300,9 +306,9 @@ enhance:
     name: "+12"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:12
+         - DAMAGE_ALL:12
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:12
+         - PROTECTION_ENVIRONMENTAL:5
   13:
     baseChance: 5
     chanceIncreasePerFailstack: 0.5
@@ -314,9 +320,9 @@ enhance:
     name: "+13"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:13
+         - DAMAGE_ALL:13
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:13
+         - PROTECTION_ENVIRONMENTAL:5
   14:
     baseChance: 2.5
     chanceIncreasePerFailstack: 0.5
@@ -328,9 +334,9 @@ enhance:
     name: "+14"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:14
+         - DAMAGE_ALL:14
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:14
+         - PROTECTION_ENVIRONMENTAL:5
   15:
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -342,9 +348,9 @@ enhance:
     name: "+15"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:15
+         - DAMAGE_ALL:15
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:15
+         - PROTECTION_ENVIRONMENTAL:5
   16:
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.75
@@ -356,9 +362,9 @@ enhance:
     name: "PRI"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:17
+         - DAMAGE_ALL:17
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:17
+         - PROTECTION_ENVIRONMENTAL:5
   17:
     baseChance: 5.0
     chanceIncreasePerFailstack: 0.5
@@ -370,9 +376,9 @@ enhance:
     name: "DUO"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:19
+         - DAMAGE_ALL:19
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:19
+         - PROTECTION_ENVIRONMENTAL:5
   18:
     baseChance: 2.0
     chanceIncreasePerFailstack: 0.25
@@ -384,9 +390,9 @@ enhance:
     name: "TRI"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:21
+         - DAMAGE_ALL:21
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:21
+         - PROTECTION_ENVIRONMENTAL:5
   19:
     baseChance: 1.5
     chanceIncreasePerFailstack: 0.25
@@ -398,9 +404,9 @@ enhance:
     name: "TET"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:23
+         - DAMAGE_ALL:23
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:23
+         - PROTECTION_ENVIRONMENTAL:5
   20:
     baseChance: -1
     chanceIncreasePerFailstack: -1
@@ -412,9 +418,63 @@ enhance:
     name: "PEN"
     enchantments:
       WEAPON:
-        - DAMAGE_ALL:25
+         - DAMAGE_ALL:25
+         - Lifesteal:3
+         - Assassin:3
+         - Kill_Confirm:3
+         - Hex:3
+         - Riftslayer:1
+         - Demon_Siphon:3
+         - Angry_Birds:5
+         - Curse:4
+         - Crushing:5
+         - Execute:5
+         - Purge:4
+         - Divine:3
+         - Plunder:1
+         - Mischief:3
+         - Disarm:3
+         - Thief:3
+         - Reborn:3
+         - Web_Trap:3
+         - Reversal:3
+         - Endless:1
+
       ARMOR:
-        - PROTECTION_ENVIRONMENTAL:25
+         - PROTECTION_ENVIRONMENTAL:5
+         - Dodge:5
+         - Blessed:3
+         - Demonic_Aura:1
+         - Stealth:4
+         - Aegis:5
+         - Platemail:1
+         - Pyromanic:5
+         - Flame_Cloak:3
+         - Spiked:2
+         - Shadowstep:3
+         - Animal_Tamer:1
+         - Wolves:1
+         - Superman_Punch:3
+         - Horse_Rider:1
+         - Paralyze:2
+         - Farmer:1
+         - Feather_Fall:1
+         - Jump:3
+         - Speed:3
+         - Batvision:1
+         - Eyepatch:1
+         - Swimmer:3
+         - Endless:1
+         - Health_Boost:3
+         - Molten:1
+         - Immolation:5
+         - Strength:3
+         - Reinforced:5
+         - Suicide:1
+         - Batman:3
+         - Necromancer:5
+
+
 weaponGrade:
   0:
     name: ""

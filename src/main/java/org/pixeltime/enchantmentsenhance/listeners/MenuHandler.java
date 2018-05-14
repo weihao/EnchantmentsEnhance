@@ -26,11 +26,16 @@ public class MenuHandler implements Listener {
             new HashMap<String, ItemStack>();
 
 
-    public static void updateItem(Player player, ItemStack item) {
-        player.getInventory().removeItem(itemOnEnhancingSlot.get(player
-                .getName()));
-        itemOnEnhancingSlot.put(player.getName(), item);
-        player.getInventory().addItem(item);
+    public static void updateItem(Player player, ItemStack old, ItemStack item) {
+        try {
+            player.getInventory().removeItem(old);
+            itemOnEnhancingSlot.put(player.getName(), item);
+            player.getInventory().addItem(item);
+        }
+        catch(NullPointerException ex)
+        {
+            //Item might not be on the enhancing slot.
+        }
     }
 
 

@@ -1,14 +1,14 @@
 package org.pixeltime.enchantmentsenhance.commands;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.commands.console.HelpConsoleCommand;
+import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 public class HelpCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        new HelpConsoleCommand().onCommand(player, args);
+        Main.getMain().commandManager.printHelp(player);
     }
 
 

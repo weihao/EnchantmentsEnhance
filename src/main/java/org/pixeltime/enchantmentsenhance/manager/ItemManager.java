@@ -108,7 +108,7 @@ public class ItemManager {
         applyEnchantments(currItem);
         renameItem(currItem);
         soulbound(currItem);
-        MenuHandler.updateItem(player, currItem);
+        MenuHandler.updateItem(player, item, currItem);
     }
 
     public static void applyEnchantments(ItemStack item) {
