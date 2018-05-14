@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance;
 
-import org.pixeltime.enchantmentsenhance.manager.EnchantmentsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -147,7 +146,7 @@ public class Main extends JavaPlugin {
         new Metrics(this);
         commandManager = new CommandManager();
         commandManager.setup();
-        EnchantmentsManager enchantmentsManager= new EnchantmentsManager();
+        EnchantmentsManager enchantmentsManager = new EnchantmentsManager();
         enchantmentsManager.setUp();
     }
 

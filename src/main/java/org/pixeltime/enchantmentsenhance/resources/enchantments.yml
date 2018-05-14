@@ -1,15 +1,13 @@
 # Allow WorldGuard and WorldEdit to check the pvp flags.
-allow-worldguard: false
+allow-worldguard: true
 
-# This option should be "true" for only those, who have problem with removal of potion effect on moving.
+# It means that the potion effect's time is limited and renewed every few seconds.
+# Change this to false will greatly improve server TPS but might be exploited by players.
 periodic-potions: true
 
 # List of disabled enchantments:
-# By default, batvision is not disabled, but if you want to disable it remove the "#" in the starting of that line.
-# Once you disabled enchantments reload or restart your server.
-
 disabled:
-#- batvision
+#- lifesteal
 
 # Enchantments' configuration:
 lifesteal:

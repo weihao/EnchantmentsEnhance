@@ -9,5 +9,5 @@ public interface PlaySound {
      * @param p
      * @param type
      */
-    public void playSound(Player p, String type);
+     void playSound(Player p, String type);
 }

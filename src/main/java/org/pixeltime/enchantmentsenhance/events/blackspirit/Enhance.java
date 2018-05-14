@@ -3,7 +3,6 @@ package org.pixeltime.enchantmentsenhance.events.blackspirit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.events.inventory.Inventory;
-import org.pixeltime.enchantmentsenhance.listeners.MenuHandler;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.Broadcast;
 import org.pixeltime.enchantmentsenhance.util.Util;

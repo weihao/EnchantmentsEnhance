@@ -1,20 +1,20 @@
 package org.pixeltime.enchantmentsenhance.manager;
 
-import org.pixeltime.enchantmentsenhance.events.enchantments.*;
-import org.pixeltime.enchantmentsenhance.listeners.EnchantmentHandler;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Material;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.RegisteredListener;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.events.enchantments.*;
+import org.pixeltime.enchantmentsenhance.listeners.EnchantmentHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
 public class EnchantmentsManager {
-public static final Material[] armour;
+    public static final Material[] armour;
     public static final Material[] weapon;
     public static final Material[] sword;
     public static final Material[] axe;

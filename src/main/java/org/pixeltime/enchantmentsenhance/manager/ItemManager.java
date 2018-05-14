@@ -76,7 +76,6 @@ public class ItemManager {
     }
 
 
-
     public static ItemStack gradeUpdate(ItemStack item, int gradeLevel) {
         NBTItem nbti = new NBTItem(item);
         nbti.setInteger("EGrade", gradeLevel);
@@ -95,8 +94,7 @@ public class ItemManager {
         return nbti.getInteger("EGrade");
     }
 
-    public static void soulbound(ItemStack item)
-    {
+    public static void soulbound(ItemStack item) {
         Lore.addLore(item, ChatColor.translateAlternateColorCodes('&',
                 SettingsManager.lang.getString("Lore." + SettingsManager.config
                         .getString("lore.bound") + "Lore")), SettingsManager.config
@@ -127,11 +125,9 @@ public class ItemManager {
             try {
                 item.addUnsafeEnchantment(Enchantment.getByName(a[0]), Integer
                         .parseInt(a[1]));
-            }
-            catch(IllegalArgumentException ex)
-            {
-                String enchantment = SettingsManager.lang.getString("enchantments." +a[0]);
-                if (enchantment  != null) {
+            } catch (IllegalArgumentException ex) {
+                String enchantment = SettingsManager.lang.getString("enchantments." + a[0].toLowerCase());
+                if (enchantment != null) {
                     newlore.add(enchantment + " " + Util.intToRoman(Integer
                             .parseInt(a[1])));
                 }

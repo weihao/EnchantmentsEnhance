@@ -68,7 +68,7 @@ public class Arrow_Rain implements Listener {
         if (entityDamageByEntityEvent.isCancelled()) {
             return;
         }
-        if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.getEntity().getWorld()).getApplicableRegions(entityDamageByEntityEvent.getEntity().getLocation()).queryState(null, new StateFlag[]{DefaultFlag.PVP}) == StateFlag.State.DENY) {
+        if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.getEntity().getWorld()).getApplicableRegions(entityDamageByEntityEvent.getEntity().getLocation()).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
             return;
         }
         if (entityDamageByEntityEvent.getDamager() instanceof Projectile) {

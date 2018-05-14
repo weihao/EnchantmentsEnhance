@@ -3,7 +3,6 @@ package org.pixeltime.enchantmentsenhance.events.enchantments;
 import com.sk89q.worldguard.bukkit.WGBukkit;
 import com.sk89q.worldguard.protection.flags.DefaultFlag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
-import org.pixeltime.enchantmentsenhance.manager.EnchantmentsManager;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -11,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.pixeltime.enchantmentsenhance.manager.EnchantmentsManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 public class Thief implements Listener {

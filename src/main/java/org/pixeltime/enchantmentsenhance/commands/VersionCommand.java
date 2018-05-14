@@ -1,17 +1,13 @@
 package org.pixeltime.enchantmentsenhance.commands;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class VersionCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        Util.sendMessage(SettingsManager.lang.getString(
-                "Config.checkingVersion").replaceAll("%version%", Main.getMain()
-                .getDescription().getVersion()), player);
+        new VersionCommand().onCommand(player, args);
     }
 
 

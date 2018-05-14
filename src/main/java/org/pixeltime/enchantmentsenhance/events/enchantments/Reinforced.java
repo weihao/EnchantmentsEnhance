@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance.events.enchantments;
 
-import org.pixeltime.enchantmentsenhance.manager.EnchantmentsManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.pixeltime.enchantmentsenhance.events.enchantments.ArmorEquipEvent;
+import org.pixeltime.enchantmentsenhance.manager.EnchantmentsManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 public class Reinforced implements Listener {

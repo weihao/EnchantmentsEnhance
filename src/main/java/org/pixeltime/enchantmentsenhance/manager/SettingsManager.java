@@ -45,7 +45,7 @@ public class SettingsManager {
         data = YamlConfiguration.loadConfiguration(dfile);
         enchantfile = new File(Main.getMain().getDataFolder(), "enchantments.yml");
         if (!enchantfile.exists()) {
-                Main.getMain().saveResource("enchantments.yml", true);
+            Main.getMain().saveResource("enchantments.yml", true);
         }
         enchant = YamlConfiguration.loadConfiguration(enchantfile);
         langfile = new File(Main.getMain().getDataFolder(), "lang.yml");

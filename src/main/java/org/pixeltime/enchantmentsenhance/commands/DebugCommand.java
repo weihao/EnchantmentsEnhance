@@ -1,19 +1,13 @@
 package org.pixeltime.enchantmentsenhance.commands;
 
-import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.manager.EM;
+import org.pixeltime.enchantmentsenhance.commands.console.DebugConsoleCommand;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 public class DebugCommand extends SubCommand {
-    public static int animationTask;
-    ArmorStand as;
-
     @Override
     public void onCommand(Player p, String[] args) {
-        EM.removeEnchantments(p.getItemInHand());
-        //      GraphicsManager gm = new GraphicsManager();
+        new DebugConsoleCommand().onCommand(p, args);
     }
 
 
@@ -40,10 +34,4 @@ public class DebugCommand extends SubCommand {
     public String getPermission() {
         return "Enchantmentsenhance.debug";
     }
-
-
-    public void log(String s) {
-        Main.getMain().getLogger().info("DEBUG >>>" + s);
-    }
-
 }

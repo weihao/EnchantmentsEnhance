@@ -15,11 +15,9 @@ public class AddConsoleCommand extends SubConsoleCommand {
         // /enhance add <player> <stone id> <amounts>
         // /cmd subcommand args[0] args[1] args[2]
         if (args.length == 3) {
-            Player p = null;
-            int stoneType = -1;
-            int level = -1;
-
-            p = Bukkit.getServer().getPlayer(args[0]);
+            Player p = Bukkit.getServer().getPlayer(args[0]);
+            int stoneType;
+            int level;
 
             if (p == null) {
                 Util.sendMessage(SettingsManager.lang.getString(

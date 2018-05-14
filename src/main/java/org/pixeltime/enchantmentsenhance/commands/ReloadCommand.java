@@ -1,21 +1,13 @@
 package org.pixeltime.enchantmentsenhance.commands;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.manager.DataManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class ReloadCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        SettingsManager.reloadConfig();
-        SettingsManager.reloadData();
-        SettingsManager.reloadLang();
-        new DataManager();
-        SettingsManager.setup();
-        Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
-                player);
+       new ReloadCommand().onCommand(player, args);
     }
 
 
