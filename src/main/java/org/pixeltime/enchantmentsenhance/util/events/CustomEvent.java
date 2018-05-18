@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.event;
+package org.pixeltime.enchantmentsenhance.util.events;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;

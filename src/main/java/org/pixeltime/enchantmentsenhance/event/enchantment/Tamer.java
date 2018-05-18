@@ -12,7 +12,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 public class Tamer implements Listener {
     @EventHandler
     public void onDamage(final EntityDamageByEntityEvent entityDamageByEntityEvent) {
-        final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "animal_tamer"));
+        final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "tamer"));
         if (entityDamageByEntityEvent.getDamager() instanceof Player && !(entityDamageByEntityEvent.getEntity() instanceof Player)) {
             try {
                 final Player owner = (Player) entityDamageByEntityEvent.getDamager();

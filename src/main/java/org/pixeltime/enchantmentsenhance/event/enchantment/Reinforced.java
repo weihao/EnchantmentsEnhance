@@ -7,9 +7,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.pixeltime.enchantmentsenhance.event.ArmorEquipEvent;
 import org.pixeltime.enchantmentsenhance.manager.EnchantmentsManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.util.events.ArmorEquipEvent;
 
 public class Reinforced implements Listener {
     @EventHandler

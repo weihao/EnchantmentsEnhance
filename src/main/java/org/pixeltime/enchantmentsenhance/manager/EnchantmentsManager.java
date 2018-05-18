@@ -6,8 +6,8 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.RegisteredListener;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.listener.ArmorHandler;
 import org.pixeltime.enchantmentsenhance.event.enchantment.*;
+import org.pixeltime.enchantmentsenhance.listener.ArmorHandler;
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentHandler;
 
 import java.util.ArrayList;
@@ -147,7 +147,7 @@ public class EnchantmentsManager {
         this.register("cursed_stone", "any", 1);
         this.register("magic_dust", "runes", 1);
         this.register("suicide", "chestplate", 1);
-        this.register("angry_birds", "sword", 5);
+        this.register("launch", "sword", 5);
         this.register("rekt", "axe", 1);
 
         Main.getMain().getServer().getPluginManager().registerEvents(new EnchantmentHandler(), Main.getMain());
@@ -234,7 +234,7 @@ public class EnchantmentsManager {
 
     public void register() {
         EnchantmentsManager.type.put("aegis", "armour");
-        EnchantmentsManager.type.put("animal_tamer", "armour");
+        EnchantmentsManager.type.put("tamer", "armour");
         EnchantmentsManager.type.put("arrow_rain", "bow");
         EnchantmentsManager.type.put("assassin", "sword");
         EnchantmentsManager.type.put("batvision", "helmet");
@@ -269,7 +269,7 @@ public class EnchantmentsManager {
         EnchantmentsManager.type.put("speed", "boot");
         EnchantmentsManager.type.put("spiked", "armour");
         EnchantmentsManager.type.put("stealth", "armour");
-        EnchantmentsManager.type.put("superman_punch", "armour");
+        EnchantmentsManager.type.put("repel", "armour");
         EnchantmentsManager.type.put("turmoil", "axe");
         EnchantmentsManager.type.put("wolves", "armour");
         EnchantmentsManager.type.put("zeus", "bow");
@@ -329,9 +329,9 @@ public class EnchantmentsManager {
         EnchantmentsManager.enchants.add("holy_smite");
         EnchantmentsManager.enchants.add("shadowstep");
         EnchantmentsManager.enchants.add("demon_siphon");
-        EnchantmentsManager.enchants.add("animal_tamer");
+        EnchantmentsManager.enchants.add("tamer");
         EnchantmentsManager.enchants.add("wolves");
-        EnchantmentsManager.enchants.add("superman_punch");
+        EnchantmentsManager.enchants.add("repel");
         EnchantmentsManager.enchants.add("disarm");
         EnchantmentsManager.enchants.add("thief");
         EnchantmentsManager.enchants.add("medic");
@@ -387,9 +387,9 @@ public class EnchantmentsManager {
         EnchantmentsManager.enchantments.put("protection", 1);
         EnchantmentsManager.enchantments.put("shadowstep", 3);
         EnchantmentsManager.enchantments.put("demon_siphon", 3);
-        EnchantmentsManager.enchantments.put("animal_tamer", 1);
+        EnchantmentsManager.enchantments.put("tamer", 1);
         EnchantmentsManager.enchantments.put("wolves", 5);
-        EnchantmentsManager.enchantments.put("superman_punch", 3);
+        EnchantmentsManager.enchantments.put("repel", 3);
         EnchantmentsManager.enchantments.put("disarm", 3);
         EnchantmentsManager.enchantments.put("thief", 3);
         EnchantmentsManager.enchantments.put("swimmer", 3);

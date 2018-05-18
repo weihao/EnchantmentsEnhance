@@ -28,7 +28,7 @@ import org.pixeltime.enchantmentsenhance.event.blackspirit.Reform;
 import org.pixeltime.enchantmentsenhance.event.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.listener.*;
 import org.pixeltime.enchantmentsenhance.manager.*;
-import org.pixeltime.enchantmentsenhance.util.AnimalBreeding;
+import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
 import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
 

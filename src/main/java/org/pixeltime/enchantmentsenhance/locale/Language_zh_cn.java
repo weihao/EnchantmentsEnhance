@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.manager.language;
+package org.pixeltime.enchantmentsenhance.locale;
 
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
@@ -140,10 +140,10 @@ public class Language_zh_cn {
         SettingsManager.lang.addDefault("enchantment.mischief", "&7戏耍");
         SettingsManager.lang.addDefault("enchantment.shadowstep", "&7暗影步");
         SettingsManager.lang.addDefault("enchantment.demon_siphon", "&7虹吸");
-        SettingsManager.lang.addDefault("enchantment.animal_tamer", "&7驯兽");
+        SettingsManager.lang.addDefault("enchantment.tamer", "&7驯兽");
         SettingsManager.lang.addDefault("enchantment.wolves", "&7野狼");
         SettingsManager.lang.addDefault("enchantment.disarm", "&7缴械");
-        SettingsManager.lang.addDefault("enchantment.superman_punch", "&7超人");
+        SettingsManager.lang.addDefault("enchantment.repel", "&7超人");
         SettingsManager.lang.addDefault("enchantment.spiked", "&7尖刺");
         SettingsManager.lang.addDefault("enchantment.medic", "&7军医");
         SettingsManager.lang.addDefault("enchantment.swimmer", "&7亲水");
@@ -174,7 +174,7 @@ public class Language_zh_cn {
         SettingsManager.lang.addDefault("enchantment.shooter", "&7射手");
         SettingsManager.lang.addDefault("enchantment.feather_fall", "&7羽落");
         SettingsManager.lang.addDefault("enchantment.suicide", "&帝陨");
-        SettingsManager.lang.addDefault("enchantment.angry_birds", "&7弹射");
+        SettingsManager.lang.addDefault("enchantment.launch", "&7弹射");
 
 
         SettingsManager.lang.options().copyDefaults(true);

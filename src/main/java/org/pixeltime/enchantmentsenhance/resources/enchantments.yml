@@ -472,7 +472,7 @@ wolves:
       chance: 25
       wolves: 5
       
-superman_punch:
+repel:
     level_I:
       chance: 10
       power: 5
@@ -751,7 +751,7 @@ arrow_rain:
     level_V:
       chance: 25
       
-angry_birds:
+launch:
 
     level_I:
       chance: 5

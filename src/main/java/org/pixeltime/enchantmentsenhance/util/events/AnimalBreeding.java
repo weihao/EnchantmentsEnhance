@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.util;
+package org.pixeltime.enchantmentsenhance.util.events;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;

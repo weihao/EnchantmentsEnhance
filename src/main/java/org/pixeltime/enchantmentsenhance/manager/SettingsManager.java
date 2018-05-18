@@ -5,8 +5,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.manager.language.Language_en_us;
-import org.pixeltime.enchantmentsenhance.manager.language.Language_zh_cn;
+import org.pixeltime.enchantmentsenhance.locale.Language_en_us;
+import org.pixeltime.enchantmentsenhance.locale.Language_zh_cn;
 
 import java.io.File;
 import java.io.IOException;

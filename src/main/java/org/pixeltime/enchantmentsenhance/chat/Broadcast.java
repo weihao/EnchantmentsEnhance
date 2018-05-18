@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.util;
+package org.pixeltime.enchantmentsenhance.chat;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.util.Util;
 
 /**
  * @author HealPotion

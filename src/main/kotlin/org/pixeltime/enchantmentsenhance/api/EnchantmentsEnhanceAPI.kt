@@ -1,10 +1,11 @@
-package org.pixeltime.enchantmentsenhance.manager
+package org.pixeltime.enchantmentsenhance.api
 
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Failstack
 import org.pixeltime.enchantmentsenhance.event.inventory.Inventory
+import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import java.util.*
 
 class API {

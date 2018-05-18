@@ -16,7 +16,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 public class Repel implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onDamaged(final EntityDamageByEntityEvent entityDamageByEntityEvent) {
-        final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "superman_punch"));
+        final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "repel"));
         if (entityDamageByEntityEvent.getEntity() instanceof Player) {
             try {
                 final Entity damager = entityDamageByEntityEvent.getDamager();
@@ -31,14 +31,14 @@ public class Repel implements Listener {
                 for (int length = armorContents.length, i = 0; i < length; ++i) {
                     final ItemStack itemStack = armorContents[i];
                     if (itemStack != null) {
-                        if (itemStack.hasItemMeta() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " I") && (int) (Math.random() * 100.0) < SettingsManager.enchant.getInt("superman_punch.level_I.chance")) {
-                            damager.setVelocity(player.getLocation().getDirection().multiply(SettingsManager.enchant.getInt("superman_punch.level_I.power")));
+                        if (itemStack.hasItemMeta() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " I") && (int) (Math.random() * 100.0) < SettingsManager.enchant.getInt("repel.level_I.chance")) {
+                            damager.setVelocity(player.getLocation().getDirection().multiply(SettingsManager.enchant.getInt("repel.level_I.power")));
                         }
-                        if (itemStack.hasItemMeta() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " II") && (int) (Math.random() * 100.0) < SettingsManager.enchant.getInt("superman_punch.level_II.chance")) {
-                            damager.setVelocity(player.getLocation().getDirection().multiply(SettingsManager.enchant.getInt("superman_punch.level_II.power")));
+                        if (itemStack.hasItemMeta() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " II") && (int) (Math.random() * 100.0) < SettingsManager.enchant.getInt("repel.level_II.chance")) {
+                            damager.setVelocity(player.getLocation().getDirection().multiply(SettingsManager.enchant.getInt("repel.level_II.power")));
                         }
-                        if (itemStack.hasItemMeta() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " III") && (int) (Math.random() * 100.0) < SettingsManager.enchant.getInt("superman_punch.level_III.chance")) {
-                            damager.setVelocity(player.getLocation().getDirection().multiply(SettingsManager.enchant.getInt("superman_punch.level_III.power")));
+                        if (itemStack.hasItemMeta() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " III") && (int) (Math.random() * 100.0) < SettingsManager.enchant.getInt("repel.level_III.chance")) {
+                            damager.setVelocity(player.getLocation().getDirection().multiply(SettingsManager.enchant.getInt("repel.level_III.power")));
                         }
                     }
                 }

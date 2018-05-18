@@ -18,7 +18,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.FurnaceInventory;
 import org.bukkit.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.manager.DropManager;
-import org.pixeltime.enchantmentsenhance.util.AnimalBreeding;
+import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 
 import java.util.Random;
 

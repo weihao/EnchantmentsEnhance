@@ -25,7 +25,7 @@ public class Endless implements Listener {
 
     @EventHandler
     public void noWeaponBreakDamage(final EntityDamageByEntityEvent entityDamageByEntityEvent) {
-        final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "animal_tamer"));
+        final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "tamer"));
         try {
             if (entityDamageByEntityEvent.getDamager() instanceof Player) {
                 final Player player = (Player) entityDamageByEntityEvent.getDamager();
@@ -70,7 +70,7 @@ public class Endless implements Listener {
 
     @EventHandler
     public void noWeaponBreakDamage(final EntityShootBowEvent entityShootBowEvent) {
-        final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "animal_tamer"));
+        final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "tamer"));
         try {
             if (entityShootBowEvent.getEntity() instanceof Player && entityShootBowEvent.getBow().getItemMeta().hasLore() && entityShootBowEvent.getBow().getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " I")) {
                 entityShootBowEvent.getBow().setDurability((short) 1);
@@ -81,7 +81,7 @@ public class Endless implements Listener {
 
     @EventHandler
     public void noWeaponBreakDamage(final PlayerItemBreakEvent playerItemBreakEvent) {
-        final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "animal_tamer"));
+        final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "tamer"));
         try {
             final ItemStack clone = playerItemBreakEvent.getBrokenItem().clone();
             if (clone.getItemMeta().hasLore() && clone.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " I")) {

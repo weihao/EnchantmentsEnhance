@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.event;
+package org.pixeltime.enchantmentsenhance.util.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;

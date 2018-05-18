@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.manager.language;
+package org.pixeltime.enchantmentsenhance.locale;
 
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
@@ -144,10 +144,10 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("enchantment.mischief", "&7Mischief");
         SettingsManager.lang.addDefault("enchantment.shadowstep", "&7Shadowstep");
         SettingsManager.lang.addDefault("enchantment.demon_siphon", "&7Demon Siphon");
-        SettingsManager.lang.addDefault("enchantment.animal_tamer", "&7Animal Tamer");
+        SettingsManager.lang.addDefault("enchantment.tamer", "&7Tamer");
         SettingsManager.lang.addDefault("enchantment.wolves", "&7Wolves");
         SettingsManager.lang.addDefault("enchantment.disarm", "&7Disarm");
-        SettingsManager.lang.addDefault("enchantment.superman_punch", "&7Superman Punch");
+        SettingsManager.lang.addDefault("enchantment.repel", "&7Repel");
         SettingsManager.lang.addDefault("enchantment.spiked", "&7Spiked");
         SettingsManager.lang.addDefault("enchantment.medic", "&7Medic");
         SettingsManager.lang.addDefault("enchantment.swimmer", "&7Swimmer");
@@ -178,7 +178,7 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("enchantment.shooter", "&7Shooter");
         SettingsManager.lang.addDefault("enchantment.feather_fall", "&7Feather Fall");
         SettingsManager.lang.addDefault("enchantment.suicide", "&7Suicide");
-        SettingsManager.lang.addDefault("enchantment.angry_birds", "&7Angry Birds");
+        SettingsManager.lang.addDefault("enchantment.launch", "&7Angry Birds");
 
         SettingsManager.lang.options().copyDefaults(true);
         SettingsManager.saveLang();
