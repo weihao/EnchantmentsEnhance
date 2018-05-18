@@ -9,5 +9,5 @@ public interface GlowItem {
      * @param item
      * @return
      */
-     ItemStack addGlow(ItemStack item);
+    ItemStack addGlow(ItemStack item);
 }

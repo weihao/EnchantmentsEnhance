@@ -31,9 +31,7 @@ public class MenuHandler implements Listener {
             player.getInventory().removeItem(old);
             itemOnEnhancingSlot.put(player.getName(), item);
             player.getInventory().addItem(item);
-        }
-        catch(NullPointerException ex)
-        {
+        } catch (NullPointerException ex) {
             //Item might not be on the enhancing slot.
         }
     }

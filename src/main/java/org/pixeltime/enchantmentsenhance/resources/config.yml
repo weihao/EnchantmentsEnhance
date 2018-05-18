@@ -1,13 +1,39 @@
-language: en_us
-#supported language: zh_cn, en_us.
+############################################################
+# +------------------------------------------------------+ #
+# |                       Notes                          | #
+# +------------------------------------------------------+ #
+############################################################
 
+# If you want to use special characters in this document, such as accented letters, you MUST save the file as UTF-8, not ANSI.
+# If you receive an error when EnchantmentsEnhance loads, ensure that:
+#   - No tabs are present: YAML only allows spaces
+#   - Indents are correct: YAML hierarchy is based entirely on indentation
+#   - You have "escaped" all apostrophes in your text: If you want to write "don't", for example, write "don''t" instead (note the doubled apostrophe)
+#   - Text with symbols is enclosed in single or double quotation marks
+
+# If you have encountered any problems, use: https://github.com/HealPotion/EnchantmentsEnhance/issues
+
+############################################################
+# +------------------------------------------------------+ #
+# |                  EnchantmentsEnhance                  | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Supported language: zh_cn, en_us.
+language: en_us
+
+# Lore is the additional attribution that is added to the enhanced item.
 lore:
+  # Supported bound type: tradeable, untradeable.
+  # tradeable: keep-item-on-death, personal trading is allowed.
+  # untradeable: keep-item-on-death, cannot be stored, cannot be dropped.
   bound: tradeable
-#supported bound type: tradeable, untradeable
-#Tradeable: keep-item-on-death, personal trading is allowed.
-#Untradeable: keep-item-on-death, cannot be stored, cannot be dropped.
+  # Do you want to notify the player when the item becomes bounded?
   sendBoundingMessage: false
+
+# Life Skills consist of various tasks. Black stones will be rewarded by performing any of these tasks.
 lifeskill:
+  # What ore counts as mining blocks?
   mining:
     - DIAMOND_ORE
     - EMERALD_ORE
@@ -18,18 +44,35 @@ lifeskill:
     - LAPIS_ORE
     - QUARTZ_ORE
     - REDSTONE_ORE
+  # What block counts as chopping blocks?
   chopping:
+    # LOG includes all the tree blocks.
     - LOG
   fishing:
+    # What actions counts as fishing?
     - CAUGHT_FISH
+    # - BITE
+    # - CAUGHT_ENTITY
+    # - FAILED_ATTEMPT
+    # - FISHING
+    # - IN_GROUND
+# What entity will reward black stones when killed?
   killing:
     - MONSTER
+    # - ANIMALS
+# What entity will reward black stones when bred?
   breeding:
     - ANIMALS
+# What item will reward black stones when smelt?
   smelting:
     - ITEM
-#Stones ID: 0 = weapon stone, 1 = armor stone, 2 = concentrated weapon stone, 3 = concentrated armor stone
-#In range of 0.01 means player will possibly get 1 out of 100 lifeskill event.
+
+# Stones ID
+# 0 = weapon stone
+# 1 = armor stone
+# 2 = concentrated weapon stone
+# 3 = concentrated armor stone
+# In range of 0.01 means player will possibly get 1 out of 100 lifeskill event.
 reward:
   mining:
     chance: 0.03
@@ -72,19 +115,24 @@ reward:
       - 2
       - 3
 
+# When enhancement is succeed, it controls the firework delay launch.
 fireworkDelay: 0
+# How many firework will be launched.
 fireworkCount: 1
 
+# Material Reference: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
 material:
+  # stoneTypes is the ID of the item in-game.
   stoneTypes:
-    #0
+    #0 weapon stone
     - GHAST_TEAR
-    #1
+    #1 armor stone
     - GOLD_NUGGET
-    #2
+    #2 concentrated weapon stone
     - SUGAR
-    #3
+    #3 concentrated armor stone
     - GLOWSTONE_DUST
+  # List of Armor.
   armor:
     - DIAMOND_HELMET
     - DIAMOND_CHESTPLATE
@@ -106,6 +154,7 @@ material:
     - CHAINMAIL_CHESTPLATE
     - CHAINMAIL_LEGGINGS
     - CHAINMAIL_BOOTS
+  # List of weapon.
   weapon:
     - DIAMOND_SWORD
     - GOLD_SWORD
@@ -119,21 +168,44 @@ material:
     - IRON_AXE
     - WOOD_AXE
 
+# Accessory slots.
+# Player will place their items to those position in order to use their accessories.
+# Player Inventory Slot Reference: https://github.com/HealPotion/EnchantmentsEnhance/blob/master/.images/player_inventory.png
+accessory:
+  left_ring: 9
+  right_ring: 10
+  left_earring: 18
+  right_earring: 19
+  necklace: 27
+  belt:  28
 
+# @Deprecated Phase when the enhancement is not guaranteed success.
 FirstPhaseStarts: 7
+# Phase when the enhancement takes concentrated stones.
 SecondPhaseStarts: 15
+# Phase when the item will downgrade if the enhancement is failed.
 DowngradePhaseStarts: 17
-#https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html#
+
+# Vanilla Enchantments Reference: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html#
 enhance:
   0:
+    # The success rate of item at the level.
     baseChance: 100
+    # Chance increase per failstack you have.
     chanceIncreasePerFailstack: -1
+    # The maximum failstack applied to the enhancement.
     maximumFailstackApplied: -1
+    # Failstack gained from failing an enhancement at this level.
     failstackGainedPerFail: -1
+    # Cost of black stone to enhance the item.
     costToForceEnchant: -1
+    # Enable or disable firework.
     fireworkIfSuccessful: true
+    # Rounds of firework.
     fireworkRounds: 1
+    # Prefix of the item
     name: "+0"
+    # Applying enchantments.
     enchantments: []
   1:
     baseChance: 100
@@ -474,7 +546,7 @@ enhance:
          - Batman:3
          - Necromancer:5
 
-
+# Reform an item grade.
 weaponGrade:
   0:
     name: ""

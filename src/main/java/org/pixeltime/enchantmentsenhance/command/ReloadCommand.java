@@ -7,7 +7,7 @@ public class ReloadCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-       new ReloadCommand().onCommand(player, args);
+        new ReloadCommand().onCommand(player, args);
     }
 
 

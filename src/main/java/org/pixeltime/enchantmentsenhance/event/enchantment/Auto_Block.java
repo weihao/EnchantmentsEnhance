@@ -22,8 +22,8 @@ public class Auto_Block implements Listener {
                     final int amount = item.getAmount() - n;
                     if (amount > 0) {
                         item.setAmount(amount);
-                    break;
-                }
+                        break;
+                    }
                     inventory.clear(i);
                     n = -amount;
                     if (n == 0) {

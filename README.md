@@ -21,7 +21,7 @@ Completion of the plugin is currently projected at 20%, meaning the general func
 You can find latest pre-release on Spigot.
 
 ## Compatibility
-Version: `all version compatible`
+Version: `1.8 - 1.12`
 - [x] [Bukkit](https://bukkit.org)
 - [x] [Spigot](https://spigotmc.org)
 - [x] [PaperSpigot](https://ci.destroystokyo.com/view/All/job/PaperSpigot/)

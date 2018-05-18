@@ -12,12 +12,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class SecretBook {
+    private static HashMap<String, List<Integer>> storage =
+            new HashMap<String, List<Integer>>();
+
     public static HashMap<String, List<Integer>> getStorage() {
         return storage;
     }
-
-    private static HashMap<String, List<Integer>> storage =
-            new HashMap<String, List<Integer>>();
 
     /**
      * Adds a player's failstack to the HashMap storage.

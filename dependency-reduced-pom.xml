@@ -248,10 +248,11 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>com.github.HealPotion</groupId>
-      <artifactId>StackMob-2</artifactId>
-      <version>18c0cf3e05</version>
-      <scope>compile</scope>
+      <groupId>uk.antiperson.stackmob</groupId>
+      <artifactId>StackMob</artifactId>
+      <version>2.2.10-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/jar/StackMob-2.2.10-SNAPSHOT.jar</systemPath>
     </dependency>
   </dependencies>
   <properties>

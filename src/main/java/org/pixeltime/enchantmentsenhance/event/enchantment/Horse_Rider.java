@@ -17,7 +17,7 @@ public class Horse_Rider implements Listener {
         if (entityDamageByEntityEvent.getDamager() instanceof Player && !(entityDamageByEntityEvent.getEntity() instanceof Player)) {
             try {
                 final Player owner = (Player) entityDamageByEntityEvent.getDamager();
-                ItemStack[] armorContents= owner.getInventory().getArmorContents();
+                ItemStack[] armorContents = owner.getInventory().getArmorContents();
                 for (int length = armorContents.length, i = 0; i < length; ++i) {
                     final ItemStack itemStack = armorContents[i];
                     if (itemStack != null && itemStack.hasItemMeta() && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " I") && entityDamageByEntityEvent.getEntity() instanceof Horse) {

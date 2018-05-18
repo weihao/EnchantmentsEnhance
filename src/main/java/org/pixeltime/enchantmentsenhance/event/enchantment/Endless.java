@@ -17,7 +17,7 @@ public class Endless implements Listener {
         final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "endless"));
         try {
             if (playerInteractEvent.getItem().getItemMeta().hasLore() && playerInteractEvent.getItem().getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " I")) {
-                playerInteractEvent.getItem().setDurability((short) 1);
+                playerInteractEvent.getItem().setDurability((short) 0);
             }
         } catch (Exception ex) {
         }

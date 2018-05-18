@@ -13,6 +13,7 @@ class StackMobHandler : Listener {
             DropManager.randomDrop(e.player, DropManager.killingLootTable)
         }
     }
+
     companion object {
         @JvmStatic
         fun bernoulli(repeat: Int, chance: Double): Double {

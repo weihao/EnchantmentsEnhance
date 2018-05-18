@@ -35,19 +35,19 @@ public class Demonic_Aura implements Listener {
                         player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("demonic_aura.level_I.duration") * 20, 0));
                     }
                 }
-                for (int length2 =  armorContents.length, j = 0; j < length2; ++j) {
+                for (int length2 = armorContents.length, j = 0; j < length2; ++j) {
                     final ItemStack itemStack2 = armorContents[j];
                     if (itemStack2 != null && itemStack2.hasItemMeta() && itemStack2.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " II") && (int) (Math.random() * 100.0) < SettingsManager.enchant.getInt("demonic_aura.level_II.chance")) {
                         player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("demonic_aura.level_II.duration") * 20, 0));
                     }
                 }
-                for (int length3 =  armorContents.length, k = 0; k < length3; ++k) {
+                for (int length3 = armorContents.length, k = 0; k < length3; ++k) {
                     final ItemStack itemStack3 = armorContents[k];
                     if (itemStack3 != null && itemStack3.hasItemMeta() && itemStack3.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " III") && (int) (Math.random() * 100.0) < SettingsManager.enchant.getInt("demonic_aura.level_III.chance")) {
                         player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("demonic_aura.level_III.duration") * 20, 0));
                     }
                 }
-                for (int length4 =  armorContents.length, l = 0; l < length4; ++l) {
+                for (int length4 = armorContents.length, l = 0; l < length4; ++l) {
                     final ItemStack itemStack4 = armorContents[l];
                     if (itemStack4 != null && itemStack4.hasItemMeta() && itemStack4.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " IV") && (int) (Math.random() * 100.0) < SettingsManager.enchant.getInt("demonic_aura.level_IV.chance")) {
                         player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("demonic_aura.level_IV.duration") * 20, 0));

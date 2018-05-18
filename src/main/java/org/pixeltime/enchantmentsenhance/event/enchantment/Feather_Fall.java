@@ -13,7 +13,7 @@ public class Feather_Fall implements Listener {
     public void onDamage(final EntityDamageEvent entityDamageEvent) {
         final String translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "feather_fall"));
         if (entityDamageEvent.getEntity() instanceof Player) {
-            ItemStack[] armorContents =((Player) entityDamageEvent.getEntity()).getInventory().getArmorContents();
+            ItemStack[] armorContents = ((Player) entityDamageEvent.getEntity()).getInventory().getArmorContents();
             for (int length = armorContents.length, i = 0; i < length; ++i) {
                 final ItemStack itemStack = armorContents[i];
                 if (itemStack != null && itemStack.hasItemMeta() && itemStack.getItemMeta().hasLore() && entityDamageEvent.getCause() == EntityDamageEvent.DamageCause.FALL && itemStack.getItemMeta().getLore().contains(String.valueOf(translateAlternateColorCodes) + " I")) {

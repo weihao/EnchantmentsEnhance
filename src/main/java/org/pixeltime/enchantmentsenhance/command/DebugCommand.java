@@ -9,13 +9,12 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 public class DebugCommand extends SubCommand {
     private int x = 1;
     private int y = 1;
+
     @Override
     public void onCommand(Player p, String[] args) {
         if (args[0].equals("upgrade")) {
             Enhance.enhanceSuccess(p.getItemInHand(), p, false, 19);
-        }
-        else if (args[0].equals("slots"))
-        {
+        } else if (args[0].equals("slots")) {
             x = Integer.parseInt(args[1]);
             y = Integer.parseInt(args[2]);
             ItemStack item = p.getInventory().getItem(Util.getSlot(x, y));
