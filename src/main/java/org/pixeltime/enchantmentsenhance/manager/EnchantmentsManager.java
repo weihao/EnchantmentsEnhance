@@ -6,8 +6,9 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.RegisteredListener;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.events.enchantments.*;
-import org.pixeltime.enchantmentsenhance.listeners.EnchantmentHandler;
+import org.pixeltime.enchantmentsenhance.listener.ArmorHandler;
+import org.pixeltime.enchantmentsenhance.event.enchantment.*;
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -150,7 +151,7 @@ public class EnchantmentsManager {
         this.register("rekt", "axe", 1);
 
         Main.getMain().getServer().getPluginManager().registerEvents(new EnchantmentHandler(), Main.getMain());
-        Main.getMain().getServer().getPluginManager().registerEvents(new ArmorListener(null), Main.getMain());
+        Main.getMain().getServer().getPluginManager().registerEvents(new ArmorHandler(null), Main.getMain());
         Main.getMain().getServer().getPluginManager().registerEvents(new Assassin(), Main.getMain());
         Main.getMain().getServer().getPluginManager().registerEvents(new Batvision(), Main.getMain());
         Main.getMain().getServer().getPluginManager().registerEvents(new Blessed(), Main.getMain());
@@ -185,9 +186,9 @@ public class EnchantmentsManager {
         Main.getMain().getServer().getPluginManager().registerEvents(new Mischief(), Main.getMain());
         Main.getMain().getServer().getPluginManager().registerEvents(new Plunder(), Main.getMain());
         Main.getMain().getServer().getPluginManager().registerEvents(new Shadowstep(), Main.getMain());
-        Main.getMain().getServer().getPluginManager().registerEvents(new Animal_Tamer(), Main.getMain());
+        Main.getMain().getServer().getPluginManager().registerEvents(new Tamer(), Main.getMain());
         Main.getMain().getServer().getPluginManager().registerEvents(new Wolves(), Main.getMain());
-        Main.getMain().getServer().getPluginManager().registerEvents(new Superman_Punch(), Main.getMain());
+        Main.getMain().getServer().getPluginManager().registerEvents(new Repel(), Main.getMain());
         Main.getMain().getServer().getPluginManager().registerEvents(new Swimmer(), Main.getMain());
         Main.getMain().getServer().getPluginManager().registerEvents(new Medic(), Main.getMain());
         Main.getMain().getServer().getPluginManager().registerEvents(new Reborn(), Main.getMain());
@@ -217,7 +218,7 @@ public class EnchantmentsManager {
         Main.getMain().getServer().getPluginManager().registerEvents(new Shooter(), Main.getMain());
         Main.getMain().getServer().getPluginManager().registerEvents(new Feather_Fall(), Main.getMain());
         Main.getMain().getServer().getPluginManager().registerEvents(new Suicide(), Main.getMain());
-        Main.getMain().getServer().getPluginManager().registerEvents(new Angry_Birds(), Main.getMain());
+        Main.getMain().getServer().getPluginManager().registerEvents(new Launch(), Main.getMain());
         Main.getMain().saveDefaultConfig();
         for (final String s : SettingsManager.enchant.getStringList("disabled")) {
             EnchantmentsManager.type.remove(s);

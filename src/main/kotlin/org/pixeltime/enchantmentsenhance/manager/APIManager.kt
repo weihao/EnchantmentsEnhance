@@ -2,9 +2,9 @@ package org.pixeltime.enchantmentsenhance.manager
 
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
-import org.pixeltime.enchantmentsenhance.events.blacksmith.SecretBook
-import org.pixeltime.enchantmentsenhance.events.blackspirit.Failstack
-import org.pixeltime.enchantmentsenhance.events.inventory.Inventory
+import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook
+import org.pixeltime.enchantmentsenhance.event.blackspirit.Failstack
+import org.pixeltime.enchantmentsenhance.event.inventory.Inventory
 import java.util.*
 
 class API {

@@ -1,3 +1,19 @@
+/**
+ * Copyright (C) 2017-Present HealPotion
+ * <p>
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * <p>
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 package org.pixeltime.enchantmentsenhance;
 
 import org.bukkit.Bukkit;
@@ -6,11 +22,11 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
-import org.pixeltime.enchantmentsenhance.events.blacksmith.SecretBook;
-import org.pixeltime.enchantmentsenhance.events.blackspirit.Failstack;
-import org.pixeltime.enchantmentsenhance.events.blackspirit.Reform;
-import org.pixeltime.enchantmentsenhance.events.inventory.Inventory;
-import org.pixeltime.enchantmentsenhance.listeners.*;
+import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
+import org.pixeltime.enchantmentsenhance.event.blackspirit.Failstack;
+import org.pixeltime.enchantmentsenhance.event.blackspirit.Reform;
+import org.pixeltime.enchantmentsenhance.event.inventory.Inventory;
+import org.pixeltime.enchantmentsenhance.listener.*;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
@@ -78,7 +94,7 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
         // Set up the files.
         SettingsManager.setup();
-        // Register listeners.
+        // Register listener.
         registerCore();
         // Register all the compatible modules.
         registerCompatibility();
@@ -148,6 +164,7 @@ public class Main extends JavaPlugin {
         commandManager.setup();
         EnchantmentsManager enchantmentsManager = new EnchantmentsManager();
         enchantmentsManager.setUp();
+        pm.registerEvents(new StackMobHandler(), this);
     }
 
 
@@ -190,7 +207,7 @@ public class Main extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        if (compatibility.setupEconomy()) {
+        if (DM.setupEconomy()) {
             getLogger().info("Enhancement-Vault Hook was successful!");
         } else {
 

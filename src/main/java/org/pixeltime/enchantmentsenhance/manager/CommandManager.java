@@ -6,8 +6,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.commands.*;
-import org.pixeltime.enchantmentsenhance.commands.console.*;
+import org.pixeltime.enchantmentsenhance.command.*;
+import org.pixeltime.enchantmentsenhance.command.console.*;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class CommandManager implements CommandExecutor {
     }
 
     /**
-     * Register all the commands.
+     * Register all the command.
      */
     public void setup() {
         plugin.getCommand(main).setExecutor(this);

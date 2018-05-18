@@ -6,9 +6,9 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.pixeltime.enchantmentsenhance.events.blackspirit.Lore;
-import org.pixeltime.enchantmentsenhance.events.inventory.Backpack;
-import org.pixeltime.enchantmentsenhance.listeners.MenuHandler;
+import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore;
+import org.pixeltime.enchantmentsenhance.event.inventory.Backpack;
+import org.pixeltime.enchantmentsenhance.listener.MenuHandler;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.enums.ItemTypes;
@@ -19,13 +19,8 @@ import java.util.List;
 
 public class ItemManager {
 
-    public static boolean isValid(ItemStack item, Material[] comparable) {
-        for (int i = 0; i < comparable.length; i++) {
-            if (comparable[i].equals(item.getType())) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean isValid(ItemStack item, List<Material> comparable) {
+        return comparable.contains(item.getType());
     }
 
 
@@ -62,7 +57,7 @@ public class ItemManager {
             lore.add(Util.toColor(Backpack.getOneStoneCountAsString(player,
                     stoneId)));
         }
-        return new ItemBuilder(MM.stoneTypes[stoneId]).setName(Util.toColor(
+        return new ItemBuilder(MM.stoneTypes.get(stoneId)).setName(Util.toColor(
                 SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
                 .toItemStack();
     }
@@ -70,7 +65,7 @@ public class ItemManager {
 
     public static ItemStack stoneVisualized(int stoneId, Player player) {
         List<String> lore = new ArrayList<String>();
-        return new ItemBuilder(MM.stoneTypes[stoneId]).setName(Util.toColor(
+        return new ItemBuilder(MM.stoneTypes.get(stoneId)).setName(Util.toColor(
                 SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
                 .toItemStack();
     }
@@ -116,15 +111,15 @@ public class ItemManager {
         int gradeLevel = getItemGradeLevel(item);
         ItemTypes type = getItemEnchantmentType(item);
         List<String> temp = SettingsManager.config.getStringList("enhance."
-                + enchantLevel + ".enchantments." + type.toString());
-        //Clear All the enchantments before applying new enchantments
+                + enchantLevel + ".enchantment." + type.toString());
+        //Clear All the enchantment before applying new enchantment
         List<String> empty = new ArrayList<String>();
         item.getItemMeta().setLore(empty);
         for (Enchantment ench : item.getEnchantments().keySet()) {
             item.removeEnchantment(ench);
         }
 
-        //Adding New enchantments.
+        //Adding New enchantment.
         for (String s : temp) {
             String[] a = s.split(":");
             applyEnchantmentToItem(item, a[0], Integer.parseInt(a[1]));
@@ -134,10 +129,10 @@ public class ItemManager {
         switch (getItemEnchantmentType(item)) {
             case WEAPON:
                 temp2 = SettingsManager.config.getStringList("weaponGrade."
-                        + gradeLevel + ".enchantments");
+                        + gradeLevel + ".enchantment");
             case ARMOR:
                 temp2 = SettingsManager.config.getStringList("armorGrade."
-                        + gradeLevel + ".enchantments");
+                        + gradeLevel + ".enchantment");
         }
 
         if (temp2 != null) {
@@ -156,9 +151,9 @@ public class ItemManager {
         try {
             item.addUnsafeEnchantment(Enchantment.getByName(ench), level);
         } catch (IllegalArgumentException ex) {
-            String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
+            String enchantment = SettingsManager.lang.getString("enchantment." + ench.toLowerCase());
             if (enchantment != null) {
-                newlore.add(enchantment + " " + Util.intToRoman(level));
+                newlore.add(ChatColor.translateAlternateColorCodes('&', enchantment + " " + Util.intToRoman(level)));
             }
             meta.setLore(newlore);
             item.setItemMeta(meta);

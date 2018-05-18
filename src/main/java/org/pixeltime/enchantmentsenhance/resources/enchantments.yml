@@ -5,7 +5,7 @@ allow-worldguard: true
 # Change this to false will greatly improve server TPS but might be exploited by players.
 periodic-potions: true
 
-# List of disabled enchantments:
+# List of disabled enchantment:
 disabled:
 #- lifesteal
 

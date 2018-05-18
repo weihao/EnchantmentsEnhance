@@ -112,6 +112,7 @@
             <configuration>
               <artifactSet>
                 <includes>
+                  <include>org.jetbrains.kotlin:kotlin-stdlib</include>
                   <include>org.jetbrains.kotlin:kotlin-runtime</include>
                 </includes>
               </artifactSet>
@@ -245,6 +246,12 @@
           <groupId>com.sk89q.worldedit</groupId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.github.HealPotion</groupId>
+      <artifactId>StackMob-2</artifactId>
+      <version>18c0cf3e05</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
   <properties>

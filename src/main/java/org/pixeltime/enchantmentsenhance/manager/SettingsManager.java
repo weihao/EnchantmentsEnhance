@@ -113,7 +113,7 @@ public class SettingsManager {
             enchant.save(enchantfile);
         } catch (IOException e) {
             Bukkit.getServer().getLogger().severe(ChatColor.RED
-                    + "Could not save enchantments.yml!");
+                    + "Could not save enchantment.yml!");
         }
     }
 

@@ -22,7 +22,7 @@ commands:
         
 permissions:
     Enchantmentsenhance.*:
-        description: Gives access to all enhancement permissions and commands.
+        description: Gives access to all enhancement permissions and command.
     Enchantmentsenhance.help:
         description: Allows you to use help command.
         default: true
