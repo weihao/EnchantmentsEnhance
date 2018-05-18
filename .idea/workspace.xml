@@ -2,134 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9da2e67c-dd88-4b11-947f-b477af188c6d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_HealPotion_StackMob_2_18c0cf3e05.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/listener/StackMobHandler.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/DependencyManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/DropManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/InventoryManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/org/pixeltime/enchantmentsenhance/StackMobHandlerTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_HealPotion_StackMob_2_18c0cf3e05.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/AddCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/AddCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/DebugCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/DebugCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/HelpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/HelpCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/InventoryCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/InventoryCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/ListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/ListCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/LoreCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/LoreCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/MenuCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/MenuCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/ReformCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/ReformCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/ReloadCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/ReloadCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/SelectCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/SelectCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/SubCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/SubCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/VersionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/VersionCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/console/AddConsoleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/console/AddConsoleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/console/DebugConsoleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/console/DebugConsoleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/console/HelpConsoleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/console/HelpConsoleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/console/ReloadConsoleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/console/ReloadConsoleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/console/SubConsoleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/console/SubConsoleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/commands/console/VersionConsoleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/command/console/VersionConsoleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Aegis.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Arrow_Rain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Assassin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Auto_Block.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Battlecry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Blessed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Crushing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Curse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Demon_Siphon.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Demonic_Aura.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Divine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Dodge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Entangle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Eyepatch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Farmer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Feather_Fall.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Flame_Cloak.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Haste.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Health_Boost.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Hex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Holy_Smite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Horse_Rider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Immolation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Jump.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Kill_Confirm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Launch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Lumberjack.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Medic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Mischief.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Molten.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Paralyze.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Platemail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Plunder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Purge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Reinforced.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Rekt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Repel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Reversal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Riftslayer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Shadowstep.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Shearer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Smelt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Snare.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Soft_Touch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Speed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Spiked.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Suicide.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Tamer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Thief.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Tnt_Shooter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Turmoil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Web_Trap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Wild_Mark.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/enchantments/Zeus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/animation/Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/animation/Chest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/animation/OpenChest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/animation/OpenChest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/animation/Particles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/animation/Particles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/blacksmith/SecretBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/blacksmith/SecretBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/blackspirit/Enhance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/blackspirit/Enhance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/blackspirit/Failstack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/blackspirit/Failstack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/blackspirit/Lore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/blackspirit/Lore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/blackspirit/Reform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/blackspirit/Reform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/ArmorEquipEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/ArmorEquipEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/ArmorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listener/ArmorHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Batvision.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Corruption.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/CustomEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/CustomEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Endless.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Execute.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Lifesteal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/MoveEvents.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Petrify.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Plow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Pyromaniac.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Reborn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Shooter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Stealth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Strength.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Swimmer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/Wolves.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/inventory/Backpack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/event/inventory/Backpack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/inventory/Inventory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/menu/Menu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listeners/EnchantmentHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listener/EnchantmentHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listeners/ItemDropHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listener/ItemDropHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listeners/LifeskillingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listener/LifeskillingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listeners/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listener/MenuHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listeners/PlayerDeathHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listener/PlayerDeathHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listeners/PlayerStreamHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listener/PlayerStreamHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/CommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/CompatibilityManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/CompatibilityManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/EnchantmentsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/EnchantmentsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/ItemManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/ItemManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/SettingsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/SettingsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/language/Language_en_us.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/language/Language_en_us.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/language/Language_zh_cn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/language/Language_zh_cn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/resources/enchantments.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/resources/enchantments.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/resources/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/APIManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/APIManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/MaterialManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/MaterialManager.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -147,7 +22,7 @@
       <file leaf-file-name="LifeskillingHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listener/LifeskillingHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="1728">
               <caret line="92" column="45" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="45" />
             </state>
           </provider>
@@ -156,8 +31,8 @@
       <file leaf-file-name="DropManager.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/DropManager.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            <state relative-caret-position="144">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
               <folding>
                 <element signature="e#51#152#0" expanded="true" />
               </folding>
@@ -167,16 +42,14 @@
       </file>
       <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/resources/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-360" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="StackMobHandler.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StackMobHandler.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/listener/StackMobHandler.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="17" column="60" lean-forward="true" selection-start-line="17" selection-start-column="60" selection-end-line="17" selection-end-column="60" />
+            <state relative-caret-position="360">
+              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
               <folding>
                 <element signature="e#52#274#0" expanded="true" />
               </folding>
@@ -184,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="118" column="17" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
+            <state relative-caret-position="373">
+              <caret line="113" column="45" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -196,7 +69,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
+            <state relative-caret-position="3168">
               <caret line="167" column="5" selection-start-line="167" selection-start-column="5" selection-end-line="167" selection-end-column="5" />
             </state>
           </provider>
@@ -205,7 +78,7 @@
       <file leaf-file-name="enchantments.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/resources/enchantments.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
+            <state relative-caret-position="5208">
               <caret line="217" column="16" selection-start-line="217" selection-start-column="16" selection-end-line="217" selection-end-column="16" />
             </state>
           </provider>
@@ -214,7 +87,7 @@
       <file leaf-file-name="SettingsManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/SettingsManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
+            <state relative-caret-position="888">
               <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
             </state>
           </provider>
@@ -232,7 +105,7 @@
       <file leaf-file-name="DependencyManager.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/DependencyManager.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
+            <state relative-caret-position="624">
               <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
               <folding>
                 <element signature="e#52#178#0" expanded="true" />
@@ -277,12 +150,12 @@
       <find>armorli</find>
       <find>armoreq</find>
       <find>ArmorHandler</find>
-      <find>jitpack</find>
       <find>private</find>
       <find>print(1)</find>
       <find>println</find>
       <find>miningLootTable</find>
       <find>killingChance</find>
+      <find>jitpack</find>
     </findStrings>
     <replaceStrings>
       <replace>-</replace>
@@ -351,8 +224,8 @@
         <option value="$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/DropManager.kt" />
         <option value="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/SettingsManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/Main.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/listener/StackMobHandler.kt" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -412,9 +285,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -509,6 +381,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -705,6 +578,7 @@
       <workItem from="1526570251218" duration="2425000" />
       <workItem from="1526578112439" duration="6492000" />
       <workItem from="1526588725362" duration="10256000" />
+      <workItem from="1526614329134" duration="671000" />
     </task>
     <servers />
   </component>
@@ -741,7 +615,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80137000" />
+    <option name="totallyTimeSpent" value="80808000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -749,62 +623,62 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="8" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32901135" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.60623" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.3298217" />
       <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.3298217" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.32955465" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18410543" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18610224" />
       <window_info anchor="right" id="Database" order="5" weight="0.32947284" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.32901135" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Inspection Results" order="1" weight="0.32955465" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32901135" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="3" weight="0.32901135" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="2" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Message" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.3298217" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection Results" order="1" weight="0.32955465" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32955465" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18410543" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="bottom" id="TODO" order="8" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info id="Image Layers" order="5" />
+      <window_info anchor="bottom" id="TODO" order="8" />
+      <window_info anchor="bottom" id="Inspection Results" order="1" weight="0.32955465" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="bottom" id="Find" order="3" visible="true" weight="0.32901135" />
       <window_info anchor="right" id="Database" order="5" weight="0.32947284" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.32955465" />
+      <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info id="Capture Tool" order="2" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32955465" />
+      <window_info id="Image Layers" order="5" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.32955465" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.60623" />
       <window_info id="Favorites" order="6" side_tool="true" />
     </layout-to-restore>
@@ -990,19 +864,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="25" column="42" lean-forward="true" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/MoveEvents.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/events/enchantments/MoveEvents.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/util/Util.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="934">
@@ -1042,11 +907,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
-          <folding>
-            <element signature="e#1626#1634#0" expanded="true" />
-            <element signature="e#2104#2112#0" expanded="true" />
-            <element signature="e#4014#4022#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1082,9 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-          <folding>
-            <element signature="e#51#120#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1095,13 +952,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/listener/DeathEvent.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/listener/DeathEvent.kt" />
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/org/pixeltime/enchantmentsenhance/StackMobHandlerTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -1120,20 +971,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/resources/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-360" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/resources/enchantments.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
+        <state relative-caret-position="5208">
           <caret line="217" column="16" selection-start-line="217" selection-start-column="16" selection-end-line="217" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
+        <state relative-caret-position="3168">
           <caret line="167" column="5" selection-start-line="167" selection-start-column="5" selection-end-line="167" selection-end-column="5" />
         </state>
       </provider>
@@ -1147,7 +996,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/DependencyManager.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
+        <state relative-caret-position="624">
           <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
           <folding>
             <element signature="e#52#178#0" expanded="true" />
@@ -1164,29 +1013,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/manager/SettingsManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
+        <state relative-caret-position="888">
           <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="118" column="17" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/pixeltime/enchantmentsenhance/listener/LifeskillingHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="1728">
           <caret line="92" column="45" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/manager/DropManager.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="144">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding>
             <element signature="e#51#152#0" expanded="true" />
           </folding>
@@ -1195,11 +1037,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/org/pixeltime/enchantmentsenhance/listener/StackMobHandler.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="17" column="60" lean-forward="true" selection-start-line="17" selection-start-column="60" selection-end-line="17" selection-end-column="60" />
+        <state relative-caret-position="360">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
           <folding>
             <element signature="e#52#274#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="113" column="45" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
         </state>
       </provider>
     </entry>
