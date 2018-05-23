@@ -120,7 +120,6 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("enchantment.demonic_aura", "&7Demonic Aura");
         SettingsManager.lang.addDefault("enchantment.dodge", "&7Dodge");
         SettingsManager.lang.addDefault("enchantment.blessed", "&7Blessed");
-        SettingsManager.lang.addDefault("enchantment.arrow_rain", "&7Arrow Rain");
         SettingsManager.lang.addDefault("enchantment.snare", "&7Snare");
         SettingsManager.lang.addDefault("enchantment.curse", "&7Curse");
         SettingsManager.lang.addDefault("enchantment.crushing", "&7Crushing");
@@ -178,7 +177,7 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("enchantment.shooter", "&7Shooter");
         SettingsManager.lang.addDefault("enchantment.feather_fall", "&7Feather Fall");
         SettingsManager.lang.addDefault("enchantment.suicide", "&7Suicide");
-        SettingsManager.lang.addDefault("enchantment.launch", "&7Angry Birds");
+        SettingsManager.lang.addDefault("enchantment.launch", "&7Launch");
 
         SettingsManager.lang.options().copyDefaults(true);
         SettingsManager.saveLang();

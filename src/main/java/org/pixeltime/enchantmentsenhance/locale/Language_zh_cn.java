@@ -104,14 +104,12 @@ public class Language_zh_cn {
         SettingsManager.lang.addDefault("Reform.reform", "改良道具");
 
         SettingsManager.lang.addDefault("enchantment.lifesteal", "&7吸血");
-        SettingsManager.lang.addDefault("enchantment.block", "&7格挡");
         SettingsManager.lang.addDefault("enchantment.assassin", "&7暗杀");
         SettingsManager.lang.addDefault("enchantment.kill_confirm", "&7杀戮");
         SettingsManager.lang.addDefault("enchantment.hex", "&7巫术");
         SettingsManager.lang.addDefault("enchantment.jump", "&7跳跃");
         SettingsManager.lang.addDefault("enchantment.speed", "&7神速");
         SettingsManager.lang.addDefault("enchantment.zeus", "&7雷鸣");
-        SettingsManager.lang.addDefault("enchantment.enrage", "&7暴怒");
         SettingsManager.lang.addDefault("enchantment.batvision", "&7天眼");
         SettingsManager.lang.addDefault("enchantment.demonic_aura", "&7恶灵");
         SettingsManager.lang.addDefault("enchantment.dodge", "&7闪避");
@@ -142,12 +140,12 @@ public class Language_zh_cn {
         SettingsManager.lang.addDefault("enchantment.demon_siphon", "&7虹吸");
         SettingsManager.lang.addDefault("enchantment.tamer", "&7驯兽");
         SettingsManager.lang.addDefault("enchantment.wolves", "&7野狼");
-        SettingsManager.lang.addDefault("enchantment.disarm", "&7缴械");
         SettingsManager.lang.addDefault("enchantment.repel", "&7超人");
         SettingsManager.lang.addDefault("enchantment.spiked", "&7尖刺");
         SettingsManager.lang.addDefault("enchantment.medic", "&7军医");
         SettingsManager.lang.addDefault("enchantment.swimmer", "&7亲水");
         SettingsManager.lang.addDefault("enchantment.thief", "&7盗窃");
+        SettingsManager.lang.addDefault("enchantment.disarm", "&7缴械");
         SettingsManager.lang.addDefault("enchantment.health_boost", "&7生命护盾");
         SettingsManager.lang.addDefault("enchantment.reborn", "&7重生");
         SettingsManager.lang.addDefault("enchantment.endless", "&7无尽");

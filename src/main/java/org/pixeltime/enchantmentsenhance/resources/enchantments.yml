@@ -1,10 +1,6 @@
 # Allow WorldGuard and WorldEdit to check the pvp flags.
 allow-worldguard: true
 
-# It means that the potion effect's time is limited and renewed every few seconds.
-# Change this to false will greatly improve server TPS but might be exploited by players.
-periodic-potions: true
-
 # List of disabled enchantment:
 disabled:
 #- lifesteal
@@ -24,15 +20,15 @@ lifesteal:
        health: 3
        
 assassin:
-    level_I:
+    1:
       chance: 25
       duration: 3
       
-    level_II:
+    2:
       chance: 35
       duration: 5
       
-    level_III:
+    3:
       chance: 50
       duration: 8
       
@@ -90,51 +86,51 @@ zeus:
       chance: 45
       
 demonic_aura:
-    level_I:
+    1:
       chance: 10
       duration: 2
       
-    level_II:
+    2:
       chance: 15
       duration: 3
       
-    leveL_III:
+    3:
       chance: 20
       duration: 4
       
-    level_IV:
+    4:
       chance: 25
       duration: 5
       
-    level_V:
+    5:
       chance: 35
       duration: 7
       
 dodge:
-    level_I:
+    1:
       chance: 10
       
-    level_II:
+    2:
       chance: 15
       
-    level_III:
+    3:
       chance: 20
       
-    level_IV:
+    4:
       chance: 25
       
-    level_V:
+    5:
       chance: 35
       
 blessed:
-    level_I:
-      chance: 10
+    1:
+      chance: 1
       
-    level_II:
-      chance: 20
-      
-    level_III:
-      chance: 30
+    2:
+      chance: 2
+
+    3:
+      chance: 3
       
 snare:
     level_I:
@@ -158,43 +154,43 @@ snare:
       potion_lvl: 2
       
 curse:
-    level_I:
+    1:
       chance: 10
       duration: 2
       potion_lvl: 1
       
-    level_II:
+    2:
       chance: 20
       duration: 4
       potion_lvl: 1
       
-    level_III:
+    3:
       chance: 30
       duration: 6
       potion_lvl: 1
       
-    level_IV:
+    4:
       chance: 40
       duration: 8
       potion_lvl: 1 
       
 crushing:
-    level_I:
+    1:
       chance: 10
       
-    level_II:
+    2:
       chance: 20
       
-    level_III:
+    3:
       chance: 25
       
-    level_III:
+    4:
       chance: 30
     
-    level_IV:
+    5:
       chance: 35
     
-    level_V:
+    6:
       chance: 45
       
 execute:
@@ -235,20 +231,25 @@ stealth:
       radius: 10
       
 aegis:
-    level_I:
+    1:
       chance: 10
+      health: 1.0
       
-    level_II:
+    2:
       chance: 20
+      health: 1.0
       
-    level_III:
+    3:
       chance: 26
+      health: 2.0
       
-    level_IV:
+    4:
       chance: 35
+      health: 2.0
       
-    level_V:
+    5:
       chance: 40
+      health: 3.0
       
 purge:
     level_I:
@@ -324,37 +325,37 @@ flame_cloak:
       duration: 8
       
 battlecry:
-    level_I:
+    1:
       chance: 10
       
-    level_II:
+    2:
       chance: 15
       
-    level_III:
+    3:
       chance: 25
       
 corruption:
-    level_I:
+    1:
       chance: 10
       duration: 4
       potion_lvl: 1
     
-    level_II:
+    2:
       chance: 15
       duration: 4
       potion_lvl: 1
       
-    level_III:
+    3:
       chance: 20
       duration: 7
       potion_lvl: 1
       
-    level_IV:
+    4:
       chance: 25
       duration: 10
       potion_lvl: 2
       
-    level_V:
+    5:
       chance: 30
       duration: 10
       potion_lvl: 2
@@ -438,15 +439,15 @@ shadowstep:
       distance: 2
     
 demon_siphon:
-    level_I:
+    1:
       chance: 10
       health: 2
       
-    level_II:
+    2:
       chance: 15
       health: 4
       
-    level_III:
+    3:
       chance: 15
       health: 6
       
@@ -734,22 +735,6 @@ suicide:
     level_I:
       power: 2
       chance: 100
-      
-arrow_rain:
-    level_I:
-      chance: 5
-      
-    level_II:
-      chance: 10
-      
-    level_III:
-      chance: 15
-      
-    level_IV:
-      chance: 20
-      
-    level_V:
-      chance: 25
       
 launch:
 

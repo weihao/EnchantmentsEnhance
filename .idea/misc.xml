@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="Z:/doc" />
+    <option name="OPTION_SCOPE" value="public" />
+    <option name="OTHER_OPTIONS" value="-encoding utf-8" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
