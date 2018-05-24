@@ -105,7 +105,6 @@ public class Language_zh_cn {
 
         SettingsManager.lang.addDefault("enchantment.lifesteal", "&7吸血");
         SettingsManager.lang.addDefault("enchantment.assassin", "&7暗杀");
-        SettingsManager.lang.addDefault("enchantment.kill_confirm", "&7杀戮");
         SettingsManager.lang.addDefault("enchantment.hex", "&7巫术");
         SettingsManager.lang.addDefault("enchantment.jump", "&7跳跃");
         SettingsManager.lang.addDefault("enchantment.speed", "&7神速");

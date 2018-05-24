@@ -9,26 +9,19 @@ class DM {
 
     companion object {
         @JvmField
-        var economy: Economy? = null
+        var economy: Economy = Main.getMain().server.servicesManager.getRegistration<Any>(Economy::class.java as Class<Any>).provider as Economy
         @JvmField
-        var stackmob: StackMob? = null
+        var stackmob: StackMob = Main.getMain().server.servicesManager.getRegistration<Any>(StackMob::class.java as Class<Any>).provider as StackMob
 
 
         @JvmStatic
         fun setupEconomy(): Boolean {
-            val registration = Main.getMain().server.servicesManager.getRegistration<Any>(Economy::class.java as Class<Any>)
-                    ?: return false
-            economy = registration.provider as Economy
-            return true
+            return  economy != null
         }
 
         @JvmStatic
         fun setupStackMob(): Boolean {
-            val registration1 = Main.getMain().server.servicesManager.getRegistration<Any>(StackMob::class.java as Class<Any>)
-                    ?: return false
-            var stackmob = registration1.provider as StackMob
-
-            return true
+            return stackmob != null
         }
     }
 }

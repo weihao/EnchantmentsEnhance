@@ -162,9 +162,9 @@ public class Main extends JavaPlugin {
         new Metrics(this);
         commandManager = new CommandManager();
         commandManager.setup();
-        EnchantmentsManager enchantmentsManager = new EnchantmentsManager();
-        enchantmentsManager.setUp();
+        EM.Companion.setUp();
         pm.registerEvents(new StackMobHandler(), this);
+        pm.registerEvents(new VanillaEnchantHandler(), this);
     }
 
 

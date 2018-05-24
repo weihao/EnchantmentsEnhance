@@ -4,7 +4,7 @@ import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.*
 
-class DropManager() {
+class DropManager {
     companion object {
         @JvmField
         val mining = SettingsManager.config.getStringList(

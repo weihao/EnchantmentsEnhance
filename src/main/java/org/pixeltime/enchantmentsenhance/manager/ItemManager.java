@@ -111,7 +111,7 @@ public class ItemManager {
         int gradeLevel = getItemGradeLevel(item);
         ItemTypes type = getItemEnchantmentType(item);
         List<String> temp = SettingsManager.config.getStringList("enhance."
-                + enchantLevel + ".enchantments." + type.toString());
+                + enchantLevel + ".enchantment." + type.toString());
         //Clear All the enchantment before applying new enchantment
         List<String> empty = new ArrayList<String>();
         item.getItemMeta().setLore(empty);
@@ -129,10 +129,10 @@ public class ItemManager {
         switch (getItemEnchantmentType(item)) {
             case WEAPON:
                 temp2 = SettingsManager.config.getStringList("weaponGrade."
-                        + gradeLevel + ".enchantments");
+                        + gradeLevel + ".enchantment");
             case ARMOR:
                 temp2 = SettingsManager.config.getStringList("armorGrade."
-                        + gradeLevel + ".enchantments");
+                        + gradeLevel + ".enchantment");
         }
 
         if (temp2 != null) {

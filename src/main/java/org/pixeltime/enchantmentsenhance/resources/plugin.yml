@@ -7,7 +7,7 @@ load: postworld
 prefix: EnchantmentsEnhance
 
 depend: [Vault]
-softdepend: [StackMob]
+softdepend: [StackMob, WorldEdit, WorldGuard]
 
 main: org.pixeltime.enchantmentsenhance.Main
 database: false

@@ -110,7 +110,6 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("enchantment.lifesteal", "&7Lifesteal");
         SettingsManager.lang.addDefault("enchantment.block", "&7Block");
         SettingsManager.lang.addDefault("enchantment.assassin", "&7Assassin");
-        SettingsManager.lang.addDefault("enchantment.kill_confirm", "&7Kill Confirm");
         SettingsManager.lang.addDefault("enchantment.hex", "&7Hex");
         SettingsManager.lang.addDefault("enchantment.jump", "&7Jump");
         SettingsManager.lang.addDefault("enchantment.speed", "&7Speed");
