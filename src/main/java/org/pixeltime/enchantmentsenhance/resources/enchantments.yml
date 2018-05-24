@@ -652,3 +652,14 @@ haste:
 
     3:
       amplifier: 3
+
+spiked:
+
+    1:
+      damage: 2.0
+
+    2:
+      damage: 4.0
+
+    3:
+      damage: 6.0

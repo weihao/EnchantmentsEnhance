@@ -1,3 +1,21 @@
+/*
+ *     Copyright (C) 2017-Present HealPotion
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ */
+
 package org.pixeltime.enchantmentsenhance.locale;
 
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
@@ -119,7 +137,6 @@ public class Language_en_us {
         SettingsManager.lang.addDefault("enchantment.demonic_aura", "&7Demonic Aura");
         SettingsManager.lang.addDefault("enchantment.dodge", "&7Dodge");
         SettingsManager.lang.addDefault("enchantment.blessed", "&7Blessed");
-        SettingsManager.lang.addDefault("enchantment.snare", "&7Snare");
         SettingsManager.lang.addDefault("enchantment.curse", "&7Curse");
         SettingsManager.lang.addDefault("enchantment.crushing", "&7Crushing");
         SettingsManager.lang.addDefault("enchantment.execute", "&7Execute");

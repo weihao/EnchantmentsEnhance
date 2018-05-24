@@ -1,3 +1,21 @@
+/*
+ *     Copyright (C) 2017-Present HealPotion
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ */
+
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
 import org.bukkit.ChatColor
@@ -6,7 +24,8 @@ import org.bukkit.entity.Wolf
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.inventory.ItemStack
+import org.pixeltime.enchantmentsenhance.manager.IM
+import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Tamer : Listener {
@@ -14,24 +33,23 @@ class Tamer : Listener {
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "tamer"))
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity !is Player) {
+            val player = entityDamageByEntityEvent.damager as Player
             try {
-                val owner = entityDamageByEntityEvent.damager as Player
-                val armorContents = owner.inventory.armorContents
-                val length = armorContents.size
-                var i = 0
-                while (i < length) {
-                    val itemStack = armorContents[i]
-                    if (itemStack != null && itemStack.hasItemMeta() && itemStack.itemMeta.lore.contains(translateAlternateColorCodes.toString() + " I") && entityDamageByEntityEvent.entity is Wolf) {
-                        entityDamageByEntityEvent.isCancelled = true
-                        entityDamageByEntityEvent.damage = 0.0
-                        val wolf = entityDamageByEntityEvent.entity as Wolf
-                        if (wolf.isTamed) {
-                            return
+                val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
+                for (itemStack in armorContents) {
+                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
+                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                        if (level > 0 && entityDamageByEntityEvent . entity is Wolf) {
+                            entityDamageByEntityEvent.isCancelled = true
+                            entityDamageByEntityEvent.damage = 0.0
+                            val wolf = entityDamageByEntityEvent.entity as Wolf
+                            if (wolf.isTamed) {
+                                return
+                            }
+                            wolf.isTamed = true
+                            wolf.owner = player
                         }
-                        wolf.isTamed = true
-                        wolf.owner = owner
                     }
-                    ++i
                 }
             } catch (ex: Exception) {
             }

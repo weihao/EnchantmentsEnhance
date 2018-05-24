@@ -1,3 +1,21 @@
+/*
+ *     Copyright (C) 2017-Present HealPotion
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ */
+
 package org.pixeltime.enchantmentsenhance.event.inventory;
 
 import org.bukkit.Bukkit;
@@ -18,19 +36,22 @@ public class Inventory {
     public static void loadInventory(Player player) {
         if (SettingsManager.data.contains(player.getName() + ".backpack")
                 || backpack.containsKey(player.getName())) {
-            String[] temp = SettingsManager.data.getString(player.getName()
-                    + ".backpack").replace("[", "").replace("]", "").split(", ");
-            int[] inventory = new int[temp.length];
-            for (int i = 0; i < temp.length; i++) {
-                try {
-                    inventory[i] = Integer.parseInt(temp[i]);
-                } catch (Exception e) {
-                    Bukkit.getLogger().severe("Error in loading " + player
-                            .getName() + "'s" + " inventory.");
+            try {
+                String[] temp = SettingsManager.data.getString(player.getName()
+                        + ".backpack").replace("[", "").replace("]", "").split(", ");
+                int[] inventory = new int[temp.length];
+                if (temp.length > 0) {
+                    for (int i = 0; i < temp.length; i++) {
+                        inventory[i] = Integer.parseInt(temp[i]);
+                    }
+                    backpack.put(player.getName(), inventory);
+                } else {
+                    backpack.put(player.getName(), new int[]{0, 0, 0, 0});
                 }
+            } catch (Exception e) {
+                Bukkit.getLogger().severe("Error in loading " + player
+                        .getName() + "'s" + " inventory.");
             }
-
-            backpack.put(player.getName(), inventory);
         } else {
             backpack.put(player.getName(), new int[]{0, 0, 0, 0});
         }

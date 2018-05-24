@@ -1,3 +1,21 @@
+/*
+ *     Copyright (C) 2017-Present HealPotion
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ */
+
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
 import com.sk89q.worldguard.bukkit.WGBukkit
@@ -9,7 +27,8 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.inventory.ItemStack
+import org.pixeltime.enchantmentsenhance.manager.IM
+import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Spiked : Listener {
@@ -17,30 +36,27 @@ class Spiked : Listener {
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "spiked"))
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
+            val player = entityDamageByEntityEvent.damager as Player
+            val victim =  entityDamageByEntityEvent.entity as Player
+            if (entityDamageByEntityEvent.isCancelled) {
+                return
+            }
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+                return
+            }
+
             try {
-                val player = entityDamageByEntityEvent.damager as Player
-                if (entityDamageByEntityEvent.isCancelled) {
-                    return
-                }
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {
-                    return
-                }
-                val armorContents = (entityDamageByEntityEvent.entity as Player).inventory.armorContents
-                val length = armorContents.size
-                var i = 0
-                while (i < length) {
-                    val itemStack = armorContents[i]
-                    if (itemStack != null && itemStack.hasItemMeta() && itemStack.itemMeta.lore.contains(translateAlternateColorCodes.toString() + " I")) {
-                        player.damage(2.0)
+                val armorContents = victim.inventory.armorContents + IM.getAccessorySlots(victim)
+                    for (itemStack in armorContents) {
+                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
+                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                        if (level > 0) {
+                            player.damage(SettingsManager.enchant.getDouble("spiked.$level.damage"))
+                        }
                     }
-                    if (itemStack!!.hasItemMeta() && itemStack.itemMeta.lore.contains(translateAlternateColorCodes.toString() + " II")) {
-                        player.damage(4.0)
-                    }
-                    ++i
                 }
             } catch (ex: Exception) {
             }
-
         }
     }
 }
