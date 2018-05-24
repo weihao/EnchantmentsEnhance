@@ -20,8 +20,6 @@ package org.pixeltime.enchantmentsenhance.event.enchantment
 
 import org.bukkit.ChatColor
 import org.bukkit.Material
-import org.bukkit.entity.Entity
-import org.bukkit.entity.Player
 import org.bukkit.entity.Sheep
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener

@@ -52,7 +52,7 @@ class Demonic_Aura : Listener {
                     val itemStack = armorContents[i]
                     if (itemStack != null && itemStack.hasItemMeta()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 &&  (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("demonic_aura.$level.chance")) {
+                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("demonic_aura.$level.chance")) {
                             player.addPotionEffect(PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("demonic_aura.$level.duration") * 20, 0))
                         }
                     }

@@ -22,7 +22,11 @@
 # Supported language: zh_cn, en_us.
 language: en_us
 
-disableVanillaEnchant: true
+# Set true to disable vanilla enchanting table and when someone use it, right click on it will open enhance menu.
+enableVanillaEnchant: false
+
+# Set true to enable support for stacked mob drop.
+enableStackMob: false
 
 # Lore is the additional attribution that is added to the enhanced item.
 lore:

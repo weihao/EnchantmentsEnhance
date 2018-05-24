@@ -26,6 +26,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
+import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
@@ -35,8 +36,15 @@ class Auto_Block : Listener {
     @EventHandler
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
         val player = blockBreakEvent.player
-        if (player.inventory.itemInHand != null && player.itemInHand.hasItemMeta() && player.itemInHand.itemMeta.hasLore() && KM.getLevel(translateAlternateColorCodes, player.itemInHand.itemMeta.lore) > 0) {
-            this.autoBlock(player)
+        val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
+        for (i in armorContents.indices) {
+            val itemStack = armorContents[i]
+            if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
+                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                if (level > 0) {
+                    this.autoBlock(player)
+                }
+            }
         }
     }
 

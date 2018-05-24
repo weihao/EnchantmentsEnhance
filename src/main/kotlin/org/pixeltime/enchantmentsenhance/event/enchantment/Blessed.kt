@@ -36,11 +36,10 @@ class Blessed : Listener {
             val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
             for (i in armorContents.indices) {
                 val itemStack = armorContents[i]
-                if (itemStack != null && itemStack.hasItemMeta())
-                {
+                if (itemStack != null && itemStack.hasItemMeta()) {
                     val level = KM.getLevel(translateAlternateColorCodes, player.itemInHand.itemMeta.lore)
                     val n = (Math.random() * 100.0).toInt()
-                    if (level > 0  && n < SettingsManager.enchant.getInt("blessed.$level.chance")) {
+                    if (level > 0 && n < SettingsManager.enchant.getInt("blessed.$level.chance")) {
                         player.health = player.maxHealth
                         player.foodLevel = 20
                     }

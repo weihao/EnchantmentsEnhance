@@ -44,7 +44,7 @@ class Divine : Listener {
                     return
                 }
                 val level = KM.getLevel(translateAlternateColorCodes, player.itemInHand.itemMeta.lore)
-                if ((level > 0) &&  (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("divine.$level.chance")) {
+                if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("divine.$level.chance")) {
                     if (player.health + entityDamageByEntityEvent.damage > 20.0) {
                         player.health = 20.0
                     } else {

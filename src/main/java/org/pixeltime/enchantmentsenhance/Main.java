@@ -164,8 +164,12 @@ public class Main extends JavaPlugin {
         commandManager = new CommandManager();
         commandManager.setup();
         EM.Companion.setUp();
-        pm.registerEvents(new StackMobHandler(), this);
-        pm.registerEvents(new VanillaEnchantHandler(), this);
+        if (SettingsManager.config.getBoolean("enableStackMob")) {
+            pm.registerEvents(new StackMobHandler(), this);
+        }
+        if (SettingsManager.config.getBoolean("enableVanillaEnchant")) {
+            pm.registerEvents(new VanillaEnchantHandler(), this);
+        }
     }
 
 

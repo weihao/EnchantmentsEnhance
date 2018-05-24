@@ -34,7 +34,7 @@ class Demon_Siphon : Listener {
     private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "demon_siphon"))
     @EventHandler(priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-          if (entityDamageByEntityEvent.damager is Player) {
+        if (entityDamageByEntityEvent.damager is Player) {
             try {
                 val player = entityDamageByEntityEvent.damager as Player
                 if (entityDamageByEntityEvent.isCancelled) {

@@ -37,7 +37,7 @@ class Spiked : Listener {
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "spiked"))
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.damager as Player
-            val victim =  entityDamageByEntityEvent.entity as Player
+            val victim = entityDamageByEntityEvent.entity as Player
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
@@ -47,7 +47,7 @@ class Spiked : Listener {
 
             try {
                 val armorContents = victim.inventory.armorContents + IM.getAccessorySlots(victim)
-                    for (itemStack in armorContents) {
+                for (itemStack in armorContents) {
                     if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                         if (level > 0) {

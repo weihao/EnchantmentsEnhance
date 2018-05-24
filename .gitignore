@@ -66,3 +66,4 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 .idea/encodings.xml
+.idea/workspace.xml

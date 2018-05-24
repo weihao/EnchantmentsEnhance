@@ -34,7 +34,7 @@ public class ReloadCommand extends SubCommand {
         SettingsManager.setup();
         Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
                 player);
-}
+    }
 
 
     @Override

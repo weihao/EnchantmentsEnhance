@@ -34,7 +34,7 @@ class DM {
 
         @JvmStatic
         fun setupEconomy(): Boolean {
-            return  economy != null
+            return economy != null
         }
 
         @JvmStatic

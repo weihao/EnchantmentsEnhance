@@ -39,7 +39,7 @@ class Tamer : Listener {
                 for (itemStack in armorContents) {
                     if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && entityDamageByEntityEvent . entity is Wolf) {
+                        if (level > 0 && entityDamageByEntityEvent.entity is Wolf) {
                             entityDamageByEntityEvent.isCancelled = true
                             entityDamageByEntityEvent.damage = 0.0
                             val wolf = entityDamageByEntityEvent.entity as Wolf

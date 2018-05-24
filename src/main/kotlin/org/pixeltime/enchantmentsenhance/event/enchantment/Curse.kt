@@ -46,7 +46,7 @@ class Curse : Listener {
                     return
                 }
                 val level = KM.getLevel(translateAlternateColorCodes, player.itemInHand.itemMeta.lore)
-                if ((level > 0) &&(Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("curse.$level.chance")) {
+                if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("curse.$level.chance")) {
                     player.addPotionEffect(PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("curse.$level.duration") * 20, SettingsManager.enchant.getInt("curse.$level.potion_lvl") - 1))
                 }
             } catch (ex: Exception) {
