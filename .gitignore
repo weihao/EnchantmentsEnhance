@@ -9,7 +9,6 @@
 /.metadata/
 /doc/
 /META-INF/
-*.iml
 .project
 .classpath
 /bin/
