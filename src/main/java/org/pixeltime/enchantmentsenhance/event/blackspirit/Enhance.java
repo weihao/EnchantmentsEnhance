@@ -21,10 +21,10 @@ package org.pixeltime.enchantmentsenhance.event.blackspirit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.chat.Broadcast;
+import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.Util;
-import org.pixeltime.enchantmentsenhance.util.enums.ItemTypes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,7 @@ public class Enhance {
     public static boolean getValidationOfItem(ItemStack item) {
         // If item cannot be enhanced
         // If item level exceeds the maximum levels allowed
-        if ((ItemManager.getItemEnchantmentType(item) == ItemTypes.INVALID)
+        if ((ItemManager.getItemEnchantmentType(item) == ItemType.INVALID)
                 || (ItemManager.getItemEnchantLevel(item) >= DataManager.levels)) {
             return false;
         }
@@ -240,9 +240,9 @@ public class Enhance {
      */
     public static List<String> getChanceAsList(ItemStack item, Player player) {
         // Enchantment type
-        ItemTypes type = ItemManager.getItemEnchantmentType(item);
+        ItemType type = ItemManager.getItemEnchantmentType(item);
         ArrayList<String> result = new ArrayList<String>();
-        if (type != ItemTypes.INVALID) {
+        if (type != ItemType.INVALID) {
             // Display failstack
             String fs = (SettingsManager.lang.getString(
                     "Enhance.currentFailstack") + Failstack.getLevel(player));

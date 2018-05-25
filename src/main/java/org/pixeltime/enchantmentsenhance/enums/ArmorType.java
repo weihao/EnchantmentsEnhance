@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.util.enums;
+package org.pixeltime.enchantmentsenhance.enums;
 
 import org.bukkit.inventory.ItemStack;
 

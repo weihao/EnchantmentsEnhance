@@ -23,8 +23,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.locale.Language_en_us;
-import org.pixeltime.enchantmentsenhance.locale.Language_zh_cn;
 
 import java.io.File;
 import java.io.IOException;
@@ -76,11 +74,9 @@ public class SettingsManager {
             }
         }
         lang = YamlConfiguration.loadConfiguration(langfile);
-        Language_en_us.addLang();
-        if (config.getString("language").equalsIgnoreCase("zh_cn")) {
-            Language_zh_cn.addLang();
+        LM.addLocale();
         }
-    }
+
 
 
     public static void saveData() {

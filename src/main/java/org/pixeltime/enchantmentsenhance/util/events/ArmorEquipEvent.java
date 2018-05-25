@@ -23,7 +23,7 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.util.enums.ArmorType;
+import org.pixeltime.enchantmentsenhance.enums.ArmorType;
 
 public class ArmorEquipEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers;

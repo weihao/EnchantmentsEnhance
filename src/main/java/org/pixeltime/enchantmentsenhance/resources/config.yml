@@ -19,8 +19,8 @@
 # +------------------------------------------------------+ #
 ############################################################
 
-# Supported language: zh_cn, en_us.
-language: en_us
+# Supported language: ZH_CN, EN_US.
+language: EN_US
 
 # Set true to disable vanilla enchanting table and when someone use it, right click on it will open enhance menu.
 enableVanillaEnchant: false

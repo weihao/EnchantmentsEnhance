@@ -24,12 +24,12 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore;
 import org.pixeltime.enchantmentsenhance.event.inventory.Backpack;
 import org.pixeltime.enchantmentsenhance.listener.MenuHandler;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
-import org.pixeltime.enchantmentsenhance.util.enums.ItemTypes;
 import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
 
 import java.util.ArrayList;
@@ -48,14 +48,14 @@ public class ItemManager {
      * @param item
      * @return
      */
-    public static ItemTypes getItemEnchantmentType(ItemStack item) {
+    public static ItemType getItemEnchantmentType(ItemStack item) {
         if (isValid(item, MM.weapon)) {
-            return ItemTypes.WEAPON;
+            return ItemType.WEAPON;
         }
         if (isValid(item, MM.armor)) {
-            return ItemTypes.ARMOR;
+            return ItemType.ARMOR;
         }
-        return ItemTypes.INVALID;
+        return ItemType.INVALID;
     }
 
 
@@ -127,7 +127,7 @@ public class ItemManager {
     public static void applyEnchantments(ItemStack item) {
         int enchantLevel = getItemEnchantLevel(item);
         int gradeLevel = getItemGradeLevel(item);
-        ItemTypes type = getItemEnchantmentType(item);
+        ItemType type = getItemEnchantmentType(item);
         List<String> temp = SettingsManager.config.getStringList("enhance."
                 + enchantLevel + ".enchantment." + type.toString());
         //Clear All the enchantment before applying new enchantment

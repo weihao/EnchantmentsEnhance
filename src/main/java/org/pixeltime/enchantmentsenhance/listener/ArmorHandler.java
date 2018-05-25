@@ -36,7 +36,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.Dispenser;
-import org.pixeltime.enchantmentsenhance.util.enums.ArmorType;
+import org.pixeltime.enchantmentsenhance.enums.ArmorType;
 import org.pixeltime.enchantmentsenhance.util.events.ArmorEquipEvent;
 
 import java.util.Iterator;
