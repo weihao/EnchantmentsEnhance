@@ -31,7 +31,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Riftslayer : Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "riftslayer"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "riftslayer"))
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity !is Player) {
 
             val player = entityDamageByEntityEvent.damager as Player

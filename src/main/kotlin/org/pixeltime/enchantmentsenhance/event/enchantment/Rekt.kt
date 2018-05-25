@@ -34,7 +34,7 @@ class Rekt : Listener {
         if (entityDamageByEntityEvent.entity is Player) {
             return
         }
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "rekt"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "rekt"))
         if (entityDamageByEntityEvent.damager is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             if (entityDamageByEntityEvent.isCancelled) {

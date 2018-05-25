@@ -34,7 +34,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Reversal : Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "reversal"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "reversal"))
         if (entityDamageByEntityEvent.entity is Player && entityDamageByEntityEvent.damager is Player) {
             val player = entityDamageByEntityEvent.entity as Player
             val player2 = entityDamageByEntityEvent.damager as Player

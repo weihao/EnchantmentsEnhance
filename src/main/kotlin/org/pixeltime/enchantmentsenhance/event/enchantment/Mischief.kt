@@ -36,7 +36,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Mischief : Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "mischief"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "mischief"))
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
 
             val player = entityDamageByEntityEvent.damager as Player

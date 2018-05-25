@@ -35,7 +35,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Purge : Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "purge"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "purge"))
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
 
             val player = entityDamageByEntityEvent.damager as Player

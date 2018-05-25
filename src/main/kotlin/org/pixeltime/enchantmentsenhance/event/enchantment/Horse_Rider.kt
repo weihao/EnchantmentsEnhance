@@ -31,7 +31,7 @@ import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Horse_Rider : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "horse_rider"))
+    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "horse_rider"))
 
     @EventHandler
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {

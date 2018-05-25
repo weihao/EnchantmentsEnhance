@@ -212,7 +212,14 @@ enhance:
     # Prefix of the item
     name: "+0"
     # Applying enchantment.
-    enchantments: []
+    enchantments:
+      WEAPON:
+        # Enchantments are not case sensitive.
+        # As long as you put it in this format
+        # - name:level
+        # - lIfEStEAL:1
+      ARMOR:
+        # - PROTECTION_ENVIRONMENTAL:1
   1:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -240,7 +247,8 @@ enhance:
     enchantments:
       WEAPON:
          - DAMAGE_ALL:2
-         - Kill_Confirm:1
+         - KILL_CONFIRM:1
+         - ASSASSIN:1
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:2
   3:

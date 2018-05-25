@@ -34,7 +34,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Repel : Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     fun onDamaged(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "repel"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "repel"))
         if (entityDamageByEntityEvent.entity is Player) {
             val damager = entityDamageByEntityEvent.damager
             val player = entityDamageByEntityEvent.entity as Player

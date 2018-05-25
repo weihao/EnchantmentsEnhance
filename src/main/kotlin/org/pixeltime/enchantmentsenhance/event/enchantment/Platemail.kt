@@ -31,7 +31,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Platemail : Listener {
     @EventHandler
     fun onPalyerWalk(playerMoveEvent: PlayerMoveEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "platemail"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "platemail"))
         val player = playerMoveEvent.player
         try {
             val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)

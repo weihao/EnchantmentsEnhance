@@ -36,7 +36,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Thief : Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "thief"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "thief"))
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             val player2 = entityDamageByEntityEvent.entity as Player
@@ -52,9 +52,9 @@ class Thief : Listener {
                     if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                         if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("thief.$level.chance")) {
-                            val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * DM.economy.getBalance(player2 as OfflinePlayer)
-                            DM.economy.withdrawPlayer(player2 as OfflinePlayer, n2)
-                            DM.economy.depositPlayer(player as OfflinePlayer, n2)
+                            val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DM.economy!!.getBalance(player2 as OfflinePlayer))
+                            DM.economy!!.withdrawPlayer(player2 as OfflinePlayer, n2)
+                            DM.economy!!.depositPlayer(player as OfflinePlayer, n2)
                         }
                     }
                 }

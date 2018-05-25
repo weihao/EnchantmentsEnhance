@@ -28,7 +28,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Plunder : Listener {
     @EventHandler
     fun onDeath(entityDeathEvent: EntityDeathEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "plunder"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "plunder"))
         if (entityDeathEvent.entity.killer is Player && entityDeathEvent.entity !is Player) {
             val killer = entityDeathEvent.entity.killer
             if (killer.itemInHand != null && killer.itemInHand.hasItemMeta() && killer.itemInHand.itemMeta.hasLore() && killer.itemInHand.itemMeta.lore.contains(translateAlternateColorCodes.toString() + " I")) {

@@ -35,7 +35,7 @@ class Shadowstep : Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.entity is Player && entityDamageByEntityEvent.damager is Player) {
-            val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "shadowstep"))
+            val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "shadowstep"))
             val player = entityDamageByEntityEvent.entity as Player
             val player2 = entityDamageByEntityEvent.damager as Player
             if (entityDamageByEntityEvent.isCancelled) {

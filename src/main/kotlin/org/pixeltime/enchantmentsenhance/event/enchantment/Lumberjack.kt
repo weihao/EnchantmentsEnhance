@@ -31,7 +31,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import java.util.*
 
 class Lumberjack : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "lumberjack"))
+    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "lumberjack"))
     @EventHandler(priority = EventPriority.MONITOR)
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
         if (blockBreakEvent.isCancelled) {

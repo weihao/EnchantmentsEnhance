@@ -32,7 +32,7 @@ class Swimmer : Listener {
     @EventHandler
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "swimmer"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "swimmer"))
         try {
             val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
             for (i in armorContents.indices) {

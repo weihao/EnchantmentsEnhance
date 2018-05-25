@@ -32,7 +32,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Reborn : Listener {
     @EventHandler
     fun onDeath(playerDeathEvent: PlayerDeathEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "reborn"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "reborn"))
         val entity = playerDeathEvent.entity
         if (entity.killer is Player) {
             val player = entity.killer

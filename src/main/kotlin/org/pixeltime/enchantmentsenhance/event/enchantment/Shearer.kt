@@ -34,7 +34,7 @@ class Shearer : Listener {
     @EventHandler
     fun onInteract(playerInteractEvent: PlayerInteractEvent) {
         val player = playerInteractEvent.player
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "shearer"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "shearer"))
         if (playerInteractEvent.action == Action.LEFT_CLICK_AIR) {
             val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
             for (itemStack in armorContents) {

@@ -129,10 +129,13 @@ public class ItemManager {
         int gradeLevel = getItemGradeLevel(item);
         ItemType type = getItemEnchantmentType(item);
         List<String> temp = SettingsManager.config.getStringList("enhance."
-                + enchantLevel + ".enchantment." + type.toString());
+                + enchantLevel + ".enchantments." + type.toString());
         //Clear All the enchantment before applying new enchantment
         List<String> empty = new ArrayList<String>();
-        item.getItemMeta().setLore(empty);
+        ItemMeta meta = item.getItemMeta();
+        meta.setLore(empty);
+        item.setItemMeta(meta);
+
         for (Enchantment ench : item.getEnchantments().keySet()) {
             item.removeEnchantment(ench);
         }
@@ -142,7 +145,6 @@ public class ItemManager {
             String[] a = s.split(":");
             applyEnchantmentToItem(item, a[0], Integer.parseInt(a[1]));
         }
-
         List<String> temp2 = null;
         switch (getItemEnchantmentType(item)) {
             case WEAPON:
@@ -156,9 +158,7 @@ public class ItemManager {
         if (temp2 != null) {
             for (String s : temp2) {
                 String[] b = s.split(":");
-                Enchantment ench = Enchantment.getByName(b[0]);
-                item.addUnsafeEnchantment(ench, Integer.parseInt(b[1]) + item
-                        .getEnchantmentLevel(ench));
+                applyEnchantmentToItem(item, b[0], Integer.parseInt(b[1]));
             }
         }
     }
@@ -167,9 +167,9 @@ public class ItemManager {
         ItemMeta meta = item.getItemMeta();
         List<String> newlore = (meta.hasLore() ? meta.getLore() : new ArrayList<>());
         try {
-            item.addUnsafeEnchantment(Enchantment.getByName(ench), level);
+            item.addUnsafeEnchantment(Enchantment.getByName(ench.toUpperCase()), level);
         } catch (IllegalArgumentException ex) {
-            String enchantment = SettingsManager.lang.getString("enchantment." + ench.toLowerCase());
+            String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
             if (enchantment != null) {
                 newlore.add(ChatColor.translateAlternateColorCodes('&', enchantment + " " + Util.intToRoman(level)));
             }

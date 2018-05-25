@@ -33,7 +33,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Petrify : Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     fun onHit(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "petrify"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "petrify"))
         if (entityDamageByEntityEvent.entity is Player && entityDamageByEntityEvent.damager is Player) {
             val player = entityDamageByEntityEvent.entity as Player
             val player2 = entityDamageByEntityEvent.damager as Player

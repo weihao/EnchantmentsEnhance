@@ -36,7 +36,7 @@ class Plow : Listener {
         if (playerInteractEvent.isCancelled) {
             return
         }
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "plow"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "plow"))
         val player = playerInteractEvent.player
         val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
         for (itemStack in armorContents) {

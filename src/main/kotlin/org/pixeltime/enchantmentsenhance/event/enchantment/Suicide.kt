@@ -30,7 +30,7 @@ class Suicide : Listener {
     @EventHandler
     fun onDeath(playerDeathEvent: PlayerDeathEvent) {
         val player = playerDeathEvent.entity
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "suicide"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "suicide"))
 
         try {
             val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)

@@ -36,7 +36,6 @@ public class DebugCommand extends SubCommand {
             x = Integer.parseInt(args[1]);
             y = Integer.parseInt(args[2]);
             ItemStack item = p.getInventory().getItem(Util.getSlot(x, y));
-            System.out.println(item.getItemMeta().getDisplayName());
         }
     }
 

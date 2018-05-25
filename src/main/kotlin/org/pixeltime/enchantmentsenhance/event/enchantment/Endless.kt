@@ -30,7 +30,7 @@ import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Endless : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "endless"))
+    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "endless"))
     @EventHandler(ignoreCancelled = true)
     fun noWeaponBreakDamage(playerInteractEvent: PlayerInteractEvent) {
         try {

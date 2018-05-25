@@ -29,7 +29,7 @@ import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Haste : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "haste"))
+    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "haste"))
 
     @EventHandler
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
@@ -40,7 +40,7 @@ class Haste : Listener {
                 if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                     if (level > 0) {
-                        player.addPotionEffect(PotionEffect(PotionEffectType.FAST_DIGGING, 200, SettingsManager.enchant.getInt("enchantment.haste.$level.amplifier")))
+                        player.addPotionEffect(PotionEffect(PotionEffectType.FAST_DIGGING, 200, SettingsManager.enchant.getInt("enchantments.haste.$level.amplifier")))
                     }
                 }
             }

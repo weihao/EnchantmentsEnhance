@@ -180,7 +180,7 @@ execute:
       
     2:
       chance: 40
-       multiplier: 2.0
+      multiplier: 2.0
 
     3:
       chance: 45
