@@ -26,6 +26,8 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
+import org.pixeltime.enchantmentsenhance.manager.IM
+import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Shearer : Listener {
@@ -33,15 +35,22 @@ class Shearer : Listener {
     fun onInteract(playerInteractEvent: PlayerInteractEvent) {
         val player = playerInteractEvent.player
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "shearer"))
-        if (playerInteractEvent.action == Action.LEFT_CLICK_AIR && player.itemInHand != null && player.itemInHand.hasItemMeta() && player.itemInHand.itemMeta.hasLore() && player.itemInHand.itemMeta.lore.contains(translateAlternateColorCodes.toString() + " I")) {
-            val int1 = SettingsManager.enchant.getInt("shearer.level_I.radius")
-            for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
-                if (entity is Sheep) {
-                    if (entity.isSheared) {
-                        continue
+        if (playerInteractEvent.action == Action.LEFT_CLICK_AIR) {
+            val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
+            for (itemStack in armorContents) {
+                if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0) {
+                        val int1 = SettingsManager.enchant.getInt("shearer.$level.radius")
+                        for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
+                            if (entity is Sheep) {
+                                if (!entity.isSheared) {
+                                    entity.isSheared = true
+                                    entity.world.dropItem(entity.location, ItemStack(Material.WOOL, 1, entity.color.woolData.toShort()))
+                                }
+                            }
+                        }
                     }
-                    entity.isSheared = true
-                    entity.world.dropItem(entity.location, ItemStack(Material.WOOL, 1, entity.color.woolData.toShort()))
                 }
             }
         }

@@ -239,15 +239,19 @@ aegis:
 purge:
     1:
       chance: 10
+      damage: 2.0
       
     2:
       chance: 20
+      damage: 2.0
       
     3:
       chance: 30
+      damage: 3.0
       
     4:
       chance: 40
+      damage: 4.0
       
 divine: 
     1:
@@ -663,3 +667,11 @@ spiked:
 
     3:
       damage: 6.0
+
+rekt:
+
+    1:
+      multiplier: 2.0
+
+    2:
+      multiplier: 3.0

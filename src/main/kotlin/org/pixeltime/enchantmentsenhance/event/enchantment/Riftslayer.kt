@@ -24,6 +24,8 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.pixeltime.enchantmentsenhance.manager.IM
+import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Riftslayer : Listener {
@@ -31,13 +33,20 @@ class Riftslayer : Listener {
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "riftslayer"))
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity !is Player) {
+
+            val player = entityDamageByEntityEvent.damager as Player
+            if (entityDamageByEntityEvent.isCancelled) {
+                return
+            }
             try {
-                val player = entityDamageByEntityEvent.damager as Player
-                if (entityDamageByEntityEvent.isCancelled) {
-                    return
-                }
-                if (player.itemInHand != null && player.itemInHand.itemMeta.hasLore() && player.itemInHand.itemMeta.lore.contains(translateAlternateColorCodes.toString() + " I")) {
-                    entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * 3.0
+                val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
+                for (itemStack in armorContents) {
+                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
+                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                        if (level > 0) {
+                            entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * 3.0
+                        }
+                    }
                 }
             } catch (ex: Exception) {
             }

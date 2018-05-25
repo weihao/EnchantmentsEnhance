@@ -71,7 +71,6 @@ class EM {
             Main.getMain().server.pluginManager.registerEvents(Demon_Siphon(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Web_Trap(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Paralyze(), Main.getMain())
-            Main.getMain().server.pluginManager.registerEvents(Soft_Touch(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Rekt(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Reinforced(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Shearer(), Main.getMain())

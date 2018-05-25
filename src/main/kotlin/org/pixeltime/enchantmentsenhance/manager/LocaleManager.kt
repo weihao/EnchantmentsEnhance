@@ -169,7 +169,6 @@ class LM {
             LM.addLang("enchantment.horse_rider", arrayOf("&7Horse Rider", "&7骑御"))
             LM.addLang("enchantment.web_trap", arrayOf("&7Web Trap", "&7蛛网"))
             LM.addLang("enchantment.paralyze", arrayOf("&7Paralyze", "&7麻痹"))
-            LM.addLang("enchantment.soft_touch", arrayOf("&7Soft Touch", "&7柔顺"))
             LM.addLang("enchantment.tnt_shooter", arrayOf("&7Tnt Shooter", "&7炮手"))
             LM.addLang("enchantment.rekt", arrayOf("&7Rekt", "&7碾压"))
             LM.addLang("enchantment.reversal", arrayOf("&7Reversal", "&7倒转"))
@@ -187,6 +186,9 @@ class LM {
             LM.addLang("enchantment.feather_fall", arrayOf("&7Feather Fall", "&7羽落"))
             LM.addLang("enchantment.suicide", arrayOf("&7Suicide", "&帝陨"))
             LM.addLang("enchantment.launch", arrayOf("&7Launch", "&7弹射"))
+
+            SettingsManager.lang.options().copyDefaults(true);
+            SettingsManager.saveLang();
         }
     }
 }

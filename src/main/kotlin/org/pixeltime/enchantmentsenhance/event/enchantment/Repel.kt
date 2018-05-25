@@ -27,6 +27,8 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.pixeltime.enchantmentsenhance.manager.IM
+import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Repel : Listener {
@@ -34,32 +36,24 @@ class Repel : Listener {
     fun onDamaged(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantment." + "repel"))
         if (entityDamageByEntityEvent.entity is Player) {
+            val damager = entityDamageByEntityEvent.damager
+            val player = entityDamageByEntityEvent.entity as Player
+            if (entityDamageByEntityEvent.isCancelled) {
+                return
+            }
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {
+                return
+            }
+
             try {
-                val damager = entityDamageByEntityEvent.damager
-                val player = entityDamageByEntityEvent.entity as Player
-                if (entityDamageByEntityEvent.isCancelled) {
-                    return
-                }
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {
-                    return
-                }
-                val armorContents = player.inventory.armorContents
-                val length = armorContents.size
-                var i = 0
-                while (i < length) {
-                    val itemStack = armorContents[i]
-                    if (itemStack != null) {
-                        if (itemStack.hasItemMeta() && itemStack.itemMeta.lore.contains(translateAlternateColorCodes.toString() + " I") && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("repel.level_I.chance")) {
-                            damager.velocity = player.location.direction.multiply(SettingsManager.enchant.getInt("repel.level_I.power"))
-                        }
-                        if (itemStack.hasItemMeta() && itemStack.itemMeta.lore.contains(translateAlternateColorCodes.toString() + " II") && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("repel.level_II.chance")) {
-                            damager.velocity = player.location.direction.multiply(SettingsManager.enchant.getInt("repel.level_II.power"))
-                        }
-                        if (itemStack.hasItemMeta() && itemStack.itemMeta.lore.contains(translateAlternateColorCodes.toString() + " III") && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("repel.level_III.chance")) {
-                            damager.velocity = player.location.direction.multiply(SettingsManager.enchant.getInt("repel.level_III.power"))
+                val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
+                for (itemStack in armorContents) {
+                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
+                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("repel.$level.chance")) {
+                            damager.velocity = player.location.direction.multiply(SettingsManager.enchant.getInt("repel.$level.power"))
                         }
                     }
-                    ++i
                 }
             } catch (ex: Exception) {
             }

@@ -75,8 +75,7 @@ public class SettingsManager {
         }
         lang = YamlConfiguration.loadConfiguration(langfile);
         LM.addLocale();
-        }
-
+    }
 
 
     public static void saveData() {
