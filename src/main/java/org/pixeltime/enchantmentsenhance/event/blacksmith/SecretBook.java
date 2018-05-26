@@ -24,10 +24,7 @@ import org.pixeltime.enchantmentsenhance.event.blackspirit.Failstack;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class SecretBook {
     private static HashMap<String, List<Integer>> storage =
@@ -65,12 +62,14 @@ public class SecretBook {
             String[] temp = SettingsManager.data.getString(player.getName()
                     + ".advice of valks").replace("[", "").replace("]", "").split(
                     ", ");
-            for (int i = 0; i < temp.length; i++) {
-                try {
-                    adviceOfValks.add(Integer.parseInt(temp[i]));
-                } catch (Exception e) {
-                    Bukkit.getLogger().severe("Error in loading " + player
-                            .getName() + "'s" + " failstack.");
+            if (temp.length > 1) {
+                for (int i = 0; i < temp.length; i++) {
+                    try {
+                        adviceOfValks.add(Integer.parseInt(temp[i]));
+                    } catch (Exception e) {
+                        Bukkit.getLogger().severe("Error in loading " + player
+                                .getName() + "'s" + " failstack.");
+                    }
                 }
             }
         }
