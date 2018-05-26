@@ -1,0 +1,42 @@
+name: EnchantmentsEnhance
+version: ${project.version}
+description: This is a Black Desert Online Style of Enchantment enhancing
+author: Feier
+authors: [Feier, lgou2w]
+load: postworld
+prefix: EnchantmentsEnhance
+
+depend: [Vault]
+softdepend: [StackMob, WorldEdit, WorldGuard]
+
+main: org.pixeltime.enchantmentsenhance.Main
+database: false
+website: https://github.com/HealPotion
+
+
+commands:
+    enhance:
+        usage: /<command>
+        description: use /enhance help to get to know the plugin.
+
+        
+permissions:
+    Enchantmentsenhance.*:
+        description: Gives access to all enhancement permissions and command.
+    Enchantmentsenhance.help:
+        description: Allows you to use help command.
+        default: true
+    Enchantmentsenhance.reload:
+        description: Allows you to reload the config.
+        default: op
+    Enchantmentsenhance.lore:
+        description: Allows you to remove or add lore tags to the item.
+        default: op
+    Enchantmentsenhance.version:
+        description: Allows you to see the version of the plugin.
+        default: op
+    Enchantmentsenhance.enhance:
+        description: Allows you to use the enhancement menu.
+        default: true
+    Enchantmentsenhance.add:
+        description: Allows you to use the add command.

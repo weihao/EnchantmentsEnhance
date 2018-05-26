@@ -1,0 +1,37 @@
+- [Chinese](README-zh.md)
+- [Japanese](README-ja.md)
+
+<p align="center">
+<img src=".images/logo.jpg" alt="EnchantmentsEnhance" />
+</p>
+
+<p align="center">
+<a href="https://travis-ci.org/HealPotion/EnchantmentsEnhance"><img src="https://travis-ci.org/HealPotion/EnchantmentsEnhance.svg?branch=master" alt="Travis CI" /></a>
+<a href="https://codebeat.co/projects/github-com-healpotion-enchantmentsenhance-master"><img alt="codebeat" src="https://codebeat.co/badges/2ef380b7-5479-4ac6-89d9-fd1fb673511c" /></a>
+<a href="http://www.gnu.org/licenses/gpl-3.0"><img src="https://badges.frapsoft.com/os/gpl/gpl.svg?v=102" alt="License" /></a>
+<a href="https://github.com/HealPotion/EnchantmentsEnhance/releases"><img src="https://img.shields.io/github/downloads/HealPotion/EnchantmentsEnhance/total.svg" alt="downloads" /></a>
+</p>
+
+## Introduction
+GitHub Wiki is setting up... (Markdown)
+
+## Life Cycle
+This plugin is under active development at the stage of alpha phase.
+Completion of the plugin is currently projected at 20%, meaning the general functionality and availability are incomplete.
+You can find latest pre-release on Spigot.
+
+## Compatibility
+Version: `1.8 - 1.12`
+- [x] [Bukkit](https://bukkit.org)
+- [x] [Spigot](https://spigotmc.org)
+- [x] [PaperSpigot](https://ci.destroystokyo.com/view/All/job/PaperSpigot/)
+
+## Install
+1. Download plugin jarfile
+2. Stop the server
+3. Place jar file in the `plugins` folder
+4. Start the server
+5. Configure the plugin
+
+## Problems
+Please use: https://github.com/HealPotion/EnchantmentsEnhance/issues
