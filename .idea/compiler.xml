@@ -9,8 +9,5 @@
         <module name="enchantmentsenhance" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="enchantmentsenhance" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
