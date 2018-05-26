@@ -28,6 +28,7 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.potion.PotionEffectType
+import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
@@ -44,17 +45,20 @@ class Battlecry : Listener {
             if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {
                 return
             }
-            val level = KM.getLevel(translateAlternateColorCodes, player.itemInHand.itemMeta.lore)
-            if (level > 0) {
-                if ((player.hasPotionEffect(PotionEffectType.POISON)) || player.hasPotionEffect(PotionEffectType.CONFUSION) || player.hasPotionEffect(PotionEffectType.WITHER) || player.hasPotionEffect(PotionEffectType.WEAKNESS)) {
-                    if ((Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("battlecry.$level.chance")) {
-                        try {
-                            player.removePotionEffect(PotionEffectType.BLINDNESS)
-                            player.removePotionEffect(PotionEffectType.POISON)
-                            player.removePotionEffect(PotionEffectType.CONFUSION)
-                            player.removePotionEffect(PotionEffectType.WEAKNESS)
-                            player.removePotionEffect(PotionEffectType.SLOW)
-                        } catch (ex: Exception) {
+            val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+            for (itemStack in armorContents) {
+                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                if (level > 0) {
+                    if ((player.hasPotionEffect(PotionEffectType.POISON)) || player.hasPotionEffect(PotionEffectType.CONFUSION) || player.hasPotionEffect(PotionEffectType.WITHER) || player.hasPotionEffect(PotionEffectType.WEAKNESS)) {
+                        if ((Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("battlecry.$level.chance")) {
+                            try {
+                                player.removePotionEffect(PotionEffectType.BLINDNESS)
+                                player.removePotionEffect(PotionEffectType.POISON)
+                                player.removePotionEffect(PotionEffectType.CONFUSION)
+                                player.removePotionEffect(PotionEffectType.WEAKNESS)
+                                player.removePotionEffect(PotionEffectType.SLOW)
+                            } catch (ex: Exception) {
+                            }
                         }
                     }
                 }

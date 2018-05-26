@@ -19,10 +19,9 @@
 package org.pixeltime.enchantmentsenhance.command;
 
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
+import org.pixeltime.enchantmentsenhance.manager.IM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class DebugCommand extends SubCommand {
     private int x = 1;
@@ -33,9 +32,7 @@ public class DebugCommand extends SubCommand {
         if (args[0].equals("upgrade")) {
             Enhance.enhanceSuccess(p.getItemInHand(), p, false, 19);
         } else if (args[0].equals("slots")) {
-            x = Integer.parseInt(args[1]);
-            y = Integer.parseInt(args[2]);
-            ItemStack item = p.getInventory().getItem(Util.getSlot(x, y));
+            IM.getArmorSlots(p);
         }
     }
 

@@ -29,6 +29,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
@@ -46,9 +47,12 @@ class Corruption : Listener {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                     return
                 }
-                val level = KM.getLevel(translateAlternateColorCodes, player.itemInHand.itemMeta.lore)
-                if ((level > 0) && ((Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("corruption.$level.chance"))) {
-                    player2.addPotionEffect(PotionEffect(PotionEffectType.WEAKNESS, SettingsManager.enchant.getInt("corruption.$level.duration") * 20, SettingsManager.enchant.getInt("corruption.$level.potion_lvl") - 1))
+                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                for (itemStack in armorContents) {
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if ((level > 0) && ((Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("corruption.$level.chance"))) {
+                        player2.addPotionEffect(PotionEffect(PotionEffectType.WEAKNESS, SettingsManager.enchant.getInt("corruption.$level.duration") * 20, SettingsManager.enchant.getInt("corruption.$level.potion_lvl") - 1))
+                    }
                 }
             } catch (ex: Exception) {
             }

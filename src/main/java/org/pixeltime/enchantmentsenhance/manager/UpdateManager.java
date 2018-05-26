@@ -18,15 +18,15 @@
 
 package org.pixeltime.enchantmentsenhance.manager;
 
-import org.bukkit.ChatColor;
-import org.bukkit.event.Listener;
-import org.pixeltime.enchantmentsenhance.Main;
+        import org.bukkit.ChatColor;
+        import org.bukkit.event.Listener;
+        import org.pixeltime.enchantmentsenhance.Main;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+        import java.io.BufferedReader;
+        import java.io.IOException;
+        import java.io.InputStreamReader;
+        import java.net.HttpURLConnection;
+        import java.net.URL;
 
 public class UpdateManager implements Listener {
 
@@ -42,17 +42,12 @@ public class UpdateManager implements Listener {
                     .getInputStream())).readLine();
             if (!version.equals(Main.class.getPackage()
                     .getImplementationVersion())) {
-                for (int i = 0; i < 10; i++) {
-                    Main.getMain().getLogger().warning(
-                            ChatColor.RED + "EnchantmentsEnhance is OUTDATED!");
-                }
+                    Main.getMain().getServer().getConsoleSender().sendMessage(ChatColor.RED + "EnchantmentsEnhance is OUTDATED!");
             } else {
-                Main.getMain().getLogger().info(
-                        "Enchantments Enhance is UP-TO-DATE");
+                Main.getMain().getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "Enchantments Enhance is UP-TO-DATE");
             }
         } catch (IOException e) {
-            Main.getMain().getLogger().warning(
-                    "ERROR: Could not make connection to SpigotMC.org");
+            Main.getMain().getServer().getConsoleSender().sendMessage(ChatColor.RED + "ERROR: Could not make connection to SpigotMC.org");
         }
     }
 }

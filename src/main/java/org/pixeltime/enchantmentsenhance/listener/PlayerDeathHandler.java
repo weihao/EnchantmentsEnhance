@@ -57,12 +57,9 @@ public class PlayerDeathHandler implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
         List<ItemStack> newInventory = new ArrayList<ItemStack>();
-        UUID uuid = p.getUniqueId();
 
-        File playerFile = new File(m.getDataFolder() + "/Data" + "/Players/"
-                + uuid.toString() + ".yml");
-        FileConfiguration pFile = YamlConfiguration.loadConfiguration(
-                playerFile);
+        File playerFile = new File(m.getDataFolder() + "/userdata" + "/death/" + p.getName() + ".yml");
+        FileConfiguration pFile = YamlConfiguration.loadConfiguration(playerFile);
 
         pFile.set("PlayerName", p.getName());
         if (!e.getDrops().isEmpty() || e.getDrops() != null) {
@@ -75,8 +72,8 @@ public class PlayerDeathHandler implements Listener {
                         for (String s : lore) {
                             s = ChatColor.stripColor(s);
                             if (s.contains(ChatColor.stripColor(SettingsManager.lang.getString(
-                                    "Lore.UntradeableLore"))) || s.contains(ChatColor.stripColor(SettingsManager.lang.getString(
-                                    "Lore.TradeableLore")))) {
+                                    "Lore.untradeableLore"))) || s.contains(ChatColor.stripColor(SettingsManager.lang.getString(
+                                    "Lore.tradeableLore")))) {
                                 newInventory.add(e.getDrops().get(i));
                             }
                         }
@@ -106,8 +103,7 @@ public class PlayerDeathHandler implements Listener {
 
         UUID uuid = p.getUniqueId();
 
-        File playerFile = new File(m.getDataFolder() + "/Data" + "/Players/"
-                + uuid.toString() + ".yml");
+        File playerFile = new File(m.getDataFolder() + "/userdata" + "/death/" + p.getName() + ".yml");
         FileConfiguration pFile = YamlConfiguration.loadConfiguration(
                 playerFile);
         if (playerFile.exists()) {

@@ -38,9 +38,8 @@ class Horse_Rider : Listener {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity !is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             try {
-                val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
-                for (i in armorContents.indices) {
-                    val itemStack = armorContents[i]
+                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                for (itemStack in armorContents) {
                     if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                         if (level > 0 && entityDamageByEntityEvent.entity is Horse) {

@@ -36,9 +36,8 @@ class Auto_Block : Listener {
     @EventHandler
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
         val player = blockBreakEvent.player
-        val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
-        for (i in armorContents.indices) {
-            val itemStack = armorContents[i]
+        val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+        for (itemStack in armorContents) {
             if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                 val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                 if (level > 0) {
@@ -50,9 +49,8 @@ class Auto_Block : Listener {
 
     fun autoBlock(player: Player) {
         try {
-            val contents: Array<ItemStack> = player.inventory.contents
-            for (i in contents.indices) {
-                val itemStack = contents[i]
+            val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+            for (itemStack in armorContents) {
                 val n = itemStack.amount / 9
                 val n2 = itemStack.amount / 4
                 if (n > 0) {

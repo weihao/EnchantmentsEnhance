@@ -36,7 +36,7 @@ class Shearer : Listener {
         val player = playerInteractEvent.player
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "shearer"))
         if (playerInteractEvent.action == Action.LEFT_CLICK_AIR) {
-            val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
+            val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             for (itemStack in armorContents) {
                 if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

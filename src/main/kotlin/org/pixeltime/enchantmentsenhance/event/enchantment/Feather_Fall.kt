@@ -33,7 +33,7 @@ class Feather_Fall : Listener {
     fun onDamage(entityDamageEvent: EntityDamageEvent) {
         if (entityDamageEvent.entity is Player) {
             val player = entityDamageEvent.entity as Player
-            val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
+            val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             for (itemStack in armorContents)
                 if (itemStack != null && itemStack.hasItemMeta() && itemStack.itemMeta.hasLore() && entityDamageEvent.cause == EntityDamageEvent.DamageCause.FALL) {
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

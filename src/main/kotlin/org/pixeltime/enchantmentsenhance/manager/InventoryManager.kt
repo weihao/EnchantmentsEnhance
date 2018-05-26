@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.manager
 
+import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.Main
@@ -33,7 +34,7 @@ class IM {
         val belt = Main.getMain().config.getInt("accessory.belt")
 
         @JvmStatic
-        fun getAccessorySlots(player: Player): Array<ItemStack> {
+        fun getAccessorySlots(player: Player): List<ItemStack> {
             val inv = player.inventory
 
             val accessory = mutableListOf<ItemStack>()
@@ -55,7 +56,12 @@ class IM {
             if (inv.getItem(belt) != null) {
                 accessory.add(inv.getItem(belt))
             }
-            return accessory.toTypedArray()
+            return accessory
+        }
+
+        @JvmStatic
+        fun getArmorSlots(player: Player): List<ItemStack> {
+            return player.inventory.armorContents.filter { it.type != Material.AIR }
         }
     }
 }

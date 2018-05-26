@@ -34,10 +34,9 @@ class Dodge : Listener {
         if (entityDamageEvent.entity is Player) {
             val player = entityDamageEvent.entity as Player
             val n = (Math.random() * 100.0).toInt()
-            val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
+            val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             try {
-                for (i in armorContents.indices) {
-                    val itemStack = armorContents[i]
+                for (itemStack in armorContents) {
                     if (itemStack != null && itemStack.hasItemMeta()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                         if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("dodge.$level.chance")) {

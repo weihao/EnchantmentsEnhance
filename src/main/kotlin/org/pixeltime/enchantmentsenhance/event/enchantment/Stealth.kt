@@ -41,7 +41,7 @@ class Stealth : Listener {
             return
         }
 
-        val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
+        val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
         try {
             for (itemStack in armorContents)
                 if (itemStack != null && itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
