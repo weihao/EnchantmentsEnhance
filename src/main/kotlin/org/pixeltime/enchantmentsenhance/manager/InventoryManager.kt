@@ -37,7 +37,7 @@ class IM {
         fun getAccessorySlots(player: Player): List<ItemStack> {
             val inv = player.inventory
 
-            val accessory = mutableListOf<ItemStack>()
+            val accessory = arrayListOf<ItemStack>()
             if (inv.getItem(left_ring) != null) {
                 accessory.add(inv.getItem(left_ring))
             }
@@ -61,7 +61,7 @@ class IM {
 
         @JvmStatic
         fun getArmorSlots(player: Player): List<ItemStack> {
-            return player.inventory.armorContents.filter { it.type != Material.AIR }
+            return player.inventory.armorContents.filter { it != null && it.type != Material.AIR }
         }
     }
 }
