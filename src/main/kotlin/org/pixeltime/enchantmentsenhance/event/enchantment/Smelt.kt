@@ -39,7 +39,7 @@ class Smelt : Listener {
         }
         val player = blockBreakEvent.player
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "smelt"))
-        val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
+        val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
         for (itemStack in armorContents) {
             if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                 val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

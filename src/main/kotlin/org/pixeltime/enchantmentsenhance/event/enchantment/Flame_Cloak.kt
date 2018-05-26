@@ -45,7 +45,7 @@ class Flame_Cloak : Listener {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {
                     return
                 }
-                val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
+                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
                     if (itemStack != null && itemStack.hasItemMeta()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

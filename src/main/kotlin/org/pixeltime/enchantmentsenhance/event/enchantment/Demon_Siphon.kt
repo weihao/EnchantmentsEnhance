@@ -27,6 +27,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
@@ -46,12 +47,15 @@ class Demon_Siphon : Listener {
                 if (entityDamageByEntityEvent.entity is Player) {
                     return
                 }
-                val level = KM.getLevel(translateAlternateColorCodes, player.itemInHand.itemMeta.lore)
-                if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("demon_siphon.$level.chance")) {
-                    if (player.health + SettingsManager.enchant.getInt("demon_siphon.$level.health") > 20.0) {
-                        player.health = 20.0
-                    } else {
-                        player.health = player.health + SettingsManager.enchant.getInt("demon_siphon.$level.health")
+                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                for (itemStack in armorContents) {
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("demon_siphon.$level.chance")) {
+                        if (player.health + SettingsManager.enchant.getInt("demon_siphon.$level.health") > 20.0) {
+                            player.health = 20.0
+                        } else {
+                            player.health = player.health + SettingsManager.enchant.getInt("demon_siphon.$level.health")
+                        }
                     }
                 }
             } catch (ex: Exception) {

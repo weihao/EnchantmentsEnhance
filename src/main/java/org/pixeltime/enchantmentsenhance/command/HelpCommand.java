@@ -20,6 +20,7 @@ package org.pixeltime.enchantmentsenhance.command;
 
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.manager.CommandManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 public class HelpCommand extends SubCommand {

@@ -34,10 +34,10 @@ class Batvision : Listener {
     @EventHandler
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
-        for (i in armorContents.indices) {
-            try {
-                val level = KM.getLevel(translateAlternateColorCodes, player.itemInHand.itemMeta.lore)
+        val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+        try {
+            for (itemStack in armorContents) {
+                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                 if (level > 0) {
                     if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
                         player.removePotionEffect(PotionEffectType.NIGHT_VISION)
@@ -46,8 +46,9 @@ class Batvision : Listener {
                         player.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, 300, 0))
                     }
                 }
-            } catch (ex: Exception) {
             }
+        } catch (ex: Exception) {
         }
     }
 }
+

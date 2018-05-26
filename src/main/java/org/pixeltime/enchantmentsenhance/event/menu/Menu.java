@@ -242,8 +242,7 @@ public class Menu {
             update.add(Util.toColor(SettingsManager.lang.getString(
                     "Menu.lore.ifFail")));
         }
-        if (ItemManager.getItemEnchantLevel(
-                item) >= DataManager.downgradePhase) {
+        if (DataManager.downgradeIfFail[ItemManager.getItemEnchantLevel(item)]) {
             update.add(Util.toColor(SettingsManager.lang.getString(
                     "Menu.lore.ifDowngrade")));
         }

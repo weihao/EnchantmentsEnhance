@@ -48,9 +48,8 @@ class Hex : Listener {
             }
 
             try {
-                val armorContents = player.inventory.armorContents + IM.getAccessorySlots(player)
-                for (i in armorContents.indices) {
-                    val itemStack = armorContents[i]
+                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                for (itemStack in armorContents) {
                     if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                         if (level > 0) {

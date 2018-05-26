@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.pixeltime</groupId>
     <artifactId>enchantmentsenhance</artifactId>
-    <version>4.0.2</version>
+    <version>4.0.5</version>
     <description>A plugin of enchantments enhancing system inspired by BDO.</description>
     <packaging>jar</packaging>
     <name>enchantmentsenhance</name>

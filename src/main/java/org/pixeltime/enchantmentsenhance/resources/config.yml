@@ -28,6 +28,23 @@ enableVanillaEnchant: false
 # Set true to enable support for stacked mob drop.
 enableStackMob: false
 
+# NOT READY! STILL BROKE
+mysql:
+  # If disabled, the plugin will use local YAML files.
+  enabled: false
+  # MySQL server address
+  host: 127.0.0.1
+  # MySQL server port (default 3306)
+  port: 3306
+  # Database name (NOTE! You need to create the database, then the plugin will create the tables.)
+  database: 'mydatabase'
+  #Table name (the plugin will auto create them)
+  table: 'enchantmentsenhance_userdata'
+  #User name
+  user: 'root'
+  #User password
+  password: 'by_healpotion_with_love'
+
 # Lore is the additional attribution that is added to the enhanced item.
 lore:
   # Supported bound type: tradeable, untradeable.
@@ -178,19 +195,15 @@ material:
 # Player will place their items to those position in order to use their accessories.
 # Player Inventory Slot Reference: https://github.com/HealPotion/EnchantmentsEnhance/blob/master/.images/player_inventory.png
 accessory:
+  # Set accessory to -1 to disable an slot
+  # left_ring:-1
   left_ring: 9
   right_ring: 10
   left_earring: 18
   right_earring: 19
   necklace: 27
-  belt:  28
-
-# @Deprecated Phase when the enhancement is not guaranteed success.
-FirstPhaseStarts: 7
-# Phase when the enhancement takes concentrated stones.
-SecondPhaseStarts: 15
-# Phase when the item will downgrade if the enhancement is failed.
-DowngradePhaseStarts: 17
+  belt: 28
+#Armor includes armor contents and item in hand.
 
 # Vanilla Enchantments Reference: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html#
 enhance:
@@ -205,6 +218,10 @@ enhance:
     failstackGainedPerFail: -1
     # Cost of black stone to enhance the item.
     costToForceEnchant: -1
+    # Downgrade the item if the enhance failed.
+    downgradeIfFail: false
+    # Destroy the item if the enhance failed.
+    destroyIfFail: false
     # Enable or disable firework.
     fireworkIfSuccessful: true
     # Rounds of firework.
@@ -226,6 +243,8 @@ enhance:
     maximumFailstackApplied: -1
     failstackGainedPerFail: -1
     costToForceEnchant: -1
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+1"
@@ -241,6 +260,8 @@ enhance:
     maximumFailstackApplied: -1
     failstackGainedPerFail: -1
     costToForceEnchant: -1
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+2"
@@ -257,6 +278,8 @@ enhance:
     maximumFailstackApplied: -1
     failstackGainedPerFail: -1
     costToForceEnchant: -1
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+3"
@@ -272,6 +295,8 @@ enhance:
     maximumFailstackApplied: -1
     failstackGainedPerFail: -1
     costToForceEnchant: -1
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+4"
@@ -287,6 +312,8 @@ enhance:
     maximumFailstackApplied: -1
     failstackGainedPerFail: -1
     costToForceEnchant: -1
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+5"
@@ -302,6 +329,8 @@ enhance:
     maximumFailstackApplied: -1
     failstackGainedPerFail: -1
     costToForceEnchant: -1
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+6"
@@ -317,6 +346,8 @@ enhance:
     maximumFailstackApplied: 13
     failstackGainedPerFail: 1
     costToForceEnchant: 3
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+7"
@@ -331,6 +362,8 @@ enhance:
     maximumFailstackApplied: 14
     failstackGainedPerFail: 1
     costToForceEnchant: 4
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+8"
@@ -345,6 +378,8 @@ enhance:
     maximumFailstackApplied: 15
     failstackGainedPerFail: 1
     costToForceEnchant: 5
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+9"
@@ -359,6 +394,8 @@ enhance:
     maximumFailstackApplied: 16
     failstackGainedPerFail: 1
     costToForceEnchant: 7
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+10"
@@ -373,6 +410,8 @@ enhance:
     maximumFailstackApplied: 18
     failstackGainedPerFail: 1
     costToForceEnchant: 9
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+11"
@@ -387,6 +426,8 @@ enhance:
     maximumFailstackApplied: 20
     failstackGainedPerFail: 1
     costToForceEnchant: 12
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+12"
@@ -401,6 +442,8 @@ enhance:
     maximumFailstackApplied: 25
     failstackGainedPerFail: 1
     costToForceEnchant: 15
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+13"
@@ -415,6 +458,8 @@ enhance:
     maximumFailstackApplied: 25
     failstackGainedPerFail: 1
     costToForceEnchant: 18
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+14"
@@ -429,6 +474,8 @@ enhance:
     maximumFailstackApplied: 25
     failstackGainedPerFail: 2
     costToForceEnchant: 22
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "+15"
@@ -443,6 +490,8 @@ enhance:
     maximumFailstackApplied: 35
     failstackGainedPerFail: 3
     costToForceEnchant: 27
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "PRI"
@@ -457,6 +506,8 @@ enhance:
     maximumFailstackApplied: 44
     failstackGainedPerFail: 4
     costToForceEnchant: 45
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "DUO"
@@ -471,6 +522,8 @@ enhance:
     maximumFailstackApplied: 90
     failstackGainedPerFail: 5
     costToForceEnchant: -1
+    downgradeIfFail: true
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "TRI"
@@ -485,6 +538,8 @@ enhance:
     maximumFailstackApplied: 124
     failstackGainedPerFail: 6
     costToForceEnchant: -1
+    downgradeIfFail: true
+    destroyIfFail: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     name: "TET"
@@ -499,6 +554,8 @@ enhance:
     maximumFailstackApplied: -1
     failstackGainedPerFail: -1
     costToForceEnchant: -1
+    downgradeIfFail: false
+    destroyIfFail: false
     fireworkIfSuccessful: false
     fireworkRounds: -1
     name: "PEN"

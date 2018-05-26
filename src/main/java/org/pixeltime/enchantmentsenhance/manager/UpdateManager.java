@@ -42,17 +42,12 @@ public class UpdateManager implements Listener {
                     .getInputStream())).readLine();
             if (!version.equals(Main.class.getPackage()
                     .getImplementationVersion())) {
-                for (int i = 0; i < 10; i++) {
-                    Main.getMain().getLogger().warning(
-                            ChatColor.RED + "EnchantmentsEnhance is OUTDATED!");
-                }
+                Main.getMain().getServer().getConsoleSender().sendMessage("[EnchantmentsEnhance] " + ChatColor.RED + "EnchantmentsEnhance is OUTDATED!");
             } else {
-                Main.getMain().getLogger().info(
-                        "Enchantments Enhance is UP-TO-DATE");
+                Main.getMain().getServer().getConsoleSender().sendMessage("[EnchantmentsEnhance] " + ChatColor.GREEN + "Enchantments Enhance is UP-TO-DATE");
             }
         } catch (IOException e) {
-            Main.getMain().getLogger().warning(
-                    "ERROR: Could not make connection to SpigotMC.org");
+            Main.getMain().getServer().getConsoleSender().sendMessage("[EnchantmentsEnhance] " + ChatColor.RED + "ERROR: Could not make connection to SpigotMC.org");
         }
     }
 }

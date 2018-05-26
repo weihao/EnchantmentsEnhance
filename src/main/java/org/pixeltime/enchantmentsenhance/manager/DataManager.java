@@ -30,17 +30,10 @@ public class DataManager {
     public static boolean[] fireworks;
     public static int[] fireworkRounds;
     public static String[] name;
-
-    public static int firstPhase;
-    public static int secondPhase;
-    public static int downgradePhase;
+    public static boolean[] downgradeIfFail;
+    public static boolean[] destroyIfFail;
 
     public DataManager() {
-        firstPhase = SettingsManager.config.getInt("FirstPhaseStarts");
-        secondPhase = SettingsManager.config.getInt("SecondPhaseStarts");
-        downgradePhase = SettingsManager.config.getInt("DowngradePhaseStarts");
-
-
         Set<String> temp = SettingsManager.config.getConfigurationSection(
                 "enhance").getKeys(false);
         levels = temp.size();
@@ -52,6 +45,8 @@ public class DataManager {
         DataManager.fireworks = new boolean[levels];
         DataManager.fireworkRounds = new int[levels];
         DataManager.name = new String[levels];
+        DataManager.downgradeIfFail = new boolean[levels];
+        DataManager.destroyIfFail = new boolean[levels];
 
         Set<String> temp2 = SettingsManager.config.getConfigurationSection(
                 "enhance.0").getKeys(false);
@@ -75,6 +70,12 @@ public class DataManager {
                 } else if (key2.equalsIgnoreCase("costToForceEnchant")) {
                     DataManager.costToForceEnchant[i] = SettingsManager.config
                             .getInt("enhance." + i + "." + key2);
+                } else if (key2.equalsIgnoreCase("downgradeIfFail")) {
+                    DataManager.downgradeIfFail[i] = SettingsManager.config
+                            .getBoolean("enhance." + i + "." + key2);
+                } else if (key2.equalsIgnoreCase("destroyIfFail")) {
+                    DataManager.destroyIfFail[i] = SettingsManager.config
+                            .getBoolean("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("fireworks")) {
                     DataManager.fireworks[i] = SettingsManager.config
                             .getBoolean("enhance." + i + "." + key2);
@@ -87,6 +88,5 @@ public class DataManager {
                 }
             }
         }
-
     }
 }

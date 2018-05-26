@@ -27,6 +27,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
@@ -45,9 +46,12 @@ class Execute : Listener {
                 return
             }
             try {
-                val level = KM.getLevel(translateAlternateColorCodes, player.itemInHand.itemMeta.lore)
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("execute.$level.chance") && player.isSneaking) {
-                    entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * SettingsManager.enchant.getDouble("execute.$level.multiplier")
+                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                for (itemStack in armorContents) {
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("execute.$level.chance") && player.isSneaking) {
+                        entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * SettingsManager.enchant.getDouble("execute.$level.multiplier")
+                    }
                 }
             } catch (ex: Exception) {
             }

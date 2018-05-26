@@ -66,3 +66,6 @@ fabric.properties
 .idea/httpRequests
 .idea/encodings.xml
 .idea/workspace.xml
+
+dependency-reduced-pom.xml
+

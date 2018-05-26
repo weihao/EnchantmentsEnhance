@@ -42,8 +42,7 @@ class Petrify : Listener {
             }
             try {
                 val armorContents = player2.inventory.armorContents + IM.getAccessorySlots(player2)
-                for (i in armorContents.indices) {
-                    val itemStack = armorContents[i]
+                for (itemStack in armorContents) {
                     if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                         if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("petrify.$level.chance")) {
