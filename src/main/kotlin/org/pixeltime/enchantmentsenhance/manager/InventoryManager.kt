@@ -26,34 +26,33 @@ import org.pixeltime.enchantmentsenhance.Main
 
 class IM {
     companion object {
-        val left_ring = Main.getMain().config.getInt("accessory.left_ring")
-        val right_ring = Main.getMain().config.getInt("accessory.right_ring")
-        val left_earring = Main.getMain().config.getInt("accessory.left_earring")
-        val right_earring = Main.getMain().config.getInt("accessory.right_earring")
-        val necklace = Main.getMain().config.getInt("accessory.necklace")
-        val belt = Main.getMain().config.getInt("accessory.belt")
-
+        private val left_ring = Main.getMain().config.getInt("accessory.left_ring")
+        private val right_ring = Main.getMain().config.getInt("accessory.right_ring")
+        private val left_earring = Main.getMain().config.getInt("accessory.left_earring")
+        private val right_earring = Main.getMain().config.getInt("accessory.right_earring")
+        private val necklace = Main.getMain().config.getInt("accessory.necklace")
+        private val belt = Main.getMain().config.getInt("accessory.belt")
         @JvmStatic
         fun getAccessorySlots(player: Player): List<ItemStack> {
             val inv = player.inventory
 
             val accessory = arrayListOf<ItemStack>()
-            if (inv.getItem(left_ring) != null) {
+            if (left_ring != -1 && inv.getItem(left_ring) != null) {
                 accessory.add(inv.getItem(left_ring))
             }
-            if (inv.getItem(right_ring) != null) {
+            if (right_ring != -1 && inv.getItem(right_ring) != null) {
                 accessory.add(inv.getItem(right_ring))
             }
-            if (inv.getItem(left_earring) != null) {
+            if (left_earring != -1 && inv.getItem(left_earring) != null) {
                 accessory.add(inv.getItem(left_earring))
             }
-            if (inv.getItem(right_earring) != null) {
+            if (right_earring != -1 && inv.getItem(right_earring) != null) {
                 accessory.add(inv.getItem(right_earring))
             }
-            if (inv.getItem(necklace) != null) {
+            if (necklace != -1 && inv.getItem(necklace) != null) {
                 accessory.add(inv.getItem(necklace))
             }
-            if (inv.getItem(belt) != null) {
+            if (belt != -1 && inv.getItem(belt) != null) {
                 accessory.add(inv.getItem(belt))
             }
             return accessory
@@ -61,7 +60,7 @@ class IM {
 
         @JvmStatic
         fun getArmorSlots(player: Player): List<ItemStack> {
-            return player.inventory.armorContents.filter { it != null && it.type != Material.AIR }
+            return player.inventory.armorContents.filter { it != null && it.type != Material.AIR } + player.itemInHand
         }
     }
 }

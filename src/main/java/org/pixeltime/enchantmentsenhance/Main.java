@@ -29,11 +29,13 @@ import org.pixeltime.enchantmentsenhance.event.blackspirit.Reform;
 import org.pixeltime.enchantmentsenhance.event.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.listener.*;
 import org.pixeltime.enchantmentsenhance.manager.*;
+import org.pixeltime.enchantmentsenhance.mysql.MysqlMain;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
 import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
 
 import java.io.File;
+import java.util.Scanner;
 
 
 /**
@@ -46,6 +48,7 @@ public class Main extends JavaPlugin {
     private static final CompatibilityManager compatibility =
             new CompatibilityManager();
     private static Main main;
+    public MysqlMain mysql;
     public CommandManager commandManager;
 
 
@@ -86,6 +89,15 @@ public class Main extends JavaPlugin {
      * When the plugin is enabled, execute following tasks.
      */
     public void onEnable() {
+        try {
+            Scanner sc = new Scanner(getClass().getResourceAsStream("/logo.txt"));
+            while (sc.hasNextLine()) {
+                System.out.println(sc.nextLine());
+            }
+        } catch (NullPointerException ex) {
+
+        }
+
         // Start time.
         final long startTime = System.currentTimeMillis();
         main = this;
@@ -109,14 +121,20 @@ public class Main extends JavaPlugin {
                 Inventory.loadInventory(player);
             }
         }
+        // MySql setup
+        mysql = new MysqlMain();
+
+
+        // Kotlin setup
+        KM.setUp();
+
+
         // Plugin fully initialized.
-        Bukkit.getServer().getLogger().info(SettingsManager.lang.getString(
+        getLogger().info(SettingsManager.lang.getString(
                 "Config.onEnable"));
         // Display final time at the end of the initialization.
-        Bukkit.getLogger().info("EnchantmentsEnhance took " + (System
+        getLogger().info("EnchantmentsEnhance took " + (System
                 .currentTimeMillis() - startTime) + "ms to setup.");
-        KM.log();
-        MM.setup();
     }
 
 
@@ -162,8 +180,6 @@ public class Main extends JavaPlugin {
         // Start bStats metrics.
         new Metrics(this);
         commandManager = new CommandManager();
-        commandManager.setup();
-        EM.Companion.setUp();
         if (SettingsManager.config.getBoolean("enableStackMob")) {
             pm.registerEvents(new StackMobHandler(), this);
         }

@@ -52,13 +52,10 @@ public class CommandManager implements CommandExecutor {
             new ArrayList<SubConsoleCommand>();
     private Main plugin = Main.getMain();
 
-    public CommandManager() {
-    }
-
     /**
      * Register all the command.
      */
-    public void setup() {
+    public CommandManager() {
         plugin.getCommand(main).setExecutor(this);
         this.commands.add(new AddCommand());
         this.commands.add(new HelpCommand());
@@ -77,7 +74,6 @@ public class CommandManager implements CommandExecutor {
         this.consoleCommands.add(new ReloadConsoleCommand());
         this.consoleCommands.add(new VersionConsoleCommand());
     }
-
 
     public boolean onCommand(
             CommandSender sender,

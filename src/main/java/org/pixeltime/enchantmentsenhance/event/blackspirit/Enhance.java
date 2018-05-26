@@ -40,14 +40,14 @@ public class Enhance {
      */
     public static int getStoneId(ItemStack item, int level) {
         if (ItemManager.isValid(item, MM.weapon)) {
-            if (isPhaseTwo(level)) {
+            if (DataManager.downgradeIfFail[level]) {
                 return 2;
             } else {
                 return 0;
             }
         }
         if (ItemManager.isValid(item, MM.armor)) {
-            if ((isPhaseTwo(level))) {
+            if (DataManager.downgradeIfFail[level]) {
                 return 3;
             } else {
                 return 1;
@@ -128,7 +128,7 @@ public class Enhance {
         CompatibilityManager.playsound.playSound(player, "FAILED");
         Failstack.addLevel(player,
                 DataManager.failstackGainedPerFail[enchantLevelBeforeAttemptEnhancing]);
-        if (isPhaseDowngrade(enchantLevelBeforeAttemptEnhancing)) {
+        if (DataManager.downgradeIfFail[enchantLevelBeforeAttemptEnhancing]) {
             str += ("\n" + SettingsManager.lang.getString(
                     "Enhance.downgraded"));
             CompatibilityManager.playsound.playSound(player, "DOWNGRADED");
@@ -167,7 +167,7 @@ public class Enhance {
                 // Enhancement result
                 boolean success = random < chance;
                 // Broadcast if attempting enhancement meet enchant level
-                if (isPhaseDowngrade(enchantLevel)) {
+                if (DataManager.downgradeIfFail[enchantLevel]) {
                     Broadcast.broadcast(player, item, enchantLevel, success);
                 }
                 // Proceed to enhance
@@ -212,7 +212,7 @@ public class Enhance {
                 Inventory.addLevel(player, stoneId, -costToEnhance);
                 enhanceSuccess(item, player, true, enchantLevel);
                 // Broadcast if attempting enhancement meet enchant level
-                if (isPhaseTwo(enchantLevel)) {
+                if (DataManager.downgradeIfFail[enchantLevel]) {
                     Broadcast.broadcast(player, item, enchantLevel, true);
                 }
             }
@@ -265,20 +265,5 @@ public class Enhance {
             result.add(SettingsManager.lang.getString("Enhance.itemInvalid"));
             return result;
         }
-    }
-
-
-    public static boolean isPhaseTwo(int lvl) {
-        return (lvl >= DataManager.secondPhase);
-    }
-
-
-    public static boolean isPhaseDowngrade(int lvl) {
-        return (lvl > DataManager.downgradePhase);
-    }
-
-
-    public static boolean isPhaseOne(int lvl) {
-        return (lvl >= DataManager.firstPhase);
     }
 }

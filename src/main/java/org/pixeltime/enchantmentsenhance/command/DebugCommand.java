@@ -19,20 +19,23 @@
 package org.pixeltime.enchantmentsenhance.command;
 
 import org.bukkit.entity.Player;
+import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
 import org.pixeltime.enchantmentsenhance.manager.IM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 public class DebugCommand extends SubCommand {
-    private int x = 1;
-    private int y = 1;
-
     @Override
     public void onCommand(Player p, String[] args) {
         if (args[0].equals("upgrade")) {
             Enhance.enhanceSuccess(p.getItemInHand(), p, false, 19);
         } else if (args[0].equals("slots")) {
             IM.getArmorSlots(p);
+        }
+        else if (args[0].equals("mysql"))
+        {
+            Main.getMain().mysql.playerExists(p.getUniqueId());
+            Main.getMain().mysql.createPlayer(p.getUniqueId(), p.getPlayer());
         }
     }
 

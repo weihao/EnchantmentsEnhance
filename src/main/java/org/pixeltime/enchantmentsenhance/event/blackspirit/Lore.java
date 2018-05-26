@@ -134,7 +134,6 @@ public class Lore {
      *
      * @param is
      * @param p
-     * @param lang
      */
     public static void removeLore(ItemStack is, Player p) {
         ItemMeta im = is.getItemMeta();
