@@ -40,14 +40,14 @@ public class Enhance {
      */
     public static int getStoneId(ItemStack item, int level) {
         if (ItemManager.isValid(item, MM.weapon)) {
-            if (DataManager.downgradeIfFail[level]) {
+            if (DataManager.requireConcentratedStones[level]) {
                 return 2;
             } else {
                 return 0;
             }
         }
         if (ItemManager.isValid(item, MM.armor)) {
-            if (DataManager.downgradeIfFail[level]) {
+            if (DataManager.requireConcentratedStones[level]) {
                 return 3;
             } else {
                 return 1;

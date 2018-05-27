@@ -89,12 +89,23 @@ public class ItemManager {
     }
 
 
-    public static ItemStack gradeUpdate(ItemStack item, int gradeLevel) {
+    public static ItemStack setGrade(ItemStack item, int gradeLevel) {
         NBTItem nbti = new NBTItem(item);
         nbti.setInteger("EGrade", gradeLevel);
         return nbti.getItem();
     }
 
+    public static ItemStack setLevel(ItemStack item, int enhanceLevel) {
+        NBTItem nbti = new NBTItem(item);
+        nbti.setInteger("ELevel", enhanceLevel);
+        return nbti.getItem();
+    }
+
+    public static ItemStack setName(ItemStack item, String name) {
+        NBTItem nbti = new NBTItem(item);
+        nbti.setString("EName", name);
+        return nbti.getItem();
+    }
 
     public static int getItemEnchantLevel(ItemStack item) {
         NBTItem nbti = new NBTItem(item);
@@ -107,6 +118,17 @@ public class ItemManager {
         return nbti.getInteger("EGrade");
     }
 
+    public static String getItemLore(ItemStack item) {
+        NBTItem nbti = new NBTItem(item);
+        return nbti.getString("ELore");
+    }
+
+    public static String getItemName(ItemStack item) {
+        NBTItem nbti = new NBTItem(item);
+        return nbti.getString("EName");
+    }
+
+
     public static void soulbound(ItemStack item) {
         Lore.addLore(item, ChatColor.translateAlternateColorCodes('&',
                 SettingsManager.lang.getString("Lore." + SettingsManager.config
@@ -115,9 +137,7 @@ public class ItemManager {
     }
 
     public static void forgeItem(Player player, ItemStack item, int enchantLevel) {
-        NBTItem nbti = new NBTItem(item);
-        nbti.setInteger("ELevel", enchantLevel);
-        ItemStack currItem = nbti.getItem();
+        ItemStack currItem = setLevel(item, enchantLevel);
         applyEnchantments(currItem);
         renameItem(currItem);
         soulbound(currItem);
@@ -182,83 +202,36 @@ public class ItemManager {
     public static void renameItem(ItemStack item) {
         int enchantLevel = ItemManager.getItemEnchantLevel(item);
         int gradeLevel = ItemManager.getItemGradeLevel(item);
-        switch (getItemEnchantmentType(item)) {
-            case WEAPON:
-                String levelName = SettingsManager.config.getString("enhance."
-                        + enchantLevel + ".name");
-                String gradePrefix = SettingsManager.config.getString("grade."
-                        + gradeLevel + ".name");
-                String itemName = "";
-                if (item.getType().toString().toLowerCase().contains("axe")) {
-                    itemName = SettingsManager.config.getString("name.axe");
-                } else if (item.getType().toString().toLowerCase().contains(
-                        "sword")) {
-                    itemName = SettingsManager.config.getString("name.sword");
-                } else if (item.getType().toString().toLowerCase().contains(
-                        "bow")) {
-                    itemName = SettingsManager.config.getString("name.bow");
-                }
-                String name = "";
-                if (levelName != null) {
-                    name += levelName + " ";
-                }
-                if (gradePrefix != null) {
-                    name += gradePrefix + " ";
-                }
-                if (itemName != null) {
-                    name += itemName;
-                }
-                ItemMeta im = item.getItemMeta();
-                im.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                        name));
-                item.setItemMeta(im);
-            case TOOL:
-
-            case MASK:
-
-            default:
+        String prefix = SettingsManager.config.getString("enhance."
+                + enchantLevel + ".prefix");
+        String suffix = SettingsManager.config.getString("enhance."
+                + enchantLevel + ".suffix");
+        String gradePrefix = SettingsManager.config.getString("grade."
+                + gradeLevel + ".name");
+        String name = getFriendlyName(item);
+        if (prefix != null && !prefix.equals("")) {
+            name = prefix + " " + name;
         }
+        if (gradePrefix != null && !gradePrefix.equals("")) {
+            name += " " + gradePrefix;
+        }
+        if (suffix != null && !suffix.equals("")) {
+            name += " " + suffix;
+        }
+        ItemMeta im = item.getItemMeta();
+        im.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                name));
+        item.setItemMeta(im);
     }
 
 
-    public static String getRenamedName(ItemStack item) {
-        String name = "";
-        int enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
-        int gradeLevel = ItemManager.getItemGradeLevel(item);
-        switch (getItemEnchantmentType(item)) {
-            case WEAPON:
-                String levelName = SettingsManager.config.getString("enhance."
-                        + enchantLevel + ".name");
-                String gradePrefix = SettingsManager.config.getString("grade."
-                        + gradeLevel + ".name");
-                String itemName = "";
-                if (item.getType().toString().toLowerCase().contains("axe")) {
-                    itemName = SettingsManager.config.getString("name.axe");
-                } else if (item.getType().toString().toLowerCase().contains(
-                        "sword")) {
-                    itemName = SettingsManager.config.getString("name.sword");
-                } else if (item.getType().toString().toLowerCase().contains(
-                        "bow")) {
-                    itemName = SettingsManager.config.getString("name.bow");
-                }
-                if (levelName != null) {
-                    name += levelName + " ";
-                }
-                if (gradePrefix != null) {
-                    name += gradePrefix + " ";
-                }
-                if (itemName != null) {
-                    name += itemName;
-                }
-
-            case TOOL:
-
-            case MASK:
-
-            default:
-        }
-        return name;
+    /**
+     * This will return a formatted name of a item.
+     *
+     * @param item
+     * @return
+     */
+    public static String getFriendlyName(ItemStack item) {
+        return (getItemName(item).equals("") ? Util.format(item.getType().name()) : getItemName(item));
     }
-
-
 }

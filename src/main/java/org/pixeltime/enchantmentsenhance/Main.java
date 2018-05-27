@@ -122,8 +122,9 @@ public class Main extends JavaPlugin {
             }
         }
         // MySql setup
-        mysql = new MysqlMain();
-
+        if (SettingsManager.config.getBoolean("mysql.enabled")) {
+            mysql = new MysqlMain();
+        }
 
         // Kotlin setup
         KM.setUp();

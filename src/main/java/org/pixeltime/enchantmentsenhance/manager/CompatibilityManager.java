@@ -36,14 +36,6 @@ public class CompatibilityManager {
      * @return
      */
     public boolean setupGlow() {
-        /*
-         * if (version.equals("v1_8_R3")) {
-         * glow = new GlowItem_NBT();
-         * }
-         * else {
-         * glow = new GlowItem_Unsafe();
-         * }
-         */
         glow = new GlowItem_Unsafe();
         return glow != null;
     }

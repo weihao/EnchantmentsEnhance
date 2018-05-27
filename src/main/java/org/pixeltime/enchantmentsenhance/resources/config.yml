@@ -28,7 +28,6 @@ enableVanillaEnchant: false
 # Set true to enable support for stacked mob drop.
 enableStackMob: false
 
-# NOT READY! STILL BROKE
 mysql:
   # If disabled, the plugin will use local YAML files.
   enabled: false
@@ -221,13 +220,17 @@ enhance:
     # Downgrade the item if the enhance failed.
     downgradeIfFail: false
     # Destroy the item if the enhance failed.
-    destroyIfFail: false
+    destroyIfFail:
+    # Enable to require concentrated magical stone to enhance the item.
+    requireConcentratedStones: false
     # Enable or disable firework.
     fireworkIfSuccessful: true
     # Rounds of firework.
     fireworkRounds: 1
     # Prefix of the item
-    name: "+0"
+    prefix: "+0"
+    # Suffix of the item
+    suffix: "+0"
     # Applying enchantment.
     enchantments:
       WEAPON:
@@ -245,9 +248,11 @@ enhance:
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+1"
+    prefix: ""
+    suffix: "+1"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:1
@@ -262,9 +267,11 @@ enhance:
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+2"
+    prefix: ""
+    suffix: "+2"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:2
@@ -280,9 +287,11 @@ enhance:
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+3"
+    prefix: ""
+    suffix: "+3"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:3
@@ -297,9 +306,11 @@ enhance:
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+4"
+    prefix: ""
+    suffix: "+4"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:4
@@ -314,9 +325,11 @@ enhance:
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+5"
+    prefix: ""
+    suffix: "+5"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:5
@@ -331,9 +344,11 @@ enhance:
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+6"
+    prefix: ""
+    suffix: "+6"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:6
@@ -348,9 +363,11 @@ enhance:
     costToForceEnchant: 3
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+7"
+    prefix: ""
+    suffix: "+7"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:7
@@ -364,9 +381,11 @@ enhance:
     costToForceEnchant: 4
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+8"
+    prefix: ""
+    suffix: "+8"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:8
@@ -380,9 +399,11 @@ enhance:
     costToForceEnchant: 5
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+9"
+    prefix: ""
+    suffix: "+9"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:9
@@ -396,9 +417,11 @@ enhance:
     costToForceEnchant: 7
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+10"
+    prefix: "+"
+    suffix: "+10"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:10
@@ -412,9 +435,11 @@ enhance:
     costToForceEnchant: 9
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+11"
+    prefix: ""
+    suffix: "+11"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:11
@@ -428,9 +453,11 @@ enhance:
     costToForceEnchant: 12
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+12"
+    prefix: ""
+    suffix: "+12"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:12
@@ -444,9 +471,11 @@ enhance:
     costToForceEnchant: 15
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+13"
+    prefix: ""
+    suffix: "+13"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:13
@@ -460,9 +489,11 @@ enhance:
     costToForceEnchant: 18
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+14"
+    prefix: ""
+    suffix: "+14"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:14
@@ -476,9 +507,11 @@ enhance:
     costToForceEnchant: 22
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "+15"
+    prefix: ""
+    suffix: "+15"
     enchantments:
       WEAPON:
          - DAMAGE_ALL:15
@@ -492,9 +525,11 @@ enhance:
     costToForceEnchant: 27
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "PRI"
+    prefix: "PRI"
+    suffix: ""
     enchantments:
       WEAPON:
          - DAMAGE_ALL:17
@@ -508,9 +543,11 @@ enhance:
     costToForceEnchant: 45
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "DUO"
+    prefix: "DUO"
+    suffix: ""
     enchantments:
       WEAPON:
          - DAMAGE_ALL:19
@@ -524,9 +561,11 @@ enhance:
     costToForceEnchant: -1
     downgradeIfFail: true
     destroyIfFail: false
+    requireConcentratedStones: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "TRI"
+    prefix: "TRI"
+    suffix: ""
     enchantments:
       WEAPON:
          - DAMAGE_ALL:21
@@ -540,9 +579,11 @@ enhance:
     costToForceEnchant: -1
     downgradeIfFail: true
     destroyIfFail: false
+    requireConcentratedStones: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    name: "TET"
+    prefix: "TET"
+    suffix: ""
     enchantments:
       WEAPON:
          - DAMAGE_ALL:23
@@ -556,9 +597,11 @@ enhance:
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
+    requireConcentratedStones: false
     fireworkIfSuccessful: false
     fireworkRounds: -1
-    name: "PEN"
+    prefix: "PEN"
+    suffix: ""
     enchantments:
       WEAPON:
          - DAMAGE_ALL:25
@@ -620,32 +663,32 @@ enhance:
 # Reform an item grade.
 weaponGrade:
   0:
-    name: ""
+    prefix: ""
     enchantments: []
   1:
-    name: "Crimson Flame"
+    prefix: "Crimson Flame"
     enchantments:
         - FIRE_ASPECT:1
   2:
-    name: "Destruction"
+    prefix: "Destruction"
     enchantments:
         - DAMAGE_ALL:1
   3:
-    name: "Temptation"
+    prefix: "Temptation"
     enchantments:
         - LOOT_BONUS_MOBS:1
   4:
-    name: "Ultimate"
+    prefix: "Ultimate"
     enchantments:
         - DAMAGE_ALL:2
         - DURABILITY:2
   5:
-    name: "Kzarka"
+    prefix: "Kzarka"
     enchantments:
         - DAMAGE_ALL:3
         - DURABILITY:3
   6:
-    name: "Dandelion"
+    prefix: "Dandelion"
     enchantments:
         - DAMAGE_ARTHROPODS:3
         - DAMAGE_UNDEAD:3
@@ -653,29 +696,25 @@ weaponGrade:
         - LOOT_BONUS_MOBS:3
 armorGrade:
   0:
-    name: ""
+    prefix: ""
     enchantments: []
   1:
-    name: "Agility"
+    prefix: "Agility"
     enchantments:
         - PROTECTION_FALL:1
   2:
-    name: "Intimidation"
+    prefix: "Intimidation"
     enchantments:
         - THORNS:1
   3:
-    name: "Iron Wall"
+    prefix: "Iron Wall"
     enchantments:
         - PROTECTION_EXPLOSIONS:1
   4:
-    name: "Ultimate"
+    prefix: "Ultimate"
     enchantments:
         - PROTECTION_ENVIRONMENTAL:2
         - DURABILITY:2
-name:
-  axe: "Ain Axe"
-  sword: "Great Sword"
-  bow: "Long Bow"
 pickaxe:
   0:
     name: "Broken Pickaxe"
@@ -792,4 +831,3 @@ fishing rod:
       - LUCK:5
       - LURE:5
       - DURABILITY:5
-        

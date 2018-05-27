@@ -239,4 +239,40 @@ public class Util {
         }
         return s;
     }
+
+
+    /**
+     * Removes any underscores and capitalizes first letter of each word in the
+     * string.
+     *
+     * @param s
+     * @return
+     */
+    public static String format(String s) {
+        if (!s.contains("_")) {
+            return capitalize(s);
+        }
+        String[] j = s.split("_");
+
+        String c = "";
+
+        for (String f : j) {
+            f = capitalize(f);
+            c += c.equalsIgnoreCase("") ? f : " " + f;
+        }
+        return c;
+    }
+
+    /**
+     * Capitalizes first letter of each word in the string.
+     *
+     * @param text
+     * @return
+     */
+    public static String capitalize(String text) {
+        String firstLetter = text.substring(0, 1).toUpperCase();
+        String next = text.substring(1).toLowerCase();
+        String capitalized = firstLetter + next;
+        return capitalized;
+    }
 }
