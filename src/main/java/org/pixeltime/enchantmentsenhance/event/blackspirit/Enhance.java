@@ -133,8 +133,6 @@ public class Enhance {
                     "Enhance.downgraded"));
             CompatibilityManager.playsound.playSound(player, "DOWNGRADED");
             int enchantLevel = enchantLevelBeforeAttemptEnhancing - 1;
-//            MenuHandler.updateItem(player, ItemManager.forgeItem(item,
-//                    enchantLevel));
             ItemManager.forgeItem(player, item, enchantLevel);
         }
         Util.sendMessage(str, player);
@@ -167,14 +165,17 @@ public class Enhance {
                 // Enhancement result
                 boolean success = random < chance;
                 // Broadcast if attempting enhancement meet enchant level
-                if (DataManager.downgradeIfFail[enchantLevel]) {
-                    Broadcast.broadcast(player, item, enchantLevel, success);
-                }
                 // Proceed to enhance
                 if (success) {
                     enhanceSuccess(item, player, false, enchantLevel);
+                    if (DataManager.downgradeIfFail[enchantLevel]) {
+                        Broadcast.broadcast(player, item, "success");
+                    }
                 } else {
                     enhanceFail(item, player, enchantLevel);
+                    if (DataManager.downgradeIfFail[enchantLevel]) {
+                        Broadcast.broadcast(player, item, "failed");
+                    }
                 }
             }
             // Not enough enchant stone
@@ -213,7 +214,7 @@ public class Enhance {
                 enhanceSuccess(item, player, true, enchantLevel);
                 // Broadcast if attempting enhancement meet enchant level
                 if (DataManager.downgradeIfFail[enchantLevel]) {
-                    Broadcast.broadcast(player, item, enchantLevel, true);
+                    Broadcast.broadcast(player, item, "success");
                 }
             }
             // Not enough enchant stone

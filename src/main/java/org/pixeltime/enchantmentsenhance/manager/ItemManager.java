@@ -138,10 +138,25 @@ public class ItemManager {
 
     public static void forgeItem(Player player, ItemStack item, int enchantLevel) {
         ItemStack currItem = setLevel(item, enchantLevel);
+        if (enchantLevel == 1) {
+            currItem = setName(currItem, currItem.getItemMeta().getDisplayName());
+        }
         applyEnchantments(currItem);
         renameItem(currItem);
         soulbound(currItem);
+        addlore(currItem);
         MenuHandler.updateItem(player, item, currItem);
+    }
+
+    private static void addlore(ItemStack currItem) {
+        ItemMeta im = currItem.getItemMeta();
+        List<String> lore = im.getLore();
+        List<String> addlore = (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore." + getItemEnchantmentType(currItem).toString());
+        for (String s : addlore) {
+            lore.add(ChatColor.translateAlternateColorCodes('&', s));
+        }
+        im.setLore(lore);
+        currItem.setItemMeta(im);
     }
 
     public static void applyEnchantments(ItemStack item) {

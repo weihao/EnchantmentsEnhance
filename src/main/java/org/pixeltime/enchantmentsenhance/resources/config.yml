@@ -232,6 +232,11 @@ enhance:
     # Suffix of the item
     suffix: "+0"
     # Applying enchantment.
+    lore:
+      WEAPON:
+        - "Placeholder"
+      ARMOR:
+        - "Placeholder"
     enchantments:
       WEAPON:
         # Enchantments are not case sensitive.
@@ -259,6 +264,15 @@ enhance:
          - Assassin:1
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:1
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   2:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -279,6 +293,15 @@ enhance:
          - ASSASSIN:1
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:2
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   3:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -298,6 +321,15 @@ enhance:
          - Hex:1
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:3
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   4:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -317,6 +349,15 @@ enhance:
          - Riftslayer:1
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:4
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   5:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -336,6 +377,15 @@ enhance:
          - Demon_Siphon:1
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   6:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -355,6 +405,15 @@ enhance:
          - Lifesteal:1
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   7:
     baseChance: 20
     chanceIncreasePerFailstack: 2.5
@@ -373,6 +432,15 @@ enhance:
          - DAMAGE_ALL:7
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   8:
     baseChance: 17.5
     chanceIncreasePerFailstack: 2.0
@@ -391,6 +459,15 @@ enhance:
          - DAMAGE_ALL:8
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   9:
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -409,6 +486,15 @@ enhance:
          - DAMAGE_ALL:9
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   10:
     baseChance: 12.5
     chanceIncreasePerFailstack: 1.25
@@ -427,6 +513,15 @@ enhance:
          - DAMAGE_ALL:10
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   11:
     baseChance: 10
     chanceIncreasePerFailstack: 0.75
@@ -445,6 +540,15 @@ enhance:
          - DAMAGE_ALL:11
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   12:
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.63
@@ -463,6 +567,15 @@ enhance:
          - DAMAGE_ALL:12
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   13:
     baseChance: 5
     chanceIncreasePerFailstack: 0.5
@@ -481,6 +594,15 @@ enhance:
          - DAMAGE_ALL:13
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   14:
     baseChance: 2.5
     chanceIncreasePerFailstack: 0.5
@@ -499,6 +621,15 @@ enhance:
          - DAMAGE_ALL:14
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   15:
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -517,6 +648,15 @@ enhance:
          - DAMAGE_ALL:15
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   16:
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.75
@@ -535,6 +675,15 @@ enhance:
          - DAMAGE_ALL:17
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   17:
     baseChance: 5.0
     chanceIncreasePerFailstack: 0.5
@@ -553,6 +702,15 @@ enhance:
          - DAMAGE_ALL:19
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   18:
     baseChance: 2.0
     chanceIncreasePerFailstack: 0.25
@@ -571,6 +729,15 @@ enhance:
          - DAMAGE_ALL:21
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   19:
     baseChance: 1.5
     chanceIncreasePerFailstack: 0.25
@@ -589,6 +756,15 @@ enhance:
          - DAMAGE_ALL:23
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
   20:
     baseChance: -1
     chanceIncreasePerFailstack: -1
@@ -659,6 +835,15 @@ enhance:
          - Suicide:1
          - Batman:3
          - Necromancer:5
+    lore:
+      WEAPON:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
+      ARMOR:
+        - "&4&l&m                                 "
+        - "&9&lThis is the default lore."
+        - ""
 
 # Reform an item grade.
 weaponGrade:

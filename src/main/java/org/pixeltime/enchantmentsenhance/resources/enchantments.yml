@@ -1,10 +1,6 @@
 # Allow WorldGuard and WorldEdit to check the pvp flags.
 allow-worldguard: false
 
-# List of disabled enchantment:
-disabled:
-#- lifesteal
-
 # Enchantments' configuration:
 lifesteal:
     1:
