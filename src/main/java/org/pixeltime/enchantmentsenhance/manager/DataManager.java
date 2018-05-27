@@ -79,7 +79,7 @@ public class DataManager {
                     DataManager.destroyIfFail[i] = SettingsManager.config
                             .getBoolean("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("requireConcentratedStones")) {
-                    DataManager.destroyIfFail[i] = SettingsManager.config
+                    DataManager.requireConcentratedStones[i] = SettingsManager.config
                             .getBoolean("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("fireworks")) {
                     DataManager.fireworks[i] = SettingsManager.config

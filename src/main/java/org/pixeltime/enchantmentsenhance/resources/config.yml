@@ -22,6 +22,9 @@
 # Supported language: ZH_CN, EN_US.
 language: EN_US
 
+# Set false to disable console logging a plugin logo when initializing.
+enableLogo: true
+
 # Set true to disable vanilla enchanting table and when someone use it, right click on it will open enhance menu.
 enableVanillaEnchant: false
 
@@ -228,9 +231,9 @@ enhance:
     # Rounds of firework.
     fireworkRounds: 1
     # Prefix of the item
-    prefix: "+0"
+    prefix: ""
     # Suffix of the item
-    suffix: "+0"
+    suffix: ""
     # Applying enchantment.
     lore:
       WEAPON:
@@ -266,11 +269,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:1
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   2:
@@ -295,11 +298,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:2
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   3:
@@ -323,11 +326,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:3
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   4:
@@ -351,11 +354,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:4
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   5:
@@ -379,11 +382,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   6:
@@ -407,11 +410,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   7:
@@ -434,11 +437,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   8:
@@ -461,11 +464,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   9:
@@ -488,11 +491,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   10:
@@ -515,11 +518,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   11:
@@ -542,11 +545,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   12:
@@ -569,11 +572,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   13:
@@ -596,11 +599,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   14:
@@ -623,11 +626,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   15:
@@ -638,7 +641,7 @@ enhance:
     costToForceEnchant: 22
     downgradeIfFail: false
     destroyIfFail: false
-    requireConcentratedStones: false
+    requireConcentratedStones: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: ""
@@ -650,11 +653,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   16:
@@ -677,11 +680,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   17:
@@ -704,11 +707,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   18:
@@ -731,11 +734,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   19:
@@ -758,11 +761,11 @@ enhance:
          - PROTECTION_ENVIRONMENTAL:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
   20:
@@ -837,11 +840,11 @@ enhance:
          - Necromancer:5
     lore:
       WEAPON:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
       ARMOR:
-        - "&4&l&m                                 "
+        - "&4&l&m                                  "
         - "&9&lThis is the default lore."
         - ""
 

@@ -34,19 +34,6 @@ import java.util.Iterator;
 
 public class CommandManager implements CommandExecutor {
 
-    // Sub Commands
-    public String main = "enhance";
-    public String add = "add";
-    public String help = "help";
-    public String inventory = "inventory";
-    public String list = "list";
-    public String lore = "lore";
-    public String menu = "menu";
-    public String reload = "reload";
-    public String select = "select";
-    public String version = "version";
-    public String debug = "debug";
-    public String reform = "reform";
     private ArrayList<SubCommand> commands = new ArrayList<SubCommand>();
     private ArrayList<SubConsoleCommand> consoleCommands =
             new ArrayList<SubConsoleCommand>();
@@ -56,7 +43,7 @@ public class CommandManager implements CommandExecutor {
      * Register all the command.
      */
     public CommandManager() {
-        plugin.getCommand(main).setExecutor(this);
+        plugin.getCommand("enhance").setExecutor(this);
         this.commands.add(new AddCommand());
         this.commands.add(new HelpCommand());
         this.commands.add(new InventoryCommand());
@@ -68,6 +55,7 @@ public class CommandManager implements CommandExecutor {
         this.commands.add(new VersionCommand());
         this.commands.add(new DebugCommand());
         this.commands.add(new ReformCommand());
+        this.commands.add(new ItemCommand());
         this.consoleCommands.add(new AddConsoleCommand());
         this.consoleCommands.add(new DebugConsoleCommand());
         this.consoleCommands.add(new HelpConsoleCommand());
@@ -80,13 +68,13 @@ public class CommandManager implements CommandExecutor {
             Command command,
             String s,
             String[] args) {
-        if (!command.getName().equalsIgnoreCase(main)) {
+        if (!command.getName().equalsIgnoreCase("enhance")) {
             return true;
         }
         if (!(sender instanceof Player)) {
 
             if (args.length == 0) {
-                this.getConsoleCommand(help).onCommand(sender, args);
+                this.getConsoleCommand("help").onCommand(sender, args);
                 return true;
             }
 
@@ -116,7 +104,7 @@ public class CommandManager implements CommandExecutor {
         Player player = (Player) sender;
 
         if (args.length == 0) {
-            this.get(help).onCommand(player, args);
+            this.get("help").onCommand(player, args);
             return true;
         }
 

@@ -36,11 +36,10 @@ class Broadcast {
                  *
                  * @param player
                  * @param item
-                 * @param enchantLevel
                  * @param success
                  */
         fun broadcast(player: Player, item: ItemStack, success: String) {
-            broadcast(SettingsManager.config.getString("Annoucer.$success").replace("%player%", player.name).replace("%item%", item.itemMeta.displayName))
+            broadcast(SettingsManager.lang.getString("Annoucer.$success").replace("%player%", player.name).replace("%item%", item.itemMeta.displayName))
         }
 
         @JvmStatic

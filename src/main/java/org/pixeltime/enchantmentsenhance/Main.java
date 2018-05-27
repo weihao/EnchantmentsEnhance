@@ -30,6 +30,7 @@ import org.pixeltime.enchantmentsenhance.event.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.listener.*;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.mysql.MysqlMain;
+import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
 import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
@@ -92,10 +93,9 @@ public class Main extends JavaPlugin {
         try {
             Scanner sc = new Scanner(getClass().getResourceAsStream("/logo.txt"));
             while (sc.hasNextLine()) {
-                System.out.println(sc.nextLine());
+                Bukkit.getConsoleSender().sendMessage((sc.nextLine()));
             }
         } catch (NullPointerException ex) {
-
         }
 
         // Start time.

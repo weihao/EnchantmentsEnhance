@@ -86,6 +86,7 @@ class LM {
             addLang("Help.add", arrayOf("&6give a player an enhancing items.\n0 = &6Black Stone (&3Weapon&6), 1 = &6Black Stone (&7Armor&6), 2 = &6Concentrated Magical Black Stone (&3Weapon&6), 3 = &6Concentrated Magical Black Stone (&7Armor&6)", "&6给予一个玩家指定黑石.\n 0 = &6黑石 (&3武器), 1 = &6黑石 (&7防具), 2 = &6凝聚魔力的黑石 (&3武器&6), 3 = &6凝聚魔力的黑石 (&7防具&6)"))
             addLang("Help.debug", arrayOf("&6collect debugging information for developer to fix issues.", "&6收集数据以帮助开发者解决问题."))
             addLang("Help.reform", arrayOf("&6upgrade the grade of the gear.", "&6打开改良道具的面板."))
+            addLang("Help.item", arrayOf("&6edit an item in hand.", "&编辑手中物品."))
             addLang("Menu.gui.title", arrayOf("Enhancement", "潜力突破界面"))
             addLang("Menu.gui.enhance", arrayOf("Enhance", "强化"))
             addLang("Menu.gui.force", arrayOf("Force", "强突"))
