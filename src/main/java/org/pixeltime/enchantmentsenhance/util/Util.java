@@ -105,7 +105,6 @@ public class Util {
         player.sendMessage(message);
     }
 
-
     /**
      * Translates color codes.
      *

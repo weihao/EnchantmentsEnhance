@@ -39,7 +39,7 @@ public class HelpCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "\n&6/enhance help &7- " + SettingsManager.lang.getString(
+        return "&6/enhance help &7- " + SettingsManager.lang.getString(
                 "Help.help");
     }
 

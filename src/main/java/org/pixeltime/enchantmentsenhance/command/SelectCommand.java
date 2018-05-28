@@ -52,7 +52,7 @@ public class SelectCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "\n&6/enhance select { n } &7- " + SettingsManager.lang
+        return "&6/enhance select { n } &7- " + SettingsManager.lang
                 .getString("Help.select");
     }
 

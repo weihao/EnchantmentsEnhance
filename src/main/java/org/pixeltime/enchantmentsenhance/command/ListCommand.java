@@ -52,7 +52,7 @@ public class ListCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "\n&6/enhance list &7- " + SettingsManager.lang.getString(
+        return "&6/enhance list &7- " + SettingsManager.lang.getString(
                 "Help.list");
     }
 

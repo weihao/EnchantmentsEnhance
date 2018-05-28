@@ -38,7 +38,6 @@ public class CommandManager implements CommandExecutor {
     private ArrayList<SubConsoleCommand> consoleCommands =
             new ArrayList<SubConsoleCommand>();
     private Main plugin = Main.getMain();
-
     /**
      * Register all the command.
      */
@@ -61,6 +60,14 @@ public class CommandManager implements CommandExecutor {
         this.consoleCommands.add(new HelpConsoleCommand());
         this.consoleCommands.add(new ReloadConsoleCommand());
         this.consoleCommands.add(new VersionConsoleCommand());
+    }
+
+    public ArrayList<SubCommand> getCommands() {
+        return commands;
+    }
+
+    public ArrayList<SubConsoleCommand> getConsoleCommands() {
+        return consoleCommands;
     }
 
     public boolean onCommand(
@@ -199,15 +206,15 @@ public class CommandManager implements CommandExecutor {
      * @param player
      */
     public void printHelp(Player player) {
-        String help = "&b&l&m          &d EnchantmentsEnhance&b&l&m          ";
+        String tag = "&b&l&m          &d EnchantmentsEnhance&b&l&m          ";
+        Util.sendMessage(tag, player, false);
         Iterator<SubCommand> subcommands = this.commands.iterator();
         while (subcommands.hasNext()) {
             SubCommand sc = subcommands.next();
             if (player.hasPermission(sc.getPermission())) {
-                help += sc.info();
+                Util.sendMessage(sc.info(), player, false);
             }
         }
-        Util.sendMessage(help, player);
     }
 
 

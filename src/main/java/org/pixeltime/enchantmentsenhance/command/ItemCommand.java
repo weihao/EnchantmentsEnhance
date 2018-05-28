@@ -35,7 +35,7 @@ public class ItemCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "\n&6/enhance item { {upgrade} {level} } | {setname} {name}} &7- "
+        return "&6/enhance item { {upgrade} {level} } | {setname} {name}} &7- "
                 + SettingsManager.lang.getString(
                 "Help.item");
     }

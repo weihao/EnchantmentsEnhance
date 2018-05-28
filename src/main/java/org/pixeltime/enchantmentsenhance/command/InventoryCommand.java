@@ -43,7 +43,7 @@ public class InventoryCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "\n&6/enhance inventory &7- " + SettingsManager.lang
+        return "&6/enhance inventory &7- " + SettingsManager.lang
                 .getString("Help.inventory");
     }
 

@@ -44,7 +44,7 @@ public class ReloadConsoleCommand extends SubConsoleCommand {
 
     @Override
     public String info() {
-        return "\n&6/enhance reload &7- " + SettingsManager.lang.getString(
+        return "&6/enhance reload &7- " + SettingsManager.lang.getString(
                 "Help.reload");
     }
 

@@ -18,11 +18,16 @@
 
 package org.pixeltime.enchantmentsenhance.command;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
+import org.pixeltime.enchantmentsenhance.manager.CommandManager;
 import org.pixeltime.enchantmentsenhance.manager.IM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.util.Util;
+
+import java.util.Iterator;
 
 public class DebugCommand extends SubCommand {
     @Override
@@ -37,6 +42,15 @@ public class DebugCommand extends SubCommand {
             Main.getMain().mysql.playerExists(p.getUniqueId());
             Main.getMain().mysql.createPlayer(p.getUniqueId(), p.getPlayer());
         }
+        else if (args[0].equals("format"))
+        {
+            Iterator<SubCommand> subcommands = Main.getMain().commandManager.getCommands().iterator();
+            while (subcommands.hasNext()) {
+                SubCommand sc = subcommands.next();
+                String curr = "Command: " + sc.info() + " Permission: " + sc.getPermission();
+                Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), p, false);
+            }
+        }
     }
 
 
@@ -48,7 +62,7 @@ public class DebugCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "\n&6/enhance debug &7- " + SettingsManager.lang.getString(
+        return "&6/enhance debug &7- " + SettingsManager.lang.getString(
                 "Help.debug");
     }
 

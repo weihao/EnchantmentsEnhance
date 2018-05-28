@@ -38,7 +38,7 @@ public class AddCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "\n&6/enhance add { player } { stone } { amount } &7- "
+        return "&6/enhance add { player } { stone } { amount } &7- "
                 + SettingsManager.lang.getString("Help.add");
     }
 

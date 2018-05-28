@@ -39,4 +39,11 @@ permissions:
         description: Allows you to use the enhancement menu.
         default: true
     Enchantmentsenhance.add:
-        description: Allows you to use the add command.
+         description: Allows you to use the add command.
+         default: op
+    Enchantmentsenhance.item:
+          description: Allows you to edit an item in hand.
+          default: op
+    Enchantmentsenhance.debug:
+        description: Allows you to collect debugging information for developer to fix issues.
+        default: op
