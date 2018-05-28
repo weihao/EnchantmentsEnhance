@@ -14,7 +14,7 @@ public class ItemCommand extends SubCommand {
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("upgrade")) {
                 try {
-                    Enhance.enhanceSuccess(player.getItemInHand(), player, false, Integer.parseInt(args[1]) - 1);
+                    Enhance.enhanceSuccess(player.getItemInHand(), player, true, Integer.parseInt(args[1]) - 1);
                 } catch (Exception ex) {
                     player.sendMessage(SettingsManager.config.getString("Config.invalidCommand"));
                 }

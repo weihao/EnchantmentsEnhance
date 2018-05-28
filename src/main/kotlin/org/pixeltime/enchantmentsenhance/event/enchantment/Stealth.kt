@@ -44,7 +44,7 @@ class Stealth : Listener {
         val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
         try {
             for (itemStack in armorContents)
-                if (itemStack != null && itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
+                if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                     if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("stealth.$level.chance")) {
                         val int1 = SettingsManager.enchant.getInt("stealth.$level.radius")

@@ -47,7 +47,7 @@ class Flame_Cloak : Listener {
                 }
                 val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
-                    if (itemStack != null && itemStack.hasItemMeta()) {
+                    if (itemStack.hasItemMeta()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                         if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("flame_cloak.$level.chance")) {
                             player.fireTicks = SettingsManager.enchant.getInt("flame_cloak.$level.duration") * 20

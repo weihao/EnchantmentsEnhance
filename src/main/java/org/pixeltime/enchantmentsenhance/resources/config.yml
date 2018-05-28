@@ -783,7 +783,12 @@ enhance:
     suffix: ""
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:25
+         - DAMAGE_ALL:10
+         - DURABILITY:10
+         - DIG_SPEED:5
+         - FIRE_ASPECT:5
+         - KNOCKBACK:1
+         - LOOT_BONUS_MOBS:5
          - Lifesteal:3
          - Assassin:3
          - Kill_Confirm:3
@@ -804,7 +809,35 @@ enhance:
          - Web_Trap:3
          - Reversal:3
          - Endless:1
-
+         - Dodge:5
+         - Blessed:3
+         - Demonic_Aura:1
+         - Stealth:4
+         - Aegis:5
+         - Platemail:1
+         - Pyromanic:5
+         - Flame_Cloak:3
+         - Spiked:2
+         - Shadowstep:3
+         - Tamer:1
+         - Wolves:1
+         - Repel:3
+         - Horse_Rider:1
+         - Paralyze:2
+         - Feather_Fall:1
+         - Jump:3
+         - Speed:3
+         - Eyepatch:1
+         - Swimmer:3
+         - Endless:1
+         - Health_Boost:3
+         - Molten:1
+         - Immolation:5
+         - Strength:3
+         - Reinforced:5
+         - Suicide:1
+         - Batman:3
+         - Necromancer:5
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:5
          - Dodge:5

@@ -35,7 +35,7 @@ class Blessed : Listener {
         try {
             val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             for (itemStack in armorContents) {
-                if (itemStack != null && itemStack.hasItemMeta()) {
+                if (itemStack.hasItemMeta()) {
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                     val n = (Math.random() * 100.0).toInt()
                     if (level > 0 && n < SettingsManager.enchant.getInt("blessed.$level.chance")) {

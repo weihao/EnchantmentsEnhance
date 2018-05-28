@@ -50,7 +50,7 @@ class Assassin : Listener {
             try {
                 val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
-                    if (itemStack != null && itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
+                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                         if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("assassin.$level.chance")) {
                             player2.addPotionEffect(PotionEffect(PotionEffectType.POISON, SettingsManager.enchant.getInt("assassin.$level.duration") * 20, 0))

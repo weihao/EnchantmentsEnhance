@@ -33,11 +33,10 @@ class Dodge : Listener {
     fun onDamage(entityDamageEvent: EntityDamageEvent) {
         if (entityDamageEvent.entity is Player) {
             val player = entityDamageEvent.entity as Player
-            val n = (Math.random() * 100.0).toInt()
             val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             try {
                 for (itemStack in armorContents) {
-                    if (itemStack != null && itemStack.hasItemMeta()) {
+                    if (itemStack.hasItemMeta()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                         if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("dodge.$level.chance")) {
                             entityDamageEvent.damage = 0.0

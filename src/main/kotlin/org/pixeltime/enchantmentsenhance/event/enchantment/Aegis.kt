@@ -39,7 +39,7 @@ class Aegis : Listener {
         try {
             val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             for (itemStack in armorContents) {
-                if (itemStack != null && itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
+                if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                     if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("aegis.$level.chance")) {
                         player.health += SettingsManager.enchant.getDouble("aegis.$level.health")

@@ -47,10 +47,20 @@ public class MenuHandler implements Listener {
     public static void updateItem(Player player, ItemStack old, ItemStack item) {
         try {
             player.getInventory().removeItem(old);
+            clean(player);
             itemOnEnhancingSlot.put(player.getName(), item);
             player.getInventory().addItem(item);
         } catch (NullPointerException ex) {
-            //Item might not be on the enhancing slot.
+            // Item might not be on the enhancing slot.
+        }
+    }
+
+    public static void clean(Player player) {
+        try {
+            itemOnEnhancingSlot.remove(player.getName());
+        } catch
+                (Exception ex) {
+            // Item might not be on the enhancing slot.
         }
     }
 

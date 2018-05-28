@@ -67,7 +67,7 @@ public class Enhance {
         // If item cannot be enhanced
         // If item level exceeds the maximum levels allowed
         if ((ItemManager.getItemEnchantmentType(item) == ItemType.INVALID)
-                || (ItemManager.getItemEnchantLevel(item) >= DataManager.levels)) {
+                || (ItemManager.getItemEnchantLevel(item) >= DataManager.levels - 1)) {
             return false;
         }
         return true;

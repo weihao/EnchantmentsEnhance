@@ -48,7 +48,7 @@ class Holy_Smite : Listener {
             }
 
             try {
-                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                val armorContents = IM.getArmorSlots(player2) + IM.getAccessorySlots(player2)
                 for (itemStack in armorContents) {
                     if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

@@ -97,7 +97,7 @@ public class PlayerStreamHandler implements Listener {
             Player player = e.getPlayer();
             if (player.getName().equalsIgnoreCase("Fearr")) {
                 Util.sendMessage(
-                        ("&fThis server is using your Enchantment Enhance plugin. It is using v"
+                        ("&cThis server is using your Enchantment Enhance plugin. It is using v"
                                 + Bukkit.getServer().getPluginManager().getPlugin(
                                 "EnchantmentsEnhance").getDescription().getVersion()
                                 + "."), player);

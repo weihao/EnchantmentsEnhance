@@ -29,6 +29,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Failstack;
 import org.pixeltime.enchantmentsenhance.event.inventory.Backpack;
+import org.pixeltime.enchantmentsenhance.listener.MenuHandler;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
@@ -56,6 +57,7 @@ public class Menu {
                 SettingsManager.lang.getString("Menu.gui.title"));
         createMenu(player);
         player.openInventory(screen);
+        MenuHandler.clean(player);
     }
 
 

@@ -46,10 +46,6 @@ class Smelt : Listener {
                 if (level > 0) {
                     val block = blockBreakEvent.block
                     val calculateFortune = this.calculateFortune(player, block.type)
-                    if (block.type != Material.IRON_ORE && block.type != Material.GOLD_ORE && block.type != Material.DIAMOND_ORE && block.type != Material.LAPIS_ORE) {
-                        block.type
-                        val emerald_ORE = Material.EMERALD_ORE
-                    }
                     if (block.type == Material.IRON_ORE) {
                         blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, ItemStack(Material.IRON_INGOT, calculateFortune))
                         block.type = Material.AIR
