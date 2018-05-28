@@ -431,12 +431,15 @@ repel:
 swimmer:
     1:
       potion_lvl: 1
+      duration: 5
       
     2:
       potion_lvl: 2
+      duration: 5
       
     3:
       potion_lvl: 3
+      duration: 5
 
 # "money-percent" is the percentage of the money which will be stolen from the opponent's balance.
 thief:
@@ -459,12 +462,15 @@ thief:
 health_boost:
     1:
       potion_lvl: 1
+      duration: 8
       
     2:
       potion_lvl: 2
+      duration: 8
       
     3:
-      potion_lvl: 5
+      potion_lvl: 3
+      duration: 8
      
 reborn:
     1:

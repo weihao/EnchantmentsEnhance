@@ -39,7 +39,7 @@ class Swimmer : Listener {
                 if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                     if (level > 0) {
-                        player.addPotionEffect(PotionEffect(PotionEffectType.WATER_BREATHING, Integer.MAX_VALUE, SettingsManager.enchant.getInt("swimmer.%level.potion_lvl") - 1))
+                        player.addPotionEffect(PotionEffect(PotionEffectType.WATER_BREATHING, SettingsManager.enchant.getInt("swimmer.$level.duration") * 20, SettingsManager.enchant.getInt("swimmer.%level.potion_lvl") - 1))
                     }
                 }
             }

@@ -40,7 +40,7 @@ class Health_Boost : Listener {
                 if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                     if (level > 0) {
-                        player.addPotionEffect(PotionEffect(PotionEffectType.HEALTH_BOOST, Integer.MAX_VALUE, SettingsManager.enchant.getInt("health_boost.$level.potion_lvl") - 1))
+                        player.addPotionEffect(PotionEffect(PotionEffectType.HEALTH_BOOST, SettingsManager.enchant.getInt("health_boost.$level.duration") * 20, SettingsManager.enchant.getInt("health_boost.$level.potion_lvl") - 1))
                     }
                 }
             }
