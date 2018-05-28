@@ -22,7 +22,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
-import org.pixeltime.enchantmentsenhance.manager.CommandManager;
 import org.pixeltime.enchantmentsenhance.manager.IM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -36,14 +35,10 @@ public class DebugCommand extends SubCommand {
             Enhance.enhanceSuccess(p.getItemInHand(), p, false, 19);
         } else if (args[0].equals("slots")) {
             IM.getArmorSlots(p);
-        }
-        else if (args[0].equals("mysql"))
-        {
+        } else if (args[0].equals("mysql")) {
             Main.getMain().mysql.playerExists(p.getUniqueId());
             Main.getMain().mysql.createPlayer(p.getUniqueId(), p.getPlayer());
-        }
-        else if (args[0].equals("format"))
-        {
+        } else if (args[0].equals("format")) {
             Iterator<SubCommand> subcommands = Main.getMain().commandManager.getCommands().iterator();
             while (subcommands.hasNext()) {
                 SubCommand sc = subcommands.next();

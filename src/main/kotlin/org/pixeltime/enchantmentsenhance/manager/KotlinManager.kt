@@ -19,9 +19,9 @@
 package org.pixeltime.enchantmentsenhance.manager
 
 import org.bukkit.Bukkit
+import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.Main.getMain
-import org.pixeltime.enchantmentsenhance.listener.ItemDropHandler
 import org.pixeltime.enchantmentsenhance.listener.VanillaEnchantHandler
 import org.pixeltime.enchantmentsenhance.util.Util
 
@@ -50,6 +50,12 @@ class KM {
                 return (Util.romanToInt((temp)[temp.size - 1]))
             }
             return 0
+        }
+
+        @JvmStatic
+        fun stripLore(item: ItemStack): List<String> {
+            val lores = item.itemMeta.lore
+            return lores.filter { !it.startsWith(Util.UNIQUEID) }
         }
     }
 }

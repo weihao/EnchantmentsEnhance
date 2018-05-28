@@ -75,13 +75,14 @@ public class ItemManager {
             lore.add(Util.toColor(Backpack.getOneStoneCountAsString(player,
                     stoneId)));
         }
-        return new ItemBuilder(MM.stoneTypes.get(stoneId)).setName(Util.toColor(
-                SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
-                .toItemStack();
+        ItemStack item = new ItemBuilder(MM.stoneTypes.get(stoneId)).setName(Util.toColor(SettingsManager.lang.getString("Item." + stoneId))).setLore(lore).toItemStack();
+        int stack = (Backpack.getOneStoneCountAsInt(player, stoneId) > 64 ? 64 : Backpack.getOneStoneCountAsInt(player, stoneId));
+        item.setAmount(stack);
+        return item;
     }
 
 
-    public static ItemStack stoneVisualized(int stoneId, Player player) {
+    public static ItemStack stoneVisualized(int stoneId) {
         List<String> lore = new ArrayList<String>();
         return new ItemBuilder(MM.stoneTypes.get(stoneId)).setName(Util.toColor(
                 SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
@@ -92,6 +93,7 @@ public class ItemManager {
     public static ItemStack setGrade(ItemStack item, int gradeLevel) {
         NBTItem nbti = new NBTItem(item);
         nbti.setInteger("EGrade", gradeLevel);
+
         return nbti.getItem();
     }
 
@@ -130,33 +132,39 @@ public class ItemManager {
 
 
     public static void soulbound(ItemStack item) {
-        Lore.addLore(item, ChatColor.translateAlternateColorCodes('&',
+        Lore.addLore(item, Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
                 SettingsManager.lang.getString("Lore." + SettingsManager.config
-                        .getString("lore.bound") + "Lore")), SettingsManager.config
-                .getBoolean("lore.bound"));
+                        .getString("lore.bound") + "Lore")), !SettingsManager.config
+                .getString("lore.bound").contains("un"));
     }
 
     public static void forgeItem(Player player, ItemStack item, int enchantLevel) {
         ItemStack currItem = setLevel(item, enchantLevel);
+        // Getting Unique Name.
+        List<String> oldLore = KM.stripLore(item);
         if (enchantLevel == 1) {
             currItem = setName(currItem, currItem.getItemMeta().getDisplayName());
         }
+        // Unique ID applied.
         applyEnchantments(currItem);
         renameItem(currItem);
         soulbound(currItem);
-        addlore(currItem);
+        addlore(currItem, oldLore);
         MenuHandler.updateItem(player, item, currItem);
     }
 
-    private static void addlore(ItemStack currItem) {
-        ItemMeta im = currItem.getItemMeta();
-        List<String> lore = im.getLore();
-        List<String> addlore = (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore." + getItemEnchantmentType(currItem).toString());
-        for (String s : addlore) {
-            lore.add(ChatColor.translateAlternateColorCodes('&', s));
+    private static void addlore(ItemStack currItem, List<String> old) {
+        if (old != null && old.size() > 0) {
+            ItemMeta im = currItem.getItemMeta();
+            List<String> lore = im.getLore();
+            List<String> addlore = (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore." + getItemEnchantmentType(currItem).toString());
+            for (String s : addlore) {
+                lore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', s));
+            }
+            lore.addAll(old);
+            im.setLore(lore);
+            currItem.setItemMeta(im);
         }
-        im.setLore(lore);
-        currItem.setItemMeta(im);
     }
 
     public static void applyEnchantments(ItemStack item) {
@@ -188,6 +196,12 @@ public class ItemManager {
             case ARMOR:
                 temp2 = SettingsManager.config.getStringList("armorGrade."
                         + gradeLevel + ".enchantment");
+            case MASK:
+                break;
+            case TOOL:
+                break;
+            case INVALID:
+                break;
         }
 
         if (temp2 != null) {
@@ -206,7 +220,8 @@ public class ItemManager {
         } catch (IllegalArgumentException ex) {
             String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
             if (enchantment != null) {
-                newlore.add(ChatColor.translateAlternateColorCodes('&', enchantment + " " + Util.intToRoman(level)));
+                // Unique ID
+                newlore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', enchantment + " " + Util.intToRoman(level)));
             }
             meta.setLore(newlore);
             item.setItemMeta(meta);

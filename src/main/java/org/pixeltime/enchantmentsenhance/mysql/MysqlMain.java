@@ -39,7 +39,7 @@ public class MysqlMain implements Listener {
                         DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database,
                                 this.username, this.password));
 
-                Bukkit.getConsoleSender().sendMessage("[EnchantmentsEnhance] "+ ChatColor.GREEN +"MYSQL CONNECTED");
+                Bukkit.getConsoleSender().sendMessage("[EnchantmentsEnhance] " + ChatColor.GREEN + "MYSQL CONNECTED");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,7 +81,7 @@ public class MysqlMain implements Listener {
         try {
             PreparedStatement statement = this.getConnection()
                     .prepareStatement("SELECT * FROM " + this.table + " WHERE player=?");
-            statement.setString(1,"healpot");
+            statement.setString(1, "healpot");
 
             ResultSet results = statement.executeQuery();
             if (results.next()) {

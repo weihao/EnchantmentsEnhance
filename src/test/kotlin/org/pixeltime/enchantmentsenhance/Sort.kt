@@ -2,7 +2,6 @@ package org.pixeltime.enchantmentsenhance
 
 import junit.framework.TestCase
 import org.junit.Test
-import org.pixeltime.enchantmentsenhance.listener.StackMobHandler
 import java.io.File
 import java.util.*
 

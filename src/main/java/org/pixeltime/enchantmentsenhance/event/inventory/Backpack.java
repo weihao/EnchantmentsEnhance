@@ -63,4 +63,8 @@ public class Backpack extends GUI {
                 .replaceAll("%COUNT%", Integer.toString(inv[stoneId])));
 
     }
+
+    public static int getOneStoneCountAsInt(Player player, int stoneId) {
+        return Inventory.getPlayer(player)[stoneId];
+    }
 }

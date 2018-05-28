@@ -24,6 +24,7 @@ import org.junit.Test;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class UtilTest {
     @Before
@@ -60,6 +61,14 @@ public class UtilTest {
         assertEquals("X", Util.intToRoman(10));
         assertEquals("11", Util.intToRoman(11));
         assertEquals("10000", Util.intToRoman(10000));
+    }
+
+
+    @Test
+    public void testRainbowlizeCode() {
+        String str = "                ";
+        assertTrue(Util.rainbowlizeCode(str).length() > 0);
+        assertTrue(Util.rainbowlize(str).length() > 0);
     }
 
 

@@ -19,8 +19,6 @@
 package org.pixeltime.enchantmentsenhance.locale
 
 import org.pixeltime.enchantmentsenhance.enums.LangType
-import org.pixeltime.enchantmentsenhance.manager.MM.Companion.armor
-import org.pixeltime.enchantmentsenhance.manager.MM.Companion.weapon
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class LM {

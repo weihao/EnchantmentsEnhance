@@ -24,7 +24,10 @@ import org.pixeltime.enchantmentsenhance.event.blackspirit.Failstack;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 public class SecretBook {
     private static HashMap<String, List<Integer>> storage =

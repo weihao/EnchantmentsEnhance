@@ -38,6 +38,8 @@ import java.util.Random;
  * @version Feb 9, 2018
  */
 public class Util {
+    public static final String UNIQUEID = ChatColor.translateAlternateColorCodes('&', "&r&c&r&a&r&4&r&e&r&a&r&8&r&2&r&a&r&5&r&8&r&c&r&4&r&7&r&e&r&b&r&e");
+
     /**
      * Lists all the enhancement stone possible.
      */
@@ -171,6 +173,26 @@ public class Util {
         return newString;
     }
 
+    /**
+     * Make a string colorful.
+     *
+     * @param string
+     * @return
+     */
+    public static String rainbowlizeCode(String string) {
+        int lastColor = 0;
+        int currColor;
+        String newString = "";
+        String colors = "123456789abcde";
+        for (int i = 0; i < string.length(); i++) {
+            do {
+                currColor = new Random().nextInt(colors.length() - 1) + 1;
+            }
+            while (currColor == lastColor);
+            newString += "&r" + "&" + colors.charAt(currColor) + string.charAt(i);
+        }
+        return newString;
+    }
 
     /**
      * Creates a GUI button made of a wool.

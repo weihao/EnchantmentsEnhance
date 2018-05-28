@@ -38,6 +38,7 @@ public class CommandManager implements CommandExecutor {
     private ArrayList<SubConsoleCommand> consoleCommands =
             new ArrayList<SubConsoleCommand>();
     private Main plugin = Main.getMain();
+
     /**
      * Register all the command.
      */
