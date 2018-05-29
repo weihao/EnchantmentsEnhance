@@ -55,12 +55,12 @@ class IM {
             if (belt != -1 && inv.getItem(belt) != null) {
                 accessory.add(inv.getItem(belt))
             }
-            return accessory
+            return accessory.filter { it.hasItemMeta() && it.itemMeta.hasLore() && it.itemMeta.lore.isNotEmpty() }
         }
 
         @JvmStatic
         fun getArmorSlots(player: Player): List<ItemStack> {
-            return player.inventory.armorContents.filter { it != null && it.type != Material.AIR } + player.itemInHand
+            return (player.inventory.armorContents.filter { it != null && it.type != Material.AIR } + player.itemInHand).filter { it.hasItemMeta() && it.itemMeta.hasLore() && it.itemMeta.lore.isNotEmpty() }
         }
     }
 }
