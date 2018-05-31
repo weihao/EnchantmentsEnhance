@@ -48,12 +48,12 @@ class Lifesteal : Listener {
             try {
                 val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("lifesteal.$level.chance")) {
-                            player.health = player.health + SettingsManager.enchant.getInt("lifesteal.$level.health")
-                        }
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("lifesteal.$level.chance")) {
+                        player.health = player.health + SettingsManager.enchant.getInt("lifesteal.$level.health")
                     }
+
                 }
             } catch (ex: Exception) {
             }

@@ -38,21 +38,21 @@ class Shearer : Listener {
         if (playerInteractEvent.action == Action.LEFT_CLICK_AIR) {
             val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             for (itemStack in armorContents) {
-                if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0) {
-                        val int1 = SettingsManager.enchant.getInt("shearer.$level.radius")
-                        for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
-                            if (entity is Sheep) {
-                                if (!entity.isSheared) {
-                                    entity.isSheared = true
-                                    entity.world.dropItem(entity.location, ItemStack(Material.WOOL, 1, entity.color.woolData.toShort()))
-                                }
+
+                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                if (level > 0) {
+                    val int1 = SettingsManager.enchant.getInt("shearer.$level.radius")
+                    for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
+                        if (entity is Sheep) {
+                            if (!entity.isSheared) {
+                                entity.isSheared = true
+                                entity.world.dropItem(entity.location, ItemStack(Material.WOOL, 1, entity.color.woolData.toShort()))
                             }
                         }
                     }
                 }
             }
+
         }
     }
 }

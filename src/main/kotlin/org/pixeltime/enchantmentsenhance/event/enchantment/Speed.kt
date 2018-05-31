@@ -37,12 +37,12 @@ class Speed : Listener {
         try {
             val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             for (itemStack in armorContents) {
-                if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0) {
-                        player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 200, SettingsManager.enchant.getInt("speed.$level.potion_lvl") - 1))
-                    }
+
+                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                if (level > 0) {
+                    player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 200, SettingsManager.enchant.getInt("speed.$level.potion_lvl") - 1))
                 }
+
             }
         } catch (ex: Exception) {
         }

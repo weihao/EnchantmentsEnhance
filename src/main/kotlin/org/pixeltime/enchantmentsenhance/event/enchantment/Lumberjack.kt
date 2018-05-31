@@ -43,17 +43,17 @@ class Lumberjack : Listener {
         try {
             val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             for (itemStack in armorContents) {
-                if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0 && blockBreakEvent.block.type == Material.LOG) {
-                        val list = ArrayList<Material>()
-                        list.add(Material.LOG)
-                        list.add(Material.LEAVES)
-                        val iterator = this.getTree(blockBreakEvent.block, list).iterator()
-                        while (iterator.hasNext()) {
-                            iterator.next().breakNaturally()
-                        }
+
+                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                if (level > 0 && blockBreakEvent.block.type == Material.LOG) {
+                    val list = ArrayList<Material>()
+                    list.add(Material.LOG)
+                    list.add(Material.LEAVES)
+                    val iterator = this.getTree(blockBreakEvent.block, list).iterator()
+                    while (iterator.hasNext()) {
+                        iterator.next().breakNaturally()
                     }
+
                 }
             }
         } catch (ex: Exception) {

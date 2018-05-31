@@ -39,13 +39,13 @@ class Reborn : Listener {
             try {
                 val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0) {
-                            player.addPotionEffect(PotionEffect(PotionEffectType.ABSORPTION, SettingsManager.enchant.getInt("reborn.$level.absorption.duration") * 20, SettingsManager.enchant.getInt("reborn.$level.absorption.potion_lvl") - 1))
-                            player.addPotionEffect(PotionEffect(PotionEffectType.REGENERATION, SettingsManager.enchant.getInt("reborn.$level.regeneration.duration") * 20, SettingsManager.enchant.getInt("reborn.$level.regeneration.potion_lvl") - 1))
-                        }
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0) {
+                        player.addPotionEffect(PotionEffect(PotionEffectType.ABSORPTION, SettingsManager.enchant.getInt("reborn.$level.absorption.duration") * 20, SettingsManager.enchant.getInt("reborn.$level.absorption.potion_lvl") - 1))
+                        player.addPotionEffect(PotionEffect(PotionEffectType.REGENERATION, SettingsManager.enchant.getInt("reborn.$level.regeneration.duration") * 20, SettingsManager.enchant.getInt("reborn.$level.regeneration.potion_lvl") - 1))
                     }
+
                 }
             } catch (ex: Exception) {
             }

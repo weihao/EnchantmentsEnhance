@@ -41,9 +41,9 @@ class Batvision : Listener {
                 if (level > 0) {
                     if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
                         player.removePotionEffect(PotionEffectType.NIGHT_VISION)
-                        player.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, 300, 0))
+                        player.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, 600, 0))
                     } else {
-                        player.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, 300, 0))
+                        player.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, 600, 0))
                     }
                 }
             }

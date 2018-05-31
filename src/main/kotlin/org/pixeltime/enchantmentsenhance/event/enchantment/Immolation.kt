@@ -42,15 +42,15 @@ class Immolation : Listener {
         try {
             val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             for (itemStack in armorContents) {
-                if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("immolation.$level.chance")) {
-                        for (entity in player.getNearbyEntities(SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"))) {
-                            if (entity is Player) {
-                                entity.setFireTicks(SettingsManager.enchant.getInt("immolation.$level.duration") * 20)
-                            }
+
+                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("immolation.$level.chance")) {
+                    for (entity in player.getNearbyEntities(SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"))) {
+                        if (entity is Player) {
+                            entity.setFireTicks(SettingsManager.enchant.getInt("immolation.$level.duration") * 20)
                         }
                     }
+
                 }
             }
         } catch (ex: Exception) {

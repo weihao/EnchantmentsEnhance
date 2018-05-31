@@ -41,12 +41,12 @@ class Riftslayer : Listener {
             try {
                 val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0) {
-                            entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * 3.0
-                        }
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0) {
+                        entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * 3.0
                     }
+
                 }
             } catch (ex: Exception) {
             }

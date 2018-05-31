@@ -182,6 +182,7 @@ class LM {
             addLang("enchantments.tnt_shooter", arrayOf("&7Tnt Shooter", "&7炮手"))
             addLang("enchantments.turmoil", arrayOf("&7Turmoil", "&7风暴"))
             addLang("enchantments.web_trap", arrayOf("&7Web Trap", "&7蛛网"))
+            addLang("enchantments.wing", arrayOf("&7Wing", "&7羽翼"))
 
             SettingsManager.lang.options().copyDefaults(true);
             SettingsManager.saveLang();

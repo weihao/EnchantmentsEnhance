@@ -50,15 +50,15 @@ class Holy_Smite : Listener {
             try {
                 val armorContents = IM.getArmorSlots(player2) + IM.getAccessorySlots(player2)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("holy_smite.$level.chance")) {
-                            player.world.strikeLightningEffect(player.location)
-                            val iterator = player.activePotionEffects.iterator()
-                            while (iterator.hasNext()) {
-                                player.removePotionEffect((iterator.next() as PotionEffect).type)
-                            }
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("holy_smite.$level.chance")) {
+                        player.world.strikeLightningEffect(player.location)
+                        val iterator = player.activePotionEffects.iterator()
+                        while (iterator.hasNext()) {
+                            player.removePotionEffect((iterator.next() as PotionEffect).type)
                         }
+
                     }
                 }
             } catch (ex: Exception) {

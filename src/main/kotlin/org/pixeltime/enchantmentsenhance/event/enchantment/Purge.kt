@@ -49,17 +49,17 @@ class Purge : Listener {
             try {
                 val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("purge.$level.chance")) {
-                            player2.world.strikeLightningEffect(player2.location)
-                            val iterator = player2.activePotionEffects.iterator()
-                            while (iterator.hasNext()) {
-                                player2.removePotionEffect((iterator.next() as PotionEffect).type)
-                                player2.damage(2.0)
-                            }
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("purge.$level.chance")) {
+                        player2.world.strikeLightningEffect(player2.location)
+                        val iterator = player2.activePotionEffects.iterator()
+                        while (iterator.hasNext()) {
+                            player2.removePotionEffect((iterator.next() as PotionEffect).type)
+                            player2.damage(2.0)
                         }
                     }
+
                 }
             } catch (ex: Exception) {
             }

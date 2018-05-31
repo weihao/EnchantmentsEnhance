@@ -55,24 +55,24 @@ class Web_Trap : Listener {
                 }
                 val armorContents = IM.getArmorSlots(player2) + IM.getAccessorySlots(player2)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("web_trap.$level.chance")) {
-                            if (SettingsManager.enchant.getBoolean("web_trap.check-wg-flag") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, DefaultFlag.BUILD) == StateFlag.State.DENY) {
-                                return
-                            }
-                            val location = player.location
-                            val block = location.block
-                            this.temp.add(block)
-                            location.block.type = Material.WEB
-                            Bukkit.getServer().scheduler.scheduleSyncDelayedTask(Main.getMain(), object : BukkitRunnable() {
-                                override fun run() {
-                                    block.type = Material.AIR
-                                    this@Web_Trap.temp.clear()
-                                }
-                            }, (SettingsManager.enchant.getInt("web_trap.$level.duration") * 20).toLong())
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("web_trap.$level.chance")) {
+                        if (SettingsManager.enchant.getBoolean("web_trap.check-wg-flag") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, DefaultFlag.BUILD) == StateFlag.State.DENY) {
+                            return
                         }
+                        val location = player.location
+                        val block = location.block
+                        this.temp.add(block)
+                        location.block.type = Material.WEB
+                        Bukkit.getServer().scheduler.scheduleSyncDelayedTask(Main.getMain(), object : BukkitRunnable() {
+                            override fun run() {
+                                block.type = Material.AIR
+                                this@Web_Trap.temp.clear()
+                            }
+                        }, (SettingsManager.enchant.getInt("web_trap.$level.duration") * 20).toLong())
                     }
+
                 }
             } catch (ex: Exception) {
             }

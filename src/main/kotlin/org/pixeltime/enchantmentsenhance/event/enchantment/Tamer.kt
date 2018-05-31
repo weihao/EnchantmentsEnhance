@@ -37,19 +37,19 @@ class Tamer : Listener {
             try {
                 val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && entityDamageByEntityEvent.entity is Wolf) {
-                            entityDamageByEntityEvent.isCancelled = true
-                            entityDamageByEntityEvent.damage = 0.0
-                            val wolf = entityDamageByEntityEvent.entity as Wolf
-                            if (wolf.isTamed) {
-                                return
-                            }
-                            wolf.isTamed = true
-                            wolf.owner = player
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0 && entityDamageByEntityEvent.entity is Wolf) {
+                        entityDamageByEntityEvent.isCancelled = true
+                        entityDamageByEntityEvent.damage = 0.0
+                        val wolf = entityDamageByEntityEvent.entity as Wolf
+                        if (wolf.isTamed) {
+                            return
                         }
+                        wolf.isTamed = true
+                        wolf.owner = player
                     }
+
                 }
             } catch (ex: Exception) {
             }

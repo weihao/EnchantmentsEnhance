@@ -22,26 +22,22 @@ import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Platemail : Listener {
+class Wing : Listener {
     @EventHandler
-    fun onPalyerWalk(playerMoveEvent: PlayerMoveEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "platemail"))
+    fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "wing"))
         try {
             val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             for (itemStack in armorContents) {
-
                 val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                 if (level > 0) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, 100, 1))
+                    player.allowFlight = SettingsManager.enchant.getBoolean("wing.$level.flight")
                 }
-
             }
         } catch (ex: Exception) {
         }

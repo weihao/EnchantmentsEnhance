@@ -37,12 +37,12 @@ class Haste : Listener {
         val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
         try {
             for (itemStack in armorContents) {
-                if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0) {
-                        player.addPotionEffect(PotionEffect(PotionEffectType.FAST_DIGGING, 200, SettingsManager.enchant.getInt("enchantments.haste.$level.amplifier")))
-                    }
+
+                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                if (level > 0) {
+                    player.addPotionEffect(PotionEffect(PotionEffectType.FAST_DIGGING, 200, SettingsManager.enchant.getInt("enchantments.haste.$level.amplifier")))
                 }
+
             }
         } catch (ex: Exception) {
         }

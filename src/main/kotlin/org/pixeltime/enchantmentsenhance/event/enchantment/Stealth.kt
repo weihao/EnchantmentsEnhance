@@ -43,18 +43,17 @@ class Stealth : Listener {
 
         val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
         try {
-            for (itemStack in armorContents)
-                if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("stealth.$level.chance")) {
-                        val int1 = SettingsManager.enchant.getInt("stealth.$level.radius")
-                        for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
-                            if (entity is Player) {
-                                entity.addPotionEffect(PotionEffect(PotionEffectType.BLINDNESS, SettingsManager.enchant.getInt("stealth.$level.duration") * 20, 0))
-                            }
+            for (itemStack in armorContents) {
+                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("stealth.$level.chance")) {
+                    val int1 = SettingsManager.enchant.getInt("stealth.$level.radius")
+                    for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
+                        if (entity is Player) {
+                            entity.addPotionEffect(PotionEffect(PotionEffectType.BLINDNESS, SettingsManager.enchant.getInt("stealth.$level.duration") * 20, 0))
                         }
                     }
                 }
+            }
         } catch (ex: Exception) {
         }
     }

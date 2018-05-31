@@ -37,13 +37,13 @@ class Pyromaniac : Listener {
                 try {
                     val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                     for (itemStack in armorContents) {
-                        if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                            val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                            if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("pyromaniac.$level.chance")) {
-                                player.health = 20.0
-                                player.foodLevel = 20
-                            }
+
+                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("pyromaniac.$level.chance")) {
+                            player.health = 20.0
+                            player.foodLevel = 20
                         }
+
                     }
                 } catch (ex: Exception) {
                 }

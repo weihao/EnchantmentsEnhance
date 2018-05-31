@@ -49,14 +49,14 @@ class Thief : Listener {
             try {
                 val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("thief.$level.chance")) {
-                            val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DM.economy!!.getBalance(player2 as OfflinePlayer))
-                            DM.economy!!.withdrawPlayer(player2 as OfflinePlayer, n2)
-                            DM.economy!!.depositPlayer(player as OfflinePlayer, n2)
-                        }
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("thief.$level.chance")) {
+                        val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DM.economy!!.getBalance(player2 as OfflinePlayer))
+                        DM.economy!!.withdrawPlayer(player2 as OfflinePlayer, n2)
+                        DM.economy!!.depositPlayer(player as OfflinePlayer, n2)
                     }
+
                 }
             } catch (ex: Exception) {
             }

@@ -43,12 +43,12 @@ class Petrify : Listener {
             try {
                 val armorContents = player2.inventory.armorContents + IM.getAccessorySlots(player2)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("petrify.$level.chance")) {
-                            player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, SettingsManager.enchant.getInt("petrify.$level.duration") * 20, SettingsManager.enchant.getInt("petrify.$level.potion_lvl") - 1))
-                        }
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("petrify.$level.chance")) {
+                        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, SettingsManager.enchant.getInt("petrify.$level.duration") * 20, SettingsManager.enchant.getInt("petrify.$level.potion_lvl") - 1))
                     }
+
                 }
             } catch (ex: Exception) {
             }

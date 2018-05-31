@@ -677,3 +677,8 @@ rekt:
 
     2:
       multiplier: 3.0
+
+wing:
+
+    1:
+      flight: true

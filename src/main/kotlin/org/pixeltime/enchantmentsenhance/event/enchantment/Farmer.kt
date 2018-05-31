@@ -36,26 +36,26 @@ class Farmer : Listener {
         try {
             val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
             for (itemStack in armorContents) {
-                if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0) {
-                        if (player.itemInHand.type == Material.CARROT_ITEM) {
-                            blockPlaceEvent.blockPlaced.setTypeIdAndData(Material.CARROT.id, 7.toByte(), true)
-                        }
-                        if (player.itemInHand.type == Material.MELON_SEEDS) {
-                            blockPlaceEvent.blockPlaced.type = Material.MELON
-                        }
-                        if (player.itemInHand.type == Material.POTATO_ITEM) {
-                            blockPlaceEvent.blockPlaced.setTypeIdAndData(Material.POTATO.id, 7.toByte(), true)
-                        }
-                        if (player.itemInHand.type == Material.SEEDS) {
-                            blockPlaceEvent.blockPlaced.setTypeIdAndData(Material.CROPS.id, 7.toByte(), true)
-                        }
-                        if (player.itemInHand.type == Material.PUMPKIN_SEEDS) {
-                            blockPlaceEvent.blockPlaced.type = Material.PUMPKIN
-                        }
+
+                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                if (level > 0) {
+                    if (player.itemInHand.type == Material.CARROT_ITEM) {
+                        blockPlaceEvent.blockPlaced.setTypeIdAndData(Material.CARROT.id, 7.toByte(), true)
+                    }
+                    if (player.itemInHand.type == Material.MELON_SEEDS) {
+                        blockPlaceEvent.blockPlaced.type = Material.MELON
+                    }
+                    if (player.itemInHand.type == Material.POTATO_ITEM) {
+                        blockPlaceEvent.blockPlaced.setTypeIdAndData(Material.POTATO.id, 7.toByte(), true)
+                    }
+                    if (player.itemInHand.type == Material.SEEDS) {
+                        blockPlaceEvent.blockPlaced.setTypeIdAndData(Material.CROPS.id, 7.toByte(), true)
+                    }
+                    if (player.itemInHand.type == Material.PUMPKIN_SEEDS) {
+                        blockPlaceEvent.blockPlaced.type = Material.PUMPKIN
                     }
                 }
+
             }
         } catch (ex: Exception) {
         }

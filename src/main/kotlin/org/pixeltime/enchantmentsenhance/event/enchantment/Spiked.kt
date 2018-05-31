@@ -48,12 +48,12 @@ class Spiked : Listener {
             try {
                 val armorContents = victim.inventory.armorContents + IM.getAccessorySlots(victim)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0) {
-                            player.damage(SettingsManager.enchant.getDouble("spiked.$level.damage"))
-                        }
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0) {
+                        player.damage(SettingsManager.enchant.getDouble("spiked.$level.damage"))
                     }
+
                 }
             } catch (ex: Exception) {
             }

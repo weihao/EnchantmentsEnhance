@@ -49,13 +49,13 @@ class Turmoil : Listener {
             try {
                 val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("turmoil.$level.chance")) {
-                            player2.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, SettingsManager.enchant.getInt("turmoil.$level.duration") * 20, SettingsManager.enchant.getInt("turmoil.$level.potion_lvl") - 1))
 
-                        }
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("turmoil.$level.chance")) {
+                        player2.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, SettingsManager.enchant.getInt("turmoil.$level.duration") * 20, SettingsManager.enchant.getInt("turmoil.$level.potion_lvl") - 1))
+
                     }
+
                 }
             } catch (ex: Exception) {
             }

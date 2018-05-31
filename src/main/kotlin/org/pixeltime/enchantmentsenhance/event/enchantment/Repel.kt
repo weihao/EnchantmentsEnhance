@@ -48,12 +48,12 @@ class Repel : Listener {
             try {
                 val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("repel.$level.chance")) {
-                            damager.velocity = player.location.direction.multiply(SettingsManager.enchant.getInt("repel.$level.power"))
-                        }
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("repel.$level.chance")) {
+                        damager.velocity = player.location.direction.multiply(SettingsManager.enchant.getInt("repel.$level.power"))
                     }
+
                 }
             } catch (ex: Exception) {
             }

@@ -40,19 +40,19 @@ class Horse_Rider : Listener {
             try {
                 val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
                 for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta() && itemStack.itemMeta.hasLore()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && entityDamageByEntityEvent.entity is Horse) {
-                            entityDamageByEntityEvent.isCancelled = true
-                            entityDamageByEntityEvent.damage = 0.0
-                            val horse = entityDamageByEntityEvent.entity as Horse
-                            if (horse.isTamed) {
-                                return
-                            }
-                            horse.isTamed = true
-                            horse.owner = player
-                            horse.inventory.saddle = ItemStack(Material.SADDLE)
+
+                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+                    if (level > 0 && entityDamageByEntityEvent.entity is Horse) {
+                        entityDamageByEntityEvent.isCancelled = true
+                        entityDamageByEntityEvent.damage = 0.0
+                        val horse = entityDamageByEntityEvent.entity as Horse
+                        if (horse.isTamed) {
+                            return
                         }
+                        horse.isTamed = true
+                        horse.owner = player
+                        horse.inventory.saddle = ItemStack(Material.SADDLE)
+
                     }
                 }
             } catch (ex: Exception) {
