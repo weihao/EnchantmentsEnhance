@@ -21,6 +21,7 @@ package org.pixeltime.enchantmentsenhance.manager
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.event.enchantment.*
 
+
 class EM {
     companion object {
         @JvmStatic
