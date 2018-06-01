@@ -45,7 +45,7 @@ class Battlecry : Listener {
             if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {
                 return
             }
-            val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+            val armorContents = IM.getItemList(player)
             for (itemStack in armorContents) {
                 val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                 if (level > 0) {

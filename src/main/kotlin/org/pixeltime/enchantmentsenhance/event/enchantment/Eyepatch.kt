@@ -35,7 +35,7 @@ class Eyepatch : Listener {
         val player = playerMoveEvent.player
         if (player.hasPotionEffect(PotionEffectType.BLINDNESS)) {
             try {
-                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                val armorContents = IM.getItemList(player)
                 for (itemStack in armorContents) {
 
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

@@ -47,7 +47,7 @@ class Corruption : Listener {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                     return
                 }
-                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                val armorContents = IM.getItemList(player)
                 for (itemStack in armorContents) {
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                     if ((level > 0) && ((Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("corruption.$level.chance"))) {

@@ -47,9 +47,9 @@ class Demonic_Aura : Listener {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {
                     return
                 }
-                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                val armorContents = IM.getItemList(player)
                 for (itemStack in armorContents) {
-                    if (itemStack != null && itemStack.hasItemMeta()) {
+                    if (itemStack.hasItemMeta()) {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                         if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("demonic_aura.$level.chance")) {
                             player.addPotionEffect(PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("demonic_aura.$level.duration") * 20, 0))

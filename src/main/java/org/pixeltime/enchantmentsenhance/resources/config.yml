@@ -193,6 +193,11 @@ material:
     - IRON_AXE
     - WOOD_AXE
 
+
+slots:
+  #Armor includes armor contents and item in hand.
+  enableArmor: true
+  enableAcessory: false
 # Accessory slots.
 # Player will place their items to those position in order to use their accessories.
 # Player Inventory Slot Reference: https://github.com/HealPotion/EnchantmentsEnhance/blob/master/.images/player_inventory.png
@@ -205,7 +210,7 @@ accessory:
   right_earring: 19
   necklace: 27
   belt: 28
-#Armor includes armor contents and item in hand.
+
 
 # Vanilla Enchantments Reference: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html#
 enhance:

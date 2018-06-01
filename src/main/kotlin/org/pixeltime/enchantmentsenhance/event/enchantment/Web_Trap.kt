@@ -53,7 +53,7 @@ class Web_Trap : Listener {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                     return
                 }
-                val armorContents = IM.getArmorSlots(player2) + IM.getAccessorySlots(player2)
+                val armorContents = IM.getItemList(player2)
                 for (itemStack in armorContents) {
 
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

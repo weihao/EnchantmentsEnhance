@@ -62,5 +62,17 @@ class IM {
         fun getArmorSlots(player: Player): List<ItemStack> {
             return (player.inventory.armorContents.filter { it != null && it.type != Material.AIR } + player.itemInHand).filter { it.hasItemMeta() && it.itemMeta.hasLore() && it.itemMeta.lore.isNotEmpty() }
         }
+
+        @JvmStatic
+        fun getItemList(player: Player): List<ItemStack> {
+            val itemList: List<ItemStack> = ArrayList()
+            if (SettingsManager.config.getBoolean("slots.enableArmor")) {
+                itemList + IM.getArmorSlots(player)
+            }
+            if (SettingsManager.config.getBoolean("slots.enableAcessory")) {
+                itemList + IM.getAccessorySlots(player)
+            }
+            return itemList
+        }
     }
 }

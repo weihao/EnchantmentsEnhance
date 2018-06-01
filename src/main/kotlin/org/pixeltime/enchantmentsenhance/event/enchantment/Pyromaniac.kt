@@ -35,7 +35,7 @@ class Pyromaniac : Listener {
             val player = entityDamageEvent.entity as Player
             if (entityDamageEvent.cause == EntityDamageEvent.DamageCause.FIRE || entityDamageEvent.cause == EntityDamageEvent.DamageCause.FIRE_TICK) {
                 try {
-                    val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                    val armorContents = IM.getItemList(player)
                     for (itemStack in armorContents) {
 
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

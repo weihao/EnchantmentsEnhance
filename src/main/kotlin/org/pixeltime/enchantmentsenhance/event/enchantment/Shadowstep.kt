@@ -45,14 +45,12 @@ class Shadowstep : Listener {
                 return
             }
             try {
-                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                val armorContents = IM.getItemList(player)
                 for (itemStack in armorContents) {
-                    {
                         val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                         if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("shadowstep.$level.chance")) {
                             player.teleport(player2.location.add(player2.location.direction.multiply(SettingsManager.enchant.getInt("shadowstep.$level.distance") * -1.0)))
                         }
-                    }
                 }
             } catch (ex: Exception) {
             }

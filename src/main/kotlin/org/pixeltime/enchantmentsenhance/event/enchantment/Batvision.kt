@@ -34,7 +34,7 @@ class Batvision : Listener {
     @EventHandler
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+        val armorContents = IM.getItemList(player)
         try {
             for (itemStack in armorContents) {
                 val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

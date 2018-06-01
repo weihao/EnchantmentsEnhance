@@ -37,7 +37,7 @@ class Launch : Listener {
             val player2 = entityDamageByEntityEvent.damager as Player
 
             try {
-                val armorContents = player2.inventory.armorContents + IM.getAccessorySlots(player2)
+                val armorContents = IM.getItemList(player2)
                 for (itemStack in armorContents) {
 
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

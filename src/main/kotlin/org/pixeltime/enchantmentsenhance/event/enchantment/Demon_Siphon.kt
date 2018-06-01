@@ -47,7 +47,7 @@ class Demon_Siphon : Listener {
                 if (entityDamageByEntityEvent.entity is Player) {
                     return
                 }
-                val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+                val armorContents = IM.getItemList(player)
                 for (itemStack in armorContents) {
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                     if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("demon_siphon.$level.chance")) {

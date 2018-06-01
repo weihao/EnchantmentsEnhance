@@ -41,7 +41,7 @@ class Petrify : Listener {
                 return
             }
             try {
-                val armorContents = player2.inventory.armorContents + IM.getAccessorySlots(player2)
+                val armorContents = IM.getItemList(player2)
                 for (itemStack in armorContents) {
 
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

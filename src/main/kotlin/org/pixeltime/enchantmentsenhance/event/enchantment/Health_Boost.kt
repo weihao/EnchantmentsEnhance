@@ -35,7 +35,7 @@ class Health_Boost : Listener {
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         try {
-            val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+            val armorContents = IM.getItemList(player)
             for (itemStack in armorContents) {
 
                 val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

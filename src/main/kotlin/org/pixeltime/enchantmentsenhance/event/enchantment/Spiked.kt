@@ -44,16 +44,13 @@ class Spiked : Listener {
             if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                 return
             }
-
             try {
-                val armorContents = victim.inventory.armorContents + IM.getAccessorySlots(victim)
+                val armorContents = IM.getItemList(victim)
                 for (itemStack in armorContents) {
-
                     val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                     if (level > 0) {
                         player.damage(SettingsManager.enchant.getDouble("spiked.$level.damage"))
                     }
-
                 }
             } catch (ex: Exception) {
             }

@@ -33,7 +33,7 @@ class Dodge : Listener {
     fun onDamage(entityDamageEvent: EntityDamageEvent) {
         if (entityDamageEvent.entity is Player) {
             val player = entityDamageEvent.entity as Player
-            val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+            val armorContents = IM.getItemList(player)
             try {
                 for (itemStack in armorContents) {
                     if (itemStack.hasItemMeta()) {

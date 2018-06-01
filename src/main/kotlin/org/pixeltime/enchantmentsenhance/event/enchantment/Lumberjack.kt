@@ -41,7 +41,7 @@ class Lumberjack : Listener {
 
 
         try {
-            val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+            val armorContents = IM.getItemList(player)
             for (itemStack in armorContents) {
 
                 val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)

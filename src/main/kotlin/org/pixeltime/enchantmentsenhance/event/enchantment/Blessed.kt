@@ -33,7 +33,7 @@ class Blessed : Listener {
     fun onMove(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         try {
-            val armorContents = IM.getArmorSlots(player) + IM.getAccessorySlots(player)
+            val armorContents = IM.getItemList(player)
             for (itemStack in armorContents) {
                 val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
                 val n = (Math.random() * 100.0).toInt()
