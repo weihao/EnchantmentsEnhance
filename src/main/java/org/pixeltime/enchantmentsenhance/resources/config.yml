@@ -32,7 +32,7 @@ language: EN_US
 # Set false to disable console logging a plugin logo when initializing. [Working In Progress]
 enableLogo: true
 
-# Set true to disable vanilla enchanting table and when someone use it, right click on it will open enhance menu.
+# Set true to disable vanilla enchanting table and when someone uses it, right click on it will open enhance menu.
 enableVanillaEnchant: false
 
 # Set true to enable support for stacked mob drop. [Working In Progress]
@@ -148,9 +148,9 @@ reward:
       - 2
       - 3
 
-# When enhancement is succeed, it controls the firework delay launch.
+# When the enhancement is succeeded, it controls the firework delay launch.
 fireworkDelay: 0
-# How many firework will be launched.
+# How many fireworks will be launched.
 fireworkCount: 1
 
 # Material Reference: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
@@ -222,6 +222,8 @@ accessory:
 
 # Vanilla Enchantments Reference: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
 # Custom Enchantments Reference: https://github.com/HealPotion/EnchantmentsEnhance/wiki/Enchantments-en
+# Each enhancement level can have unique but FIXED enchantments.
+# It means everyone with same enhancement level and type of the item will have the same enchantments as well.
 enhance:
   0:
     # The success rate of item at the level.
@@ -898,7 +900,7 @@ enhance:
         - "&9&lThis is the default lore."
         - ""
 
-# Reform an item grade.
+# Reform an item grade. [Working In Progress]
 weaponGrade:
   0:
     prefix: ""
