@@ -33,23 +33,28 @@ class API {
             Inventory.addLevel(player, stoneType, numberOfStones)
         }
 
+        @JvmStatic
         fun getStones(player: Player): IntArray {
             return Inventory.getPlayer(player)
         }
 
+        @JvmStatic
         fun getCurrentFailstack(player: Player): Int {
             return Failstack.getLevel(player)
         }
 
+        @JvmStatic
         fun getValkStorage(): HashMap<String, MutableList<Int>> {
             return SecretBook.getStorage()
         }
 
+        @JvmStatic
         fun getValks(player: Player): MutableList<Int>? {
             return SecretBook.getStorage()[player.name]
         }
 
-        fun customEnchant(item: ItemStack, enchantment: String, level: Int) {
+        @JvmStatic
+        fun AddCustomEnchant(item: ItemStack, enchantment: String, level: Int) {
             ItemManager.applyEnchantmentToItem(item, enchantment, level)
         }
 

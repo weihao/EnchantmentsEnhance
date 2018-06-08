@@ -10,22 +10,23 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 public class ItemCommand extends SubCommand {
     @Override
     public void onCommand(Player player, String[] args) {
-        if (args.length == 2) {
-            if (args[0].equalsIgnoreCase("upgrade")) {
+        if (args[0].equalsIgnoreCase("upgrade")) {
+            if (args.length == 2) {
                 try {
                     Enhance.enhanceSuccess(player.getItemInHand(), player, true, Integer.parseInt(args[1]) - 1);
                 } catch (Exception ex) {
                     player.sendMessage(SettingsManager.config.getString("Config.invalidCommand"));
                 }
-            } else if (args[0].equalsIgnoreCase("setname")) {
-                ItemStack item = player.getItemInHand();
-                int level = ItemManager.getItemEnchantLevel(item);
-                ItemStack curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]));
-                player.getInventory().removeItem(item);
-                ItemManager.forgeItem(player, curr, level);
             }
+        } else if (args[0].equalsIgnoreCase("setname")) {
+            ItemStack item = player.getItemInHand();
+            int level = ItemManager.getItemEnchantLevel(item);
+            ItemStack curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]));
+            player.getInventory().removeItem(item);
+            ItemManager.forgeItem(player, curr, level);
         }
     }
+
 
     @Override
     public String name() {

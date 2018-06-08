@@ -47,3 +47,6 @@ permissions:
     Enchantmentsenhance.debug:
         description: Allows you to collect debugging information for developer to fix issues.
         default: op
+    Enchantmentsenhance.ench:
+        description: Allows you to add enchantments to an item.
+        default: op
