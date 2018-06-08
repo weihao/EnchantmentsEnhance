@@ -28,7 +28,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Lifesteal : Listener {
@@ -46,14 +45,9 @@ class Lifesteal : Listener {
             }
 
             try {
-                val armorContents = IM.getItemList(player)
-                for (itemStack in armorContents) {
-
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("lifesteal.$level.chance")) {
-                        player.health = player.health + SettingsManager.enchant.getInt("lifesteal.$level.health")
-                    }
-
+                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("lifesteal.$level.chance")) {
+                    player.health = player.health + SettingsManager.enchant.getInt("lifesteal.$level.health")
                 }
             } catch (ex: Exception) {
             }

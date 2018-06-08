@@ -30,7 +30,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Mischief : Listener {
@@ -48,18 +47,12 @@ class Mischief : Listener {
                 return
             }
             try {
-                val armorContents = IM.getItemList(player)
-                for (itemStack in armorContents) {
-
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("mischief.$level.chance")) {
-                        player2.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, SettingsManager.enchant.getInt("mischief.$level.duration") * 20, SettingsManager.enchant.getInt("mischief.$level.potion_lvl") - 1))
-                    }
-
+                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("mischief.$level.chance")) {
+                    player2.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, SettingsManager.enchant.getInt("mischief.$level.duration") * 20, SettingsManager.enchant.getInt("mischief.$level.potion_lvl") - 1))
                 }
             } catch (ex: Exception) {
             }
-
         }
     }
 }

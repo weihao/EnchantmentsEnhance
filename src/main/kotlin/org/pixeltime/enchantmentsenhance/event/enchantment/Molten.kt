@@ -25,7 +25,6 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Molten : Listener {
@@ -33,16 +32,12 @@ class Molten : Listener {
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "molten"))
-
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.FIRE_RESISTANCE, 200, SettingsManager.enchant.getInt("molten.$level.potion_lvl") - 1))
-                }
-
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0) {
+                player.addPotionEffect(PotionEffect(PotionEffectType.FIRE_RESISTANCE, Int.MAX_VALUE, SettingsManager.enchant.getInt("molten.$level.potion_lvl") - 1))
+            } else {
+                player.removePotionEffect(PotionEffectType.FIRE_RESISTANCE)
             }
         } catch (ex: Exception) {
         }

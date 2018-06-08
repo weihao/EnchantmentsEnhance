@@ -29,7 +29,6 @@ import org.bukkit.event.player.PlayerToggleSneakEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Stealth : Listener {
@@ -41,16 +40,13 @@ class Stealth : Listener {
             return
         }
 
-        val armorContents = IM.getItemList(player)
         try {
-            for (itemStack in armorContents) {
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("stealth.$level.chance")) {
-                    val int1 = SettingsManager.enchant.getInt("stealth.$level.radius")
-                    for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
-                        if (entity is Player) {
-                            entity.addPotionEffect(PotionEffect(PotionEffectType.BLINDNESS, SettingsManager.enchant.getInt("stealth.$level.duration") * 20, 0))
-                        }
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("stealth.$level.chance")) {
+                val int1 = SettingsManager.enchant.getInt("stealth.$level.radius")
+                for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
+                    if (entity is Player) {
+                        entity.addPotionEffect(PotionEffect(PotionEffectType.BLINDNESS, SettingsManager.enchant.getInt("stealth.$level.duration") * 20, 0))
                     }
                 }
             }

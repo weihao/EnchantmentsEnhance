@@ -30,7 +30,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.manager.DM
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Thief : Listener {
@@ -47,16 +46,11 @@ class Thief : Listener {
                 return
             }
             try {
-                val armorContents = IM.getItemList(player)
-                for (itemStack in armorContents) {
-
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("thief.$level.chance")) {
-                        val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DM.economy!!.getBalance(player2 as OfflinePlayer))
-                        DM.economy!!.withdrawPlayer(player2 as OfflinePlayer, n2)
-                        DM.economy!!.depositPlayer(player as OfflinePlayer, n2)
-                    }
-
+                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("thief.$level.chance")) {
+                    val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DM.economy!!.getBalance(player2 as OfflinePlayer))
+                    DM.economy!!.withdrawPlayer(player2 as OfflinePlayer, n2)
+                    DM.economy!!.depositPlayer(player as OfflinePlayer, n2)
                 }
             } catch (ex: Exception) {
             }

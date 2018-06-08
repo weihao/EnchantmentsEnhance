@@ -19,33 +19,29 @@
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
 import org.bukkit.ChatColor
+import org.bukkit.entity.Chicken
+import org.bukkit.entity.Entity
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Health_Boost : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "health_boost"))
-
+class Saturation : Listener {
     @EventHandler
-    fun onWalk(playerMoveEvent: PlayerMoveEvent) {
+    fun onPalyerWalk(playerMoveEvent: PlayerMoveEvent) {
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "saturation"))
         val player = playerMoveEvent.player
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.HEALTH_BOOST, SettingsManager.enchant.getInt("health_boost.$level.duration") * 20, SettingsManager.enchant.getInt("health_boost.$level.potion_lvl") - 1))
-                }
-
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0) {
+                player.addPotionEffect(PotionEffect(PotionEffectType.SATURATION, Int.MAX_VALUE, SettingsManager.enchant.getInt("saturation.$level.potion_lvl") - 1))
+            } else {
+                player.removePotionEffect(PotionEffectType.SATURATION)
             }
         } catch (ex: Exception) {
         }
-
     }
 }

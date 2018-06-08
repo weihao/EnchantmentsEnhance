@@ -25,7 +25,6 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Batvision : Listener {
@@ -34,18 +33,12 @@ class Batvision : Listener {
     @EventHandler
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val armorContents = IM.getItemList(player)
         try {
-            for (itemStack in armorContents) {
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0) {
-                    if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
-                        player.removePotionEffect(PotionEffectType.NIGHT_VISION)
-                        player.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, 600, 0))
-                    } else {
-                        player.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, 600, 0))
-                    }
-                }
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0) {
+                player.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, Int.MAX_VALUE, 0))
+            } else {
+                player.removePotionEffect(PotionEffectType.NIGHT_VISION)
             }
         } catch (ex: Exception) {
         }

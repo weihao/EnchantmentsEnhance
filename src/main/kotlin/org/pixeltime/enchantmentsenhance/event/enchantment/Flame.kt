@@ -28,39 +28,28 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Demon_Siphon : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "demon_siphon"))
+class Flame : Listener {
+    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "flame"))
     @EventHandler(priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        if (entityDamageByEntityEvent.damager is Player) {
+        if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             try {
                 val player = entityDamageByEntityEvent.damager as Player
+                val player2 = entityDamageByEntityEvent.entity as Player
                 if (entityDamageByEntityEvent.isCancelled) {
                     return
                 }
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {
                     return
                 }
-                if (entityDamageByEntityEvent.entity is Player) {
-                    return
-                }
-                val armorContents = IM.getItemList(player)
-                for (itemStack in armorContents) {
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("demon_siphon.$level.chance")) {
-                        if (player.health + SettingsManager.enchant.getInt("demon_siphon.$level.health") > 20.0) {
-                            player.health = 20.0
-                        } else {
-                            player.health = player.health + SettingsManager.enchant.getInt("demon_siphon.$level.health")
-                        }
-                    }
+                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("flame.$level.chance")) {
+                    player.fireTicks = SettingsManager.enchant.getInt("flame.$level.duration") * 20
                 }
             } catch (ex: Exception) {
             }
-
         }
     }
 }

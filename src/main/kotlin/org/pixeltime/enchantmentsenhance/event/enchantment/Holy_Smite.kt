@@ -29,7 +29,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.potion.PotionEffect
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Holy_Smite : Listener {
@@ -48,17 +47,12 @@ class Holy_Smite : Listener {
             }
 
             try {
-                val armorContents = IM.getItemList(player2)
-                for (itemStack in armorContents) {
-
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("holy_smite.$level.chance")) {
-                        player.world.strikeLightningEffect(player.location)
-                        val iterator = player.activePotionEffects.iterator()
-                        while (iterator.hasNext()) {
-                            player.removePotionEffect((iterator.next() as PotionEffect).type)
-                        }
-
+                val level = IM.getHighestLevel(player2, translateAlternateColorCodes)
+                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("holy_smite.$level.chance")) {
+                    player.world.strikeLightningEffect(player.location)
+                    val iterator = player.activePotionEffects.iterator()
+                    while (iterator.hasNext()) {
+                        player.removePotionEffect((iterator.next() as PotionEffect).type)
                     }
                 }
             } catch (ex: Exception) {

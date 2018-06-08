@@ -24,7 +24,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 private val translateAlternateColorCodes: String = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "aegis"))
@@ -37,12 +36,9 @@ class Aegis : Listener {
             return
         }
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("aegis.$level.chance")) {
-                    player.health += SettingsManager.enchant.getDouble("aegis.$level.health")
-                }
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("aegis.$level.chance")) {
+                player.health += SettingsManager.enchant.getDouble("aegis.$level.health")
             }
         } catch (ex: Exception) {
         }

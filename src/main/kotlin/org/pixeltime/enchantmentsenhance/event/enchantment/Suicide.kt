@@ -23,7 +23,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Suicide : Listener {
@@ -33,14 +32,9 @@ class Suicide : Listener {
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "suicide"))
 
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("suicide.$level.chance")) {
-                    player.world.createExplosion(player.location, SettingsManager.enchant.getInt("suicide.$level.power").toFloat())
-                }
-
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("suicide.$level.chance")) {
+                player.world.createExplosion(player.location, SettingsManager.enchant.getInt("suicide.$level.power").toFloat())
             }
         } catch (ex: Exception) {
         }

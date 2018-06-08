@@ -27,33 +27,28 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Horse_Rider : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "horse_rider"))
+class Rider : Listener {
+    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "rider"))
 
     @EventHandler
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity !is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             try {
-                val armorContents = IM.getItemList(player)
-                for (itemStack in armorContents) {
-
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0 && entityDamageByEntityEvent.entity is Horse) {
-                        entityDamageByEntityEvent.isCancelled = true
-                        entityDamageByEntityEvent.damage = 0.0
-                        val horse = entityDamageByEntityEvent.entity as Horse
-                        if (horse.isTamed) {
-                            return
-                        }
-                        horse.isTamed = true
-                        horse.owner = player
-                        horse.inventory.saddle = ItemStack(Material.SADDLE)
-
+                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                if (level > 0 && entityDamageByEntityEvent.entity is Horse) {
+                    entityDamageByEntityEvent.isCancelled = true
+                    entityDamageByEntityEvent.damage = 0.0
+                    val horse = entityDamageByEntityEvent.entity as Horse
+                    if (horse.isTamed) {
+                        return
                     }
+                    horse.isTamed = true
+                    horse.owner = player
+                    horse.inventory.saddle = ItemStack(Material.SADDLE)
+
                 }
             } catch (ex: Exception) {
             }

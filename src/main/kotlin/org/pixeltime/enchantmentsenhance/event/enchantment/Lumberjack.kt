@@ -26,7 +26,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import java.util.*
 
@@ -41,19 +40,14 @@ class Lumberjack : Listener {
 
 
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0 && blockBreakEvent.block.type == Material.LOG) {
-                    val list = ArrayList<Material>()
-                    list.add(Material.LOG)
-                    list.add(Material.LEAVES)
-                    val iterator = this.getTree(blockBreakEvent.block, list).iterator()
-                    while (iterator.hasNext()) {
-                        iterator.next().breakNaturally()
-                    }
-
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0 && blockBreakEvent.block.type == Material.LOG) {
+                val list = ArrayList<Material>()
+                list.add(Material.LOG)
+                list.add(Material.LEAVES)
+                val iterator = this.getTree(blockBreakEvent.block, list).iterator()
+                while (iterator.hasNext()) {
+                    iterator.next().breakNaturally()
                 }
             }
         } catch (ex: Exception) {

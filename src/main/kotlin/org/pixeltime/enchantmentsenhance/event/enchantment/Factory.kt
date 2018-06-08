@@ -27,30 +27,23 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Auto_Block : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "auto_block"))
+class Factory : Listener {
+    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "factory"))
 
     @EventHandler
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
         val player = blockBreakEvent.player
-        val armorContents = IM.getItemList(player)
-        for (itemStack in armorContents) {
-
-            val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-            if (level > 0) {
-                this.autoBlock(player)
-            }
-
+        val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+        if (level > 0) {
+            this.autoBlock(player)
         }
     }
 
     fun autoBlock(player: Player) {
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
+            for (itemStack in player.inventory) {
                 val n = itemStack.amount / 9
                 val n2 = itemStack.amount / 4
                 if (n > 0) {
@@ -96,8 +89,8 @@ class Auto_Block : Listener {
             }
         } catch (ex: Exception) {
         }
-
     }
+
 
     companion object {
         fun removeItems(inventory: Inventory, material: Material, num: Int) {

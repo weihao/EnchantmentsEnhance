@@ -27,7 +27,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerToggleSneakEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Immolation : Listener {
@@ -40,17 +39,12 @@ class Immolation : Listener {
             return
         }
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("immolation.$level.chance")) {
-                    for (entity in player.getNearbyEntities(SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"))) {
-                        if (entity is Player) {
-                            entity.setFireTicks(SettingsManager.enchant.getInt("immolation.$level.duration") * 20)
-                        }
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("immolation.$level.chance")) {
+                for (entity in player.getNearbyEntities(SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"))) {
+                    if (entity is Player) {
+                        entity.setFireTicks(SettingsManager.enchant.getInt("immolation.$level.duration") * 20)
                     }
-
                 }
             }
         } catch (ex: Exception) {

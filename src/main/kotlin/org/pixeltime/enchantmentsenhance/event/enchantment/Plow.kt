@@ -27,7 +27,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Plow : Listener {
@@ -38,35 +37,31 @@ class Plow : Listener {
         }
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "plow"))
         val player = playerInteractEvent.player
-        val armorContents = IM.getItemList(player)
-        for (itemStack in armorContents) {
-
-            val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-            if (level > 0) {
-                val clickedBlock = playerInteractEvent.clickedBlock
-                if (clickedBlock.type != Material.DIRT && clickedBlock.type != Material.GRASS) {
-                    return
-                }
-                val n = 0.5
-                val location = clickedBlock.location
-                var n2 = location.blockX - n
-                while (n2 <= location.blockX + n) {
-                    var n3 = location.blockZ - n
-                    while (n3 <= location.blockZ + n) {
-                        val block = location.world.getBlockAt(Location(clickedBlock.world, n2, clickedBlock.y.toDouble(), n3))
-                        if (block.type != Material.GRASS && block.type != Material.DIRT) {
-                            return
-                        }
-                        if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin().canBuild(player, block)) {
-                            return
-                        }
-                        block.type = Material.SOIL
-                        ++n3
-                    }
-                    ++n2
-                }
-
+        val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+        if (level > 0) {
+            val clickedBlock = playerInteractEvent.clickedBlock
+            if (clickedBlock.type != Material.DIRT && clickedBlock.type != Material.GRASS) {
+                return
             }
+            val n = 0.5
+            val location = clickedBlock.location
+            var n2 = location.blockX - n
+            while (n2 <= location.blockX + n) {
+                var n3 = location.blockZ - n
+                while (n3 <= location.blockZ + n) {
+                    val block = location.world.getBlockAt(Location(clickedBlock.world, n2, clickedBlock.y.toDouble(), n3))
+                    if (block.type != Material.GRASS && block.type != Material.DIRT) {
+                        return
+                    }
+                    if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin().canBuild(player, block)) {
+                        return
+                    }
+                    block.type = Material.SOIL
+                    ++n3
+                }
+                ++n2
+            }
+
         }
     }
 }

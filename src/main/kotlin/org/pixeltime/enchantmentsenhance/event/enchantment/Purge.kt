@@ -29,7 +29,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.potion.PotionEffect
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Purge : Listener {
@@ -47,19 +46,14 @@ class Purge : Listener {
                 return
             }
             try {
-                val armorContents = IM.getItemList(player)
-                for (itemStack in armorContents) {
-
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("purge.$level.chance")) {
-                        player2.world.strikeLightningEffect(player2.location)
-                        val iterator = player2.activePotionEffects.iterator()
-                        while (iterator.hasNext()) {
-                            player2.removePotionEffect((iterator.next() as PotionEffect).type)
-                            player2.damage(2.0)
-                        }
+                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("purge.$level.chance")) {
+                    player2.world.strikeLightningEffect(player2.location)
+                    val iterator = player2.activePotionEffects.iterator()
+                    while (iterator.hasNext()) {
+                        player2.removePotionEffect((iterator.next() as PotionEffect).type)
+                        player2.damage(2.0)
                     }
-
                 }
             } catch (ex: Exception) {
             }

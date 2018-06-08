@@ -24,7 +24,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Dodge : Listener {
@@ -33,19 +32,10 @@ class Dodge : Listener {
     fun onDamage(entityDamageEvent: EntityDamageEvent) {
         if (entityDamageEvent.entity is Player) {
             val player = entityDamageEvent.entity as Player
-            val armorContents = IM.getItemList(player)
-            try {
-                for (itemStack in armorContents) {
-                    if (itemStack.hasItemMeta()) {
-                        val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                        if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("dodge.$level.chance")) {
-                            entityDamageEvent.damage = 0.0
-                        }
-                    }
-                }
-            } catch (ex: Exception) {
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("dodge.$level.chance")) {
+                entityDamageEvent.damage = 0.0
             }
-
         }
     }
 }

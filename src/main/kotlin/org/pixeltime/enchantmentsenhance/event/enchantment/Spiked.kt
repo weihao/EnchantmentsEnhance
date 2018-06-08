@@ -28,7 +28,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Spiked : Listener {
@@ -45,12 +44,9 @@ class Spiked : Listener {
                 return
             }
             try {
-                val armorContents = IM.getItemList(victim)
-                for (itemStack in armorContents) {
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0) {
-                        player.damage(SettingsManager.enchant.getDouble("spiked.$level.damage"))
-                    }
+                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                if (level > 0) {
+                    player.damage(SettingsManager.enchant.getDouble("spiked.$level.damage"))
                 }
             } catch (ex: Exception) {
             }

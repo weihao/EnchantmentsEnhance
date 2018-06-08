@@ -36,8 +36,6 @@ public class DebugCommand extends SubCommand {
         } else if (args[0].equals("slots")) {
             IM.getArmorSlots(p);
         } else if (args[0].equals("mysql")) {
-            Main.getMain().mysql.playerExists(p.getUniqueId());
-            Main.getMain().mysql.createPlayer(p.getUniqueId(), p.getPlayer());
         } else if (args[0].equals("format")) {
             Iterator<SubCommand> subcommands = Main.getMain().commandManager.getCommands().iterator();
             while (subcommands.hasNext()) {

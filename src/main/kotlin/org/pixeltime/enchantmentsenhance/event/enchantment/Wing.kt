@@ -23,7 +23,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Wing : Listener {
@@ -32,12 +31,12 @@ class Wing : Listener {
         val player = playerMoveEvent.player
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "wing"))
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0) {
-                    player.allowFlight = SettingsManager.enchant.getBoolean("wing.$level.flight")
-                }
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0) {
+                player.allowFlight = SettingsManager.enchant.getBoolean("wing.$level.flight")
+                player.isFlying = SettingsManager.enchant.getBoolean("wing.$level.flight")
+            } else {
+                player.allowFlight = false
             }
         } catch (ex: Exception) {
         }

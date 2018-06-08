@@ -29,12 +29,13 @@ import org.pixeltime.enchantmentsenhance.event.blackspirit.Reform;
 import org.pixeltime.enchantmentsenhance.event.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.listener.*;
 import org.pixeltime.enchantmentsenhance.manager.*;
-import org.pixeltime.enchantmentsenhance.mysql.MysqlMain;
+import org.pixeltime.enchantmentsenhance.mysql.Database;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
 import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 
@@ -48,7 +49,6 @@ public class Main extends JavaPlugin {
     private static final CompatibilityManager compatibility =
             new CompatibilityManager();
     private static Main main;
-    public MysqlMain mysql;
     public CommandManager commandManager;
 
 
@@ -122,7 +122,23 @@ public class Main extends JavaPlugin {
         }
         // MySql setup
         if (SettingsManager.config.getBoolean("mysql.enabled")) {
-            mysql = new MysqlMain();
+            Database database = null;
+            try {
+                database = new Database();
+                if (!database.checkConnection()) {
+                    return;
+                }
+                Main.getMain().getLogger().info("MySQL enabled!");
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            if (!database.checkConnection()) {
+                return;
+            }
         }
 
         // Kotlin setup

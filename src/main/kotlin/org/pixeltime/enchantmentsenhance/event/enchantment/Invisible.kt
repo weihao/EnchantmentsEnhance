@@ -27,17 +27,17 @@ import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Strength : Listener {
+class Invisible : Listener {
     @EventHandler
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "speed"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "invisible"))
         try {
             val level = IM.getHighestLevel(player, translateAlternateColorCodes)
             if (level > 0) {
-                player.addPotionEffect(PotionEffect(PotionEffectType.INCREASE_DAMAGE, Int.MAX_VALUE, SettingsManager.enchant.getInt("strength.$level.potion_lvl") - 1))
+                player.addPotionEffect(PotionEffect(PotionEffectType.INVISIBILITY, Int.MAX_VALUE, SettingsManager.enchant.getInt("invisible.$level.potion_lvl") - 1))
             } else {
-                player.removePotionEffect(PotionEffectType.INCREASE_DAMAGE)
+                player.removePotionEffect(PotionEffectType.INVISIBILITY)
             }
         } catch (ex: Exception) {
         }

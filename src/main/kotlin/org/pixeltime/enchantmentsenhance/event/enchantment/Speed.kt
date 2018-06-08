@@ -25,7 +25,6 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Speed : Listener {
@@ -35,14 +34,11 @@ class Speed : Listener {
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "speed"))
 
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, 200, SettingsManager.enchant.getInt("speed.$level.potion_lvl") - 1))
-                }
-
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0) {
+                player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, Int.MAX_VALUE, SettingsManager.enchant.getInt("speed.$level.potion_lvl") - 1))
+            } else {
+                player.removePotionEffect(PotionEffectType.SPEED)
             }
         } catch (ex: Exception) {
         }

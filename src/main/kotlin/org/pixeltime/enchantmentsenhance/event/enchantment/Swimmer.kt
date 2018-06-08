@@ -25,7 +25,6 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Swimmer : Listener {
@@ -34,15 +33,13 @@ class Swimmer : Listener {
         val player = playerMoveEvent.player
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "swimmer"))
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.WATER_BREATHING, SettingsManager.enchant.getInt("swimmer.$level.duration") * 20, SettingsManager.enchant.getInt("swimmer.%level.potion_lvl") - 1))
-                }
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0) {
+                player.addPotionEffect(PotionEffect(PotionEffectType.WATER_BREATHING, Int.MAX_VALUE, SettingsManager.enchant.getInt("swimmer.%level.potion_lvl") - 1))
+            } else {
+                player.removePotionEffect(PotionEffectType.WATER_BREATHING)
             }
         } catch (ex: Exception) {
         }
-
     }
 }

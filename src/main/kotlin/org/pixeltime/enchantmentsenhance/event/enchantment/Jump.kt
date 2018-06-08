@@ -25,7 +25,6 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Jump : Listener {
@@ -33,16 +32,12 @@ class Jump : Listener {
     @EventHandler
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.JUMP, 200, SettingsManager.enchant.getInt("jump.$level.potion_lvl") - 1))
-                }
-
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0) {
+                player.addPotionEffect(PotionEffect(PotionEffectType.JUMP, Int.MAX_VALUE, SettingsManager.enchant.getInt("jump.$level.potion_lvl") - 1))
+            } else {
+                player.removePotionEffect(PotionEffectType.JUMP)
             }
         } catch (ex: Exception) {
         }

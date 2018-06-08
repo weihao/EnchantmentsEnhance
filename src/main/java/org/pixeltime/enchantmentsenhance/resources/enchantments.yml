@@ -61,7 +61,57 @@ speed:
     3:
       potion_lvl: 3
 
-demonic_aura:
+vitality:
+    1:
+      potion_lvl: 1
+
+    2:
+      potion_lvl: 2
+
+    3:
+      potion_lvl: 5
+
+cure:
+    1:
+      potion_lvl: 1
+
+    2:
+      potion_lvl: 2
+
+    3:
+      potion_lvl: 3
+
+saturation:
+    1:
+      potion_lvl: 1
+
+    2:
+      potion_lvl: 2
+
+    3:
+      potion_lvl: 3
+
+frosty:
+    1:
+      potion_lvl: 1
+
+    2:
+      potion_lvl: 2
+
+    3:
+      potion_lvl: 3
+
+invisible:
+    1:
+      potion_lvl: 1
+
+    2:
+      potion_lvl: 2
+
+    3:
+      potion_lvl: 3
+
+demonic:
     1:
       chance: 10
       duration: 2
@@ -275,7 +325,7 @@ pyromaniac:
     5:
       chance: 35
    
-flame_cloak:
+flame:
     1:
       chance: 10
       duration: 5
@@ -402,7 +452,7 @@ shadowstep:
       chance: 25
       distance: 2
     
-demon_siphon:
+siphon:
     1:
       chance: 10
       health: 2
@@ -431,15 +481,12 @@ repel:
 swimmer:
     1:
       potion_lvl: 1
-      duration: 5
       
     2:
       potion_lvl: 2
-      duration: 5
       
     3:
       potion_lvl: 3
-      duration: 5
 
 # "money-percent" is the percentage of the money which will be stolen from the opponent's balance.
 thief:
@@ -456,21 +503,17 @@ thief:
       money-percent: 20
      
      
-# Default health is the health which will be restored if player removes the chestplate containing Health Boost Enchantment.
-# 2 = 1 heart so, 20 = 10 hearts     
-# modified-health is the health which will be set after wearing Health Boost chestplate.
-health_boost:
+
+# 2 = 1 heart
+shield:
     1:
       potion_lvl: 1
-      duration: 8
       
     2:
       potion_lvl: 2
-      duration: 8
       
     3:
-      potion_lvl: 3
-      duration: 8
+      potion_lvl: 5
      
 reborn:
     1:
@@ -651,13 +694,13 @@ launch:
 haste:
 
     1:
-      amplifier: 1
+      potion_lvl: 1
 
     2:
-      amplifier: 2
+      potion_lvl: 2
 
     3:
-      amplifier: 3
+      potion_lvl: 3
 
 spiked:
 

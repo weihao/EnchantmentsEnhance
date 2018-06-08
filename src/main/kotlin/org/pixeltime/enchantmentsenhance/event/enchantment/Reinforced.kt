@@ -25,23 +25,19 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Reinforced : Listener {
     @EventHandler
     fun onPalyerWalk(playerMoveEvent: PlayerMoveEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "platemail"))
+        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "reinforced"))
         val player = playerMoveEvent.player
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, SettingsManager.enchant.getInt("reinforced.$level.duration") * 20, SettingsManager.enchant.getInt("reinforced.$level.potion_lvl") - 1))
-                }
-
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0) {
+                player.addPotionEffect(PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Int.MAX_VALUE, SettingsManager.enchant.getInt("reinforced.$level.potion_lvl") - 1))
+            } else {
+                player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE)
             }
         } catch (ex: Exception) {
         }

@@ -27,7 +27,6 @@ import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Shearer : Listener {
@@ -36,23 +35,18 @@ class Shearer : Listener {
         val player = playerInteractEvent.player
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "shearer"))
         if (playerInteractEvent.action == Action.LEFT_CLICK_AIR) {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0) {
-                    val int1 = SettingsManager.enchant.getInt("shearer.$level.radius")
-                    for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
-                        if (entity is Sheep) {
-                            if (!entity.isSheared) {
-                                entity.isSheared = true
-                                entity.world.dropItem(entity.location, ItemStack(Material.WOOL, 1, entity.color.woolData.toShort()))
-                            }
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0) {
+                val int1 = SettingsManager.enchant.getInt("shearer.$level.radius")
+                for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
+                    if (entity is Sheep) {
+                        if (!entity.isSheared) {
+                            entity.isSheared = true
+                            entity.world.dropItem(entity.location, ItemStack(Material.WOOL, 1, entity.color.woolData.toShort()))
                         }
                     }
                 }
             }
-
         }
     }
 }

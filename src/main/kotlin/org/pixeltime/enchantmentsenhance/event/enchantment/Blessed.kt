@@ -23,7 +23,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Blessed : Listener {
@@ -33,17 +32,13 @@ class Blessed : Listener {
     fun onMove(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                val n = (Math.random() * 100.0).toInt()
-                if (level > 0 && n < SettingsManager.enchant.getInt("blessed.$level.chance")) {
-                    player.health = player.maxHealth
-                    player.foodLevel = 20
-                }
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            val n = (Math.random() * 100.0).toInt()
+            if (level > 0 && n < SettingsManager.enchant.getInt("blessed.$level.chance")) {
+                player.health = player.maxHealth
+                player.foodLevel = 20
             }
         } catch (ex: Exception) {
         }
-
     }
 }

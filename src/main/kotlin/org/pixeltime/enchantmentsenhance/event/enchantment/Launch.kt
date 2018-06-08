@@ -25,7 +25,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.util.Vector
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Launch : Listener {
@@ -37,17 +36,11 @@ class Launch : Listener {
             val player2 = entityDamageByEntityEvent.damager as Player
 
             try {
-                val armorContents = IM.getItemList(player2)
-                for (itemStack in armorContents) {
-
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("launch.$level.chance")) {
-                        player.velocity = Vector(0, SettingsManager.enchant.getInt("launch.$level.height"), 0)
-                    }
-
+                val level = IM.getHighestLevel(player2, translateAlternateColorCodes)
+                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("launch.$level.chance")) {
+                    player.velocity = Vector(0, SettingsManager.enchant.getInt("launch.$level.height"), 0)
                 }
             } catch (ex: Exception) {
-
             }
         }
     }

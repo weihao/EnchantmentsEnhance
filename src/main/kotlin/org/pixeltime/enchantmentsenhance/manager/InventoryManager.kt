@@ -65,14 +65,19 @@ class IM {
 
         @JvmStatic
         fun getItemList(player: Player): List<ItemStack> {
-            val itemList: List<ItemStack> = ArrayList()
+            var itemList: List<ItemStack> = ArrayList()
             if (SettingsManager.config.getBoolean("slots.enableArmor")) {
-                itemList + IM.getArmorSlots(player)
+                itemList += IM.getArmorSlots(player)
             }
             if (SettingsManager.config.getBoolean("slots.enableAcessory")) {
-                itemList + IM.getAccessorySlots(player)
+                itemList += IM.getAccessorySlots(player)
             }
             return itemList
+        }
+
+        @JvmStatic
+        fun getHighestLevel(player: Player, lore: String): Int {
+            return getItemList(player).map { KM.getLevel(lore, it.itemMeta.lore) }.max() ?: 0
         }
     }
 }

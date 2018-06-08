@@ -25,7 +25,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Tamer : Listener {
@@ -35,21 +34,16 @@ class Tamer : Listener {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity !is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             try {
-                val armorContents = IM.getItemList(player)
-                for (itemStack in armorContents) {
-
-                    val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                    if (level > 0 && entityDamageByEntityEvent.entity is Wolf) {
-                        entityDamageByEntityEvent.isCancelled = true
-                        entityDamageByEntityEvent.damage = 0.0
-                        val wolf = entityDamageByEntityEvent.entity as Wolf
-                        if (wolf.isTamed) {
-                            return
-                        }
-                        wolf.isTamed = true
-                        wolf.owner = player
+                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                if (level > 0 && entityDamageByEntityEvent.entity is Wolf) {
+                    entityDamageByEntityEvent.isCancelled = true
+                    entityDamageByEntityEvent.damage = 0.0
+                    val wolf = entityDamageByEntityEvent.entity as Wolf
+                    if (wolf.isTamed) {
+                        return
                     }
-
+                    wolf.isTamed = true
+                    wolf.owner = player
                 }
             } catch (ex: Exception) {
             }

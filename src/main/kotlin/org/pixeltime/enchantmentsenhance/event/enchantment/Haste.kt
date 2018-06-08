@@ -25,7 +25,6 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Haste : Listener {
@@ -34,18 +33,14 @@ class Haste : Listener {
     @EventHandler
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val armorContents = IM.getItemList(player)
         try {
-            for (itemStack in armorContents) {
-
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
-                if (level > 0) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.FAST_DIGGING, 200, SettingsManager.enchant.getInt("enchantments.haste.$level.amplifier")))
-                }
-
+            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            if (level > 0) {
+                player.addPotionEffect(PotionEffect(PotionEffectType.FAST_DIGGING, Int.MAX_VALUE, SettingsManager.enchant.getInt("haste.$level.potion_lvl")))
+            } else {
+                player.removePotionEffect(PotionEffectType.FAST_DIGGING)
             }
         } catch (ex: Exception) {
         }
-
     }
 }

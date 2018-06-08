@@ -19,31 +19,25 @@
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
 import org.bukkit.ChatColor
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
+import org.bukkit.event.entity.EntityDamageEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Platemail : Listener {
+class Feather : Listener {
+    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "feather"))
     @EventHandler
-    fun onPalyerWalk(playerMoveEvent: PlayerMoveEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "platemail"))
-        val player = playerMoveEvent.player
-        try {
-            val armorContents = IM.getItemList(player)
-            for (itemStack in armorContents) {
-
-                val level = KM.getLevel(translateAlternateColorCodes, itemStack.itemMeta.lore)
+    fun onDamage(entityDamageEvent: EntityDamageEvent) {
+        if (entityDamageEvent.entity is Player) {
+            val player = entityDamageEvent.entity as Player
+            if (entityDamageEvent.cause == EntityDamageEvent.DamageCause.FALL) {
+                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
                 if (level > 0) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, 100, 1))
+                    entityDamageEvent.isCancelled = true
                 }
-
             }
-        } catch (ex: Exception) {
         }
     }
 }
