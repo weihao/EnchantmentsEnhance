@@ -69,14 +69,19 @@ public class Failstack {
         return 0;
     }
 
+    public static int getLevel(String playerName) {
+        if (failstack.containsKey(playerName)) {
+            return failstack.get(playerName);
+        }
+        return 0;
+    }
 
-    public static double getChance(Player p, int enchantLevel) {
-        int failstack = getLevel(p);
+    public static double getChance(String playerName, int enchantLevel) {
+        int failstack = getLevel(playerName);
         int maximumFailstack =
                 DataManager.maximumFailstackApplied[enchantLevel];
         double baseChance = DataManager.baseChance[enchantLevel];
-        double increasePerFailstack =
-                DataManager.chanceIncreasePerFailstack[enchantLevel];
+        double increasePerFailstack = DataManager.chanceIncreasePerFailstack[enchantLevel];
 
         if (failstack > maximumFailstack) {
             failstack = maximumFailstack;

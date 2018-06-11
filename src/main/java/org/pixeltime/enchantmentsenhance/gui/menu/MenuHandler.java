@@ -32,7 +32,8 @@ public class MenuHandler implements Listener {
             e.setCancelled(true);
             if (!Menu.itemOnEnhancingSlot.containsKey(player.getName())) {
                 if (Enhance.getValidationOfItem(e.getCurrentItem())) {
-                    ((Menu) GUIAbstract.playerMap.get(playerName)).update(player, e.getCurrentItem());
+                    Menu.itemOnEnhancingSlot.put(playerName, e.getCurrentItem());
+                    gui.update();
                 }
             }
         }

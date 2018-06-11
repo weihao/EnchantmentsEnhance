@@ -29,9 +29,9 @@ import java.util.Map;
 
 public abstract class GUIAbstract {
     public static Map<String, GUIAbstract> playerMap = new HashMap<>();
+    public String playerName;
     private Inventory inventory;
     private Map<Integer, GUIAction> actions;
-    private String playerName;
 
     public GUIAbstract(Player player, int invSize, String invName) {
         this.inventory = Bukkit.createInventory(null, invSize, Util.toColor(invName));
@@ -63,6 +63,7 @@ public abstract class GUIAbstract {
         return actions;
     }
 
+    public abstract void update();
 
     public interface GUIAction {
         void click();

@@ -65,4 +65,9 @@ public class Backpack extends GUIAbstract {
     public static int getOneStoneCountAsInt(Player player, int stoneId) {
         return Inventory.getPlayer(player)[stoneId];
     }
+
+    @Override
+    public void update() {
+
+    }
 }

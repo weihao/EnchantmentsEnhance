@@ -50,6 +50,7 @@ public class GUIListener implements Listener {
             GUIAbstract.GUIAction action = gui.getActions().get(e.getSlot());
             if (action != null) {
                 action.click();
+                gui.update();
             }
         }
     }

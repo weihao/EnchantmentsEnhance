@@ -26,9 +26,6 @@ import org.pixeltime.enchantmentsenhance.event.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Enhance {
 
     /**
@@ -128,7 +125,11 @@ public class Enhance {
         CompatibilityManager.playsound.playSound(player, "FAILED");
         Failstack.addLevel(player,
                 DataManager.failstackGainedPerFail[enchantLevelBeforeAttemptEnhancing]);
-        if (DataManager.downgradeIfFail[enchantLevelBeforeAttemptEnhancing]) {
+        if (DataManager.destroyIfFail[enchantLevelBeforeAttemptEnhancing]) {
+            player.getInventory().remove(item);
+            str += ("\n" + SettingsManager.lang.getString(
+                    "Enhance.destroyed"));
+        } else if (DataManager.downgradeIfFail[enchantLevelBeforeAttemptEnhancing]) {
             str += ("\n" + SettingsManager.lang.getString(
                     "Enhance.downgraded"));
             CompatibilityManager.playsound.playSound(player, "DOWNGRADED");
@@ -161,7 +162,7 @@ public class Enhance {
                 // Randomly generate a double between 0 to 1
                 double random = Math.random();
                 // Calculate the chance
-                double chance = Failstack.getChance(player, enchantLevel);
+                double chance = Failstack.getChance(player.getName(), enchantLevel);
                 // Enhancement result
                 boolean success = random < chance;
                 // Broadcast if attempting enhancement meet enchant level
@@ -236,35 +237,24 @@ public class Enhance {
      * Gets chance as a list.
      *
      * @param item
-     * @param player
+     * @param playerName
      * @return
      */
-    public static List<String> getChanceAsList(ItemStack item, Player player) {
+    public static String getChance(ItemStack item, String playerName) {
         // Enchantment type
         ItemType type = ItemManager.getItemEnchantmentType(item);
-        ArrayList<String> result = new ArrayList<String>();
         if (type != ItemType.INVALID) {
             // Display failstack
-            String fs = (SettingsManager.lang.getString(
-                    "Enhance.currentFailstack") + Failstack.getLevel(player));
             String placeholder = String.format("%.2f", Failstack.getChance(
-                    player, ItemManager.getItemEnchantLevel(item)) * 100);
+                    playerName, ItemManager.getItemEnchantLevel(item)) * 100);
             // Display chance after failstack is applied
             String chance = SettingsManager.lang.getString(
                     "Enhance.successRate").replaceAll("%chance%", placeholder);
-            result.add(Util.toColor(fs));
-            result.add(Util.toColor(chance));
-            result.add(Util.toColor(SettingsManager.lang.getString(
-                    "Menu.lore.stats1")));
-            result.add(Util.toColor(SettingsManager.lang.getString(
-                    "Menu.lore.stats2")));
-            return result;
-
+            return chance;
         }
         // Invalid item
         else {
-            result.add(SettingsManager.lang.getString("Enhance.itemInvalid"));
-            return result;
+            return (SettingsManager.lang.getString("Enhance.itemInvalid"));
         }
     }
 }

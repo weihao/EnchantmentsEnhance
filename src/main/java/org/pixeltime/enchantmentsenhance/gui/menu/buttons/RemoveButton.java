@@ -12,7 +12,7 @@ public class RemoveButton extends Clickable {
 
     @Override
     public ItemStack getItem() {
-        return new ItemBuilder(Material.WOOL).setDyeColor(DyeColor.RED).setName(SettingsManager.lang.getString("Menu.gui.remove")).addLoreLine(SettingsManager.lang.getString(
+        return new ItemBuilder(Material.WOOL).setDyeColor(DyeColor.BLACK).setName(SettingsManager.lang.getString("Menu.gui.remove")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.remove")).toItemStack();
     }
 

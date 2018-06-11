@@ -1,10 +1,13 @@
 package org.pixeltime.enchantmentsenhance.gui.menu;
 
+import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
+import org.pixeltime.enchantmentsenhance.event.blackspirit.Failstack;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.MenuCoord;
 import org.pixeltime.enchantmentsenhance.gui.menu.buttons.*;
@@ -25,35 +28,41 @@ public class Menu extends GUIAbstract {
 
     public Menu(Player player) {
         super(player, 54, SettingsManager.lang.getString("Menu.gui.title"));
-        setItem(enhance.getPosition(), enhance.getItem());
-        setItem(force.getPosition(), force.getItem());
-        setItem(remove.getPosition(), remove.getItem());
-        setItem(stats.getPosition(), stats.getItem(player));
-        setItem(store.getPosition(), store.getItem());
         for (int i : MenuCoord.getPlaceHolderCoords()) {
             setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).setDyeColor(DyeColor.BLACK).toItemStack());
         }
+        update();
     }
 
-    /**
-     * Opens GUI to a player.
-     *
-     * @param player
-     */
-    public void showEnhancingMenu(Player player) {
-        itemOnEnhancingSlot.remove(player.getName());
-        this.open();
+    @Override
+    public void update() {
+        Player player = Bukkit.getPlayer(playerName);
+        if (itemOnEnhancingSlot.containsKey(playerName)) {
+            ItemStack item = itemOnEnhancingSlot.get(playerName);
+            setItem(Util.getSlot(8, 4), item);
+
+            setItem(enhance.getPosition(), enhance.getItem(item), () ->
+                    Enhance.diceToEnhancement(item, player));
+
+            setItem(force.getPosition(), force.getItem(item), () ->
+                    Enhance.forceToEnhancement(item, player));
+
+            setItem(remove.getPosition(), remove.getGlowingItem(), () ->
+                    itemOnEnhancingSlot.remove(playerName));
+
+            setItem(stats.getPosition(), stats.getItem(playerName));
+
+        } else {
+            setItem(Util.getSlot(8, 4), new ItemStack(Material.AIR));
+            setItem(remove.getPosition(), new ItemStack(Material.AIR));
+
+            setItem(enhance.getPosition(), enhance.getItem());
+            setItem(force.getPosition(), force.getItem());
+            setItem(stats.getPosition(), stats.getItem(playerName));
+        }
+
+        setItem(store.getPosition(), Failstack.getLevel(player) == 0 ? store.getItem() : store.getGlowingItem(), () ->
+                SecretBook.addFailstackToStorage(player));
     }
 
-    public void update(Player player, ItemStack item) {
-        itemOnEnhancingSlot.put(player.getName(), item);
-
-        setItem(Util.getSlot(8, 4), item);
-
-        setItem(enhance.getPosition(), enhance.getGlowingItem(), () -> {
-            Enhance.diceToEnhancement(itemOnEnhancingSlot.get(player.getName()), player);
-        });
-
-        setItem(force.getPosition(), force.getGlowingItem());
-    }
 }

@@ -44,12 +44,15 @@ public class SecretBook {
      */
     public static void addFailstackToStorage(Player player) {
         List<Integer> temp = storage.get(player.getName());
-        temp.add(Failstack.getLevel(player));
-        Collections.sort(temp);
-        Failstack.resetLevel(player);
-        Util.sendMessage(SettingsManager.lang.getString("Save.createFailstack")
-                .replaceAll("%failstack%", Integer.toString(Failstack.getLevel(
-                        player))), player);
+        int level = Failstack.getLevel(player);
+        if (level != 0) {
+            temp.add(level);
+            Collections.sort(temp);
+            Failstack.resetLevel(player);
+            Util.sendMessage(SettingsManager.lang.getString("Save.createFailstack")
+                    .replaceAll("%failstack%", Integer.toString(Failstack.getLevel(
+                            player))), player);
+        }
     }
 
 

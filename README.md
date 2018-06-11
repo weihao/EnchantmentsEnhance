@@ -17,8 +17,8 @@
 [Wiki](https://github.com/25/EnchantmentsEnhance/wiki)
 
 ## Life Cycle
-######Alpha (1.0 - 4.0)
-#####Beta (4.0.1 - [current](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml))
+###### Alpha (1.0 - 4.0)
+#####  (4.0.1 - [current](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml))
 This plugin is under active development at the stage of beta phase.
 Completion of the plugin is currently projected at 30%, meaning the general functionality and availability are incomplete.
 You can find latest stable build of pre-release on Spigot.
