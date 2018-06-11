@@ -28,7 +28,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -117,6 +119,33 @@ public class Util {
         return ChatColor.translateAlternateColorCodes('&', str);
     }
 
+    /**
+     * Translates color codes.
+     *
+     * @param str
+     * @return
+     */
+    public static String[] toColor(String... str) {
+        String[] result = new String[str.length];
+        for (int i = 0; i < str.length; i++) {
+            result[i] = toColor(str[i]);
+        }
+        return result;
+    }
+
+    /**
+     * Translates color codes.
+     *
+     * @param str
+     * @return
+     */
+    public static List<String> toColor(List<String> str) {
+        List<String> result = new ArrayList<>();
+        for (String s : str) {
+            result.add(toColor(s));
+        }
+        return result;
+    }
 
     /**
      * Gets a player as a Player entity.

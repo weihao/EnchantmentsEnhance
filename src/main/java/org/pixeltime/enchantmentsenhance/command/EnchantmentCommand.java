@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
-public class EnchantmentCommand extends SubCommand{
+public class EnchantmentCommand extends SubCommand {
     @Override
     public void onCommand(Player player, String[] args) {
         if (args[0].equalsIgnoreCase("add")) {

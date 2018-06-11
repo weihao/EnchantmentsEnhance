@@ -115,7 +115,7 @@ public class ItemBuilder {
      */
     public ItemBuilder setName(String name) {
         ItemMeta im = is.getItemMeta();
-        im.setDisplayName(name);
+        im.setDisplayName(Util.toColor(name));
         is.setItemMeta(im);
         return this;
     }
@@ -202,7 +202,7 @@ public class ItemBuilder {
      */
     public ItemBuilder setLore(String... lore) {
         ItemMeta im = is.getItemMeta();
-        im.setLore(Arrays.asList(lore));
+        im.setLore(Arrays.asList(Util.toColor(lore)));
         is.setItemMeta(im);
         return this;
     }
@@ -215,7 +215,7 @@ public class ItemBuilder {
      */
     public ItemBuilder setLore(List<String> lore) {
         ItemMeta im = is.getItemMeta();
-        im.setLore(lore);
+        im.setLore(Util.toColor(lore));
         is.setItemMeta(im);
         return this;
     }
@@ -224,7 +224,7 @@ public class ItemBuilder {
     /**
      * Remove a lore line.
      *
-     * @param lore The lore to remove.
+     * @param line The lore to remove.
      */
     public ItemBuilder removeLoreLine(String line) {
         ItemMeta im = is.getItemMeta();
@@ -265,7 +265,7 @@ public class ItemBuilder {
         List<String> lore = new ArrayList<>();
         if (im.hasLore())
             lore = new ArrayList<>(im.getLore());
-        lore.add(line);
+        lore.add(Util.toColor(line));
         im.setLore(lore);
         is.setItemMeta(im);
         return this;
@@ -281,7 +281,7 @@ public class ItemBuilder {
     public ItemBuilder addLoreLine(String line, int pos) {
         ItemMeta im = is.getItemMeta();
         List<String> lore = new ArrayList<>(im.getLore());
-        lore.set(pos, line);
+        lore.set(pos, Util.toColor(line));
         im.setLore(lore);
         is.setItemMeta(im);
         return this;

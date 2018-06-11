@@ -22,18 +22,19 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class GUIAbstract {
+    public static Map<String, GUIAbstract> playerMap = new HashMap<>();
     private Inventory inventory;
     private Map<Integer, GUIAction> actions;
-    public static  Map<String, GUIAbstract> playerMap = new HashMap<>();
     private String playerName;
 
     public GUIAbstract(Player player, int invSize, String invName) {
-        this.inventory = Bukkit.createInventory(null, invSize, invName);
+        this.inventory = Bukkit.createInventory(null, invSize, Util.toColor(invName));
         this.actions = new HashMap<>();
         playerMap.put(player.getName(), this);
         this.playerName = player.getName();

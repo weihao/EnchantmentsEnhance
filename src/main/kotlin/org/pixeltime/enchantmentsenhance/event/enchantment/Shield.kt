@@ -36,7 +36,7 @@ class Shield : Listener {
         try {
             val level = IM.getHighestLevel(player, translateAlternateColorCodes)
             if (level > 0) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.ABSORPTION, Int.MAX_VALUE, SettingsManager.enchant.getInt("shield.$level.potion_lvl") - 1))
+                player.addPotionEffect(PotionEffect(PotionEffectType.ABSORPTION, Int.MAX_VALUE, SettingsManager.enchant.getInt("shield.$level.potion_lvl") - 1))
             } else {
                 player.removePotionEffect(PotionEffectType.ABSORPTION)
 

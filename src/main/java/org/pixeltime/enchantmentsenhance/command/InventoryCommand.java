@@ -18,12 +18,9 @@
 
 package org.pixeltime.enchantmentsenhance.command;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.event.inventory.Backpack;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.gui.GUIListener;
 
 public class InventoryCommand extends SubCommand {
 

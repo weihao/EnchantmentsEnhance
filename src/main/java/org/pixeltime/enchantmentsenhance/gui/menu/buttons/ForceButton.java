@@ -11,8 +11,8 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 public class ForceButton extends Clickable {
     @Override
     public ItemStack getItem() {
-        return new ItemBuilder(Material.WOOL).setDyeColor(DyeColor.RED).setName(SettingsManager.lang.getString("Menu.gui.force")).addLoreLine(Util.toColor(SettingsManager.lang.getString(
-                "Menu.lore.force1"))).toItemStack();
+        return new ItemBuilder(Material.WOOL).setDyeColor(DyeColor.RED).setName(SettingsManager.lang.getString("Menu.gui.force")).addLoreLine(SettingsManager.lang.getString(
+                "Menu.lore.force1")).toItemStack();
     }
 
     @Override

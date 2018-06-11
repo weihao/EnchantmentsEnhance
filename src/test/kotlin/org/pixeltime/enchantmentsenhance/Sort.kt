@@ -20,9 +20,7 @@ class Sort : TestCase() {
             for (String in temp.sortedWith(compareBy({ it.split("Main.getMain().server.pluginManager.registerEvents(")[1].split("(), Main.getMain())")[0] })))
                 println(String)
             sc.close()
-        }
-        catch(ex:Exception)
-        {
+        } catch (ex: Exception) {
         }
 
     }

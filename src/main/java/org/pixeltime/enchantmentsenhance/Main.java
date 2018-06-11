@@ -27,6 +27,7 @@ import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Failstack;
 import org.pixeltime.enchantmentsenhance.event.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.gui.GUIListener;
+import org.pixeltime.enchantmentsenhance.gui.menu.MenuHandler;
 import org.pixeltime.enchantmentsenhance.listener.*;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
@@ -203,7 +204,7 @@ public class Main extends JavaPlugin {
         }
 
         Bukkit.getPluginManager().registerEvents(new GUIListener(), Main.getMain());
-
+        Bukkit.getPluginManager().registerEvents(new MenuHandler(), Main.getMain());
     }
 
 

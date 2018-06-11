@@ -149,7 +149,7 @@ public class ItemManager {
         renameItem(currItem);
         soulbound(currItem);
         addlore(currItem, oldLore);
- //TODO       MenuHandler.updateItem(player, item, currItem);
+        //TODO       MenuHandler.updateItem(player, item, currItem);
     }
 
     private static void addlore(ItemStack currItem, List<String> old) {
