@@ -1,1 +1,1 @@
-gource -1920x1080 --seconds-per-day 1 --camera-mode track --title "Preview" --auto-skip-seconds 1 --background-image background.jpg
+gource.exe -1920x1080 --seconds-per-day 1 --camera-mode track --title "Preview" --auto-skip-seconds 1 --background-image background.jpg --start-position 0.5 --stop-position 1

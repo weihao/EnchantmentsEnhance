@@ -24,7 +24,8 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
-import org.pixeltime.enchantmentsenhance.event.menu.Menu
+import org.pixeltime.enchantmentsenhance.gui.menu.Menu
+import sun.audio.AudioPlayer.player
 
 
 class VanillaEnchantHandler : Listener {
@@ -32,7 +33,7 @@ class VanillaEnchantHandler : Listener {
     fun onOpenEnchantmentTable(event: PlayerInteractEvent) {
         if (event.action == Action.RIGHT_CLICK_BLOCK && event.clickedBlock.type == Material.ENCHANTMENT_TABLE) {
             event.isCancelled = true
-            Menu.showEnhancingMenu(event.player)
+            Menu(event.player).open();
         }
     }
 }

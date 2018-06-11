@@ -27,7 +27,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore;
 import org.pixeltime.enchantmentsenhance.event.inventory.Backpack;
-import org.pixeltime.enchantmentsenhance.listener.MenuHandler;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
@@ -150,7 +149,7 @@ public class ItemManager {
         renameItem(currItem);
         soulbound(currItem);
         addlore(currItem, oldLore);
-        MenuHandler.updateItem(player, item, currItem);
+ //TODO       MenuHandler.updateItem(player, item, currItem);
     }
 
     private static void addlore(ItemStack currItem, List<String> old) {
@@ -193,10 +192,12 @@ public class ItemManager {
             case WEAPON:
                 temp2 = SettingsManager.config.getStringList("weaponGrade."
                         + gradeLevel + ".enchantment");
+                break;
             case ARMOR:
                 temp2 = SettingsManager.config.getStringList("armorGrade."
                         + gradeLevel + ".enchantment");
-            case MASK:
+                break;
+            case ACCESSORY:
                 break;
             case TOOL:
                 break;

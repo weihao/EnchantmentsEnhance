@@ -16,14 +16,17 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.util.events;
+package org.pixeltime.enchantmentsenhance
 
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-import org.bukkit.event.block.BlockBreakEvent;
+import junit.framework.TestCase
+import org.junit.Test
+import org.pixeltime.enchantmentsenhance.gui.MenuCoord
 
-public class CustomEvent extends BlockBreakEvent {
-    public CustomEvent(final Block block, final Player player) {
-        super(block, player);
+class CoordinatesTest : TestCase() {
+    @Test
+    fun testCoords() {
+        for (i in MenuCoord.getPlaceHolderCoords()) {
+            assertTrue(i < 55)
+        }
     }
 }

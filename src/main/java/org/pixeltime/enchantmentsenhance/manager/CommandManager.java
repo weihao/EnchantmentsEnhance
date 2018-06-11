@@ -54,7 +54,6 @@ public class CommandManager implements CommandExecutor {
         this.commands.add(new SelectCommand());
         this.commands.add(new VersionCommand());
         this.commands.add(new DebugCommand());
-        this.commands.add(new ReformCommand());
         this.commands.add(new ItemCommand());
         this.commands.add(new EnchantmentCommand());
         this.consoleCommands.add(new AddConsoleCommand());

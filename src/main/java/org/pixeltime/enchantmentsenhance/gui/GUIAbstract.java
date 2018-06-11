@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.util;
+package org.pixeltime.enchantmentsenhance.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -25,38 +25,22 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
-public abstract class GUI {
-    public static Map<UUID, GUI> inventoriesByUUID = new HashMap<>();
-    public static Map<String, UUID> openInventories = new HashMap<>();
-
-    private UUID uuid;
+public abstract class GUIAbstract {
     private Inventory inventory;
     private Map<Integer, GUIAction> actions;
+    public static  Map<String, GUIAbstract> playerMap = new HashMap<>();
+    private String playerName;
 
-
-    public GUI(int invSize, String invName) {
-        this.uuid = UUID.randomUUID();
+    public GUIAbstract(Player player, int invSize, String invName) {
         this.inventory = Bukkit.createInventory(null, invSize, invName);
         this.actions = new HashMap<>();
-        inventoriesByUUID.put(getUuid(), this);
-    }
-
-    public static Map<UUID, GUI> getInventoriesByUUID() {
-        return inventoriesByUUID;
-    }
-
-    public static Map<String, UUID> getOpenInventories() {
-        return openInventories;
+        playerMap.put(player.getName(), this);
+        this.playerName = player.getName();
     }
 
     public Inventory getInventory() {
         return inventory;
-    }
-
-    public UUID getUuid() {
-        return this.uuid;
     }
 
     public void setItem(int slot, ItemStack stack, GUIAction action) {
@@ -70,9 +54,8 @@ public abstract class GUI {
         setItem(slot, stack, null);
     }
 
-    public void open(Player p) {
-        p.openInventory(inventory);
-        openInventories.put(p.getName(), getUuid());
+    public void open() {
+        Bukkit.getPlayer(playerName).openInventory(inventory);
     }
 
     public Map<Integer, GUIAction> getActions() {
@@ -81,6 +64,6 @@ public abstract class GUI {
 
 
     public interface GUIAction {
-        void click(Player player);
+        void click();
     }
 }

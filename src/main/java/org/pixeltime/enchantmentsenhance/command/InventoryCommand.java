@@ -23,15 +23,13 @@ import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.event.inventory.Backpack;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.util.GUIListener;
+import org.pixeltime.enchantmentsenhance.gui.GUIListener;
 
 public class InventoryCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        Backpack backpack = new Backpack(player);
-        Bukkit.getPluginManager().registerEvents(new GUIListener(backpack), Main.getMain());
-        backpack.open(player);
+        new Backpack(player).open();
     }
 
 

@@ -25,8 +25,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Failstack;
-import org.pixeltime.enchantmentsenhance.event.blackspirit.Reform;
 import org.pixeltime.enchantmentsenhance.event.inventory.Inventory;
+import org.pixeltime.enchantmentsenhance.gui.GUIListener;
 import org.pixeltime.enchantmentsenhance.listener.*;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
@@ -182,9 +182,8 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new ItemDropHandler(), this);
         pm.registerEvents(new PlayerDeathHandler(), this);
         pm.registerEvents(new PlayerStreamHandler(), this);
-        pm.registerEvents(new MenuHandler(), this);
         pm.registerEvents(new LifeskillingHandler(), this);
-        pm.registerEvents(new Reform(), this);
+
         // Notify Cauldron and MCPC users.
         if (getServer().getName().contains("Cauldron") || getServer().getName()
                 .contains("MCPC")) {
@@ -202,6 +201,9 @@ public class Main extends JavaPlugin {
         if (SettingsManager.config.getBoolean("enableVanillaEnchant")) {
             pm.registerEvents(new VanillaEnchantHandler(), this);
         }
+
+        Bukkit.getPluginManager().registerEvents(new GUIListener(), Main.getMain());
+
     }
 
 

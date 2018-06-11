@@ -22,6 +22,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
+import org.pixeltime.enchantmentsenhance.gui.menu.Menu;
 import org.pixeltime.enchantmentsenhance.manager.IM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -43,6 +44,8 @@ public class DebugCommand extends SubCommand {
                 String curr = "Command: " + sc.info() + " Permission: " + sc.getPermission();
                 Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), p, false);
             }
+        } else if (args[0].equalsIgnoreCase("newmenu")) {
+            new Menu(p).open();
         }
     }
 

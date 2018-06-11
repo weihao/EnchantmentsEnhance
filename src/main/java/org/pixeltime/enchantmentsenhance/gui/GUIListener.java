@@ -16,9 +16,9 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.util;
+package org.pixeltime.enchantmentsenhance.gui;
 
-import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,62 +26,46 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import java.util.UUID;
-
 public class GUIListener implements Listener {
-    private GUI gui;
-
-
-    public GUIListener(GUI gui) {
-        this.gui = gui;
-    }
-
 
     @EventHandler
     public void onClick(InventoryClickEvent e) {
+        // Handles invalid clicks.
+        if (e.getSlot() < 0) {
+            return;
+        }
+        // Handles invalid entity.
         if (!(e.getWhoClicked() instanceof Player)) {
             return;
         }
+        // Handles empty slot.
+        if (e.getCurrentItem().getType() == (Material.AIR)) {
+            return;
+        }
         Player player = (Player) e.getWhoClicked();
-        String playerUUID = player.getName();
-        UUID inventoryUUID = GUI.openInventories.get(playerUUID);
-        if (inventoryUUID != null) {
+        String playerName = player.getName();
+        GUIAbstract gui = GUIAbstract.playerMap.get(playerName);
+        if (gui != null && gui.getInventory().equals(e.getInventory())) {
             e.setCancelled(true);
-            GUI gui = GUI.getInventoriesByUUID().get(inventoryUUID);
-            GUI.GUIAction action = gui.getActions().get(e.getSlot());
-
+            GUIAbstract.GUIAction action = gui.getActions().get(e.getSlot());
             if (action != null) {
-                action.click(player);
+                action.click();
             }
         }
     }
 
-
     @EventHandler
     public void onClose(InventoryCloseEvent e) {
         Player player = (Player) e.getPlayer();
-        String playerUUID = player.getName();
-
-        GUI.openInventories.remove(playerUUID);
+        String playerName = player.getName();
+        GUIAbstract.playerMap.remove(playerName);
     }
 
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
         Player player = e.getPlayer();
-        String playerUUID = player.getName();
-
-        GUI.openInventories.remove(playerUUID);
-    }
-
-
-    public void delete() {
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            UUID u = GUI.openInventories.get(p.getName());
-            if (u.equals(gui.getUuid())) {
-                p.closeInventory();
-            }
-        }
-        GUI.inventoriesByUUID.remove(gui.getUuid());
+        String playerName = player.getName();
+        GUIAbstract.playerMap.remove(playerName);
     }
 }

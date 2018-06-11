@@ -19,5 +19,5 @@
 package org.pixeltime.enchantmentsenhance.enums;
 
 public enum ItemType {
-    WEAPON, ARMOR, MASK, TOOL, INVALID
+    WEAPON, ARMOR, ACCESSORY, TOOL, INVALID
 }

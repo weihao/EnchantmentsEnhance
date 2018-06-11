@@ -19,26 +19,24 @@
 package org.pixeltime.enchantmentsenhance.event.inventory;
 
 import org.bukkit.entity.Player;
+import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.MM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.util.GUI;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 /**
  * @author HealPotion
  * @version Feb 9, 2018
  */
-public class Backpack extends GUI {
+public class Backpack extends GUIAbstract {
 
     public Backpack(Player p) {
-        super(27, SettingsManager.lang.getString("Menu.gui.title"));
+        super(p, 27, SettingsManager.lang.getString("Menu.gui.title"));
         for (int i = 0; i < MM.stoneTypes.size(); i++) {
             setItem(Util.getSlot(i + 1, 1 + (i / 9)), ItemManager
-                    .stoneVisualized(i, p, true), player -> {
-                Util.sendMessage("You can't take this out for now.",
-                        player);
-            });
+                    .stoneVisualized(i, p, true), () -> Util.sendMessage("You can't take this out for now.",
+                    p));
         }
     }
 
