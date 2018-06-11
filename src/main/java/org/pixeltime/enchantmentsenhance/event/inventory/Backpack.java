@@ -20,7 +20,7 @@ package org.pixeltime.enchantmentsenhance.event.inventory;
 
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
-import org.pixeltime.enchantmentsenhance.manager.ItemManager;
+import org.pixeltime.enchantmentsenhance.gui.menu.icons.StoneIcon;
 import org.pixeltime.enchantmentsenhance.manager.MM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -34,37 +34,11 @@ public class Backpack extends GUIAbstract {
     public Backpack(Player p) {
         super(p, 27, SettingsManager.lang.getString("Menu.gui.title"));
         for (int i = 0; i < MM.stoneTypes.size(); i++) {
-            setItem(Util.getSlot(i + 1, 1 + (i / 9)), ItemManager
-                    .stoneVisualized(i, p, true), () -> Util.sendMessage("You can't take this out for now.",
+            setItem(Util.getSlot(i + 1, 1 + (i / 9)), new StoneIcon().getItem(i, p), () -> Util.sendMessage("You can't take this out for now.",
                     p));
         }
     }
 
-
-    public static void sendInventoryAsText(Player player) {
-        int[] inv = Inventory.getPlayer(player);
-        Util.sendMessage(SettingsManager.lang.getString("Item.title"), player);
-        for (int i = 0; i < inv.length; i++) {
-            Util.sendMessage(SettingsManager.lang.getString("Item.listing")
-                            .replaceAll("%ITEM%", SettingsManager.lang.getString("Item."
-                                    + i)).replaceAll("%COUNT%", Integer.toString(inv[i])),
-                    player);
-
-        }
-    }
-
-
-    public static String getOneStoneCountAsString(Player player, int stoneId) {
-        int[] inv = Inventory.getPlayer(player);
-        return (SettingsManager.lang.getString("Item.listing").replaceAll(
-                "%ITEM%", SettingsManager.lang.getString("Item." + stoneId))
-                .replaceAll("%COUNT%", Integer.toString(inv[stoneId])));
-
-    }
-
-    public static int getOneStoneCountAsInt(Player player, int stoneId) {
-        return Inventory.getPlayer(player)[stoneId];
-    }
 
     @Override
     public void update() {

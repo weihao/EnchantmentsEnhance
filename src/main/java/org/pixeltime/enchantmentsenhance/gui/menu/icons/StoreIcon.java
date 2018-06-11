@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.gui.menu.buttons;
+package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -7,7 +7,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class StoreButton extends Clickable {
+public class StoreIcon extends Clickable {
     @Override
     public ItemStack getItem() {
         return new ItemBuilder(Material.BOOK_AND_QUILL).setName(SettingsManager.lang

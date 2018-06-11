@@ -26,9 +26,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore;
-import org.pixeltime.enchantmentsenhance.event.inventory.Backpack;
 import org.pixeltime.enchantmentsenhance.gui.menu.Menu;
-import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
 
@@ -56,37 +54,6 @@ public class ItemManager {
             return ItemType.ARMOR;
         }
         return ItemType.INVALID;
-    }
-
-
-    /**
-     * Displays enhancement stone as a itemstack on GUI
-     *
-     * @param stoneId
-     * @param player
-     * @return
-     */
-    public static ItemStack stoneVisualized(
-            int stoneId,
-            Player player,
-            Boolean count) {
-        List<String> lore = new ArrayList<String>();
-        if (player != null) {
-            lore.add(Util.toColor(Backpack.getOneStoneCountAsString(player,
-                    stoneId)));
-        }
-        ItemStack item = new ItemBuilder(MM.stoneTypes.get(stoneId)).setName(Util.toColor(SettingsManager.lang.getString("Item." + stoneId))).setLore(lore).toItemStack();
-        int stack = (Backpack.getOneStoneCountAsInt(player, stoneId) > 64 ? 64 : Backpack.getOneStoneCountAsInt(player, stoneId));
-        item.setAmount(stack);
-        return item;
-    }
-
-
-    public static ItemStack stoneVisualized(int stoneId) {
-        List<String> lore = new ArrayList<String>();
-        return new ItemBuilder(MM.stoneTypes.get(stoneId)).setName(Util.toColor(
-                SettingsManager.lang.getString("Item." + stoneId))).setLore(lore)
-                .toItemStack();
     }
 
 

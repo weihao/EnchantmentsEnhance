@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.gui.menu.buttons;
+package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -8,11 +8,11 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class RemoveButton extends Clickable {
+public class RemoveIcon extends Clickable {
 
     @Override
     public ItemStack getItem() {
-        return new ItemBuilder(Material.WOOL).setDyeColor(DyeColor.BLACK).setName(SettingsManager.lang.getString("Menu.gui.remove")).addLoreLine(SettingsManager.lang.getString(
+        return new ItemBuilder(Material.WOOL).setDyeColor(DyeColor.SILVER).setName(SettingsManager.lang.getString("Menu.gui.remove")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.remove")).toItemStack();
     }
 

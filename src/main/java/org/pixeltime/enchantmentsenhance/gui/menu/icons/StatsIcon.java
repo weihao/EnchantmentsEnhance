@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.gui.menu.buttons;
+package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -12,7 +12,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class StatsButton extends Clickable {
+public class StatsIcon extends Clickable {
 
     @Override
     public ItemStack getItem() {

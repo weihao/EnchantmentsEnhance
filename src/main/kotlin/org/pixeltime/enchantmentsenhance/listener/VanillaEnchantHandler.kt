@@ -32,7 +32,7 @@ class VanillaEnchantHandler : Listener {
     fun onOpenEnchantmentTable(event: PlayerInteractEvent) {
         if (event.action == Action.RIGHT_CLICK_BLOCK && event.clickedBlock.type == Material.ENCHANTMENT_TABLE) {
             event.isCancelled = true
-            Menu(event.player).open();
+            Menu(event.player).open()
         }
     }
 }

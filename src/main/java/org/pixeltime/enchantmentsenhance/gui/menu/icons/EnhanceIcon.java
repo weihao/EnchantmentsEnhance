@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.gui.menu.buttons;
+package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -11,7 +11,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class EnhanceButton extends Clickable {
+public class EnhanceIcon extends Clickable {
     @Override
     public ItemStack getItem() {
         return new ItemBuilder(Material.WOOL).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("Menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
