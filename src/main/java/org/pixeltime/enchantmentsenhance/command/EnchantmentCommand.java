@@ -27,7 +27,7 @@ public class EnchantmentCommand extends SubCommand {
     public String info() {
         return "&6/enhance item { {upgrade} {level} } | {setname} {name}} &7- "
                 + SettingsManager.lang.getString(
-                "Help.item");
+                "Help.ench");
     }
 
     @Override

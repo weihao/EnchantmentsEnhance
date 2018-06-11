@@ -86,6 +86,7 @@ class LM {
             addLang("Help.debug", arrayOf("&6collect debugging information for developer to fix issues.", "&6收集数据以帮助开发者解决问题."))
             addLang("Help.reform", arrayOf("&6upgrade the grade of the gear.", "&6打开改良道具的面板."))
             addLang("Help.item", arrayOf("&6edit an item in hand.", "&6编辑手中物品."))
+            addLang("Help.ench", arrayOf("&6edit the enchantments of an item in hand.", "&6编辑手中物品的附魔."))
             addLang("Menu.gui.title", arrayOf("&6Enhancement", "&6潜力突破界面"))
             addLang("Menu.gui.enhance", arrayOf("&6Enhance", "&6强化"))
             addLang("Menu.gui.force", arrayOf("&cForce", "&c强突"))

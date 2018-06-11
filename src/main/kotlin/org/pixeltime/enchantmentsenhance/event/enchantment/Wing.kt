@@ -26,19 +26,12 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Wing : Listener {
+
     @EventHandler
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "wing"))
-        try {
-            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
-            if (level > 0) {
-                player.allowFlight = SettingsManager.enchant.getBoolean("wing.$level.flight")
-                player.isFlying = SettingsManager.enchant.getBoolean("wing.$level.flight")
-            } else {
-                player.allowFlight = false
-            }
-        } catch (ex: Exception) {
-        }
+        val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+        player.allowFlight = level > 0 || player.hasPermission("essentials.fly")
     }
 }
