@@ -14,6 +14,7 @@
 /bin/
 *.DS_Store
 /target/
+*.iml
 
 # User-specific stuff
 .idea/**/workspace.xml
