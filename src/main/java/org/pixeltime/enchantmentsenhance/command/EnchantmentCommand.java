@@ -9,13 +9,15 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 public class EnchantmentCommand extends SubCommand {
     @Override
     public void onCommand(Player player, String[] args) {
-        if (args[0].equalsIgnoreCase("add")) {
-            if (args.length == 3) {
+        if (args.length == 3) {
+            if (args[0].equalsIgnoreCase("add")) {
                 ItemStack item = player.getItemInHand();
                 API.AddCustomEnchant(item, args[1], Integer.parseInt(args[2]));
             } else {
                 Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player);
             }
+        } else {
+            Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player);
         }
     }
 
