@@ -15,24 +15,24 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
-
-package org.pixeltime.enchantmentsenhance.listener
-
-import org.bukkit.Material
-import org.bukkit.event.EventHandler
-import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
-import org.bukkit.event.block.Action
-import org.bukkit.event.player.PlayerInteractEvent
-import org.pixeltime.enchantmentsenhance.gui.menu.Menu
+package org.pixeltime.enchantmentsenhance.listener;
 
 
-class VanillaEnchantHandler : Listener {
+import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.pixeltime.enchantmentsenhance.gui.menu.Menu;
+
+
+public class VanillaEnchantHandler implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
-    fun onOpenEnchantmentTable(event: PlayerInteractEvent) {
-        if (event.action == Action.RIGHT_CLICK_BLOCK && event.clickedBlock.type == Material.ENCHANTMENT_TABLE) {
-            event.isCancelled = true
-            Menu(event.player).open()
+    public void onOpenEnchantmentTable(PlayerInteractEvent event) {
+        if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock().getType() == Material.ENCHANTMENT_TABLE) {
+            event.setCancelled(true);
+            new Menu(event.getPlayer()).open();
         }
     }
 }

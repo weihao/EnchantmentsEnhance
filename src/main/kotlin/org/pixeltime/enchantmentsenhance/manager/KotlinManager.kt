@@ -20,9 +20,7 @@ package org.pixeltime.enchantmentsenhance.manager
 
 import org.bukkit.Bukkit
 import org.bukkit.inventory.ItemStack
-import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.Main.getMain
-import org.pixeltime.enchantmentsenhance.listener.VanillaEnchantHandler
 import org.pixeltime.enchantmentsenhance.util.Util
 
 class KM {
@@ -35,7 +33,6 @@ class KM {
 
             // Register kotlin module events.
             val pm = Bukkit.getPluginManager()
-            pm.registerEvents(VanillaEnchantHandler(), Main.getMain())
         }
 
         @JvmStatic

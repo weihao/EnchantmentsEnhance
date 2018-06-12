@@ -186,7 +186,6 @@ class LM {
             addLang("enchantments.thief", arrayOf("&7Thief", "&7盗窃"))
             addLang("enchantments.tnt_shooter", arrayOf("&7Tnt Shooter", "&7炮手"))
             addLang("enchantments.turmoil", arrayOf("&7Turmoil", "&7风暴"))
-            addLang("enchantments.web_trap", arrayOf("&7Web Trap", "&7蛛网"))
             addLang("enchantments.wing", arrayOf("&7Wing", "&7羽翼"))
             addLang("enchantments.cure", arrayOf("&7Cure", "&7灵药"))
             addLang("enchantments.saturation", arrayOf("&7Saturation", "&7饱和"))

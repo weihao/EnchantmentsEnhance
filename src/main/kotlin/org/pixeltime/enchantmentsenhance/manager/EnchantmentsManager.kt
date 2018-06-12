@@ -83,7 +83,6 @@ class EM {
                 Main.getMain().server.pluginManager.registerEvents(Thief(), Main.getMain())
             }
             Main.getMain().server.pluginManager.registerEvents(Turmoil(), Main.getMain())
-            Main.getMain().server.pluginManager.registerEvents(Web_Trap(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Wing(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Invisible(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Cure(), Main.getMain())
