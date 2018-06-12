@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.event.inventory;
+package org.pixeltime.enchantmentsenhance.event.blacksmith;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

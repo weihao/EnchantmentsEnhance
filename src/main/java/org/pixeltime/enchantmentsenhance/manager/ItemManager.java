@@ -139,46 +139,48 @@ public class ItemManager {
     public static void applyEnchantments(ItemStack item) {
         int enchantLevel = getItemEnchantLevel(item);
         int gradeLevel = getItemGradeLevel(item);
-        ItemType type = getItemEnchantmentType(item);
-        List<String> temp = SettingsManager.config.getStringList("enhance."
-                + enchantLevel + ".enchantments." + type.toString());
-        //Clear All the enchantment before applying new enchantment
-        List<String> empty = new ArrayList<String>();
-        ItemMeta meta = item.getItemMeta();
-        meta.setLore(empty);
-        item.setItemMeta(meta);
+        if (enchantLevel > 0) {
+            ItemType type = getItemEnchantmentType(item);
+            List<String> temp = SettingsManager.config.getStringList("enhance."
+                    + enchantLevel + ".enchantments." + type.toString());
+            //Clear All the enchantment before applying new enchantment
+            List<String> empty = new ArrayList<String>();
+            ItemMeta meta = item.getItemMeta();
+            meta.setLore(empty);
+            item.setItemMeta(meta);
 
-        for (Enchantment ench : item.getEnchantments().keySet()) {
-            item.removeEnchantment(ench);
-        }
+            for (Enchantment ench : item.getEnchantments().keySet()) {
+                item.removeEnchantment(ench);
+            }
 
-        //Adding New enchantment.
-        for (String s : temp) {
-            String[] a = s.split(":");
-            applyEnchantmentToItem(item, a[0], Integer.parseInt(a[1]));
-        }
-        List<String> temp2 = null;
-        switch (getItemEnchantmentType(item)) {
-            case WEAPON:
-                temp2 = SettingsManager.config.getStringList("weaponGrade."
-                        + gradeLevel + ".enchantment");
-                break;
-            case ARMOR:
-                temp2 = SettingsManager.config.getStringList("armorGrade."
-                        + gradeLevel + ".enchantment");
-                break;
-            case ACCESSORY:
-                break;
-            case TOOL:
-                break;
-            case INVALID:
-                break;
-        }
+            //Adding New enchantment.
+            for (String s : temp) {
+                String[] a = s.split(":");
+                applyEnchantmentToItem(item, a[0], Integer.parseInt(a[1]));
+            }
+            List<String> temp2 = null;
+            switch (getItemEnchantmentType(item)) {
+                case WEAPON:
+                    temp2 = SettingsManager.config.getStringList("weaponGrade."
+                            + gradeLevel + ".enchantment");
+                    break;
+                case ARMOR:
+                    temp2 = SettingsManager.config.getStringList("armorGrade."
+                            + gradeLevel + ".enchantment");
+                    break;
+                case ACCESSORY:
+                    break;
+                case TOOL:
+                    break;
+                case INVALID:
+                    break;
+            }
 
-        if (temp2 != null) {
-            for (String s : temp2) {
-                String[] b = s.split(":");
-                applyEnchantmentToItem(item, b[0], Integer.parseInt(b[1]));
+            if (temp2 != null) {
+                for (String s : temp2) {
+                    String[] b = s.split(":");
+                    applyEnchantmentToItem(item, b[0], Integer.parseInt(b[1]));
+                }
             }
         }
     }
@@ -186,16 +188,20 @@ public class ItemManager {
     public static void applyEnchantmentToItem(ItemStack item, String ench, int level) {
         ItemMeta meta = item.getItemMeta();
         List<String> newlore = (meta.hasLore() ? meta.getLore() : new ArrayList<>());
-        try {
+        if (Enchantment.getByName(ench.toUpperCase()) != null) {
             item.addUnsafeEnchantment(Enchantment.getByName(ench.toUpperCase()), level);
-        } catch (IllegalArgumentException ex) {
+        } else {
             String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
             if (enchantment != null) {
                 // Unique ID
                 newlore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', enchantment + " " + Util.intToRoman(level)));
+                meta.setLore(newlore);
+                item.setItemMeta(meta);
+                if (item.getEnchantments().isEmpty()) {
+                    CompatibilityManager.glow
+                            .addGlow(item);
+                }
             }
-            meta.setLore(newlore);
-            item.setItemMeta(meta);
         }
     }
 

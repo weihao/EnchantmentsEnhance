@@ -20,7 +20,6 @@ package org.pixeltime.enchantmentsenhance.event.blacksmith;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.event.blackspirit.Failstack;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
@@ -47,11 +46,11 @@ public class SecretBook {
         int level = Failstack.getLevel(player);
         if (level != 0) {
             temp.add(level);
-            Collections.sort(temp);
-            Failstack.resetLevel(player);
+            Collections.sort(temp, Collections.reverseOrder());
             Util.sendMessage(SettingsManager.lang.getString("Save.createFailstack")
                     .replaceAll("%failstack%", Integer.toString(Failstack.getLevel(
                             player))), player);
+            Failstack.resetLevel(player);
         }
     }
 

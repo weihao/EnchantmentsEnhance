@@ -3,13 +3,14 @@ package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.event.inventory.Inventory;
+import org.pixeltime.enchantmentsenhance.event.blacksmith.Inventory;
 import org.pixeltime.enchantmentsenhance.interfaces.Clickable;
+import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class InventoryIcon extends Clickable {
+public class BackpackIcon extends Clickable {
 
     public static String getOneStoneCountAsString(Player player, int stoneId) {
         int[] inv = Inventory.getPlayer(player);
@@ -24,7 +25,16 @@ public class InventoryIcon extends Clickable {
 
     @Override
     public ItemStack getItem() {
-        return new ItemBuilder(Material.CHEST).setName(SettingsManager.lang.getString("Item.gui")).addLoreLine(SettingsManager.lang.getString("Item.gui1")).toItemStack();
+        return CompatibilityManager.glow.addGlow(new ItemBuilder(Material.STORAGE_MINECART).setName(SettingsManager.lang.getString("Item.gui")).addLoreLine(SettingsManager.lang.getString("Item.gui1")).toItemStack());
+    }
+
+    public ItemStack getItem(Player player) {
+        for (int i : Inventory.getPlayer(player)) {
+            if (i > 0) {
+                return CompatibilityManager.glow.addGlow(getItem());
+            }
+        }
+        return CompatibilityManager.glow.addGlow(getItem());
     }
 
     @Override

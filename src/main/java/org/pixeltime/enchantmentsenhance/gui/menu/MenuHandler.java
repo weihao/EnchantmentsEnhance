@@ -31,7 +31,7 @@ public class MenuHandler implements Listener {
         if (gui != null && gui.getInventory().equals(e.getInventory())) {
             e.setCancelled(true);
             if (!Menu.itemOnEnhancingSlot.containsKey(player.getName())) {
-                if (Enhance.getValidationOfItem(e.getCurrentItem())) {
+                if (Enhance.getValidationOfItem(e.getCurrentItem()) && e.getRawSlot() >= 54) {
                     Menu.itemOnEnhancingSlot.put(playerName, e.getCurrentItem());
                     gui.update();
                 }

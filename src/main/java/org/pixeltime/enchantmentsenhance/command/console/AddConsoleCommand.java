@@ -21,7 +21,7 @@ package org.pixeltime.enchantmentsenhance.command.console;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.event.inventory.Inventory;
+import org.pixeltime.enchantmentsenhance.event.blacksmith.Inventory;
 import org.pixeltime.enchantmentsenhance.manager.MM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;

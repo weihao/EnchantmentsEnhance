@@ -20,9 +20,10 @@ package org.pixeltime.enchantmentsenhance.api
 
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
+import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack
+import org.pixeltime.enchantmentsenhance.event.blacksmith.Inventory
 import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook
-import org.pixeltime.enchantmentsenhance.event.blackspirit.Failstack
-import org.pixeltime.enchantmentsenhance.event.inventory.Inventory
+import org.pixeltime.enchantmentsenhance.gui.menu.icons.BackpackIcon
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import java.util.*
 
@@ -34,8 +35,14 @@ class API {
         }
 
         @JvmStatic
-        fun getStones(player: Player): IntArray {
+        fun getNumberOfStones(player: Player): IntArray {
             return Inventory.getPlayer(player)
+        }
+
+
+        @JvmStatic
+        fun getNumberOfStone(player: Player, stoneId: Int): Int {
+            return BackpackIcon.getOneStoneCountAsInt(player, stoneId)
         }
 
         @JvmStatic
@@ -44,12 +51,12 @@ class API {
         }
 
         @JvmStatic
-        fun getValkStorage(): HashMap<String, MutableList<Int>> {
+        fun getValkStorage(): HashMap<String, List<Int>> {
             return SecretBook.getStorage()
         }
 
         @JvmStatic
-        fun getValks(player: Player): MutableList<Int>? {
+        fun getValks(player: Player): List<Int>? {
             return SecretBook.getStorage()[player.name]
         }
 

@@ -19,6 +19,7 @@
 package org.pixeltime.enchantmentsenhance.manager
 
 import org.bukkit.entity.Player
+import org.pixeltime.enchantmentsenhance.event.blacksmith.Inventory
 import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.*
 
@@ -82,7 +83,7 @@ class DropManager {
         @JvmStatic
         fun randomDrop(player: Player, table: List<Int>) {
             val stoneType = table[((0..table.size).random())]
-            org.pixeltime.enchantmentsenhance.event.inventory.Inventory.addLevel(
+            Inventory.addLevel(
                     player, stoneType, 1)
             Util.sendMessage(SettingsManager.lang.getString("Item.get") + SettingsManager.lang.getString("Item.$stoneType"), player)
         }

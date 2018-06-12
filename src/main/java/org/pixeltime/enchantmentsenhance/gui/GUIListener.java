@@ -42,6 +42,10 @@ public class GUIListener implements Listener {
         if (e.getCurrentItem().getType() == (Material.AIR)) {
             return;
         }
+        // Handles non-gui inventory.
+        if (e.getRawSlot() > 53) {
+            return;
+        }
         Player player = (Player) e.getWhoClicked();
         String playerName = player.getName();
         GUIAbstract gui = GUIAbstract.playerMap.get(playerName);

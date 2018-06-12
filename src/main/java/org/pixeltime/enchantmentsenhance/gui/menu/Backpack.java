@@ -16,11 +16,11 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.event.inventory;
+package org.pixeltime.enchantmentsenhance.gui.menu;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
-import org.pixeltime.enchantmentsenhance.gui.menu.icons.StoneIcon;
 import org.pixeltime.enchantmentsenhance.manager.MM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -32,16 +32,17 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 public class Backpack extends GUIAbstract {
 
     public Backpack(Player p) {
-        super(p, 27, SettingsManager.lang.getString("Menu.gui.title"));
-        for (int i = 0; i < MM.stoneTypes.size(); i++) {
-            setItem(Util.getSlot(i + 1, 1 + (i / 9)), new StoneIcon().getItem(i, p), () -> Util.sendMessage("You can't take this out for now.",
-                    p));
-        }
+        super(p, 54, SettingsManager.lang.getString("Item.title"));
+        update();
     }
 
 
     @Override
     public void update() {
-
+        Player player = Bukkit.getPlayer(playerName);
+        for (int i = 0; i < MM.stoneTypes.size(); i++) {
+            setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1), Menu.stone.getItem(i, player), () -> Util.sendMessage("You can't take this out for now.",
+                    player));
+        }
     }
 }

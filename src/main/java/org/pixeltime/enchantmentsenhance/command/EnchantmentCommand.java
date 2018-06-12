@@ -1,19 +1,20 @@
 package org.pixeltime.enchantmentsenhance.command;
 
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class EnchantmentCommand extends SubCommand {
     @Override
     public void onCommand(Player player, String[] args) {
         if (args[0].equalsIgnoreCase("add")) {
             if (args.length == 3) {
-                try {
-                    API.AddCustomEnchant(player.getItemInHand(), args[1], Integer.parseInt(args[2]));
-                } catch (Exception ex) {
-                    player.sendMessage(SettingsManager.config.getString("Config.invalidCommand"));
-                }
+                ItemStack item = player.getItemInHand();
+                API.AddCustomEnchant(item, args[1], Integer.parseInt(args[2]));
+            } else {
+                Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player);
             }
         }
     }
@@ -25,7 +26,7 @@ public class EnchantmentCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "&6/enhance item { {upgrade} {level} } | {setname} {name}} &7- "
+        return "&6/enhance enchantment {add} {enchantment} {level} &7- "
                 + SettingsManager.lang.getString(
                 "Help.ench");
     }

@@ -44,7 +44,7 @@ class Spiked : Listener {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                val level = IM.getHighestLevel(victim, translateAlternateColorCodes)
                 if (level > 0) {
                     player.damage(SettingsManager.enchant.getDouble("spiked.$level.damage"))
                 }
