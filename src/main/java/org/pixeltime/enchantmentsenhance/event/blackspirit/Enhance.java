@@ -122,15 +122,16 @@ public class Enhance {
             ItemStack item,
             Player player,
             int enchantLevelBeforeAttemptEnhancing) {
+        int level = enchantLevelBeforeAttemptEnhancing + 1;
         String str = SettingsManager.lang.getString("Enhance.enhanceFailed");
         CompatibilityManager.playsound.playSound(player, "FAILED");
         Failstack.addLevel(player,
-                DataManager.failstackGainedPerFail[enchantLevelBeforeAttemptEnhancing]);
-        if (DataManager.destroyIfFail[enchantLevelBeforeAttemptEnhancing]) {
+                DataManager.failstackGainedPerFail[level]);
+        if (DataManager.destroyIfFail[level]) {
             player.getInventory().remove(item);
             str += ("\n" + SettingsManager.lang.getString(
                     "Enhance.destroyed"));
-        } else if (DataManager.downgradeIfFail[enchantLevelBeforeAttemptEnhancing]) {
+        } else if (DataManager.downgradeIfFail[level]) {
             str += ("\n" + SettingsManager.lang.getString(
                     "Enhance.downgraded"));
             CompatibilityManager.playsound.playSound(player, "DOWNGRADED");
@@ -210,6 +211,11 @@ public class Enhance {
             int stoneId = getStoneId(item, enchantLevel);
             // Gets the cost of force enhancing
             int costToEnhance = DataManager.costToForceEnchant[enchantLevel];
+            if (costToEnhance == -1) {
+                Util.sendMessage(SettingsManager.lang.getString("Item.invalid"),
+                        player);
+                return;
+            }
             // Checks if player has enough enchant stone
             if (Inventory.getLevel(stoneId, player) - costToEnhance >= 0) {
                 Inventory.addLevel(player, stoneId, -costToEnhance);

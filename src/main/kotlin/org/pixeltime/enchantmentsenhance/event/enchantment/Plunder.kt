@@ -21,6 +21,7 @@ package org.pixeltime.enchantmentsenhance.event.enchantment
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager

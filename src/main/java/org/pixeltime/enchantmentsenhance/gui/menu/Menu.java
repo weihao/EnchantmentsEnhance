@@ -14,6 +14,8 @@ import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.MenuCoord;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.*;
 import org.pixeltime.enchantmentsenhance.interfaces.Clickable;
+import org.pixeltime.enchantmentsenhance.manager.DataManager;
+import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -53,9 +55,11 @@ public class Menu extends GUIAbstract {
                     Enhance.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
 
             setItem(stone.getPosition(), stone.getItem(itemOnEnhancingSlot.get(playerName), player));
-
-            setItem(force.getPosition(), force.getItem(itemOnEnhancingSlot.get(playerName)), () ->
-                    Enhance.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
+            if (DataManager.maximumFailstackApplied[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName))] != -1
+                    && DataManager.costToForceEnchant[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName))] != -1) {
+                setItem(force.getPosition(), force.getItem(itemOnEnhancingSlot.get(playerName)), () ->
+                        Enhance.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
+            }
 
             setItem(remove.getPosition(), remove.getGlowingItem(), () ->
                     itemOnEnhancingSlot.remove(playerName));
@@ -65,7 +69,6 @@ public class Menu extends GUIAbstract {
         } else {
             setItem(Util.getSlot(8, 4), new ItemStack(Material.AIR));
             setItem(remove.getPosition(), new ItemStack(Material.AIR));
-
             setItem(enhance.getPosition(), enhance.getItem());
             setItem(force.getPosition(), force.getItem());
             setItem(stats.getPosition(), stats.getItem(playerName));

@@ -133,9 +133,7 @@ public class Main extends JavaPlugin {
                 }
                 Main.getMain().getLogger().info("MySQL enabled!");
 
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
+            } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
 
