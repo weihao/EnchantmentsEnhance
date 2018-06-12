@@ -19,13 +19,14 @@
 package org.pixeltime.enchantmentsenhance.command;
 
 import org.bukkit.entity.Player;
+import org.pixeltime.enchantmentsenhance.command.console.VersionConsoleCommand;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 public class VersionCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        new VersionCommand().onCommand(player, args);
+        new VersionConsoleCommand().onCommand(player, args);
     }
 
 

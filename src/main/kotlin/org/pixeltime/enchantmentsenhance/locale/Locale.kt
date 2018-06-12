@@ -37,7 +37,7 @@ class LM {
         @JvmStatic
         fun addLocale() {
             addLang("Config.pluginTag", arrayOf("&7[&3Enchantments&cEnhance&7] ", "&f[&6强化插件&f] "))
-            addLang("Config.checkingVersion", arrayOf("&aYou are using EnchantmentsEnhance v%version%.", "&a您正在使用的插件版本是v%version%."))
+            addLang("Config.checkingVersion", arrayOf("&aYou are using EnchantmentsEnhance v%version%", "&a您正在使用的插件版本是v%version%"))
             addLang("Config.onEnable", arrayOf("EnchantmentsEnhance is enabled!", "强化插件已开启!"))
             addLang("Config.onDisable", arrayOf("EnchantmentsEnhance is disabled!", "强化插件已禁用!"))
             addLang("Config.onLoadingInventory", arrayOf("Loading player data...", "正在加载玩家数据..."))
