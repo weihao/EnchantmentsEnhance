@@ -30,7 +30,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Batvision : Listener {
     private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "batvision"))
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         try {

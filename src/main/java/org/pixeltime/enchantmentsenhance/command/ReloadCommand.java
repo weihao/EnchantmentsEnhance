@@ -19,7 +19,7 @@
 package org.pixeltime.enchantmentsenhance.command;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.manager.DataManager;
+import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
@@ -30,8 +30,7 @@ public class ReloadCommand extends SubCommand {
         SettingsManager.reloadConfig();
         SettingsManager.reloadData();
         SettingsManager.reloadLang();
-        new DataManager();
-        SettingsManager.setup();
+        Main.getMain().registerDataSettings();
         Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
                 player);
     }

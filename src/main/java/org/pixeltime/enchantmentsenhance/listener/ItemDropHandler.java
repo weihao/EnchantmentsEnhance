@@ -22,6 +22,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
@@ -37,7 +38,7 @@ public class ItemDropHandler implements Listener {
      *
      * @param e
      */
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
     public void onItemDrop(PlayerDropItemEvent e) {
         Item droppedItem = e.getItemDrop();
         ItemStack DroppedItemStack = droppedItem.getItemStack();
@@ -56,7 +57,6 @@ public class ItemDropHandler implements Listener {
                 e.setCancelled(true);
                 Util.sendMessage(SettingsManager.lang.getString(
                         "Messages.noDrop"), p);
-                return;
             }
         }
     }

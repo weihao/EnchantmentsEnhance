@@ -29,7 +29,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Jump : Listener {
     private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "jump"))
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         try {

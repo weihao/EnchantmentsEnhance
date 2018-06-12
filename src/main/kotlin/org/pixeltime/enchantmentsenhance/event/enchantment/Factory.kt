@@ -32,7 +32,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Factory : Listener {
     private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "factory"))
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
         val player = blockBreakEvent.player
         val level = IM.getHighestLevel(player, translateAlternateColorCodes)

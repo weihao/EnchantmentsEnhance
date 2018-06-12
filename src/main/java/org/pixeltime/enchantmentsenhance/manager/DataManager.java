@@ -34,7 +34,7 @@ public class DataManager {
     public static boolean[] destroyIfFail;
     public static boolean[] requireConcentratedStones;
 
-    public DataManager() {
+    public static void setUp() {
         Set<String> temp = SettingsManager.config.getConfigurationSection(
                 "enhance").getKeys(false);
         levels = temp.size();

@@ -121,7 +121,7 @@ public class LifeskillingHandler implements Listener {
      *
      * @param e
      */
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onBreeding(PlayerInteractEntityEvent e) {
         if (AnimalBreeding.breeadableFood.contains(e.getPlayer().getItemInHand()
                 .getType())) {

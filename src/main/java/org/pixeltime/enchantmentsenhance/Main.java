@@ -109,6 +109,8 @@ public class Main extends JavaPlugin {
         SettingsManager.setup();
         // Register listener.
         registerCore();
+        // Register data.
+        registerDataSettings();
         // Register all the compatible modules.
         registerCompatibility();
         // When plugin is reloaded, load all the inventory of online players.
@@ -141,9 +143,6 @@ public class Main extends JavaPlugin {
                 return;
             }
         }
-
-        // Kotlin setup
-        KM.setUp();
 
 
         // Plugin fully initialized.
@@ -191,11 +190,18 @@ public class Main extends JavaPlugin {
             getLogger().info(
                     "EnchantmentsEnhance runs fine on Cauldron/KCauldron.");
         }
-        new AnimalBreeding();
-        new DataManager();
         // Start bStats metrics.
         new Metrics(this);
+        Bukkit.getPluginManager().registerEvents(new GUIListener(), Main.getMain());
+        Bukkit.getPluginManager().registerEvents(new MenuHandler(), Main.getMain());
+    }
+
+    /**
+     * Register data settings.
+     */
+    public void registerDataSettings() {
         commandManager = new CommandManager();
+        PluginManager pm = Bukkit.getPluginManager();
         if (SettingsManager.config.getBoolean("enableStackMob")) {
             pm.registerEvents(new StackMobHandler(), this);
         }
@@ -203,8 +209,11 @@ public class Main extends JavaPlugin {
             pm.registerEvents(new VanillaEnchantHandler(), this);
         }
 
-        Bukkit.getPluginManager().registerEvents(new GUIListener(), Main.getMain());
-        Bukkit.getPluginManager().registerEvents(new MenuHandler(), Main.getMain());
+        DataManager.setUp();
+        AnimalBreeding.setUp();
+
+        // Kotlin setup
+        KM.setUp();
     }
 
 

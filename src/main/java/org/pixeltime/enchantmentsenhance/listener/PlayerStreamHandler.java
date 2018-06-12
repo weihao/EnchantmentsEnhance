@@ -21,6 +21,7 @@ package org.pixeltime.enchantmentsenhance.listener;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
@@ -46,7 +47,7 @@ public class PlayerStreamHandler implements Listener {
      *
      * @param e
      */
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         Util.sendMessage(SettingsManager.lang.getString("Config.welcome")
@@ -63,7 +64,7 @@ public class PlayerStreamHandler implements Listener {
      *
      * @param e
      */
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onQuit(PlayerQuitEvent e) {
         Player player = e.getPlayer();
         Failstack.saveLevels(player, false);
@@ -78,7 +79,7 @@ public class PlayerStreamHandler implements Listener {
      *
      * @param e
      */
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onKick(PlayerKickEvent e) {
         Player player = e.getPlayer();
         Failstack.saveLevels(player, false);
@@ -91,7 +92,7 @@ public class PlayerStreamHandler implements Listener {
      *
      * @param e
      */
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onJoin2(PlayerJoinEvent e) {
         if (e.getPlayer() != null) {
             Player player = e.getPlayer();

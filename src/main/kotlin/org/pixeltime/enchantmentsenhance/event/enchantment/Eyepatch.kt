@@ -29,7 +29,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Eyepatch : Listener {
     private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "eyepatch"))
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onMove(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         if (player.hasPotionEffect(PotionEffectType.BLINDNESS)) {

@@ -3,6 +3,7 @@ package org.pixeltime.enchantmentsenhance.gui.menu;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -11,7 +12,7 @@ import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 
 public class MenuHandler implements Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onClick(InventoryClickEvent e) {
         // Handles invalid clicks.
         if (e.getSlot() < 0) {
@@ -44,7 +45,7 @@ public class MenuHandler implements Listener {
      *
      * @param e
      */
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onInventoryClose(InventoryCloseEvent e) {
         Player player = (Player) e.getPlayer();
         Menu.itemOnEnhancingSlot.remove(player.getName());

@@ -29,7 +29,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Launch : Listener {
     private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "launch"))
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onEntityDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.entity is Player && entityDamageByEntityEvent.damager is Player) {
             val player = entityDamageByEntityEvent.entity as Player

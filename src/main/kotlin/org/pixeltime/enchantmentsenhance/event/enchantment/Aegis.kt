@@ -29,7 +29,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 private val translateAlternateColorCodes: String = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "aegis"))
 
 class Aegis : Listener {
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun block(playerInteractEvent: PlayerInteractEvent) {
         val player = playerInteractEvent.player
         if (playerInteractEvent.action != Action.RIGHT_CLICK_AIR) {

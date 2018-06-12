@@ -39,16 +39,16 @@ public class AnimalBreeding {
     /**
      * Initialization Constructor.
      */
-    public AnimalBreeding() {
-        this.addBreeadableAnimals();
-        this.addBreeadableFood();
+    public static void setUp() {
+        addBreeadableAnimals();
+        addBreeadableFood();
     }
 
 
     /**
      * Defines breedable food.
      */
-    public void addBreeadableFood() {
+    public static void addBreeadableFood() {
         goldenApple = new ItemStack(Material.GOLDEN_APPLE);
         goldenCarrot = new ItemStack(Material.GOLDEN_CARROT);
         wheat = new ItemStack(Material.WHEAT);
@@ -68,7 +68,7 @@ public class AnimalBreeding {
     /**
      * Defines breedable animals.
      */
-    public void addBreeadableAnimals() {
+    public static void addBreeadableAnimals() {
         horse = EntityType.HORSE;
         sheep = EntityType.SHEEP;
         cow = EntityType.COW;

@@ -97,7 +97,7 @@ public class PlayerDeathHandler implements Listener {
      *
      * @param e
      */
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerRespawn(PlayerRespawnEvent e) {
         Player p = e.getPlayer();
 

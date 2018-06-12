@@ -21,6 +21,7 @@ package org.pixeltime.enchantmentsenhance.gui;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -28,7 +29,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class GUIListener implements Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onClick(InventoryClickEvent e) {
         // Handles invalid clicks.
         if (e.getSlot() < 0) {
@@ -59,7 +60,7 @@ public class GUIListener implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onClose(InventoryCloseEvent e) {
         Player player = (Player) e.getPlayer();
         String playerName = player.getName();
@@ -67,7 +68,7 @@ public class GUIListener implements Listener {
     }
 
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onQuit(PlayerQuitEvent e) {
         Player player = e.getPlayer();
         String playerName = player.getName();

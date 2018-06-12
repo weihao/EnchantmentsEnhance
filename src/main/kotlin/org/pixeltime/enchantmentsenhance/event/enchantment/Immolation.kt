@@ -32,7 +32,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Immolation : Listener {
     private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "immolation"))
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onSneak(playerToggleSneakEvent: PlayerToggleSneakEvent) {
         val player = playerToggleSneakEvent.player
         if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {

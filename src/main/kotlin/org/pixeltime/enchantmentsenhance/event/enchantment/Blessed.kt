@@ -20,6 +20,7 @@ package org.pixeltime.enchantmentsenhance.event.enchantment
 
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
 import org.pixeltime.enchantmentsenhance.manager.IM
@@ -28,7 +29,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class Blessed : Listener {
     private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "blessed"))
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onMove(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         try {

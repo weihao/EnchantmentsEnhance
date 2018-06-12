@@ -26,7 +26,7 @@ import org.bukkit.event.entity.EntityDeathEvent
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Plunder : Listener {
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDeath(entityDeathEvent: EntityDeathEvent) {
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "plunder"))
         if (entityDeathEvent.entity.killer is Player && entityDeathEvent.entity !is Player) {

@@ -31,7 +31,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Endless : Listener {
     private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "endless"))
-    @EventHandler(ignoreCancelled = true)
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun noWeaponBreakDamage(playerInteractEvent: PlayerInteractEvent) {
         try {
             if (playerInteractEvent.item.itemMeta.hasLore() && KM.getLevel(translateAlternateColorCodes, playerInteractEvent.item.itemMeta.lore) > 0) {
@@ -42,7 +42,7 @@ class Endless : Listener {
 
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun noWeaponBreakDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         try {
             if (entityDamageByEntityEvent.damager is Player) {
@@ -87,7 +87,7 @@ class Endless : Listener {
 
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun noWeaponBreakDamage(entityShootBowEvent: EntityShootBowEvent) {
         try {
             if (entityShootBowEvent.entity is Player && entityShootBowEvent.bow.itemMeta.hasLore() && KM.getLevel(translateAlternateColorCodes, entityShootBowEvent.bow.itemMeta.lore) > 0) {
@@ -98,7 +98,7 @@ class Endless : Listener {
 
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun noWeaponBreakDamage(playerItemBreakEvent: PlayerItemBreakEvent) {
         try {
             val clone = playerItemBreakEvent.brokenItem.clone()

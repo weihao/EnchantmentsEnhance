@@ -31,7 +31,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import java.util.*
 
 class Smelt : Listener {
-    @EventHandler
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
         if (blockBreakEvent.isCancelled) {
             return
