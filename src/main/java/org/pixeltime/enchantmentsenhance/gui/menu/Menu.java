@@ -46,17 +46,15 @@ public class Menu extends GUIAbstract {
         getInventory().clear();
         Player player = Bukkit.getPlayer(playerName);
         if (itemOnEnhancingSlot.containsKey(playerName)) {
-            ItemStack item = itemOnEnhancingSlot.get(playerName);
+            setItem(Util.getSlot(8, 4), itemOnEnhancingSlot.get(playerName));
 
-            setItem(Util.getSlot(8, 4), item);
+            setItem(enhance.getPosition(), enhance.getItem(itemOnEnhancingSlot.get(playerName)), () ->
+                    Enhance.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
 
-            setItem(enhance.getPosition(), enhance.getItem(item), () ->
-                    Enhance.diceToEnhancement(item, player));
+            setItem(stone.getPosition(), stone.getItem(itemOnEnhancingSlot.get(playerName), player));
 
-            setItem(stone.getPosition(), stone.getItem(item, player));
-
-            setItem(force.getPosition(), force.getItem(item), () ->
-                    Enhance.forceToEnhancement(item, player));
+            setItem(force.getPosition(), force.getItem(itemOnEnhancingSlot.get(playerName)), () ->
+                    Enhance.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
 
             setItem(remove.getPosition(), remove.getGlowingItem(), () ->
                     itemOnEnhancingSlot.remove(playerName));

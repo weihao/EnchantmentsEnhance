@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
-import org.bukkit.Color;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

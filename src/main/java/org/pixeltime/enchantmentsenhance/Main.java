@@ -199,7 +199,7 @@ public class Main extends JavaPlugin {
         if (SettingsManager.config.getBoolean("enableStackMob")) {
             pm.registerEvents(new StackMobHandler(), this);
         }
-        if (SettingsManager.config.getBoolean("enableVanillaEnchant")) {
+        if (!SettingsManager.config.getBoolean("enableVanillaEnchant")) {
             pm.registerEvents(new VanillaEnchantHandler(), this);
         }
 
