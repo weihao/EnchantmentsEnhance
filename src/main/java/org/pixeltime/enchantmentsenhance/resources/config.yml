@@ -35,6 +35,9 @@ enableLogo: true
 # Set true to disable vanilla enchanting table and when someone uses it, right click on it will open enhance menu.
 enableVanillaEnchant: false
 
+# Set true to enable some features that are related to $.
+enableEconomy: false
+
 # Set true to enable support for stacked mob drop. [Working In Progress]
 enableStackMob: false
 

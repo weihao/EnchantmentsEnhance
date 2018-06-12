@@ -6,8 +6,7 @@ authors: [Feier, lgou2w]
 load: postworld
 prefix: EnchantmentsEnhance
 
-depend: [Vault]
-softdepend: [StackMob, WorldEdit, WorldGuard]
+softdepend: [Vault, WorldEdit, WorldGuard, StackMob]
 
 main: org.pixeltime.enchantmentsenhance.Main
 database: false

@@ -79,7 +79,9 @@ class EM {
             Main.getMain().server.pluginManager.registerEvents(Suicide(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Swimmer(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Tamer(), Main.getMain())
-            Main.getMain().server.pluginManager.registerEvents(Thief(), Main.getMain())
+            if (DM.economy != null) {
+                Main.getMain().server.pluginManager.registerEvents(Thief(), Main.getMain())
+            }
             Main.getMain().server.pluginManager.registerEvents(Turmoil(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Web_Trap(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Wing(), Main.getMain())

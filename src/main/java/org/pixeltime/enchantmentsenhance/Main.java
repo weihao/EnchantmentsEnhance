@@ -247,14 +247,8 @@ public class Main extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        if (DM.setupEconomy()) {
+        if (SettingsManager.config.getBoolean("enableEconomy") && DM.setupEconomy()) {
             getLogger().info("Enhancement-Vault Hook was successful!");
-        } else {
-
-            getLogger().severe("Failed to setup Enhancement Vault Hook!");
-            getLogger().severe(
-                    "Error in EnchantmentsEnhance! (Outdated plugin?)");
-            Bukkit.getPluginManager().disablePlugin(this);
         }
     }
 }

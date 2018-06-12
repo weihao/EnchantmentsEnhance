@@ -43,7 +43,6 @@ import java.util.Map;
 public class ItemBuilder {
     private ItemStack is;
 
-
     /**
      * Create a new ItemBuilder from scratch.
      *
@@ -297,7 +296,7 @@ public class ItemBuilder {
      */
     @SuppressWarnings("deprecation")
     public ItemBuilder setDyeColor(DyeColor color) {
-        this.is.setDurability(color.getData());
+        this.is.setDurability(color.getWoolData());
         return this;
     }
 
@@ -306,14 +305,12 @@ public class ItemBuilder {
      * Sets the dye color of a wool item. Works only on wool.
      *
      * @param color The DyeColor to set the wool item to.
-     * @see ItemBuilder@setDyeColor(DyeColor)
-     * @deprecated As of version 1.2 changed to setDyeColor.
      */
-    @Deprecated
     public ItemBuilder setWoolColor(DyeColor color) {
         if (!is.getType().equals(Material.WOOL))
             return this;
-        this.is.setDurability(color.getData());
+
+        this.is.setDurability(color.getWoolData());
         return this;
     }
 
