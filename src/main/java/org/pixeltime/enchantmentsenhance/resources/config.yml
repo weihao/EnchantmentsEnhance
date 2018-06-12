@@ -137,7 +137,7 @@ reward:
       - 2
       - 3
   breeding:
-    chance: 0.08
+    chance: 0.01
     drops:
       - 0
       - 1

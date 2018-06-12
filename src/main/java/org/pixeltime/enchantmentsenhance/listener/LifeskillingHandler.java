@@ -121,7 +121,7 @@ public class LifeskillingHandler implements Listener {
      *
      * @param e
      */
-    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.HIGH)
     public void onBreeding(PlayerInteractEntityEvent e) {
         if (AnimalBreeding.breeadableFood.contains(e.getPlayer().getItemInHand()
                 .getType())) {
@@ -132,7 +132,7 @@ public class LifeskillingHandler implements Listener {
                     if (DropManager.breedingChance > random.nextDouble()) {
                         DropManager.randomDrop(e.getPlayer(), DropManager.breedingLootTable);
                     }
-                    a.setBreed(false);
+                    a.setBreed(true);
                 }
             }
         }
