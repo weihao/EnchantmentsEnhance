@@ -36,7 +36,7 @@ import java.util.List;
 public class ItemManager {
 
     public static boolean isValid(ItemStack item, List<Material> comparable) {
-        return comparable.contains(item.getType());
+        return item != null && comparable.contains(item.getType());
     }
 
 

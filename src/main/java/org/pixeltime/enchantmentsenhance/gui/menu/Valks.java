@@ -21,6 +21,9 @@ public class Valks extends GUIAbstract {
 
     @Override
     public void update() {
+        getInventory().clear();
+        getActions().clear();
+
         Player player = Bukkit.getPlayer(playerName);
         List<Integer> inv = SecretBook.getStorage().get(playerName);
         for (int i = 0; i < (inv.size() > 54 ? 54 : inv.size()); i++) {

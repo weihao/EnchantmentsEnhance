@@ -39,6 +39,9 @@ public class Backpack extends GUIAbstract {
 
     @Override
     public void update() {
+        getInventory().clear();
+        getActions().clear();
+
         Player player = Bukkit.getPlayer(playerName);
         for (int i = 0; i < MM.stoneTypes.size(); i++) {
             setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1), Menu.stone.getItem(i, player), () -> Util.sendMessage("You can't take this out for now.",

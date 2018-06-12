@@ -44,6 +44,7 @@ public class Menu extends GUIAbstract {
     @Override
     public void update() {
         getInventory().clear();
+        getActions().clear();
         Player player = Bukkit.getPlayer(playerName);
         if (itemOnEnhancingSlot.containsKey(playerName)) {
             setItem(Util.getSlot(8, 4), itemOnEnhancingSlot.get(playerName));
