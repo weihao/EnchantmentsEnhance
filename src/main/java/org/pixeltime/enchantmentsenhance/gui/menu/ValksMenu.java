@@ -12,9 +12,9 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.List;
 
-public class Valks extends GUIAbstract {
+public class ValksMenu extends GUIAbstract {
 
-    public Valks(Player player) {
+    public ValksMenu(Player player) {
         super(player, 54, SettingsManager.lang.getString("Valks.gui"));
         update();
     }

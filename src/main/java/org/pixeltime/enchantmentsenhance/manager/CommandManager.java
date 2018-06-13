@@ -24,8 +24,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.command.*;
+import org.pixeltime.enchantmentsenhance.command.SubCommand;
+import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand;
 import org.pixeltime.enchantmentsenhance.command.console.*;
+import org.pixeltime.enchantmentsenhance.command.player.*;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.ArrayList;

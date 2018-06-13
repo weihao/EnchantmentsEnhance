@@ -16,17 +16,18 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command.player;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.gui.menu.Menu;
+import org.pixeltime.enchantmentsenhance.command.SubCommand;
+import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 public class MenuCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        new Menu(player).open();
+        new MainMenu(player).open();
     }
 
 

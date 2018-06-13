@@ -16,50 +16,37 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command.player;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
+import org.pixeltime.enchantmentsenhance.command.SubCommand;
+import org.pixeltime.enchantmentsenhance.gui.menu.BackpackMenu;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class SelectCommand extends SubCommand {
+public class InventoryCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        Exception error = null;
-        int num = 1;
-        try {
-            num = Integer.parseInt(args[1]);
-        } catch (NumberFormatException e) {
-            Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            error = e;
-            SecretBook.select(player, num);
-        }
-        if (error == null) {
-            SecretBook.select(player, num);
-        }
+        new BackpackMenu(player).open();
     }
 
 
     @Override
     public String name() {
-        return "select";
+        return "inventory";
     }
 
 
     @Override
     public String info() {
-        return "&6/enhance select { n } &7- " + SettingsManager.lang
-                .getString("Help.select");
+        return "&6/enhance inventory &7- " + SettingsManager.lang
+                .getString("Help.inventory");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[]{"select", "sl", "xuanze", "xz"};
+        return new String[]{"inv", "inventory", "beibao", "b"};
     }
 
 

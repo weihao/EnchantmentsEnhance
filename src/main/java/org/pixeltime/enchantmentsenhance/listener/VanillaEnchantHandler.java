@@ -24,7 +24,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.pixeltime.enchantmentsenhance.gui.menu.Menu;
+import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 
 
 public class VanillaEnchantHandler implements Listener {
@@ -32,7 +32,7 @@ public class VanillaEnchantHandler implements Listener {
     public void onOpenEnchantmentTable(PlayerInteractEvent event) {
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock().getType() == Material.ENCHANTMENT_TABLE) {
             event.setCancelled(true);
-            new Menu(event.getPlayer()).open();
+            new MainMenu(event.getPlayer()).open();
         }
     }
 }

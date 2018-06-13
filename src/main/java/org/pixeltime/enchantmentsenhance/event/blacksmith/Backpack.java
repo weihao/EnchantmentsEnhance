@@ -27,7 +27,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Inventory {
+public class Backpack {
     // int[0] = weapon stone, int[1] = armor stone, int[2] = conc weapon; int[3]
     // =conc armor.
     private static Map<String, int[]> backpack = new HashMap<String, int[]>();

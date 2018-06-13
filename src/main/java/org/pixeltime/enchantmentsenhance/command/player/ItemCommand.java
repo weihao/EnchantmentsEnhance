@@ -1,8 +1,9 @@
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command.player;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.pixeltime.enchantmentsenhance.command.SubCommand;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;

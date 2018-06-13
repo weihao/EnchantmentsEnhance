@@ -26,7 +26,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore;
-import org.pixeltime.enchantmentsenhance.gui.menu.Menu;
+import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
 
@@ -118,7 +118,7 @@ public class ItemManager {
         soulbound(currItem);
         addlore(currItem, oldLore);
         player.getInventory().removeItem(item);
-        Menu.itemOnEnhancingSlot.put(player.getName(), currItem);
+        MainMenu.itemOnEnhancingSlot.put(player.getName(), currItem);
         player.getInventory().addItem(currItem);
     }
 

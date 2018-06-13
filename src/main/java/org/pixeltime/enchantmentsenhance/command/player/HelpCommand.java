@@ -16,50 +16,37 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command.player;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
+import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.command.SubCommand;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class ListCommand extends SubCommand {
+public class HelpCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        Exception error = null;
-        int num = 0;
-        try {
-            num = Integer.parseInt(args[1]);
-        } catch (NumberFormatException e) {
-            Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            error = e;
-            SecretBook.list(player, 0);
-        }
-        if (error == null) {
-            SecretBook.list(player, num);
-        }
+        Main.getMain().commandManager.printHelp(player);
     }
 
 
     @Override
     public String name() {
-        return "list";
+        return "help";
     }
 
 
     @Override
     public String info() {
-        return "&6/enhance list &7- " + SettingsManager.lang.getString(
-                "Help.list");
+        return "&6/enhance help &7- " + SettingsManager.lang.getString(
+                "Help.help");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[]{"list", "ls", "chakan", "ck"};
+        return new String[]{"help", "hl", "bangzhu", "bz"};
     }
 
 

@@ -20,6 +20,7 @@ package org.pixeltime.enchantmentsenhance.command.console;
 
 import org.bukkit.command.CommandSender;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 public class HelpConsoleCommand extends SubConsoleCommand {

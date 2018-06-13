@@ -18,21 +18,15 @@
 
 package org.pixeltime.enchantmentsenhance.manager
 
-import org.bukkit.Bukkit
 import org.bukkit.inventory.ItemStack
-import org.pixeltime.enchantmentsenhance.Main.getMain
 import org.pixeltime.enchantmentsenhance.util.Util
 
 class KM {
     companion object {
         @JvmStatic
         fun setUp() {
-            getMain().logger.info("Kotlin module is enabled: Hello World!")
             MM.setup()
             EM.setUp()
-
-            // Register kotlin module events.
-            val pm = Bukkit.getPluginManager()
         }
 
         @JvmStatic

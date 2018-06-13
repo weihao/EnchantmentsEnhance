@@ -28,18 +28,31 @@ public abstract class SubCommand {
     public SubCommand() {
     }
 
-
+    /**
+     * Player oncommand.
+     *
+     * @param player
+     * @param args
+     */
     public abstract void onCommand(Player player, String[] args);
 
-
+    /**
+     * @return Command name.
+     */
     public abstract String name();
 
-
+    /**
+     * @return Command information.
+     */
     public abstract String info();
 
-
+    /**
+     * @return Command aliases.
+     */
     public abstract String[] aliases();
 
-
+    /**
+     * @return Command permission.
+     */
     public abstract String getPermission();
 }

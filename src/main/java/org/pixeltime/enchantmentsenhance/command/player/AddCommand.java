@@ -16,42 +16,43 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command.player;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.gui.menu.Backpack;
+import org.pixeltime.enchantmentsenhance.command.SubCommand;
+import org.pixeltime.enchantmentsenhance.command.console.AddConsoleCommand;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
-public class InventoryCommand extends SubCommand {
+public class AddCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        new Backpack(player).open();
+        new AddConsoleCommand().onCommand(player, args);
     }
 
 
     @Override
     public String name() {
-        return "inventory";
+        return "add";
     }
 
 
     @Override
     public String info() {
-        return "&6/enhance inventory &7- " + SettingsManager.lang
-                .getString("Help.inventory");
+        return "&6/enhance add { player } { stone } { amount } &7- "
+                + SettingsManager.lang.getString("Help.add");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[]{"inv", "inventory", "beibao", "b"};
+        return new String[]{"add", "give", "tianjia", "tj"};
     }
 
 
     @Override
     public String getPermission() {
-        return "Enchantmentsenhance.enhance";
+        return "Enchantmentsenhance.add";
     }
 
 }

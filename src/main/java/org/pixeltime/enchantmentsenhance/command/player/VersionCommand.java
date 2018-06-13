@@ -16,42 +16,43 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command.player;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.command.SubCommand;
+import org.pixeltime.enchantmentsenhance.command.console.VersionConsoleCommand;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
-public class HelpCommand extends SubCommand {
+public class VersionCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        Main.getMain().commandManager.printHelp(player);
+        new VersionConsoleCommand().onCommand(player, args);
     }
 
 
     @Override
     public String name() {
-        return "help";
+        return "version";
     }
 
 
     @Override
     public String info() {
-        return "&6/enhance help &7- " + SettingsManager.lang.getString(
-                "Help.help");
+        return "&6/enhance version &7- " + SettingsManager.lang.getString(
+                "Help.version");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[]{"help", "hl", "bangzhu", "bz"};
+        return new String[]{"version", "ver", "banben", "bb"};
     }
 
 
     @Override
     public String getPermission() {
-        return "Enchantmentsenhance.enhance";
+        return "Enchantmentsenhance.version";
     }
 
 }

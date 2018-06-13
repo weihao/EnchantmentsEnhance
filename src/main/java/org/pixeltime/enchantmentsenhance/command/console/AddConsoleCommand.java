@@ -21,7 +21,8 @@ package org.pixeltime.enchantmentsenhance.command.console;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Inventory;
+import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand;
+import org.pixeltime.enchantmentsenhance.event.blacksmith.Backpack;
 import org.pixeltime.enchantmentsenhance.manager.MM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -52,9 +53,8 @@ public class AddConsoleCommand extends SubConsoleCommand {
                 return;
             }
 
-            if (stoneType != -1 && level != -1 && p != null
-                    && stoneType <= MM.stoneTypes.size()) {
-                Inventory.addLevel(p, stoneType, level);
+            if (stoneType != -1 && level != -1 && stoneType <= MM.stoneTypes.size()) {
+                Backpack.addLevel(p, stoneType, level);
                 Util.sendMessage(SettingsManager.lang.getString(
                         "Add.successful").replace("%player%", p.getName()).replace(
                         "%number%", Integer.toString(level)).replace("%stone%",

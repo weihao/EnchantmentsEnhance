@@ -28,7 +28,7 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Inventory;
+import org.pixeltime.enchantmentsenhance.event.blacksmith.Backpack;
 import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -54,7 +54,7 @@ public class PlayerStreamHandler implements Listener {
                 .replaceAll("%player%", player.getName()), player);
         Failstack.loadLevels(player);
         SecretBook.loadStorage(player);
-        Inventory.loadInventory(player);
+        Backpack.loadInventory(player);
     }
 
 
@@ -69,7 +69,7 @@ public class PlayerStreamHandler implements Listener {
         Player player = e.getPlayer();
         Failstack.saveLevels(player, false);
         SecretBook.saveStorageToDisk(player, false);
-        Inventory.saveInventoryToDisk(player, false);
+        Backpack.saveInventoryToDisk(player, false);
     }
 
 
@@ -84,7 +84,7 @@ public class PlayerStreamHandler implements Listener {
         Player player = e.getPlayer();
         Failstack.saveLevels(player, false);
         SecretBook.saveStorageToDisk(player, false);
-        Inventory.saveInventoryToDisk(player, false);
+        Backpack.saveInventoryToDisk(player, false);
     }
 
     /**

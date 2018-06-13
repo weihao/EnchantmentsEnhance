@@ -16,42 +16,57 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command.player;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.command.console.AddConsoleCommand;
+import org.pixeltime.enchantmentsenhance.command.SubCommand;
+import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class AddCommand extends SubCommand {
+public class ListCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        new AddConsoleCommand().onCommand(player, args);
+        Exception error = null;
+        int num = 0;
+        try {
+            num = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            Util.sendMessage(SettingsManager.lang.getString(
+                    "Config.invalidNumber"), player);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            error = e;
+            SecretBook.list(player, 0);
+        }
+        if (error == null) {
+            SecretBook.list(player, num);
+        }
     }
 
 
     @Override
     public String name() {
-        return "add";
+        return "list";
     }
 
 
     @Override
     public String info() {
-        return "&6/enhance add { player } { stone } { amount } &7- "
-                + SettingsManager.lang.getString("Help.add");
+        return "&6/enhance list &7- " + SettingsManager.lang.getString(
+                "Help.list");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[]{"add", "give", "tianjia", "tj"};
+        return new String[]{"list", "ls", "chakan", "ck"};
     }
 
 
     @Override
     public String getPermission() {
-        return "Enchantmentsenhance.add";
+        return "Enchantmentsenhance.enhance";
     }
 
 }

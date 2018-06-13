@@ -28,7 +28,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class GUIAbstract {
-    public static Map<String, GUIAbstract> playerMap = new HashMap<>();
     public String playerName;
     private Inventory inventory;
     private Map<Integer, GUIAction> actions;
@@ -36,7 +35,7 @@ public abstract class GUIAbstract {
     public GUIAbstract(Player player, int invSize, String invName) {
         this.inventory = Bukkit.createInventory(null, invSize, Util.toColor(invName));
         this.actions = new HashMap<>();
-        playerMap.put(player.getName(), this);
+       GUIManager.getMap().put(player.getName(), this);
         this.playerName = player.getName();
     }
 

@@ -16,42 +16,49 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command.player;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.command.console.VersionConsoleCommand;
+import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.command.SubCommand;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class VersionCommand extends SubCommand {
+public class ReloadCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        new VersionConsoleCommand().onCommand(player, args);
+        SettingsManager.reloadConfig();
+        SettingsManager.reloadData();
+        SettingsManager.reloadLang();
+        Main.getMain().registerDataSettings();
+        Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
+                player);
     }
 
 
     @Override
     public String name() {
-        return "version";
+        return "reload";
     }
 
 
     @Override
     public String info() {
-        return "&6/enhance version &7- " + SettingsManager.lang.getString(
-                "Help.version");
+        return "&6/enhance reload &7- " + SettingsManager.lang.getString(
+                "Help.reload");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[]{"version", "ver", "banben", "bb"};
+        return new String[]{"reload", "rel", "chongzai", "cz"};
     }
 
 
     @Override
     public String getPermission() {
-        return "Enchantmentsenhance.version";
+        return "Enchantmentsenhance.reload";
     }
 
 }

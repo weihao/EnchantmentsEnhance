@@ -9,6 +9,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
+import org.pixeltime.enchantmentsenhance.gui.GUIManager;
 
 public class MenuHandler implements Listener {
 
@@ -28,12 +29,12 @@ public class MenuHandler implements Listener {
         }
         Player player = (Player) e.getWhoClicked();
         String playerName = player.getName();
-        GUIAbstract gui = GUIAbstract.playerMap.get(playerName);
+        GUIAbstract gui =GUIManager.getMap().get(playerName);
         if (gui != null && gui.getInventory().equals(e.getInventory())) {
             e.setCancelled(true);
-            if (!Menu.itemOnEnhancingSlot.containsKey(player.getName())) {
+            if (!MainMenu.itemOnEnhancingSlot.containsKey(player.getName())) {
                 if (Enhance.getValidationOfItem(e.getCurrentItem()) && e.getRawSlot() >= 54) {
-                    Menu.itemOnEnhancingSlot.put(playerName, e.getCurrentItem());
+                    MainMenu.itemOnEnhancingSlot.put(playerName, e.getCurrentItem());
                     gui.update();
                 }
             }
@@ -48,6 +49,6 @@ public class MenuHandler implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onInventoryClose(InventoryCloseEvent e) {
         Player player = (Player) e.getPlayer();
-        Menu.itemOnEnhancingSlot.remove(player.getName());
+        MainMenu.itemOnEnhancingSlot.remove(player.getName());
     }
 }

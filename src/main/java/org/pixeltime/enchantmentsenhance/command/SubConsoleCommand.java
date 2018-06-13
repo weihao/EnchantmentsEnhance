@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command.console;
+package org.pixeltime.enchantmentsenhance.command;
 
 
 import org.bukkit.command.CommandSender;
@@ -29,15 +29,26 @@ public abstract class SubConsoleCommand {
     public SubConsoleCommand() {
     }
 
-
+    /**
+     * Console Command
+     *
+     * @param sender
+     * @param args
+     */
     public abstract void onCommand(CommandSender sender, String[] args);
 
-
+    /**
+     * @return Command name.
+     */
     public abstract String name();
 
-
+    /**
+     * @return Command information.
+     */
     public abstract String info();
 
-
+    /**
+     * @return Command aliases.
+     */
     public abstract String[] aliases();
 }

@@ -16,48 +16,57 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command.player;
 
 import org.bukkit.entity.Player;
-import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.command.SubCommand;
+import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class ReloadCommand extends SubCommand {
+public class SelectCommand extends SubCommand {
 
     @Override
     public void onCommand(Player player, String[] args) {
-        SettingsManager.reloadConfig();
-        SettingsManager.reloadData();
-        SettingsManager.reloadLang();
-        Main.getMain().registerDataSettings();
-        Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
-                player);
+        Exception error = null;
+        int num = 1;
+        try {
+            num = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            Util.sendMessage(SettingsManager.lang.getString(
+                    "Config.invalidNumber"), player);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            error = e;
+            SecretBook.select(player, num);
+        }
+        if (error == null) {
+            SecretBook.select(player, num);
+        }
     }
 
 
     @Override
     public String name() {
-        return "reload";
+        return "select";
     }
 
 
     @Override
     public String info() {
-        return "&6/enhance reload &7- " + SettingsManager.lang.getString(
-                "Help.reload");
+        return "&6/enhance select { n } &7- " + SettingsManager.lang
+                .getString("Help.select");
     }
 
 
     @Override
     public String[] aliases() {
-        return new String[]{"reload", "rel", "chongzai", "cz"};
+        return new String[]{"select", "sl", "xuanze", "xz"};
     }
 
 
     @Override
     public String getPermission() {
-        return "Enchantmentsenhance.reload";
+        return "Enchantmentsenhance.enhance";
     }
 
 }

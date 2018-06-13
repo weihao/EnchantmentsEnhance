@@ -23,7 +23,7 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Menu extends GUIAbstract {
+public class MainMenu extends GUIAbstract {
     public static Map<String, ItemStack> itemOnEnhancingSlot = new HashMap<String, ItemStack>();
     public static Map<String, Clickable> enhanceMode = new HashMap<>();
     public static EnhanceIcon enhance = new EnhanceIcon();
@@ -38,7 +38,7 @@ public class Menu extends GUIAbstract {
     public static ToolIcon tool = new ToolIcon();
     public static AccessoryIcon accessory = new AccessoryIcon();
 
-    public Menu(Player player) {
+    public MainMenu(Player player) {
         super(player, 54, SettingsManager.lang.getString("Menu.gui.title"));
         update();
     }
@@ -82,7 +82,7 @@ public class Menu extends GUIAbstract {
                     @Override
                     public void run() {
                         player.closeInventory();
-                        new Backpack(player).open();
+                        new BackpackMenu(player).open();
                     }
                 }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 
@@ -91,7 +91,7 @@ public class Menu extends GUIAbstract {
                     @Override
                     public void run() {
                         player.closeInventory();
-                        new Valks(player).open();
+                        new ValksMenu(player).open();
                     }
                 }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 

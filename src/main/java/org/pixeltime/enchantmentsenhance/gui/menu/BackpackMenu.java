@@ -29,9 +29,9 @@ import org.pixeltime.enchantmentsenhance.util.Util;
  * @author HealPotion
  * @version Feb 9, 2018
  */
-public class Backpack extends GUIAbstract {
+public class BackpackMenu extends GUIAbstract {
 
-    public Backpack(Player p) {
+    public BackpackMenu(Player p) {
         super(p, 54, SettingsManager.lang.getString("Item.title"));
         update();
     }
@@ -44,7 +44,7 @@ public class Backpack extends GUIAbstract {
 
         Player player = Bukkit.getPlayer(playerName);
         for (int i = 0; i < MM.stoneTypes.size(); i++) {
-            setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1), Menu.stone.getItem(i, player), () -> Util.sendMessage("You can't take this out for now.",
+            setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1), MainMenu.stone.getItem(i, player), () -> Util.sendMessage("You can't take this out for now.",
                     player));
         }
     }

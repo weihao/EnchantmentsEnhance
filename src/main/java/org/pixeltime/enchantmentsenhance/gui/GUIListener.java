@@ -28,7 +28,6 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class GUIListener implements Listener {
-
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onClick(InventoryClickEvent e) {
         // Handles invalid clicks.
@@ -49,7 +48,7 @@ public class GUIListener implements Listener {
         }
         Player player = (Player) e.getWhoClicked();
         String playerName = player.getName();
-        GUIAbstract gui = GUIAbstract.playerMap.get(playerName);
+        GUIAbstract gui =GUIManager.getMap().get(playerName);
         if (gui != null && gui.getInventory().equals(e.getInventory())) {
             e.setCancelled(true);
             GUIAbstract.GUIAction action = gui.getActions().get(e.getSlot());
@@ -64,7 +63,7 @@ public class GUIListener implements Listener {
     public void onClose(InventoryCloseEvent e) {
         Player player = (Player) e.getPlayer();
         String playerName = player.getName();
-        GUIAbstract.playerMap.remove(playerName);
+       GUIManager.getMap().remove(playerName);
     }
 
 
@@ -72,6 +71,6 @@ public class GUIListener implements Listener {
     public void onQuit(PlayerQuitEvent e) {
         Player player = e.getPlayer();
         String playerName = player.getName();
-        GUIAbstract.playerMap.remove(playerName);
+       GUIManager.getMap().remove(playerName);
     }
 }

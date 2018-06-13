@@ -16,13 +16,14 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command.player;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.command.SubCommand;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
-import org.pixeltime.enchantmentsenhance.gui.menu.Menu;
+import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.IM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -45,7 +46,7 @@ public class DebugCommand extends SubCommand {
                 Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), p, false);
             }
         } else if (args[0].equalsIgnoreCase("newmenu")) {
-            new Menu(p).open();
+            new MainMenu(p).open();
         }
     }
 

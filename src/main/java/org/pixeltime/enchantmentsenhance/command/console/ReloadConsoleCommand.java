@@ -19,6 +19,7 @@
 package org.pixeltime.enchantmentsenhance.command.console;
 
 import org.bukkit.command.CommandSender;
+import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand;
 import org.pixeltime.enchantmentsenhance.manager.DataManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;

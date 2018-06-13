@@ -21,7 +21,7 @@ package org.pixeltime.enchantmentsenhance.api
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Inventory
+import org.pixeltime.enchantmentsenhance.event.blacksmith.Backpack
 import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.BackpackIcon
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
@@ -31,12 +31,12 @@ class API {
     companion object {
         @JvmStatic
         fun addStone(player: Player, stoneType: Int, numberOfStones: Int) {
-            Inventory.addLevel(player, stoneType, numberOfStones)
+            Backpack.addLevel(player, stoneType, numberOfStones)
         }
 
         @JvmStatic
         fun getNumberOfStones(player: Player): IntArray {
-            return Inventory.getPlayer(player)
+            return Backpack.getPlayer(player)
         }
 
 
