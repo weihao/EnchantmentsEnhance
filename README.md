@@ -1,17 +1,14 @@
 - [Chinese](README-zh.md)
 - [Japanese](README-ja.md)
 
-<p align="center">
-<img src=".images/logo.jpg" alt="EnchantmentsEnhance" />
-</p>
-
-<p align="center">
-<a href="https://travis-ci.org/HealPotion/EnchantmentsEnhance"><img src="https://travis-ci.org/25/EnchantmentsEnhance.svg?branch=master" alt="Travis CI" /></a>
-<a href="https://codebeat.co/projects/github-com-healpotion-enchantmentsenhance-master"><img alt="codebeat badge" src="https://codebeat.co/badges/2ef380b7-5479-4ac6-89d9-fd1fb673511c" /></a>
-<a href="https://github.com/healpotion/WeatherAPI"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=102" alt="OpenSource" /></a>
-<a href="http://www.gnu.org/licenses/gpl-3.0"><img src="https://badges.frapsoft.com/os/gpl/gpl.svg?v=102" alt="License" /></a>
-
-</p>
+# <img src=".images/logo.jpg" alt="EnchantmentsEnhance" align="right">
+[![Travis CI](https://travis-ci.org/25/EnchantmentsEnhance.svg?branch=master)](https://travis-ci.org/HealPotion/EnchantmentsEnhance)
+[![Codebeat Badge](https://codebeat.co/badges/2ef380b7-5479-4ac6-89d9-fd1fb673511c)](https://codebeat.co/projects/github-com-healpotion-enchantmentsenhance-master)
+[![bStats](https://img.shields.io/badge/bStats-deployed-3366ff.svg?style=flat)](https://bstats.org/plugin/bukkit/EnchantmentsEnhance)
+[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/25/EnchantmentsEnhance)
+[![License](https://badges.frapsoft.com/os/gpl/gpl.svg?v=102)](http://www.gnu.org/licenses/gpl-3.0)
+[![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/pulls)
+[![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
 
 ## Introduction
 [Wiki](https://github.com/25/EnchantmentsEnhance/wiki)
@@ -20,7 +17,7 @@
 ###### Alpha (1.0 - 4.0)
 ##### Beta (4.0.1 - [current](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml))
 This plugin is under active development at the stage of beta phase.
-Completion of the plugin is currently projected at 30%, meaning the general functionality and availability are incomplete.
+Completion of the plugin is currently projected at 35%, meaning the general functionality and availability are incomplete.
 You can find latest stable build of pre-release on Spigot.
 
 ## Compatibility
