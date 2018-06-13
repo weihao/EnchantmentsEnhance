@@ -35,7 +35,7 @@ public abstract class GUIAbstract {
     public GUIAbstract(Player player, int invSize, String invName) {
         this.inventory = Bukkit.createInventory(null, invSize, Util.toColor(invName));
         this.actions = new HashMap<>();
-       GUIManager.getMap().put(player.getName(), this);
+        GUIManager.getMap().put(player.getName(), this);
         this.playerName = player.getName();
     }
 

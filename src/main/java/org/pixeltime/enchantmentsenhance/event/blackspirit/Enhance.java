@@ -22,8 +22,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.chat.Broadcast;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack;
 import org.pixeltime.enchantmentsenhance.event.blacksmith.Backpack;
+import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.Util;
 

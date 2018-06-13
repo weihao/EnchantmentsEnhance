@@ -29,7 +29,7 @@ public class MenuHandler implements Listener {
         }
         Player player = (Player) e.getWhoClicked();
         String playerName = player.getName();
-        GUIAbstract gui =GUIManager.getMap().get(playerName);
+        GUIAbstract gui = GUIManager.getMap().get(playerName);
         if (gui != null && gui.getInventory().equals(e.getInventory())) {
             e.setCancelled(true);
             if (!MainMenu.itemOnEnhancingSlot.containsKey(player.getName())) {

@@ -181,7 +181,7 @@ public class Main extends JavaPlugin {
      */
     private void registerCore() {
         PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new ItemDropHandler(), this);
+        pm.registerEvents(new EnhancedItemHandler(), this);
         pm.registerEvents(new PlayerDeathHandler(), this);
         pm.registerEvents(new PlayerStreamHandler(), this);
         pm.registerEvents(new LifeskillingHandler(), this);

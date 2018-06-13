@@ -20,8 +20,8 @@ package org.pixeltime.enchantmentsenhance.api
 
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack
 import org.pixeltime.enchantmentsenhance.event.blacksmith.Backpack
+import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack
 import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.BackpackIcon
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
