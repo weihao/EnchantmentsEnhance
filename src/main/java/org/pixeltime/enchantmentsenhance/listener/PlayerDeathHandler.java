@@ -57,10 +57,8 @@ public class PlayerDeathHandler implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
         List<ItemStack> newInventory = new ArrayList<ItemStack>();
-
         File playerFile = new File(m.getDataFolder() + "/userdata" + "/death/" + p.getName() + ".yml");
         FileConfiguration pFile = YamlConfiguration.loadConfiguration(playerFile);
-
         pFile.set("PlayerName", p.getName());
         if (!e.getDrops().isEmpty() || e.getDrops() != null) {
             for (int i = 0; i < e.getDrops().size(); i++) {
@@ -71,9 +69,8 @@ public class PlayerDeathHandler implements Listener {
                         List<String> lore = meta.getLore();
                         for (String s : lore) {
                             s = ChatColor.stripColor(s);
-                            if (s.contains(ChatColor.stripColor(SettingsManager.lang.getString(
-                                    "Lore.untradeableLore"))) || s.contains(ChatColor.stripColor(SettingsManager.lang.getString(
-                                    "Lore.tradeableLore")))) {
+                            if (s.contains(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&',SettingsManager.lang.getString("Lore.untradeableLore"))))
+                                    || s.contains(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&',SettingsManager.lang.getString("Lore.tradeableLore"))))) {
                                 newInventory.add(e.getDrops().get(i));
                             }
                         }
