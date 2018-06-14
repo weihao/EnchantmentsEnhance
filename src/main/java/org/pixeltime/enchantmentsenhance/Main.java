@@ -105,15 +105,15 @@ public class Main extends JavaPlugin {
         // Checks for update.
         UpdateManager.versionChecker();
         // Save the configuration.
-        // saveDefaultConfig();
+        saveDefaultConfig();
         // Set up the files.
         SettingsManager.setup();
         // Register listener.
         registerCore();
-        // Register data.
-        registerDataSettings();
         // Register all the compatible modules.
         registerCompatibility();
+        // Register data.
+        registerDataSettings();
         // When plugin is reloaded, load all the inventory of online players.
         this.getLogger().info(SettingsManager.lang.getString(
                 "Config.onLoadingInventory"));
@@ -211,12 +211,12 @@ public class Main extends JavaPlugin {
             pm.registerEvents(new VanillaEnchantHandler(), this);
         }
 
-        DataManager.setUp();
-        AnimalBreeding.setUp();
-
         // Kotlin setup
         KM.setUp();
         getLogger().info("Kotlin module is enabled: Hello World!");
+
+        DataManager.setUp();
+        AnimalBreeding.setUp();
     }
 
 

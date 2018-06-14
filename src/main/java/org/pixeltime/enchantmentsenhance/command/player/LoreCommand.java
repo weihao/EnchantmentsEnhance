@@ -34,7 +34,7 @@ public class LoreCommand extends SubCommand {
                         SettingsManager.lang.getString("Lore."
                                 + SettingsManager.config.getString("lore.bound")
                                 + "Lore"), SettingsManager.config.getBoolean(
-                                "lore.bound"));
+                                "lore.bound"), true);
             }
             if (args[0].equalsIgnoreCase("removehand")) {
                 Lore.removeLore(player.getItemInHand(), player);

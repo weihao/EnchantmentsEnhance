@@ -13,7 +13,7 @@ import org.pixeltime.enchantmentsenhance.gui.GUIManager;
 
 public class MenuHandler implements Listener {
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(ignoreCancelled = false, priority = EventPriority.HIGHEST)
     public void onClick(InventoryClickEvent e) {
         // Handles invalid clicks.
         if (e.getSlot() < 0) {

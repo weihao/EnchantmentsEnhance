@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.interfaces;
+package org.pixeltime.enchantmentsenhance.gui;
 
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;

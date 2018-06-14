@@ -1,7 +1,7 @@
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.interfaces.Clickable;
+import org.pixeltime.enchantmentsenhance.gui.Clickable;
 
 public class ReblathIcon extends Clickable {
     @Override

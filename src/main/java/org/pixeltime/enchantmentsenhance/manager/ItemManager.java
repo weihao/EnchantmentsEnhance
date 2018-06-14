@@ -50,10 +50,12 @@ public class ItemManager {
         if (isValid(item, MM.weapon)) {
             return ItemType.WEAPON;
         }
-        if (isValid(item, MM.armor)) {
+        else if (isValid(item, MM.armor)) {
             return ItemType.ARMOR;
         }
-        return ItemType.INVALID;
+        else {
+            return ItemType.INVALID;
+        }
     }
 
 
@@ -99,10 +101,10 @@ public class ItemManager {
 
 
     public static void soulbound(ItemStack item) {
-        Lore.addLore(item, Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
+        Lore.addLore(item,
                 SettingsManager.lang.getString("Lore." + SettingsManager.config
-                        .getString("lore.bound") + "Lore")), !SettingsManager.config
-                .getString("lore.bound").contains("un"));
+                        .getString("lore.bound") + "Lore"), !SettingsManager.config
+                        .getString("lore.bound").contains("un"));
     }
 
     public static void forgeItem(Player player, ItemStack item, int enchantLevel) {

@@ -64,11 +64,8 @@ public class Enhance {
     public static boolean getValidationOfItem(ItemStack item) {
         // If item cannot be enhanced
         // If item level exceeds the maximum levels allowed
-        if ((ItemManager.getItemEnchantmentType(item) == ItemType.INVALID)
-                || (ItemManager.getItemEnchantLevel(item) >= DataManager.levels - 1)) {
-            return false;
-        }
-        return true;
+        return (ItemManager.getItemEnchantmentType(item) != ItemType.INVALID)
+                && (ItemManager.getItemEnchantLevel(item) == 0 || (ItemManager.getItemEnchantLevel(item) < DataManager.levels - 1));
     }
 
 

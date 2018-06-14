@@ -29,7 +29,7 @@
 # Supported language: ZH_CN, EN_US.
 language: EN_US
 
-# Set false to disable console logging a plugin logo when initializing. [Working In Progress]
+#You can't disable this, just letting you know.
 enableLogo: true
 
 # Set true to disable vanilla enchanting table and when someone uses it, right click on it will open enhance menu.
@@ -65,7 +65,7 @@ lore:
   # untradeable: keep-item-on-death, cannot be stored in the chests, cannot be dropped.
   bound: tradeable
   # Do you want to notify the player when the item becomes bounded?
-  sendBoundingMessage: false
+  sendBoundingMessage: true
 
 # Life Skills consist of various tasks. Black stones will be rewarded by performing any of these tasks.
 lifeskill:
