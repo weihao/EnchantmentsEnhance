@@ -1,6 +1,6 @@
 * [Chinese](README-zh.md) 
 * [Japanese](README-ja.md)
-# EnchantmentsEnhance
+
 # <img src=".images/logo.jpg" alt="Logo" align="right">
 [![Travis CI](https://travis-ci.org/25/EnchantmentsEnhance.svg?branch=master)](https://travis-ci.org/HealPotion/EnchantmentsEnhance)
 [![Codebeat Badge](https://codebeat.co/badges/2ef380b7-5479-4ac6-89d9-fd1fb673511c)](https://codebeat.co/projects/github-com-healpotion-enchantmentsenhance-master)
@@ -10,9 +10,8 @@
 [![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/pulls)
 [![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
 
-## Production
-# <img src=".images/jenkins.png" alt="Download" align="left">
-[![Jenkins](https://img.shields.io/badge/jenkins-server_online-28B463.svg?style=flat)](http://www.soulbound.me/)
+# [<img src=".images/jenkins.png" alt="Download" align="left">](http://www.soulbound.me/)
+[![Jenkins](https://img.shields.io/badge/download-server_online-28B463.svg?style=flat)](http://www.soulbound.me/)
 
 ## Introduction
 [Wiki](https://github.com/25/EnchantmentsEnhance/wiki)
