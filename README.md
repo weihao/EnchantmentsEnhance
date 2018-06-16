@@ -12,6 +12,7 @@
 
 # [<img src=".images/jenkins.png" alt="Download" align="left">](http://www.soulbound.me/)
 [![Jenkins](https://img.shields.io/badge/download-server_online-28B463.svg?style=flat)](http://www.soulbound.me/)
+[![Jenkins Build Status](http://soulbound.me/job/EnchantmentsEnhance/badge/icon)](http://soulbound.me/job/EnchantmentsEnhance/)
 
 ## Introduction
 [Wiki](https://github.com/25/EnchantmentsEnhance/wiki)
