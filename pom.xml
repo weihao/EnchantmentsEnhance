@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.pixeltime</groupId>
     <artifactId>EnchantmentsEnhance</artifactId>
-    <version>4.2.3</version>
+    <version>4.3</version>
     <description>A plugin of enchantments enhancing system inspired by BDO.</description>
     <packaging>jar</packaging>
     <name>EnchantmentsEnhance</name>
@@ -34,7 +34,7 @@
     </issueManagement>
 
     <properties>
-        <kotlin.version>1.2.41</kotlin.version>
+        <kotlin.version>1.2.50</kotlin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

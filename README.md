@@ -10,18 +10,18 @@
 [![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/pulls)
 [![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
 
-# [<img src=".images/jenkins.png" alt="Download" align="left">](http://www.soulbound.me/)
-[![Jenkins](https://img.shields.io/badge/download-server_online-28B463.svg?style=flat)](http://www.soulbound.me/)
-[![Jenkins Build Status](http://soulbound.me/job/EnchantmentsEnhance/badge/icon)](http://soulbound.me/job/EnchantmentsEnhance/)
-
-## Introduction
-[Wiki](https://github.com/25/EnchantmentsEnhance/wiki)
+# [<img src=".images/jenkins.png" alt="Download" align="left">](http://soulbound.me:8080/)
+[![Jenkins](https://img.shields.io/badge/download-server_online-28B463.svg?style=flat)](http://soulbound.me:8080)
+[![Jenkins Build Status](http://soulbound.me:8080/job/EnchantmentsEnhance/badge/icon)](http://soulbound.me:8080/job/EnchantmentsEnhance/)
 
 ## Life Cycle
 ###### Alpha (1.0 - 4.0)
 ##### Beta (4.0.1 - [current](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml))
 This plugin is under active development at the stage of beta phase.
 Completion of the plugin is currently projected at 35%, meaning the general functionality and availability are incomplete.
+
+## Introduction
+[Wiki](https://github.com/25/EnchantmentsEnhance/wiki)
 
 ## Compatibility
 Version: `1.8.x - 1.12.x`
