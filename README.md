@@ -27,7 +27,7 @@ Completion of the plugin is currently projected at 35%, meaning the general func
 Version: `1.8.x - 1.12.x`
 - [x] [Bukkit](https://bukkit.org)
 - [x] [Spigot](https://spigotmc.org)
-- [x] [PaperSpigot](https://ci.destroystokyo.com/view/All/job/PaperSpigot/)
+- [x] [PaperSpigot](https://github.com/PaperMC/Paper)
 
 ## Install
 1. Download plugin jarfile
