@@ -41,6 +41,12 @@ enableEconomy: false
 # Set true to enable support for stacked mob drop. [Working In Progress]
 enableStackMob: false
 
+# Set true to enable some special enchantments that may or may not cause an issue on your server.
+enableEnchant:
+  # This will take control of player's fly permissions.
+  wing: false
+  thief: false
+
 #[Working In Progress]
 mysql:
   # If disabled, the plugin will use local YAML files.

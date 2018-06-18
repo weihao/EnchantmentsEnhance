@@ -19,6 +19,7 @@
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
 import org.bukkit.ChatColor
+import org.bukkit.GameMode
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -33,6 +34,6 @@ class Wing : Listener {
         val player = playerMoveEvent.player
         val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "wing"))
         val level = IM.getHighestLevel(player, translateAlternateColorCodes)
-        player.allowFlight = level > 0 || player.hasPermission("essentials.fly")
+        player.allowFlight = level > 0 || player.hasPermission("essentials.fly") || player.gameMode == GameMode.CREATIVE
     }
 }

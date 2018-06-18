@@ -79,11 +79,13 @@ class EM {
             Main.getMain().server.pluginManager.registerEvents(Suicide(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Swimmer(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Tamer(), Main.getMain())
-            if (DM.economy != null) {
+            if (DM.economy != null && (SettingsManager.config.getBoolean("enableEnchant.thief"))) {
                 Main.getMain().server.pluginManager.registerEvents(Thief(), Main.getMain())
             }
             Main.getMain().server.pluginManager.registerEvents(Turmoil(), Main.getMain())
-            Main.getMain().server.pluginManager.registerEvents(Wing(), Main.getMain())
+            if (SettingsManager.config.getBoolean("enableEnchant.wing")) {
+                Main.getMain().server.pluginManager.registerEvents(Wing(), Main.getMain())
+            }
             Main.getMain().server.pluginManager.registerEvents(Invisible(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Cure(), Main.getMain())
             Main.getMain().server.pluginManager.registerEvents(Saturation(), Main.getMain())
