@@ -10,7 +10,7 @@ softdepend: [Vault, WorldEdit, WorldGuard, StackMob]
 
 main: org.pixeltime.enchantmentsenhance.Main
 database: false
-website: https://github.com/HealPotion
+website: https://github.com/25
 
 
 commands:

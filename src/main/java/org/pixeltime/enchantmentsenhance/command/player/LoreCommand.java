@@ -29,14 +29,13 @@ public class LoreCommand extends SubCommand {
     @Override
     public void onCommand(Player player, String[] args) {
         if (args.length == 1) {
-            if (args[0].equalsIgnoreCase("addhand")) {
+            if (args[0].equalsIgnoreCase("tradeable")) {
                 Lore.addLore(player.getItemInHand(), player,
-                        SettingsManager.lang.getString("Lore."
-                                + SettingsManager.config.getString("lore.bound")
-                                + "Lore"), SettingsManager.config.getBoolean(
-                                "lore.bound"), true);
-            }
-            if (args[0].equalsIgnoreCase("removehand")) {
+                        SettingsManager.lang.getString("Lore.tradeableLore"), true, true);
+            } else if (args[0].equalsIgnoreCase("untradeable")) {
+                Lore.addLore(player.getItemInHand(), player,
+                        SettingsManager.lang.getString("Lore.untradeableLore"), false, true);
+            } else if (args[0].equalsIgnoreCase("unbound")) {
                 Lore.removeLore(player.getItemInHand(), player);
             }
         } else {
@@ -54,7 +53,7 @@ public class LoreCommand extends SubCommand {
 
     @Override
     public String info() {
-        return "&6/enhance lore { addhand | removehand }&7- "
+        return "&6/enhance lore { tradeable | untradeable | unbound }&7- "
                 + SettingsManager.lang.getString("Help.lore");
     }
 

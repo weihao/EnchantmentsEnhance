@@ -11,7 +11,7 @@
 #   - You have "escaped" all apostrophes in your text: If you want to write "don't", for example, write "don''t" instead (note the doubled apostrophe)
 #   - Text with symbols is enclosed in single or double quotation marks
 
-# If you have encountered any problems, use: https://github.com/HealPotion/EnchantmentsEnhance/issues
+# If you have encountered any problems, use: https://github.com/25/EnchantmentsEnhance/issues
 
 # Key Concepts:
 # Enhancing is the act of increasing the stats of your items.
@@ -45,6 +45,7 @@ enableStackMob: false
 enableEnchant:
   # This will take control of player's fly permissions.
   wing: false
+  # This will use economic plugin.
   thief: false
 
 #[Working In Progress]

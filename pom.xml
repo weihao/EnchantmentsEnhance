@@ -22,14 +22,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.pixeltime</groupId>
     <artifactId>EnchantmentsEnhance</artifactId>
-    <version>4.3.1</version>
+    <version>4.3.2</version>
     <description>A plugin of enchantments enhancing system inspired by BDO.</description>
     <packaging>jar</packaging>
     <name>EnchantmentsEnhance</name>
-    <url>https://github.com/HealPotion/EnchantmentsEnhance</url>
+    <url>https://github.com/25/EnchantmentsEnhance</url>
 
     <issueManagement>
-        <url>https://github.com/HealPotion/EnchantmentsEnhance/issues</url>
+        <url>https://github.com/25/EnchantmentsEnhance/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 
@@ -212,7 +212,7 @@
                             </addDefaultImplementationEntries>
                         </manifest>
                         <manifestEntries>
-                            <Built-By>HealPotion</Built-By>
+                            <Built-By>Feier</Built-By>
                         </manifestEntries>
                     </archive>
                 </configuration>

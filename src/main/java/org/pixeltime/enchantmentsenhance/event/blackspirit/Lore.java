@@ -125,9 +125,9 @@ public class Lore {
     public static void removeLore(ItemStack is, Player p) {
         ItemMeta im = is.getItemMeta();
 
-        String x = ChatColor.translateAlternateColorCodes('&',
+        String x = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
                 SettingsManager.lang.getString("Lore.tradeableLore"));
-        String y = ChatColor.translateAlternateColorCodes('&',
+        String y = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
                 SettingsManager.lang.getString("Lore.untradeableLore"));
         if ((is.hasItemMeta()) && (is.getItemMeta().hasLore())) {
             List<String> loreList = is.getItemMeta().getLore();

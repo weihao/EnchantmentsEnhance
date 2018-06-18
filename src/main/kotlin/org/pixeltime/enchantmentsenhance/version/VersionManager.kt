@@ -50,7 +50,6 @@ class VersionManager : Listener {
             } catch (e: IOException) {
                 Main.getMain().server.consoleSender.sendMessage("[EnchantmentsEnhance] " + ChatColor.RED + "ERROR: Could not make connection to SpigotMC.org")
             }
-
         }
     }
 }
