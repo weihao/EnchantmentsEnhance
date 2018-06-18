@@ -35,6 +35,7 @@ import org.pixeltime.enchantmentsenhance.mysql.Database;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
 import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
+import org.pixeltime.enchantmentsenhance.version.VersionManager;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -103,7 +104,7 @@ public class Main extends JavaPlugin {
         final long startTime = System.currentTimeMillis();
         main = this;
         // Checks for update.
-        UpdateManager.versionChecker();
+        VersionManager.versionChecker();
         // Save the configuration.
         saveDefaultConfig();
         // Set up the files.

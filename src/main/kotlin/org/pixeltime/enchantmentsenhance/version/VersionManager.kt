@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.manager
+package org.pixeltime.enchantmentsenhance.version
 
 import org.bukkit.ChatColor
 import org.bukkit.event.Listener
@@ -28,7 +28,7 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-class UpdateManager : Listener {
+class VersionManager : Listener {
     companion object {
         @JvmStatic
         fun versionChecker() {
@@ -39,13 +39,13 @@ class UpdateManager : Listener {
                 connection.doOutput = true
                 connection.requestMethod = "POST"
                 connection.outputStream.write("GET".toByteArray(charset("UTF-8")))
-                val version = BufferedReader(InputStreamReader(connection
-                        .inputStream)).readLine()
-                if (version != Main::class.java.`package`
-                                .implementationVersion) {
-                    Main.getMain().server.consoleSender.sendMessage("[EnchantmentsEnhance] " + ChatColor.RED + "EnchantmentsEnhance is OUTDATED!")
-                } else {
+                val spigotVer = Version(BufferedReader(InputStreamReader(connection.inputStream)).readLine())
+                val currVer = Version(Main::class.java.`package`.implementationVersion)
+
+                if (currVer > spigotVer) {
                     Main.getMain().server.consoleSender.sendMessage("[EnchantmentsEnhance] " + ChatColor.GREEN + "Enchantments Enhance is UP-TO-DATE")
+                } else {
+                    Main.getMain().server.consoleSender.sendMessage("[EnchantmentsEnhance] " + ChatColor.RED + "EnchantmentsEnhance is OUTDATED!")
                 }
             } catch (e: IOException) {
                 Main.getMain().server.consoleSender.sendMessage("[EnchantmentsEnhance] " + ChatColor.RED + "ERROR: Could not make connection to SpigotMC.org")
