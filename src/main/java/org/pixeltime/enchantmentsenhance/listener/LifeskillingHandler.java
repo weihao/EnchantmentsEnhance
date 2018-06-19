@@ -33,6 +33,7 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.FurnaceInventory;
 import org.bukkit.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.manager.DropManager;
@@ -190,4 +191,22 @@ public class LifeskillingHandler implements Listener {
             }
         }
     }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
+    public void onHarvesting(PlayerInteractEvent event) {
+//        if (event.getAction() == Action.RIGHT_CLICK_BLOCK){
+//
+//        }
+//            if (event.getClickedBlock().getType() == Material.CROPS && event.getClickedBlock().getData() == 7){
+//                Material.POTATO 7
+//                Material.CARROT 7
+//                Material.NETHER_WARTS 3
+//                        Matieral.
+//                if (event.getClickedBlock().getType() == Material.COCOA && event.getClickedBlock().getData() == 8 || event.getClickedBlock().getType() == Material.COCOA && event.getClickedBlock().getData() == 9 || event.getClickedBlock().getType() == Material.COCOA &&event.getClickedBlock().getData() == 10 || event.getClickedBlock().getType() == Material.COCOA && event.getClickedBlock().getData() == 11){
+//
+//                }
+//
+//        }
+    }
+
 }

@@ -80,7 +80,6 @@ lifeskill:
   mining:
     - DIAMOND_ORE
     - EMERALD_ORE
-    - EMERALD_ORE
     - GLOWING_REDSTONE_ORE
     - GOLD_ORE
     - IRON_ORE
@@ -203,13 +202,12 @@ material:
     - GOLD_SWORD
     - STONE_SWORD
     - WOOD_SWORD
+    - IRON_SWORD
     - DIAMOND_AXE
     - GOLD_AXE
     - STONE_AXE
     - WOOD_AXE
-    - IRON_SWORD
     - IRON_AXE
-    - WOOD_AXE
 
 slots:
   # Armor includes armor contents and item in hand.
