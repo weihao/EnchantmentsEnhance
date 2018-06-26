@@ -25,14 +25,14 @@ import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Turmoil : Listener {
+class Turmoil : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         val translateAlternateColorCodes: String = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "turmoil"))
@@ -42,11 +42,11 @@ class Turmoil : Listener {
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                val level = IM.getHighestLevel(player, this.name)
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("turmoil.$level.chance")) {
                     player2.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, SettingsManager.enchant.getInt("turmoil.$level.duration") * 20, SettingsManager.enchant.getInt("turmoil.$level.potion_lvl") - 1))
                 }

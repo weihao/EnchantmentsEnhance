@@ -18,19 +18,17 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Riftslayer : Listener {
+class Riftslayer : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "riftslayer"))
+
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity !is Player) {
 
             val player = entityDamageByEntityEvent.damager as Player
@@ -38,7 +36,7 @@ class Riftslayer : Listener {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                val level = IM.getHighestLevel(player, this.name)
                 if (level > 0) {
                     entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * 3.0
                 }

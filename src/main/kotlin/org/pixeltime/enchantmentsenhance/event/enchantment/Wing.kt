@@ -18,22 +18,20 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.GameMode
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Wing : Listener {
+class Wing : EnchantmentListener() {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "wing"))
-        val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+
+        val level = IM.getHighestLevel(player, this.name)
         player.allowFlight = level > 0 || player.hasPermission("essentials.fly") || player.gameMode == GameMode.CREATIVE
     }
 }

@@ -21,28 +21,27 @@ package org.pixeltime.enchantmentsenhance.event.enchantment
 import com.sk89q.worldguard.bukkit.WGBukkit
 import com.sk89q.worldguard.protection.flags.DefaultFlag
 import com.sk89q.worldguard.protection.flags.StateFlag
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerToggleSneakEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Stealth : Listener {
+class Stealth : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onSneak(playerToggleSneakEvent: PlayerToggleSneakEvent) {
         val player = playerToggleSneakEvent.player
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "stealth"))
-        if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {
+
+        if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
             return
         }
 
         try {
-            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            val level = IM.getHighestLevel(player, this.name)
             if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("stealth.$level.chance")) {
                 val int1 = SettingsManager.enchant.getInt("stealth.$level.radius")
                 for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {

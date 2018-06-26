@@ -22,6 +22,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.Entity;
 import org.bukkit.inventory.ItemStack;
+import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.util.GsonWrapper;
 import org.pixeltime.enchantmentsenhance.util.reflection.MethodNames;
 import org.pixeltime.enchantmentsenhance.util.reflection.MinecraftVersion;
@@ -45,7 +46,7 @@ public class NBTReflectionUtil {
             Class clazz = Class.forName("org.bukkit.craftbukkit." + version + ".inventory.CraftItemStack");
             return clazz;
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }
@@ -57,7 +58,7 @@ public class NBTReflectionUtil {
             Class clazz = Class.forName("org.bukkit.craftbukkit." + version + ".entity.CraftEntity");
             return clazz;
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }
@@ -69,7 +70,7 @@ public class NBTReflectionUtil {
             Class clazz = Class.forName("net.minecraft.server." + version + ".NBTBase");
             return clazz;
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }
@@ -81,7 +82,7 @@ public class NBTReflectionUtil {
             Class clazz = Class.forName("net.minecraft.server." + version + ".NBTTagString");
             return clazz;
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }
@@ -93,7 +94,7 @@ public class NBTReflectionUtil {
             Class clazz = Class.forName("net.minecraft.server." + version + ".ItemStack");
             return clazz;
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }
@@ -105,7 +106,7 @@ public class NBTReflectionUtil {
             Class clazz = Class.forName("net.minecraft.server." + version + ".NBTTagCompound");
             return clazz;
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }
@@ -117,7 +118,7 @@ public class NBTReflectionUtil {
             Class clazz = Class.forName("net.minecraft.server." + version + ".NBTCompressedStreamTools");
             return clazz;
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }
@@ -129,7 +130,7 @@ public class NBTReflectionUtil {
             Class c = Class.forName("net.minecraft.server." + version + ".MojangsonParser");
             return c;
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }
@@ -141,7 +142,7 @@ public class NBTReflectionUtil {
             Class clazz = Class.forName("net.minecraft.server." + version + ".TileEntity");
             return clazz;
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }
@@ -153,7 +154,7 @@ public class NBTReflectionUtil {
             Class clazz = Class.forName("org.bukkit.craftbukkit." + version + ".CraftWorld");
             return clazz;
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }
@@ -166,7 +167,7 @@ public class NBTReflectionUtil {
             Class c = Class.forName("net.minecraft.server." + version + ".NBTTagCompound");
             return c.newInstance();
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }
@@ -180,7 +181,7 @@ public class NBTReflectionUtil {
             Class clazz = Class.forName("net.minecraft.server." + version + ".BlockPosition");
             return clazz.getConstructor(int.class, int.class, int.class).newInstance(x, y, z);
         } catch (Exception ex) {
-            System.out.println("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
+            Main.getMain().getLogger().info("Error in EnchantmentsEnhance Reflection! (Outdated plugin?)");
             ex.printStackTrace();
             return null;
         }

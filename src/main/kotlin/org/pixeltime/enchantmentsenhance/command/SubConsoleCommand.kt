@@ -16,43 +16,41 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command
 
-import org.bukkit.entity.Player;
 
-public abstract class SubCommand {
+import org.bukkit.command.CommandSender
+import org.pixeltime.enchantmentsenhance.manager.SettingsManager
+
+/**
+ * /<command> <subcommand> args[0] args[1]
+</subcommand></command> */
+abstract class SubConsoleCommand {
 
     /**
-     * /<command> <subcommand> args[0] args[1]
-     */
-    public SubCommand() {
-    }
-
-    /**
-     * Player oncommand.
+     * Console Command
      *
-     * @param player
+     * @param sender
      * @param args
      */
-    public abstract void onCommand(Player player, String[] args);
+    abstract fun onCommand(sender: CommandSender, args: Array<String>)
 
     /**
      * @return Command name.
      */
-    public abstract String name();
+    abstract fun name(): String
 
     /**
      * @return Command information.
      */
-    public abstract String info();
+    abstract fun usage(): String
 
     /**
      * @return Command aliases.
      */
-    public abstract String[] aliases();
+    abstract fun aliases(): Array<String>
 
-    /**
-     * @return Command permission.
-     */
-    public abstract String getPermission();
+    fun info(): String {
+        return "&b${usage()} ${SettingsManager.lang.getString("Help.${name()}")}"
+    }
 }

@@ -18,25 +18,23 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Factory : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "factory"))
+class Factory : EnchantmentListener() {
+
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
         val player = blockBreakEvent.player
-        val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+        val level = IM.getHighestLevel(player, this.name)
         if (level > 0) {
             this.autoBlock(player)
         }

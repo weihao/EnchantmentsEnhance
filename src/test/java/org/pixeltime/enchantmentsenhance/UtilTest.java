@@ -71,5 +71,8 @@ public class UtilTest {
         assertTrue(Util.rainbowlize(str).length() > 0);
     }
 
-
+    @Test
+    public void testGetClassName() {
+        assertEquals(this.getClass().getSimpleName(), "UtilTest");
+    }
 }

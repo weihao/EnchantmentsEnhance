@@ -18,24 +18,22 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.entity.Wolf
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Tamer : Listener {
+class Tamer : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "tamer"))
+
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity !is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             try {
-                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                val level = IM.getHighestLevel(player, this.name)
                 if (level > 0 && entityDamageByEntityEvent.entity is Wolf) {
                     entityDamageByEntityEvent.isCancelled = true
                     entityDamageByEntityEvent.damage = 0.0

@@ -20,11 +20,10 @@ package org.pixeltime.enchantmentsenhance.listener
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.stackmob.events.StackKilledEvent
 
-class StackMobHandler : Listener {
+class StackMobHandler : EnchantmentListener() {
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onDeath(e: StackKilledEvent) {
         if (getResult(e.numberKilled, DropManager.killingChance)) {

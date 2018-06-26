@@ -18,24 +18,22 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffectType
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Eyepatch : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "eyepatch"))
+class Eyepatch : EnchantmentListener() {
+
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onMove(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         if (player.hasPotionEffect(PotionEffectType.BLINDNESS)) {
             try {
-                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                val level = IM.getHighestLevel(player, this.name)
                 if (level > 0) {
                     player.removePotionEffect(PotionEffectType.BLINDNESS)
                 }

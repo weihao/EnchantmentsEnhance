@@ -144,4 +144,27 @@ public class Lore {
         Util.sendMessage(SettingsManager.lang.getString(
                 "Messages.alreadyunbound"), p);
     }
+
+
+    /**
+     * removes the lore of an enhanced item.
+     *
+     * @param is
+     */
+    public static void removeLore(ItemStack is) {
+        ItemMeta im = is.getItemMeta();
+        String x = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
+                SettingsManager.lang.getString("Lore.tradeableLore"));
+        String y = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
+                SettingsManager.lang.getString("Lore.untradeableLore"));
+        if ((is.hasItemMeta()) && (is.getItemMeta().hasLore())) {
+            List<String> loreList = is.getItemMeta().getLore();
+            if ((loreList.contains(x)) || (loreList.contains(y))) {
+                loreList.remove(x);
+                loreList.remove(y);
+            }
+            im.setLore(loreList);
+            is.setItemMeta(im);
+        }
+    }
 }

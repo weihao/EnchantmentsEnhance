@@ -18,23 +18,21 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockPlaceEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Farmer : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "farmer"))
+class Farmer : EnchantmentListener() {
+
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onPlace(blockPlaceEvent: BlockPlaceEvent) {
         val player = blockPlaceEvent.player
         try {
-            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            val level = IM.getHighestLevel(player, this.name)
             if (level > 0) {
                 if (player.itemInHand.type == Material.CARROT_ITEM) {
                     blockPlaceEvent.blockPlaced.setTypeIdAndData(Material.CARROT.id, 7.toByte(), true)

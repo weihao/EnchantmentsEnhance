@@ -18,22 +18,21 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Rekt : Listener {
+class Rekt : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.entity is Player) {
             return
         }
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "rekt"))
+
         if (entityDamageByEntityEvent.damager is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             if (entityDamageByEntityEvent.isCancelled) {
@@ -41,7 +40,7 @@ class Rekt : Listener {
             }
 
             try {
-                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                val level = IM.getHighestLevel(player, this.name)
                 if (level > 0) {
                     entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * SettingsManager.enchant.getDouble("rekt.$level.multiplier")
                 }

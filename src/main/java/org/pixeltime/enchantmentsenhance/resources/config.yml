@@ -41,12 +41,12 @@ enableEconomy: false
 # Set true to enable support for stacked mob drop. [Working In Progress]
 enableStackMob: false
 
-# Set true to enable some special enchantments that may or may not cause an issue on your server.
-enableEnchant:
+# add to disnable some special enchantments that may or may not cause an issue on your server.
+disabledEnchantments:
   # This will take control of player's fly permissions.
-  wing: false
+  - wing
   # This will use economic plugin.
-  thief: false
+  - thief
 
 #[Working In Progress]
 mysql:
@@ -230,7 +230,8 @@ accessory:
 
 # Vanilla Enchantments Reference: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
 # Custom Enchantments Reference: https://github.com/HealPotion/EnchantmentsEnhance/wiki/Enchantments-en
-# Each enhancement level can have unique but FIXED enchantments.
+# Set true to set unique but FIXED enchantments each enhancement level.
+resetEnchantments: true
 # It means everyone with same enhancement level and type of the item will have the same enchantments as well.
 enhance:
   0:
@@ -295,11 +296,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   2:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -324,11 +323,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   3:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -352,11 +349,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   4:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -380,11 +375,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   5:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -408,11 +401,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   6:
     baseChance: 100
     chanceIncreasePerFailstack: -1
@@ -436,11 +427,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   7:
     baseChance: 20
     chanceIncreasePerFailstack: 2.5
@@ -463,11 +452,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   8:
     baseChance: 17.5
     chanceIncreasePerFailstack: 2.0
@@ -490,11 +477,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   9:
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -517,11 +502,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   10:
     baseChance: 12.5
     chanceIncreasePerFailstack: 1.25
@@ -544,11 +527,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   11:
     baseChance: 10
     chanceIncreasePerFailstack: 0.75
@@ -571,11 +552,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   12:
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.63
@@ -598,11 +577,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   13:
     baseChance: 5
     chanceIncreasePerFailstack: 0.5
@@ -625,11 +602,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   14:
     baseChance: 2.5
     chanceIncreasePerFailstack: 0.5
@@ -652,11 +627,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   15:
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -679,11 +652,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   16:
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.75
@@ -706,11 +677,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   17:
     baseChance: 5.0
     chanceIncreasePerFailstack: 0.5
@@ -733,11 +702,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   18:
     baseChance: 2.0
     chanceIncreasePerFailstack: 0.25
@@ -760,11 +727,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   19:
     baseChance: 1.5
     chanceIncreasePerFailstack: 0.25
@@ -787,11 +752,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
   20:
     baseChance: -1
     chanceIncreasePerFailstack: -1
@@ -901,11 +864,9 @@ enhance:
       WEAPON:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
       ARMOR:
         - "&4&l&m                                  "
         - "&9&lThis is the default lore."
-        - ""
 
 # Reform an item grade. [Working In Progress]
 weaponGrade:

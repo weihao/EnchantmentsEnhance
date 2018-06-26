@@ -21,17 +21,16 @@ package org.pixeltime.enchantmentsenhance.event.enchantment
 import com.sk89q.worldguard.bukkit.WGBukkit
 import com.sk89q.worldguard.protection.flags.DefaultFlag
 import com.sk89q.worldguard.protection.flags.StateFlag
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Execute : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "execute"))
+class Execute : EnchantmentListener() {
+
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
@@ -41,11 +40,11 @@ class Execute : Listener {
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, *arrayOf(DefaultFlag.PVP)) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                val level = IM.getHighestLevel(player, this.name)
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("execute.$level.chance") && player.isSneaking) {
                     entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * SettingsManager.enchant.getDouble("execute.$level.multiplier")
                 }

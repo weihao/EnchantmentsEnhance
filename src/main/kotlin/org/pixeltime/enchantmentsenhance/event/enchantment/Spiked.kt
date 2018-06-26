@@ -21,19 +21,18 @@ package org.pixeltime.enchantmentsenhance.event.enchantment
 import com.sk89q.worldguard.bukkit.WGBukkit
 import com.sk89q.worldguard.protection.flags.DefaultFlag
 import com.sk89q.worldguard.protection.flags.StateFlag
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Spiked : Listener {
+class Spiked : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "spiked"))
+
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             val victim = entityDamageByEntityEvent.entity as Player
@@ -44,7 +43,7 @@ class Spiked : Listener {
                 return
             }
             try {
-                val level = IM.getHighestLevel(victim, translateAlternateColorCodes)
+                val level = IM.getHighestLevel(victim, this.name)
                 if (level > 0) {
                     player.damage(SettingsManager.enchant.getDouble("spiked.$level.damage"))
                 }

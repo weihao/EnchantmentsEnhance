@@ -18,31 +18,19 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Batvision : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "batvision"))
+class Batvision : EnchantmentListener() {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        try {
-            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
-            if (level > 0) {
-                player.addPotionEffect(PotionEffect(PotionEffectType.NIGHT_VISION, Int.MAX_VALUE, 0))
-            } else {
-                player.removePotionEffect(PotionEffectType.NIGHT_VISION)
-            }
-        } catch (ex: Exception) {
-        }
+        val level = IM.getHighestLevel(player, this.name)
+        permaPotion(player, PotionEffectType.NIGHT_VISION, 0)
     }
 }
-

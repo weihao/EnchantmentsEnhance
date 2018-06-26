@@ -26,7 +26,8 @@ class KM {
         @JvmStatic
         fun setUp() {
             MM.setup()
-            EM.setUp()
+
+            PackageManager.initializeAll()
         }
 
         @JvmStatic

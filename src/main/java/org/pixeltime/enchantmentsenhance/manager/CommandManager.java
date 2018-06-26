@@ -50,7 +50,6 @@ public class CommandManager implements CommandExecutor {
         this.commands.add(new HelpCommand());
         this.commands.add(new InventoryCommand());
         this.commands.add(new ListCommand());
-        this.commands.add(new LoreCommand());
         this.commands.add(new MenuCommand());
         this.commands.add(new ReloadCommand());
         this.commands.add(new SelectCommand());
@@ -227,12 +226,12 @@ public class CommandManager implements CommandExecutor {
      * @param sender
      */
     public void printHelp(CommandSender sender) {
-        String help = "&b&l&m          &d EnchantmentsEnhance&b&l&m          ";
+        StringBuilder help = new StringBuilder("&b&l&m          &d EnchantmentsEnhance&b&l&m          ");
         Iterator<SubConsoleCommand> subcommands = this.consoleCommands.iterator();
         while (subcommands.hasNext()) {
             SubConsoleCommand sc = subcommands.next();
-            help += sc.info();
+            help.append(sc.info());
         }
-        Util.sendMessage(help, sender);
+        Util.sendMessage(help.toString(), sender);
     }
 }

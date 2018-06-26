@@ -37,7 +37,7 @@
 //
 //
 //    @Override
-//    public String info() {
+//    public String usage() {
 //        return "&6/enhance reform &7- " + SettingsManager.lang.getString(
 //                "Help.reform");
 //    }

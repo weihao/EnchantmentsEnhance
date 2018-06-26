@@ -18,18 +18,16 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-private val translateAlternateColorCodes: String = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "aegis"))
 
-class Aegis : Listener {
+class Aegis : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun block(playerInteractEvent: PlayerInteractEvent) {
         val player = playerInteractEvent.player
@@ -37,7 +35,7 @@ class Aegis : Listener {
             return
         }
         try {
-            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            val level = IM.getHighestLevel(player, this.name)
             if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("aegis.$level.chance")) {
                 player.health += SettingsManager.enchant.getDouble("aegis.$level.health")
             }

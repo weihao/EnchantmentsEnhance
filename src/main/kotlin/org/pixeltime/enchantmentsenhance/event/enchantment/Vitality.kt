@@ -18,29 +18,19 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Vitality : Listener {
+class Vitality : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onPalyerWalk(playerMoveEvent: PlayerMoveEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "vitality"))
         val player = playerMoveEvent.player
-        try {
-            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
-            if (level > 0) {
-                player.addPotionEffect(PotionEffect(PotionEffectType.HEALTH_BOOST, Int.MAX_VALUE, SettingsManager.enchant.getInt("vitality.$level.potion_lvl") - 1))
-            } else {
-                player.removePotionEffect(PotionEffectType.HEALTH_BOOST)
-            }
-        } catch (ex: Exception) {
-        }
+        val level = IM.getHighestLevel(player, this.name)
+        permaPotion(player, PotionEffectType.HEALTH_BOOST, SettingsManager.enchant.getInt("vitality.$level.potion_lvl"))
     }
 }

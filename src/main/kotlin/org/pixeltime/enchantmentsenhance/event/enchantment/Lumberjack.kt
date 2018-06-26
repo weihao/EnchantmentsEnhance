@@ -18,19 +18,17 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.block.Block
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import java.util.*
 
-class Lumberjack : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "lumberjack"))
+class Lumberjack : EnchantmentListener() {
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
         if (blockBreakEvent.isCancelled) {
@@ -40,7 +38,7 @@ class Lumberjack : Listener {
 
 
         try {
-            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            val level = IM.getHighestLevel(player, this.name)
             if (level > 0 && blockBreakEvent.block.type == Material.LOG) {
                 val list = ArrayList<Material>()
                 list.add(Material.LOG)

@@ -16,19 +16,35 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.enums;
+package org.pixeltime.enchantmentsenhance.command.player
 
-public enum LangType {
-    EN_US(0), ZH_CN(1);
+import org.bukkit.entity.Player
+import org.pixeltime.enchantmentsenhance.command.SubCommand
+import org.pixeltime.enchantmentsenhance.command.console.VersionConsoleCommand
 
-    private int id;
+class VersionCommand : SubCommand() {
 
-    LangType(int id) {
-        this.id = id;
+
+    override val permission: String
+        get() = "Enchantmentsenhance.version"
+
+    override fun onCommand(player: Player, args: Array<String>) {
+        VersionConsoleCommand().onCommand(player, args)
     }
 
-    public int getId() {
-        return this.id;
+
+    override fun name(): String {
+        return "version"
+    }
+
+
+    override fun usage(): String {
+        return "/enhance version"
+    }
+
+
+    override fun aliases(): Array<String> {
+        return arrayOf("version", "ver", "banben", "bb")
     }
 
 }

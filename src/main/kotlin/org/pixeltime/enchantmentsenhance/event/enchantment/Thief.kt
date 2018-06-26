@@ -21,21 +21,20 @@ package org.pixeltime.enchantmentsenhance.event.enchantment
 import com.sk89q.worldguard.bukkit.WGBukkit
 import com.sk89q.worldguard.protection.flags.DefaultFlag
 import com.sk89q.worldguard.protection.flags.StateFlag
-import org.bukkit.ChatColor
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.DM
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Thief : Listener {
+class Thief : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "thief"))
+
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             val player2 = entityDamageByEntityEvent.entity as Player
@@ -46,7 +45,7 @@ class Thief : Listener {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                val level = IM.getHighestLevel(player, this.name)
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("thief.$level.chance")) {
                     val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DM.economy!!.getBalance(player2 as OfflinePlayer))
                     DM.economy!!.withdrawPlayer(player2 as OfflinePlayer, n2)

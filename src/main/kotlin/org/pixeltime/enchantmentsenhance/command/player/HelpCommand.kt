@@ -16,39 +16,35 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.command;
+package org.pixeltime.enchantmentsenhance.command.player
+
+import org.bukkit.entity.Player
+import org.pixeltime.enchantmentsenhance.Main
+import org.pixeltime.enchantmentsenhance.command.SubCommand
+
+class HelpCommand : SubCommand() {
 
 
-import org.bukkit.command.CommandSender;
+    override val permission: String
+        get() = "Enchantmentsenhance.enhance"
 
-public abstract class SubConsoleCommand {
-
-    /**
-     * /<command> <subcommand> args[0] args[1]
-     */
-    public SubConsoleCommand() {
+    override fun onCommand(player: Player, args: Array<String>) {
+        Main.getMain().commandManager.printHelp(player)
     }
 
-    /**
-     * Console Command
-     *
-     * @param sender
-     * @param args
-     */
-    public abstract void onCommand(CommandSender sender, String[] args);
 
-    /**
-     * @return Command name.
-     */
-    public abstract String name();
+    override fun name(): String {
+        return "help"
+    }
 
-    /**
-     * @return Command information.
-     */
-    public abstract String info();
 
-    /**
-     * @return Command aliases.
-     */
-    public abstract String[] aliases();
+    override fun usage(): String {
+        return "/enhance help"
+    }
+
+
+    override fun aliases(): Array<String> {
+        return arrayOf("help", "hl", "bangzhu", "bz")
+    }
+
 }

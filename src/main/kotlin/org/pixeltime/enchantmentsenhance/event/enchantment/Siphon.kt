@@ -21,17 +21,16 @@ package org.pixeltime.enchantmentsenhance.event.enchantment
 import com.sk89q.worldguard.bukkit.WGBukkit
 import com.sk89q.worldguard.protection.flags.DefaultFlag
 import com.sk89q.worldguard.protection.flags.StateFlag
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Siphon : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "siphon"))
+class Siphon : EnchantmentListener() {
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.damager is Player) {
@@ -46,7 +45,7 @@ class Siphon : Listener {
                 if (entityDamageByEntityEvent.entity is Player) {
                     return
                 }
-                val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+                val level = IM.getHighestLevel(player, this.name)
                 if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("siphon.$level.chance")) {
                     if (player.health + SettingsManager.enchant.getInt("siphon.$level.health") > 20.0) {
                         player.health = 20.0

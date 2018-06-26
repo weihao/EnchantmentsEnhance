@@ -16,8 +16,35 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.enums;
+package org.pixeltime.enchantmentsenhance.command.player
 
-public enum ItemType {
-    WEAPON, ARMOR, ACCESSORY, TOOL, INVALID
+import org.bukkit.entity.Player
+import org.pixeltime.enchantmentsenhance.command.SubCommand
+import org.pixeltime.enchantmentsenhance.gui.menu.BackpackMenu
+
+class InventoryCommand : SubCommand() {
+
+
+    override val permission: String
+        get() = "Enchantmentsenhance.enhance"
+
+    override fun onCommand(player: Player, args: Array<String>) {
+        BackpackMenu(player).open()
+    }
+
+
+    override fun name(): String {
+        return "inventory"
+    }
+
+
+    override fun usage(): String {
+        return "/enhance inventory"
+    }
+
+
+    override fun aliases(): Array<String> {
+        return arrayOf("inv", "inventory", "beibao", "b")
+    }
+
 }

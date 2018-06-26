@@ -49,11 +49,9 @@ public class ItemManager {
     public static ItemType getItemEnchantmentType(ItemStack item) {
         if (isValid(item, MM.weapon)) {
             return ItemType.WEAPON;
-        }
-        else if (isValid(item, MM.armor)) {
+        } else if (isValid(item, MM.armor)) {
             return ItemType.ARMOR;
-        }
-        else {
+        } else {
             return ItemType.INVALID;
         }
     }
@@ -101,6 +99,7 @@ public class ItemManager {
 
 
     public static void soulbound(ItemStack item) {
+        Lore.removeLore(item);
         Lore.addLore(item,
                 SettingsManager.lang.getString("Lore." + SettingsManager.config
                         .getString("lore.bound") + "Lore"), !SettingsManager.config
@@ -111,31 +110,31 @@ public class ItemManager {
         ItemStack currItem = setLevel(item, enchantLevel);
         // Getting Unique Name.
         List<String> oldLore = KM.stripLore(item);
+
         if (enchantLevel == 1) {
             currItem = setName(currItem, currItem.getItemMeta().getDisplayName());
         }
         // Unique ID applied.
         applyEnchantments(currItem);
         renameItem(currItem);
-        soulbound(currItem);
         addlore(currItem, oldLore);
+        soulbound(currItem);
         player.getInventory().removeItem(item);
         MainMenu.itemOnEnhancingSlot.put(player.getName(), currItem);
         player.getInventory().addItem(currItem);
     }
 
     private static void addlore(ItemStack currItem, List<String> old) {
-        if (old != null && old.size() > 0) {
-            ItemMeta im = currItem.getItemMeta();
-            List<String> lore = im.getLore();
-            List<String> addlore = (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore." + getItemEnchantmentType(currItem).toString());
-            for (String s : addlore) {
-                lore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', s));
-            }
-            lore.addAll(old);
-            im.setLore(lore);
-            currItem.setItemMeta(im);
+        ItemMeta im = currItem.getItemMeta();
+        List<String> lore = (old != null && old.size() > 0) ? old : new ArrayList<>();
+        List<String> newlore = im.getLore();
+        newlore.removeIf(e -> (!e.startsWith(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', "&7"))));
+        for (String s : (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore." + getItemEnchantmentType(currItem).toString())) {
+            lore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', s));
         }
+        newlore.addAll(lore);
+        im.setLore(newlore);
+        currItem.setItemMeta(im);
     }
 
     public static void applyEnchantments(ItemStack item) {
@@ -146,13 +145,15 @@ public class ItemManager {
             List<String> temp = SettingsManager.config.getStringList("enhance."
                     + enchantLevel + ".enchantments." + type.toString());
             //Clear All the enchantment before applying new enchantment
-            List<String> empty = new ArrayList<String>();
-            ItemMeta meta = item.getItemMeta();
-            meta.setLore(empty);
-            item.setItemMeta(meta);
+            if (SettingsManager.config.getBoolean("resetEnchantments")) {
+                List<String> empty = new ArrayList<String>();
+                ItemMeta meta = item.getItemMeta();
+                meta.setLore(empty);
+                item.setItemMeta(meta);
 
-            for (Enchantment ench : item.getEnchantments().keySet()) {
-                item.removeEnchantment(ench);
+                for (Enchantment ench : item.getEnchantments().keySet()) {
+                    item.removeEnchantment(ench);
+                }
             }
 
             //Adding New enchantment.
@@ -195,6 +196,13 @@ public class ItemManager {
         } else {
             String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
             if (enchantment != null) {
+                for (int i = 0; i < newlore.size(); i++) {
+                    String curr = ChatColor.stripColor(newlore.get(i));
+                    String currEnch = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', enchantment));
+                    if (curr.contains(currEnch)) {
+                        newlore.remove(i);
+                    }
+                }
                 // Unique ID
                 newlore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', enchantment + " " + Util.intToRoman(level)));
                 meta.setLore(newlore);

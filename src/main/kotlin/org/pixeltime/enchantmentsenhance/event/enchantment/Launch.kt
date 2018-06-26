@@ -18,18 +18,17 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.util.Vector
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Launch : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "launch"))
+class Launch : EnchantmentListener() {
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onEntityDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.entity is Player && entityDamageByEntityEvent.damager is Player) {
@@ -37,7 +36,7 @@ class Launch : Listener {
             val player2 = entityDamageByEntityEvent.damager as Player
 
             try {
-                val level = IM.getHighestLevel(player2, translateAlternateColorCodes)
+                val level = IM.getHighestLevel(player2, this.name)
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("launch.$level.chance")) {
                     player.velocity = Vector(0, SettingsManager.enchant.getInt("launch.$level.height"), 0)
                 }

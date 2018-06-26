@@ -18,29 +18,20 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Reinforced : Listener {
+class Reinforced : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onPalyerWalk(playerMoveEvent: PlayerMoveEvent) {
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "reinforced"))
+
         val player = playerMoveEvent.player
-        try {
-            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
-            if (level > 0) {
-                player.addPotionEffect(PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Int.MAX_VALUE, SettingsManager.enchant.getInt("reinforced.$level.potion_lvl") - 1))
-            } else {
-                player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE)
-            }
-        } catch (ex: Exception) {
-        }
+        val level = IM.getHighestLevel(player, this.name)
+        permaPotion(player, PotionEffectType.DAMAGE_RESISTANCE, SettingsManager.enchant.getInt("reinforced.$level.potion_lvl"))
     }
 }

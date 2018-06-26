@@ -18,29 +18,19 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Strength : Listener {
+class Strength : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "speed"))
-        try {
-            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
-            if (level > 0) {
-                player.addPotionEffect(PotionEffect(PotionEffectType.INCREASE_DAMAGE, Int.MAX_VALUE, SettingsManager.enchant.getInt("strength.$level.potion_lvl") - 1))
-            } else {
-                player.removePotionEffect(PotionEffectType.INCREASE_DAMAGE)
-            }
-        } catch (ex: Exception) {
-        }
+        val level = IM.getHighestLevel(player, this.name)
+        permaPotion(player, PotionEffectType.INCREASE_DAMAGE, SettingsManager.enchant.getInt("strength.$level.potion_lvl"))
     }
 }

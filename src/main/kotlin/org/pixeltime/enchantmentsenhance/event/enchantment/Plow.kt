@@ -19,25 +19,24 @@
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
 import com.sk89q.worldguard.bukkit.WGBukkit
-import org.bukkit.ChatColor
 import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Plow : Listener {
+class Plow : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onInteract(playerInteractEvent: PlayerInteractEvent) {
         if (playerInteractEvent.isCancelled) {
             return
         }
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "plow"))
+
         val player = playerInteractEvent.player
-        val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+        val level = IM.getHighestLevel(player, this.name)
         if (level > 0) {
             val clickedBlock = playerInteractEvent.clickedBlock
             if (clickedBlock.type != Material.DIRT && clickedBlock.type != Material.GRASS) {

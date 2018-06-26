@@ -18,30 +18,21 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Haste : Listener {
-    private val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "haste"))
+class Haste : EnchantmentListener() {
+
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        try {
-            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
-            if (level > 0) {
-                player.addPotionEffect(PotionEffect(PotionEffectType.FAST_DIGGING, Int.MAX_VALUE, SettingsManager.enchant.getInt("haste.$level.potion_lvl")))
-            } else {
-                player.removePotionEffect(PotionEffectType.FAST_DIGGING)
-            }
-        } catch (ex: Exception) {
-        }
+        val level = IM.getHighestLevel(player, this.name)
+        permaPotion(player, PotionEffectType.FAST_DIGGING, SettingsManager.enchant.getInt("haste.$level.potion_lvl"))
     }
 }

@@ -18,25 +18,24 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Sheep
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Shearer : Listener {
+class Shearer : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onInteract(playerInteractEvent: PlayerInteractEvent) {
         val player = playerInteractEvent.player
-        val translateAlternateColorCodes = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "shearer"))
+
         if (playerInteractEvent.action == Action.LEFT_CLICK_AIR) {
-            val level = IM.getHighestLevel(player, translateAlternateColorCodes)
+            val level = IM.getHighestLevel(player, this.name)
             if (level > 0) {
                 val int1 = SettingsManager.enchant.getInt("shearer.$level.radius")
                 for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {

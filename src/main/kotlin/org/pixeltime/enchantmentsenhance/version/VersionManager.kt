@@ -19,16 +19,15 @@
 package org.pixeltime.enchantmentsenhance.version
 
 import org.bukkit.ChatColor
-import org.bukkit.event.Listener
 import org.pixeltime.enchantmentsenhance.Main
-
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-class VersionManager : Listener {
+class VersionManager : EnchantmentListener() {
     companion object {
         @JvmStatic
         fun versionChecker() {
