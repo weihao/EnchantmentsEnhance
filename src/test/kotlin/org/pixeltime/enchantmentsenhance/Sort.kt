@@ -22,6 +22,5 @@ class Sort : TestCase() {
             sc.close()
         } catch (ex: Exception) {
         }
-
     }
 }

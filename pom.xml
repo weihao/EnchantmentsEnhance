@@ -34,7 +34,7 @@
     </issueManagement>
 
     <properties>
-        <kotlin.version>1.2.50</kotlin.version>
+        <kotlin.version>1.2.51</kotlin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -125,7 +125,7 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-runtime</artifactId>
-            <version>1.2.41</version>
+            <version>${kotlin.version}</version>
         </dependency>
         <dependency>
             <groupId>uk.antiperson.stackmob</groupId>
@@ -134,7 +134,11 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/jar/StackMob-2.2.10-SNAPSHOT.jar</systemPath>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

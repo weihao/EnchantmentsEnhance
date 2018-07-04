@@ -19,9 +19,12 @@
 package org.pixeltime.enchantmentsenhance;
 
 
+import com.google.common.hash.Hashing;
 import org.junit.Before;
 import org.junit.Test;
 import org.pixeltime.enchantmentsenhance.util.Util;
+
+import java.nio.charset.StandardCharsets;
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -74,5 +77,11 @@ public class UtilTest {
     @Test
     public void testGetClassName() {
         assertEquals(this.getClass().getSimpleName(), "UtilTest");
+    }
+
+    @Test
+    public void testHashing() {
+        String sha256hex = Hashing.sha256().hashString("hi", StandardCharsets.UTF_8).toString().toUpperCase();
+        assertEquals(64, sha256hex.length());
     }
 }

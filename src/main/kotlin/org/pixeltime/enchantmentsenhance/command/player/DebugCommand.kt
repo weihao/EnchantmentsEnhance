@@ -27,9 +27,8 @@ import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.util.Util
 
+
 class DebugCommand : SubCommand() {
-
-
     override val permission: String
         get() = "Enchantmentsenhance.debug"
 

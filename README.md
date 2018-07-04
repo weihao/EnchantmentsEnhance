@@ -10,13 +10,13 @@
 [![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/pulls)
 [![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
 
-# [<img src=".images/jenkins.png" alt="Download" align="left">](http://soulbound.me:8080/)
-[![Jenkins](https://img.shields.io/badge/download-server_online-28B463.svg?style=flat)](http://soulbound.me:8080)
+# [<img src=".images/jenkins.png" alt="Download" align="left">](http://soulbound.me:8080/job/EnchantmentsEnhance/)
+[![Jenkins](https://img.shields.io/badge/download-server_online-28B463.svg?style=flat)](http://soulbound.me:8080/job/EnchantmentsEnhance/)
 [![Jenkins Build Status](http://soulbound.me:8080/job/EnchantmentsEnhance/badge/icon)](http://soulbound.me:8080/job/EnchantmentsEnhance/)
 
 ## Life Cycle
 ###### Alpha (1.0 - 4.0)
-##### Beta (4.0.1 - [latest](http://www.soulbound.me:8080/job/EnchantmentsEnhance/)[[pom](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml)])
+##### Beta (4.0.1 - [latest](http://www.soulbound.me:8080/job/EnchantmentsEnhance/) - [pom](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml))
 This plugin is under active development at the stage of beta phase.
 Completion of the plugin is currently projected at 35%, meaning the general functionality and availability are incomplete.
 
@@ -60,6 +60,3 @@ mvn clean install
 ```
 
 You can find the output file in the `target` directory of the corresponding module.
-
-## Problems
-Please use: https://github.com/25/EnchantmentsEnhance/issues
