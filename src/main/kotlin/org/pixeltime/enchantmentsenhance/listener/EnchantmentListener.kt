@@ -5,6 +5,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.pixeltime.enchantmentsenhance.locale.LM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 abstract class EnchantmentListener : Listener {
@@ -28,4 +29,10 @@ abstract class EnchantmentListener : Listener {
             removePermaPotion(player, type)
         }
     }
+
+    fun addLang() {
+        LM.addLang("enchantments.${this.javaClass.simpleName}", arrayOf(this.javaClass.simpleName) + lang())
+    }
+
+    abstract fun lang(): Array<String>
 }

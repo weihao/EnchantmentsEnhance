@@ -127,7 +127,7 @@ public class ItemManager {
     private static void addlore(ItemStack currItem, List<String> old) {
         ItemMeta im = currItem.getItemMeta();
         List<String> lore = (old != null && old.size() > 0) ? old : new ArrayList<>();
-        List<String> newlore = im.getLore();
+        List<String> newlore = im.hasLore() ? im.getLore() : new ArrayList<>();
         newlore.removeIf(e -> (!e.startsWith(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', "&7"))));
         for (String s : (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore." + getItemEnchantmentType(currItem).toString())) {
             lore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', s));
