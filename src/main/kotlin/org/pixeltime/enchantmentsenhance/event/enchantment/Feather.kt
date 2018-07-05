@@ -26,13 +26,16 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Feather : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("羽落")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageEvent: EntityDamageEvent) {
         if (entityDamageEvent.entity is Player) {
             val player = entityDamageEvent.entity as Player
             if (entityDamageEvent.cause == EntityDamageEvent.DamageCause.FALL) {
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0) {
                     entityDamageEvent.isCancelled = true
                 }

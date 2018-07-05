@@ -30,6 +30,9 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Flame : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("燃烧")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
@@ -43,7 +46,7 @@ class Flame : EnchantmentListener() {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                     return
                 }
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("flame.$level.chance")) {
                     player.fireTicks = SettingsManager.enchant.getInt("flame.$level.duration") * 20
                 }

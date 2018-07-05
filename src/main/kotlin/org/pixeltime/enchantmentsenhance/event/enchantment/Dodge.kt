@@ -27,12 +27,15 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Dodge : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("闪避")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageEvent: EntityDamageEvent) {
         if (entityDamageEvent.entity is Player) {
             val player = entityDamageEvent.entity as Player
-            val level = IM.getHighestLevel(player, this.name)
+            val level = IM.getHighestLevel(player, this.name())
             if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("dodge.$level.chance")) {
                 entityDamageEvent.damage = 0.0
             }

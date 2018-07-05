@@ -31,6 +31,9 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Holy_Smite : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("圣水")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
@@ -46,7 +49,7 @@ class Holy_Smite : EnchantmentListener() {
             }
 
             try {
-                val level = IM.getHighestLevel(player2, this.name)
+                val level = IM.getHighestLevel(player2, this.name())
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("holy_smite.$level.chance")) {
                     player.world.strikeLightningEffect(player.location)
                     val iterator = player.activePotionEffects.iterator()

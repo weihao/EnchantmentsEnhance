@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Reversal : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("倒转")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
 
@@ -43,7 +47,7 @@ class Reversal : EnchantmentListener() {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("reversal.$level.chance")) {
                     player2.damage(entityDamageByEntityEvent.damage)
                     entityDamageByEntityEvent.damage = 0.0

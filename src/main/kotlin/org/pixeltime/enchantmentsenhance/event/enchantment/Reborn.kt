@@ -29,6 +29,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Reborn : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("重生")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDeath(playerDeathEvent: PlayerDeathEvent) {
 
@@ -36,7 +40,7 @@ class Reborn : EnchantmentListener() {
         if (entity.killer is Player) {
             val player = entity.killer
             try {
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0) {
                     player.addPotionEffect(PotionEffect(PotionEffectType.ABSORPTION, SettingsManager.enchant.getInt("reborn.$level.absorption.duration") * 20, SettingsManager.enchant.getInt("reborn.$level.absorption.potion_lvl") - 1))
                     player.addPotionEffect(PotionEffect(PotionEffectType.REGENERATION, SettingsManager.enchant.getInt("reborn.$level.regeneration.duration") * 20, SettingsManager.enchant.getInt("reborn.$level.regeneration.potion_lvl") - 1))

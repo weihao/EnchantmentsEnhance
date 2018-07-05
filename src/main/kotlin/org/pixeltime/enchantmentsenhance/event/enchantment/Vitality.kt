@@ -27,10 +27,14 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Vitality : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("元气")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onPalyerWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val level = IM.getHighestLevel(player, this.name)
+        val level = IM.getHighestLevel(player, this.name())
         permaPotion(player, PotionEffectType.HEALTH_BOOST, SettingsManager.enchant.getInt("vitality.$level.potion_lvl"))
     }
 }

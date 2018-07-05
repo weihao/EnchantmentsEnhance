@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import java.util.*
 
 class Smelt : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("冶炼")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
         if (blockBreakEvent.isCancelled) {
@@ -37,7 +41,7 @@ class Smelt : EnchantmentListener() {
         }
         val player = blockBreakEvent.player
 
-        val level = IM.getHighestLevel(player, this.name)
+        val level = IM.getHighestLevel(player, this.name())
         if (level > 0) {
             val block = blockBreakEvent.block
             val calculateFortune = this.calculateFortune(player, block.type)

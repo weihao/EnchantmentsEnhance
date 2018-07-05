@@ -30,6 +30,9 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Crushing : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("粉碎")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
@@ -43,7 +46,7 @@ class Crushing : EnchantmentListener() {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                     return
                 }
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("crushing.$level.chance")) {
                     entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * 2.0
                 }

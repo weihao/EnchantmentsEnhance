@@ -26,12 +26,15 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Wing : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("羽翼")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
 
-        val level = IM.getHighestLevel(player, this.name)
+        val level = IM.getHighestLevel(player, this.name())
         player.allowFlight = level > 0 || player.hasPermission("essentials.fly") || player.gameMode == GameMode.CREATIVE
     }
 }

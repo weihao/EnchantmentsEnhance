@@ -18,12 +18,12 @@ public class StoneIcon extends Clickable {
     }
 
     public ItemStack getItem(int stoneId) {
-        return new ItemBuilder(MM.stoneTypes.get(stoneId)).setName(Util.toColor(
-                SettingsManager.lang.getString("Item." + stoneId))).toItemStack();
+        return new ItemBuilder(MM.stoneTypes.get(stoneId), (0)).setName(SettingsManager.lang.getString("Item." + stoneId)).addLoreLine(BackpackIcon.getOneStoneCountAsString(null, stoneId)).toItemStack();
     }
 
     public ItemStack getItem(ItemStack item, Player player) {
-        return getItem(Enhance.getStoneId(item, ItemManager.getItemEnchantLevel(item)), player);
+        int stoneId = Enhance.getStoneId(item, ItemManager.getItemEnchantLevel(item));
+        return getItem(stoneId, player);
     }
 
     @Override

@@ -27,12 +27,15 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Cure : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("灵药")
+    }
 
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val level = IM.getHighestLevel(player, this.name)
+        val level = IM.getHighestLevel(player, this.name())
         permaPotion(player, PotionEffectType.REGENERATION, SettingsManager.enchant.getInt("cure.$level.potion_lvl"))
     }
 }

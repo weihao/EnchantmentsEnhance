@@ -28,6 +28,9 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Launch : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("弹射")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onEntityDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
@@ -36,7 +39,7 @@ class Launch : EnchantmentListener() {
             val player2 = entityDamageByEntityEvent.damager as Player
 
             try {
-                val level = IM.getHighestLevel(player2, this.name)
+                val level = IM.getHighestLevel(player2, this.name())
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("launch.$level.chance")) {
                     player.velocity = Vector(0, SettingsManager.enchant.getInt("launch.$level.height"), 0)
                 }

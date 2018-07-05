@@ -32,6 +32,9 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Assassin : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("暗杀")
+    }
 
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
@@ -46,7 +49,7 @@ class Assassin : EnchantmentListener() {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("assassin.$level.chance")) {
                     player2.addPotionEffect(PotionEffect(PotionEffectType.POISON, SettingsManager.enchant.getInt("assassin.$level.duration") * 20, 0))
                 }

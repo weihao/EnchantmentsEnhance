@@ -29,12 +29,15 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Factory : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("工厂")
+    }
 
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
         val player = blockBreakEvent.player
-        val level = IM.getHighestLevel(player, this.name)
+        val level = IM.getHighestLevel(player, this.name())
         if (level > 0) {
             this.autoBlock(player)
         }

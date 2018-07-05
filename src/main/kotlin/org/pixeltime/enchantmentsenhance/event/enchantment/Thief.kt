@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Thief : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("盗窃")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
 
@@ -45,7 +49,7 @@ class Thief : EnchantmentListener() {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("thief.$level.chance")) {
                     val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DM.economy!!.getBalance(player2 as OfflinePlayer))
                     DM.economy!!.withdrawPlayer(player2 as OfflinePlayer, n2)

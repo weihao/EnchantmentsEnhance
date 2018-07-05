@@ -11,7 +11,10 @@ public class PackageManager {
             if (EnchantmentListener.class.isAssignableFrom(enchClass) && !SettingsManager.config.getStringList("disabledEnchantments").contains(enchClass.getSimpleName())) {
                 try {
                     EnchantmentListener enchantmentListener = (EnchantmentListener) enchClass.newInstance();
+                    enchantmentListener.addLang();
                     Bukkit.getPluginManager().registerEvents(enchantmentListener, Main.getMain());
+                    SettingsManager.lang.options().copyDefaults(true);
+                    SettingsManager.saveLang();
                 } catch (InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }

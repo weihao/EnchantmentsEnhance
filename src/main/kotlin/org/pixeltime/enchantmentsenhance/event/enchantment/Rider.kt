@@ -29,6 +29,9 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Rider : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("骑御")
+    }
 
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
@@ -36,7 +39,7 @@ class Rider : EnchantmentListener() {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity !is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             try {
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0 && entityDamageByEntityEvent.entity is Horse) {
                     entityDamageByEntityEvent.isCancelled = true
                     entityDamageByEntityEvent.damage = 0.0

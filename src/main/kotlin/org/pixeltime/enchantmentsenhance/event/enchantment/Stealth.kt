@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Stealth : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("潜伏")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onSneak(playerToggleSneakEvent: PlayerToggleSneakEvent) {
         val player = playerToggleSneakEvent.player
@@ -41,7 +45,7 @@ class Stealth : EnchantmentListener() {
         }
 
         try {
-            val level = IM.getHighestLevel(player, this.name)
+            val level = IM.getHighestLevel(player, this.name())
             if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("stealth.$level.chance")) {
                 val int1 = SettingsManager.enchant.getInt("stealth.$level.radius")
                 for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {

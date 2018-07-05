@@ -26,13 +26,16 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Blessed : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("祝福")
+    }
 
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onMove(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         try {
-            val level = IM.getHighestLevel(player, this.name)
+            val level = IM.getHighestLevel(player, this.name())
             val n = (Math.random() * 100.0).toInt()
             if (level > 0 && n < SettingsManager.enchant.getInt("blessed.$level.chance")) {
                 player.health = player.maxHealth

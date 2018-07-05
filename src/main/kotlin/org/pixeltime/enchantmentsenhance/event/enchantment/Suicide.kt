@@ -26,13 +26,17 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Suicide : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("帝陨")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDeath(playerDeathEvent: PlayerDeathEvent) {
         val player = playerDeathEvent.entity
 
 
         try {
-            val level = IM.getHighestLevel(player, this.name)
+            val level = IM.getHighestLevel(player, this.name())
             if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("suicide.$level.chance")) {
                 player.world.createExplosion(player.location, SettingsManager.enchant.getInt("suicide.$level.power").toFloat())
             }

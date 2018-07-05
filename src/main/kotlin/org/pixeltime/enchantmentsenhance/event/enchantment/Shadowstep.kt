@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Shadowstep : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("暗影步")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.entity is Player && entityDamageByEntityEvent.damager is Player) {
@@ -43,7 +47,7 @@ class Shadowstep : EnchantmentListener() {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("shadowstep.$level.chance")) {
                     player.teleport(player2.location.add(player2.location.direction.multiply(SettingsManager.enchant.getInt("shadowstep.$level.distance") * -1.0)))
                 }

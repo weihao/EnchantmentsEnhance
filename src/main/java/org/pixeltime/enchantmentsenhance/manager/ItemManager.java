@@ -204,7 +204,7 @@ public class ItemManager {
                     }
                 }
                 // Unique ID
-                newlore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', enchantment + " " + Util.intToRoman(level)));
+                newlore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', "&7" + enchantment + " " + Util.intToRoman(level)));
                 meta.setLore(newlore);
                 item.setItemMeta(meta);
                 if (item.getEnchantments().isEmpty()) {

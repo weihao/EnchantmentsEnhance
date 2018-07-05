@@ -26,6 +26,10 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Riftslayer : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("溅射")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
 
@@ -36,7 +40,7 @@ class Riftslayer : EnchantmentListener() {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0) {
                     entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * 3.0
                 }

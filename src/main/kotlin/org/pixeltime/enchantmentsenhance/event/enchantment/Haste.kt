@@ -27,12 +27,15 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Haste : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("急迫")
+    }
 
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val level = IM.getHighestLevel(player, this.name)
+        val level = IM.getHighestLevel(player, this.name())
         permaPotion(player, PotionEffectType.FAST_DIGGING, SettingsManager.enchant.getInt("haste.$level.potion_lvl"))
     }
 }

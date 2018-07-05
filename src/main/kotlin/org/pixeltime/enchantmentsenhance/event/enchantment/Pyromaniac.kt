@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Pyromaniac : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("火焰")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageEvent: EntityDamageEvent) {
         if (entityDamageEvent.entity is Player) {
@@ -34,7 +38,7 @@ class Pyromaniac : EnchantmentListener() {
             val player = entityDamageEvent.entity as Player
             if (entityDamageEvent.cause == EntityDamageEvent.DamageCause.FIRE || entityDamageEvent.cause == EntityDamageEvent.DamageCause.FIRE_TICK) {
                 try {
-                    val level = IM.getHighestLevel(player, this.name)
+                    val level = IM.getHighestLevel(player, this.name())
                     if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("pyromaniac.$level.chance")) {
                         player.health = 20.0
                         player.foodLevel = 20

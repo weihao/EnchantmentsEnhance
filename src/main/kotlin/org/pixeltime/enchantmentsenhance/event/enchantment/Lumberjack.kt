@@ -28,6 +28,9 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import java.util.*
 
 class Lumberjack : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("伐木")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
@@ -38,7 +41,7 @@ class Lumberjack : EnchantmentListener() {
 
 
         try {
-            val level = IM.getHighestLevel(player, this.name)
+            val level = IM.getHighestLevel(player, this.name())
             if (level > 0 && blockBreakEvent.block.type == Material.LOG) {
                 val list = ArrayList<Material>()
                 list.add(Material.LOG)

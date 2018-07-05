@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Mischief : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("戏耍")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
 
@@ -46,7 +50,7 @@ class Mischief : EnchantmentListener() {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("mischief.$level.chance")) {
                     player2.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, SettingsManager.enchant.getInt("mischief.$level.duration") * 20, SettingsManager.enchant.getInt("mischief.$level.potion_lvl") - 1))
                 }

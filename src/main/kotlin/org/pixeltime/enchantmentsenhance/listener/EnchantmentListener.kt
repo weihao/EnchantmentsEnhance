@@ -9,7 +9,10 @@ import org.pixeltime.enchantmentsenhance.locale.LM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 abstract class EnchantmentListener : Listener {
-    val name: String = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + this.javaClass.simpleName.toLowerCase()))
+    fun name(): String {
+        return ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + this.javaClass.simpleName.toLowerCase()))
+    }
+
     fun addPermaPotion(player: Player, type: PotionEffectType, level: Int) {
         player.addPotionEffect(PotionEffect(type, Int.MAX_VALUE, level - 1))
     }
@@ -31,7 +34,7 @@ abstract class EnchantmentListener : Listener {
     }
 
     fun addLang() {
-        LM.addLang("enchantments.${this.javaClass.simpleName}", arrayOf(this.javaClass.simpleName) + lang())
+        LM.addLang("enchantments.${this.javaClass.simpleName.toLowerCase()}", arrayOf(this.javaClass.simpleName) + lang())
     }
 
     abstract fun lang(): Array<String>

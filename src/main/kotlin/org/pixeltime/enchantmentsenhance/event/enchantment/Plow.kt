@@ -29,6 +29,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Plow : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("耕种")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onInteract(playerInteractEvent: PlayerInteractEvent) {
         if (playerInteractEvent.isCancelled) {
@@ -36,7 +40,7 @@ class Plow : EnchantmentListener() {
         }
 
         val player = playerInteractEvent.player
-        val level = IM.getHighestLevel(player, this.name)
+        val level = IM.getHighestLevel(player, this.name())
         if (level > 0) {
             val clickedBlock = playerInteractEvent.clickedBlock
             if (clickedBlock.type != Material.DIRT && clickedBlock.type != Material.GRASS) {

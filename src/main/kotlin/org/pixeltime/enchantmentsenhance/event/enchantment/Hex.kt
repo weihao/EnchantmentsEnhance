@@ -32,6 +32,9 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Hex : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("巫术")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
@@ -46,7 +49,7 @@ class Hex : EnchantmentListener() {
             }
 
             try {
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0) {
                     if ((Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("hex.$level.chance")) {
                         player2.addPotionEffect(PotionEffect(PotionEffectType.BLINDNESS, SettingsManager.enchant.getInt("hex.$level.duration") * 20, 0))

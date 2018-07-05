@@ -27,11 +27,15 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Reinforced : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("钢筋")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onPalyerWalk(playerMoveEvent: PlayerMoveEvent) {
 
         val player = playerMoveEvent.player
-        val level = IM.getHighestLevel(player, this.name)
+        val level = IM.getHighestLevel(player, this.name())
         permaPotion(player, PotionEffectType.DAMAGE_RESISTANCE, SettingsManager.enchant.getInt("reinforced.$level.potion_lvl"))
     }
 }

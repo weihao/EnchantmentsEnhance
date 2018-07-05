@@ -26,6 +26,9 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Eyepatch : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("天眼")
+    }
 
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
@@ -33,7 +36,7 @@ class Eyepatch : EnchantmentListener() {
         val player = playerMoveEvent.player
         if (player.hasPotionEffect(PotionEffectType.BLINDNESS)) {
             try {
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if (level > 0) {
                     player.removePotionEffect(PotionEffectType.BLINDNESS)
                 }

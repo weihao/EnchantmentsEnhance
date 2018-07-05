@@ -27,11 +27,14 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Jump : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("跳跃")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val level = IM.getHighestLevel(player, this.name)
+        val level = IM.getHighestLevel(player, this.name())
         permaPotion(player, PotionEffectType.JUMP, SettingsManager.enchant.getInt("jump.$level.potion_lvl"))
     }
 }

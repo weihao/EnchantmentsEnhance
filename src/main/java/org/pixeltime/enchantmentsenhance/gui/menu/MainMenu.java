@@ -54,7 +54,7 @@ public class MainMenu extends GUIAbstract {
             setItem(enhance.getPosition(), enhance.getItem(itemOnEnhancingSlot.get(playerName)), () ->
                     Enhance.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
 
-            setItem(stone.getPosition(), stone.getItem(itemOnEnhancingSlot.get(playerName), player));
+
             if (DataManager.maximumFailstackApplied[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName))] != -1
                     && DataManager.costToForceEnchant[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName))] != -1) {
                 setItem(force.getPosition(), force.getItem(itemOnEnhancingSlot.get(playerName)), () ->
@@ -65,6 +65,8 @@ public class MainMenu extends GUIAbstract {
                     itemOnEnhancingSlot.remove(playerName));
 
             setItem(stats.getPosition(), stats.getItem(playerName));
+
+            setItem(stone.getPosition(), stone.getItem(itemOnEnhancingSlot.get(playerName), player));
 
         } else {
             setItem(Util.getSlot(8, 4), new ItemStack(Material.AIR));
@@ -102,6 +104,8 @@ public class MainMenu extends GUIAbstract {
         for (int i : MenuCoord.getPlaceHolderCoords()) {
             setItem(i, new ItemBuilder(Material.STAINED_GLASS_PANE).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack());
         }
+
+
     }
 
 }

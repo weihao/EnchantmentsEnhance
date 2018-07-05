@@ -32,6 +32,9 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Corruption : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("腐败")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
@@ -45,7 +48,7 @@ class Corruption : EnchantmentListener() {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                     return
                 }
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if ((level > 0) && ((Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("corruption.$level.chance"))) {
                     player2.addPotionEffect(PotionEffect(PotionEffectType.WEAKNESS, SettingsManager.enchant.getInt("corruption.$level.duration") * 20, SettingsManager.enchant.getInt("corruption.$level.potion_lvl") - 1))
                 }

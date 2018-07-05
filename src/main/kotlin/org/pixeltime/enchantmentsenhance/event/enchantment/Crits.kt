@@ -11,13 +11,16 @@ import org.pixeltime.enchantmentsenhance.util.Sounds
 
 
 class Crits : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("暴击")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             val player2 = entityDamageByEntityEvent.entity as Player
-            val level = IM.getHighestLevel(player, this.name)
+            val level = IM.getHighestLevel(player, this.name())
             if (level > 0) {
                 val damage = entityDamageByEntityEvent.damage * 2.0
                 val currentHealth = (player2 as Damageable).health

@@ -32,6 +32,9 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Curse : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("诅咒")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
@@ -44,7 +47,7 @@ class Curse : EnchantmentListener() {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                     return
                 }
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("curse.$level.chance")) {
                     player.addPotionEffect(PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("curse.$level.duration") * 20, SettingsManager.enchant.getInt("curse.$level.potion_lvl") - 1))
                 }

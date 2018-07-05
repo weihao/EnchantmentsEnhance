@@ -30,6 +30,9 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Divine : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("神圣")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
@@ -42,7 +45,7 @@ class Divine : EnchantmentListener() {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                     return
                 }
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("divine.$level.chance")) {
                     if (player.health + entityDamageByEntityEvent.damage > 20.0) {
                         player.health = 20.0

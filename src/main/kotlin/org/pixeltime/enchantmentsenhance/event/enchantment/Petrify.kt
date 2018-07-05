@@ -29,6 +29,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Petrify : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("石化")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onHit(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
 
@@ -39,7 +43,7 @@ class Petrify : EnchantmentListener() {
                 return
             }
             try {
-                val level = IM.getHighestLevel(player2, this.name)
+                val level = IM.getHighestLevel(player2, this.name())
                 if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("petrify.$level.chance")) {
                     player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, SettingsManager.enchant.getInt("petrify.$level.duration") * 20, SettingsManager.enchant.getInt("petrify.$level.potion_lvl") - 1))
 

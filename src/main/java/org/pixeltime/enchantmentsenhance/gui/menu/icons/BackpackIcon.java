@@ -13,10 +13,10 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 public class BackpackIcon extends Clickable {
 
     public static String getOneStoneCountAsString(Player player, int stoneId) {
-        int[] inv = Backpack.getPlayer(player);
+        int count = player == null ? 0 : Backpack.getPlayer(player)[stoneId];
         return (SettingsManager.lang.getString("Item.listing").replaceAll(
                 "%ITEM%", SettingsManager.lang.getString("Item." + stoneId))
-                .replaceAll("%COUNT%", Integer.toString(inv[stoneId])));
+                .replaceAll("%COUNT%", String.valueOf(count)));
     }
 
     public static int getOneStoneCountAsInt(Player player, int stoneId) {

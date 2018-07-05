@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Spiked : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("尖刺")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
 
@@ -43,7 +47,7 @@ class Spiked : EnchantmentListener() {
                 return
             }
             try {
-                val level = IM.getHighestLevel(victim, this.name)
+                val level = IM.getHighestLevel(victim, this.name())
                 if (level > 0) {
                     player.damage(SettingsManager.enchant.getDouble("spiked.$level.damage"))
                 }

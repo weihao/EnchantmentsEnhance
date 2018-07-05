@@ -30,6 +30,9 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Siphon : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("虹吸")
+    }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
@@ -45,7 +48,7 @@ class Siphon : EnchantmentListener() {
                 if (entityDamageByEntityEvent.entity is Player) {
                     return
                 }
-                val level = IM.getHighestLevel(player, this.name)
+                val level = IM.getHighestLevel(player, this.name())
                 if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("siphon.$level.chance")) {
                     if (player.health + SettingsManager.enchant.getInt("siphon.$level.health") > 20.0) {
                         player.health = 20.0

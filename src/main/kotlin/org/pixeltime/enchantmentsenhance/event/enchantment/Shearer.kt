@@ -30,12 +30,16 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Shearer : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("剪裁")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onInteract(playerInteractEvent: PlayerInteractEvent) {
         val player = playerInteractEvent.player
 
         if (playerInteractEvent.action == Action.LEFT_CLICK_AIR) {
-            val level = IM.getHighestLevel(player, this.name)
+            val level = IM.getHighestLevel(player, this.name())
             if (level > 0) {
                 val int1 = SettingsManager.enchant.getInt("shearer.$level.radius")
                 for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {

@@ -26,13 +26,16 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Farmer : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("农场")
+    }
 
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onPlace(blockPlaceEvent: BlockPlaceEvent) {
         val player = blockPlaceEvent.player
         try {
-            val level = IM.getHighestLevel(player, this.name)
+            val level = IM.getHighestLevel(player, this.name())
             if (level > 0) {
                 if (player.itemInHand.type == Material.CARROT_ITEM) {
                     blockPlaceEvent.blockPlaced.setTypeIdAndData(Material.CARROT.id, 7.toByte(), true)

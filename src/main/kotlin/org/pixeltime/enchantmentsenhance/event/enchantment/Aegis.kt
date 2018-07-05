@@ -28,6 +28,10 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 
 class Aegis : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("庇护")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun block(playerInteractEvent: PlayerInteractEvent) {
         val player = playerInteractEvent.player
@@ -35,7 +39,7 @@ class Aegis : EnchantmentListener() {
             return
         }
         try {
-            val level = IM.getHighestLevel(player, this.name)
+            val level = IM.getHighestLevel(player, this.name())
             if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("aegis.$level.chance")) {
                 player.health += SettingsManager.enchant.getDouble("aegis.$level.health")
             }

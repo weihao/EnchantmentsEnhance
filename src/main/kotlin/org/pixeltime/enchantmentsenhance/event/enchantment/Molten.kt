@@ -27,10 +27,14 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Molten : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("炉融")
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val level = IM.getHighestLevel(player, this.name)
+        val level = IM.getHighestLevel(player, this.name())
         permaPotion(player, PotionEffectType.FIRE_RESISTANCE, SettingsManager.enchant.getInt("molten.$level.potion_lvl"))
     }
 }

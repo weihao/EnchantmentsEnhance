@@ -24,6 +24,10 @@ import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.stackmob.events.StackKilledEvent
 
 class StackMobHandler : EnchantmentListener() {
+    override fun lang(): Array<String> {
+        return arrayOf("")
+    }
+
     @EventHandler(priority = EventPriority.HIGHEST)
     fun onDeath(e: StackKilledEvent) {
         if (getResult(e.numberKilled, DropManager.killingChance)) {

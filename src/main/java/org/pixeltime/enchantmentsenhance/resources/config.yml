@@ -267,10 +267,7 @@ enhance:
         - "Placeholder"
     enchantments:
       WEAPON:
-        # Enchantments are not case sensitive.
-        # As long as you put it in this format
-        # - name:level
-        # - lIfEStEAL:1
+        # - DAMAGE_ALL:1
       ARMOR:
         # - PROTECTION_ENVIRONMENTAL:1
   1:
@@ -315,8 +312,7 @@ enhance:
     enchantments:
       WEAPON:
          - DAMAGE_ALL:2
-         - KILL_CONFIRM:1
-         - ASSASSIN:1
+         - ASSASSIN:2
       ARMOR:
          - PROTECTION_ENVIRONMENTAL:2
     lore:
