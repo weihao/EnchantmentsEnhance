@@ -23,6 +23,10 @@ public class BackpackIcon extends Clickable {
         return Backpack.getPlayer(player)[stoneId];
     }
 
+    public static int getOneStoneCountAsCount(Player player, int stoneId) {
+        return (Backpack.getPlayer(player)[stoneId] <= 0) ? 1 : Backpack.getPlayer(player)[stoneId];
+    }
+
     @Override
     public ItemStack getItem() {
         return CompatibilityManager.glow.addGlow(new ItemBuilder(Material.STORAGE_MINECART).setName(SettingsManager.lang.getString("Item.gui")).addLoreLine(SettingsManager.lang.getString("Item.gui1")).toItemStack());
