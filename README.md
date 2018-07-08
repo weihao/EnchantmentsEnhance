@@ -17,7 +17,7 @@
 
 ## Life Cycle
 ###### Alpha (1.0 - 4.0)
-##### Beta (4.0.1 - [latest](http://www.soulbound.me:8080/job/EnchantmentsEnhance/) - [pom](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml))
+##### Beta (4.0.1 - [latest](http://www.soulbound.me:8080/job/EnchantmentsEnhance/))
 This plugin is under active development at the stage of beta phase.
 Completion of the plugin is currently projected at 35%, meaning the general functionality and availability are incomplete.
 
