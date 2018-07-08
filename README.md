@@ -13,6 +13,7 @@
 # [<img src=".images/jenkins.png" alt="Download" align="left">](http://soulbound.me:8080/job/EnchantmentsEnhance/)
 [![Jenkins](https://img.shields.io/badge/download-server_online-28B463.svg?style=flat)](http://soulbound.me:8080/job/EnchantmentsEnhance/)
 [![Jenkins Build Status](http://soulbound.me:8080/job/EnchantmentsEnhance/badge/icon)](http://soulbound.me:8080/job/EnchantmentsEnhance/)
+[![Jitpack](https://jitpack.io/v/25/EnchantmentsEnhance.svg)](https://jitpack.io/#25/EnchantmentsEnhance/)
 
 ## Life Cycle
 ###### Alpha (1.0 - 4.0)
