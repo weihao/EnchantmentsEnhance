@@ -34,27 +34,27 @@ public class ValksMenu extends GUIAbstract {
             final int index = i;
             setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1), CompatibilityManager.glow.addGlow(new ItemBuilder(Material.BOOK, level).setName(
                     SettingsManager.lang.getString("Item.valks") + "+" + level).toItemStack()), () -> new BukkitRunnable() {
-                        @Override
-                        public void run() {
-                            if (level > 0) {
-                                if (API.getFailstack(player.getName()) == 0) {
-                                    API.addFailstack(player.getName(), level);
-                                    PlayerStat.getPlayerStats(playerName).getValks().remove(index);
-                                    Util.sendMessage(SettingsManager.lang.getString(
-                                            "Valks.used").replaceAll("%LEVEL%", Integer
-                                            .toString(level)), player);
-                                    player.closeInventory();
-                                    new MainMenu(player).open();
-                                } else {
-                                    Util.sendMessage(SettingsManager.lang.getString(
-                                            "Valks.hasFailstack"), player);
-                                }
-                            } else {
-                                Util.sendMessage(SettingsManager.lang.getString(
-                                        "Config.invalidNumber"), player);
-                            }
+                @Override
+                public void run() {
+                    if (level > 0) {
+                        if (API.getFailstack(player.getName()) == 0) {
+                            API.addFailstack(player.getName(), level);
+                            PlayerStat.getPlayerStats(playerName).getValks().remove(index);
+                            Util.sendMessage(SettingsManager.lang.getString(
+                                    "Valks.used").replaceAll("%LEVEL%", Integer
+                                    .toString(level)), player);
+                            player.closeInventory();
+                            new MainMenu(player).open();
+                        } else {
+                            Util.sendMessage(SettingsManager.lang.getString(
+                                    "Valks.hasFailstack"), player);
                         }
-                    }.runTaskLaterAsynchronously(Main.getMain(), 2L));
+                    } else {
+                        Util.sendMessage(SettingsManager.lang.getString(
+                                "Config.invalidNumber"), player);
+                    }
+                }
+            }.runTaskLaterAsynchronously(Main.getMain(), 2L));
         }
     }
 }
