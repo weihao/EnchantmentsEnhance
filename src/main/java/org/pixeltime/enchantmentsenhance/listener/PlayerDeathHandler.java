@@ -37,7 +37,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.logging.Level;
 
 public class PlayerDeathHandler implements Listener {
@@ -97,8 +96,6 @@ public class PlayerDeathHandler implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerRespawn(PlayerRespawnEvent e) {
         Player p = e.getPlayer();
-
-        UUID uuid = p.getUniqueId();
 
         File playerFile = new File(m.getDataFolder() + "/userdata" + "/death/" + p.getName() + ".yml");
         FileConfiguration pFile = YamlConfiguration.loadConfiguration(

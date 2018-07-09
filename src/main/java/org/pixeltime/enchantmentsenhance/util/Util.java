@@ -94,6 +94,20 @@ public class Util {
         player.sendMessage(pluginTag() + message);
     }
 
+    /**
+     * Sends a colored message to a player.
+     *
+     * @param msg
+     * @param player
+     */
+    public static void sendMessage(String msg, String player) {
+        Player p = Bukkit.getPlayer(player);
+        String message = ChatColor.translateAlternateColorCodes('&', msg);
+        if (p != null) {
+            p.sendMessage(pluginTag() + message);
+        }
+    }
+
 
     /**
      * Sends a colored message to a player.

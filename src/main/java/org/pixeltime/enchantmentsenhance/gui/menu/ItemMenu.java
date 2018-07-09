@@ -29,9 +29,9 @@ import org.pixeltime.enchantmentsenhance.util.Util;
  * @author HealPotion
  * @version Feb 9, 2018
  */
-public class BackpackMenu extends GUIAbstract {
+public class ItemMenu extends GUIAbstract {
 
-    public BackpackMenu(Player p) {
+    public ItemMenu(Player p) {
         super(p, 54, SettingsManager.lang.getString("Item.title"));
         update();
     }

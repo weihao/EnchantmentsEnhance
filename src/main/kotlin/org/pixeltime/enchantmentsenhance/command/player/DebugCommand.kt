@@ -21,9 +21,9 @@ package org.pixeltime.enchantmentsenhance.command.player
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.Main
+import org.pixeltime.enchantmentsenhance.api.API
 import org.pixeltime.enchantmentsenhance.command.SubCommand
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance
-import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.util.Util
 
@@ -45,8 +45,8 @@ class DebugCommand : SubCommand() {
                 val curr = "Command: " + sc.usage() + " Permission: " + sc.permission
                 Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), p, false)
             }
-        } else if (args[0].equals("newmenu", ignoreCase = true)) {
-            MainMenu(p).open()
+        } else if (args[0].equals("failstack", ignoreCase = true)) {
+            API.addFailstack(p.name, 200)
         }
     }
 

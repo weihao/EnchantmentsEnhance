@@ -23,21 +23,21 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Backpack;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
 import org.pixeltime.enchantmentsenhance.gui.GUIListener;
 import org.pixeltime.enchantmentsenhance.gui.GUIManager;
 import org.pixeltime.enchantmentsenhance.gui.menu.MenuHandler;
 import org.pixeltime.enchantmentsenhance.listener.*;
 import org.pixeltime.enchantmentsenhance.manager.*;
+import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
+import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
 import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
 import org.pixeltime.enchantmentsenhance.version.VersionManager;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -51,9 +51,9 @@ import java.util.Scanner;
 public class Main extends JavaPlugin {
     private static final CompatibilityManager compatibility =
             new CompatibilityManager();
+    private static Database database;
     private static Main main;
     public CommandManager commandManager;
-
 
     /**
      * Default constructor.
@@ -61,7 +61,6 @@ public class Main extends JavaPlugin {
     public Main() {
         super();
     }
-
 
     /**
      * Mocking constructor.
@@ -77,6 +76,10 @@ public class Main extends JavaPlugin {
             File dataFolder,
             File file) {
         super(loader, description, dataFolder, file);
+    }
+
+    public static Database getDb() {
+        return database;
     }
 
     /**
@@ -114,34 +117,54 @@ public class Main extends JavaPlugin {
         // Register all the compatible modules.
         registerCompatibility();
         // Register data.
-        registerDataSettings();
+        commandManager = new CommandManager();
+        PluginManager pm = Bukkit.getPluginManager();
+        if (SettingsManager.config.getBoolean("enableStackMob")) {
+            pm.registerEvents(new StackMobHandler(), this);
+        }
+        if (!SettingsManager.config.getBoolean("enableVanillaEnchant")) {
+            pm.registerEvents(new VanillaEnchantHandler(), this);
+        }
+
+        // Kotlin setup
+        KM.setUp();
+        getLogger().info("Kotlin module is enabled: Hello World!");
+
+        DataManager.setUp();
+        AnimalBreeding.setUp();
+
         // When plugin is reloaded, load all the inventory of online players.
         this.getLogger().info(SettingsManager.lang.getString(
                 "Config.onLoadingInventory"));
         if (!Bukkit.getOnlinePlayers().isEmpty()) {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                Failstack.loadLevels(player);
-                SecretBook.loadStorage(player);
-                Backpack.loadInventory(player);
+                if (PlayerStat.getPlayerStats(player.getName()) != null) {
+                    PlayerStat.removePlayer(player.getName());
+                }
+                PlayerStat.getPlayers().add(new PlayerStat(player));
             }
         }
+
         // MySql setup
         if (SettingsManager.config.getBoolean("mysql.enabled")) {
-            Database database = null;
             try {
                 database = new Database();
                 if (!database.checkConnection()) {
                     return;
                 }
                 Main.getMain().getLogger().info("MySQL enabled!");
-
             } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
-
             if (!database.checkConnection()) {
                 return;
             }
+            try {
+                database.createTables();
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+            }
+
         }
 
 
@@ -161,16 +184,15 @@ public class Main extends JavaPlugin {
         // Write player data to the memory.
         if (!Bukkit.getOnlinePlayers().isEmpty()) {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                Failstack.saveLevels(player, false);
-                SecretBook.saveStorageToDisk(player, false);
-                Backpack.saveInventoryToDisk(player, false);
                 if (GUIManager.getMap().containsKey(player.getName())) {
                     player.closeInventory();
                 }
             }
         }
-        // Save all the data to the disk.
-        SettingsManager.saveData();
+        for (final PlayerStat fData : PlayerStat.getPlayers()) {
+            DataStorage.get().saveStats(fData);
+        }
+
         // Plugin fully disabled.
         Bukkit.getServer().getLogger().info(SettingsManager.lang.getString(
                 "Config.onDisable"));
@@ -197,27 +219,6 @@ public class Main extends JavaPlugin {
         new Metrics(this);
         Bukkit.getPluginManager().registerEvents(new GUIListener(), Main.getMain());
         Bukkit.getPluginManager().registerEvents(new MenuHandler(), Main.getMain());
-    }
-
-    /**
-     * Register data settings.
-     */
-    public void registerDataSettings() {
-        commandManager = new CommandManager();
-        PluginManager pm = Bukkit.getPluginManager();
-        if (SettingsManager.config.getBoolean("enableStackMob")) {
-            pm.registerEvents(new StackMobHandler(), this);
-        }
-        if (!SettingsManager.config.getBoolean("enableVanillaEnchant")) {
-            pm.registerEvents(new VanillaEnchantHandler(), this);
-        }
-
-        // Kotlin setup
-        KM.setUp();
-        getLogger().info("Kotlin module is enabled: Hello World!");
-
-        DataManager.setUp();
-        AnimalBreeding.setUp();
     }
 
 

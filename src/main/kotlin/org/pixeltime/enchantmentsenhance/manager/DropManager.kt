@@ -19,7 +19,7 @@
 package org.pixeltime.enchantmentsenhance.manager
 
 import org.bukkit.entity.Player
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Backpack
+import org.pixeltime.enchantmentsenhance.api.API
 import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.*
 
@@ -83,8 +83,8 @@ class DropManager {
         @JvmStatic
         fun randomDrop(player: Player, table: List<Int>) {
             val stoneType = table[((0..table.size).random())]
-            Backpack.addLevel(
-                    player, stoneType, 1)
+            API.addItem(
+                    player.name, stoneType, 1)
             Util.sendMessage(SettingsManager.lang.getString("Item.get") + SettingsManager.lang.getString("Item.$stoneType"), player)
         }
 

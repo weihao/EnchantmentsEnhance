@@ -20,10 +20,9 @@ package org.pixeltime.enchantmentsenhance.event.blackspirit;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.chat.Broadcast;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Backpack;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
@@ -75,16 +74,14 @@ public class Enhance {
      * @param item
      * @param player
      * @param forceEnhanced
-     * @param enchantLevelBeforeAttemptEnhancing
+     * @param enchantLevel
      */
     public static void enhanceSuccess(
             ItemStack item,
             Player player,
             boolean forceEnhanced,
-            int enchantLevelBeforeAttemptEnhancing) {
+            int enchantLevel) {
         // Enchant level after a successful enhancement
-
-        int enchantLevel = enchantLevelBeforeAttemptEnhancing + 1;
 
         ItemManager.forgeItem(player, item, enchantLevel);
 
@@ -100,7 +97,7 @@ public class Enhance {
                     "Enhance.forceEnhanceSuccess"), player);
         } else {
             // Clear used failstack
-            Failstack.resetLevel(player);
+            API.resetFailstack(player.getName());
             Util.sendMessage(SettingsManager.lang.getString(
                     "Enhance.enhanceSuccess"), player);
         }
@@ -116,15 +113,13 @@ public class Enhance {
     public static void enhanceFail(
             ItemStack item,
             Player player,
-            int enchantLevelBeforeAttemptEnhancing) {
-        // Attempted level.
-        int level = enchantLevelBeforeAttemptEnhancing + 1;
+            int level) {
         // Failed message.
         String str = SettingsManager.lang.getString("Enhance.enhanceFailed");
         // Play failed sound.
         CompatibilityManager.playsound.playSound(player, "FAILED");
         // Add failstack.
-        Failstack.addLevel(player,
+        API.addFailstack(player.getName(),
                 DataManager.failstackGainedPerFail[level]);
         if (DataManager.destroyIfFail[level]) {
             // Destroy failed item.
@@ -139,7 +134,7 @@ public class Enhance {
             // Play destroyed sound.
             CompatibilityManager.playsound.playSound(player, "DOWNGRADED");
             // Item level after failing.
-            int enchantLevel = enchantLevelBeforeAttemptEnhancing - 1;
+            int enchantLevel = level - 2;
             // Updates the item.
             ItemManager.forgeItem(player, item, enchantLevel);
         }
@@ -158,19 +153,19 @@ public class Enhance {
         // If the item is a valid item
         if (getValidationOfItem(item)) {
             // Current enchant level before enhancing
-            int enchantLevel = ItemManager.getItemEnchantLevel(item);
+            int enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
             // Finds the stone used in the enhancement
             int stoneId = getStoneId(item, enchantLevel);
             // Checks if player has enough enchant stone
-            if (Backpack.getLevel(stoneId, player) - 1 >= 0) {
-                Backpack.addLevel(player, stoneId, -1);
+            if (API.getItem(player.getName(), stoneId) - 1 >= 0) {
+                API.addItem(player.getName(), stoneId, -1);
                 Util.sendMessage(SettingsManager.lang.getString("Item.use")
                         .replaceAll("%ITEM%", SettingsManager.lang.getString("Item."
                                 + stoneId)), player);
                 // Randomly generate a double between 0 to 1
                 double random = Math.random();
                 // Calculate the chance
-                double chance = Failstack.getChance(player.getName(), enchantLevel);
+                double chance = API.getChance(player.getName(), enchantLevel);
                 // Enhancement result
                 boolean success = random < chance;
                 // Broadcast if attempting enhancement meet enchant level
@@ -212,7 +207,7 @@ public class Enhance {
         // If the item is a valid item
         if (getValidationOfItem(item)) {
             // Current enchant level before enhancing
-            int enchantLevel = ItemManager.getItemEnchantLevel(item);
+            int enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
             // Finds the stone used in the enhancement
             int stoneId = getStoneId(item, enchantLevel);
             // Gets the cost of force enhancing
@@ -223,8 +218,8 @@ public class Enhance {
                 return;
             }
             // Checks if player has enough enchant stone
-            if (Backpack.getLevel(stoneId, player) - costToEnhance >= 0) {
-                Backpack.addLevel(player, stoneId, -costToEnhance);
+            if (API.getItem(player.getName(), stoneId) - costToEnhance >= 0) {
+                API.addItem(player.getName(), stoneId, -costToEnhance);
                 enhanceSuccess(item, player, true, enchantLevel);
                 // Broadcast if attempting enhancement meet enchant level
                 if (DataManager.downgradeIfFail[enchantLevel]) {
@@ -258,8 +253,8 @@ public class Enhance {
         ItemType type = ItemManager.getItemEnchantmentType(item);
         if (type != ItemType.INVALID) {
             // Display failstack
-            String placeholder = String.format("%.2f", Failstack.getChance(
-                    playerName, ItemManager.getItemEnchantLevel(item)) * 100);
+            String placeholder = String.format("%.2f", API.getChance(
+                    playerName, ItemManager.getItemEnchantLevel(item) + 1) * 100);
             // Display chance after failstack is applied
             String chance = SettingsManager.lang.getString(
                     "Enhance.successRate").replaceAll("%chance%", placeholder);

@@ -19,10 +19,8 @@
 package org.pixeltime.enchantmentsenhance.command.player
 
 import org.bukkit.entity.Player
-import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.command.SubCommand
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.util.Util
+import org.pixeltime.enchantmentsenhance.command.console.ReloadConsoleCommand
 
 class ReloadCommand : SubCommand() {
 
@@ -31,12 +29,7 @@ class ReloadCommand : SubCommand() {
         get() = "Enchantmentsenhance.reload"
 
     override fun onCommand(player: Player, args: Array<String>) {
-        SettingsManager.reloadConfig()
-        SettingsManager.reloadData()
-        SettingsManager.reloadLang()
-        Main.getMain().registerDataSettings()
-        Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
-                player)
+        ReloadConsoleCommand().onCommand(player, args)
     }
 
 

@@ -7,8 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
+import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
@@ -32,7 +31,7 @@ public class MainMenu extends GUIAbstract {
     public static StatsIcon stats = new StatsIcon();
     public static StoreIcon store = new StoreIcon();
     public static StoneIcon stone = new StoneIcon();
-    public static BackpackIcon backpack = new BackpackIcon();
+    public static ItemIcon item = new ItemIcon();
     public static ValksIcon valks = new ValksIcon();
     public static GearIcon gear = new GearIcon();
     public static ToolIcon tool = new ToolIcon();
@@ -55,8 +54,8 @@ public class MainMenu extends GUIAbstract {
                     Enhance.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
 
 
-            if (DataManager.maximumFailstackApplied[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName))] != -1
-                    && DataManager.costToForceEnchant[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName))] != -1) {
+            if (DataManager.maximumFailstackApplied[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] != -1
+                    && DataManager.costToForceEnchant[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] != -1) {
                 setItem(force.getPosition(), force.getItem(itemOnEnhancingSlot.get(playerName)), () ->
                         Enhance.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
             }
@@ -76,15 +75,15 @@ public class MainMenu extends GUIAbstract {
             setItem(stats.getPosition(), stats.getItem(playerName));
         }
 
-        setItem(store.getPosition(), Failstack.getLevel(player) == 0 ? store.getItem() : store.getGlowingItem(), () ->
-                SecretBook.addFailstackToStorage(player));
+        setItem(store.getPosition(), API.getFailstack(player.getName()) == 0 ? store.getItem() : store.getGlowingItem(), () ->
+                API.addAdvice(player.getName()));
 
-        setItem(backpack.getPosition(), backpack.getItem(player), () ->
+        setItem(item.getPosition(), item.getItem(player.getName()), () ->
                 new BukkitRunnable() {
                     @Override
                     public void run() {
                         player.closeInventory();
-                        new BackpackMenu(player).open();
+                        new ItemMenu(player).open();
                     }
                 }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 

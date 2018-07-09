@@ -84,4 +84,12 @@ public class UtilTest {
         String sha256hex = Hashing.sha256().hashString("hi", StandardCharsets.UTF_8).toString().toUpperCase();
         assertEquals(64, sha256hex.length());
     }
+
+    @Test
+    public void testParsing() {
+        String temp = "";
+        for (String s : temp.split(", ")) {
+            assertTrue(s.isEmpty());
+        }
+    }
 }

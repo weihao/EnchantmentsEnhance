@@ -20,7 +20,7 @@ package org.pixeltime.enchantmentsenhance.command.player
 
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.command.SubCommand
-import org.pixeltime.enchantmentsenhance.gui.menu.BackpackMenu
+import org.pixeltime.enchantmentsenhance.gui.menu.ItemMenu
 
 class InventoryCommand : SubCommand() {
 
@@ -29,7 +29,7 @@ class InventoryCommand : SubCommand() {
         get() = "Enchantmentsenhance.enhance"
 
     override fun onCommand(player: Player, args: Array<String>) {
-        BackpackMenu(player).open()
+        ItemMenu(player).open()
     }
 
 

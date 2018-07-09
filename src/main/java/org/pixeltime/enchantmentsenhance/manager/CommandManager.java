@@ -39,20 +39,17 @@ public class CommandManager implements CommandExecutor {
     private ArrayList<SubCommand> commands = new ArrayList<SubCommand>();
     private ArrayList<SubConsoleCommand> consoleCommands =
             new ArrayList<SubConsoleCommand>();
-    private Main plugin = Main.getMain();
 
     /**
      * Register all the command.
      */
     public CommandManager() {
-        plugin.getCommand("enhance").setExecutor(this);
+        Main.getMain().getCommand("enhance").setExecutor(this);
         this.commands.add(new AddCommand());
         this.commands.add(new HelpCommand());
         this.commands.add(new InventoryCommand());
-        this.commands.add(new ListCommand());
         this.commands.add(new MenuCommand());
         this.commands.add(new ReloadCommand());
-        this.commands.add(new SelectCommand());
         this.commands.add(new VersionCommand());
         this.commands.add(new DebugCommand());
         this.commands.add(new ItemCommand());

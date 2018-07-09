@@ -32,8 +32,8 @@ public class SettingsManager {
 
     public static FileConfiguration config;
     public static File cfile;
-    public static FileConfiguration data;
-    public static File dfile;
+    //    public static FileConfiguration data;
+//    public static File dfile;
     public static FileConfiguration lang;
     public static File langfile;
     public static FileConfiguration enchant;
@@ -49,17 +49,18 @@ public class SettingsManager {
             Main.getMain().getDataFolder().mkdir();
         }
 
-        dfile = new File(Main.getMain().getDataFolder(), "data.yml");
+//        dfile = new File(Main.getMain().getDataFolder(), "data.yml");
+//        if (!dfile.exists()) {
+//            try {
+//                dfile.createNewFile();
+//            } catch (IOException e) {
+//                Bukkit.getServer().getLogger().severe(ChatColor.RED
+//                        + "Could not create data.yml!");
+//            }
+//        }
+//        data = YamlConfiguration.loadConfiguration(dfile);
 
-        if (!dfile.exists()) {
-            try {
-                dfile.createNewFile();
-            } catch (IOException e) {
-                Bukkit.getServer().getLogger().severe(ChatColor.RED
-                        + "Could not create data.yml!");
-            }
-        }
-        data = YamlConfiguration.loadConfiguration(dfile);
+
         enchantfile = new File(Main.getMain().getDataFolder(), "enchantments.yml");
         if (!enchantfile.exists()) {
             Main.getMain().saveResource("enchantments.yml", true);
@@ -79,19 +80,19 @@ public class SettingsManager {
     }
 
 
-    public static void saveData() {
-        try {
-            data.save(dfile);
-        } catch (IOException e) {
-            Bukkit.getServer().getLogger().severe(ChatColor.RED
-                    + "Could not save data.yml!");
-        }
-    }
+//    public static void saveData() {
+//        try {
+//            data.save(dfile);
+//        } catch (IOException e) {
+//            Bukkit.getServer().getLogger().severe(ChatColor.RED
+//                    + "Could not save data.yml!");
+//        }
+//    }
 
 
-    public static void reloadData() {
-        data = YamlConfiguration.loadConfiguration(dfile);
-    }
+//    public static void reloadData() {
+//        data = YamlConfiguration.loadConfiguration(dfile);
+//    }
 
 
     public static void saveConfig() {

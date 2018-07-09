@@ -77,8 +77,6 @@ class LM {
             addLang("Help.help", arrayOf("&aview help.", "&a查看插件命令帮助."))
             addLang("Help.menu", arrayOf("&aopen enhancement menu.", "&a突破物品潜力界面."))
             addLang("Help.reload", arrayOf("&areload plugin.", "&a重新载入插件配置文件."))
-            addLang("Help.list", arrayOf("&aview saved &9Advice of Valks&a.", "&a查看存储的&9巴尔克斯的忠告&a."))
-            addLang("Help.select", arrayOf("&aselect an &9Advice of Valks&a to use.", "&a选择使用一个&9巴尔克斯的忠告&a."))
             addLang("Help.version", arrayOf("&acheck version.", "&a检查当前插件版本."))
             addLang("Help.inventory", arrayOf("&asee items that you have collected.", "&a查看你已收集的道具."))
             addLang("Help.add", arrayOf("&agive a player an enhancing items.\n0 = &6Black Stone (&3Weapon&6)&a, 1 = &6Black Stone (&7Armor&6)&a, 2 = &6Concentrated Magical Black Stone (&3Weapon&6)&a, 3 = &6Concentrated Magical Black Stone (&7Armor&6)", "&a给予一个玩家指定黑石.\n 0 = &6黑石 (&3武器&6)&a, 1 = &6黑石 (&7防具&6)&a, 2 = &6凝聚魔力的黑石 (&3武器&6)&a, 3 = &6凝聚魔力的黑石 (&7防具&6)"))

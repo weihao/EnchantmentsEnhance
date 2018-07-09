@@ -3,10 +3,10 @@ package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
@@ -19,7 +19,7 @@ public class ValksIcon extends Clickable {
     }
 
     public ItemStack getItem(Player player) {
-        List<Integer> temp = API.getValks(player);
+        List<Integer> temp = PlayerStat.getPlayerStats(player.getName()).getValks();
         if (temp == null || temp.size() == 0) {
             return getItem();
         }

@@ -8,6 +8,8 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Database {
 
@@ -119,7 +121,7 @@ public class Database {
         }
     }
 
-    public boolean doesPlayerExist(String fId) {
+    public boolean doesPlayerExist(String playername) {
         if (!checkConnection()) {
             return false;
         }
@@ -130,13 +132,13 @@ public class Database {
 
         try {
             StringBuilder queryBuilder = new StringBuilder();
-            queryBuilder.append("SELECT Count(`player_id`) ");
-            queryBuilder.append("FROM `sw_player` ");
-            queryBuilder.append("WHERE `uuid` = ? ");
+            queryBuilder.append("SELECT Count(`playername`) ");
+            queryBuilder.append("FROM `enchantmentsenhance` ");
+            queryBuilder.append("WHERE `playername` = ? ");
             queryBuilder.append("LIMIT 1;");
 
             preparedStatement = connection.prepareStatement(queryBuilder.toString());
-            preparedStatement.setString(1, fId);
+            preparedStatement.setString(1, playername);
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -174,18 +176,14 @@ public class Database {
 
         try {
             StringBuilder queryBuilder = new StringBuilder();
-            queryBuilder.append("INSERT INTO `ee_userdata` ");
-            queryBuilder.append("(`player_id`, `player_name`, `failstack`, `advice_of_valks`, `stone1`, `stone2`, `stone3`, `stone4`) ");
+            queryBuilder.append("INSERT INTO `enchantmentsenhance` ");
+            queryBuilder.append("(`id`, `playername`, `failstack`, `items`, `valks`) ");
             queryBuilder.append("VALUES ");
-            queryBuilder.append("(NULL, ?, 0, 0, 0, 0, 0, 0);");
+            queryBuilder.append("(NULL, ?, 0, ?, ?);");
             preparedStatement = connection.prepareStatement(queryBuilder.toString());
             preparedStatement.setString(1, name);
-            preparedStatement.setString(2, "none");
-            preparedStatement.setString(3, "none");
-            preparedStatement.setString(4, "none");
-            preparedStatement.setString(5, "none");
-            preparedStatement.setString(6, "none");
-            preparedStatement.setString(7, "none");
+            preparedStatement.setString(2, Arrays.toString(new int[4]));
+            preparedStatement.setString(3, new ArrayList<Integer>().toString());
 
             preparedStatement.executeUpdate();
 
@@ -201,5 +199,4 @@ public class Database {
             }
         }
     }
-
 }

@@ -26,11 +26,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Backpack;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.SecretBook;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
+import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class PlayerStreamHandler implements Listener {
@@ -52,9 +52,11 @@ public class PlayerStreamHandler implements Listener {
         Player player = e.getPlayer();
         Util.sendMessage(SettingsManager.lang.getString("Config.welcome")
                 .replaceAll("%player%", player.getName()), player);
-        Failstack.loadLevels(player);
-        SecretBook.loadStorage(player);
-        Backpack.loadInventory(player);
+
+        if (PlayerStat.getPlayerStats(player.getName()) != null) {
+            PlayerStat.removePlayer(player.getName());
+        }
+        PlayerStat.getPlayers().add(new PlayerStat(player));
     }
 
 
@@ -66,10 +68,15 @@ public class PlayerStreamHandler implements Listener {
      */
     @EventHandler(priority = EventPriority.MONITOR)
     public void onQuit(PlayerQuitEvent e) {
-        Player player = e.getPlayer();
-        Failstack.saveLevels(player, false);
-        SecretBook.saveStorageToDisk(player, false);
-        Backpack.saveInventoryToDisk(player, false);
+        if (PlayerStat.getPlayerStats(e.getPlayer().getName()) != null) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    DataStorage.get().saveStats(PlayerStat.getPlayerStats(e.getPlayer().getName()));
+                    PlayerStat.removePlayer(e.getPlayer().getName());
+                }
+            }.runTaskLater(Main.getMain(), 20);
+        }
     }
 
 
@@ -81,10 +88,14 @@ public class PlayerStreamHandler implements Listener {
      */
     @EventHandler(priority = EventPriority.MONITOR)
     public void onKick(PlayerKickEvent e) {
-        Player player = e.getPlayer();
-        Failstack.saveLevels(player, false);
-        SecretBook.saveStorageToDisk(player, false);
-        Backpack.saveInventoryToDisk(player, false);
+        if (PlayerStat.getPlayerStats(e.getPlayer().getName()) != null) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    PlayerStat.removePlayer(e.getPlayer().getName());
+                }
+            }.runTaskLater(Main.getMain(), 20);
+        }
     }
 
     /**

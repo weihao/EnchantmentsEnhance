@@ -3,7 +3,7 @@ package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Failstack;
+import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
@@ -24,7 +24,7 @@ public class StatsIcon extends Clickable {
     public ItemStack getItem(String playerName) {
         if (playerName != null && MainMenu.itemOnEnhancingSlot.get(playerName) != null) {
             return CompatibilityManager.glow.addGlow(new ItemBuilder(Material.WOOL).setDyeColor(DyeColor.LIGHT_BLUE).setName(SettingsManager.lang.getString("Menu.gui.stats")).addLoreLine(SettingsManager.lang.getString("Enhance.currentFailstack")
-                    + Failstack.getLevel(playerName)).addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName)).addLoreLine(SettingsManager.lang.getString(
+                    + API.getFailstack(playerName)).addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName)).addLoreLine(SettingsManager.lang.getString(
                     "Menu.lore.stats1")).addLoreLine(SettingsManager.lang.getString(
                     "Menu.lore.stats2")).toItemStack());
         }

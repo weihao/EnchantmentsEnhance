@@ -22,7 +22,7 @@ public class ForceIcon extends Clickable {
     public ItemStack getItem(ItemStack item) {
         int enchantLevel = ItemManager.getItemEnchantLevel(item);
         int stoneId = Enhance.getStoneId(item, enchantLevel);
-        int costToEnhance = DataManager.costToForceEnchant[enchantLevel];
+        int costToEnhance = DataManager.costToForceEnchant[enchantLevel + 1];
         return CompatibilityManager.glow.addGlow(new ItemBuilder(Material.WOOL).setDyeColor(DyeColor.RED).setName(SettingsManager.lang.getString("Menu.gui.force")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.force1")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.force2").replaceAll("%COUNT%", Integer.toString(

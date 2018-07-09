@@ -18,10 +18,9 @@
 
 package org.pixeltime.enchantmentsenhance.command.console
 
-import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
+import org.pixeltime.enchantmentsenhance.api.API
 import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand
-import org.pixeltime.enchantmentsenhance.event.blacksmith.Backpack
 import org.pixeltime.enchantmentsenhance.manager.MM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
@@ -32,15 +31,8 @@ class AddConsoleCommand : SubConsoleCommand() {
         // /enhance add <player> <stone id> <amounts>
         // /cmd subcommand args[0] args[1] args[2]
         if (args.size == 3) {
-            val p = Bukkit.getServer().getPlayer(args[0])
             val stoneType: Int
             val level: Int
-
-            if (p == null) {
-                Util.sendMessage(SettingsManager.lang.getString(
-                        "Config.playerNotFound"), sender)
-                return
-            }
 
             try {
                 stoneType = Integer.parseInt(args[1])
@@ -52,9 +44,9 @@ class AddConsoleCommand : SubConsoleCommand() {
             }
 
             if (stoneType != -1 && level != -1 && stoneType <= MM.stoneTypes.size) {
-                Backpack.addLevel(p, stoneType, level)
+                API.addItem(args[0], stoneType, level)
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "Add.successful").replace("%player%", p.name).replace(
+                        "Add.successful").replace("%player%", args[0]).replace(
                         "%number%", Integer.toString(level)).replace("%stone%",
                         SettingsManager.lang.getString("Item.$stoneType")), sender)
             } else {
