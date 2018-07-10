@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import java.util.*
 
 class Smelt : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Auto Smelts the blocks you break", "自动冶炼你挖到的矿物")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("冶炼")
     }

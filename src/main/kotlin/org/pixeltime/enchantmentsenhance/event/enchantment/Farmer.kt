@@ -26,6 +26,10 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Farmer : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("When placing the seeds, potatoes or carrots on the farmed land while wearing any armour part having this enchantment, the specific crop will instantly grow", "被你放下的作物都会立刻成熟")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("农场")
     }

@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Spiked : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives a thorns like effect but a bit more than default", "获得比原版更强大的荆棘效果")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("尖刺")
     }

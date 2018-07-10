@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Divine : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("A chance to heal you relative to the damage you inflict upon your enemy without taking their health", "有几率恢复收到的伤害")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("神圣")
     }

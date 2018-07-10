@@ -29,6 +29,10 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Factory : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Auto makes the block of items", "自动将你挖到的矿物变成矿物块")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("工厂")
     }

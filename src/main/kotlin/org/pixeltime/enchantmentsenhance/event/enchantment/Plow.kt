@@ -29,6 +29,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Plow : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Hoes a bigger area", "锄头范围变大")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("耕种")
     }

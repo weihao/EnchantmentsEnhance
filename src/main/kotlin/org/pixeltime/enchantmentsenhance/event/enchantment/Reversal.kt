@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Reversal : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("You have chance to reverse the damage towards your opponent who damaged you", "你有几率反弹攻击伤害")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("倒转")
     }

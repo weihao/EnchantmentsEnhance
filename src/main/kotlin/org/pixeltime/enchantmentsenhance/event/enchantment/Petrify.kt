@@ -29,6 +29,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Petrify : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Has a chance to give slowness effect to your enemy", "攻击别人有几率造成他缓慢")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("石化")
     }

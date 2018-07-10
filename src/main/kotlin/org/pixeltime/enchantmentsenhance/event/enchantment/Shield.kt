@@ -26,6 +26,10 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Shield : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives infinite health boost.", "获得无限的伤害吸收")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("护盾")
     }

@@ -28,6 +28,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Launch : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("A chance to launch the enemy up in the sky!", "有机率把敌人弹上天")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("弹射")
     }

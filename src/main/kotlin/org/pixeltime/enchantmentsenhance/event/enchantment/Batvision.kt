@@ -26,6 +26,10 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Batvision : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives you infinite night vision", "无限的夜视")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("天眼")
     }

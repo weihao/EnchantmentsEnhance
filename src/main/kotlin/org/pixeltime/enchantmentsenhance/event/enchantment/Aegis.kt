@@ -28,6 +28,11 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 
 class Aegis : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf(
+                "When blocking, player has a chance  to regain health", "当你用剑格挡时，你会恢复血量")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("庇护")
     }

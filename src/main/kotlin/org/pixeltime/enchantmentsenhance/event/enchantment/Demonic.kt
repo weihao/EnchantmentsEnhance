@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Demonic : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Has a chance of giving the wither effect to your attacker", "被别人攻击有几率造成他凋零")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("恶灵")
     }

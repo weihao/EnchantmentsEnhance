@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Siphon : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("You have chance to get large amount of life steal from PvE (Mobs).", "你在打生物时会吸取它们的很多血量")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("虹吸")
     }

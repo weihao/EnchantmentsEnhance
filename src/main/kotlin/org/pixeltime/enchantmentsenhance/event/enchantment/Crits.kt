@@ -11,6 +11,10 @@ import org.pixeltime.enchantmentsenhance.util.Sounds
 
 
 class Crits : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("You will deal double damage", "你会输出双倍伤害")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("暴击")
     }

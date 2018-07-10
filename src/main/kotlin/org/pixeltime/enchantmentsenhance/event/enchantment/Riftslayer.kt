@@ -26,6 +26,10 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Riftslayer : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("You deal up to 3x more damage to mobs", "你对生物造成三倍伤害")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("溅射")
     }

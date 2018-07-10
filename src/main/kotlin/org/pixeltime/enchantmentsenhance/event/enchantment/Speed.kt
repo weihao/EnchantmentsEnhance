@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Speed : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives you infinite speed boost", "你获得速度效果")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("神速")
     }

@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Haste : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives you Haste Potion Effect", "获得急迫")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("急迫")
     }

@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Shearer : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("When left clicking the item having this enchant in the air, all Sheep within the radius will be sheared", "拿着剪刀对着空中点击，周围的羊都会被剃毛")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("剪裁")
     }

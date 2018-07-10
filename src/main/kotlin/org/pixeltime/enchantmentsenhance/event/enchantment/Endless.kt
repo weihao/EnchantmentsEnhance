@@ -29,6 +29,10 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.KM
 
 class Endless : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Item with this enchantment will never be broken", "这件物品不可被摧毁")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("无尽")
     }

@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Assassin : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Player has a chance of inflicting a poison effect on the victim", "攻击别人有几率造成对方中毒")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("暗杀")
     }

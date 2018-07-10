@@ -25,6 +25,10 @@ import org.bukkit.event.entity.EntityDeathEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 
 class Plunder : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("More XP from entities", "击杀生物更多经验")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("掠夺")
     }

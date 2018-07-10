@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Dodge : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Chance of evading damage", "有几率躲避伤害")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("闪避")
     }

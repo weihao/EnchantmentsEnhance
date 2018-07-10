@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Flame : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Has a chance to ignite people that attack you", "有几率点燃攻击你的人")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("燃烧")
     }

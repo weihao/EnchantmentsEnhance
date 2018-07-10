@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Jump : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives you infinite jump boost", "获得跳跃")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("跳跃")
     }

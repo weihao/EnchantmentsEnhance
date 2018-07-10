@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Mischief : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Inflicts nausea to your opponent", "攻击别人造成他反胃")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("戏耍")
     }

@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Cure : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives you infinite regen", "你获得恢复效果")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("灵药")
     }

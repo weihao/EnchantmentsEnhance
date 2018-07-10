@@ -37,5 +37,11 @@ abstract class EnchantmentListener : Listener {
         LM.addLang("enchantments.${this.javaClass.simpleName.toLowerCase()}", arrayOf(this.javaClass.simpleName) + lang())
     }
 
+    fun addDesc() {
+        LM.addLang("descriptions.${this.javaClass.simpleName.toLowerCase()}", desc())
+    }
+
     abstract fun lang(): Array<String>
+
+    abstract fun desc(): Array<String>
 }

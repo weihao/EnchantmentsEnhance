@@ -29,6 +29,10 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Rider : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Tames a horse with saddle when hit while wearing armour with this enchant.", "你可以用鞍来驯服马")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("骑御")
     }

@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Curse : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Upon hitting a target they will receive the wither damage debuff", "攻击别人会造成他凋零")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("诅咒")
     }

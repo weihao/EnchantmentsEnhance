@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Strength : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives infinite Strength", "获得无限的力量")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("力量")
     }

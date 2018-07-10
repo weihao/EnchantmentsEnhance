@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Paralyze : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("You have a chance to give your opponent Mining Fatigue effect for few seconds", "你有几率给攻击你的人造成挖掘疲劳效果")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("麻痹")
     }

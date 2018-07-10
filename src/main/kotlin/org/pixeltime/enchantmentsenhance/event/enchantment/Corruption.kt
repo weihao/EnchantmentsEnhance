@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Corruption : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Has a chance to give weakness effect to enemy", "攻击别人有几率造成他虚弱")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("腐败")
     }

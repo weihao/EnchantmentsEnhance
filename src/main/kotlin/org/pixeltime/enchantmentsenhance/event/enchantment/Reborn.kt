@@ -29,6 +29,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Reborn : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("When you kill a player, you will get Absorption and Regeneration potion effect for limited time", "当你杀人时，你会在短时间内获得伤害吸收和生命恢复")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("重生")
     }

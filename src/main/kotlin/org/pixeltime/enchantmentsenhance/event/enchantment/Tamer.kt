@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Tamer : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("By hitting the wolves, they will be tamed", "攻击狼它们会被你驯服")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("驯兽")
     }

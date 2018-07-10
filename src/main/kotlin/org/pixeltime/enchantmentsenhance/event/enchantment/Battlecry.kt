@@ -31,6 +31,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Battlecry : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Chance to remove negative debuffs from yourself while you fight", "当你战斗时有几率移除你的负面状态")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("战吼")
     }

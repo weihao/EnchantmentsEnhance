@@ -24,6 +24,10 @@ import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.stackmob.events.StackKilledEvent
 
 class StackMobHandler : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("", "")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("")
     }

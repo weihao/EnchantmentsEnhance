@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Lifesteal : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("When attacking another player you have a chance of gaining some of your health back", "攻击别人有几率吸血")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("吸血")
     }

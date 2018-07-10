@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Swimmer : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives you infinite water breathing", "你获得无限的水下呼吸")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("亲水")
     }

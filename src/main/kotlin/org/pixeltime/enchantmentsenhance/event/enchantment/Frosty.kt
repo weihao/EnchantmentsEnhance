@@ -12,6 +12,10 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 
 class Frosty : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Has a chance of inflicting a slow effect on your victim.", "攻击别人有几率造成对方缓慢")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("冰霜")
     }

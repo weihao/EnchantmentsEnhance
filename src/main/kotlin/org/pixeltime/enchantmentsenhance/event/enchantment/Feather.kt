@@ -26,6 +26,10 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Feather : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("No fall damage when you wear any armour part having this enchantment", "免疫掉落伤害")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("羽落")
     }

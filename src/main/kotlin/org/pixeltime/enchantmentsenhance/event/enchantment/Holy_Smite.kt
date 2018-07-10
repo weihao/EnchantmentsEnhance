@@ -31,8 +31,12 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Holy_Smite : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("A chance to call down a bolt of lightning, removing any positive buffs the enemy has", "攻击别人时有几率召唤闪电并移除他的增益效果")
+    }
+
     override fun lang(): Array<String> {
-        return arrayOf("圣水")
+        return arrayOf("浩劫")
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)

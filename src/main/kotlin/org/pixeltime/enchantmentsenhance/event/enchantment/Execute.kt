@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Execute : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("More critical hits and a higher chance to do 2x damage whilst sneaking", "在潜行攻击人时造成两倍的伤害")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("背刺")
     }

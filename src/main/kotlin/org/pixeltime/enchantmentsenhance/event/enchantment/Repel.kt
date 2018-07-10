@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Repel : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("While getting damage, you have chance to give a high knockback to your enemy", "受到伤害时有几率击退你的敌人很远")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("驱散")
     }

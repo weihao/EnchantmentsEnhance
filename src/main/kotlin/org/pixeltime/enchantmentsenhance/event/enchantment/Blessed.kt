@@ -26,6 +26,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Blessed : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Restores the wearers health and hunger while walking and running", "走路时有几率补满饥饿以及生命")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("祝福")
     }

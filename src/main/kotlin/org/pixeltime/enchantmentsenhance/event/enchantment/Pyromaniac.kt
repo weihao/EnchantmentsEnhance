@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Pyromaniac : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Fire ticks have a chance to heal you instead of doing damage", "你被火烧着时有几率回血而不是受到伤害")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("火焰")
     }

@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Molten : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives infinite Fire Resistant", "获得无限的火焰保护")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("炉融")
     }

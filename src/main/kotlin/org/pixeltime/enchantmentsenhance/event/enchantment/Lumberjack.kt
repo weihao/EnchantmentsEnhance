@@ -28,6 +28,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import java.util.*
 
 class Lumberjack : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Chops the whole tree in one click", "一下砍倒一棵树")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("伐木")
     }

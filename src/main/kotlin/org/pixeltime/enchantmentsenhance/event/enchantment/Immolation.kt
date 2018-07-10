@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Immolation : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("When you sneak, you have chance to set nearby players on fire", "当你潜行攻击人时会造成他着火")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("自焚")
     }

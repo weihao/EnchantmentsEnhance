@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Hex : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("A chance of inflicting blindness on your victim", "攻击别人有几率造成他失明")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("巫术")
     }

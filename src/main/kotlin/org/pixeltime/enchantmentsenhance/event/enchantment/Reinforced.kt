@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Reinforced : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("You get damage resistance", "你会获得伤害减免")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("钢筋")
     }

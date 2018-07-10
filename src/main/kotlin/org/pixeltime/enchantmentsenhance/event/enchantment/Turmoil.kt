@@ -33,6 +33,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Turmoil : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Has a chance to give enemies a nausea potion debuff", "攻击别人有几率造成他反胃")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("风暴")
     }

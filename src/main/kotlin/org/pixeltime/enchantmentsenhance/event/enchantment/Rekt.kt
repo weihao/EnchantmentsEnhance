@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Rekt : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("You give 2x damage to mobs", "你对生物造成两倍伤害")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("碾压")
     }

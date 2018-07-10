@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Vitality : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives you extra hearts", "获取额外生命")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("元气")
     }

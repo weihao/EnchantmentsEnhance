@@ -26,6 +26,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Suicide : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("A chance to create an explosion when the player who wears this enchanted chestplate dies", "死后爆炸")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("帝陨")
     }

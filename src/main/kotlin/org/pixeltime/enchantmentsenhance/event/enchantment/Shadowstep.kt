@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Shadowstep : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("You have a chance to get teleported behind the player who damaged you", "你有几率传送到攻击你的人后面")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("暗影步")
     }

@@ -30,6 +30,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Crushing : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("A chance to deal up to 3x damage", "有机率输出三倍伤害")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("粉碎")
     }
@@ -48,7 +52,7 @@ class Crushing : EnchantmentListener() {
                 }
                 val level = IM.getHighestLevel(player, this.name())
                 if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("crushing.$level.chance")) {
-                    entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * 2.0
+                    entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * 3.0
                 }
             } catch (ex: Exception) {
             }

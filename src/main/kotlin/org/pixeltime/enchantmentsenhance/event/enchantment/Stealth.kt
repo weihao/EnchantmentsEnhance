@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Stealth : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("When you sneak, nearby enemies aiming near you have a chance to get blindness", "当你潜行时，瞄准你的敌人有几率失明")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("潜伏")
     }

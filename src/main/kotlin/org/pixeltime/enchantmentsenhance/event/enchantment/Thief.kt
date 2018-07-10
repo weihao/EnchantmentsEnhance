@@ -32,6 +32,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Thief : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("While PvPing, you have a chance to steal some % of the money from your opponent", "当你PVP时有几率偷取别人的一部分钱")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("盗窃")
     }

@@ -26,6 +26,10 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Eyepatch : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Immune to blindness", "无视失明效果")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("天眼")
     }

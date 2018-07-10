@@ -28,6 +28,10 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 class VersionManager : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("", "")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("")
     }

@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Saturation : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives you infinite saturation", "给你饱和")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("饱和")
     }

@@ -27,6 +27,10 @@ import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Invisible : EnchantmentListener() {
+    override fun desc(): Array<String> {
+        return arrayOf("Gives you infinite invisibility", "获得隐身")
+    }
+
     override fun lang(): Array<String> {
         return arrayOf("隐身")
     }
