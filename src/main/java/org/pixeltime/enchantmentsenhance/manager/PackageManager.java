@@ -20,5 +20,34 @@ public class PackageManager {
                 }
             }
         }
+        // Generate English Enchantments Wiki.
+
+//        System.out.println("| Enchantments ID| Effect|");
+//        System.out.println("| :---:| :---------|");
+//        for (Class enchClass : ClassGetter.getClassesForPackage(Main.getMain(), "org.pixeltime.enchantmentsenhance.event.enchantment")) {
+//            if (EnchantmentListener.class.isAssignableFrom(enchClass)) {
+//                try {
+//                    EnchantmentListener enchantmentListener = (EnchantmentListener) enchClass.newInstance();
+//                    System.out.println("|" + enchantmentListener.getClass().getSimpleName() + "|" + enchantmentListener.desc()[0] + "|");
+//                } catch (InstantiationException | IllegalAccessException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+
+
+        // Generate Chinese Enchantments Wiki.
+//        System.out.println("| 附魔ID| 中文名称| 效果|");
+//        System.out.println("| :---:|:---:| :--------------------------:|");
+//        for (Class enchClass : ClassGetter.getClassesForPackage(Main.getMain(), "org.pixeltime.enchantmentsenhance.event.enchantment")) {
+//            if (EnchantmentListener.class.isAssignableFrom(enchClass)) {
+//                try {
+//                    EnchantmentListener enchantmentListener = (EnchantmentListener) enchClass.newInstance();
+//                    System.out.println("|" + enchantmentListener.getClass().getSimpleName() + "|" + enchantmentListener.lang()[0] + "|"+enchantmentListener.desc()[1] + "|");
+//                } catch (InstantiationException | IllegalAccessException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
     }
 }
