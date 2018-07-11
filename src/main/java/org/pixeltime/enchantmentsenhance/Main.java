@@ -19,6 +19,7 @@ package org.pixeltime.enchantmentsenhance;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -48,7 +49,7 @@ import java.util.Scanner;
  * @author HealPotion
  * @version Mar 30, 2018
  */
-public class Main extends JavaPlugin {
+public class Main extends JavaPlugin implements Listener {
     private static final CompatibilityManager compatibility =
             new CompatibilityManager();
     private static Database database;
@@ -174,8 +175,11 @@ public class Main extends JavaPlugin {
         // Display final time at the end of the initialization.
         getLogger().info("EnchantmentsEnhance took " + (System
                 .currentTimeMillis() - startTime) + "ms to setup.");
-    }
 
+        // Testing
+        Bukkit.getPluginManager().registerEvents(this, this);
+
+    }
 
     /**
      * When the plugin is disabled, execute following tasks.

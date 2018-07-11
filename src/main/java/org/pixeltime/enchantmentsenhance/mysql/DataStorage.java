@@ -110,7 +110,7 @@ public class DataStorage {
                     if (!database.doesPlayerExist(pData.getPlayername())) {
                         database.createNewPlayer(pData.getPlayername());
                         pData.setFailstack(0);
-                        pData.setItems(new int[3]);
+                        pData.setItems(new int[4]);
                         pData.setValks(new ArrayList<>());
 
                     } else {
