@@ -679,7 +679,7 @@ enhance:
     maximumFailstackApplied: 35
     failstackGainedPerFail: 2
     costToForceEnchant: 27
-    downgradeIfFail: true
+    downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: true
     fireworkIfSuccessful: true
@@ -704,7 +704,7 @@ enhance:
     maximumFailstackApplied: 44
     failstackGainedPerFail: 3
     costToForceEnchant: 45
-    downgradeIfFail: false
+    downgradeIfFail: true
     destroyIfFail: false
     requireConcentratedStones: true
     fireworkIfSuccessful: true
