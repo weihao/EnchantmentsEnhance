@@ -32,6 +32,7 @@ import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
+import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
 import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
@@ -123,7 +124,7 @@ public class Main extends JavaPlugin implements Listener {
         if (SettingsManager.config.getBoolean("enableStackMob")) {
             pm.registerEvents(new StackMobHandler(), this);
         }
-        if (!SettingsManager.config.getBoolean("enableVanillaEnchant")) {
+        if (SettingsManager.config.getBoolean("enableTableEnchant")) {
             pm.registerEvents(new VanillaEnchantHandler(), this);
         }
 
@@ -212,7 +213,9 @@ public class Main extends JavaPlugin implements Listener {
         pm.registerEvents(new PlayerDeathHandler(), this);
         pm.registerEvents(new PlayerStreamHandler(), this);
         pm.registerEvents(new LifeskillingHandler(), this);
-
+        if (getConfig().getBoolean("enableAnvilFix")) {
+            pm.registerEvents(new RepairListener(), this);
+        }
         // Notify Cauldron and MCPC users.
         if (getServer().getName().contains("Cauldron") || getServer().getName()
                 .contains("MCPC")) {

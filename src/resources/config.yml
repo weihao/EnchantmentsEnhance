@@ -32,8 +32,11 @@ language: EN_US
 #You can't disable this, because it is pre-loaded.
 enableLogo: true
 
-# Set true to disable vanilla enchanting table and when someone uses it, right click on it will open enhance menu.
-enableVanillaEnchant: false
+# Set true to enable vanilla enchanting table and when someone uses it, LEFT click on it will open enhance menu.
+enableTableEnchant: true
+
+# Fixes color codes when player edit an enhanced item on anvil.
+enableAnvilFix: true
 
 # Set true to enable some features that are related to $.
 enableEconomy: false
@@ -174,6 +177,8 @@ material:
     - SUGAR
     # 3 concentrated armor stone
     - GLOWSTONE_DUST
+    # 4 cron stone
+    - SLIME_BALL
   # List of Armor.
   armor:
     - DIAMOND_HELMET

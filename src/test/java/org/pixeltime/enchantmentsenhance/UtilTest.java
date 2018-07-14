@@ -52,6 +52,7 @@ public class UtilTest {
 
     @Test
     public void testIntToRoman() {
+        assertEquals("", Util.intToRoman(0));
         assertEquals("I", Util.intToRoman(1));
         assertEquals("II", Util.intToRoman(2));
         assertEquals("III", Util.intToRoman(3));

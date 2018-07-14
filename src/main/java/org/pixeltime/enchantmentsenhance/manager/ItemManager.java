@@ -160,8 +160,14 @@ public class ItemManager {
                         i--;
                     }
                 }
-                // Unique ID
-                newlore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', "&7" + enchantment + " " + Util.intToRoman(level + keptLevel)));
+                int max = 1;
+                try {
+                    max = SettingsManager.enchant.getConfigurationSection(ench.toLowerCase()).getKeys(false).size();
+                } catch (NullPointerException ex) {
+                }
+                int finalLevel = ((level + keptLevel) > max) ? max : level + keptLevel;
+
+                newlore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', "&7" + enchantment + " " + Util.intToRoman(finalLevel)));
                 meta.setLore(newlore);
                 item.setItemMeta(meta);
                 if (item.getEnchantments().isEmpty()) {
