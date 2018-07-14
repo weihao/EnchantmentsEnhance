@@ -109,7 +109,7 @@ class LM {
             addLang("Item.2", arrayOf("&6Concentrated Magical Black Stone (&3Weapon&6)", "&6凝聚魔力的黑石 (&3武器&6)"))
             addLang("Item.3", arrayOf("&6Concentrated Magical Black Stone (&7Armor&6)", "&6凝聚魔力的黑石 (&7防具&6)"))
             addLang("Item.valks", arrayOf("&9Advice of Valks", "&9巴尔克斯的忠告"))
-            addLang("Item.get", arrayOf("&aYou got a ", "&a你获得了一个%ITEM%."))
+            addLang("Item.get", arrayOf("&aYou got a %ITEM%", "&a你获得了一个%ITEM%."))
             addLang("Item.noItem", arrayOf("&cYou don't have enough &6%STONE%&c to perform an enhancement", "&c你没有足够的 &6%STONE%&c来进行本次强化."))
             addLang("Item.invalid", arrayOf("&cYou cannot enhance this item.", "&c你不能强化改道具."))
             addLang("Item.use", arrayOf("&aYou used a %ITEM%.", "&a你使用了一个%ITEM%."))

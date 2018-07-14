@@ -34,7 +34,7 @@ class DebugCommand : SubCommand() {
 
     override fun onCommand(p: Player, args: Array<String>) {
         if (args[0] == "upgrade") {
-            Enhance.enhanceSuccess(p.itemInHand, p, false, 19)
+            Enhance.enhanceSuccess(p.itemInHand, p, false, 20)
         } else if (args[0] == "slots") {
             IM.getArmorSlots(p)
         } else if (args[0] == "mysql") {

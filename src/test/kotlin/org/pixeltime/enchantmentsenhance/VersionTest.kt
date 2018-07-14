@@ -28,6 +28,12 @@ class VersionTest : TestCase() {
         assertTrue(a.equals(b))    // return true
         assertTrue(a == b)
 
+        a = Version("4.4.2")
+        b = Version("4.5")
+        a.compareTo(b) // return 0 (a<b)
+        assertFalse(a.equals(b))    // return true
+        assertTrue(a < b)
+
         val versions = ArrayList<Version>()
         versions.add(Version("2"))
         versions.add(Version("1.0.5"))
