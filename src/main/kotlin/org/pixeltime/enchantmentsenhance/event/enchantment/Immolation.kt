@@ -47,7 +47,7 @@ class Immolation : EnchantmentListener() {
         }
         try {
             val level = IM.getHighestLevel(player, this.name())
-            if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("immolation.$level.chance")) {
+            if (level > 0 && (roll(level))) {
                 for (entity in player.getNearbyEntities(SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"))) {
                     if (entity is Player) {
                         entity.setFireTicks(SettingsManager.enchant.getInt("immolation.$level.duration") * 20)

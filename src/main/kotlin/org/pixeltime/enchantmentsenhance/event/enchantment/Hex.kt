@@ -55,7 +55,7 @@ class Hex : EnchantmentListener() {
             try {
                 val level = IM.getHighestLevel(player, this.name())
                 if (level > 0) {
-                    if ((Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("hex.$level.chance")) {
+                    if ((roll(level))) {
                         player2.addPotionEffect(PotionEffect(PotionEffectType.BLINDNESS, SettingsManager.enchant.getInt("hex.$level.duration") * 20, 0))
                     }
                 }

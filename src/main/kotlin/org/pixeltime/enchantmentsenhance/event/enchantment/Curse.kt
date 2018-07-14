@@ -52,7 +52,7 @@ class Curse : EnchantmentListener() {
                     return
                 }
                 val level = IM.getHighestLevel(player, this.name())
-                if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("curse.$level.chance")) {
+                if ((level > 0) && (roll(level))) {
                     player.addPotionEffect(PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("curse.$level.duration") * 20, SettingsManager.enchant.getInt("curse.$level.potion_lvl") - 1))
                 }
             } catch (ex: Exception) {

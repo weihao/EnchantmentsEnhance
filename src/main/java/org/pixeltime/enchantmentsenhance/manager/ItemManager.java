@@ -56,14 +56,6 @@ public class ItemManager {
         }
     }
 
-
-    public static ItemStack setGrade(ItemStack item, int gradeLevel) {
-        NBTItem nbti = new NBTItem(item);
-        nbti.setInteger("EGrade", gradeLevel);
-
-        return nbti.getItem();
-    }
-
     public static ItemStack setLevel(ItemStack item, int enhanceLevel) {
         NBTItem nbti = new NBTItem(item);
         nbti.setInteger("ELevel", enhanceLevel);
@@ -81,11 +73,6 @@ public class ItemManager {
         return nbti.getInteger("ELevel");
     }
 
-
-    public static int getItemGradeLevel(ItemStack item) {
-        NBTItem nbti = new NBTItem(item);
-        return nbti.getInteger("EGrade");
-    }
 
     public static String getItemLore(ItemStack item) {
         NBTItem nbti = new NBTItem(item);
@@ -114,6 +101,7 @@ public class ItemManager {
         if (enchantLevel == 1) {
             currItem = setName(currItem, currItem.getItemMeta().getDisplayName());
         }
+
         // Unique ID applied.
         applyEnchantments(currItem);
         renameItem(currItem);
@@ -139,51 +127,16 @@ public class ItemManager {
 
     public static void applyEnchantments(ItemStack item) {
         int enchantLevel = getItemEnchantLevel(item);
-        int gradeLevel = getItemGradeLevel(item);
+
         if (enchantLevel > 0) {
             ItemType type = getItemEnchantmentType(item);
             List<String> temp = SettingsManager.config.getStringList("enhance."
                     + enchantLevel + ".enchantments." + type.toString());
-            //Clear All the enchantment before applying new enchantment
-            if (SettingsManager.config.getBoolean("resetEnchantments")) {
-                List<String> empty = new ArrayList<String>();
-                ItemMeta meta = item.getItemMeta();
-                meta.setLore(empty);
-                item.setItemMeta(meta);
-
-                for (Enchantment ench : item.getEnchantments().keySet()) {
-                    item.removeEnchantment(ench);
-                }
-            }
 
             //Adding New enchantment.
             for (String s : temp) {
                 String[] a = s.split(":");
                 applyEnchantmentToItem(item, a[0], Integer.parseInt(a[1]));
-            }
-            List<String> temp2 = null;
-            switch (getItemEnchantmentType(item)) {
-                case WEAPON:
-                    temp2 = SettingsManager.config.getStringList("weaponGrade."
-                            + gradeLevel + ".enchantment");
-                    break;
-                case ARMOR:
-                    temp2 = SettingsManager.config.getStringList("armorGrade."
-                            + gradeLevel + ".enchantment");
-                    break;
-                case ACCESSORY:
-                    break;
-                case TOOL:
-                    break;
-                case INVALID:
-                    break;
-            }
-
-            if (temp2 != null) {
-                for (String s : temp2) {
-                    String[] b = s.split(":");
-                    applyEnchantmentToItem(item, b[0], Integer.parseInt(b[1]));
-                }
             }
         }
     }
@@ -191,20 +144,24 @@ public class ItemManager {
     public static void applyEnchantmentToItem(ItemStack item, String ench, int level) {
         ItemMeta meta = item.getItemMeta();
         List<String> newlore = (meta.hasLore() ? meta.getLore() : new ArrayList<>());
-        if (Enchantment.getByName(ench.toUpperCase()) != null) {
-            item.addUnsafeEnchantment(Enchantment.getByName(ench.toUpperCase()), level);
+        Enchantment vanilla = Enchantment.getByName(ench.toUpperCase());
+        if (vanilla != null) {
+            item.addUnsafeEnchantment(Enchantment.getByName(ench.toUpperCase()), (item.getEnchantmentLevel(vanilla)) + level);
         } else {
             String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
+            int keptLevel = 0;
             if (enchantment != null) {
                 for (int i = 0; i < newlore.size(); i++) {
                     String curr = ChatColor.stripColor(newlore.get(i));
                     String currEnch = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', enchantment));
                     if (curr.contains(currEnch)) {
+                        keptLevel += Util.romanToInt(curr.split(" ")[1]);
                         newlore.remove(i);
+                        i--;
                     }
                 }
                 // Unique ID
-                newlore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', "&7" + enchantment + " " + Util.intToRoman(level)));
+                newlore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', "&7" + enchantment + " " + Util.intToRoman(level + keptLevel)));
                 meta.setLore(newlore);
                 item.setItemMeta(meta);
                 if (item.getEnchantments().isEmpty()) {
@@ -218,19 +175,13 @@ public class ItemManager {
 
     public static void renameItem(ItemStack item) {
         int enchantLevel = ItemManager.getItemEnchantLevel(item);
-        int gradeLevel = ItemManager.getItemGradeLevel(item);
         String prefix = SettingsManager.config.getString("enhance."
                 + enchantLevel + ".prefix");
         String suffix = SettingsManager.config.getString("enhance."
                 + enchantLevel + ".suffix");
-        String gradePrefix = SettingsManager.config.getString("grade."
-                + gradeLevel + ".name");
         String name = getFriendlyName(item);
         if (prefix != null && !prefix.equals("")) {
             name = prefix + " " + name;
-        }
-        if (gradePrefix != null && !gradePrefix.equals("")) {
-            name += " " + gradePrefix;
         }
         if (suffix != null && !suffix.equals("")) {
             name += " " + suffix;

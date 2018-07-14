@@ -50,7 +50,7 @@ class Stealth : EnchantmentListener() {
 
         try {
             val level = IM.getHighestLevel(player, this.name())
-            if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("stealth.$level.chance")) {
+            if (level > 0 && (roll(level))) {
                 val int1 = SettingsManager.enchant.getInt("stealth.$level.radius")
                 for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
                     if (entity is Player) {

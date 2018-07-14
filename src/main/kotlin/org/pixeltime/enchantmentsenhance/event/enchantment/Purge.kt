@@ -54,7 +54,7 @@ class Purge : EnchantmentListener() {
             }
             try {
                 val level = IM.getHighestLevel(player, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("purge.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     player2.world.strikeLightningEffect(player2.location)
                     val iterator = player2.activePotionEffects.iterator()
                     while (iterator.hasNext()) {

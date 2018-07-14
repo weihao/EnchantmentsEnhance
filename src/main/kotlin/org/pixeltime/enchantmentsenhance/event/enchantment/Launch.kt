@@ -44,7 +44,7 @@ class Launch : EnchantmentListener() {
 
             try {
                 val level = IM.getHighestLevel(player2, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("launch.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     player.velocity = Vector(0, SettingsManager.enchant.getInt("launch.$level.height"), 0)
                 }
             } catch (ex: Exception) {

@@ -230,9 +230,6 @@ accessory:
 
 # Vanilla Enchantments Reference: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
 # Custom Enchantments Reference: https://github.com/HealPotion/EnchantmentsEnhance/wiki/Enchantments-en
-# Set true to set unique but FIXED enchantments each enhancement level.
-resetEnchantments: true
-# It means everyone with same enhancement level and type of the item will have the same enchantments as well.
 enhance:
   0:
     # The success rate of item at the level.

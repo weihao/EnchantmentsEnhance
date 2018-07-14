@@ -53,7 +53,7 @@ class Battlecry : EnchantmentListener() {
             val level = IM.getHighestLevel(player, this.name())
             if (level > 0) {
                 if ((player.hasPotionEffect(PotionEffectType.POISON)) || player.hasPotionEffect(PotionEffectType.CONFUSION) || player.hasPotionEffect(PotionEffectType.WITHER) || player.hasPotionEffect(PotionEffectType.WEAKNESS)) {
-                    if ((Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("battlecry.$level.chance")) {
+                    if ((roll(level))) {
                         try {
                             player.removePotionEffect(PotionEffectType.BLINDNESS)
                             player.removePotionEffect(PotionEffectType.POISON)

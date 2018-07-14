@@ -52,7 +52,7 @@ class Reversal : EnchantmentListener() {
             }
             try {
                 val level = IM.getHighestLevel(player, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("reversal.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     player2.damage(entityDamageByEntityEvent.damage)
                     entityDamageByEntityEvent.damage = 0.0
                 }

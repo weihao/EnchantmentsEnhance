@@ -53,7 +53,7 @@ class Repel : EnchantmentListener() {
 
             try {
                 val level = IM.getHighestLevel(player, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("repel.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     damager.velocity = player.location.direction.multiply(SettingsManager.enchant.getInt("repel.$level.power"))
                 }
             } catch (ex: Exception) {

@@ -51,7 +51,7 @@ class Flame : EnchantmentListener() {
                     return
                 }
                 val level = IM.getHighestLevel(player, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("flame.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     player.fireTicks = SettingsManager.enchant.getInt("flame.$level.duration") * 20
                 }
             } catch (ex: Exception) {

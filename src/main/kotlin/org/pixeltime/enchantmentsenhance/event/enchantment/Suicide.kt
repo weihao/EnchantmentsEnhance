@@ -41,7 +41,7 @@ class Suicide : EnchantmentListener() {
 
         try {
             val level = IM.getHighestLevel(player, this.name())
-            if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("suicide.$level.chance")) {
+            if (level > 0 && (roll(level))) {
                 player.world.createExplosion(player.location, SettingsManager.enchant.getInt("suicide.$level.power").toFloat())
             }
         } catch (ex: Exception) {

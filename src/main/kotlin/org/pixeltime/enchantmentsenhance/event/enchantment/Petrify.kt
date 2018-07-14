@@ -48,7 +48,7 @@ class Petrify : EnchantmentListener() {
             }
             try {
                 val level = IM.getHighestLevel(player2, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("petrify.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, SettingsManager.enchant.getInt("petrify.$level.duration") * 20, SettingsManager.enchant.getInt("petrify.$level.potion_lvl") - 1))
 
                 }

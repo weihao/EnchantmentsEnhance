@@ -52,7 +52,7 @@ class Shadowstep : EnchantmentListener() {
             }
             try {
                 val level = IM.getHighestLevel(player, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("shadowstep.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     player.teleport(player2.location.add(player2.location.direction.multiply(SettingsManager.enchant.getInt("shadowstep.$level.distance") * -1.0)))
                 }
             } catch (ex: Exception) {

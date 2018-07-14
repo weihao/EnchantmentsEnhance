@@ -53,7 +53,7 @@ class Demonic : EnchantmentListener() {
                     return
                 }
                 val level = IM.getHighestLevel(player, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("demonic.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     player.addPotionEffect(PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("demonic.$level.duration") * 20, 0))
                 }
 

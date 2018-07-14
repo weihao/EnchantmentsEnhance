@@ -54,7 +54,7 @@ class Assassin : EnchantmentListener() {
             }
             try {
                 val level = IM.getHighestLevel(player, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("assassin.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     player2.addPotionEffect(PotionEffect(PotionEffectType.POISON, SettingsManager.enchant.getInt("assassin.$level.duration") * 20, 0))
                 }
             } catch (ex: Exception) {

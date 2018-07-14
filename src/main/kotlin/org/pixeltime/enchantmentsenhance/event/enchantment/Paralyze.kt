@@ -55,7 +55,7 @@ class Paralyze : EnchantmentListener() {
 
             try {
                 val level = IM.getHighestLevel(player, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("paralyze.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     player2.addPotionEffect(PotionEffect(PotionEffectType.getById(4), SettingsManager.enchant.getInt("paralyze.$level.duration") * 20, SettingsManager.enchant.getInt("paralyze.$level.potion_lvl") - 1))
                 }
             } catch (ex: Exception) {

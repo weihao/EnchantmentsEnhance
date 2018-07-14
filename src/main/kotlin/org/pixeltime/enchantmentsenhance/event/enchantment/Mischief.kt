@@ -55,7 +55,7 @@ class Mischief : EnchantmentListener() {
             }
             try {
                 val level = IM.getHighestLevel(player, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("mischief.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     player2.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, SettingsManager.enchant.getInt("mischief.$level.duration") * 20, SettingsManager.enchant.getInt("mischief.$level.potion_lvl") - 1))
                 }
             } catch (ex: Exception) {

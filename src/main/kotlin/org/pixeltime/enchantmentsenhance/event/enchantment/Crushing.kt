@@ -51,7 +51,7 @@ class Crushing : EnchantmentListener() {
                     return
                 }
                 val level = IM.getHighestLevel(player, this.name())
-                if ((level > 0) && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("crushing.$level.chance")) {
+                if ((level > 0) && (roll(level))) {
                     entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * 3.0
                 }
             } catch (ex: Exception) {

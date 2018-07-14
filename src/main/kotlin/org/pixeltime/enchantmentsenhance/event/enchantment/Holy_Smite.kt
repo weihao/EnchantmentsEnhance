@@ -54,7 +54,7 @@ class Holy_Smite : EnchantmentListener() {
 
             try {
                 val level = IM.getHighestLevel(player2, this.name())
-                if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("holy_smite.$level.chance")) {
+                if (level > 0 && (roll(level))) {
                     player.world.strikeLightningEffect(player.location)
                     val iterator = player.activePotionEffects.iterator()
                     while (iterator.hasNext()) {

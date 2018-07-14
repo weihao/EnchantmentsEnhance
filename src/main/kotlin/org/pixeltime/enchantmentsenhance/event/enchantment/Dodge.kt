@@ -24,7 +24,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Dodge : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -40,7 +39,7 @@ class Dodge : EnchantmentListener() {
         if (entityDamageEvent.entity is Player) {
             val player = entityDamageEvent.entity as Player
             val level = IM.getHighestLevel(player, this.name())
-            if (level > 0 && (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("dodge.$level.chance")) {
+            if (level > 0 && (roll(level))) {
                 entityDamageEvent.damage = 0.0
             }
         }
