@@ -3,6 +3,7 @@ package org.pixeltime.enchantmentsenhance.mysql;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.manager.MM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 import java.io.IOException;
@@ -182,7 +183,7 @@ public class Database {
             queryBuilder.append("(NULL, ?, 0, ?, ?);");
             preparedStatement = connection.prepareStatement(queryBuilder.toString());
             preparedStatement.setString(1, name);
-            preparedStatement.setString(2, Arrays.toString(new int[4]));
+            preparedStatement.setString(2, Arrays.toString(new int[MM.stoneTypes.size()]));
             preparedStatement.setString(3, new ArrayList<Integer>().toString());
 
             preparedStatement.executeUpdate();

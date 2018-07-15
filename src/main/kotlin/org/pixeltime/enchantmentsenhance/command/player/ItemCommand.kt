@@ -28,7 +28,7 @@ class ItemCommand : SubCommand() {
             val level = ItemManager.getItemEnchantLevel(item)
             val curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]))
             player.inventory.removeItem(item)
-            ItemManager.forgeItem(player, curr, level)
+            ItemManager.forgeItem(player, curr, level, true)
         } else if (args[0].equals("lore", ignoreCase = true)) {
             if (args.size == 2) {
                 if (args[1].equals("unbound", ignoreCase = true)) {

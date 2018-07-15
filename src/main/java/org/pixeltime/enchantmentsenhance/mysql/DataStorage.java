@@ -4,6 +4,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.manager.MM;
 
 import java.io.File;
 import java.io.IOException;
@@ -110,7 +111,7 @@ public class DataStorage {
                     if (!database.doesPlayerExist(pData.getPlayername())) {
                         database.createNewPlayer(pData.getPlayername());
                         pData.setFailstack(0);
-                        pData.setItems(new int[4]);
+                        pData.setItems(new int[MM.stoneTypes.size()]);
                         pData.setValks(new ArrayList<>());
 
                     } else {
@@ -132,7 +133,7 @@ public class DataStorage {
                             if (resultSet != null && resultSet.next()) {
                                 pData.setFailstack(resultSet.getInt("failstack"));
 
-                                int[] items = Arrays.stream(resultSet.getString("items").replace("[", "").replace("]", "").split(", ")).mapToInt(Integer::parseInt).toArray();
+                                int[] items = Arrays.copyOf(Arrays.stream(resultSet.getString("items").replace("[", "").replace("]", "").split(", ")).mapToInt(Integer::parseInt).toArray(), MM.stoneTypes.size());
                                 ArrayList<Integer> valks = new ArrayList<>();
                                 for (String s : resultSet.getString("valks").replace("[", "").replace("]", "").split(", ")) {
                                     if (!s.isEmpty()) {
@@ -180,7 +181,7 @@ public class DataStorage {
                         copyDefaults(playerFile);
                         FileConfiguration fc = YamlConfiguration.loadConfiguration(playerFile);
                         pData.setFailstack(fc.getInt("failstack"));
-                        int[] items = Arrays.stream(fc.getString("items").replace("[", "").replace("]", "").split(", ")).mapToInt(Integer::parseInt).toArray();
+                        int[] items = Arrays.copyOf(Arrays.stream(fc.getString("items").replace("[", "").replace("]", "").split(", ")).mapToInt(Integer::parseInt).toArray(), MM.stoneTypes.size());
                         ArrayList<Integer> valks = new ArrayList<>();
                         for (String s : fc.getString("valks").replace("[", "").replace("]", "").split(", ")) {
                             if (!s.isEmpty()) {
@@ -250,17 +251,15 @@ public class DataStorage {
     }
 
     private void copyDefaults(File playerFile) {
-        FileConfiguration playerConfig = YamlConfiguration.loadConfiguration(playerFile);
-        Reader defConfigStream = new InputStreamReader(Main.getMain().getResource("playerdata.yml"));
-        if (defConfigStream != null) {
+        try {
+            FileConfiguration playerConfig = YamlConfiguration.loadConfiguration(playerFile);
+            Reader defConfigStream = new InputStreamReader(Main.getMain().getResource("playerdata.yml"));
             YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
             playerConfig.options().copyDefaults(true);
             playerConfig.setDefaults(defConfig);
-            try {
-                playerConfig.save(playerFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            playerConfig.save(playerFile);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

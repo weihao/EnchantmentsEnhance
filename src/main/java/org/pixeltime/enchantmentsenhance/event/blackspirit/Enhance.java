@@ -83,7 +83,7 @@ public class Enhance {
             int enchantLevel) {
         // Enchant level after a successful enhancement
 
-        ItemManager.forgeItem(player, item, enchantLevel);
+        ItemManager.forgeItem(player, item, enchantLevel, true);
 
         // Play sound
         CompatibilityManager.playsound.playSound(player, "SUCCESS");
@@ -136,7 +136,7 @@ public class Enhance {
             // Item level after failing.
             int enchantLevel = level - 2;
             // Updates the item.
-            ItemManager.forgeItem(player, item, enchantLevel);
+            ItemManager.forgeItem(player, item, enchantLevel, false);
         }
         // Sends the failed message.
         Util.sendMessage(str, player);

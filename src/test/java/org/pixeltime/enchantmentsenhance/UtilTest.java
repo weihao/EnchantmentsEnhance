@@ -25,6 +25,7 @@ import org.junit.Test;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -82,7 +83,7 @@ public class UtilTest {
 
     @Test
     public void testHashing() {
-        String sha256hex = Hashing.sha256().hashString("hi", StandardCharsets.UTF_8).toString().toUpperCase();
+        String sha256hex = Hashing.sha256().hashString("xD", StandardCharsets.UTF_8).toString().toUpperCase();
         assertEquals(64, sha256hex.length());
     }
 
@@ -92,5 +93,18 @@ public class UtilTest {
         for (String s : temp.split(", ")) {
             assertTrue(s.isEmpty());
         }
+    }
+
+    @Test
+    public void testArray() {
+        int[] array1 = new int[]{2312, 42, 54, 7682};
+        int[] array2 = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+        int[] array3 = Arrays.copyOf(array1, array2.length);
+        assertEquals(array3.length, array2.length);
+    }
+
+    @Test
+    public void testRandom() {
+        assertTrue(Math.random() >= 0);
     }
 }

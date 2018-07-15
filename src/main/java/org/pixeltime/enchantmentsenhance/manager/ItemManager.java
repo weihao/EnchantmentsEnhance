@@ -93,7 +93,7 @@ public class ItemManager {
                         .getString("lore.bound").contains("un"));
     }
 
-    public static void forgeItem(Player player, ItemStack item, int enchantLevel) {
+    public static void forgeItem(Player player, ItemStack item, int enchantLevel, boolean addition) {
         ItemStack currItem = setLevel(item, enchantLevel);
         // Getting Unique Name.
         List<String> oldLore = KM.stripLore(item);
@@ -103,7 +103,7 @@ public class ItemManager {
         }
 
         // Unique ID applied.
-        applyEnchantments(currItem);
+        applyEnchantments(currItem, addition);
         renameItem(currItem);
         addlore(currItem, oldLore);
         soulbound(currItem);
@@ -125,18 +125,28 @@ public class ItemManager {
         currItem.setItemMeta(im);
     }
 
-    public static void applyEnchantments(ItemStack item) {
+    public static void applyEnchantments(ItemStack item, boolean addition) {
         int enchantLevel = getItemEnchantLevel(item);
 
         if (enchantLevel > 0) {
-            ItemType type = getItemEnchantmentType(item);
-            List<String> temp = SettingsManager.config.getStringList("enhance."
-                    + enchantLevel + ".enchantments." + type.toString());
-
-            //Adding New enchantment.
-            for (String s : temp) {
-                String[] a = s.split(":");
-                applyEnchantmentToItem(item, a[0], Integer.parseInt(a[1]));
+            if (addition) {
+                ItemType type = getItemEnchantmentType(item);
+                List<String> temp = SettingsManager.config.getStringList("enhance."
+                        + enchantLevel + ".enchantments." + type.toString());
+                //Adding New enchantment.
+                for (String s : temp) {
+                    String[] a = s.split(":");
+                    applyEnchantmentToItem(item, a[0], Integer.parseInt(a[1]));
+                }
+            } else {
+                ItemType type = getItemEnchantmentType(item);
+                List<String> temp = SettingsManager.config.getStringList("enhance."
+                        + (enchantLevel + 1) + ".enchantments." + type.toString());
+                //Adding New enchantment.
+                for (String s : temp) {
+                    String[] a = s.split(":");
+                    applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
+                }
             }
         }
     }
