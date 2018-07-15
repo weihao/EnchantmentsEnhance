@@ -30,7 +30,7 @@ import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 public class VanillaEnchantHandler implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onOpenEnchantmentTable(PlayerInteractEvent event) {
-        if (event.getAction() == Action.LEFT_CLICK_BLOCK && event.getClickedBlock().getType() == Material.ENCHANTMENT_TABLE) {
+        if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock().getType() == Material.ENCHANTMENT_TABLE && event.getPlayer().isSneaking()) {
             event.setCancelled(true);
             new MainMenu(event.getPlayer()).open();
         }

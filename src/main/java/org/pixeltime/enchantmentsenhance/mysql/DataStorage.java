@@ -44,7 +44,6 @@ public class DataStorage {
                     Main.getMain().getLogger().info("File doesn't exist!");
                     return;
                 }
-
                 copyDefaults(playerFile);
                 FileConfiguration fc = YamlConfiguration.loadConfiguration(playerFile);
                 fc.set("failstack", pData.getFailstack());
@@ -258,8 +257,7 @@ public class DataStorage {
             playerConfig.options().copyDefaults(true);
             playerConfig.setDefaults(defConfig);
             playerConfig.save(playerFile);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
         }
     }
 }

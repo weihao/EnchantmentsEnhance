@@ -18,20 +18,21 @@
 
 package org.pixeltime.enchantmentsenhance.command.console
 
+import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand
-import org.pixeltime.enchantmentsenhance.manager.DataManager
-import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
 
+
+
 class ReloadConsoleCommand : SubConsoleCommand() {
     override fun onCommand(sender: CommandSender, args: Array<String>) {
-        SettingsManager.reloadConfig()
-        SettingsManager.reloadLang()
-        DataManager.setUp()
-        DropManager()
-
+        Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
+                sender)
+        val console = Bukkit.getServer().consoleSender
+        val command = "reload"
+        Bukkit.dispatchCommand(console, command)
         Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
                 sender)
     }

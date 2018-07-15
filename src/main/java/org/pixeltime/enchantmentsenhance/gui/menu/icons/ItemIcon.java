@@ -38,7 +38,7 @@ public class ItemIcon extends Clickable {
                 return CompatibilityManager.glow.addGlow(getItem());
             }
         }
-        return CompatibilityManager.glow.addGlow(getItem());
+        return getItem();
     }
 
     @Override

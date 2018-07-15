@@ -28,6 +28,13 @@ public class StatsIcon extends Clickable {
                     "Menu.lore.stats1")).addLoreLine(SettingsManager.lang.getString(
                     "Menu.lore.stats2")).toItemStack());
         }
+        if (playerName != null && API.hasFailstack(playerName)) {
+            return CompatibilityManager.glow.addGlow(new ItemBuilder(Material.WOOL)
+                    .setDyeColor(DyeColor.LIGHT_BLUE)
+                    .setName(SettingsManager.lang.getString("Menu.gui.stats"))
+                    .addLoreLine(SettingsManager.lang.getString("Enhance.currentFailstack")
+                            + API.getFailstack(playerName)).toItemStack());
+        }
         return getItem();
     }
 

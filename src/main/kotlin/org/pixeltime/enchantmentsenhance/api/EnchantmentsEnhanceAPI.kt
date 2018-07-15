@@ -86,6 +86,10 @@ class API {
         }
 
         @JvmStatic
+        fun hasFailstack(player: String): Boolean {
+            return getFailstack(player) > 0
+        }
+        @JvmStatic
         fun getChance(playerName: String, enchantLevel: Int): Double {
             var failstack = getFailstack(playerName)
             val maximumFailstack = DataManager.maximumFailstackApplied[enchantLevel]

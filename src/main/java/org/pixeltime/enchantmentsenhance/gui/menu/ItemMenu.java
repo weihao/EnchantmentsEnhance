@@ -20,7 +20,10 @@ package org.pixeltime.enchantmentsenhance.gui.menu;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
+import org.pixeltime.enchantmentsenhance.gui.menu.icons.BackIcon;
 import org.pixeltime.enchantmentsenhance.manager.MM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -30,6 +33,7 @@ import org.pixeltime.enchantmentsenhance.util.Util;
  * @version Feb 9, 2018
  */
 public class ItemMenu extends GUIAbstract {
+    private BackIcon back = new BackIcon();
 
     public ItemMenu(Player p) {
         super(p, 54, SettingsManager.lang.getString("Item.title"));
@@ -47,5 +51,12 @@ public class ItemMenu extends GUIAbstract {
             setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1), MainMenu.stone.getItem(i, player), () -> Util.sendMessage("You can't take this out for now.",
                     player));
         }
+        setItem(back.getPosition(), back.getItem(), () -> new BukkitRunnable() {
+            @Override
+            public void run() {
+                player.closeInventory();
+                new MainMenu(player).open();
+            }
+        }.runTaskLaterAsynchronously(Main.getMain(), 2L));
     }
 }
