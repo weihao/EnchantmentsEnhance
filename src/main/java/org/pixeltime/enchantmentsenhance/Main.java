@@ -186,6 +186,10 @@ public class Main extends JavaPlugin implements Listener {
      * When the plugin is disabled, execute following tasks.
      */
     public void onDisable() {
+        for (PlayerStat fData : PlayerStat.getPlayers()) {
+            DataStorage.get().saveStats(fData);
+        }
+
         // Write player data to the memory.
         if (!Bukkit.getOnlinePlayers().isEmpty()) {
             for (Player player : Bukkit.getOnlinePlayers()) {
@@ -193,9 +197,6 @@ public class Main extends JavaPlugin implements Listener {
                     player.closeInventory();
                 }
             }
-        }
-        for (final PlayerStat fData : PlayerStat.getPlayers()) {
-            DataStorage.get().saveStats(fData);
         }
 
         // Plugin fully disabled.

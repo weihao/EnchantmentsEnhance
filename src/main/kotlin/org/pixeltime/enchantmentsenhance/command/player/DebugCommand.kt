@@ -33,20 +33,20 @@ class DebugCommand : SubCommand() {
         get() = "Enchantmentsenhance.debug"
 
     override fun onCommand(p: Player, args: Array<String>) {
-        if (args[0] == "upgrade") {
-            Enhance.enhanceSuccess(p.itemInHand, p, false, 20)
-        } else if (args[0] == "slots") {
-            IM.getArmorSlots(p)
-        } else if (args[0] == "mysql") {
-        } else if (args[0] == "format") {
-            val subcommands = Main.getMain().commandManager.commands.iterator()
-            while (subcommands.hasNext()) {
-                val sc = subcommands.next()
-                val curr = "Command: " + sc.usage() + " Permission: " + sc.permission
-                Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), p, false)
+        when {
+            args[0] == "upgrade" -> Enhance.enhanceSuccess(p.itemInHand, p, false, 20)
+            args[0] == "slots" -> IM.getArmorSlots(p)
+            args[0] == "mysql" -> {
             }
-        } else if (args[0].equals("failstack", ignoreCase = true)) {
-            API.addFailstack(p.name, 200)
+            args[0] == "format" -> {
+                val subcommands = Main.getMain().commandManager.commands.iterator()
+                while (subcommands.hasNext()) {
+                    val sc = subcommands.next()
+                    val curr = "Command: " + sc.usage() + " Permission: " + sc.permission
+                    Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), p, false)
+                }
+            }
+            args[0].equals("failstack", ignoreCase = true) -> API.addFailstack(p.name, 200)
         }
     }
 
