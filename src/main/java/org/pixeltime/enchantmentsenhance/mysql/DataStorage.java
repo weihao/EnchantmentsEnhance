@@ -46,9 +46,11 @@ public class DataStorage {
                 }
                 copyDefaults(playerFile);
                 FileConfiguration fc = YamlConfiguration.loadConfiguration(playerFile);
+                // Query
                 fc.set("failstack", pData.getFailstack());
                 fc.set("items", Arrays.toString(pData.getItems()));
                 fc.set("valks", pData.getValks().toString());
+                fc.set("grind", pData.getGrind());
                 fc.save(playerFile);
 
             } catch (IOException ioException) {
@@ -67,16 +69,17 @@ public class DataStorage {
             try {
                 StringBuilder queryBuilder = new StringBuilder();
                 queryBuilder.append("UPDATE `enchantmentsenhance` SET ");
-                queryBuilder.append("`failstack` = ?, `items` = ?, `valks` = ?");
+                queryBuilder.append("`failstack` = ?, `items` = ?, `valks` = ?, `grind` = ?");
                 queryBuilder.append("WHERE `playername` = ?;");
 
                 preparedStatement = connection.prepareStatement(queryBuilder.toString());
 
-
+                // Query
                 preparedStatement.setInt(1, pData.getFailstack());
                 preparedStatement.setString(2, Arrays.toString(pData.getItems()));
                 preparedStatement.setString(3, pData.getValks().toString());
-                preparedStatement.setString(4, pData.getPlayername());
+                preparedStatement.setInt(4, pData.getGrind());
+                preparedStatement.setString(5, pData.getPlayername());
 
                 preparedStatement.executeUpdate();
 
@@ -112,7 +115,7 @@ public class DataStorage {
                         pData.setFailstack(0);
                         pData.setItems(new int[MM.stoneTypes.size()]);
                         pData.setValks(new ArrayList<>());
-
+                        pData.setGrind(2);
                     } else {
                         Connection connection = database.getConnection();
                         PreparedStatement preparedStatement = null;
@@ -120,7 +123,8 @@ public class DataStorage {
 
                         try {
                             StringBuilder queryBuilder = new StringBuilder();
-                            queryBuilder.append("SELECT `failstack`, `items`, `valks` ");
+                            // Query
+                            queryBuilder.append("SELECT `failstack`, `items`, `valks`, `grind` ");
                             queryBuilder.append("FROM `enchantmentsenhance` ");
                             queryBuilder.append("WHERE `playername` = ? ");
                             queryBuilder.append("LIMIT 1;");
@@ -141,7 +145,7 @@ public class DataStorage {
                                 }
                                 pData.setItems(items);
                                 pData.setValks(valks);
-
+                                pData.setGrind(resultSet.getInt("grind"));
                             }
 
                         } catch (final SQLException sqlException) {
@@ -176,7 +180,6 @@ public class DataStorage {
                         if (!playerFile.exists() && !playerFile.createNewFile()) {
                             Main.getMain().getLogger().info("Something strange is happening while saving!");
                         }
-
                         copyDefaults(playerFile);
                         FileConfiguration fc = YamlConfiguration.loadConfiguration(playerFile);
                         pData.setFailstack(fc.getInt("failstack"));
@@ -189,6 +192,7 @@ public class DataStorage {
                         }
                         pData.setItems(items);
                         pData.setValks(valks);
+                        pData.setGrind(fc.getInt("grind"));
 
                     } catch (IOException ioException) {
                         System.out.println("Failed to load player " + pData.getPlayername() + ": " + ioException.getMessage());

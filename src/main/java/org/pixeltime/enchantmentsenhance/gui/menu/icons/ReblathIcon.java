@@ -1,31 +1,27 @@
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
+import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
+import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class ReblathIcon extends Clickable {
-    private final double chance = 17.5;
 
     @Override
     public ItemStack getItem() {
-        return null;
+        return new ItemBuilder(Material.ANVIL)
+                .setName(SettingsManager.lang.getString("Menu.gui.reblath"))
+                .toItemStack();
     }
 
     @Override
     public int getPosition() {
-        return 0;
+        return Util.getSlot(1, 4);
     }
 
-    public void reblath(String player) {
-        // If player has item to failstack.
-        if (API.getItem(player, 1) > 0) {
-            // Roll.
-            if ((Math.random() * 100) < chance) {
-                API.addFailstack(player, 1);
-            } else {
-                API.resetFailstack(player);
-            }
-        }
+    public double getChance() {
+        return 17.5;
     }
 }

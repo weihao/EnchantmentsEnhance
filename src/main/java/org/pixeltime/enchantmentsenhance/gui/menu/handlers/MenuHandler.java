@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.gui.menu;
+package org.pixeltime.enchantmentsenhance.gui.menu.handlers;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -10,6 +10,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.GUIManager;
+import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 
 public class MenuHandler implements Listener {
 

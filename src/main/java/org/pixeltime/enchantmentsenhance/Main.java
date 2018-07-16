@@ -26,7 +26,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 import org.pixeltime.enchantmentsenhance.gui.GUIListener;
 import org.pixeltime.enchantmentsenhance.gui.GUIManager;
-import org.pixeltime.enchantmentsenhance.gui.menu.MenuHandler;
+import org.pixeltime.enchantmentsenhance.gui.menu.handlers.MenuHandler;
 import org.pixeltime.enchantmentsenhance.listener.*;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.mysql.DataStorage;

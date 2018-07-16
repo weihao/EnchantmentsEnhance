@@ -72,7 +72,6 @@ public class ValksMenu extends GUIAbstract {
                     new MainMenu(player).open();
                 } else {
                     currPage--;
-                    update();
                 }
             }
         }.runTaskLaterAsynchronously(Main.getMain(), 2L));
@@ -85,7 +84,6 @@ public class ValksMenu extends GUIAbstract {
                             .toItemStack(),
                     () -> {
                         currPage++;
-                        update();
                     });
         }
     }

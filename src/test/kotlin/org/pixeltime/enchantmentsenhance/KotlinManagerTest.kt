@@ -23,7 +23,17 @@ import org.junit.Test
 
 class KotlinManagerTest : TestCase() {
     @Test
-    fun testGetLevel() {
+    fun testItemUpgrade() {
+        var level = 0
+        var aimingLevel = 10
+        for (i in level + 1..aimingLevel) {
 
+        }
+
+        level = 10
+        aimingLevel = 1
+        for (i in level downTo aimingLevel + 1) {
+            assertTrue(i != 0)
+        }
     }
 }

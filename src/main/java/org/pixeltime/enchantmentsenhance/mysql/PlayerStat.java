@@ -12,6 +12,7 @@ public class PlayerStat {
     private int failstack;
     private int[] items;
     private List<Integer> valks;
+    private int grind;
 
     public PlayerStat(final Player player) {
         this.playername = player.getName();
@@ -20,6 +21,10 @@ public class PlayerStat {
 
     public static ArrayList<PlayerStat> getPlayers() {
         return players;
+    }
+
+    public static void setPlayers(ArrayList<PlayerStat> players) {
+        PlayerStat.players = players;
     }
 
     public static PlayerStat getPlayerStats(final String playername) {
@@ -36,6 +41,14 @@ public class PlayerStat {
         if (ps != null) {
             players.remove(ps);
         }
+    }
+
+    public int getGrind() {
+        return grind;
+    }
+
+    public void setGrind(int grind) {
+        this.grind = grind;
     }
 
     public List<Integer> getValks() {

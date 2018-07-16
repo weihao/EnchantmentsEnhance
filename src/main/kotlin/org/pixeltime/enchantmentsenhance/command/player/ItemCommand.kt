@@ -3,7 +3,6 @@ package org.pixeltime.enchantmentsenhance.command.player
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.command.SubCommand
-import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
@@ -17,7 +16,18 @@ class ItemCommand : SubCommand() {
         if (args[0].equals("upgrade", ignoreCase = true)) {
             if (args.size == 2) {
                 try {
-                    Enhance.enhanceSuccess(player.itemInHand, player, true, Integer.parseInt(args[1]))
+                    val item = player.itemInHand
+                    val level = ItemManager.getItemEnchantLevel(item)
+                    val aimingLevel = Integer.parseInt(args[1])
+                    if (level < aimingLevel) {
+                        for (i in level + 1..aimingLevel) {
+                            ItemManager.forgeItem(player, item, i, true)
+                        }
+                    } else if (aimingLevel < level){
+                        for (i in level downTo aimingLevel + 1) {
+                            ItemManager.forgeItem(player, item, i, false)
+                        }
+                    }
                 } catch (ex: Exception) {
                     player.sendMessage(SettingsManager.config.getString("Config.invalidCommand"))
                 }
@@ -31,12 +41,10 @@ class ItemCommand : SubCommand() {
             ItemManager.forgeItem(player, curr, level, true)
         } else if (args[0].equals("lore", ignoreCase = true)) {
             if (args.size == 2) {
-                if (args[1].equals("unbound", ignoreCase = true)) {
-                    Lore.removeLore(player.itemInHand)
-                } else if (args[1].equals("tradeable", ignoreCase = true)) {
-                    Lore.addLore(player.itemInHand, SettingsManager.lang.getString("Lore.tradeableLore"), true)
-                } else if (args[1].equals("untradeable", ignoreCase = true)) {
-                    Lore.addLore(player.itemInHand, SettingsManager.lang.getString("Lore.untradeableLore"), false)
+                when {
+                    args[1].equals("unbound", ignoreCase = true) -> Lore.removeLore(player.itemInHand)
+                    args[1].equals("tradeable", ignoreCase = true) -> Lore.addLore(player.itemInHand, SettingsManager.lang.getString("Lore.tradeableLore"), true)
+                    args[1].equals("untradeable", ignoreCase = true) -> Lore.addLore(player.itemInHand, SettingsManager.lang.getString("Lore.untradeableLore"), false)
                 }
             }
         }

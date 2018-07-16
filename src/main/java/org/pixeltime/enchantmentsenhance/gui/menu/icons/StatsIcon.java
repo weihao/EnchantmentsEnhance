@@ -16,9 +16,11 @@ public class StatsIcon extends Clickable {
 
     @Override
     public ItemStack getItem() {
-        return new ItemBuilder(Material.WOOL).setDyeColor(DyeColor.LIGHT_BLUE).setName(SettingsManager.lang.getString("Menu.gui.stats")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.stats1")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.stats2")).toItemStack();
+        return new ItemBuilder(Material.WOOL).setDyeColor(DyeColor.LIGHT_BLUE)
+                .setName(SettingsManager.lang.getString("Menu.gui.stats"))
+                .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats1"))
+                .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats2"))
+                .toItemStack();
     }
 
     public ItemStack getItem(String playerName) {
@@ -33,7 +35,10 @@ public class StatsIcon extends Clickable {
                     .setDyeColor(DyeColor.LIGHT_BLUE)
                     .setName(SettingsManager.lang.getString("Menu.gui.stats"))
                     .addLoreLine(SettingsManager.lang.getString("Enhance.currentFailstack")
-                            + API.getFailstack(playerName)).toItemStack());
+                            + API.getFailstack(playerName))
+                    .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats1"))
+                    .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats2"))
+                    .toItemStack());
         }
         return getItem();
     }

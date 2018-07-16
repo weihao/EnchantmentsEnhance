@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS `enchantmentsenhance` (
   `failstack` INT NOT NULL DEFAULT 0,
   `items` VARCHAR(256) NOT NULL,
   `valks` VARCHAR(256) NOT NULL,
+  `grind` INT DEFAULT 2,
   PRIMARY KEY (`id`),
   KEY (`playername`)
 )

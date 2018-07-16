@@ -92,6 +92,8 @@ class LM {
             addLang("Menu.gui.store", arrayOf("&fSave Failstack", "&f保存垫子"))
             addLang("Menu.gui.back", arrayOf("&9Go Back", "&9返回"))
             addLang("Menu.gui.next", arrayOf("&9Go Next", "&9前进"))
+            addLang("Menu.gui.reblath", arrayOf("&9Reblath Failstacking", "&9叠垫子"))
+            addLang("Menu.gui.grind", arrayOf("&9Grind", "&9研磨"))
             addLang("Menu.lore.store1", arrayOf("&fUse Blacksmith’s Secret Book", "&f使用铁匠的秘笈创造巴尔克斯的忠告"))
             addLang("Menu.lore.store2", arrayOf("&fto store failstacks by creating &9Advice of Valks", "&f以保留当前的垫子"))
             addLang("Menu.lore.force1", arrayOf("&cForce guarantees a successful enhancement", "&c强制突破百分百成功突破物品的潜力"))
