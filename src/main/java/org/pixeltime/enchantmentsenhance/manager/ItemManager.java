@@ -93,12 +93,12 @@ public class ItemManager {
                         .getString("lore.bound").contains("un"));
     }
 
-    public static void forgeItem(Player player, ItemStack item, int enchantLevel, boolean addition) {
+    public static ItemStack forgeItem(Player player, ItemStack item, int enchantLevel, boolean addition) {
         ItemStack currItem = setLevel(item, enchantLevel);
         // Getting Unique Name.
         List<String> oldLore = KM.stripLore(item);
 
-        if (enchantLevel == 1) {
+        if (enchantLevel == 1 && getItemName(currItem) == null) {
             currItem = setName(currItem, currItem.getItemMeta().getDisplayName());
         }
 
@@ -110,6 +110,7 @@ public class ItemManager {
         player.getInventory().removeItem(item);
         MainMenu.itemOnEnhancingSlot.put(player.getName(), currItem);
         player.getInventory().addItem(currItem);
+        return currItem;
     }
 
     private static void addlore(ItemStack currItem, List<String> old) {
@@ -156,7 +157,12 @@ public class ItemManager {
         List<String> newlore = (meta.hasLore() ? meta.getLore() : new ArrayList<>());
         Enchantment vanilla = Enchantment.getByName(ench.toUpperCase());
         if (vanilla != null) {
-            item.addUnsafeEnchantment(Enchantment.getByName(ench.toUpperCase()), (item.getEnchantmentLevel(vanilla)) + level);
+            int lvl = (item.getEnchantmentLevel(vanilla)) + level;
+            if (lvl > 0) {
+                item.addUnsafeEnchantment(Enchantment.getByName(ench.toUpperCase()), lvl);
+            } else {
+                item.removeEnchantment(vanilla);
+            }
         } else {
             String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
             int keptLevel = 0;
@@ -176,13 +182,14 @@ public class ItemManager {
                 } catch (NullPointerException ex) {
                 }
                 int finalLevel = ((level + keptLevel) > max) ? max : level + keptLevel;
-
-                newlore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', "&7" + enchantment + " " + Util.intToRoman(finalLevel)));
-                meta.setLore(newlore);
-                item.setItemMeta(meta);
-                if (item.getEnchantments().isEmpty()) {
-                    CompatibilityManager.glow
-                            .addGlow(item);
+                if (finalLevel > 0) {
+                    newlore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', "&7" + enchantment + " " + Util.intToRoman(finalLevel)));
+                    meta.setLore(newlore);
+                    item.setItemMeta(meta);
+                    if (item.getEnchantments().isEmpty()) {
+                        CompatibilityManager.glow
+                                .addGlow(item);
+                    }
                 }
             }
         }

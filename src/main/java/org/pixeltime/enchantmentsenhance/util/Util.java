@@ -253,6 +253,9 @@ public class Util {
     }
 
     public static int romanToInt(String num) {
+        if (num.isEmpty() || num.equals(" ")) {
+            return 0;
+        }
         Hashtable<Character, Integer> ht = new Hashtable<Character, Integer>();
         ht.put('I', 1);
         ht.put('X', 10);
