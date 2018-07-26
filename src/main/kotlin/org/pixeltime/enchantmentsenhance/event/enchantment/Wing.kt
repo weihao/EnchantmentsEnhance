@@ -36,8 +36,8 @@ class Wing : EnchantmentListener() {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
-        val player = playerMoveEvent.player
 
+        val player = playerMoveEvent.player
         val level = IM.getHighestLevel(player, this.name())
         player.allowFlight = level > 0 || player.hasPermission("essentials.fly") || player.gameMode == GameMode.CREATIVE
     }

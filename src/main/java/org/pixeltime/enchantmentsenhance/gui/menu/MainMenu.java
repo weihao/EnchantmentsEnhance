@@ -47,6 +47,11 @@ public class MainMenu extends GUIAbstract {
         getInventory().clear();
         getActions().clear();
         Player player = Bukkit.getPlayer(playerName);
+
+        if (!enhanceMode.containsKey(playerName)) {
+            enhanceMode.put(playerName, gear);
+        }
+
         if (itemOnEnhancingSlot.containsKey(playerName)) {
             setItem(Util.getSlot(8, 4), itemOnEnhancingSlot.get(playerName));
 

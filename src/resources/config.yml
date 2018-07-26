@@ -34,6 +34,12 @@ enableLogo: true
 
 # Set true to enable vanilla enchanting table and when someone uses it, CROUCHING + RIGHT click on it will open enhance menu.
 enableTableEnchant: true
+# LEFT_CLICK - the player won't be able to destroy an enchantment table if you bind it to left click.
+# RIGHT_CLICK - the player won't be able to open vanilla enchantment table if you bind it to right click.
+# SHIFT_AND_LEFT_CLICK  - the player needs to crouching and left clicking at the same time.
+# SHIFT_AND_RIGHT_CLICK - the player needs to crouching and right clicking at the same time.
+openMethod: RIGHT_CLICK
+
 
 # Fixes color codes when player edit an enhanced item on anvil.
 enableAnvilFix: true
@@ -68,15 +74,27 @@ mysql:
   # User password
   password: 'by_healpot_with_love'
 
+# Set false to disable keep item on death, but the lores will remain on the items.
+enableLore: true
 # Lore is the additional attribution that is added to the enhanced item.
 lore:
   # Supported bound type: tradeable, untradeable.
   # tradeable: keep-item-on-death, personal trading is allowed.
   # untradeable: keep-item-on-death, cannot be stored in the chests, cannot be dropped.
+  # disabled: disable automatically applying lores.
   bound: tradeable
   # Do you want to notify the player when the item becomes bounded?
   sendBoundingMessage: true
 
+# Set false to disable rename mechanics.
+enableRename: true
+# Set control of what renaming is included.
+renamingIncludes:
+  prefix: true
+  suffix: true
+
+# Set false to disable life skills.
+enableLifeskill: true
 # Life Skills consist of various tasks. Black stones will be rewarded by performing any of these tasks.
 lifeskill:
   # What ore counts as mining blocks?
@@ -287,9 +305,10 @@ enhance:
     suffix: "&8+1"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:1
+         - Endless:1
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:1
+         - Endless:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -312,10 +331,10 @@ enhance:
     suffix: "&8+2"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:2
-         - ASSASSIN:2
+         - Stealth:1
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:2
+         - Pyromaniac:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -338,10 +357,11 @@ enhance:
     suffix: "&8+3"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:3
-         - Hex:1
+         - Stealth:1
+         - Execute:1
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:3
+         - Pyromaniac:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -364,10 +384,14 @@ enhance:
     suffix: "&8+4"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:4
-         - Riftslayer:1
+         - Stealth:1
+         - Execute:1
+         - Corruption:1
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:4
+         - Pyromaniac:1
+         - Haste:1
+         - Swimmer:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -390,10 +414,15 @@ enhance:
     suffix: "&8+5"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:5
-         - Siphon:1
+         - Stealth:1
+         - Execute:1
+         - Corruption:1
+         - Rekt:1
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Pyromaniac:1
+         - Haste:1
+         - Swimmer:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -416,10 +445,15 @@ enhance:
     suffix: "&8+6"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:6
-         - Lifesteal:1
+         - Execute:1
+         - Corruption:1
+         - Rekt:1
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Pyromaniac:1
+         - Haste:1
+         - Swimmer:1
+         - Jump:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -442,10 +476,13 @@ enhance:
     suffix: "&8+7"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:7
-         - Lifesteal:1
+         - Execute:1
+         - Corruption:1
+         - Plunder:1
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Jump:1
+         - Batvision:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -468,9 +505,11 @@ enhance:
     suffix: "&2+8"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:7
+         - Corruption:1
+         - Launch:5
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Flame:3
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -492,10 +531,13 @@ enhance:
     prefix: ""
     suffix: "&2+9"
     enchantments:
-      WEAPON:
-         - DAMAGE_ALL:8
-      ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+       WEAPON:
+         - Reborn:3
+         - Mischief:3
+         - Damage_All:2
+       ARMOR:
+         - Aegis:1
+         - Eyepatch:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -518,9 +560,12 @@ enhance:
     suffix: "&2+10"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:9
+         - Crits:1
+         - Riftslayer:1
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Aegis:1
+         - Blessed:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -543,9 +588,12 @@ enhance:
     suffix: "&2+11"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:10
+         - Hex:3
+         - Assassin:3
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Aegis:1
+         - Blessed:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -568,9 +616,13 @@ enhance:
     suffix: "&2+12"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:11
+         - Curse:2
+         - Strength:1
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Aegis:1
+         - Blessed:1
+         - Demonic:5
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -593,9 +645,10 @@ enhance:
     suffix: "&2+13"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:12
+         - Curse:2
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Aegis:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -618,9 +671,10 @@ enhance:
     suffix: "&2+14"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:13
+         - Speed:1
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Shield:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -643,9 +697,10 @@ enhance:
     suffix: "&2+15"
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:14
+         - Siphon:3
+         - Damage_All:2
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Saturation:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -668,9 +723,12 @@ enhance:
     suffix: ""
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:15
+         - Petrify:3
+         - Crushing:3
+         - Lifesteal:1
+         - Damage_All:8
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Dodge:5
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -693,9 +751,15 @@ enhance:
     suffix: ""
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:17
+         - Smite:5
+         - Turmoil:3
+         - Crushing:3
+         - Lifesteal:1
+         - Damage_All:8
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Repel:3
+         - Molten:3
+         - Battlecry:3
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -718,9 +782,15 @@ enhance:
     suffix: ""
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:19
+         - Lifesteal:1
+         - Paralyze:2
+         - Damage_All:8
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Reinforced:1
+         - Suicide:1
+         - Frosty:3
+         - Divine:3
+         - Shield:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -743,9 +813,15 @@ enhance:
     suffix: ""
     enchantments:
       WEAPON:
-         - DAMAGE_ALL:21
+         - Purge:4
+         - Damage_All:8
       ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
+         - Spiked:3
+         - Vitality:1
+         - Cure:1
+         - Immolation:1
+         - Reversal:1
+         - Shield:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -767,97 +843,15 @@ enhance:
     prefix: "&cPEN"
     suffix: ""
     enchantments:
-      WEAPON:
-         - DAMAGE_ALL:10
-         - DURABILITY:10
-         - DIG_SPEED:5
-         - FIRE_ASPECT:5
-         - KNOCKBACK:1
-         - LOOT_BONUS_MOBS:5
-         - Lifesteal:3
-         - Assassin:3
-         - Kill_Confirm:3
-         - Hex:3
-         - Riftslayer:1
-         - Siphon:3
-         - Angry_Birds:5
-         - Curse:4
-         - Crushing:5
-         - Execute:5
-         - Purge:4
-         - Divine:3
-         - Plunder:1
-         - Mischief:3
-         - Disarm:3
-         - Thief:3
-         - Reborn:3
-         - Reversal:3
-         - Endless:1
-         - Dodge:5
-         - Blessed:3
-         - Demonic:1
-         - Stealth:4
-         - Aegis:5
-         - Pyromanic:5
-         - Flame:3
-         - Spiked:2
-         - Shadowstep:3
-         - Tamer:1
-         - Wolves:1
-         - Repel:3
-         - Rider:1
-         - Paralyze:2
-         - Feather:1
-         - Jump:3
-         - Speed:3
-         - Eyepatch:1
-         - Swimmer:3
-         - Endless:1
-         - Shield:3
-         - Molten:1
-         - Immolation:5
-         - Strength:3
-         - Reinforced:5
-         - Suicide:1
-         - Batman:3
-         - Frosty:3
-         - Invisible:1
-         - Crits:1
-         - Saturation:3
-         - Cure:3
-         - Wing:1
-         - Vitality:3
-      ARMOR:
-         - PROTECTION_ENVIRONMENTAL:5
-         - Dodge:5
-         - Blessed:3
-         - Demonic:1
-         - Stealth:4
-         - Aegis:5
-         - Pyromanic:5
-         - Flame:3
-         - Spiked:2
-         - Shadowstep:3
-         - Tamer:1
-         - Wolves:1
-         - Repel:3
-         - Rider:1
-         - Paralyze:2
-         - Farmer:1
-         - Feather:1
-         - Jump:3
-         - Speed:3
-         - Batvision:1
-         - Eyepatch:1
-         - Swimmer:3
-         - Endless:1
-         - Shield:3
-         - Molten:1
-         - Immolation:5
-         - Strength:3
-         - Reinforced:5
-         - Suicide:1
-         - Batman:3
+          WEAPON:
+             - Damage_All:8
+             - Strength:21
+          ARMOR:
+             - Vitality:2
+             - Cure:2
+             - Immolation:4
+             - Reversal:2
+             - Shield:1
     lore:
       WEAPON:
         - "&3&l&m                                  "

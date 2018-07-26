@@ -69,7 +69,7 @@ class Factory : EnchantmentListener() {
                         removeItems(player.inventory, Material.GOLD_INGOT, n * 9)
                         player.inventory.addItem(ItemStack(Material.GOLD_BLOCK, n))
                     }
-                    if (itemStack.type == Material.INK_SACK && itemStack.data.data.toInt() == 4) {
+                    if (itemStack.type == Material.INK_SACK) {
                         removeItems(player.inventory, Material.INK_SACK, n * 9)
                         player.inventory.addItem(ItemStack(Material.LAPIS_BLOCK, n))
                     }

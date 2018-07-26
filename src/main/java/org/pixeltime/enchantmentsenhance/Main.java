@@ -211,10 +211,14 @@ public class Main extends JavaPlugin implements Listener {
     private void registerCore() {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new EnhancedItemHandler(), this);
-        pm.registerEvents(new PlayerDeathHandler(), this);
+        if (SettingsManager.config.getBoolean("enableLore")) {
+            pm.registerEvents(new PlayerDeathHandler(), this);
+        }
         pm.registerEvents(new PlayerStreamHandler(), this);
-        pm.registerEvents(new LifeskillingHandler(), this);
-        if (getConfig().getBoolean("enableAnvilFix")) {
+        if (SettingsManager.config.getBoolean("enableLifeskill")) {
+            pm.registerEvents(new LifeskillingHandler(), this);
+        }
+        if (SettingsManager.config.getBoolean("enableAnvilFix")) {
             pm.registerEvents(new RepairListener(), this);
         }
         // Notify Cauldron and MCPC users.

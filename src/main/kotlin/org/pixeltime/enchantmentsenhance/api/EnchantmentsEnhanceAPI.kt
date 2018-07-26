@@ -89,6 +89,7 @@ class API {
         fun hasFailstack(player: String): Boolean {
             return getFailstack(player) > 0
         }
+
         @JvmStatic
         fun getChance(playerName: String, enchantLevel: Int): Double {
             var failstack = getFailstack(playerName)
@@ -122,6 +123,15 @@ class API {
                         .replace("%failstack%".toRegex(), Integer.toString(getFailstack(
                                 player))), player)
                 resetFailstack(player)
+            }
+        }
+
+        @JvmStatic
+        fun getEnchantmentMaxLevel(ench: String): Int {
+            return if (SettingsManager.enchant.getConfigurationSection(ench.toLowerCase()) == null) {
+                1
+            } else {
+                SettingsManager.enchant.getConfigurationSection(ench.toLowerCase()).getKeys(false).size
             }
         }
     }

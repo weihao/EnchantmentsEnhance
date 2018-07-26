@@ -24,6 +24,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
@@ -98,15 +99,19 @@ public class ItemManager {
         // Getting Unique Name.
         List<String> oldLore = KM.stripLore(item);
 
-        if (enchantLevel == 1 && getItemName(currItem) == null) {
+        if (enchantLevel == 1 && getItemName(currItem) == null && SettingsManager.config.getBoolean("enableRename")) {
             currItem = setName(currItem, currItem.getItemMeta().getDisplayName());
         }
 
         // Unique ID applied.
         applyEnchantments(currItem, addition);
-        renameItem(currItem);
+        if (SettingsManager.config.getBoolean("enableRename")) {
+            renameItem(currItem);
+        }
         addlore(currItem, oldLore);
-        soulbound(currItem);
+        if (!SettingsManager.config.getString("lore.bound").equalsIgnoreCase("disabled")) {
+            soulbound(currItem);
+        }
         player.getInventory().removeItem(item);
         MainMenu.itemOnEnhancingSlot.put(player.getName(), currItem);
         player.getInventory().addItem(currItem);
@@ -178,7 +183,7 @@ public class ItemManager {
                 }
                 int max = 1;
                 try {
-                    max = SettingsManager.enchant.getConfigurationSection(ench.toLowerCase()).getKeys(false).size();
+                    max = API.getEnchantmentMaxLevel(ench);
                 } catch (NullPointerException ex) {
                 }
                 int finalLevel = ((level + keptLevel) > max) ? max : level + keptLevel;
@@ -198,17 +203,23 @@ public class ItemManager {
 
     public static void renameItem(ItemStack item) {
         int enchantLevel = ItemManager.getItemEnchantLevel(item);
-        String prefix = SettingsManager.config.getString("enhance."
-                + enchantLevel + ".prefix");
-        String suffix = SettingsManager.config.getString("enhance."
-                + enchantLevel + ".suffix");
         String name = getFriendlyName(item);
-        if (prefix != null && !prefix.equals("")) {
-            name = prefix + " " + name;
+
+        if (SettingsManager.config.getBoolean("renamingIncludes.prefix")) {
+            String prefix = SettingsManager.config.getString("enhance."
+                    + enchantLevel + ".prefix");
+            if (prefix != null && !prefix.equals("")) {
+                name = prefix + " " + name;
+            }
         }
-        if (suffix != null && !suffix.equals("")) {
-            name += " " + suffix;
+        if (SettingsManager.config.getBoolean("renamingIncludes.suffix")) {
+            String suffix = SettingsManager.config.getString("enhance."
+                    + enchantLevel + ".suffix");
+            if (suffix != null && !suffix.equals("")) {
+                name += " " + suffix;
+            }
         }
+
         ItemMeta im = item.getItemMeta();
         im.setDisplayName(ChatColor.translateAlternateColorCodes('&',
                 name));

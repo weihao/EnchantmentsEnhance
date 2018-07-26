@@ -7,8 +7,6 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-import java.util.Random;
-
 public class GrindIcon extends Clickable {
 
 
@@ -22,23 +20,5 @@ public class GrindIcon extends Clickable {
     @Override
     public int getPosition() {
         return Util.getSlot(2, 4);
-    }
-
-    public void click(String player, int locked) {
-        Random random = new Random();
-        int num = (int) (0.01 + 0.99 / (1 - random.nextDouble()));
-        if (num < locked) {
-            fail(player);
-        } else {
-            reward(player, locked);
-        }
-    }
-
-    private void reward(String player, int reward) {
-
-    }
-
-    private void fail(String player) {
-
     }
 }

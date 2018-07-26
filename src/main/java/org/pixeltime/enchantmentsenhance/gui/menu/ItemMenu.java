@@ -30,10 +30,12 @@ import org.pixeltime.enchantmentsenhance.gui.menu.icons.ReblathIcon;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.MM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * @author HealPotion
@@ -64,14 +66,22 @@ public class ItemMenu extends GUIAbstract {
                         CompatibilityManager.glow.addGlow(MainMenu.stone.getItem(i, player)),
                         () -> {
                             if (API.getItem(playerName, stoneId) > 0) {
-                                clickedItem.put(player.getName(), stoneId);
+                                if (clickedItem.containsKey(playerName) && clickedItem.get(playerName) == stoneId) {
+                                    clickedItem.remove(player.getName());
+                                } else {
+                                    clickedItem.put(player.getName(), stoneId);
+                                }
                             }
                         });
             } else {
                 setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1), MainMenu.stone.getItem(i, player),
                         () -> {
                             if (API.getItem(playerName, stoneId) > 0) {
-                                clickedItem.put(player.getName(), stoneId);
+                                if (clickedItem.containsKey(playerName) && clickedItem.get(playerName) == stoneId) {
+                                    clickedItem.remove(player.getName());
+                                } else {
+                                    clickedItem.put(player.getName(), stoneId);
+                                }
                             }
                         });
             }
@@ -85,18 +95,58 @@ public class ItemMenu extends GUIAbstract {
             }
         }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 
-        setItem(grind.getPosition(), grind.getItem());
+        setItem(grind.getPosition(), grind.getItem(), () -> {
+
+            if (clickedItem.containsKey(player.getName())) {
+                // If player has item to failstack.
+                if (API.getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
+                    int locked = 2;
+                    if (PlayerStat.getPlayerStats(playerName) != null) {
+                        locked = PlayerStat.getPlayerStats(playerName).getGrind();
+                    }
+                    API.addItem(player.getName(), clickedItem.get(player.getName()), -1);
+                    Random random = new Random();
+                    int num = (int) (0.01 + 0.99 / (1 - random.nextDouble()));
+                    if (num < locked) {
+                        // Fail
+                        Util.sendMessage(SettingsManager.lang.getString("Grind.failed"), player);
+                    } else {
+                        // Reward
+                        Util.sendMessage(SettingsManager.lang.getString("Grind.success")
+                                        .replace("%amount%", Integer.toString(locked))
+                                , player);
+                        API.addItem(player.getName(), clickedItem.get(player.getName()), locked);
+                    }
+                } else {
+                    Util.sendMessage(SettingsManager.lang.getString("Gui.noItem"), player);
+                }
+            } else {
+                Util.sendMessage(SettingsManager.lang.getString("Gui.missingItem"), player);
+            }
+        });
 
         setItem(reblath.getPosition(), reblath.getItem(), () ->
         {
-            // If player has item to failstack.
-            if (API.getItem(player.getName(), 1) > 0) {
-                // Roll.
-                if ((Math.random() * 100) < reblath.getChance()) {
-                    API.addFailstack(player.getName(), 1);
+            if (clickedItem.containsKey(player.getName())) {
+                // If player has item to failstack.
+                if (API.getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
+                    // Roll.
+                    if ((Math.random() * 100) > reblath.getChance()) {
+                        int levelsToAdd = 1;
+                        API.addFailstack(player.getName(), levelsToAdd);
+                        API.addItem(player.getName(), clickedItem.get(player.getName()), -1);
+                        Util.sendMessage(SettingsManager.lang.getString("Gui.addFailstack")
+                                .replace("%level%", Integer.toString(levelsToAdd))
+                                .replace("%size%", Integer.toString(API.getFailstack(player.getName()))), player);
+                    } else {
+                        Util.sendMessage(SettingsManager.lang.getString("Gui.resetFailstack").replace("%level%", Integer.toString(API.getFailstack(player.getName()))), player);
+                        API.resetFailstack(player.getName());
+                    }
                 } else {
-                    API.resetFailstack(player.getName());
+                    Util.sendMessage(SettingsManager.lang.getString("Gui.noItem"), player);
                 }
+            } else {
+                Util.sendMessage(SettingsManager.lang.getString("Gui.missingItem"), player);
             }
         });
     }
