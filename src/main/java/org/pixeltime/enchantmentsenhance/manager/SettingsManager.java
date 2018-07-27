@@ -27,6 +27,9 @@ import org.pixeltime.enchantmentsenhance.locale.LM;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.logging.Logger;
 
 public class SettingsManager {
 
@@ -43,30 +46,39 @@ public class SettingsManager {
     }
 
     public static void setup() {
-        cfile = new File(Main.getMain().getDataFolder(), "config.yml");
-        config = Main.getMain().getConfig();
+        // Makes the folder.
         if (!Main.getMain().getDataFolder().exists()) {
             Main.getMain().getDataFolder().mkdir();
         }
 
-//        dfile = new File(Main.getMain().getDataFolder(), "data.yml");
-//        if (!dfile.exists()) {
-//            try {
-//                dfile.createNewFile();
-//            } catch (IOException e) {
-//                Bukkit.getServer().getLogger().severe(ChatColor.RED
-//                        + "Could not create data.yml!");
-//            }
-//        }
-//        data = YamlConfiguration.loadConfiguration(dfile);
+        // Config file.
+        cfile = new File(Main.getMain().getDataFolder(), "config.yml");
+        // Copy default.
+        if (!cfile.exists()) {
+            Main.getMain().saveResource("config.yml", true);
+            config = YamlConfiguration.loadConfiguration(cfile);
+        } else {
+            // Generating missing configuration.
+            config = YamlConfiguration.loadConfiguration(cfile);
+            try {
+                generate();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 
+        // Enchant file.
         enchantfile = new File(Main.getMain().getDataFolder(), "enchantments.yml");
+        // Copy default.
         if (!enchantfile.exists()) {
             Main.getMain().saveResource("enchantments.yml", true);
         }
         enchant = YamlConfiguration.loadConfiguration(enchantfile);
+
+        // Language File.
         langfile = new File(Main.getMain().getDataFolder(), "lang.yml");
+        // Make an empty file.
         if (!langfile.exists()) {
             try {
                 langfile.createNewFile();
@@ -76,23 +88,10 @@ public class SettingsManager {
             }
         }
         lang = YamlConfiguration.loadConfiguration(langfile);
+
+        // Adds the languages.
         LM.addLocale();
     }
-
-
-//    public static void saveData() {
-//        try {
-//            data.save(dfile);
-//        } catch (IOException e) {
-//            Bukkit.getServer().getLogger().severe(ChatColor.RED
-//                    + "Could not save data.yml!");
-//        }
-//    }
-
-
-//    public static void reloadData() {
-//        data = YamlConfiguration.loadConfiguration(dfile);
-//    }
 
 
     public static void saveConfig() {
@@ -135,5 +134,36 @@ public class SettingsManager {
 
     public static void reloadEnchantments() {
         enchant = YamlConfiguration.loadConfiguration(enchantfile);
+    }
+
+
+    public static void generate() throws IOException {
+
+        Logger logger = Main.getMain().getLogger();
+        logger.info("Updating config to the latest...");
+        int settings = 0;
+        int addedSettings = 0;
+
+        InputStream defConfigStream = Main.getMain().getResource("config.yml");
+
+        if (defConfigStream != null) {
+            YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defConfigStream));
+            for (String string : defConfig.getKeys(true)) {
+                if (!config.contains(string)) {
+                    config.set(string, defConfig.get(string));
+                    addedSettings++;
+                }
+                if (!config.isConfigurationSection(string))
+                    settings++;
+            }
+        }
+
+
+        logger.info("Found " + settings + " settings");
+        logger.info("Added " + addedSettings + " new settings");
+        if (addedSettings > 0) {
+            config.save(cfile);
+        }
+        logger.info("Iteration completed");
     }
 }

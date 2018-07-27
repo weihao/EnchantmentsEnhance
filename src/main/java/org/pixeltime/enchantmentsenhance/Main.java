@@ -111,7 +111,7 @@ public class Main extends JavaPlugin implements Listener {
         // Checks for update.
         VersionManager.versionChecker();
         // Save the configuration.
-        saveDefaultConfig();
+//        saveDefaultConfig();
         // Set up the files.
         SettingsManager.setup();
         // Register listener.
