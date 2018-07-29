@@ -20,11 +20,18 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>org.pixeltime</groupId>
-    <artifactId>EnchantmentsEnhance</artifactId>
+    <artifactId>EnchantmentsEnhance-Parent</artifactId>
     <version>4.9</version>
+
+    <modules>
+        <module>EnchantmentsEnhance-Core</module>
+        <module>EnchantmentsEnhance-1.13</module>
+    </modules>
+
     <description>A plugin of enchantments enhancing system inspired by BDO.</description>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <name>EnchantmentsEnhance</name>
     <url>https://github.com/25/EnchantmentsEnhance</url>
 
@@ -64,24 +71,6 @@
         </repository>
     </repositories>
     <dependencies>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>com.github.Slikey</groupId>
             <artifactId>EffectLib</artifactId>
@@ -128,13 +117,6 @@
             <version>${kotlin.version}</version>
         </dependency>
         <dependency>
-            <groupId>uk.antiperson.stackmob</groupId>
-            <artifactId>StackMob</artifactId>
-            <version>2.2.10-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/jar/StackMob-2.2.10-SNAPSHOT.jar</systemPath>
-        </dependency>
-        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>20.0</version>
@@ -168,6 +150,7 @@
                             <sourceDirs>
                                 <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
                                 <sourceDir>${project.basedir}/src/test/java</sourceDir>
+                                <jvmTarget>${maven.compiler.target}</jvmTarget>
                             </sourceDirs>
                         </configuration>
                     </execution>

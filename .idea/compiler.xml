@@ -6,8 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="EnchantmentsEnhance" />
+        <module name="EnchantmentsEnhance-Core" />
+        <module name="EnchantmentsEnhance113" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="EnchantmentsEnhance" target="1.8" />
+      <module name="EnchantmentsEnhance (1)" target="1.8" />
+      <module name="EnchantmentsEnhanceParent" target="1.8" />
+      <module name="simple-weather" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
