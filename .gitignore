@@ -70,3 +70,5 @@ fabric.properties
 
 dependency-reduced-pom.xml
 
+*/target/*
+*/target/**

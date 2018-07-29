@@ -7,9 +7,12 @@
         <groupId>org.pixeltime</groupId>
         <version>4.9</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>EnchantmentsEnhance-1.13</artifactId>
+    <packaging>jar</packaging>
+
+
     <dependencies>
         <dependency>
             <groupId>org.pixeltime</groupId>
@@ -35,28 +38,4 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <artifactSet>
-                                <includes>
-                                    <include>org.pixeltime.enchantmentsenhance:EnchantmentsEnhance-Core</include>
-                                </includes>
-                            </artifactSet>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>
