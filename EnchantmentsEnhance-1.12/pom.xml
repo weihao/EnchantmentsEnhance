@@ -9,7 +9,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>EnchantmentsEnhance-Core</artifactId>
+    <artifactId>EnchantmentsEnhance-1.12</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>

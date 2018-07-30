@@ -26,7 +26,7 @@
     <version>4.9</version>
 
     <modules>
-        <module>EnchantmentsEnhance-Core</module>
+        <module>EnchantmentsEnhance-1.12</module>
         <module>EnchantmentsEnhance-1.13</module>
     </modules>
 
@@ -139,6 +139,10 @@
                                 <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
                                 <sourceDir>${project.basedir}/src/main/java</sourceDir>
                             </sourceDirs>
+                            <args>
+                                <arg>-Xno-param-assertions</arg>
+                                <arg>-Xno-call-assertions</arg>
+                            </args>
                         </configuration>
                     </execution>
                     <execution>
@@ -150,7 +154,6 @@
                             <sourceDirs>
                                 <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
                                 <sourceDir>${project.basedir}/src/test/java</sourceDir>
-                                <jvmTarget>${maven.compiler.target}</jvmTarget>
                             </sourceDirs>
                         </configuration>
                     </execution>

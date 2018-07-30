@@ -12,12 +12,11 @@
     <artifactId>EnchantmentsEnhance-1.13</artifactId>
     <packaging>jar</packaging>
 
-
     <dependencies>
         <dependency>
             <groupId>org.pixeltime</groupId>
-            <artifactId>EnchantmentsEnhance-Core</artifactId>
-            <version>4.9</version>
+            <artifactId>EnchantmentsEnhance-1.12</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
