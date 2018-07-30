@@ -12,9 +12,9 @@ install:
   - cd ..
 
 install:
-  - mvn package
+  - mvn install
 after_success:
-  - mvn clean
+  - mvn package
 cache:
   directories:
     - $HOME/.m2
