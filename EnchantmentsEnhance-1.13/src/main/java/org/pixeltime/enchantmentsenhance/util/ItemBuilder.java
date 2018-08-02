@@ -307,7 +307,7 @@ public class ItemBuilder {
      * @param color The DyeColor to set the wool item to.
      */
     public ItemBuilder setWoolColor(DyeColor color) {
-        if (!is.getType().equals(Materials.WOOL.bukkitMaterial()))
+        if (!is.getType().equals(XMaterial.WHITE_WOOL.parseMaterial()))
             return this;
 
         this.is.setDurability(color.getWoolData());

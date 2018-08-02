@@ -25,7 +25,6 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
 
 
-
 class ReloadConsoleCommand : SubConsoleCommand() {
     override fun onCommand(sender: CommandSender, args: Array<String>) {
         Util.sendMessage(SettingsManager.lang.getString("Config.reloading"),

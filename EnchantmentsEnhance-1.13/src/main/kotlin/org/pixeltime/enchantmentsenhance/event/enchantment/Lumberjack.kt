@@ -25,7 +25,7 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.util.Materials
+import org.pixeltime.enchantmentsenhance.util.XMaterial
 import java.util.*
 
 class Lumberjack : EnchantmentListener() {
@@ -47,10 +47,36 @@ class Lumberjack : EnchantmentListener() {
 
         try {
             val level = IM.getHighestLevel(player, this.name())
-            if (level > 0 && blockBreakEvent.block.type == Materials.LOG.bukkitMaterial()) {
+            if (level > 0
+                    && (blockBreakEvent.block.type == XMaterial.ACACIA_LOG.parseMaterial()
+                            || blockBreakEvent.block.type == XMaterial.BIRCH_LOG.parseMaterial()
+                            || blockBreakEvent.block.type == XMaterial.DARK_OAK_LOG.parseMaterial()
+                            || blockBreakEvent.block.type == XMaterial.OAK_LOG.parseMaterial()
+                            || blockBreakEvent.block.type == XMaterial.SPRUCE_LOG.parseMaterial()
+                            || blockBreakEvent.block.type == XMaterial.STRIPPED_ACACIA_LOG.parseMaterial()
+                            || blockBreakEvent.block.type == XMaterial.STRIPPED_BIRCH_LOG.parseMaterial()
+                            || blockBreakEvent.block.type == XMaterial.STRIPPED_DARK_OAK_LOG.parseMaterial()
+                            || blockBreakEvent.block.type == XMaterial.STRIPPED_JUNGLE_LOG.parseMaterial()
+                            || blockBreakEvent.block.type == XMaterial.STRIPPED_OAK_LOG.parseMaterial()
+                            || blockBreakEvent.block.type == XMaterial.STRIPPED_SPRUCE_LOG.parseMaterial())) {
                 val list = ArrayList<Material>()
-                list.add(Materials.LOG.bukkitMaterial())
-                list.add(Materials.LEAVES.bukkitMaterial())
+                list.add(XMaterial.ACACIA_LOG.parseMaterial())
+                list.add(XMaterial.BIRCH_LOG.parseMaterial())
+                list.add(XMaterial.DARK_OAK_LOG.parseMaterial())
+                list.add(XMaterial.OAK_LOG.parseMaterial())
+                list.add(XMaterial.SPRUCE_LOG.parseMaterial())
+                list.add(XMaterial.STRIPPED_ACACIA_LOG.parseMaterial())
+                list.add(XMaterial.STRIPPED_BIRCH_LOG.parseMaterial())
+                list.add(XMaterial.STRIPPED_DARK_OAK_LOG.parseMaterial())
+                list.add(XMaterial.STRIPPED_JUNGLE_LOG.parseMaterial())
+                list.add(XMaterial.STRIPPED_OAK_LOG.parseMaterial())
+                list.add(XMaterial.STRIPPED_SPRUCE_LOG.parseMaterial())
+                list.add(XMaterial.ACACIA_LEAVES.parseMaterial())
+                list.add(XMaterial.BIRCH_LEAVES.parseMaterial())
+                list.add(XMaterial.DARK_OAK_LEAVES.parseMaterial())
+                list.add(XMaterial.JUNGLE_LEAVES.parseMaterial())
+                list.add(XMaterial.OAK_LEAVES.parseMaterial())
+                list.add(XMaterial.SPRUCE_LEAVES.parseMaterial())
                 val iterator = this.getTree(blockBreakEvent.block, list).iterator()
                 while (iterator.hasNext()) {
                     iterator.next().breakNaturally()

@@ -17,8 +17,8 @@ import org.pixeltime.enchantmentsenhance.manager.DataManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
-import org.pixeltime.enchantmentsenhance.util.Materials;
 import org.pixeltime.enchantmentsenhance.util.Util;
+import org.pixeltime.enchantmentsenhance.util.XMaterial;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -107,7 +107,7 @@ public class MainMenu extends GUIAbstract {
         setItem(accessory.getPosition(), accessory.getItem());
 
         for (int i : MenuCoord.getPlaceHolderCoords()) {
-            setItem(i, new ItemBuilder(Materials.STAINED_GLASS_PANE.bukkitMaterial()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack());
+            setItem(i, new ItemBuilder(XMaterial.WHITE_STAINED_GLASS_PANE.parseMaterial()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack());
         }
 
 

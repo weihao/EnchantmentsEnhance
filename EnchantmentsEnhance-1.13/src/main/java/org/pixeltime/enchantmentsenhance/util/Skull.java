@@ -22,7 +22,6 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import com.mojang.authlib.properties.PropertyMap;
 import org.apache.commons.codec.binary.Base64;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -100,7 +99,7 @@ public enum Skull {
                 "{textures:{SKIN:{url:\"%s\"}}}", url).getBytes());
         propertyMap.put("textures", new Property("textures", new String(
                 encodedData)));
-        ItemStack head = new ItemStack(Materials.SKULL.bukkitMaterial(), 1, (short) 3);
+        ItemStack head = new ItemStack(XMaterial.PLAYER_HEAD.parseMaterial(), 1, (short) 3);
         ItemMeta headMeta = head.getItemMeta();
         Class<?> headMetaClass = headMeta.getClass();
         Reflection_V2.getField(headMetaClass, "profile", GameProfile.class).set(
@@ -117,7 +116,7 @@ public enum Skull {
      * @return itemstack
      */
     public static ItemStack getPlayerSkull(String name) {
-        ItemStack itemStack = new ItemStack(Materials.SKULL.bukkitMaterial(), 1, (short) 3);
+        ItemStack itemStack = new ItemStack(XMaterial.PLAYER_HEAD.parseMaterial(), 1, (short) 3);
         SkullMeta meta = (SkullMeta) itemStack.getItemMeta();
         meta.setOwner(name);
         itemStack.setItemMeta(meta);
@@ -141,7 +140,7 @@ public enum Skull {
      * @return itemstack
      */
     public ItemStack getSkull() {
-        ItemStack itemStack = new ItemStack(Materials.SKULL.bukkitMaterial(), 1, (short) 3);
+        ItemStack itemStack = new ItemStack(XMaterial.PLAYER_HEAD.parseMaterial(), 1, (short) 3);
         SkullMeta meta = (SkullMeta) itemStack.getItemMeta();
         meta.setOwner(id);
         itemStack.setItemMeta(meta);

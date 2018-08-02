@@ -19,24 +19,60 @@
 package org.pixeltime.enchantmentsenhance.manager
 
 import org.bukkit.Material
-import org.pixeltime.enchantmentsenhance.util.Materials
+import org.pixeltime.enchantmentsenhance.util.XMaterial
 
 class MM {
     companion object {
         @JvmField
-        val sword = arrayListOf(Materials.DIAMOND_SWORD.bukkitMaterial(), Materials.GOLD_SWORD.bukkitMaterial(), Materials.WOOD_SWORD.bukkitMaterial(), Materials.STONE_SWORD.bukkitMaterial(), Materials.IRON_SWORD)
+        val sword = arrayListOf(
+                XMaterial.DIAMOND_SWORD.parseMaterial(),
+                XMaterial.GOLDEN_SWORD.parseMaterial(),
+                XMaterial.WOODEN_SWORD.parseMaterial(),
+                XMaterial.STONE_SWORD.parseMaterial(),
+                XMaterial.IRON_SWORD.parseMaterial())
+
         @JvmField
-        val axe = arrayListOf(Materials.DIAMOND_AXE.bukkitMaterial(), Materials.IRON_AXE.bukkitMaterial(), Materials.WOOD_AXE.bukkitMaterial(), Materials.STONE_AXE.bukkitMaterial(), Materials.GOLD_AXE)
+        val axe = arrayListOf(
+                XMaterial.DIAMOND_AXE.parseMaterial(),
+                XMaterial.IRON_AXE.parseMaterial(),
+                XMaterial.WOODEN_AXE.parseMaterial(),
+                XMaterial.STONE_AXE.parseMaterial(),
+                XMaterial.GOLDEN_AXE.parseMaterial())
         @JvmField
-        val helmet = arrayListOf(Materials.DIAMOND_HELMET.bukkitMaterial(), Materials.GOLD_HELMET.bukkitMaterial(), Materials.IRON_HELMET.bukkitMaterial(), Materials.LEATHER_HELMET.bukkitMaterial(), Materials.CHAINMAIL_HELMET)
+        val helmet = arrayListOf(
+                XMaterial.DIAMOND_HELMET.parseMaterial(),
+                XMaterial.GOLDEN_HELMET.parseMaterial(),
+                XMaterial.IRON_HELMET.parseMaterial(),
+                XMaterial.LEATHER_HELMET.parseMaterial(),
+                XMaterial.CHAINMAIL_HELMET.parseMaterial())
         @JvmField
-        val boot = arrayListOf(Materials.DIAMOND_BOOTS.bukkitMaterial(), Materials.IRON_BOOTS.bukkitMaterial(), Materials.GOLD_BOOTS.bukkitMaterial(), Materials.LEATHER_BOOTS.bukkitMaterial(), Materials.CHAINMAIL_BOOTS)
+        val boot = arrayListOf(
+                XMaterial.DIAMOND_BOOTS.parseMaterial(),
+                XMaterial.IRON_BOOTS.parseMaterial(),
+                XMaterial.GOLDEN_BOOTS.parseMaterial(),
+                XMaterial.LEATHER_BOOTS.parseMaterial(),
+                XMaterial.CHAINMAIL_BOOTS.parseMaterial())
         @JvmField
-        val chestplate = arrayListOf(Materials.DIAMOND_CHESTPLATE.bukkitMaterial(), Materials.IRON_CHESTPLATE.bukkitMaterial(), Materials.GOLD_CHESTPLATE.bukkitMaterial(), Materials.LEATHER_CHESTPLATE.bukkitMaterial(), Materials.CHAINMAIL_CHESTPLATE)
+        val chestplate = arrayListOf(
+                XMaterial.DIAMOND_CHESTPLATE.parseMaterial(),
+                XMaterial.IRON_CHESTPLATE.parseMaterial(),
+                XMaterial.GOLDEN_CHESTPLATE.parseMaterial(),
+                XMaterial.LEATHER_CHESTPLATE.parseMaterial(),
+                XMaterial.CHAINMAIL_CHESTPLATE.parseMaterial())
         @JvmField
-        val pick = arrayListOf(Materials.DIAMOND_PICKAXE.bukkitMaterial(), Materials.IRON_PICKAXE.bukkitMaterial(), Materials.GOLD_PICKAXE.bukkitMaterial(), Materials.STONE_PICKAXE.bukkitMaterial(), Materials.WOOD_PICKAXE)
+        val pick = arrayListOf(
+                XMaterial.DIAMOND_PICKAXE.parseMaterial(),
+                XMaterial.IRON_PICKAXE.parseMaterial(),
+                XMaterial.GOLDEN_PICKAXE.parseMaterial(),
+                XMaterial.STONE_PICKAXE.parseMaterial(),
+                XMaterial.WOODEN_PICKAXE.parseMaterial())
         @JvmField
-        val hoe = arrayListOf(Materials.DIAMOND_HOE.bukkitMaterial(), Materials.IRON_HOE.bukkitMaterial(), Materials.GOLD_HOE.bukkitMaterial(), Materials.STONE_HOE.bukkitMaterial(), Materials.WOOD_HOE)
+        val hoe = arrayListOf(
+                XMaterial.DIAMOND_HOE.parseMaterial(),
+                XMaterial.IRON_HOE.parseMaterial(),
+                XMaterial.GOLDEN_HOE.parseMaterial(),
+                XMaterial.STONE_HOE.parseMaterial(),
+                XMaterial.WOODEN_HOE.parseMaterial())
 
         @JvmField
         val stoneTypes = mutableListOf<Material>()

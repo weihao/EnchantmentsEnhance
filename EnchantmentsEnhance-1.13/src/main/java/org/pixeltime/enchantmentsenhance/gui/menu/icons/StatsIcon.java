@@ -1,7 +1,6 @@
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
 import org.bukkit.DyeColor;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
@@ -10,14 +9,14 @@ import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
-import org.pixeltime.enchantmentsenhance.util.Materials;
 import org.pixeltime.enchantmentsenhance.util.Util;
+import org.pixeltime.enchantmentsenhance.util.XMaterial;
 
 public class StatsIcon extends Clickable {
 
     @Override
     public ItemStack getItem() {
-        return new ItemBuilder(Materials.WOOL.bukkitMaterial()).setDyeColor(DyeColor.LIGHT_BLUE)
+        return new ItemBuilder(XMaterial.WHITE_WOOL.parseMaterial()).setDyeColor(DyeColor.LIGHT_BLUE)
                 .setName(SettingsManager.lang.getString("Menu.gui.stats"))
                 .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats1"))
                 .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats2"))
@@ -26,13 +25,13 @@ public class StatsIcon extends Clickable {
 
     public ItemStack getItem(String playerName) {
         if (playerName != null && MainMenu.itemOnEnhancingSlot.get(playerName) != null) {
-            return CompatibilityManager.glow.addGlow(new ItemBuilder(Materials.WOOL.bukkitMaterial()).setDyeColor(DyeColor.LIGHT_BLUE).setName(SettingsManager.lang.getString("Menu.gui.stats")).addLoreLine(SettingsManager.lang.getString("Enhance.currentFailstack")
+            return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.WHITE_WOOL.parseMaterial()).setDyeColor(DyeColor.LIGHT_BLUE).setName(SettingsManager.lang.getString("Menu.gui.stats")).addLoreLine(SettingsManager.lang.getString("Enhance.currentFailstack")
                     + API.getFailstack(playerName)).addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName)).addLoreLine(SettingsManager.lang.getString(
                     "Menu.lore.stats1")).addLoreLine(SettingsManager.lang.getString(
                     "Menu.lore.stats2")).toItemStack());
         }
         if (playerName != null && API.hasFailstack(playerName)) {
-            return CompatibilityManager.glow.addGlow(new ItemBuilder(Materials.WOOL.bukkitMaterial())
+            return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.WHITE_WOOL.parseMaterial())
                     .setDyeColor(DyeColor.LIGHT_BLUE)
                     .setName(SettingsManager.lang.getString("Menu.gui.stats"))
                     .addLoreLine(SettingsManager.lang.getString("Enhance.currentFailstack")

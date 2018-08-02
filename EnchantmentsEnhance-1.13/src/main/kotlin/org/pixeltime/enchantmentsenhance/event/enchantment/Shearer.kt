@@ -18,7 +18,6 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
-import org.bukkit.Material
 import org.bukkit.entity.Sheep
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -28,7 +27,7 @@ import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.util.Materials
+import org.pixeltime.enchantmentsenhance.util.XMaterial
 
 class Shearer : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -51,7 +50,7 @@ class Shearer : EnchantmentListener() {
                     if (entity is Sheep) {
                         if (!entity.isSheared) {
                             entity.isSheared = true
-                            entity.world.dropItem(entity.location, ItemStack(Materials.WOOL.bukkitMaterial(), 1, entity.color.woolData.toShort()))
+                            entity.world.dropItem(entity.location, ItemStack(XMaterial.WHITE_WOOL.parseMaterial(), 1, entity.color.woolData.toShort()))
                         }
                     }
                 }

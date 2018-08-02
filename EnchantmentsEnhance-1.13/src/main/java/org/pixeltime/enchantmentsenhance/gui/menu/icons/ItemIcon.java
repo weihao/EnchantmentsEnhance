@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
@@ -8,8 +7,8 @@ import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
-import org.pixeltime.enchantmentsenhance.util.Materials;
 import org.pixeltime.enchantmentsenhance.util.Util;
+import org.pixeltime.enchantmentsenhance.util.XMaterial;
 
 public class ItemIcon extends Clickable {
 
@@ -30,7 +29,7 @@ public class ItemIcon extends Clickable {
 
     @Override
     public ItemStack getItem() {
-        return CompatibilityManager.glow.addGlow(new ItemBuilder(Materials.STORAGE_MINECART.bukkitMaterial()).setName(SettingsManager.lang.getString("Item.gui")).addLoreLine(SettingsManager.lang.getString("Item.gui1")).toItemStack());
+        return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.CHEST_MINECART.parseMaterial()).setName(SettingsManager.lang.getString("Item.gui")).addLoreLine(SettingsManager.lang.getString("Item.gui1")).toItemStack());
     }
 
     public ItemStack getItem(String player) {

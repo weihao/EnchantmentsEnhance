@@ -87,9 +87,7 @@ class DebugConsoleCommand : SubConsoleCommand() {
                         sb.append(Arrays.toString(command.aliases()))
                         sb.append("|")
                         sb.appendln(sb.toString().replace("&[a-z0-9]".toRegex(), "").replace("\n", "<br />"))
-                    }
-                    catch(ex:IllegalStateException)
-                    {
+                    } catch (ex: IllegalStateException) {
                     }
                 }
             }

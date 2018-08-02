@@ -27,7 +27,8 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.util.Materials
+import org.pixeltime.enchantmentsenhance.util.XMaterial
+
 import java.util.*
 
 class Smelt : EnchantmentListener() {
@@ -75,7 +76,7 @@ class Smelt : EnchantmentListener() {
                 block.type = Material.AIR
             }
             if (block.type == Material.LAPIS_ORE) {
-                blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, ItemStack(Materials.INK_SACK.bukkitMaterial(), calculateFortune, 4.toShort()))
+                blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, ItemStack(XMaterial.INK_SAC.parseMaterial(), calculateFortune, 4.toShort()))
                 block.type = Material.AIR
             }
         }

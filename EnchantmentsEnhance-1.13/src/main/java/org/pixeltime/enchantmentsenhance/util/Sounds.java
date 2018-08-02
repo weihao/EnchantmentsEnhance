@@ -217,7 +217,7 @@ public enum Sounds {
     VILLAGER_YES("VILLAGER_YES", "ENTITY_VILLAGER_YES");
 
     private String[] versionDependentNames;
-    private org.bukkit.Sound cached = null;
+    private Sound cached = null;
 
     Sounds(String... versionDependentNames) {
         this.versionDependentNames = versionDependentNames;
@@ -225,15 +225,16 @@ public enum Sounds {
 
     /**
      * Get the bukkit sound for current server version
-     *
+     * <p>
      * Caches sound on first call
-     * @return corresponding {@link org.bukkit.Sound}
+     *
+     * @return corresponding {@link Sound}
      */
-    public org.bukkit.Sound bukkitSound() {
+    public Sound bukkitSound() {
         if (cached != null) return cached;
         for (String name : versionDependentNames) {
             try {
-                return cached = org.bukkit.Sound.valueOf(name);
+                return cached = Sound.valueOf(name);
             } catch (IllegalArgumentException ignore2) {
                 // try next
             }

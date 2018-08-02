@@ -28,6 +28,7 @@
     <modules>
         <module>EnchantmentsEnhance-1.12</module>
         <module>EnchantmentsEnhance-1.13</module>
+        <module>EnchantmentsEnhance-Core</module>
     </modules>
 
     <description>A plugin of enchantments enhancing system inspired by BDO.</description>

@@ -2,11 +2,8 @@ package org.pixeltime.enchantmentsenhance.manager;
 
 import org.bukkit.Bukkit;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.command.SubCommand;
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener;
 import org.pixeltime.enchantmentsenhance.util.ClassGetter;
-
-import java.util.Arrays;
 
 public class PackageManager {
     public static void initializeAll() {
