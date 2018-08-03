@@ -29,7 +29,7 @@ public class ItemIcon extends Clickable {
 
     @Override
     public ItemStack getItem() {
-        return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.CHEST_MINECART.parseMaterial()).setName(SettingsManager.lang.getString("Item.gui")).addLoreLine(SettingsManager.lang.getString("Item.gui1")).toItemStack());
+        return (new ItemBuilder(XMaterial.CHEST_MINECART.parseMaterial()).setName(SettingsManager.lang.getString("Item.gui")).addLoreLine(SettingsManager.lang.getString("Item.gui1")).toItemStack());
     }
 
     public ItemStack getItem(String player) {

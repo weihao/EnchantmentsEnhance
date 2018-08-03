@@ -13,8 +13,11 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 public class StoneIcon extends Clickable {
 
     public ItemStack getItem(int stoneId, Player player) {
-        return new ItemBuilder(MM.stoneTypes.get(stoneId), (ItemIcon.getOneStoneCountAsCount(player.getName(), stoneId))).setName(SettingsManager.lang.getString("Item." + stoneId)).addLoreLine(ItemIcon.getOneStoneCountAsString(player.getName(),
-                stoneId)).toItemStack();
+        return new ItemBuilder(MM.stoneTypes.get(stoneId),
+                (ItemIcon.getOneStoneCountAsCount(player.getName(), stoneId) > 64
+                        ? 64 : ItemIcon.getOneStoneCountAsCount(player.getName(), stoneId)))
+                .setName(SettingsManager.lang.getString("Item." + stoneId)).addLoreLine(ItemIcon.getOneStoneCountAsString(player.getName(),
+                        stoneId)).toItemStack();
     }
 
     public ItemStack getItem(int stoneId) {

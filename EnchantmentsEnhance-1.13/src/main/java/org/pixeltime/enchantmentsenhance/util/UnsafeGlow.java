@@ -14,6 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+package org.pixeltime.enchantmentsenhance.util;
 
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
@@ -21,8 +22,6 @@ import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.inventory.ItemStack;
 
 import java.lang.reflect.Field;
-
-ackage org.pixeltime.enchantmentsenhance.util;
 
 /**
  * Glowing items that were used by this class will CRASH the game if were put
