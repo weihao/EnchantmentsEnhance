@@ -75,7 +75,7 @@ mysql:
 enableLore: true
 # Lore is the additional attribution that is added to the enhanced item.
 lore:
-  # Supported bound type: tradeable, untradeable.
+  # Supported bound type: tradeable, untradeable, disabled.
   # tradeable: keep-item-on-death, personal trading is allowed.
   # untradeable: keep-item-on-death, cannot be stored in the chests, cannot be dropped.
   # disabled: disable automatically applying lores.
@@ -236,7 +236,7 @@ slots:
   enableAcessory: false
 # Accessory slots.
 # Player will place their items to those position in order to use their accessories.
-# Player Inventory Slot Reference: https://github.com/HealPotion/EnchantmentsEnhance/blob/master/.images/player_inventory.png
+# Player Inventory Slot Reference: https://github.com/25/EnchantmentsEnhance/blob/master/.images/player_inventory.png
 accessory:
   # Set accessory to -1 to disable an slot
   # left_ring:-1
@@ -249,7 +249,7 @@ accessory:
 
 
 # Vanilla Enchantments Reference: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
-# Custom Enchantments Reference: https://github.com/HealPotion/EnchantmentsEnhance/wiki/Enchantments-en
+# Custom Enchantments Reference: https://github.com/25/EnchantmentsEnhance/wiki/Enchantments-en
 enhance:
   0:
     # The success rate of item at the level.
