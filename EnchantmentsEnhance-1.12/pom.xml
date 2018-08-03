@@ -14,6 +14,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.pixeltime</groupId>
+            <artifactId>EnchantmentsEnhance-Core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
@@ -130,8 +135,7 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>org.jetbrains.kotlin:kotlin-stdlib</include>
-                                    <include>org.jetbrains.kotlin:kotlin-runtime</include>
+                                    <include>org.pixeltime:EnchantmentsEnhance-Core</include>
                                 </includes>
                             </artifactSet>
                         </configuration>

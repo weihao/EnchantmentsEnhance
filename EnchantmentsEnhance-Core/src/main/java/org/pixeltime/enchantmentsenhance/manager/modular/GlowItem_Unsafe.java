@@ -20,12 +20,25 @@ package org.pixeltime.enchantmentsenhance.manager.modular;
 
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.interfaces.GlowItem;
-import org.pixeltime.enchantmentsenhance.util.UnsafeGlow;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class GlowItem_Unsafe implements GlowItem {
     public ItemStack addGlow(ItemStack item) {
-        UnsafeGlow.addGlow(item);
+        try {
+            Class clazz = Class.forName("org.pixeltime.enchantmentsenhance.util.UnsafeGlow");
+            Method method =
+                    clazz.getMethod("addGlow", ItemStack.class);
+            method.invoke(null, item);
+
+        } catch (ClassNotFoundException
+                | NoSuchMethodException
+                | IllegalAccessException
+                | InvocationTargetException e
+                ) {
+            e.printStackTrace();
+        }
         return item;
     }
-
 }
