@@ -1,5 +1,5 @@
-- [English](README.md)
-- [Japanese](README-ja.md)
+* [English](README.md) 
+
 # <img src=".images/logo.jpg" alt="Logo" align="right">
 [![Travis CI](https://travis-ci.org/25/EnchantmentsEnhance.svg?branch=master)](https://travis-ci.org/25/EnchantmentsEnhance)
 [![Codebeat Badge](https://codebeat.co/badges/2ef380b7-5479-4ac6-89d9-fd1fb673511c)](https://codebeat.co/projects/github-com-healpotion-enchantmentsenhance-master)
@@ -9,13 +9,18 @@
 [![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/pulls)
 [![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
 
-# [<img src=".images/jenkins.png" alt="Download" align="left">](http://soulbound.me:8080/)
-[![Jenkins](https://img.shields.io/badge/download-server_online-28B463.svg?style=flat)](http://soulbound.me:8080)
+# [<img src=".images/jenkins.png" alt="Download" align="left">](http://soulbound.me:8080/job/EnchantmentsEnhance/)
+[![Jenkins](https://img.shields.io/badge/download-server_online-27AE60.svg?style=flat)](http://soulbound.me:8080/job/EnchantmentsEnhance/)
 [![Jenkins Build Status](http://soulbound.me:8080/job/EnchantmentsEnhance/badge/icon)](http://soulbound.me:8080/job/EnchantmentsEnhance/)
+[![Jitpack](https://jitpack.io/v/25/EnchantmentsEnhance.svg)](https://jitpack.io/#25/EnchantmentsEnhance/)
+[![YAML](https://img.shields.io/badge/yaml-supported-27AE60.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/blob/master/src/resources/playerdata.yml)
+[![SQL](https://img.shields.io/badge/sql-supported-27AE60.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/blob/master/src/resources/tables.sql)
+
+
 
 ## Life Cycle
 ###### Alpha (1.0 - 4.0)
-##### Beta (4.0.1 - [latest](http://www.soulbound.me:8080/job/EnchantmentsEnhance/)[[pom](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml)])
+##### Beta (4.0.1 - [latest](http://www.soulbound.me:8080/job/EnchantmentsEnhance/))
 This plugin is under active development at the stage of beta phase.
 Completion of the plugin is currently projected at 35%, meaning the general functionality and availability are incomplete.
 
@@ -37,28 +42,30 @@ Version: `1.8.x - 1.12.x`
 6. Restart the server
 
 ## Building
+#### Dependency
+> Build of Craftbukkit and Bukkit for local maven repository. See [BuildTools](https://www.spigotmc.org/wiki/buildtools/) Tools for more information.
 
 EnchantmentsEnhance uses `Maven` to manage project dependencies.
 
-#### Requirements
+1.12: Parent(resolve dependencies) -> Core(build plugin) -> 1.12 Shade(1.8 - 1.12 compatibility)
 
+1.13: Parent(resolve dependencies) -> Core(build plugin) -> 1.13 Shade(1.3 compatibility)
+
+#### Requirements
+- IntelliJ IDEA
 - JDK 8
 - Kotlin 1.2.x
 - Maven 3.5.x
 - Git
 
 
-> Build of Craftbukkit and Bukkit for local maven repository. See [BuildTools](https://www.spigotmc.org/wiki/buildtools/) Tools for more information.
 
 Then run:
 
 ```sh
 git clone https://github.com/25/EnchantmentsEnhance.git
 cd EnchantmentsEnhance
-mvn clean install
+mvn install package
 ```
 
 You can find the output file in the `target` directory of the corresponding module.
-
-## Problems
-Please use: https://github.com/25/EnchantmentsEnhance/issues

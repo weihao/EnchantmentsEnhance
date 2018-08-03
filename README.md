@@ -1,5 +1,4 @@
 * [Chinese](README-zh.md) 
-* [Japanese](README-ja.md)
 
 # <img src=".images/logo.jpg" alt="Logo" align="right">
 [![Travis CI](https://travis-ci.org/25/EnchantmentsEnhance.svg?branch=master)](https://travis-ci.org/25/EnchantmentsEnhance)
@@ -43,25 +42,30 @@ Version: `1.8.x - 1.12.x`
 6. Restart the server
 
 ## Building
+#### Dependency
+> Build of Craftbukkit and Bukkit for local maven repository. See [BuildTools](https://www.spigotmc.org/wiki/buildtools/) Tools for more information.
 
 EnchantmentsEnhance uses `Maven` to manage project dependencies.
 
-#### Requirements
+1.12: Parent(resolve dependencies) -> Core(build plugin) -> 1.12 Shade(1.8 - 1.12 compatibility)
 
+1.13: Parent(resolve dependencies) -> Core(build plugin) -> 1.13 Shade(1.3 compatibility)
+
+#### Requirements
+- IntelliJ IDEA
 - JDK 8
 - Kotlin 1.2.x
 - Maven 3.5.x
 - Git
 
 
-> Build of Craftbukkit and Bukkit for local maven repository. See [BuildTools](https://www.spigotmc.org/wiki/buildtools/) Tools for more information.
 
 Then run:
 
 ```sh
 git clone https://github.com/25/EnchantmentsEnhance.git
 cd EnchantmentsEnhance
-mvn clean install
+mvn install package
 ```
 
 You can find the output file in the `target` directory of the corresponding module.
