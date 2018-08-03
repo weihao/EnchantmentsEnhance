@@ -48,8 +48,7 @@ class VersionManager : EnchantmentListener() {
                 connection.outputStream.write("GET".toByteArray(charset("UTF-8")))
                 val spigotVer = Version(BufferedReader(InputStreamReader(connection.inputStream)).readLine())
                 val currVer = Version(Main::class.java.`package`.implementationVersion)
-
-                if (currVer > spigotVer) {
+                if (currVer >= spigotVer) {
                     Main.getMain().server.consoleSender.sendMessage("[EnchantmentsEnhance] " + ChatColor.GREEN + "Enchantments Enhance is UP-TO-DATE")
                 } else {
                     Main.getMain().server.consoleSender.sendMessage("[EnchantmentsEnhance] " + ChatColor.RED + "EnchantmentsEnhance is OUTDATED!")

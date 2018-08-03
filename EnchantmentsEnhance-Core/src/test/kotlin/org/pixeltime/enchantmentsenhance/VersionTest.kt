@@ -38,7 +38,7 @@ class VersionTest : TestCase() {
         b = Version("1.9.9")
         a.compareTo(b) // return 1 (a>b)
         assertFalse(a.equals(b))    // return false
-        assertTrue(a > b)
+        assertTrue(a >= b)
 
         a = Version("1.0")
         b = Version("1")
@@ -51,6 +51,15 @@ class VersionTest : TestCase() {
         a.compareTo(b) // return 0 (a<b)
         assertFalse(a.equals(b))    // return true
         assertTrue(a < b)
+
+
+        a = Version("4.9")
+        b = Version("4.9")
+        a.compareTo(b) // return 0 (a<b)
+        assertTrue(a.equals(b))    // return true
+        assertFalse(a < b)
+        assertTrue(a >= b)
+
 
         val versions = ArrayList<Version>()
         versions.add(Version("2"))

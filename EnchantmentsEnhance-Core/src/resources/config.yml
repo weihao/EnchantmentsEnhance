@@ -50,9 +50,9 @@ enableEconomy: false
 # add to disnable some special enchantments that may or may not cause an issue on your server.
 disabledEnchantments:
   # Plugin will take control of player's fly permissions.
-  - wing
+  - Wing
   # Plugin will use economic plugin.
-  - thief
+  - Thief
 
 # SQL ready!
 mysql:
