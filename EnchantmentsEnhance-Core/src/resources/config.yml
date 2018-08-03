@@ -3,14 +3,6 @@
 # |                       Notes                          | #
 # +------------------------------------------------------+ #
 ############################################################
-
-# If you want to use special characters in this document, such as accented letters, you MUST save the file as UTF-8, not ANSI.
-# If you receive an error when EnchantmentsEnhance loads, ensure that:
-#   - No tabs are present: YAML only allows spaces
-#   - Indents are correct: YAML hierarchy is based entirely on indentation
-#   - You have "escaped" all apostrophes in your text: If you want to write "don't", for example, write "don''t" instead (note the doubled apostrophe)
-#   - Text with symbols is enclosed in single or double quotation marks
-
 # If you have encountered any problems, use: https://github.com/25/EnchantmentsEnhance/issues
 
 # Key Concepts:
@@ -29,29 +21,25 @@
 # Supported language: ZH_CN, EN_US.
 language: EN_US
 
-#You can't disable this, because it is pre-loaded.
-enableLogo: true
-
 # Set true to enable vanilla enchanting table and when someone uses it, CROUCHING + RIGHT click on it will open enhance menu.
 enableTableEnchant: true
 # LEFT_CLICK - the player won't be able to destroy an enchantment table if you bind it to left click.
 # RIGHT_CLICK - the player won't be able to open vanilla enchantment table if you bind it to right click.
-# SHIFT_AND_LEFT_CLICK  - the player needs to crouching and left clicking at the same time.
-# SHIFT_AND_RIGHT_CLICK - the player needs to crouching and right clicking at the same time.
+# SHIFT_AND_LEFT_CLICK  - the player needs to crouch and left clicking at the same time.
+# SHIFT_AND_RIGHT_CLICK - the player needs to crouch and right clicking at the same time.
 openMethod: RIGHT_CLICK
 
-
-# Fixes color codes when player edit an enhanced item on anvil.
+# Fixes color codes when player edits an enhanced item on an anvil.
 enableAnvilFix: true
 
 # Set true to enable some features that are related to $.
 enableEconomy: false
 
-# add to disnable some special enchantments that may or may not cause an issue on your server.
+# Add to disable some special enchantments that may or may not cause an issue on your server.
 disabledEnchantments:
-  # Plugin will take control of player's fly permissions.
+  # Plugin will take control of the player's fly permissions.
   - Wing
-  # Plugin will use economic plugin.
+  # Plugin will use the economic plugin.
   - Thief
 
 # SQL ready!
@@ -71,7 +59,7 @@ mysql:
   # User password
   password: 'by_healpot_with_love'
 
-# Set false to disable keep item on death, but the lores will remain on the items.
+# Set false to disable keep item on death.
 enableLore: true
 # Lore is the additional attribution that is added to the enhanced item.
 lore:
