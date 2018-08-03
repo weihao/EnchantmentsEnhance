@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.command.console
 
+import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import org.pixeltime.enchantmentsenhance.api.API
 import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand
@@ -33,7 +34,11 @@ class AddConsoleCommand : SubConsoleCommand() {
         if (args.size == 3) {
             val stoneType: Int
             val level: Int
-
+            val player = Bukkit.getPlayer(args[0])
+            if (player == null) {
+                Util.sendMessage(SettingsManager.lang.getString("Config.playerNotFound"), sender)
+                return
+            }
             try {
                 stoneType = Integer.parseInt(args[1])
                 level = Integer.parseInt(args[2])
@@ -46,7 +51,7 @@ class AddConsoleCommand : SubConsoleCommand() {
             if (stoneType != -1 && level != -1 && stoneType <= MM.stoneTypes.size) {
                 API.addItem(args[0], stoneType, level)
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "Add.successful").replace("%player%", args[0]).replace(
+                        "Add.successful").replace("%player%", player.name).replace(
                         "%number%", Integer.toString(level)).replace("%stone%",
                         SettingsManager.lang.getString("Item.$stoneType")), sender)
             } else {

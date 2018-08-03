@@ -139,6 +139,7 @@ public class ItemManager {
                 ItemType type = getItemEnchantmentType(item);
                 List<String> temp = SettingsManager.config.getStringList("enhance."
                         + enchantLevel + ".enchantments." + type.toString());
+
                 //Adding New enchantment.
                 for (String s : temp) {
                     String[] a = s.split(":");
@@ -161,6 +162,7 @@ public class ItemManager {
         ItemMeta meta = item.getItemMeta();
         List<String> newlore = (meta.hasLore() ? meta.getLore() : new ArrayList<>());
         Enchantment vanilla = Enchantment.getByName(ench.toUpperCase());
+
         if (vanilla != null) {
             int lvl = (item.getEnchantmentLevel(vanilla)) + level;
             if (lvl > 0) {

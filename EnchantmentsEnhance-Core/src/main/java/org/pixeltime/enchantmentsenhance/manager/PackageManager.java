@@ -31,7 +31,7 @@ public class PackageManager {
 
     public static void initializeAll() {
         for (Class enchClass : ClassGetter.getClassesForPackage(Main.getMain(), "org.pixeltime.enchantmentsenhance.event.enchantment")) {
-            if (EnchantmentListener.class.isAssignableFrom(enchClass) && isEnabled(enchClass.getSimpleName())) {
+            if (EnchantmentListener.class.isAssignableFrom(enchClass) && !isDisabled(enchClass.getSimpleName())) {
                 try {
                     EnchantmentListener enchantmentListener = (EnchantmentListener) enchClass.newInstance();
                     enchantmentListener.addLang();
@@ -45,10 +45,10 @@ public class PackageManager {
         }
     }
 
-    public static boolean isEnabled(String ench) {
+    public static boolean isDisabled(String ench) {
         for (String s : disabled) {
             if (s.equalsIgnoreCase(ench)) {
-                return false;
+                return true;
             }
         }
         return false;
