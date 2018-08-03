@@ -28,9 +28,9 @@ public enum DyeColors {
     private String post113dyecolor;
     private DyeColor cached = null;
 
-    DyeColors(String pre113dyecolor, String post113dyecolor) {
-        this.pre113dyecolor = pre113dyecolor;
-        this.post113dyecolor = post113dyecolor;
+    DyeColors(String post113dyecolor, String pre113dyecolor) {
+        this.pre113dyecolor = post113dyecolor;
+        this.post113dyecolor = pre113dyecolor;
     }
 
     public DyeColor bukkitDyeColor() {
