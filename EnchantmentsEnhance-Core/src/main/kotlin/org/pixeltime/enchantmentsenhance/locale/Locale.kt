@@ -50,7 +50,7 @@ class LM {
             addLang("Config.playerNotFound", arrayOf("&cOnline player not found!", "&c无此在线玩家!"))
             addLang("Config.invalidNumber", arrayOf("&cInvalid Number!", "&c无效数字"))
             addLang("Annoucer.success", arrayOf("&6Enhance Success: %player% got %item%.", "&6强化成功: %player%获得了%item%."))
-            addLang("Annoucer.failed", arrayOf("&6Enhance Failed: %player% lost %item%.", "&6强化失败: %player%潜力突破失败了%item%."))
+            addLang("Annoucer.failed", arrayOf("&cEnhance Failed: %player% lost %item%.", "&c强化失败: %player%潜力突破失败了%item%."))
             addLang("Enhance.successRate", arrayOf("&bSuccess rate is %chance%%.", "&b物品的成功率为%chance%%."))
             addLang("Enhance.itemInvalid", arrayOf("&cThis item cannot be enhanced!", "&c不可以强化!"))
             addLang("Enhance.itemMax", arrayOf("&6Maximum enhancement level reached.", "&6物品已是最高级"))

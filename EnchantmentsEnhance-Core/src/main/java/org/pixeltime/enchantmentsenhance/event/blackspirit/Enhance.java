@@ -83,7 +83,7 @@ public class Enhance {
             int enchantLevel) {
         // Enchant level after a successful enhancement
 
-        ItemManager.forgeItem(player, item, enchantLevel, true);
+        ItemStack forged = ItemManager.forgeItem(player, item, enchantLevel, true);
 
         // Play sound
         CompatibilityManager.playsound.playSound(player, "SUCCESS");
@@ -100,6 +100,9 @@ public class Enhance {
             API.resetFailstack(player.getName());
             Util.sendMessage(SettingsManager.lang.getString(
                     "Enhance.enhanceSuccess"), player);
+        }
+        if (DataManager.downgradeIfFail[enchantLevel]) {
+            Broadcast.broadcast(player, forged, "success");
         }
     }
 
@@ -137,6 +140,7 @@ public class Enhance {
             int enchantLevel = level - 2;
             // Updates the item.
             ItemManager.forgeItem(player, item, enchantLevel, false);
+            Broadcast.broadcast(player, item, "failed");
         }
         // Sends the failed message.
         Util.sendMessage(str, player);
@@ -166,20 +170,11 @@ public class Enhance {
                 double random = Math.random();
                 // Calculate the chance
                 double chance = API.getChance(player.getName(), enchantLevel);
-                // Enhancement result
-                boolean success = random < chance;
-                // Broadcast if attempting enhancement meet enchant level
                 // Proceed to enhance
-                if (success) {
+                if (random < chance) {
                     enhanceSuccess(item, player, false, enchantLevel);
-                    if (DataManager.downgradeIfFail[enchantLevel]) {
-                        Broadcast.broadcast(player, item, "success");
-                    }
                 } else {
                     enhanceFail(item, player, enchantLevel);
-                    if (DataManager.downgradeIfFail[enchantLevel]) {
-                        Broadcast.broadcast(player, item, "failed");
-                    }
                 }
             }
             // Not enough enchant stone
@@ -221,10 +216,6 @@ public class Enhance {
             if (API.getItem(player.getName(), stoneId) - costToEnhance >= 0) {
                 API.addItem(player.getName(), stoneId, -costToEnhance);
                 enhanceSuccess(item, player, true, enchantLevel);
-                // Broadcast if attempting enhancement meet enchant level
-                if (DataManager.downgradeIfFail[enchantLevel]) {
-                    Broadcast.broadcast(player, item, "success");
-                }
             }
             // Not enough enchant stone
             else {

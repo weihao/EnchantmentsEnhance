@@ -704,7 +704,7 @@ enhance:
     requireConcentratedStones: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: "&9PRI"
+    prefix: "&9&lPRI"
     suffix: ""
     enchantments:
       WEAPON:
@@ -732,7 +732,7 @@ enhance:
     requireConcentratedStones: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: "&9DUO"
+    prefix: "&9&lDUO"
     suffix: ""
     enchantments:
       WEAPON:
@@ -763,7 +763,7 @@ enhance:
     requireConcentratedStones: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: "&6TRI"
+    prefix: "&6&lTRI"
     suffix: ""
     enchantments:
       WEAPON:
@@ -794,7 +794,7 @@ enhance:
     requireConcentratedStones: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: "&6TET"
+    prefix: "&6&lTET"
     suffix: ""
     enchantments:
       WEAPON:
@@ -825,12 +825,12 @@ enhance:
     requireConcentratedStones: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: "&cPEN"
+    prefix: '&c&lPEN'
     suffix: ""
     enchantments:
           WEAPON:
              - Damage_All:8
-             - Strength:21
+             - Strength:2
           ARMOR:
              - Vitality:2
              - Cure:2
@@ -839,11 +839,11 @@ enhance:
              - Shield:1
     lore:
       WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lHigh Tier."
+      - '&8&l&m                                  '
+      - '&4&lMAX Tier.'
       ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lHigh Tier."
+      - '&8&l&m                                  '
+      - '&4&lMAX Tier.'
 
 # Reform an item grade. [Working In Progress]
 weaponGrade:
