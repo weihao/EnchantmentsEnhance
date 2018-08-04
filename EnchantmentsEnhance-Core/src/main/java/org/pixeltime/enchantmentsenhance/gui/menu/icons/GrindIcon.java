@@ -33,9 +33,9 @@ public class GrindIcon extends Clickable {
     public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.ANVIL)
                 .setName(SettingsManager.lang.getString("Menu.gui.grind"))
-                .addLoreLine(SettingsManager.lang.getString("Grind.info")
-                        .replace("%amonunt%", Integer.toString(PlayerStat.getPlayerStats(playerName).getGrind())))
-                .addLoreLine(SettingsManager.lang.getString(""))
+                .addLoreLine(SettingsManager.lang.getString("Grind.info1")
+                        .replace("%amount%", Integer.toString(PlayerStat.getPlayerStats(playerName).getGrind())))
+                .addLoreLine(SettingsManager.lang.getString("Grind.info2"))
                 .toItemStack();
     }
 

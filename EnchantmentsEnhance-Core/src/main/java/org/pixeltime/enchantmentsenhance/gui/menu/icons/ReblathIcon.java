@@ -31,6 +31,8 @@ public class ReblathIcon extends Clickable {
     public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.ANVIL)
                 .setName(SettingsManager.lang.getString("Menu.gui.reblath"))
+                .addLoreLine(SettingsManager.lang.getString("Reblath.info1"))
+                .addLoreLine(SettingsManager.lang.getString("Reblath.info2"))
                 .toItemStack();
     }
 

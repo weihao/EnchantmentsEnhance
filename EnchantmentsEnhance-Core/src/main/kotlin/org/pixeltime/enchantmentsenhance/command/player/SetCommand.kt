@@ -56,7 +56,7 @@ class SetCommand : SubCommand() {
     }
 
     override fun usage(): String {
-        return "/enhance set { Multiplier }"
+        return "/enhance set { multiplier }"
     }
 
     override fun aliases(): Array<String> {

@@ -142,8 +142,12 @@ class LM {
             addLang("Set.failed", arrayOf("Your grind multiplier needs to be x2 or greater.", "你的研磨倍数必须等于或者大于两倍."))
             addLang("Grind.failed", arrayOf("You grind your stone and it shattered.", "你的研磨的石头粉碎了."))
             addLang("Grind.success", arrayOf("You grind your stone and you got x%amount% stones that you grind.", "你研磨的石头成功分裂成x%amount%个."))
-            addLang("Grind.info", arrayOf("Grind x1 stone has a chance of yielding x%amount% of same stones.", "研磨1x石头有机率获得x%amount%个."))
+            addLang("Grind.info1", arrayOf("&9Grind x1 stone has a chance of yielding x%amount% of same stones.", "&9研磨1x石头有机率获得x%amount%个."))
+            addLang("Grind.info2", arrayOf("&9Use &6/enhance set { multiplier } &9to set your multiplier", "&9使用&6/enhance set { multiplier} &9更改你的倍率."))
+            addLang("Reblath.info1", arrayOf("&9Use x1 stone to gain 1 failstack.", "&9使用一个黑石来交换一层垫子."))
+            addLang("Reblath.info2", arrayOf("&9But you have 17.5% chance to lose your current failstack.", "&9你有17.5%的机率失去你目前的垫子."))
 
+   
             SettingsManager.lang.options().copyDefaults(true)
             SettingsManager.saveLang()
         }
