@@ -27,7 +27,10 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 public class AccessoryIcon extends Clickable {
     @Override
     public ItemStack getItem() {
-        return new ItemBuilder(Material.DIAMOND).setName("Accessory").toItemStack();
+        return new ItemBuilder(Material.DIAMOND)
+                .setName("Accessory")
+                .addLoreLine("NOT FINISHED")
+                .toItemStack();
     }
 
     @Override
