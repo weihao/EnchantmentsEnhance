@@ -129,7 +129,7 @@ public class MainMenu extends GUIAbstract {
         setItem(accessory.getPosition(), accessory.getItem());
 
         for (int i : MenuCoord.getPlaceHolderCoords()) {
-            setItem(i, new ItemBuilder(XMaterial.WHITE_STAINED_GLASS_PANE.parseMaterial()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack());
+            setItem(i, new ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE.parseMaterial()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack());
         }
     }
 

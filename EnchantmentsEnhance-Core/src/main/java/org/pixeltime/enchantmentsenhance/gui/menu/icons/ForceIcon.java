@@ -33,19 +33,24 @@ import org.pixeltime.enchantmentsenhance.util.XMaterial;
 public class ForceIcon extends Clickable {
     @Override
     public ItemStack getItem() {
-        return new ItemBuilder(XMaterial.WHITE_WOOL.parseMaterial()).setDyeColor(DyeColor.RED).setName(SettingsManager.lang.getString("Menu.gui.force")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.force1")).toItemStack();
+        return new ItemBuilder(XMaterial.RED_WOOL.parseMaterial())
+                .setDyeColor(DyeColor.RED)
+                .setName(SettingsManager.lang.getString("Menu.gui.force"))
+                .addLoreLine(SettingsManager.lang.getString(
+                        "Menu.lore.force1")).toItemStack();
     }
 
     public ItemStack getItem(ItemStack item) {
         int enchantLevel = ItemManager.getItemEnchantLevel(item);
         int stoneId = Enhance.getStoneId(item, enchantLevel);
         int costToEnhance = DataManager.costToForceEnchant[enchantLevel + 1];
-        return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.WHITE_WOOL.parseMaterial()).setDyeColor(DyeColor.RED).setName(SettingsManager.lang.getString("Menu.gui.force")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.force1")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.force2").replaceAll("%COUNT%", Integer.toString(
-                costToEnhance)).replaceAll("%ITEM%", SettingsManager.lang
-                .getString("Item." + stoneId))).toItemStack());
+        return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.RED_WOOL.parseMaterial())
+                .setDyeColor(DyeColor.RED)
+                .setName(SettingsManager.lang.getString("Menu.gui.force"))
+                .addLoreLine(SettingsManager.lang.getString("Menu.lore.force1"))
+                .addLoreLine(SettingsManager.lang.getString("Menu.lore.force2")
+                        .replaceAll("%COUNT%", Integer.toString(costToEnhance))
+                        .replaceAll("%ITEM%", SettingsManager.lang.getString("Item." + stoneId))).toItemStack());
     }
 
     @Override

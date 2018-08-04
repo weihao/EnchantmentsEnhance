@@ -68,12 +68,19 @@ public class PlayerStreamHandler implements Listener {
      */
     @EventHandler(priority = EventPriority.MONITOR)
     public void onQuit(PlayerQuitEvent e) {
-        if (PlayerStat.getPlayerStats(e.getPlayer().getName()) != null) {
+        String playername = e.getPlayer().getName();
+        PlayerStat playerstat = PlayerStat.getPlayerStats(playername);
+        if (playerstat != null) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    DataStorage.get().saveStats(PlayerStat.getPlayerStats(e.getPlayer().getName()));
-                    PlayerStat.removePlayer(e.getPlayer().getName());
+                    try {
+                        DataStorage.get().saveStats(playerstat);
+                        PlayerStat.removePlayer(playername);
+                    } catch (Exception ex) {
+                        // Unexpected Error.
+                        ex.printStackTrace();
+                    }
                 }
             }.runTaskLater(Main.getMain(), 20);
         }

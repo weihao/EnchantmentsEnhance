@@ -294,7 +294,6 @@ enhance:
     enchantments:
       WEAPON:
          - Endless:1
-         - Damage_All:2
       ARMOR:
          - Endless:1
     lore:
@@ -321,7 +320,6 @@ enhance:
     enchantments:
       WEAPON:
          - Stealth:1
-         - Damage_All:2
       ARMOR:
          - Pyromaniac:1
     lore:
@@ -349,7 +347,6 @@ enhance:
       WEAPON:
          - Stealth:1
          - Execute:1
-         - Damage_All:2
       ARMOR:
          - Pyromaniac:1
     lore:
@@ -378,7 +375,6 @@ enhance:
          - Stealth:1
          - Execute:1
          - Corruption:1
-         - Damage_All:2
       ARMOR:
          - Pyromaniac:1
          - Haste:1
@@ -410,7 +406,6 @@ enhance:
          - Execute:1
          - Corruption:1
          - Rekt:1
-         - Damage_All:2
       ARMOR:
          - Pyromaniac:1
          - Haste:1
@@ -441,7 +436,6 @@ enhance:
          - Execute:1
          - Corruption:1
          - Rekt:1
-         - Damage_All:2
       ARMOR:
          - Pyromaniac:1
          - Haste:1
@@ -473,7 +467,6 @@ enhance:
          - Execute:1
          - Corruption:1
          - Plunder:1
-         - Damage_All:2
       ARMOR:
          - Jump:1
          - Batvision:1
@@ -502,7 +495,7 @@ enhance:
       WEAPON:
          - Corruption:1
          - Launch:5
-         - Damage_All:2
+         - Damage_All:1
       ARMOR:
          - Flame:3
     lore:
@@ -530,7 +523,7 @@ enhance:
        WEAPON:
          - Reborn:3
          - Mischief:3
-         - Damage_All:2
+         - Damage_All:1
        ARMOR:
          - Aegis:1
          - Eyepatch:1
@@ -559,7 +552,7 @@ enhance:
       WEAPON:
          - Crits:1
          - Riftslayer:1
-         - Damage_All:2
+         - Damage_All:1
       ARMOR:
          - Aegis:1
          - Blessed:1
@@ -588,7 +581,7 @@ enhance:
       WEAPON:
          - Hex:3
          - Assassin:3
-         - Damage_All:2
+         - Damage_All:1
       ARMOR:
          - Aegis:1
          - Blessed:1
@@ -617,7 +610,7 @@ enhance:
       WEAPON:
          - Curse:2
          - Strength:1
-         - Damage_All:2
+         - Damage_All:1
       ARMOR:
          - Aegis:1
          - Blessed:1
@@ -646,7 +639,7 @@ enhance:
     enchantments:
       WEAPON:
          - Curse:2
-         - Damage_All:2
+         - Damage_All:1
       ARMOR:
          - Aegis:1
     lore:
@@ -673,7 +666,7 @@ enhance:
     enchantments:
       WEAPON:
          - Speed:1
-         - Damage_All:2
+         - Damage_All:1
       ARMOR:
          - Shield:1
     lore:
@@ -700,7 +693,7 @@ enhance:
     enchantments:
       WEAPON:
          - Siphon:3
-         - Damage_All:2
+         - Damage_All:1
       ARMOR:
          - Saturation:1
     lore:
@@ -729,7 +722,7 @@ enhance:
          - Petrify:3
          - Crushing:3
          - Lifesteal:1
-         - Damage_All:8
+         - Damage_All:4
       ARMOR:
          - Dodge:5
     lore:
@@ -759,7 +752,7 @@ enhance:
          - Turmoil:3
          - Crushing:3
          - Lifesteal:1
-         - Damage_All:8
+         - Damage_All:4
       ARMOR:
          - Repel:3
          - Molten:3
@@ -789,7 +782,7 @@ enhance:
       WEAPON:
          - Lifesteal:1
          - Paralyze:2
-         - Damage_All:8
+         - Damage_All:4
       ARMOR:
          - Reinforced:1
          - Suicide:1
@@ -820,7 +813,7 @@ enhance:
     enchantments:
       WEAPON:
          - Purge:4
-         - Damage_All:8
+         - Damage_All:4
       ARMOR:
          - Spiked:3
          - Vitality:1
@@ -851,7 +844,7 @@ enhance:
     suffix: ""
     enchantments:
           WEAPON:
-             - Damage_All:8
+             - Damage_All:4
              - Strength:2
           ARMOR:
              - Vitality:2
@@ -887,7 +880,7 @@ weaponGrade:
   4:
     prefix: "Ultimate"
     enchantments:
-        - DAMAGE_ALL:2
+        - Damage_All:1
         - DURABILITY:2
   5:
     prefix: "Kzarka"

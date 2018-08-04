@@ -87,17 +87,17 @@ class MM {
         fun setup() {
             for (s in SettingsManager.config.getStringList(
                     "material.stoneTypes")) {
-                stoneTypes.add(Material.getMaterial(s))
+                stoneTypes.add(XMaterial.fromString(s).parseMaterial())
             }
 
             for (s in SettingsManager.config.getStringList(
                     "material.armor")) {
-                armor.add(Material.getMaterial(s))
+                armor.add(XMaterial.fromString(s).parseMaterial())
             }
 
             for (s in SettingsManager.config.getStringList(
                     "material.weapon")) {
-                weapon.add(Material.getMaterial(s))
+                weapon.add(XMaterial.fromString(s).parseMaterial())
             }
         }
     }

@@ -30,7 +30,7 @@ public class RemoveIcon extends Clickable {
 
     @Override
     public ItemStack getItem() {
-        return new ItemBuilder(XMaterial.WHITE_WOOL.parseMaterial()).setDyeColor(DyeColors.LIGHT_GRAY.bukkitDyeColor()).setName(SettingsManager.lang.getString("Menu.gui.remove")).addLoreLine(SettingsManager.lang.getString(
+        return new ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.parseMaterial()).setDyeColor(DyeColors.LIGHT_GRAY.bukkitDyeColor()).setName(SettingsManager.lang.getString("Menu.gui.remove")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.remove")).toItemStack();
     }
 

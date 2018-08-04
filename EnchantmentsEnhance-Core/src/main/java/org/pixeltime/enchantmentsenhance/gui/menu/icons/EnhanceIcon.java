@@ -32,7 +32,7 @@ import org.pixeltime.enchantmentsenhance.util.XMaterial;
 public class EnhanceIcon extends Clickable {
     @Override
     public ItemStack getItem() {
-        return new ItemBuilder(XMaterial.WHITE_WOOL.parseMaterial()).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("Menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
+        return new ItemBuilder(XMaterial.YELLOW_WOOL.parseMaterial()).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("Menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.ifSuccess")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.ifFail")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.ifDowngrade")).addLoreLine(SettingsManager.lang.getString(
@@ -42,7 +42,7 @@ public class EnhanceIcon extends Clickable {
     public ItemStack getItem(ItemStack item) {
 
         int level = ItemManager.getItemEnchantLevel(item);
-        ItemBuilder ib = new ItemBuilder(XMaterial.WHITE_WOOL.parseMaterial()).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("Menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
+        ItemBuilder ib = new ItemBuilder(XMaterial.YELLOW_WOOL.parseMaterial()).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("Menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.ifSuccess"));
         if (DataManager.baseChance[level] != 100.0) {
             ib.addLoreLine(SettingsManager.lang.getString(
