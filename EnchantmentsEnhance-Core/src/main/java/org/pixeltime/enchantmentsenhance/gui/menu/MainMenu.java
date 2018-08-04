@@ -61,6 +61,10 @@ public class MainMenu extends GUIAbstract {
         update();
     }
 
+    public static void clearPlayer(String playerName) {
+        itemOnEnhancingSlot.remove(playerName);
+    }
+
     @Override
     public void update() {
         getInventory().clear();
@@ -85,7 +89,7 @@ public class MainMenu extends GUIAbstract {
             }
 
             setItem(remove.getPosition(), remove.getGlowingItem(), () ->
-                    itemOnEnhancingSlot.remove(playerName));
+                    clearPlayer(playerName));
 
             setItem(stats.getPosition(), stats.getItem(playerName));
 
@@ -127,8 +131,6 @@ public class MainMenu extends GUIAbstract {
         for (int i : MenuCoord.getPlaceHolderCoords()) {
             setItem(i, new ItemBuilder(XMaterial.WHITE_STAINED_GLASS_PANE.parseMaterial()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack());
         }
-
-
     }
 
 }

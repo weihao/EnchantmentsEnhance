@@ -256,6 +256,8 @@ enhance:
     destroyIfFail: false
     # Enable to require concentrated magical stone to enhance the item.
     requireConcentratedStones: false
+    # Broadcast enhancement results.
+    broadcastEnhance: false
     # Enable or disable firework.
     fireworkIfSuccessful: true
     # Rounds of firework.
@@ -284,6 +286,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
     prefix: ""
@@ -310,6 +313,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
     prefix: ""
@@ -336,6 +340,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
     prefix: ""
@@ -363,6 +368,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
     prefix: ""
@@ -393,6 +399,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
     prefix: ""
@@ -424,6 +431,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: &8
     fireworkRounds: 1
     prefix: ""
@@ -455,6 +463,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
     prefix: ""
@@ -484,6 +493,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: ""
@@ -511,6 +521,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: ""
@@ -539,6 +550,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: ""
@@ -567,6 +579,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: ""
@@ -595,6 +608,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: ""
@@ -624,6 +638,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: ""
@@ -650,6 +665,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: ""
@@ -676,6 +692,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: false
+    broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: ""
@@ -702,6 +719,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: true
+    broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: "&9&lPRI"
@@ -730,6 +748,7 @@ enhance:
     downgradeIfFail: false
     destroyIfFail: false
     requireConcentratedStones: true
+    broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: "&9&lDUO"
@@ -761,6 +780,7 @@ enhance:
     downgradeIfFail: true
     destroyIfFail: false
     requireConcentratedStones: true
+    broadcastEnhance: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: "&6&lTRI"
@@ -792,6 +812,7 @@ enhance:
     downgradeIfFail: true
     destroyIfFail: false
     requireConcentratedStones: true
+    broadcastEnhance: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: "&6&lTET"
@@ -823,6 +844,7 @@ enhance:
     downgradeIfFail: true
     destroyIfFail: false
     requireConcentratedStones: true
+    broadcastEnhance: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
     prefix: '&c&lPEN'

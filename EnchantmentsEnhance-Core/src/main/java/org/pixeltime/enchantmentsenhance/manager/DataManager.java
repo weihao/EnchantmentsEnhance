@@ -33,6 +33,7 @@ public class DataManager {
     public static boolean[] downgradeIfFail;
     public static boolean[] destroyIfFail;
     public static boolean[] requireConcentratedStones;
+    public static boolean[] broadcastEnhance;
 
     public static void setUp() {
         Set<String> temp = SettingsManager.config.getConfigurationSection(
@@ -49,6 +50,8 @@ public class DataManager {
         DataManager.downgradeIfFail = new boolean[levels];
         DataManager.destroyIfFail = new boolean[levels];
         DataManager.requireConcentratedStones = new boolean[levels];
+        DataManager.broadcastEnhance = new boolean[levels];
+
 
         Set<String> temp2 = SettingsManager.config.getConfigurationSection(
                 "enhance.0").getKeys(false);
@@ -89,6 +92,9 @@ public class DataManager {
                             .getInt("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("name")) {
                     DataManager.name[i] = SettingsManager.config.getString(
+                            "enhance." + i + "." + key2);
+                } else if (key2.equalsIgnoreCase("broadcastEnhance")) {
+                    DataManager.broadcastEnhance[i] = SettingsManager.config.getBoolean(
                             "enhance." + i + "." + key2);
                 }
             }

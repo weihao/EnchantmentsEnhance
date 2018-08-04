@@ -23,6 +23,7 @@ import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.chat.Broadcast;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
+import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
@@ -101,7 +102,7 @@ public class Enhance {
             Util.sendMessage(SettingsManager.lang.getString(
                     "Enhance.enhanceSuccess"), player);
         }
-        if (DataManager.downgradeIfFail[enchantLevel]) {
+        if (DataManager.broadcastEnhance[enchantLevel]) {
             Broadcast.broadcast(player, forged, "success");
         }
     }
@@ -125,8 +126,13 @@ public class Enhance {
         API.addFailstack(player.getName(),
                 DataManager.failstackGainedPerFail[level]);
         if (DataManager.destroyIfFail[level]) {
+            // Broadcast
+            if (DataManager.broadcastEnhance[level]) {
+                Broadcast.broadcast(player, item, "destroyed");
+            }
             // Destroy failed item.
             player.getInventory().remove(item);
+            MainMenu.clearPlayer(player.getName());
             // Adds destroyed message.
             str += ("\n" + SettingsManager.lang.getString(
                     "Enhance.destroyed"));
@@ -140,7 +146,10 @@ public class Enhance {
             int enchantLevel = level - 2;
             // Updates the item.
             ItemManager.forgeItem(player, item, enchantLevel, false);
-            Broadcast.broadcast(player, item, "failed");
+            // Broadcast
+            if (DataManager.broadcastEnhance[level]) {
+                Broadcast.broadcast(player, item, "failed");
+            }
         }
         // Sends the failed message.
         Util.sendMessage(str, player);

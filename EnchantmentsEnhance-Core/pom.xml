@@ -23,7 +23,7 @@
     <parent>
         <artifactId>EnchantmentsEnhance-Parent</artifactId>
         <groupId>org.pixeltime</groupId>
-        <version>5.1</version>
+        <version>5.2</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -118,6 +118,10 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

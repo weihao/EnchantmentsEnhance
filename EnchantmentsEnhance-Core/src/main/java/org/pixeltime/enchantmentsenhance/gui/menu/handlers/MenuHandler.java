@@ -68,6 +68,6 @@ public class MenuHandler implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onInventoryClose(InventoryCloseEvent e) {
         Player player = (Player) e.getPlayer();
-        MainMenu.itemOnEnhancingSlot.remove(player.getName());
+        MainMenu.clearPlayer(player.getName());
     }
 }

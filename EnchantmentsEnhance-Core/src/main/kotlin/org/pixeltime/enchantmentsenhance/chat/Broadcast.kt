@@ -38,8 +38,8 @@ class Broadcast {
                  * @param item
                  * @param success
                  */
-        fun broadcast(player: Player, item: ItemStack, success: String) {
-            broadcast(SettingsManager.lang.getString("Annoucer.$success").replace("%player%", player.name).replace("%item%", item.itemMeta.displayName))
+        fun broadcast(player: Player, item: ItemStack, result: String) {
+            broadcast(SettingsManager.lang.getString("Annoucer.$result").replace("%player%", player.name).replace("%item%", item.itemMeta.displayName))
         }
 
         @JvmStatic
