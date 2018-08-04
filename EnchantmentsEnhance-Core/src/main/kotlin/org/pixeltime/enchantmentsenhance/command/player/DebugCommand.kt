@@ -25,6 +25,7 @@ import org.pixeltime.enchantmentsenhance.api.API
 import org.pixeltime.enchantmentsenhance.command.SubCommand
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance
 import org.pixeltime.enchantmentsenhance.manager.IM
+import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.util.Util
 
 
@@ -34,10 +35,6 @@ class DebugCommand : SubCommand() {
 
     override fun onCommand(p: Player, args: Array<String>) {
         when {
-            args[0] == "upgrade" -> Enhance.enhanceSuccess(p.itemInHand, p, false, 20)
-            args[0] == "slots" -> IM.getArmorSlots(p)
-            args[0] == "mysql" -> {
-            }
             args[0] == "format" -> {
                 val subcommands = Main.getMain().commandManager.commands.iterator()
                 while (subcommands.hasNext()) {
@@ -46,7 +43,6 @@ class DebugCommand : SubCommand() {
                     Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), p, false)
                 }
             }
-            args[0].equals("failstack", ignoreCase = true) -> API.addFailstack(p.name, 200)
         }
     }
 

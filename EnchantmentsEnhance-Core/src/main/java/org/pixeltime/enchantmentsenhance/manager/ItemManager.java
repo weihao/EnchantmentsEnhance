@@ -29,6 +29,8 @@ import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.util.Util;
+import org.pixeltime.enchantmentsenhance.util.data.DoublyLinkedList;
+import org.pixeltime.enchantmentsenhance.util.data.Iterator;
 import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
 
 import java.util.ArrayList;
@@ -85,6 +87,17 @@ public class ItemManager {
         return nbti.getString("EName");
     }
 
+    public static ItemStack setHistory(ItemStack item, String history) {
+        NBTItem nbti = new NBTItem(item);
+        nbti.setString("EHistory", history);
+        return nbti.getItem();
+    }
+
+    public static String getHistory(ItemStack item) {
+        NBTItem nbti = new NBTItem(item);
+        return nbti.getString("EHistory");
+    }
+
 
     public static void soulbound(ItemStack item) {
         Lore.removeLore(item);
@@ -104,7 +117,7 @@ public class ItemManager {
         }
 
         // Unique ID applied.
-        applyEnchantments(currItem, addition);
+        currItem = applyEnchantments(currItem, addition);
         if (SettingsManager.config.getBoolean("enableRename")) {
             renameItem(currItem);
         }
@@ -131,10 +144,21 @@ public class ItemManager {
         currItem.setItemMeta(im);
     }
 
-    public static void applyEnchantments(ItemStack item, boolean addition) {
+    public static ItemStack applyEnchantments(ItemStack item, boolean addition) {
         int enchantLevel = getItemEnchantLevel(item);
 
         if (enchantLevel > 0) {
+            DoublyLinkedList<String> node = new DoublyLinkedList<>();
+            String history = ItemManager.getHistory(item);
+            if (!history.isEmpty()) {
+                String[] temp = history
+                        .replace("{", "")
+                        .replace("}", "")
+                        .split("; ");
+                for (int i = 0; i < temp.length; i++) {
+                    node.add(temp[i]);
+                }
+            }
             if (addition) {
                 ItemType type = getItemEnchantmentType(item);
                 List<String> temp = SettingsManager.config.getStringList("enhance."
@@ -145,17 +169,35 @@ public class ItemManager {
                     String[] a = s.split(":");
                     applyEnchantmentToItem(item, a[0], Integer.parseInt(a[1]));
                 }
+                node.add(temp.toString());
+                return setHistory(item, node.toString());
             } else {
-                ItemType type = getItemEnchantmentType(item);
-                List<String> temp = SettingsManager.config.getStringList("enhance."
-                        + (enchantLevel + 1) + ".enchantments." + type.toString());
-                //Adding New enchantment.
-                for (String s : temp) {
-                    String[] a = s.split(":");
-                    applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
+                Iterator<String> it = node.iterator();
+                String downgrade = null;
+                while (it.hasNext()) {
+                    downgrade = it.next();
+                }
+                if (downgrade == null) {
+                    ItemType type = getItemEnchantmentType(item);
+                    List<String> temp = SettingsManager.config.getStringList("enhance."
+                            + (enchantLevel + 1) + ".enchantments." + type.toString());
+                    //Adding New enchantment.
+                    for (String s : temp) {
+                        String[] a = s.split(":");
+                        applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
+                    }
+                } else {
+                    for (String s : downgrade
+                            .replace("[", "")
+                            .replace("]", "")
+                            .split(", ")) {
+                        String[] a = s.split(":");
+                        applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
+                    }
                 }
             }
         }
+        return item;
     }
 
     public static void applyEnchantmentToItem(ItemStack item, String ench, int level) {
