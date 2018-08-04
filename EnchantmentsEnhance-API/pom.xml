@@ -27,16 +27,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>EnchantmentsEnhance-Core</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>EnchantmentsEnhance-API</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>org.pixeltime</groupId>
-            <artifactId>EnchantmentsEnhance-API</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
@@ -123,10 +116,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -145,43 +134,6 @@
                     </archive>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <artifactSet>
-                                <includes>
-                                    <include>org.jetbrains.kotlin:kotlin-stdlib</include>
-                                    <include>org.jetbrains.kotlin:kotlin-runtime</include>
-                                    <include>org.pixeltime:EnchantmentsEnhance-API</include>
-                                </includes>
-                            </artifactSet>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
-
-        <resources>
-            <resource>
-                <directory>src/resources/</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>${project.basedir}/</directory>
-                <includes>
-                    <include>*.md</include>
-                    <include>LICENSE</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
     </build>
 </project>

@@ -32,16 +32,16 @@ import java.util.List;
 
 public class ValksIcon extends Clickable {
     @Override
-    public ItemStack getItem() {
+    public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.BOOKSHELF).setName(SettingsManager.lang.getString("Valks.gui")).toItemStack();
     }
 
     public ItemStack getItem(Player player) {
         List<Integer> temp = PlayerStat.getPlayerStats(player.getName()).getValks();
         if (temp == null || temp.size() == 0) {
-            return getItem();
+            return getItem(player.getName());
         }
-        return CompatibilityManager.glow.addGlow(getItem());
+        return CompatibilityManager.glow.addGlow(getItem(player.getName()));
     }
 
     @Override

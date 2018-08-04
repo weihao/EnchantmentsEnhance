@@ -21,11 +21,7 @@ package org.pixeltime.enchantmentsenhance.command.player
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.Main
-import org.pixeltime.enchantmentsenhance.api.API
 import org.pixeltime.enchantmentsenhance.command.SubCommand
-import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance
-import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.util.Util
 
 

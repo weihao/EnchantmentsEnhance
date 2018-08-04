@@ -27,7 +27,7 @@ import org.pixeltime.enchantmentsenhance.util.XMaterial;
 
 public class StoreIcon extends Clickable {
     @Override
-    public ItemStack getItem() {
+    public ItemStack getItem(String playerName) {
         return new ItemBuilder(XMaterial.WRITABLE_BOOK.parseMaterial()).setName(SettingsManager.lang
                 .getString("Menu.gui.store")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.store1")).addLoreLine(SettingsManager.lang.getString(

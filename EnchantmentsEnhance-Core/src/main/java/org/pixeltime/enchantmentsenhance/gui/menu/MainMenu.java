@@ -25,7 +25,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
@@ -88,7 +87,7 @@ public class MainMenu extends GUIAbstract {
                         Enhance.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
             }
 
-            setItem(remove.getPosition(), remove.getGlowingItem(), () ->
+            setItem(remove.getPosition(), remove.getGlowingItem(playerName), () ->
                     clearPlayer(playerName));
 
             setItem(stats.getPosition(), stats.getItem(playerName));
@@ -98,13 +97,13 @@ public class MainMenu extends GUIAbstract {
         } else {
             setItem(Util.getSlot(8, 4), new ItemStack(Material.AIR));
             setItem(remove.getPosition(), new ItemStack(Material.AIR));
-            setItem(enhance.getPosition(), enhance.getItem());
-            setItem(force.getPosition(), force.getItem());
+            setItem(enhance.getPosition(), enhance.getItem(playerName));
+            setItem(force.getPosition(), force.getItem(playerName));
             setItem(stats.getPosition(), stats.getItem(playerName));
         }
 
-        setItem(store.getPosition(), API.getFailstack(player.getName()) == 0 ? store.getItem() : store.getGlowingItem(), () ->
-                API.addAdvice(player.getName()));
+        setItem(store.getPosition(), Main.getAPI().getFailstack(player.getName()) == 0 ? store.getItem(playerName) : store.getGlowingItem(playerName), () ->
+                Main.getAPI().addAdvice(player.getName()));
 
         setItem(item.getPosition(), item.getItem(player.getName()), () ->
                 new BukkitRunnable() {
@@ -124,9 +123,9 @@ public class MainMenu extends GUIAbstract {
                     }
                 }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 
-        setItem(gear.getPosition(), gear.getItem());
-        setItem(tool.getPosition(), tool.getItem());
-        setItem(accessory.getPosition(), accessory.getItem());
+        setItem(gear.getPosition(), gear.getItem(playerName));
+        setItem(tool.getPosition(), tool.getItem(playerName));
+        setItem(accessory.getPosition(), accessory.getItem(playerName));
 
         for (int i : MenuCoord.getPlaceHolderCoords()) {
             setItem(i, new ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE.parseMaterial()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack());

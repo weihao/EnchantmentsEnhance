@@ -22,13 +22,12 @@ import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 
 public abstract class Clickable {
-    public abstract ItemStack getItem();
+    public abstract ItemStack getItem(String player);
 
-    public ItemStack getGlowingItem() {
-        return CompatibilityManager.glow.addGlow(getItem());
+    public ItemStack getGlowingItem(String playerName) {
+        return CompatibilityManager.glow.addGlow(getItem(playerName));
     }
 
     public abstract int getPosition();
-
 
 }

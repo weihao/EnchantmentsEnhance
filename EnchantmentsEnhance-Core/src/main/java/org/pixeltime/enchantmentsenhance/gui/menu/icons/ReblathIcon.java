@@ -28,7 +28,7 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 public class ReblathIcon extends Clickable {
 
     @Override
-    public ItemStack getItem() {
+    public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.ANVIL)
                 .setName(SettingsManager.lang.getString("Menu.gui.reblath"))
                 .toItemStack();

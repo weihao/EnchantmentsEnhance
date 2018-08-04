@@ -27,7 +27,7 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class GearIcon extends Clickable {
     @Override
-    public ItemStack getItem() {
+    public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.DIAMOND_SWORD)
                 .setName("Gear")
                 .addLoreLine(SettingsManager.lang.getString("Icon.gear1"))

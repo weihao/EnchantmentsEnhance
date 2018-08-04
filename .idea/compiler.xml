@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="EnchantmentsEnhance-1.12" />
         <module name="EnchantmentsEnhance-1.13" />
+        <module name="EnchantmentsEnhance-API" />
         <module name="EnchantmentsEnhance-Core" />
       </profile>
     </annotationProcessing>
@@ -15,9 +16,8 @@
       <module name="EnchantmentsEnhance" target="1.8" />
       <module name="EnchantmentsEnhance-1.12" target="1.8" />
       <module name="EnchantmentsEnhance-1.13" target="1.8" />
+      <module name="EnchantmentsEnhance-API" target="1.8" />
       <module name="EnchantmentsEnhance-Core" target="8" />
-      <module name="EnchantmentsEnhance-Parent (1)" target="1.8" />
-      <module name="EnchantmentsEnhance-Parent (2)" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

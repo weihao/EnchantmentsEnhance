@@ -24,7 +24,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.pixeltime.enchantmentsenhance.api.API;
+import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
@@ -227,7 +227,7 @@ public class ItemManager {
                 }
                 int max = 1;
                 try {
-                    max = API.getEnchantmentMaxLevel(ench);
+                    max = Main.getAPI().getEnchantmentMaxLevel(ench);
                 } catch (NullPointerException ex) {
                 }
                 int finalLevel = ((level + keptLevel) > max) ? max : level + keptLevel;

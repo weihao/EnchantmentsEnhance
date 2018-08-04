@@ -374,13 +374,13 @@ public class DoublyLinkedListTest extends TestCase {
         assertEquals(list.toString(), "{aaaa; dddd; bbbb; cccc}");
     }
 
-    public void testLogic(){
+    public void testLogic() {
         Integer[] temp = {1, 2, 3, 4};
         List<Integer> temp2 = Arrays.asList(temp);
-     assertEquals(temp2.toString(), Arrays.toString(temp));
+        assertEquals(temp2.toString(), Arrays.toString(temp));
 
-     String test = "Damage_All:2";
-     String[] test2 = test.split("\\?");
-     assertEquals(test2.length, 1);
+        String test = "Damage_All:2";
+        String[] test2 = test.split("\\?");
+        assertEquals(test2.length, 1);
     }
 }

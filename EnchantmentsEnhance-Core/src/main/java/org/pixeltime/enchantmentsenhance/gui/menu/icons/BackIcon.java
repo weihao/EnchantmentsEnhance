@@ -28,7 +28,7 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 public class BackIcon extends Clickable {
 
     @Override
-    public ItemStack getItem() {
+    public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.ARROW)
                 .setName(SettingsManager.lang.getString("Menu.gui.back"))
                 .addLoreLine(SettingsManager.lang.getString("Menu.lore.back"))

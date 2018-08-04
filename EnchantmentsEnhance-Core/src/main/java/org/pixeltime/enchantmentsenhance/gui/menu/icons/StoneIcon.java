@@ -48,7 +48,7 @@ public class StoneIcon extends Clickable {
     }
 
     @Override
-    public ItemStack getItem() {
+    public ItemStack getItem(String playerName) {
         return null;
     }
 

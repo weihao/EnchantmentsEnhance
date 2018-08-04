@@ -32,7 +32,7 @@ import org.pixeltime.enchantmentsenhance.util.XMaterial;
 
 public class ForceIcon extends Clickable {
     @Override
-    public ItemStack getItem() {
+    public ItemStack getItem(String playerName) {
         return new ItemBuilder(XMaterial.RED_WOOL.parseMaterial())
                 .setDyeColor(DyeColor.RED)
                 .setName(SettingsManager.lang.getString("Menu.gui.force"))

@@ -23,7 +23,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.BackIcon;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
@@ -58,8 +57,8 @@ public class ValksMenu extends GUIAbstract {
                     @Override
                     public void run() {
                         if (level > 0) {
-                            if (API.getFailstack(player.getName()) == 0) {
-                                API.addFailstack(player.getName(), level);
+                            if (Main.getAPI().getFailstack(player.getName()) == 0) {
+                                Main.getAPI().addFailstack(player.getName(), level);
                                 PlayerStat.getPlayerStats(playerName).getValks().remove(index);
                                 Util.sendMessage(SettingsManager.lang.getString(
                                         "Valks.used").replaceAll("%LEVEL%", Integer
@@ -82,7 +81,7 @@ public class ValksMenu extends GUIAbstract {
             // Expected.
         }
 
-        setItem(back.getPosition(), back.getItem(), () -> new BukkitRunnable() {
+        setItem(back.getPosition(), back.getItem(playerName), () -> new BukkitRunnable() {
             @Override
             public void run() {
                 if (currPage == 1) {

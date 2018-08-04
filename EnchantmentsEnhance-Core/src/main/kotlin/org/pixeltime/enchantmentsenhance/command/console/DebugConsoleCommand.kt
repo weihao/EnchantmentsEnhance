@@ -20,7 +20,6 @@ package org.pixeltime.enchantmentsenhance.command.console
 
 import org.bukkit.command.CommandSender
 import org.pixeltime.enchantmentsenhance.Main
-import org.pixeltime.enchantmentsenhance.api.API
 import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
@@ -42,7 +41,7 @@ class DebugConsoleCommand : SubConsoleCommand() {
                     if (EnchantmentListener::class.java.isAssignableFrom(enchClass)) {
                         try {
                             val enchantmentListener = enchClass.newInstance() as EnchantmentListener
-                            sb.appendln("|" + enchantmentListener.javaClass.simpleName + "|" + enchantmentListener.desc()[0] + "|" + API.getEnchantmentMaxLevel(enchantmentListener.javaClass.simpleName) + "|")
+                            sb.appendln("|" + enchantmentListener.javaClass.simpleName + "|" + enchantmentListener.desc()[0] + "|" + Main.getAPI().getEnchantmentMaxLevel(enchantmentListener.javaClass.simpleName) + "|")
                         } catch (e: InstantiationException) {
                             e.printStackTrace()
                         } catch (e: IllegalAccessException) {

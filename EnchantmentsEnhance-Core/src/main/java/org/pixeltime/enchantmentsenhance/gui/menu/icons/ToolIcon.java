@@ -26,7 +26,7 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class ToolIcon extends Clickable {
     @Override
-    public ItemStack getItem() {
+    public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.DIAMOND_PICKAXE)
                 .setName("Tools")
                 .addLoreLine("NOT FINISHED")

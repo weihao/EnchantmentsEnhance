@@ -31,7 +31,7 @@ import org.pixeltime.enchantmentsenhance.util.XMaterial;
 
 public class EnhanceIcon extends Clickable {
     @Override
-    public ItemStack getItem() {
+    public ItemStack getItem(String playerName) {
         return new ItemBuilder(XMaterial.YELLOW_WOOL.parseMaterial()).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("Menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.ifSuccess")).addLoreLine(SettingsManager.lang.getString(
                 "Menu.lore.ifFail")).addLoreLine(SettingsManager.lang.getString(

@@ -217,7 +217,6 @@ public class DoublyLinkedList<T> implements List<T> {
      * This represents a node in a doubly linked list. This node stores data, a
      * pointer to the node before it in the list, and a pointer to the node
      * after it in the list
-     *
      */
     private static class DLNode<T> {
         private DLNode<T> next;

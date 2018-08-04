@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/EnchantmentsEnhance.iml" filepath="$PROJECT_DIR$/.idea/EnchantmentsEnhance.iml" />
       <module fileurl="file://$PROJECT_DIR$/EnchantmentsEnhance-1.12/EnchantmentsEnhance-1.12.iml" filepath="$PROJECT_DIR$/EnchantmentsEnhance-1.12/EnchantmentsEnhance-1.12.iml" />
       <module fileurl="file://$PROJECT_DIR$/EnchantmentsEnhance-1.13/EnchantmentsEnhance-1.13.iml" filepath="$PROJECT_DIR$/EnchantmentsEnhance-1.13/EnchantmentsEnhance-1.13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EnchantmentsEnhance-API/EnchantmentsEnhance-API.iml" filepath="$PROJECT_DIR$/EnchantmentsEnhance-API/EnchantmentsEnhance-API.iml" />
       <module fileurl="file://$PROJECT_DIR$/EnchantmentsEnhance-Core/EnchantmentsEnhance-Core.iml" filepath="$PROJECT_DIR$/EnchantmentsEnhance-Core/EnchantmentsEnhance-Core.iml" />
     </modules>
   </component>

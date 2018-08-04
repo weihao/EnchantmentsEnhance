@@ -20,7 +20,7 @@ package org.pixeltime.enchantmentsenhance.event.blackspirit;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.api.API;
+import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.chat.Broadcast;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
@@ -98,7 +98,7 @@ public class Enhance {
                     "Enhance.forceEnhanceSuccess"), player);
         } else {
             // Clear used failstack
-            API.resetFailstack(player.getName());
+            Main.getAPI().resetFailstack(player.getName());
             Util.sendMessage(SettingsManager.lang.getString(
                     "Enhance.enhanceSuccess"), player);
         }
@@ -123,7 +123,7 @@ public class Enhance {
         // Play failed sound.
         CompatibilityManager.playsound.playSound(player, "FAILED");
         // Add failstack.
-        API.addFailstack(player.getName(),
+        Main.getAPI().addFailstack(player.getName(),
                 DataManager.failstackGainedPerFail[level]);
         if (DataManager.destroyIfFail[level]) {
             // Broadcast
@@ -170,15 +170,15 @@ public class Enhance {
             // Finds the stone used in the enhancement
             int stoneId = getStoneId(item, enchantLevel);
             // Checks if player has enough enchant stone
-            if (API.getItem(player.getName(), stoneId) - 1 >= 0) {
-                API.addItem(player.getName(), stoneId, -1);
+            if (Main.getAPI().getItem(player.getName(), stoneId) - 1 >= 0) {
+                Main.getAPI().addItem(player.getName(), stoneId, -1);
                 Util.sendMessage(SettingsManager.lang.getString("Item.use")
                         .replaceAll("%ITEM%", SettingsManager.lang.getString("Item."
                                 + stoneId)), player);
                 // Randomly generate a double between 0 to 1
                 double random = Math.random();
                 // Calculate the chance
-                double chance = API.getChance(player.getName(), enchantLevel);
+                double chance = Main.getAPI().getChance(player.getName(), enchantLevel);
                 // Proceed to enhance
                 if (random < chance) {
                     enhanceSuccess(item, player, false, enchantLevel);
@@ -222,8 +222,8 @@ public class Enhance {
                 return;
             }
             // Checks if player has enough enchant stone
-            if (API.getItem(player.getName(), stoneId) - costToEnhance >= 0) {
-                API.addItem(player.getName(), stoneId, -costToEnhance);
+            if (Main.getAPI().getItem(player.getName(), stoneId) - costToEnhance >= 0) {
+                Main.getAPI().addItem(player.getName(), stoneId, -costToEnhance);
                 enhanceSuccess(item, player, true, enchantLevel);
             }
             // Not enough enchant stone
@@ -253,7 +253,7 @@ public class Enhance {
         ItemType type = ItemManager.getItemEnchantmentType(item);
         if (type != ItemType.INVALID) {
             // Display failstack
-            String placeholder = String.format("%.2f", API.getChance(
+            String placeholder = String.format("%.2f", Main.getAPI().getChance(
                     playerName, ItemManager.getItemEnchantLevel(item) + 1) * 100);
             // Display chance after failstack is applied
             String chance = SettingsManager.lang.getString(

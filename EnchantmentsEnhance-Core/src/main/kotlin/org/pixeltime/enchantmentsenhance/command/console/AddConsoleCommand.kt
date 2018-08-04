@@ -20,7 +20,7 @@ package org.pixeltime.enchantmentsenhance.command.console
 
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
-import org.pixeltime.enchantmentsenhance.api.API
+import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand
 import org.pixeltime.enchantmentsenhance.manager.MM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
@@ -49,7 +49,7 @@ class AddConsoleCommand : SubConsoleCommand() {
             }
 
             if (stoneType != -1 && level != -1 && stoneType <= MM.stoneTypes.size) {
-                API.addItem(args[0], stoneType, level)
+                Main.getAPI().addItem(args[0], stoneType, level)
                 Util.sendMessage(SettingsManager.lang.getString(
                         "Add.successful").replace("%player%", player.name).replace(
                         "%number%", Integer.toString(level)).replace("%stone%",

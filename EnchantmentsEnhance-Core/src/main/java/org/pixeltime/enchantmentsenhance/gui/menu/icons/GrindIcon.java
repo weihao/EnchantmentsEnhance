@@ -22,6 +22,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
@@ -29,9 +30,12 @@ public class GrindIcon extends Clickable {
 
 
     @Override
-    public ItemStack getItem() {
+    public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.ANVIL)
                 .setName(SettingsManager.lang.getString("Menu.gui.grind"))
+                .addLoreLine(SettingsManager.lang.getString("Grind.info")
+                        .replace("%amonunt%", Integer.toString(PlayerStat.getPlayerStats(playerName).getGrind())))
+                .addLoreLine(SettingsManager.lang.getString(""))
                 .toItemStack();
     }
 
