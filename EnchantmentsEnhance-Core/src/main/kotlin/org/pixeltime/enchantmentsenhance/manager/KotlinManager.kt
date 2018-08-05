@@ -38,8 +38,12 @@ class KM {
         @JvmStatic
         fun getLevel(lore: String, itemlore: List<String>): Int {
             itemlore.filter { it.contains(lore) }.forEach {
-                var temp = it.split(" ")
-                return (Util.romanToInt((temp)[temp.size - 1]))
+                val temp = it.split(" ")
+                try {
+                    val level = Util.romanToInt((temp)[temp.size - 1])
+                    return level
+                } catch (ex: NumberFormatException) {
+                }
             }
             return 0
         }
