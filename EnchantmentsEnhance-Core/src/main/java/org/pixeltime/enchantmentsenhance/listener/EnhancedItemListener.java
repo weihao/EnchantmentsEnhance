@@ -32,7 +32,7 @@ import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class EnhancedItemHandler implements Listener {
+public class EnhancedItemListener implements Listener {
     /**
      * Prevents enhanced item from dropping.
      *

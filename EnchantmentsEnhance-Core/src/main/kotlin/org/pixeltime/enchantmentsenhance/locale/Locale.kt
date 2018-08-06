@@ -49,6 +49,7 @@ class LM {
             addLang("Config.noPerm", arrayOf("&aYou don't have permissions!", "&a你没有权限这么做!"))
             addLang("Config.playerNotFound", arrayOf("&cOnline player not found!", "&c无此在线玩家!"))
             addLang("Config.invalidNumber", arrayOf("&cInvalid Number!", "&c无效数字"))
+            addLang("Config.invalidItem", arrayOf("&cInvalid Item!", "&c无效物品"))
             addLang("Annoucer.success", arrayOf("&6Enhance Success: %player% got %item%.", "&6强化成功: %player%获得了%item%."))
             addLang("Annoucer.failed", arrayOf("&cEnhance Failed: %player% downgraded %item%.", "&c强化失败: %player%潜力突破失败降级了%item%."))
             addLang("Annoucer.destroyed", arrayOf("&cEnhance Failed: %player% destroyed %item%.", "&c强化失败: %player%潜力突破失败摧毁了%item%."))

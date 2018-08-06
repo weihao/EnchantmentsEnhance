@@ -39,11 +39,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
-public class PlayerDeathHandler implements Listener {
+public class PlayerDeathListener implements Listener {
     private static final Main m = Main.getMain();
 
 
-    public PlayerDeathHandler() {
+    public PlayerDeathListener() {
     }
 
 

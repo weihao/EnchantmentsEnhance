@@ -131,5 +131,4 @@ public class MainMenu extends GUIAbstract {
             setItem(i, new ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE.parseMaterial()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack());
         }
     }
-
 }

@@ -41,7 +41,7 @@ import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 
 import java.util.Random;
 
-public class LifeskillingHandler implements Listener {
+public class LifeskillingListener implements Listener {
     private final Random random = new Random();
 
 

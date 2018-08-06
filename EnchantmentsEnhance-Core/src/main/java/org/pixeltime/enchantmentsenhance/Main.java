@@ -130,7 +130,7 @@ public class Main extends JavaPlugin implements Listener {
         commandManager = new CommandManager();
         PluginManager pm = Bukkit.getPluginManager();
         if (SettingsManager.config.getBoolean("enableTableEnchant")) {
-            pm.registerEvents(new VanillaEnchantHandler(), this);
+            pm.registerEvents(new VanillaEnchantListener(), this);
         }
 
         // Kotlin setup
@@ -215,13 +215,13 @@ public class Main extends JavaPlugin implements Listener {
      */
     private void registerCore() {
         PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new EnhancedItemHandler(), this);
+        pm.registerEvents(new EnhancedItemListener(), this);
         if (SettingsManager.config.getBoolean("enableLore")) {
-            pm.registerEvents(new PlayerDeathHandler(), this);
+            pm.registerEvents(new PlayerDeathListener(), this);
         }
-        pm.registerEvents(new PlayerStreamHandler(), this);
+        pm.registerEvents(new PlayerStreamListener(), this);
         if (SettingsManager.config.getBoolean("enableLifeskill")) {
-            pm.registerEvents(new LifeskillingHandler(), this);
+            pm.registerEvents(new LifeskillingListener(), this);
         }
         if (SettingsManager.config.getBoolean("enableAnvilFix")) {
             pm.registerEvents(new RepairListener(), this);

@@ -19,6 +19,7 @@
 package org.pixeltime.enchantmentsenhance.command.player
 
 import org.bukkit.ChatColor
+import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.command.SubCommand
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore
@@ -50,10 +51,18 @@ class ItemCommand : SubCommand() {
                 }
                 args[0].equals("setname", ignoreCase = true) -> {
                     val item = player.itemInHand
-                    val level = ItemManager.getItemEnchantLevel(item)
-                    val curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]))
-                    player.inventory.removeItem(item)
-                    ItemManager.forgeItem(player, curr, level, true)
+                    if (item.type != Material.AIR) {
+                        val level = ItemManager.getItemEnchantLevel(item)
+                        val curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]))
+                        try {
+                            ItemManager.forgeItem(player, curr, level, true)
+                            player.inventory.removeItem(item)
+                        } catch (ex: Exception) {
+                            Util.sendMessage(SettingsManager.lang.getString("Config.invalidItem"), player)
+                        }
+                    } else {
+                        Util.sendMessage(SettingsManager.lang.getString("Config.invalidItem"), player)
+                    }
                 }
                 args[0].equals("lore", ignoreCase = true) -> when {
                     args[1].equals("unbound", ignoreCase = true) -> Lore.removeLore(player.itemInHand)

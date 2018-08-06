@@ -33,12 +33,12 @@ import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-public class PlayerStreamHandler implements Listener {
+public class PlayerStreamListener implements Listener {
 
     public static final Main m = Main.getMain();
 
 
-    public PlayerStreamHandler() {
+    public PlayerStreamListener() {
     }
 
 

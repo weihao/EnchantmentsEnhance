@@ -28,7 +28,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.XMaterial;
 
 
-public class VanillaEnchantHandler implements Listener {
+public class VanillaEnchantListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onOpenEnchantmentTable(PlayerInteractEvent event) {
         if (event.getClickedBlock() != null && event.getClickedBlock().getType() == XMaterial.ENCHANTING_TABLE.parseMaterial()) {
