@@ -1,6 +1,4 @@
-# Allow WorldGuard and WorldEdit to check the pvp flags.
 allow-worldguard: false
-# Enchantments' configuration:
 lifesteal:
     1:
        chance: 25

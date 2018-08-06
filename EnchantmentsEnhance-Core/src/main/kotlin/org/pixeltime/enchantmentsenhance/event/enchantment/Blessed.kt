@@ -41,7 +41,7 @@ class Blessed : EnchantmentListener() {
         try {
             val level = IM.getHighestLevel(player, this.name())
             val n = (Math.random() * 100.0).toInt()
-            if (level > 0 && n < SettingsManager.enchant.getInt("blessed.$level.chance")) {
+            if (level > 0 && n < SettingsManager.enchant.getDouble("blessed.$level.chance")) {
                 player.health = player.maxHealth
                 player.foodLevel = 20
             }

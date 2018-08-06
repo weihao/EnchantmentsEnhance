@@ -35,19 +35,19 @@ abstract class EnchantmentListener : Listener {
         player.addPotionEffect(PotionEffect(type, Int.MAX_VALUE, level - 1))
     }
 
-    fun removePermaPotion(player: Player, type: PotionEffectType) {
+    fun removePermaPotion(player: Player, type: PotionEffectType, potionlvl: Int) {
         for (PotionEffect in player.activePotionEffects) {
-            if ((PotionEffect.type == type) && (PotionEffect.duration > 1000000000)) {
+            if ((PotionEffect.type == type) && (PotionEffect.duration > 1000000000) && (PotionEffect.amplifier == potionlvl)) {
                 player.removePotionEffect(type)
             }
         }
     }
 
-    fun permaPotion(player: Player, type: PotionEffectType, level: Int) {
-        if (level > 0) {
-            addPermaPotion(player, type, level)
+    fun permaPotion(player: Player, type: PotionEffectType, potionlvl: Int) {
+        if (potionlvl > 0) {
+            addPermaPotion(player, type, potionlvl)
         } else {
-            removePermaPotion(player, type)
+            removePermaPotion(player, type, potionlvl)
         }
     }
 

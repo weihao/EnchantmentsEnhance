@@ -18,16 +18,17 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
+import org.bukkit.entity.TNTPrimed
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
+
 
 class Suicide : EnchantmentListener() {
     override fun desc(): Array<String> {
-        return arrayOf("A chance to create an explosion when the player who wears this enchanted chestplate dies", "死后爆炸")
+        return arrayOf("A chance to create an explosion when the player dies", "死后爆炸")
     }
 
     override fun lang(): Array<String> {
@@ -42,7 +43,10 @@ class Suicide : EnchantmentListener() {
         try {
             val level = IM.getHighestLevel(player, this.name())
             if (level > 0 && (roll(level))) {
-                player.world.createExplosion(player.location, SettingsManager.enchant.getInt("suicide.$level.power").toFloat())
+                for (i in 1..5) {
+                    val tnt = player.world.spawn(player.getTargetBlock(null, 50).location.add(0.0, 1.0, 0.0), TNTPrimed::class.java)
+                    (tnt as TNTPrimed).fuseTicks = 10
+                }
             }
         } catch (ex: Exception) {
         }

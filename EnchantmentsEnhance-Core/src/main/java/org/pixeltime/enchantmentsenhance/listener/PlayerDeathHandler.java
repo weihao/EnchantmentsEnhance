@@ -56,7 +56,7 @@ public class PlayerDeathHandler implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
         List<ItemStack> newInventory = new ArrayList<ItemStack>();
-        File playerFile = new File(m.getDataFolder() + "/userdata" + "/death/" + p.getName() + ".yml");
+        File playerFile = new File(m.getDataFolder()  + "/death/" + p.getName() + ".yml");
         FileConfiguration pFile = YamlConfiguration.loadConfiguration(playerFile);
         pFile.set("PlayerName", p.getName());
         if (!e.getDrops().isEmpty() || e.getDrops() != null) {
@@ -97,7 +97,7 @@ public class PlayerDeathHandler implements Listener {
     public void onPlayerRespawn(PlayerRespawnEvent e) {
         Player p = e.getPlayer();
 
-        File playerFile = new File(m.getDataFolder() + "/userdata" + "/death/" + p.getName() + ".yml");
+        File playerFile = new File(m.getDataFolder() + "/death/" + p.getName() + ".yml");
         FileConfiguration pFile = YamlConfiguration.loadConfiguration(
                 playerFile);
         if (playerFile.exists()) {
@@ -106,9 +106,7 @@ public class PlayerDeathHandler implements Listener {
             p.getInventory().addItem(content);
 
             if (playerFile.delete()) {
-                // file delete failed.
-                Bukkit.getLogger().log(Level.SEVERE,
-                        "Unable to delete a file.");
+                // Delete a file.
             }
         }
     }
