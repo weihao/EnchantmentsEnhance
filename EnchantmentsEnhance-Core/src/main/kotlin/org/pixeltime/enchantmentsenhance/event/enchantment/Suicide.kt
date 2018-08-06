@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment
 
+import org.bukkit.Material
 import org.bukkit.entity.TNTPrimed
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -44,7 +45,7 @@ class Suicide : EnchantmentListener() {
             val level = IM.getHighestLevel(player, this.name())
             if (level > 0 && (roll(level))) {
                 for (i in 1..5) {
-                    val tnt = player.world.spawn(player.getTargetBlock(null, 50).location.add(0.0, 1.0, 0.0), TNTPrimed::class.java)
+                    val tnt = player.world.spawn(player.getTargetBlock(null as Set<Material>, 50).location.add(0.0, 1.0, 0.0), TNTPrimed::class.java)
                     (tnt as TNTPrimed).fuseTicks = 10
                 }
             }

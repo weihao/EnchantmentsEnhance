@@ -26,6 +26,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.Inventory;
 
 public class GUIListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -49,7 +50,7 @@ public class GUIListener implements Listener {
         Player player = (Player) e.getWhoClicked();
         String playerName = player.getName();
         GUIAbstract gui = GUIManager.getMap().get(playerName);
-        if (gui != null && gui.getInventory().equals(e.getInventory())) {
+        if ((gui != null && gui.getInventory().equals(e.getInventory())) || (isCreatedGUI(e.getInventory()))) {
             e.setCancelled(true);
             GUIAbstract.GUIAction action = gui.getActions().get(e.getSlot());
             if (action != null) {
@@ -72,5 +73,14 @@ public class GUIListener implements Listener {
         Player player = e.getPlayer();
         String playerName = player.getName();
         GUIManager.getMap().remove(playerName);
+    }
+
+    public boolean isCreatedGUI(Inventory inventory) {
+        for (GUIAbstract inv : GUIManager.getSet()) {
+            if (inventory.equals(inv.getInventory())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -23,7 +23,7 @@
 
     <groupId>org.pixeltime</groupId>
     <artifactId>EnchantmentsEnhance-Parent</artifactId>
-    <version>5.1.1</version>
+    <version>5.1.2</version>
 
     <modules>
         <module>EnchantmentsEnhance-1.12</module>
@@ -117,11 +117,6 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-runtime</artifactId>
             <version>${kotlin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>20.0</version>
         </dependency>
     </dependencies>
 </project>
