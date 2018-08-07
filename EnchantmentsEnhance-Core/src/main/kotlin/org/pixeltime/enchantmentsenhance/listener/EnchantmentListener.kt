@@ -64,6 +64,6 @@ abstract class EnchantmentListener : Listener {
     abstract fun desc(): Array<String>
 
     fun roll(level: Int): Boolean {
-        return (Math.random() * 100.0).toInt() < SettingsManager.enchant.getInt("${this.javaClass.simpleName.toLowerCase()}.$level.chance")
+        return (Math.random() * 100.0) < SettingsManager.enchant.getDouble("${this.javaClass.simpleName.toLowerCase()}.$level.chance")
     }
 }

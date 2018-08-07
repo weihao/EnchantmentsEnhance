@@ -23,7 +23,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.player.PlayerMoveEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Blessed : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -41,7 +40,7 @@ class Blessed : EnchantmentListener() {
         try {
             val level = IM.getHighestLevel(player, this.name())
             val n = (Math.random() * 100.0).toInt()
-            if (level > 0 && n < SettingsManager.enchant.getDouble("blessed.$level.chance")) {
+            if (level > 0 && roll(level)) {
                 player.health = player.maxHealth
                 player.foodLevel = 20
             }

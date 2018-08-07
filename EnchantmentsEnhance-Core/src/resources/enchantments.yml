@@ -107,11 +107,11 @@ dodge:
       chance: 35
 blessed:
     1:
-      chance: 1
+      chance: 0.01
     2:
-      chance: 2
+      chance: 0.02
     3:
-      chance: 3
+      chance: 0.03
 snare:
     1:
       duration: 5
