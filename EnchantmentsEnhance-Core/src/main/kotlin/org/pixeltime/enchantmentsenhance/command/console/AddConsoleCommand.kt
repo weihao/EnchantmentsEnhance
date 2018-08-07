@@ -55,8 +55,14 @@ class AddConsoleCommand : SubConsoleCommand() {
                         "%number%", Integer.toString(level)).replace("%stone%",
                         SettingsManager.lang.getString("Item.$stoneType")), sender)
             } else {
-                Util.sendMessage(SettingsManager.lang.getString(
-                        "Config.invalidNumber"), sender)
+                if (stoneType == -1) {
+                    Main.getAPI().addAdvice(player.name, level)
+                    Util.sendMessage(SettingsManager.lang.getString("Materialize.adviceSucess")
+                            .replace("%level%", Integer.toString(level)), player)
+                } else {
+                    Util.sendMessage(SettingsManager.lang.getString(
+                            "Config.invalidNumber"), sender)
+                }
             }
         } else {
             Util.sendMessage(SettingsManager.lang.getString(
