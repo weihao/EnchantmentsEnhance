@@ -236,6 +236,7 @@ public class Main extends JavaPlugin implements Listener {
         new Metrics(this);
         Bukkit.getPluginManager().registerEvents(new GUIListener(), Main.getMain());
         Bukkit.getPluginManager().registerEvents(new MenuHandler(), Main.getMain());
+        Bukkit.getPluginManager().registerEvents(new ItemUseListener(), Main.getMain());
     }
 
 

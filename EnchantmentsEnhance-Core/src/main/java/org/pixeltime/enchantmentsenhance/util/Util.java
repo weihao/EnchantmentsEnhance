@@ -342,4 +342,8 @@ public class Util {
         String capitalized = firstLetter + next;
         return capitalized;
     }
+
+    public static boolean invFull(Player p) {
+        return p.getInventory().firstEmpty() == -1;
+    }
 }

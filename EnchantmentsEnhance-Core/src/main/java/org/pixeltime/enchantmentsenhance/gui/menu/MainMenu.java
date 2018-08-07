@@ -77,17 +77,17 @@ public class MainMenu extends GUIAbstract {
         if (itemOnEnhancingSlot.containsKey(playerName)) {
             setItem(Util.getSlot(8, 4), itemOnEnhancingSlot.get(playerName));
 
-            setItem(enhance.getPosition(), enhance.getItem(itemOnEnhancingSlot.get(playerName)), () ->
+            setItem(enhance.getPosition(), enhance.getItem(itemOnEnhancingSlot.get(playerName)), (clickType) ->
                     Enhance.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
 
 
             if (DataManager.maximumFailstackApplied[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] != -1
                     && DataManager.costToForceEnchant[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] != -1) {
-                setItem(force.getPosition(), force.getItem(itemOnEnhancingSlot.get(playerName)), () ->
+                setItem(force.getPosition(), force.getItem(itemOnEnhancingSlot.get(playerName)), (clickType) ->
                         Enhance.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
             }
 
-            setItem(remove.getPosition(), remove.getGlowingItem(playerName), () ->
+            setItem(remove.getPosition(), remove.getGlowingItem(playerName), (clickType) ->
                     clearPlayer(playerName));
 
             setItem(stats.getPosition(), stats.getItem(playerName));
@@ -102,10 +102,10 @@ public class MainMenu extends GUIAbstract {
             setItem(stats.getPosition(), stats.getItem(playerName));
         }
 
-        setItem(store.getPosition(), Main.getAPI().getFailstack(player.getName()) == 0 ? store.getItem(playerName) : store.getGlowingItem(playerName), () ->
+        setItem(store.getPosition(), Main.getAPI().getFailstack(player.getName()) == 0 ? store.getItem(playerName) : store.getGlowingItem(playerName), (clickType) ->
                 Main.getAPI().addAdvice(player.getName()));
 
-        setItem(item.getPosition(), item.getItem(player.getName()), () ->
+        setItem(item.getPosition(), item.getItem(player.getName()), (clickType) ->
                 new BukkitRunnable() {
                     @Override
                     public void run() {
@@ -114,7 +114,7 @@ public class MainMenu extends GUIAbstract {
                     }
                 }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 
-        setItem(valks.getPosition(), valks.getItem(player), () ->
+        setItem(valks.getPosition(), valks.getItem(player), (clickType) ->
                 new BukkitRunnable() {
                     @Override
                     public void run() {

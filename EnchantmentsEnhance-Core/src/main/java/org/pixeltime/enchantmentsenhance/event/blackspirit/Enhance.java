@@ -131,7 +131,7 @@ public class Enhance {
                 Broadcast.broadcast(player, item, "destroyed");
             }
             // Destroy failed item.
-            player.getInventory().remove(item);
+            player.getInventory().removeItem(item);
             MainMenu.clearPlayer(player.getName());
             // Adds destroyed message.
             str += ("\n" + SettingsManager.lang.getString(

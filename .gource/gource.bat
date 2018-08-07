@@ -1,3 +1,3 @@
-gource.exe -1920x1080 ---seconds-per-day 0.3 --camera-mode track --title "Preview" --background-image background.jpg --hide progress --bloom-multiplier 1 --bloom-intensity 1 --title "Made by /GitHub/25" --max-file-lag 2 -o gource.ppm
-ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i gource.ppm -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.x264.mp4
+gource.exe -1920x1080 ---seconds-per-day 0.3 --title --background-image background.jpg --hide progress --bloom-multiplier 1 --bloom-intensity 1 --title "Made by /GitHub/25" --max-file-lag 2 -o gource.ppm
+ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i gource.ppm -vcodec libx264 -preset slow -crf 1 -threads 0 -bf 0 gource.x264.mp4
 ffmpeg -i render.avi -c:v libx264 -crf 19 -preset slow -c:a libfdk_aac -b:a 192k -ac 2 out.mp4

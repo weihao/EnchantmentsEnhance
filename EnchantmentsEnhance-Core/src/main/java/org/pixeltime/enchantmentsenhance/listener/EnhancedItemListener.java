@@ -51,7 +51,6 @@ public class EnhancedItemListener implements Listener {
                 e.setCancelled(true);
                 Util.sendMessage(SettingsManager.lang.getString(
                         "Messages.noDrop"), p);
-
             }
         }
     }

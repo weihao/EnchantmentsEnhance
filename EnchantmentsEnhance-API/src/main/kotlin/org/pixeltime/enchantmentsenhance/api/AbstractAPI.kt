@@ -18,46 +18,34 @@
 
 package org.pixeltime.enchantmentsenhance.api
 
-import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
 interface AbstractAPI {
 
-    fun getNumberOfStone(player: Player, stoneId: Int): Int
-
-
+    fun getNumberOfStone(playerName: String, stoneId: Int): Int
     fun addCustomEnchant(item: ItemStack, enchantment: String, level: Int)
-
-
     fun setItem(player: String, type: Int, level: Int)
-
-
     fun addItem(player: String, type: Int, levelsToAdd: Int)
-
-
     fun getItem(player: String, type: Int): Int
-
-
     fun resetFailstack(player: String)
-
-
     fun setFailstack(player: String, level: Int)
-
-
     fun addFailstack(player: String, levelsToAdd: Int)
-
-
     fun getFailstack(player: String): Int
-
-
     fun hasFailstack(player: String): Boolean
-
-
     fun getChance(playerName: String, enchantLevel: Int): Double
-
-
+    /**
+     * Adds a player's failstack to the HashMap storage.
+     *
+     * @param player Targeted player.
+     */
     fun addAdvice(player: String)
 
+    /**
+     * Adds a specific level of advice to a player.
+     *
+     * @param player Targeted player.
+     */
+    fun addAdvice(player: String, level: Int)
 
     fun getEnchantmentMaxLevel(ench: String): Int
 }

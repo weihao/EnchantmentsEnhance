@@ -20,6 +20,7 @@ package org.pixeltime.enchantmentsenhance.gui.menu;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
@@ -27,6 +28,7 @@ import org.pixeltime.enchantmentsenhance.gui.menu.icons.BackIcon;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.GrindIcon;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.ReblathIcon;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
+import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.MM;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
@@ -41,6 +43,7 @@ import java.util.Random;
  * @version Feb 9, 2018
  */
 public class ItemMenu extends GUIAbstract {
+    private static final int BUNDLE = 5;
     public static Map<String, Integer> clickedItem = new HashMap<>();
     private BackIcon back = new BackIcon();
     private ReblathIcon reblath = new ReblathIcon();
@@ -60,10 +63,12 @@ public class ItemMenu extends GUIAbstract {
         Player player = Bukkit.getPlayer(playerName);
         for (int i = 0; i < MM.stoneTypes.size(); i++) {
             final int stoneId = i;
-            if (clickedItem.containsKey(playerName) && stoneId == clickedItem.get(playerName)) {
-                setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1),
-                        CompatibilityManager.glow.addGlow(MainMenu.stone.getItem(i, player)),
-                        () -> {
+            setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1),
+                    (clickedItem.containsKey(playerName) && stoneId == clickedItem.get(playerName)
+                            ? CompatibilityManager.glow.addGlow(MainMenu.stone.getItem(i, player))
+                            : MainMenu.stone.getItem(i, player)),
+                    (clickType) -> {
+                        if (clickType == ClickType.LEFT) {
                             if (Main.getAPI().getItem(playerName, stoneId) > 0) {
                                 if (clickedItem.containsKey(playerName) && clickedItem.get(playerName) == stoneId) {
                                     clickedItem.remove(player.getName());
@@ -71,22 +76,24 @@ public class ItemMenu extends GUIAbstract {
                                     clickedItem.put(player.getName(), stoneId);
                                 }
                             }
-                        });
-            } else {
-                setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1), MainMenu.stone.getItem(i, player),
-                        () -> {
-                            if (Main.getAPI().getItem(playerName, stoneId) > 0) {
-                                if (clickedItem.containsKey(playerName) && clickedItem.get(playerName) == stoneId) {
-                                    clickedItem.remove(player.getName());
+                        }
+                        if (clickType == ClickType.RIGHT) {
+                            // If play has enough stones.
+                            if (Main.getAPI().getItem(playerName, stoneId) > BUNDLE) {
+                                if (!Util.invFull(player)) {
+                                    player.getInventory().addItem(ItemManager.itemMaterialize(stoneId, BUNDLE));
+                                    Main.getAPI().addItem(playerName, stoneId, -BUNDLE);
                                 } else {
-                                    clickedItem.put(player.getName(), stoneId);
+                                    Util.sendMessage(SettingsManager.lang.getString("Materialize.inventoryFull"), player);
                                 }
+                            } else {
+                                Util.sendMessage(SettingsManager.lang.getString("Materialize.notEnoughItem"), player);
                             }
-                        });
-            }
+                        }
+                    });
         }
 
-        setItem(back.getPosition(), back.getItem(playerName), () -> new BukkitRunnable() {
+        setItem(back.getPosition(), back.getItem(playerName), (clickType) -> new BukkitRunnable() {
             @Override
             public void run() {
                 player.closeInventory();
@@ -94,7 +101,7 @@ public class ItemMenu extends GUIAbstract {
             }
         }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 
-        setItem(grind.getPosition(), grind.getItem(playerName), () -> {
+        setItem(grind.getPosition(), grind.getItem(playerName), (clickType) -> {
 
             if (clickedItem.containsKey(player.getName())) {
                 // If player has item to failstack.
@@ -124,7 +131,7 @@ public class ItemMenu extends GUIAbstract {
             }
         });
 
-        setItem(reblath.getPosition(), reblath.getItem(playerName), () ->
+        setItem(reblath.getPosition(), reblath.getItem(playerName), (clickType) ->
         {
             if (clickedItem.containsKey(player.getName())) {
                 // If player has item to failstack.

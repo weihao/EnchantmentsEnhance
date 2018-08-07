@@ -21,11 +21,13 @@ package org.pixeltime.enchantmentsenhance.gui.menu;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.BackIcon;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
+import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
@@ -52,36 +54,56 @@ public class ValksMenu extends GUIAbstract {
             for (int i = 0; i < (inv.size() > 54 ? 54 : inv.size()); i++) {
                 final int index = i + ((currPage - 1) * 54);
                 final int level = inv.get(index);
-                setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1), CompatibilityManager.glow.addGlow(new ItemBuilder(Material.BOOK, level).setName(
-                        SettingsManager.lang.getString("Item.valks") + "+" + level).toItemStack()), () -> new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        if (level > 0) {
-                            if (Main.getAPI().getFailstack(player.getName()) == 0) {
-                                Main.getAPI().addFailstack(player.getName(), level);
-                                PlayerStat.getPlayerStats(playerName).getValks().remove(index);
-                                Util.sendMessage(SettingsManager.lang.getString(
-                                        "Valks.used").replaceAll("%LEVEL%", Integer
-                                        .toString(level)), player);
-                                player.closeInventory();
-                                new MainMenu(player).open();
-                            } else {
-                                Util.sendMessage(SettingsManager.lang.getString(
-                                        "Valks.hasFailstack"), player);
+                setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1),
+                        CompatibilityManager.glow.addGlow(new ItemBuilder(Material.BOOK, level)
+                                .setName(SettingsManager.lang.getString("Item.valks") + "+" + level)
+                                .addLoreLine(SettingsManager.lang.getString("Menu.leftAdviceInfo"))
+                                .addLoreLine(SettingsManager.lang.getString("Menu.rightInfo"))
+                                .toItemStack()), (clickType) -> new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                if (clickType == ClickType.LEFT) {
+                                    if (level > 0) {
+                                        if (Main.getAPI().getFailstack(player.getName()) == 0) {
+                                            Main.getAPI().addFailstack(player.getName(), level);
+                                            PlayerStat.getPlayerStats(playerName).getValks().remove(index);
+                                            Util.sendMessage(SettingsManager.lang.getString(
+                                                    "Valks.used").replaceAll("%LEVEL%", Integer
+                                                    .toString(level)), player);
+                                            new BukkitRunnable() {
+                                                @Override
+                                                public void run() {
+                                                    player.closeInventory();
+                                                    new MainMenu(player).open();
+                                                }
+                                            }.runTaskLaterAsynchronously(Main.getMain(), 2L);
+                                        } else {
+                                            Util.sendMessage(SettingsManager.lang.getString(
+                                                    "Valks.hasFailstack"), player);
+                                        }
+                                    } else {
+                                        Util.sendMessage(SettingsManager.lang.getString(
+                                                "Config.invalidNumber"), player);
+                                    }
+                                }
+                                if (clickType == ClickType.RIGHT) {
+                                    if (!Util.invFull(player)) {
+                                        player.getInventory().addItem(ItemManager.adviceMaterialize(level));
+                                        PlayerStat.getPlayerStats(playerName).getValks().remove(index);
+                                        update();
+                                    } else {
+                                        Util.sendMessage(SettingsManager.lang.getString("Materialize.inventoryFull"), player);
+                                    }
+                                }
                             }
-                        } else {
-                            Util.sendMessage(SettingsManager.lang.getString(
-                                    "Config.invalidNumber"), player);
-                        }
-                    }
-                }.runTaskLaterAsynchronously(Main.getMain(), 2L));
+                        }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 
             }
         } catch (IndexOutOfBoundsException ex) {
             // Expected.
         }
 
-        setItem(back.getPosition(), back.getItem(playerName), () -> new BukkitRunnable() {
+        setItem(back.getPosition(), back.getItem(playerName), (clickType) -> new BukkitRunnable() {
             @Override
             public void run() {
                 if (currPage == 1) {
@@ -99,7 +121,7 @@ public class ValksMenu extends GUIAbstract {
                             .setName(SettingsManager.lang.getString("Menu.gui.next"))
                             .addLoreLine(SettingsManager.lang.getString("Menu.lore.next"))
                             .toItemStack(),
-                    () -> {
+                    (clickType) -> {
                         currPage++;
                     });
         }

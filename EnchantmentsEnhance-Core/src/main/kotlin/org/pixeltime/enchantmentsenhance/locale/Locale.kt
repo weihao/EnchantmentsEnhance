@@ -147,8 +147,16 @@ class LM {
             addLang("Grind.info2", arrayOf("&9Use &6/enhance set { multiplier } &9to set your multiplier", "&9使用&6/enhance set { multiplier} &9更改你的倍率."))
             addLang("Reblath.info1", arrayOf("&9Use x1 stone to gain 1 failstack.", "&9使用一个黑石来交换一层垫子."))
             addLang("Reblath.info2", arrayOf("&9But you have 17.5% chance to lose your current failstack.", "&9你有17.5%的机率失去你目前的垫子."))
-
-   
+            addLang("Materialize.info1", arrayOf("&6Right Click to use this bundle.", "&9右击来使用这个包裹."))
+            addLang("Materialize.info2", arrayOf("&6You will get x%amount% %item%.", "&9你会获得x%amount%个%item%."))
+            addLang("Materialize.success", arrayOf("&6You received x%amount% %item% from bundle.", "&9你从包裹里获得了x%amount%个%item%."))
+            addLang("Materialize.advice1", arrayOf("&6You will get a level %level% Advice of Valks.", "&9你会获得%level%级的巴尔克斯的忠告."))
+            addLang("Materialize.adviceSucess", arrayOf("&6You received a level %level% Advice of Valks.", "&9你获得了%level%级的巴尔克斯的忠告."))
+            addLang("Materialize.inventoryFull", arrayOf("&cFailed: Your inventory is full.", "&c操作失败: 你的背包已满"))
+            addLang("Materialize.notEnoughItem", arrayOf("&cFailed: Not enough items.", "&c操作失败: 你无足够多的物品"))
+            addLang("Menu.leftInfo", arrayOf("&6Left click an item to select to act.", "&6左击物品来进行更多的操作"))
+            addLang("Menu.rightInfo", arrayOf("&6Right click an item to take it out from your virtual inventory.", "&6右击物品来从虚拟背包里取出物品"))
+            addLang("Menu.leftAdviceInfo", arrayOf("&6Left click an advice to use it.", "&6左击来使用道具"))
             SettingsManager.lang.options().copyDefaults(true)
             SettingsManager.saveLang()
         }

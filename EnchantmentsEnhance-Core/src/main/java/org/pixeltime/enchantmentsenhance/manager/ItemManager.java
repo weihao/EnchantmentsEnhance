@@ -28,7 +28,9 @@ import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
+import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
+import org.pixeltime.enchantmentsenhance.util.XMaterial;
 import org.pixeltime.enchantmentsenhance.util.data.DoublyLinkedList;
 import org.pixeltime.enchantmentsenhance.util.data.Iterator;
 import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
@@ -96,6 +98,17 @@ public class ItemManager {
     public static String getHistory(ItemStack item) {
         NBTItem nbti = new NBTItem(item);
         return nbti.getString("EHistory");
+    }
+
+    public static ItemStack setGive(ItemStack item, String give) {
+        NBTItem nbti = new NBTItem(item);
+        nbti.setString("EGive", give);
+        return nbti.getItem();
+    }
+
+    public static String getGive(ItemStack item) {
+        NBTItem nbti = new NBTItem(item);
+        return nbti.getString("EGive");
     }
 
 
@@ -279,5 +292,28 @@ public class ItemManager {
      */
     public static String getFriendlyName(ItemStack item) {
         return (getItemName(item).equals("") ? Util.format(item.getType().name()) : getItemName(item));
+    }
+
+    public static ItemStack itemMaterialize(int stoneId, int amount) {
+        return CompatibilityManager.glow
+                .addGlow(setGive(new ItemBuilder(MM.stoneTypes.get(stoneId))
+                                .setName(SettingsManager.lang.getString("Item." + stoneId) + " Bundle: " + amount)
+                                .addLoreLine(SettingsManager.lang.getString("Materialize.info1"))
+                                .addLoreLine(SettingsManager.lang.getString("Materialize.info2")
+                                        .replace("%amount%", Integer.toString(amount))
+                                        .replace("%item%", SettingsManager.lang.getString("Item." + stoneId)))
+                                .toItemStack(),
+                        stoneId + ":" + amount));
+    }
+
+    public static ItemStack adviceMaterialize(int level) {
+        return CompatibilityManager.glow
+                .addGlow(setGive(new ItemBuilder(XMaterial.BOOK.parseItem())
+                                .setName(SettingsManager.lang.getString("Item.valks") + "+" + level)
+                                .addLoreLine(SettingsManager.lang.getString("Materialize.info1"))
+                                .addLoreLine(SettingsManager.lang.getString("Materialize.advice1")
+                                        .replace("%level%", Integer.toString(level)))
+                                .toItemStack(),
+                        "-1:" + level));
     }
 }

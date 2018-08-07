@@ -50,12 +50,17 @@ public class GUIListener implements Listener {
         Player player = (Player) e.getWhoClicked();
         String playerName = player.getName();
         GUIAbstract gui = GUIManager.getMap().get(playerName);
-        if ((gui != null && gui.getInventory().equals(e.getInventory())) || (isCreatedGUI(e.getInventory()))) {
+        if (gui != null && gui.getInventory().equals(e.getInventory())) {
             e.setCancelled(true);
             GUIAbstract.GUIAction action = gui.getActions().get(e.getSlot());
             if (action != null) {
-                action.click();
+                action.click(e.getClick());
                 gui.update();
+            }
+        } else {
+            if (isCreatedGUI(e.getInventory())) {
+                e.setCancelled(true);
+                player.closeInventory();
             }
         }
     }
