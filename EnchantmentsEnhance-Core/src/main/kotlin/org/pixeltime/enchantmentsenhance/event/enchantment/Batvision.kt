@@ -38,6 +38,6 @@ class Batvision : EnchantmentListener() {
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         val level = IM.getHighestLevel(player, this.name())
-        permaPotion(player, PotionEffectType.NIGHT_VISION, 0)
+        permaPotion(player, PotionEffectType.NIGHT_VISION, level)
     }
 }

@@ -507,6 +507,6 @@ rekt:
       multiplier: 2.0
     2:
       multiplier: 3.0
-wing:
+wings:
     1:
       flight: true

@@ -25,7 +25,7 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 
-class Wing : EnchantmentListener() {
+class Wings : EnchantmentListener() {
     override fun desc(): Array<String> {
         return arrayOf("You can fly", "你可以自由飞行")
     }
