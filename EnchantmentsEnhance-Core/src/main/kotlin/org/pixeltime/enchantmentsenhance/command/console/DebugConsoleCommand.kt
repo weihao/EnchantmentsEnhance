@@ -75,18 +75,9 @@ class DebugConsoleCommand : SubConsoleCommand() {
                 sb.appendln("| :---|:---|:---|")
                 for (command in Main.getMain().commandManager.commands) {
                     try {
-                        val sb = StringBuilder()
-                        sb.append("|")
-                        sb.append(command.usage().replace("|", "&#124;"))
-                        sb.append(" - ")
-                        sb.append(SettingsManager.lang.getString("Help." + command.name()).replace("|", "&#124;"))
-                        sb.append("|")
-                        sb.append(command.permission)
-                        sb.append("|")
-                        sb.append(Arrays.toString(command.aliases()))
-                        sb.append("|")
-                        sb.appendln(sb.toString().replace("&[a-z0-9]".toRegex(), "").replace("\n", "<br />"))
-                    } catch (ex: IllegalStateException) {
+                        sb.appendln(("|" + command.usage().replace("|", "&#124;") + " - " + SettingsManager.lang.getString("Help." + command.name()).replace("|", "&#124;") + "|" + command.permission + "|" + Arrays.toString(command.aliases()) + "|").replace("&[a-z0-9]".toRegex(), "").replace("\n", "<br />"))
+                    } catch (ex: Exception) {
+                        ex.printStackTrace()
                     }
                 }
             }
