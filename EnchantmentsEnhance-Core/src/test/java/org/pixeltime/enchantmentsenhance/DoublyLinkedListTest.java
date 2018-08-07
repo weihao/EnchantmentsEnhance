@@ -19,8 +19,8 @@
 package org.pixeltime.enchantmentsenhance;
 
 import junit.framework.TestCase;
-import org.pixeltime.enchantmentsenhance.util.data.DoublyLinkedList;
-import org.pixeltime.enchantmentsenhance.util.data.Iterator;
+import org.pixeltime.enchantmentsenhance.util.datastructures.DoublyLinkedList;
+import org.pixeltime.enchantmentsenhance.util.datastructures.interfaces.Iterator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -110,7 +110,7 @@ public class DoublyLinkedListTest extends TestCase {
 
     /**
      * This tests that the add method throws a null pointer exception when
-     * adding null data to the list
+     * adding null datastructures to the list
      */
     public void testAddNullException() {
         Exception e = null;
@@ -125,7 +125,7 @@ public class DoublyLinkedListTest extends TestCase {
 
     /**
      * This tests that the add method throws a Invalid argument when adding null
-     * data to the list
+     * datastructures to the list
      */
     public void testAddIndexNullException() {
         Exception e = null;

@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.event.blackspirit;
+package org.pixeltime.enchantmentsenhance.event;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

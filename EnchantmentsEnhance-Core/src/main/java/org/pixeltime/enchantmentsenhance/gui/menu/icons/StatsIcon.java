@@ -21,7 +21,7 @@ package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 import org.bukkit.DyeColor;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
+import org.pixeltime.enchantmentsenhance.event.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;

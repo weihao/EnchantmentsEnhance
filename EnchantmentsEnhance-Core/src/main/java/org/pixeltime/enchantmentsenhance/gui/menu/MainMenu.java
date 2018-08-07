@@ -25,7 +25,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
+import org.pixeltime.enchantmentsenhance.event.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.MenuCoord;

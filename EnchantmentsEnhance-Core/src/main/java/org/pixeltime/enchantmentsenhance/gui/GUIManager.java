@@ -27,7 +27,7 @@ public class GUIManager {
     private static final Map<String, GUIAbstract> GUIMAP = new HashMap<>();
     private static final HashSet<GUIAbstract> GUISET = new HashSet<>();
 
-    // Making sure that the in-memory data doesn't get reset when reloading
+    // Making sure that the in-memory datastructures doesn't get reset when reloading
     public static Map<String, GUIAbstract> getMap() {
         return GUIMAP;
     }

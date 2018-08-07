@@ -126,7 +126,7 @@ public class Main extends JavaPlugin implements Listener {
         registerCore();
         // Register all the compatible modules.
         registerCompatibility();
-        // Register data.
+        // Register datastructures.
         commandManager = new CommandManager();
         PluginManager pm = Bukkit.getPluginManager();
         if (SettingsManager.config.getBoolean("enableTableEnchant")) {
@@ -195,7 +195,7 @@ public class Main extends JavaPlugin implements Listener {
             DataStorage.get().saveStats(fData);
         }
 
-        // Write player data to the memory.
+        // Write player datastructures to the memory.
         if (!Bukkit.getOnlinePlayers().isEmpty()) {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 if (GUIManager.getMap().containsKey(player.getName())) {

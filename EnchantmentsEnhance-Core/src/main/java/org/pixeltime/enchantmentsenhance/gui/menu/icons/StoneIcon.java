@@ -20,7 +20,7 @@ package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
+import org.pixeltime.enchantmentsenhance.event.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.MM;

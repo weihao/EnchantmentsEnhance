@@ -289,7 +289,7 @@ public class ItemBuilder {
 
     /**
      * Sets the dye color on an item.
-     * <b>* Notice that this doesn't check for item type, sets the literal data
+     * <b>* Notice that this doesn't check for item type, sets the literal datastructures
      * of the dyecolor as durability.</b>
      *
      * @param color The color to put.

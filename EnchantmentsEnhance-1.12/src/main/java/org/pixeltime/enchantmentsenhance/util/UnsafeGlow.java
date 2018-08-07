@@ -40,7 +40,7 @@ public class UnsafeGlow extends EnchantmentWrapper {
 
 
     public UnsafeGlow(int id) {
-            super(id);
+        super(id);
     }
 
     public static Enchantment getGlow() {

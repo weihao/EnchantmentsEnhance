@@ -35,7 +35,7 @@ public class SettingsManager {
 
     public static FileConfiguration config;
     public static File cfile;
-    //    public static FileConfiguration data;
+    //    public static FileConfiguration datastructures;
 //    public static File dfile;
     public static FileConfiguration lang;
     public static File langfile;

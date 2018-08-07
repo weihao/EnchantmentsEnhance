@@ -26,13 +26,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
-import org.pixeltime.enchantmentsenhance.event.blackspirit.Lore;
+import org.pixeltime.enchantmentsenhance.event.Lore;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.XMaterial;
-import org.pixeltime.enchantmentsenhance.util.data.DoublyLinkedList;
-import org.pixeltime.enchantmentsenhance.util.data.Iterator;
+import org.pixeltime.enchantmentsenhance.util.datastructures.DoublyLinkedList;
+import org.pixeltime.enchantmentsenhance.util.datastructures.interfaces.Iterator;
 import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
 
 import java.util.ArrayList;

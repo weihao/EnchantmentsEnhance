@@ -63,7 +63,7 @@ public class PlayerStreamListener implements Listener {
 
 
     /**
-     * When a player leaves the server, listener saves a player's data from
+     * When a player leaves the server, listener saves a player's datastructures from
      * hashmap to file, but will not write to disk.
      *
      * @param e
@@ -90,7 +90,7 @@ public class PlayerStreamListener implements Listener {
 
 
     /**
-     * When a player gets kicked off the server, listener saves a player's data
+     * When a player gets kicked off the server, listener saves a player's datastructures
      * from hashmap to file, but will not write to disk.
      *
      * @param e

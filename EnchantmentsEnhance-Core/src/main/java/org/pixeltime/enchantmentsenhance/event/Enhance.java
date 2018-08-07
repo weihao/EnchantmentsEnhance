@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.event.blackspirit;
+package org.pixeltime.enchantmentsenhance.event;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

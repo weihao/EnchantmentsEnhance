@@ -22,9 +22,13 @@ import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.event.entity.EntityShootBowEvent
+import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.event.player.PlayerItemDamageEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.KM
+
 
 class Endless : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -52,6 +56,38 @@ class Endless : EnchantmentListener() {
                     .forEach {
                         it.durability = 0
                     }
+        }
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
+    fun noWeaponBreakDamage(entityShootBowEvent: EntityShootBowEvent) {
+        if (entityShootBowEvent.entity is Player) {
+            val player = entityShootBowEvent.entity as Player
+            IM.getItemList(player)
+                    .filter { KM.getLevel(this.name(), it.itemMeta.lore) > 0 }
+                    .forEach {
+                        it.durability = 0
+                    }
+        }
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
+    fun noWeaponBreakDamage(playerInteractEvent: PlayerInteractEvent) {
+        val player = playerInteractEvent.player as Player
+        IM.getItemList(player)
+                .filter { KM.getLevel(this.name(), it.itemMeta.lore) > 0 }
+                .forEach {
+                    it.durability = 0
+                }
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
+    fun onPlayerItemDamage(e: PlayerItemDamageEvent) {
+        val item = e.item
+        if (item.hasItemMeta() && item.itemMeta.hasLore()) {
+            if (KM.getLevel(this.name(), item.itemMeta.lore) > 0) {
+                e.isCancelled = true
+            }
         }
     }
 }
