@@ -24,6 +24,7 @@ import org.bukkit.event.Listener
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.locale.LM
+import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 abstract class EnchantmentListener : Listener {
@@ -32,12 +33,12 @@ abstract class EnchantmentListener : Listener {
     }
 
     fun addPermaPotion(player: Player, type: PotionEffectType, level: Int) {
-        player.addPotionEffect(PotionEffect(type, Int.MAX_VALUE, level - 1))
+        player.addPotionEffect(PotionEffect(type, 999999999, level - 1))
     }
 
     fun removePermaPotion(player: Player, type: PotionEffectType, potionlvl: Int) {
         for (PotionEffect in player.activePotionEffects) {
-            if ((PotionEffect.type == type) && (PotionEffect.duration > 1000000000) && (PotionEffect.amplifier == potionlvl)) {
+            if ((PotionEffect.type == type) && (PotionEffect.duration < 1000000000)) {
                 player.removePotionEffect(type)
             }
         }
@@ -65,5 +66,9 @@ abstract class EnchantmentListener : Listener {
 
     fun roll(level: Int): Boolean {
         return (Math.random() * 100.0) < SettingsManager.enchant.getDouble("${this.javaClass.simpleName.toLowerCase()}.$level.chance")
+    }
+
+    fun getLevel(player: Player): Int {
+        return IM.getHighestLevel(player, this.name())
     }
 }

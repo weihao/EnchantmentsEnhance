@@ -346,4 +346,6 @@ public class Util {
     public static boolean invFull(Player p) {
         return p.getInventory().firstEmpty() == -1;
     }
+
+
 }

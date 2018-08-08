@@ -17,9 +17,11 @@
  */
 package org.pixeltime.enchantmentsenhance;
 
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -99,6 +101,12 @@ public class Main extends JavaPlugin implements Listener {
         return api;
     }
 
+    public static WorldGuardPlugin getWorldGuard() {
+        Plugin worldguard = Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
+        if (worldguard != null && worldguard instanceof WorldGuardPlugin && worldguard.isEnabled())
+            return (WorldGuardPlugin) worldguard;
+        return null;
+    }
 
     /**
      * When the plugin is enabled, execute following tasks.
@@ -209,7 +217,6 @@ public class Main extends JavaPlugin implements Listener {
                 "Config.onDisable"));
     }
 
-
     /**
      * Includes the initialization of the plugin.
      */
@@ -238,7 +245,6 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new MenuHandler(), Main.getMain());
         Bukkit.getPluginManager().registerEvents(new ItemUseListener(), Main.getMain());
     }
-
 
     /**
      * Detects the version of the server is currently running.
@@ -283,4 +289,5 @@ public class Main extends JavaPlugin implements Listener {
             getLogger().info("Enhancement-Vault Hook was successful!");
         }
     }
+
 }

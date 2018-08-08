@@ -13,9 +13,6 @@
 [![Jenkins](https://img.shields.io/badge/download-server_online-27AE60.svg?style=flat)](http://soulbound.me:8080/job/EnchantmentsEnhance/)
 [![Jenkins Build Status](http://soulbound.me:8080/job/EnchantmentsEnhance/badge/icon)](http://soulbound.me:8080/job/EnchantmentsEnhance/)
 [![Jitpack](https://jitpack.io/v/25/EnchantmentsEnhance.svg)](https://jitpack.io/#25/EnchantmentsEnhance/)
-[![YAML](https://img.shields.io/badge/yaml-supported-27AE60.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/blob/master/src/resources/playerdata.yml)
-[![SQL](https://img.shields.io/badge/sql-supported-27AE60.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/blob/master/src/resources/tables.sql)
-
 
 
 ## Life Cycle
