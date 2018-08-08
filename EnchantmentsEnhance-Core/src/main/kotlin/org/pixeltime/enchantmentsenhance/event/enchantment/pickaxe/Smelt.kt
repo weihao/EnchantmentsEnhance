@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.event.enchantment.gear
+package org.pixeltime.enchantmentsenhance.event.enchantment.pickaxe
 
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
