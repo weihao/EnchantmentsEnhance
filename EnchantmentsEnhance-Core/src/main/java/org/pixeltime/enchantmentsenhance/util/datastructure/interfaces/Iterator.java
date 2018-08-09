@@ -16,14 +16,14 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.util.datastructures.interfaces;
+package org.pixeltime.enchantmentsenhance.util.datastructure.interfaces;
 
 
 public interface Iterator<T> {
     /**
      * Check if there is a next node
      *
-     * @return True if it has next datastructures
+     * @return True if it has next data
      */
     public boolean hasNext();
 
@@ -31,7 +31,7 @@ public interface Iterator<T> {
     /**
      * Move to the next node
      *
-     * @return T the next datastructures
+     * @return T the next data
      */
     public T next();
 

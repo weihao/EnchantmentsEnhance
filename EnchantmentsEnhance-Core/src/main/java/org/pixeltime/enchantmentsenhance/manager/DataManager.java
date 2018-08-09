@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.manager;
 
+import java.util.Arrays;
 import java.util.Set;
 
 public class DataManager {

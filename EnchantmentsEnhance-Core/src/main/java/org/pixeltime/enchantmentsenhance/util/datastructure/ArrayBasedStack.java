@@ -16,9 +16,9 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.util.datastructures;
+package org.pixeltime.enchantmentsenhance.util.datastructure;
 
-import org.pixeltime.enchantmentsenhance.util.datastructures.interfaces.Stack;
+import org.pixeltime.enchantmentsenhance.util.datastructure.interfaces.Stack;
 
 import java.util.EmptyStackException;
 

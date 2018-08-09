@@ -50,7 +50,7 @@ class API : AbstractAPI {
             PlayerStat.getPlayerStats(player)!!.items[type] = level
         } catch (e: Exception) {
             Main.getMain().logger.info(
-                    "Error when setting the player datastructures.")
+                    "Error when setting the player data.")
         }
 
     }

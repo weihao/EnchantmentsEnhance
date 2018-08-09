@@ -102,7 +102,6 @@ public class ItemMenu extends GUIAbstract {
         }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 
         setItem(grind.getPosition(), grind.getItem(playerName), (clickType) -> {
-
             if (clickedItem.containsKey(player.getName())) {
                 // If player has item to failstack.
                 if (Main.getAPI().getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
@@ -112,16 +111,16 @@ public class ItemMenu extends GUIAbstract {
                     }
                     Main.getAPI().addItem(player.getName(), clickedItem.get(player.getName()), -1);
                     Random random = new Random();
-                    int num = (int) (0.01 + 0.99 / (1 - random.nextDouble()));
-                    if (num < locked) {
-                        // Fail
-                        Util.sendMessage(SettingsManager.lang.getString("Grind.failed"), player);
-                    } else {
+                    double num = random.nextDouble();
+                    if (num < 1 / locked) {
                         // Reward
                         Util.sendMessage(SettingsManager.lang.getString("Grind.success")
                                         .replace("%amount%", Integer.toString(locked))
                                 , player);
                         Main.getAPI().addItem(player.getName(), clickedItem.get(player.getName()), locked);
+                    } else {
+                        // Fail
+                        Util.sendMessage(SettingsManager.lang.getString("Grind.failed"), player);
                     }
                 } else {
                     Util.sendMessage(SettingsManager.lang.getString("Gui.noItem"), player);

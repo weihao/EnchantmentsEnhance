@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.util.datastructures.interfaces;
+package org.pixeltime.enchantmentsenhance.util.datastructure.interfaces;
 
 import java.util.NoSuchElementException;
 

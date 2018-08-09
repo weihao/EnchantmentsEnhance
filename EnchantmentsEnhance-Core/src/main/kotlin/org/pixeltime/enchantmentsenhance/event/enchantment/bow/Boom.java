@@ -16,25 +16,15 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.gui;
+package org.pixeltime.enchantmentsenhance.event.enchantment.bow;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.entity.ProjectileHitEvent;
 
-public class GUIManager {
-    // Singleton
-    private static final Map<String, GUIAbstract> GUIMAP = new HashMap<>();
-    private static final HashSet<GUIAbstract> GUISET = new HashSet<>();
+public class Boom {
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onland(ProjectileHitEvent e) {
 
-    // Making sure that the in-memory data doesn't get reset when reloading
-    public static Map<String, GUIAbstract> getMap() {
-        return GUIMAP;
     }
-
-    public static HashSet<GUIAbstract> getSet() {
-        return GUISET;
-    }
-
-
 }

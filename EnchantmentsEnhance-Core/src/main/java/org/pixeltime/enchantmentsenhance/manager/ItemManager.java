@@ -31,8 +31,8 @@ import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.XMaterial;
-import org.pixeltime.enchantmentsenhance.util.datastructures.DoublyLinkedList;
-import org.pixeltime.enchantmentsenhance.util.datastructures.interfaces.Iterator;
+import org.pixeltime.enchantmentsenhance.util.datastructure.DoublyLinkedList;
+import org.pixeltime.enchantmentsenhance.util.datastructure.interfaces.Iterator;
 import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
 
 import java.util.ArrayList;

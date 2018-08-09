@@ -63,7 +63,9 @@ public class Enhance {
      */
     public static boolean getValidationOfItem(ItemStack item) {
         // If item cannot be enhanced
-        // If item level exceeds the maximum levels allowed
+        if (!SettingsManager.config.getBoolean("enableStackedItem") && item.getAmount() > 1) {
+            return false;
+        }
         return (ItemManager.getItemEnchantmentType(item) != ItemType.INVALID)
                 && (ItemManager.getItemEnchantLevel(item) == 0 || (ItemManager.getItemEnchantLevel(item) < DataManager.levels - 1));
     }

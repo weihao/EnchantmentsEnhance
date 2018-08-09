@@ -19,7 +19,7 @@
 package org.pixeltime.enchantmentsenhance;
 
 import junit.framework.TestCase;
-import org.pixeltime.enchantmentsenhance.util.datastructures.ArrayBasedStack;
+import org.pixeltime.enchantmentsenhance.util.datastructure.ArrayBasedStack;
 
 import java.util.EmptyStackException;
 

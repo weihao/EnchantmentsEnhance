@@ -40,7 +40,7 @@ class LM {
             addLang("Config.checkingVersion", arrayOf("&aYou are using EnchantmentsEnhance v%version%", "&a您正在使用的插件版本是v%version%"))
             addLang("Config.onEnable", arrayOf("EnchantmentsEnhance is enabled!", "强化插件已开启!"))
             addLang("Config.onDisable", arrayOf("EnchantmentsEnhance is disabled!", "强化插件已禁用!"))
-            addLang("Config.onLoadingInventory", arrayOf("Loading player datastructures...", "正在加载玩家数据..."))
+            addLang("Config.onLoadingInventory", arrayOf("Loading player data...", "正在加载玩家数据..."))
             addLang("Config.consoleCommand", arrayOf("Console cannot use this!", "控制台不可以使用这个指令!"))
             addLang("Config.reloading", arrayOf("&aReloading server..!", "&a服务器重载中..!"))
             addLang("Config.reload", arrayOf("&aEnchantmentsEnhance is reloaded!", "&a插件重载成功!"))

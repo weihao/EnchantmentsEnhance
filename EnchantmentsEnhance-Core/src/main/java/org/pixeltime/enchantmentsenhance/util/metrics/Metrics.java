@@ -41,7 +41,7 @@ import java.util.logging.Level;
 import java.util.zip.GZIPOutputStream;
 
 /**
- * bStats collects some datastructures for plugin authors.
+ * bStats collects some data for plugin authors.
  * <p>
  * Check out https://bStats.org/ to learn more about bStats!
  */
@@ -49,7 +49,7 @@ public class Metrics {
 
     // The version of this bStats class
     public static final int B_STATS_VERSION = 1;
-    // The url to which the datastructures is sent
+    // The url to which the data is sent
     private static final String URL = "https://bStats.org/submitData/bukkit";
     // Should failed requests be logged?
     private static boolean logFailedRequests;
@@ -116,7 +116,7 @@ public class Metrics {
 
             // Inform the server owners about bStats
             config.options().header(
-                    "bStats collects some datastructures for plugin authors like how many servers are using their plugins.\n"
+                    "bStats collects some data for plugin authors like how many servers are using their plugins.\n"
                             + "To honor their work, you should not disable it.\n"
                             + "This has nearly no effect on the server performance!\n"
                             + "Check out https://bStats.org/ to learn more :)")
@@ -127,7 +127,7 @@ public class Metrics {
             }
         }
 
-        // Load the datastructures
+        // Load the data
         serverUUID = config.getString("serverUuid");
         logFailedRequests = config.getBoolean("logFailedRequests", false);
         if (config.getBoolean("enabled", true)) {
@@ -154,9 +154,9 @@ public class Metrics {
     }
 
     /**
-     * Sends the datastructures to the bStats server.
+     * Sends the data to the bStats server.
      *
-     * @param data The datastructures to send.
+     * @param data The data to send.
      * @throws Exception If the request failed.
      */
     private static void sendData(JSONObject data) throws Exception {
@@ -170,7 +170,7 @@ public class Metrics {
         HttpsURLConnection connection = (HttpsURLConnection) new URL(URL)
                 .openConnection();
 
-        // Compress the datastructures to save bandwidth
+        // Compress the data to save bandwidth
         byte[] compressedData = compress(data.toString());
 
         // Add headers
@@ -185,14 +185,14 @@ public class Metrics {
         connection.setRequestProperty("Content-Type", "application/json"); // We
         // send
         // our
-        // datastructures
+        // data
         // in
         // JSON
         // format
         connection.setRequestProperty("User-Agent", "MC-Server/"
                 + B_STATS_VERSION);
 
-        // Send datastructures
+        // Send data
         connection.setDoOutput(true);
         DataOutputStream outputStream = new DataOutputStream(connection
                 .getOutputStream());
@@ -201,7 +201,7 @@ public class Metrics {
         outputStream.close();
 
         connection.getInputStream().close(); // We don't care about the response
-        // - Just send our datastructures :)
+        // - Just send our data :)
     }
 
     /**
@@ -235,7 +235,7 @@ public class Metrics {
     }
 
     /**
-     * Starts the Scheduler which submits our datastructures every 30 minutes.
+     * Starts the Scheduler which submits our data every 30 minutes.
      */
     private void startSubmitting() {
         final Timer timer = new Timer(true); // We use a timer cause the Bukkit
@@ -260,7 +260,7 @@ public class Metrics {
                 });
             }
         }, 1000 * 60 * 5, 1000 * 60 * 30);
-        // Submit the datastructures every 30 minutes, first time after 5 minutes to give
+        // Submit the data every 30 minutes, first time after 5 minutes to give
         // other plugins enough time to start
         // WARNING: Changing the frequency has no effect but your plugin WILL be
         // blocked/deleted!
@@ -268,10 +268,10 @@ public class Metrics {
     }
 
     /**
-     * Gets the plugin specific datastructures.
+     * Gets the plugin specific data.
      * This method is called using reflection.
      *
-     * @return The plugin specific datastructures.
+     * @return The plugin specific data.
      */
     @SuppressWarnings("unchecked")
     public JSONObject getPluginData() {
@@ -285,7 +285,7 @@ public class Metrics {
         // plugin
         JSONArray customCharts = new JSONArray();
         for (CustomChart customChart : charts) {
-            // Add the datastructures of the custom charts
+            // Add the data of the custom charts
             JSONObject chart = customChart.getRequestJsonObject();
             if (chart == null) { // If the chart is null, we skip it
                 continue;
@@ -298,13 +298,13 @@ public class Metrics {
     }
 
     /**
-     * Gets the server specific datastructures.
+     * Gets the server specific data.
      *
-     * @return The server specific datastructures.
+     * @return The server specific data.
      */
     @SuppressWarnings("unchecked")
     private JSONObject getServerData() {
-        // Minecraft specific datastructures
+        // Minecraft specific data
         int playerAmount;
         try {
             // Around MC 1.8 the return type was changed to a collection from an
@@ -330,7 +330,7 @@ public class Metrics {
         bukkitVersion = bukkitVersion.substring(bukkitVersion.indexOf("MC: ")
                 + 4, bukkitVersion.length() - 1);
 
-        // OS/Java specific datastructures
+        // OS/Java specific data
         String javaVersion = System.getProperty("java.version");
         String osName = System.getProperty("os.name");
         String osArch = System.getProperty("os.arch");
@@ -355,14 +355,14 @@ public class Metrics {
     }
 
     /**
-     * Collects the datastructures and sends it afterwards.
+     * Collects the data and sends it afterwards.
      */
     @SuppressWarnings("unchecked")
     private void submitData() {
         final JSONObject data = getServerData();
 
         JSONArray pluginData = new JSONArray();
-        // Search for all other bStats metrics classes to get their plugin datastructures
+        // Search for all other bStats metrics classes to get their plugin data
         for (Class<?> service : Bukkit.getServicesManager()
                 .getKnownServices()) {
             try {
@@ -389,7 +389,7 @@ public class Metrics {
             @Override
             public void run() {
                 try {
-                    // Send the datastructures
+                    // Send the data
                     sendData(data);
                 } catch (Exception e) {
                     // Something went wrong! :(
@@ -433,14 +433,14 @@ public class Metrics {
             try {
                 JSONObject data = getChartData();
                 if (data == null) {
-                    // If the datastructures is null we don't send the chart.
+                    // If the data is null we don't send the chart.
                     return null;
                 }
                 chart.put("data", data);
             } catch (Throwable t) {
                 if (logFailedRequests) {
                     Bukkit.getLogger().log(Level.WARNING,
-                            "Failed to get datastructures for custom chart with id "
+                            "Failed to get data for custom chart with id "
                                     + chartId, t);
                 }
                 return null;
@@ -466,7 +466,7 @@ public class Metrics {
          * Class constructor.
          *
          * @param chartId  The id of the chart.
-         * @param callable The callable which is used to request the chart datastructures.
+         * @param callable The callable which is used to request the chart data.
          */
         public SimplePie(String chartId, Callable<String> callable) {
             super(chartId);
@@ -501,7 +501,7 @@ public class Metrics {
          * Class constructor.
          *
          * @param chartId  The id of the chart.
-         * @param callable The callable which is used to request the chart datastructures.
+         * @param callable The callable which is used to request the chart data.
          */
         public AdvancedPie(
                 String chartId,
@@ -551,7 +551,7 @@ public class Metrics {
          * Class constructor.
          *
          * @param chartId  The id of the chart.
-         * @param callable The callable which is used to request the chart datastructures.
+         * @param callable The callable which is used to request the chart data.
          */
         public DrilldownPie(
                 String chartId,
@@ -608,7 +608,7 @@ public class Metrics {
          * Class constructor.
          *
          * @param chartId  The id of the chart.
-         * @param callable The callable which is used to request the chart datastructures.
+         * @param callable The callable which is used to request the chart data.
          */
         public SingleLineChart(String chartId, Callable<Integer> callable) {
             super(chartId);
@@ -644,7 +644,7 @@ public class Metrics {
          * Class constructor.
          *
          * @param chartId  The id of the chart.
-         * @param callable The callable which is used to request the chart datastructures.
+         * @param callable The callable which is used to request the chart data.
          */
         public MultiLineChart(
                 String chartId,
@@ -695,7 +695,7 @@ public class Metrics {
          * Class constructor.
          *
          * @param chartId  The id of the chart.
-         * @param callable The callable which is used to request the chart datastructures.
+         * @param callable The callable which is used to request the chart data.
          */
         public SimpleBarChart(
                 String chartId,
@@ -739,7 +739,7 @@ public class Metrics {
          * Class constructor.
          *
          * @param chartId  The id of the chart.
-         * @param callable The callable which is used to request the chart datastructures.
+         * @param callable The callable which is used to request the chart data.
          */
         public AdvancedBarChart(
                 String chartId,

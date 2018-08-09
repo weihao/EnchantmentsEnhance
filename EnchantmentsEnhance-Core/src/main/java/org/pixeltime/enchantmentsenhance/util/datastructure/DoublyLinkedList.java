@@ -16,10 +16,10 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.util.datastructures;
+package org.pixeltime.enchantmentsenhance.util.datastructure;
 
-import org.pixeltime.enchantmentsenhance.util.datastructures.interfaces.Iterator;
-import org.pixeltime.enchantmentsenhance.util.datastructures.interfaces.List;
+import org.pixeltime.enchantmentsenhance.util.datastructure.interfaces.Iterator;
+import org.pixeltime.enchantmentsenhance.util.datastructure.interfaces.List;
 
 import java.util.NoSuchElementException;
 
@@ -200,10 +200,10 @@ public class DoublyLinkedList<T> implements List<T> {
     }
 
     /**
-     * Swap the position of the datastructures in the list
+     * Swap the position of the data in the list
      *
-     * @param x the index of the datastructures to get swapped
-     * @param y the index of the datastructures to get swapped
+     * @param x the index of the data to get swapped
+     * @param y the index of the data to get swapped
      */
     public void swap(int x, int y) {
         DLNode<T> node1 = this.getNodeAtIndex(x);
@@ -217,7 +217,7 @@ public class DoublyLinkedList<T> implements List<T> {
     }
 
     /**
-     * This represents a node in a doubly linked list. This node stores datastructures, a
+     * This represents a node in a doubly linked list. This node stores data, a
      * pointer to the node before it in the list, and a pointer to the node
      * after it in the list
      */
@@ -228,9 +228,9 @@ public class DoublyLinkedList<T> implements List<T> {
 
 
         /**
-         * Creates a new node with the given datastructures
+         * Creates a new node with the given data
          *
-         * @param d the datastructures to put inside the node
+         * @param d the data to put inside the node
          */
         public DLNode(T d) {
             data = d;
@@ -278,9 +278,9 @@ public class DoublyLinkedList<T> implements List<T> {
 
 
         /**
-         * Gets the datastructures in the node
+         * Gets the data in the node
          *
-         * @return the datastructures in the node
+         * @return the data in the node
          */
         public T getData() {
             return data;

@@ -24,6 +24,9 @@ language: EN_US
 # Set false to disable on join message.
 enableWelcomeMessage: true
 
+# Set false to disallow stacked item to be enhanced.
+enableStackedItem: false
+
 # Set true to enable vanilla enchanting table and when someone uses it, CROUCHING + RIGHT click on it will open enhance menu.
 enableTableEnchant: true
 # LEFT_CLICK - the player won't be able to destroy an enchantment table if you bind it to left click.
