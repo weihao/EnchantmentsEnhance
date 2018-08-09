@@ -326,7 +326,6 @@ mischief:
       chance: 30
       duration: 8
       potion_lvl: 1
-# 'distance' is the distance behind the damager where the damaged player will be teleported.
 shadowstep:
     1:
       chance: 10
@@ -364,7 +363,6 @@ swimmer:
       potion_lvl: 2
     3:
       potion_lvl: 3
-# "money-percent" is the percentage of the money which will be stolen from the opponent's balance.
 thief:
     1:
       chance: 10
@@ -375,7 +373,6 @@ thief:
     3:
       chance: 20
       money-percent: 20
-# 2 = 1 heart
 shield:
     1:
       potion_lvl: 1
@@ -412,7 +409,6 @@ molten:
       potion_lvl: 2
     3:
       potion_lvl: 3
-# Duration will be for how much seconds the fire will be on player(s).
 immolation:
     1:
       chance: 10
@@ -467,7 +463,6 @@ reinforced:
 shearer:
     1:
       radius: 5
-# power = Power of the explosion.
 suicide:
     1:
       power: 2
@@ -510,3 +505,10 @@ rekt:
 wings:
     1:
       flight: true
+phoenix:
+    1:
+      potion_lvl: 1
+    2:
+      potion_lvl: 2
+    3:
+      potion_lvl: 3

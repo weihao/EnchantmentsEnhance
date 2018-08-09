@@ -61,7 +61,7 @@ public class SettingsManager {
             // Generating missing configuration.
             config = YamlConfiguration.loadConfiguration(cfile);
             try {
-                generate();
+                generateConfig();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -73,8 +73,15 @@ public class SettingsManager {
         // Copy default.
         if (!enchantfile.exists()) {
             Main.getMain().saveResource("enchantments.yml", true);
+            enchant = YamlConfiguration.loadConfiguration(enchantfile);
+        } else {
+            enchant = YamlConfiguration.loadConfiguration(enchantfile);
+            try {
+                generateEnchantments();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        enchant = YamlConfiguration.loadConfiguration(enchantfile);
 
         // Language File.
         langfile = new File(Main.getMain().getDataFolder(), "lang.yml");
@@ -137,7 +144,7 @@ public class SettingsManager {
     }
 
 
-    public static void generate() throws IOException {
+    public static void generateConfig() throws IOException {
 
         Logger logger = Main.getMain().getLogger();
         logger.info("Updating config to the latest...");
@@ -159,11 +166,38 @@ public class SettingsManager {
         }
 
 
-        logger.info("Found " + settings + " settings");
-        logger.info("Added " + addedSettings + " new settings");
+        logger.info("Found " + settings + " config settings");
+        logger.info("Added " + addedSettings + " new config settings");
         if (addedSettings > 0) {
             config.save(cfile);
         }
-        logger.info("Iteration completed");
     }
+
+    public static void generateEnchantments() throws IOException {
+        Logger logger = Main.getMain().getLogger();
+        logger.info("Updating enchantments to the latest...");
+        int settings = 0;
+        int addedSettings = 0;
+
+        InputStream defConfigStream = Main.getMain().getResource("enchantments.yml");
+
+        if (defConfigStream != null) {
+            YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defConfigStream));
+            for (String string : defConfig.getKeys(true)) {
+                if (!enchant.contains(string)) {
+                    enchant.set(string, defConfig.get(string));
+                    addedSettings++;
+                }
+                if (!enchant.isConfigurationSection(string))
+                    settings++;
+            }
+        }
+
+        logger.info("Found " + settings + " enchantment settings");
+        logger.info("Added " + addedSettings + " new enchantment settings");
+        if (addedSettings > 0) {
+            enchant.save(enchantfile);
+        }
+    }
+
 }

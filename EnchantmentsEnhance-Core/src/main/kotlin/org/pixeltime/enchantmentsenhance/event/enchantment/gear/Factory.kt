@@ -26,7 +26,6 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.util.XMaterial
 
 class Factory : EnchantmentListener() {
@@ -42,7 +41,7 @@ class Factory : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onBreak(blockBreakEvent: BlockBreakEvent) {
         val player = blockBreakEvent.player
-        val level =getLevel(player)
+        val level = getLevel(player)
         if (level > 0) {
             this.autoBlock(player)
         }

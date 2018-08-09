@@ -23,7 +23,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.player.PlayerMoveEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Wings : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -37,7 +36,7 @@ class Wings : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val level =getLevel(player)
+        val level = getLevel(player)
         player.allowFlight = level > 0 || player.gameMode == GameMode.CREATIVE
     }
 }

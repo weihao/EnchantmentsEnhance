@@ -1,6 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [5.4.0] - 2018-08-08
+### Added
+- Phoenix Enchantment for gear.
+- Configuration iteration for enchantment file.
+
+### Fixed
+- Permanent potion removal.
+
+### Changed
+
+### Removed
+
+
 ## [5.3.0] - 2018-08-08
 ### Added
 - Changelog.

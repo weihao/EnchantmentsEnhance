@@ -29,7 +29,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Turmoil : EnchantmentListener() {
@@ -54,7 +53,7 @@ class Turmoil : EnchantmentListener() {
                 return
             }
             try {
-                val level =getLevel(player)
+                val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
                     player2.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, SettingsManager.enchant.getInt("turmoil.$level.duration") * 20, SettingsManager.enchant.getInt("turmoil.$level.potion_lvl") - 1))
                 }

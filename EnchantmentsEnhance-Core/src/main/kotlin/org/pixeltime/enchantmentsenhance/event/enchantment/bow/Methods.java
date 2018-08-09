@@ -36,9 +36,10 @@ public class Methods {
     public static List<Entity> getNearbyEntitiess(Location loc, double radius, Entity ent) {
         return ent.getNearbyEntities(radius, radius, radius);
     }
+
     public static boolean randomPicker(int max) {
         Random number = new Random();
-        if(max <= 0) {
+        if (max <= 0) {
             return true;
         }
         int chance = 1 + number.nextInt(max);

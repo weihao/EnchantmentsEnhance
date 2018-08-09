@@ -38,7 +38,7 @@ abstract class EnchantmentListener : Listener {
 
     fun removePermaPotion(player: Player, type: PotionEffectType, potionlvl: Int) {
         for (PotionEffect in player.activePotionEffects) {
-            if ((PotionEffect.type == type) && (PotionEffect.duration < 1000000000)) {
+            if ((PotionEffect.type == type) && (PotionEffect.duration < 1000000000) && (PotionEffect.duration > 500000000)) {
                 player.removePotionEffect(type)
             }
         }

@@ -25,19 +25,19 @@ import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
-class Strength : EnchantmentListener() {
+class Phoenix : EnchantmentListener() {
     override fun desc(): Array<String> {
-        return arrayOf("Gives infinite Strength", "获得无限的力量")
+        return arrayOf("Gives you infinite regeneration", "你获得恢复效果")
     }
 
     override fun lang(): Array<String> {
-        return arrayOf("力量")
+        return arrayOf("凤凰")
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         val level = getLevel(player)
-        permaPotion(player, PotionEffectType.INCREASE_DAMAGE, SettingsManager.enchant.getInt("strength.$level.potion_lvl"))
+        permaPotion(player, PotionEffectType.REGENERATION, SettingsManager.enchant.getInt("${this.javaClass.simpleName.toLowerCase()}.$level.potion_lvl"))
     }
 }

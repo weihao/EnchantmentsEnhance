@@ -23,7 +23,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Shield : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -38,7 +37,7 @@ class Shield : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val level =getLevel(player)
+        val level = getLevel(player)
         permaPotion(player, PotionEffectType.ABSORPTION, level)
     }
 }
