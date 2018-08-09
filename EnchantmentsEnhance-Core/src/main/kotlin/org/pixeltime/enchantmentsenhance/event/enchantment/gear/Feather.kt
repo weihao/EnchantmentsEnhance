@@ -23,7 +23,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Feather : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -39,7 +38,7 @@ class Feather : EnchantmentListener() {
         if (entityDamageEvent.entity is Player) {
             val player = entityDamageEvent.entity as Player
             if (entityDamageEvent.cause == EntityDamageEvent.DamageCause.FALL) {
-                val level =getLevel(player)
+                val level = getLevel(player)
                 if (level > 0) {
                     entityDamageEvent.isCancelled = true
                 }

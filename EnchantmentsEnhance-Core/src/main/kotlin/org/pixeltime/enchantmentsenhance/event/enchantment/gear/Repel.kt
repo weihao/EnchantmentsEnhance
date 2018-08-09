@@ -26,7 +26,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Repel : EnchantmentListener() {
@@ -52,7 +51,7 @@ class Repel : EnchantmentListener() {
             }
 
             try {
-                val level =getLevel(player)
+                val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
                     damager.velocity = player.location.direction.multiply(SettingsManager.enchant.getInt("repel.$level.power"))
                 }

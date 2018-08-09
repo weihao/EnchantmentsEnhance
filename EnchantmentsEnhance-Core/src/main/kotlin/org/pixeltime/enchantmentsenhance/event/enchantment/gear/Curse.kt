@@ -28,7 +28,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Curse : EnchantmentListener() {
@@ -51,7 +50,7 @@ class Curse : EnchantmentListener() {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                     return
                 }
-                val level =getLevel(player)
+                val level = getLevel(player)
                 if ((level > 0) && (roll(level))) {
                     player.addPotionEffect(PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("curse.$level.duration") * 20, SettingsManager.enchant.getInt("curse.$level.potion_lvl") - 1))
                 }

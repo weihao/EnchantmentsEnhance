@@ -23,7 +23,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Pyromaniac : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -41,7 +40,7 @@ class Pyromaniac : EnchantmentListener() {
             val player = entityDamageEvent.entity as Player
             if (entityDamageEvent.cause == EntityDamageEvent.DamageCause.FIRE || entityDamageEvent.cause == EntityDamageEvent.DamageCause.FIRE_TICK) {
                 try {
-                    val level =getLevel(player)
+                    val level = getLevel(player)
                     if (level > 0 && (roll(level))) {
                         player.health = 20.0
                         player.foodLevel = 20

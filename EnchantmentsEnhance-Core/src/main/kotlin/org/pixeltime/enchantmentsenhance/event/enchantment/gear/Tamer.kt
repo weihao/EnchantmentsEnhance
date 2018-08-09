@@ -24,7 +24,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Tamer : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -41,7 +40,7 @@ class Tamer : EnchantmentListener() {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity !is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             try {
-                val level =getLevel(player)
+                val level = getLevel(player)
                 if (level > 0 && entityDamageByEntityEvent.entity is Wolf) {
                     entityDamageByEntityEvent.isCancelled = true
                     entityDamageByEntityEvent.damage = 0.0

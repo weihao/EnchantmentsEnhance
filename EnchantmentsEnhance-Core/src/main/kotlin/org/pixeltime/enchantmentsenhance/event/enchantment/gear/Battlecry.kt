@@ -27,7 +27,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Battlecry : EnchantmentListener() {
@@ -50,7 +49,7 @@ class Battlecry : EnchantmentListener() {
             if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                 return
             }
-            val level =getLevel(player)
+            val level = getLevel(player)
             if (level > 0) {
                 if ((player.hasPotionEffect(PotionEffectType.POISON)) || player.hasPotionEffect(PotionEffectType.CONFUSION) || player.hasPotionEffect(PotionEffectType.WITHER) || player.hasPotionEffect(PotionEffectType.WEAKNESS)) {
                     if ((roll(level))) {

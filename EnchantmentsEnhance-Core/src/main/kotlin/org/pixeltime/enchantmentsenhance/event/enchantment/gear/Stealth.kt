@@ -28,7 +28,6 @@ import org.bukkit.event.player.PlayerToggleSneakEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Stealth : EnchantmentListener() {
@@ -49,7 +48,7 @@ class Stealth : EnchantmentListener() {
         }
 
         try {
-            val level =getLevel(player)
+            val level = getLevel(player)
             if (level > 0 && (roll(level))) {
                 val int1 = SettingsManager.enchant.getInt("stealth.$level.radius")
                 for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {

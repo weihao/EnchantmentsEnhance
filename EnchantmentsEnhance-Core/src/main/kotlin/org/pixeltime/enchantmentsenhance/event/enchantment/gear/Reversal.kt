@@ -26,7 +26,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Reversal : EnchantmentListener() {
@@ -51,7 +50,7 @@ class Reversal : EnchantmentListener() {
                 return
             }
             try {
-                val level =getLevel(player)
+                val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
                     player2.damage(entityDamageByEntityEvent.damage)
                     entityDamageByEntityEvent.damage = 0.0

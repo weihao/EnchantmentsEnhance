@@ -24,7 +24,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 
 
 class Suicide : EnchantmentListener() {
@@ -42,7 +41,7 @@ class Suicide : EnchantmentListener() {
 
 
         try {
-            val level =getLevel(player)
+            val level = getLevel(player)
             if (level > 0 && (roll(level))) {
                 for (i in 1..5) {
                     val tnt = player.world.spawn(player.getTargetBlock(null as Set<Material>, 50).location.add(0.0, 1.0, 0.0), TNTPrimed::class.java)

@@ -25,7 +25,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 
@@ -43,7 +42,7 @@ class Frosty : EnchantmentListener() {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             val player2 = entityDamageByEntityEvent.entity as Player
-            val level =getLevel(player)
+            val level = getLevel(player)
             if (level > 0) {
                 player2.addPotionEffect(PotionEffect(PotionEffectType.SLOW, SettingsManager.enchant.getInt("frosty.$level.duration") * 20, 10))
             }

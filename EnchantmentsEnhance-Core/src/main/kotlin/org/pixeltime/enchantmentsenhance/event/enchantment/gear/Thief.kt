@@ -28,7 +28,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.DM
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Thief : EnchantmentListener() {
@@ -53,7 +52,7 @@ class Thief : EnchantmentListener() {
                 return
             }
             try {
-                val level =getLevel(player)
+                val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
                     val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DM.economy!!.getBalance(player2 as OfflinePlayer))
                     DM.economy!!.withdrawPlayer(player2 as OfflinePlayer, n2)

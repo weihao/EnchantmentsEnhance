@@ -25,7 +25,6 @@ import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.XMaterial
 
@@ -43,7 +42,7 @@ class Shearer : EnchantmentListener() {
         val player = playerInteractEvent.player
 
         if (playerInteractEvent.action == Action.LEFT_CLICK_AIR) {
-            val level =getLevel(player)
+            val level = getLevel(player)
             if (level > 0) {
                 val int1 = SettingsManager.enchant.getInt("shearer.$level.radius")
                 for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {

@@ -81,8 +81,8 @@ public class MainMenu extends GUIAbstract {
                     Enhance.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
 
 
-            if (DataManager.maximumFailstackApplied[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] != -1
-                    && DataManager.costToForceEnchant[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] != -1) {
+            if (DataManager.maximumFailstackApplied[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0
+                    && DataManager.costToForceEnchant[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0) {
                 setItem(force.getPosition(), force.getItem(itemOnEnhancingSlot.get(playerName)), (clickType) ->
                         Enhance.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player));
             }

@@ -249,11 +249,11 @@ enhance:
     # The success rate of item at the level.
     baseChance: 100
     # Chance increase per failstack you have.
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     # The maximum failstack applied to the enhancement.
     maximumFailstackApplied: -1
     # Failstack gained from failing an enhancement at this level.
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     # Cost of black stone to enhance the item.
     costToForceEnchant: -1
     # Downgrade the item if the enhance failed.
@@ -285,9 +285,9 @@ enhance:
         # - PROTECTION_ENVIRONMENTAL:1
   1:
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
@@ -311,9 +311,9 @@ enhance:
         - "&9&lLow Tier."
   2:
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
@@ -337,9 +337,9 @@ enhance:
         - "&9&lLow Tier."
   3:
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
@@ -364,9 +364,9 @@ enhance:
         - "&9&lLow Tier."
   4:
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
@@ -394,9 +394,9 @@ enhance:
         - "&9&lLow Tier."
   5:
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
@@ -425,9 +425,9 @@ enhance:
         - "&9&lLow Tier."
   6:
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false
@@ -456,9 +456,9 @@ enhance:
         - "&9&lLow Tier."
   7:
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
     downgradeIfFail: false
     destroyIfFail: false

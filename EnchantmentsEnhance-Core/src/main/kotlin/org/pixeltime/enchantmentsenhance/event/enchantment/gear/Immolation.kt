@@ -26,7 +26,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.player.PlayerToggleSneakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Immolation : EnchantmentListener() {
@@ -46,7 +45,7 @@ class Immolation : EnchantmentListener() {
             return
         }
         try {
-            val level =getLevel(player)
+            val level = getLevel(player)
             if (level > 0 && (roll(level))) {
                 for (entity in player.getNearbyEntities(SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"))) {
                     if (entity is Player) {

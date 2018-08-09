@@ -23,7 +23,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Eyepatch : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -40,7 +39,7 @@ class Eyepatch : EnchantmentListener() {
         val player = playerMoveEvent.player
         if (player.hasPotionEffect(PotionEffectType.BLINDNESS)) {
             try {
-                val level =getLevel(player)
+                val level = getLevel(player)
                 if (level > 0) {
                     player.removePotionEffect(PotionEffectType.BLINDNESS)
                 }

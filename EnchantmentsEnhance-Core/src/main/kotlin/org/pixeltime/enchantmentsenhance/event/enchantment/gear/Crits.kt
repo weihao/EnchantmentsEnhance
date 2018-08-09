@@ -24,7 +24,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.util.Sounds
 
 
@@ -42,7 +41,7 @@ class Crits : EnchantmentListener() {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             val player2 = entityDamageByEntityEvent.entity as Player
-            val level =getLevel(player)
+            val level = getLevel(player)
             if (level > 0) {
                 val damage = entityDamageByEntityEvent.damage * 2.0
                 val currentHealth = (player2 as Damageable).health

@@ -20,6 +20,7 @@ package org.pixeltime.enchantmentsenhance.command.player
 
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.command.SubCommand
 import org.pixeltime.enchantmentsenhance.util.Util
@@ -38,6 +39,12 @@ class DebugCommand : SubCommand() {
                     val curr = "Command: " + sc.usage() + " Permission: " + sc.permission
                     Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), p, false)
                 }
+            }
+            args[0] == "info" -> {
+                println(p.itemInHand.toString())
+                println(p.itemInHand.serialize())
+                val item = ItemStack.deserialize(p.itemInHand.serialize())
+                p.inventory.addItem(item)
             }
         }
     }

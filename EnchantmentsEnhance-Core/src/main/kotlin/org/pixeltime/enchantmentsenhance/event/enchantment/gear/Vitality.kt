@@ -23,7 +23,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Vitality : EnchantmentListener() {
@@ -38,7 +37,7 @@ class Vitality : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onPalyerWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val level =getLevel(player)
+        val level = getLevel(player)
         permaPotion(player, PotionEffectType.HEALTH_BOOST, SettingsManager.enchant.getInt("vitality.$level.potion_lvl"))
     }
 }

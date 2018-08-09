@@ -23,7 +23,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 
@@ -44,7 +43,7 @@ class Aegis : EnchantmentListener() {
             return
         }
         try {
-            val level =getLevel(player)
+            val level = getLevel(player)
             if (level > 0 && (roll(level))) {
                 player.health += SettingsManager.enchant.getDouble("aegis.$level.health")
             }

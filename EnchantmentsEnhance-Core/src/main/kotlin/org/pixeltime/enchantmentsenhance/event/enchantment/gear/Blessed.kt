@@ -22,7 +22,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.player.PlayerMoveEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 
 class Blessed : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -38,7 +37,7 @@ class Blessed : EnchantmentListener() {
     fun onMove(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         try {
-            val level =getLevel(player)
+            val level = getLevel(player)
             val n = (Math.random() * 100.0).toInt()
             if (level > 0 && roll(level)) {
                 player.health = player.maxHealth

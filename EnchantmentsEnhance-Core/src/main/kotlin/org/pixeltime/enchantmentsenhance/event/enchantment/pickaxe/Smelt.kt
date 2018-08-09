@@ -26,9 +26,7 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.util.XMaterial
-
 import java.util.*
 
 class Smelt : EnchantmentListener() {
@@ -47,7 +45,7 @@ class Smelt : EnchantmentListener() {
         }
         val player = blockBreakEvent.player
 
-        val level =getLevel(player)
+        val level = getLevel(player)
         if (level > 0) {
             val block = blockBreakEvent.block
             val calculateFortune = this.calculateFortune(player, block.type)

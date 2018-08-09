@@ -37,6 +37,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.FurnaceInventory;
 import org.bukkit.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.manager.DropManager;
+import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 
 import java.util.Random;
@@ -165,6 +166,7 @@ public class LifeskillingListener implements Listener {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onSmelting2(InventoryClickEvent e) {
         Inventory clickedInventory = null;
+        Player player = (Player) e.getWhoClicked();
         if (e.getSlot() < 0) {
             clickedInventory = null;
         } else if (e.getView().getTopInventory() != null && e.getSlot() < e
@@ -183,11 +185,12 @@ public class LifeskillingListener implements Listener {
         boolean click = e.getClick().isShiftClick() || e.getClick()
                 .isLeftClick() && e.getRawSlot() == 2;
         boolean item = fi.getResult() != null;
-        if (click && item) {
+        if (click && item && !Util.invFull(player)) {
             for (int i = 0; i < fi.getResult().getAmount(); i++) {
                 if (DropManager.smeltingChance > random.nextDouble()) {
-                    DropManager.randomDrop((Player) e.getWhoClicked(), DropManager.smeltingLootTable);
+                    DropManager.randomDrop(player, DropManager.smeltingLootTable);
                 }
+                System.out.println("drop");
             }
         }
     }

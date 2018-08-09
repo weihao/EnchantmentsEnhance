@@ -25,7 +25,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.player.PlayerInteractEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.XMaterial
 
@@ -45,7 +44,7 @@ class Plow : EnchantmentListener() {
         }
 
         val player = playerInteractEvent.player
-        val level =getLevel(player)
+        val level = getLevel(player)
         if (level > 0) {
             val clickedBlock = playerInteractEvent.clickedBlock
             if (clickedBlock.type != Material.DIRT && clickedBlock.type != Material.GRASS) {

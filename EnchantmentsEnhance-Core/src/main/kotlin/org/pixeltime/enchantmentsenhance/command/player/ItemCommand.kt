@@ -23,6 +23,7 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.command.SubCommand
 import org.pixeltime.enchantmentsenhance.event.Lore
+import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
@@ -55,8 +56,9 @@ class ItemCommand : SubCommand() {
                         val level = ItemManager.getItemEnchantLevel(item)
                         val curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]))
                         try {
-                            ItemManager.forgeItem(player, curr, level, true)
                             player.inventory.removeItem(item)
+                            ItemManager.forgeItem(player, curr, level, true)
+                            MainMenu.clearPlayer(player.name)
                         } catch (ex: Exception) {
                             Util.sendMessage(SettingsManager.lang.getString("Config.invalidItem"), player)
                         }

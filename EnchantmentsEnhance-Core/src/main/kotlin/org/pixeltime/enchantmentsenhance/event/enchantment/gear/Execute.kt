@@ -26,7 +26,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Execute : EnchantmentListener() {
@@ -51,7 +50,7 @@ class Execute : EnchantmentListener() {
                 return
             }
             try {
-                val level =getLevel(player)
+                val level = getLevel(player)
                 if (level > 0 && (roll(level)) && player.isSneaking) {
                     entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * SettingsManager.enchant.getDouble("execute.$level.multiplier")
                 }

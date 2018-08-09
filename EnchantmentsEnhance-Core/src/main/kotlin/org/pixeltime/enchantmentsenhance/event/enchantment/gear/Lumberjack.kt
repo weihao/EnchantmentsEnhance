@@ -24,7 +24,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.util.XMaterial
 import java.util.*
 
@@ -46,7 +45,7 @@ class Lumberjack : EnchantmentListener() {
 
 
         try {
-            val level =getLevel(player)
+            val level = getLevel(player)
             if (level > 0
                     && (blockBreakEvent.block.type == XMaterial.ACACIA_LOG.parseMaterial()
                             || blockBreakEvent.block.type == XMaterial.BIRCH_LOG.parseMaterial()

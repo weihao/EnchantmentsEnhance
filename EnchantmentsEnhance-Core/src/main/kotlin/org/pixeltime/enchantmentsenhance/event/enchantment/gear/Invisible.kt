@@ -23,7 +23,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Invisible : EnchantmentListener() {
@@ -38,7 +37,7 @@ class Invisible : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
-        val level =getLevel(player)
+        val level = getLevel(player)
         permaPotion(player, PotionEffectType.INVISIBILITY, SettingsManager.enchant.getInt("invisible.$level.potion_lvl"))
     }
 }
