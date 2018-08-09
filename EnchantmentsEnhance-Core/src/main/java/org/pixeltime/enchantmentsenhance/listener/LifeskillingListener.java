@@ -190,7 +190,6 @@ public class LifeskillingListener implements Listener {
                 if (DropManager.smeltingChance > random.nextDouble()) {
                     DropManager.randomDrop(player, DropManager.smeltingLootTable);
                 }
-                System.out.println("drop");
             }
         }
     }
