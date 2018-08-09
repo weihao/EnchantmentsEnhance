@@ -213,7 +213,7 @@ public class ItemManager {
         return item;
     }
 
-    public static void applyEnchantmentToItem(ItemStack item, String ench, int level) {
+    public static boolean applyEnchantmentToItem(ItemStack item, String ench, int level) {
         ItemMeta meta = item.getItemMeta();
         List<String> newlore = (meta.hasLore() ? meta.getLore() : new ArrayList<>());
         Enchantment vanilla = Enchantment.getByName(ench.toUpperCase());
@@ -225,6 +225,7 @@ public class ItemManager {
             } else {
                 item.removeEnchantment(vanilla);
             }
+            return true;
         } else {
             String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
             int keptLevel = 0;
@@ -252,8 +253,10 @@ public class ItemManager {
                         CompatibilityManager.glow
                                 .addGlow(item);
                     }
+                    return true;
                 }
             }
+            return false;
         }
     }
 

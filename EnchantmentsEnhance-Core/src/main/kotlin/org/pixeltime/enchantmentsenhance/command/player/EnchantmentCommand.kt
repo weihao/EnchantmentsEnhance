@@ -33,8 +33,11 @@ class EnchantmentCommand : SubCommand() {
         if (args.size == 3) {
             if (args[0].equals("add", ignoreCase = true)) {
                 val item = player.itemInHand
-                Main.getAPI().addCustomEnchant(item, args[1], Integer.parseInt(args[2]))
-                Util.sendMessage(SettingsManager.lang.getString("Config.success"), player)
+                if (Main.getAPI().addCustomEnchant(item, args[1], Integer.parseInt(args[2]))) {
+                    Util.sendMessage(SettingsManager.lang.getString("Config.success"), player)
+                } else {
+                    Util.sendMessage(SettingsManager.lang.getString("Config.invalidEnchant"), player)
+                }
             } else {
                 Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player)
             }

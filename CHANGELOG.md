@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 - Permanent potion removal.
 - Enchantment issue with renamed items.
 - Duplication issue with smelted items in furnace.
+- Enchantment command failed and success notification.
+
 ### Changed
 
 ### Removed
