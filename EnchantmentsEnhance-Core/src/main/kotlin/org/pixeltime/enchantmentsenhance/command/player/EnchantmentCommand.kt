@@ -30,10 +30,23 @@ class EnchantmentCommand : SubCommand() {
         get() = "Enchantmentsenhance.ench"
 
     override fun onCommand(player: Player, args: Array<String>) {
-        if (args.size == 3) {
+        if (args.size >= 2) {
             if (args[0].equals("add", ignoreCase = true)) {
                 val item = player.itemInHand
-                if (Main.getAPI().addCustomEnchant(item, args[1], Integer.parseInt(args[2]))) {
+                if (item == null) {
+                    Util.sendMessage(SettingsManager.lang.getString("Config.invalidItem"), player)
+                    return
+                }
+                var level = 1
+                try {
+                    level = Integer.parseInt(args[2])
+                } catch (ex: NumberFormatException) {
+                    // Expected
+                } catch (ex: ArrayIndexOutOfBoundsException)
+                {
+                    // Expected
+                }
+                if (Main.getAPI().addCustomEnchant(item, args[1], level)) {
                     Util.sendMessage(SettingsManager.lang.getString("Config.success"), player)
                 } else {
                     Util.sendMessage(SettingsManager.lang.getString("Config.invalidEnchant"), player)

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 ## [5.4.0] - 2018-08-09
 ### Added
 - Phoenix Enchantment for gear.
+- Pumpking Enchantment for axe.
 - Configuration iteration for enchantment file.
 
 ### Fixed
@@ -13,6 +14,8 @@ All notable changes to this project will be documented in this file.
 - Enchantment command failed and success notification.
 - LumberJack Enchantment.
 - Explosive Enchantment drop issue.
+- Shearer Enchantment with shearing sheep.
+- Enchantment add command throwing errors.
 ### Changed
 
 ### Removed

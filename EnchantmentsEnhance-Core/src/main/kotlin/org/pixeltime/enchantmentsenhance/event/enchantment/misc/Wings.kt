@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.event.enchantment.gear
+package org.pixeltime.enchantmentsenhance.event.enchantment.misc
 
 import org.bukkit.GameMode
 import org.bukkit.event.EventHandler

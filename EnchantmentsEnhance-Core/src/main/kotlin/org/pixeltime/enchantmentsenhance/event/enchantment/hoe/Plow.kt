@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.event.enchantment.gear
+package org.pixeltime.enchantmentsenhance.event.enchantment.hoe
 
 import com.sk89q.worldguard.bukkit.WGBukkit
 import org.bukkit.Location
@@ -50,13 +50,13 @@ class Plow : EnchantmentListener() {
             if (clickedBlock.type != Material.DIRT && clickedBlock.type != Material.GRASS) {
                 return
             }
-            val n = 0.5
+            val radius = 1.0
             val location = clickedBlock.location
-            var n2 = location.blockX - n
-            while (n2 <= location.blockX + n) {
-                var n3 = location.blockZ - n
-                while (n3 <= location.blockZ + n) {
-                    val block = location.world.getBlockAt(Location(clickedBlock.world, n2, clickedBlock.y.toDouble(), n3))
+            var x = location.blockX - radius
+            while (x <= location.blockX + radius) {
+                var z = location.blockZ - radius
+                while (z <= location.blockZ + radius) {
+                    val block = location.world.getBlockAt(Location(clickedBlock.world, x, clickedBlock.y.toDouble(), z))
                     if (block.type != Material.GRASS && block.type != Material.DIRT) {
                         return
                     }
@@ -64,11 +64,10 @@ class Plow : EnchantmentListener() {
                         return
                     }
                     block.type = XMaterial.FARMLAND.parseMaterial()
-                    ++n3
+                    z++
                 }
-                ++n2
+                x++
             }
-
         }
     }
 }

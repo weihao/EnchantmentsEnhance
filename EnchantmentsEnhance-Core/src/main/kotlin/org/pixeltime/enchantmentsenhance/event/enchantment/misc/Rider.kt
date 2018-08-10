@@ -16,44 +16,47 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.event.enchantment.gear
+package org.pixeltime.enchantmentsenhance.event.enchantment.misc
 
+import org.bukkit.Material
+import org.bukkit.entity.Horse
 import org.bukkit.entity.Player
-import org.bukkit.entity.Wolf
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 
-class Tamer : EnchantmentListener() {
+class Rider : EnchantmentListener() {
     override fun desc(): Array<String> {
-        return arrayOf("By hitting the wolves, they will be tamed", "攻击狼它们会被你驯服")
+        return arrayOf("Tames a horse with saddle when hit while wearing armour with this enchant.", "你可以用鞍来驯服马")
     }
 
     override fun lang(): Array<String> {
-        return arrayOf("驯兽")
+        return arrayOf("骑御")
     }
+
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity !is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             try {
                 val level = getLevel(player)
-                if (level > 0 && entityDamageByEntityEvent.entity is Wolf) {
+                if (level > 0 && entityDamageByEntityEvent.entity is Horse) {
                     entityDamageByEntityEvent.isCancelled = true
                     entityDamageByEntityEvent.damage = 0.0
-                    val wolf = entityDamageByEntityEvent.entity as Wolf
-                    if (wolf.isTamed) {
+                    val horse = entityDamageByEntityEvent.entity as Horse
+                    if (horse.isTamed) {
                         return
                     }
-                    wolf.isTamed = true
-                    wolf.owner = player
+                    horse.isTamed = true
+                    horse.owner = player
+                    horse.inventory.saddle = ItemStack(Material.SADDLE)
+
                 }
             } catch (ex: Exception) {
             }
-
         }
     }
 }

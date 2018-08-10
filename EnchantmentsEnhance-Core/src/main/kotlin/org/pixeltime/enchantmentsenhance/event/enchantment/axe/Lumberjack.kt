@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.event.enchantment.gear
+package org.pixeltime.enchantmentsenhance.event.enchantment.axe
 
 import com.sk89q.worldguard.bukkit.WGBukkit
 import org.bukkit.Material
@@ -45,35 +45,23 @@ class Lumberjack : EnchantmentListener() {
             return
         }
         val player = blockBreakEvent.player
-
-
+        val blocks = arrayOf(
+                XMaterial.ACACIA_LOG.parseMaterial(),
+                XMaterial.BIRCH_LOG.parseMaterial(),
+                XMaterial.DARK_OAK_LOG.parseMaterial(),
+                XMaterial.OAK_LOG.parseMaterial(),
+                XMaterial.SPRUCE_LOG.parseMaterial(),
+                XMaterial.ACACIA_LEAVES.parseMaterial(),
+                XMaterial.BIRCH_LEAVES.parseMaterial(),
+                XMaterial.DARK_OAK_LEAVES.parseMaterial(),
+                XMaterial.JUNGLE_LEAVES.parseMaterial(),
+                XMaterial.OAK_LEAVES.parseMaterial(),
+                XMaterial.SPRUCE_LEAVES.parseMaterial()
+        )
         val level = getLevel(player)
         if (level > 0
-                && (blockBreakEvent.block.type == XMaterial.ACACIA_LOG.parseMaterial()
-                        || blockBreakEvent.block.type == XMaterial.BIRCH_LOG.parseMaterial()
-                        || blockBreakEvent.block.type == XMaterial.DARK_OAK_LOG.parseMaterial()
-                        || blockBreakEvent.block.type == XMaterial.OAK_LOG.parseMaterial()
-                        || blockBreakEvent.block.type == XMaterial.SPRUCE_LOG.parseMaterial()
-                        || blockBreakEvent.block.type == XMaterial.STRIPPED_ACACIA_LOG.parseMaterial()
-                        || blockBreakEvent.block.type == XMaterial.STRIPPED_BIRCH_LOG.parseMaterial()
-                        || blockBreakEvent.block.type == XMaterial.STRIPPED_DARK_OAK_LOG.parseMaterial()
-                        || blockBreakEvent.block.type == XMaterial.STRIPPED_JUNGLE_LOG.parseMaterial()
-                        || blockBreakEvent.block.type == XMaterial.STRIPPED_OAK_LOG.parseMaterial()
-                        || blockBreakEvent.block.type == XMaterial.STRIPPED_SPRUCE_LOG.parseMaterial())) {
+                && (blocks.contains(blockBreakEvent.block.type))) {
             val list = ArrayList<Material>()
-            val blocks = arrayOf(
-                    XMaterial.ACACIA_LOG.parseMaterial(),
-                    XMaterial.BIRCH_LOG.parseMaterial(),
-                    XMaterial.DARK_OAK_LOG.parseMaterial(),
-                    XMaterial.OAK_LOG.parseMaterial(),
-                    XMaterial.SPRUCE_LOG.parseMaterial(),
-                    XMaterial.ACACIA_LEAVES.parseMaterial(),
-                    XMaterial.BIRCH_LEAVES.parseMaterial(),
-                    XMaterial.DARK_OAK_LEAVES.parseMaterial(),
-                    XMaterial.JUNGLE_LEAVES.parseMaterial(),
-                    XMaterial.OAK_LEAVES.parseMaterial(),
-                    XMaterial.SPRUCE_LEAVES.parseMaterial()
-            )
 
             for (block in blocks) {
                 if (!list.contains(block)) {
