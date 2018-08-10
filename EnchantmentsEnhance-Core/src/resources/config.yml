@@ -38,6 +38,11 @@ openMethod: RIGHT_CLICK
 # Fixes color codes when player edits an enhanced item on an anvil.
 enableAnvilFix: true
 
+# 1.8 uses ActionBar. No dependency required.
+# 1.9 and higher use BossBar. No dependency required.
+# Set false to disable fancy announcer, and it will use chat.
+enableFancyAnnouncer: true
+
 # Set true to enable some features that are related to $.
 enableEconomy: false
 

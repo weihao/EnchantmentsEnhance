@@ -84,7 +84,7 @@ class ItemCommand : SubCommand() {
     }
 
     override fun usage(): String {
-        return "/enhance item { {upgrade} {level} } | {setname} {name} | {lore} { {tradeable | untradeable | unbound} }"
+        return "/enhance item { upgrade {level} } | setname {name} | lore { tradeable | untradeable | unbound }"
     }
 
     override fun aliases(): Array<String> {

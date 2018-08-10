@@ -47,11 +47,11 @@ public class ItemUseListener implements Listener {
                 int id = Integer.parseInt(give[0]);
                 int amount = Integer.parseInt(give[1]);
                 if (id < 0) {
-                    Main.getAPI().addAdvice(player.getName(), amount);
+                    Main.getApi().addAdvice(player.getName(), amount);
                     Util.sendMessage(SettingsManager.lang.getString("Materialize.adviceSucess")
                             .replace("%level%", Integer.toString(amount)), player);
                 } else {
-                    Main.getAPI().addItem(player.getName(), id, amount);
+                    Main.getApi().addItem(player.getName(), id, amount);
                     Util.sendMessage(SettingsManager.lang.getString("Materialize.success")
                             .replace("%amount%", Integer.toString(amount))
                             .replace("%item%", SettingsManager.lang.getString("Item." + id)), player);

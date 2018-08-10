@@ -102,8 +102,8 @@ public class MainMenu extends GUIAbstract {
             setItem(stats.getPosition(), stats.getItem(playerName));
         }
 
-        setItem(store.getPosition(), Main.getAPI().getFailstack(player.getName()) == 0 ? store.getItem(playerName) : store.getGlowingItem(playerName), (clickType) ->
-                Main.getAPI().addAdvice(player.getName()));
+        setItem(store.getPosition(), Main.getApi().getFailstack(player.getName()) == 0 ? store.getItem(playerName) : store.getGlowingItem(playerName), (clickType) ->
+                Main.getApi().addAdvice(player.getName()));
 
         setItem(item.getPosition(), item.getItem(player.getName()), (clickType) ->
                 new BukkitRunnable() {

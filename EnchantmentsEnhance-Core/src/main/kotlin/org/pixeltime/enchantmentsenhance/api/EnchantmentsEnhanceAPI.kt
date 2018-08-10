@@ -40,7 +40,7 @@ class API : AbstractAPI {
         return ItemIcon.getOneStoneCountAsInt(playerName, stoneId)
     }
 
-    override fun addCustomEnchant(item: ItemStack, enchantment: String, level: Int) : Boolean{
+    override fun addCustomEnchant(item: ItemStack, enchantment: String, level: Int): Boolean {
         return ItemManager.applyEnchantmentToItem(item, enchantment, level)
     }
 

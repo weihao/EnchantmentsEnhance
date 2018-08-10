@@ -64,8 +64,8 @@ public class ValksMenu extends GUIAbstract {
                             public void run() {
                                 if (clickType == ClickType.LEFT) {
                                     if (level > 0) {
-                                        if (Main.getAPI().getFailstack(player.getName()) == 0) {
-                                            Main.getAPI().addFailstack(player.getName(), level);
+                                        if (Main.getApi().getFailstack(player.getName()) == 0) {
+                                            Main.getApi().addFailstack(player.getName(), level);
                                             PlayerStat.getPlayerStats(playerName).getValks().remove(index);
                                             Util.sendMessage(SettingsManager.lang.getString(
                                                     "Valks.used").replaceAll("%LEVEL%", Integer

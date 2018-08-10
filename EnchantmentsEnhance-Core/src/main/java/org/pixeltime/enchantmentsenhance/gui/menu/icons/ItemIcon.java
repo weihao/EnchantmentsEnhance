@@ -31,14 +31,14 @@ import org.pixeltime.enchantmentsenhance.util.XMaterial;
 public class ItemIcon extends Clickable {
 
     public static String getOneStoneCountAsString(String player, int stoneId) {
-        int count = player == null ? 0 : Main.getAPI().getItem(player, stoneId);
+        int count = player == null ? 0 : Main.getApi().getItem(player, stoneId);
         return (SettingsManager.lang.getString("Item.listing").replaceAll(
                 "%ITEM%", SettingsManager.lang.getString("Item." + stoneId))
                 .replaceAll("%COUNT%", String.valueOf(count)));
     }
 
     public static int getOneStoneCountAsInt(String player, int stoneId) {
-        return Main.getAPI().getItem(player, stoneId);
+        return Main.getApi().getItem(player, stoneId);
     }
 
     public static int getOneStoneCountAsCount(String player, int stoneId) {

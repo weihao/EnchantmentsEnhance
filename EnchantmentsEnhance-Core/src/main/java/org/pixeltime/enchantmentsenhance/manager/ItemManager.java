@@ -52,9 +52,9 @@ public class ItemManager {
      * @return
      */
     public static ItemType getItemEnchantmentType(ItemStack item) {
-        if (isValid(item, MM.weapon)) {
+        if (isValid(item, MaterialManager.weapon)) {
             return ItemType.WEAPON;
-        } else if (isValid(item, MM.armor)) {
+        } else if (isValid(item, MaterialManager.armor)) {
             return ItemType.ARMOR;
         } else {
             return ItemType.INVALID;
@@ -123,7 +123,7 @@ public class ItemManager {
     public static ItemStack forgeItem(Player player, ItemStack item, int enchantLevel, boolean addition) {
         ItemStack currItem = setLevel(item, enchantLevel);
         // Getting Unique Name.
-        List<String> oldLore = KM.stripLore(item);
+        List<String> oldLore = KotlinManager.stripLore(item);
 
         if (enchantLevel == 1 && getItemName(currItem) == null && SettingsManager.config.getBoolean("enableRename")) {
             currItem = setName(currItem, currItem.getItemMeta().getDisplayName());
@@ -241,7 +241,7 @@ public class ItemManager {
                 }
                 int max = 1;
                 try {
-                    max = Main.getAPI().getEnchantmentMaxLevel(ench);
+                    max = Main.getApi().getEnchantmentMaxLevel(ench);
                 } catch (NullPointerException ex) {
                 }
                 int finalLevel = ((level + keptLevel) > max) ? max : level + keptLevel;
@@ -299,7 +299,7 @@ public class ItemManager {
 
     public static ItemStack itemMaterialize(int stoneId, int amount) {
         return CompatibilityManager.glow
-                .addGlow(setGive(new ItemBuilder(MM.stoneTypes.get(stoneId))
+                .addGlow(setGive(new ItemBuilder(MaterialManager.stoneTypes.get(stoneId))
                                 .setName(SettingsManager.lang.getString("Item." + stoneId) + " Bundle: " + amount)
                                 .addLoreLine(SettingsManager.lang.getString("Materialize.info1"))
                                 .addLoreLine(SettingsManager.lang.getString("Materialize.info2")

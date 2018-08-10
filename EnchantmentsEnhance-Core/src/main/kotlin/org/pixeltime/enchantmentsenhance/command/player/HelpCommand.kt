@@ -29,7 +29,7 @@ class HelpCommand : SubCommand() {
         get() = "Enchantmentsenhance.enhance"
 
     override fun onCommand(player: Player, args: Array<String>) {
-        Main.getMain().commandManager.printHelp(player)
+        Main.getCommandManager().printHelp(player)
     }
 
 

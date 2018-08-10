@@ -22,7 +22,7 @@ package org.pixeltime.enchantmentsenhance.manager
 import net.milkbowl.vault.economy.Economy
 import org.pixeltime.enchantmentsenhance.Main
 
-class DM {
+class DependencyManager {
 
     companion object {
         @JvmField

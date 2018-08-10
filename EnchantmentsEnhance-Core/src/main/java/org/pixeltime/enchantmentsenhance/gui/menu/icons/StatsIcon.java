@@ -46,16 +46,16 @@ public class StatsIcon extends Clickable {
     public ItemStack getItem(String playerName) {
         if (playerName != null && MainMenu.itemOnEnhancingSlot.get(playerName) != null) {
             return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial()).setDyeColor(DyeColor.LIGHT_BLUE).setName(SettingsManager.lang.getString("Menu.gui.stats")).addLoreLine(SettingsManager.lang.getString("Enhance.currentFailstack")
-                    + Main.getAPI().getFailstack(playerName)).addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName)).addLoreLine(SettingsManager.lang.getString(
+                    + Main.getApi().getFailstack(playerName)).addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName)).addLoreLine(SettingsManager.lang.getString(
                     "Menu.lore.stats1")).addLoreLine(SettingsManager.lang.getString(
                     "Menu.lore.stats2")).toItemStack());
         }
-        if (playerName != null && Main.getAPI().hasFailstack(playerName)) {
+        if (playerName != null && Main.getApi().hasFailstack(playerName)) {
             return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial())
                     .setDyeColor(DyeColor.LIGHT_BLUE)
                     .setName(SettingsManager.lang.getString("Menu.gui.stats"))
                     .addLoreLine(SettingsManager.lang.getString("Enhance.currentFailstack")
-                            + Main.getAPI().getFailstack(playerName))
+                            + Main.getApi().getFailstack(playerName))
                     .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats1"))
                     .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats2"))
                     .toItemStack());

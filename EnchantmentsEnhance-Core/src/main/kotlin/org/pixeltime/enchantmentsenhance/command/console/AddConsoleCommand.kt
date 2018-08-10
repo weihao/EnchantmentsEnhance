@@ -22,7 +22,7 @@ import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand
-import org.pixeltime.enchantmentsenhance.manager.MM
+import org.pixeltime.enchantmentsenhance.manager.MaterialManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
 
@@ -48,15 +48,15 @@ class AddConsoleCommand : SubConsoleCommand() {
                 return
             }
 
-            if (stoneType != -1 && level != -1 && stoneType <= MM.stoneTypes.size) {
-                Main.getAPI().addItem(args[0], stoneType, level)
+            if (stoneType != -1 && level != -1 && stoneType <= MaterialManager.stoneTypes.size) {
+                Main.getApi().addItem(args[0], stoneType, level)
                 Util.sendMessage(SettingsManager.lang.getString(
                         "Add.successful").replace("%player%", player.name).replace(
                         "%number%", Integer.toString(level)).replace("%stone%",
                         SettingsManager.lang.getString("Item.$stoneType")), sender)
             } else {
                 if (stoneType == -1) {
-                    Main.getAPI().addAdvice(player.name, level)
+                    Main.getApi().addAdvice(player.name, level)
                     Util.sendMessage(SettingsManager.lang.getString("Materialize.adviceSucess")
                             .replace("%level%", Integer.toString(level)), player)
                 } else {

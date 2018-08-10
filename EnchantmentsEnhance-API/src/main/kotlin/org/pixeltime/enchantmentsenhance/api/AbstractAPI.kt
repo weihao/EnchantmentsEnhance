@@ -23,7 +23,7 @@ import org.bukkit.inventory.ItemStack
 interface AbstractAPI {
 
     fun getNumberOfStone(playerName: String, stoneId: Int): Int
-    fun addCustomEnchant(item: ItemStack, enchantment: String, level: Int) : Boolean
+    fun addCustomEnchant(item: ItemStack, enchantment: String, level: Int): Boolean
     fun setItem(player: String, type: Int, level: Int)
     fun addItem(player: String, type: Int, levelsToAdd: Int)
     fun getItem(player: String, type: Int): Int

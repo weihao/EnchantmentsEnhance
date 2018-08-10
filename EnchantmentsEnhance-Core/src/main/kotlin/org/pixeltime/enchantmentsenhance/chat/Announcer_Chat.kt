@@ -19,32 +19,12 @@
 package org.pixeltime.enchantmentsenhance.chat
 
 import org.bukkit.Bukkit
-import org.bukkit.entity.Player
-import org.bukkit.inventory.ItemStack
+import org.pixeltime.enchantmentsenhance.enums.AnnounceType
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
 
-/**
- * @author HealPotion
- * @version Feb 9, 2018
- */
-class Broadcast {
-    companion object {
-        @JvmStatic
-                /**
-                 * Sends a message to all online players.
-                 *
-                 * @param player
-                 * @param item
-                 * @param success
-                 */
-        fun broadcast(player: Player, item: ItemStack, result: String) {
-            broadcast(SettingsManager.lang.getString("Annoucer.$result").replace("%player%", player.name).replace("%item%", item.itemMeta.displayName))
-        }
-
-        @JvmStatic
-        fun broadcast(info: String) {
-            Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString("Config.pluginTag") + info))
-        }
+class Announcer_Chat : Announcer {
+    override fun announce(msg: String, type: AnnounceType) {
+        Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString("Config.pluginTag") + msg))
     }
 }

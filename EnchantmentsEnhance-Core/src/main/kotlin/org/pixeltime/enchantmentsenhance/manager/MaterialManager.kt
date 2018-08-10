@@ -21,7 +21,7 @@ package org.pixeltime.enchantmentsenhance.manager
 import org.bukkit.Material
 import org.pixeltime.enchantmentsenhance.util.XMaterial
 
-class MM {
+class MaterialManager {
     companion object {
         @JvmField
         val sword = arrayListOf(

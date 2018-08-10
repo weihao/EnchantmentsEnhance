@@ -23,7 +23,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.locale.LM;
+import org.pixeltime.enchantmentsenhance.locale.LocaleManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -97,7 +97,7 @@ public class SettingsManager {
         lang = YamlConfiguration.loadConfiguration(langfile);
 
         // Adds the languages.
-        LM.addLocale();
+        LocaleManager.addLocale();
     }
 
 

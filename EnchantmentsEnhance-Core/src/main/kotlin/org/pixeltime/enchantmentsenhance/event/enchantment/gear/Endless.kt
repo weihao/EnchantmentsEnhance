@@ -26,8 +26,8 @@ import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerItemDamageEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.manager.IM
-import org.pixeltime.enchantmentsenhance.manager.KM
+import org.pixeltime.enchantmentsenhance.manager.InventoryManager
+import org.pixeltime.enchantmentsenhance.manager.KotlinManager
 
 
 class Endless : EnchantmentListener() {
@@ -43,16 +43,16 @@ class Endless : EnchantmentListener() {
     fun noWeaponBreakDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.damager is Player) {
             val player = entityDamageByEntityEvent.damager as Player
-            IM.getItemList(player)
-                    .filter { KM.getLevel(this.name(), it.itemMeta.lore) > 0 }
+            InventoryManager.getItemList(player)
+                    .filter { KotlinManager.getLevel(this.name(), it.itemMeta.lore) > 0 }
                     .forEach {
                         it.durability = 0
                     }
         }
         if (entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.entity as Player
-            IM.getItemList(player)
-                    .filter { KM.getLevel(this.name(), it.itemMeta.lore) > 0 }
+            InventoryManager.getItemList(player)
+                    .filter { KotlinManager.getLevel(this.name(), it.itemMeta.lore) > 0 }
                     .forEach {
                         it.durability = 0
                     }
@@ -63,8 +63,8 @@ class Endless : EnchantmentListener() {
     fun noWeaponBreakDamage(entityShootBowEvent: EntityShootBowEvent) {
         if (entityShootBowEvent.entity is Player) {
             val player = entityShootBowEvent.entity as Player
-            IM.getItemList(player)
-                    .filter { KM.getLevel(this.name(), it.itemMeta.lore) > 0 }
+            InventoryManager.getItemList(player)
+                    .filter { KotlinManager.getLevel(this.name(), it.itemMeta.lore) > 0 }
                     .forEach {
                         it.durability = 0
                     }
@@ -74,8 +74,8 @@ class Endless : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun noWeaponBreakDamage(playerInteractEvent: PlayerInteractEvent) {
         val player = playerInteractEvent.player as Player
-        IM.getItemList(player)
-                .filter { KM.getLevel(this.name(), it.itemMeta.lore) > 0 }
+        InventoryManager.getItemList(player)
+                .filter { KotlinManager.getLevel(this.name(), it.itemMeta.lore) > 0 }
                 .forEach {
                     it.durability = 0
                 }
@@ -85,7 +85,7 @@ class Endless : EnchantmentListener() {
     fun onPlayerItemDamage(e: PlayerItemDamageEvent) {
         val item = e.item
         if (item.hasItemMeta() && item.itemMeta.hasLore()) {
-            if (KM.getLevel(this.name(), item.itemMeta.lore) > 0) {
+            if (KotlinManager.getLevel(this.name(), item.itemMeta.lore) > 0) {
                 e.isCancelled = true
             }
         }

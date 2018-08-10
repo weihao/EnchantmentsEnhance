@@ -21,14 +21,8 @@ package org.pixeltime.enchantmentsenhance.manager
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.util.Util
 
-class KM {
+class KotlinManager {
     companion object {
-        @JvmStatic
-        fun setUp() {
-            MM.setup()
-
-            PackageManager.initializeAll()
-        }
 
         @JvmStatic
         fun sortArray(a: IntArray) {

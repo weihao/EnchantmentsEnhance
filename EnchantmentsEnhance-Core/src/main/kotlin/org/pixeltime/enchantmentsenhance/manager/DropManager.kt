@@ -83,7 +83,7 @@ class DropManager {
         @JvmStatic
         fun randomDrop(player: Player, table: List<Int>) {
             val stoneType = table[((0..table.size).random())]
-            Main.getAPI().addItem(
+            Main.getApi().addItem(
                     player.name, stoneType, 1)
             Util.sendMessage(SettingsManager.lang.getString("Item.get").replace("%ITEM%", SettingsManager.lang.getString("Item.$stoneType")), player)
         }

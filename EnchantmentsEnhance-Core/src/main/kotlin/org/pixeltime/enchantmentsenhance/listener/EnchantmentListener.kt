@@ -23,8 +23,8 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
-import org.pixeltime.enchantmentsenhance.locale.LM
-import org.pixeltime.enchantmentsenhance.manager.IM
+import org.pixeltime.enchantmentsenhance.locale.LocaleManager
+import org.pixeltime.enchantmentsenhance.manager.InventoryManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 abstract class EnchantmentListener : Listener {
@@ -53,11 +53,11 @@ abstract class EnchantmentListener : Listener {
     }
 
     fun addLang() {
-        LM.addLang("enchantments.${this.javaClass.simpleName.toLowerCase()}", arrayOf(this.javaClass.simpleName) + lang())
+        LocaleManager.addLang("enchantments.${this.javaClass.simpleName.toLowerCase()}", arrayOf(this.javaClass.simpleName) + lang())
     }
 
     fun addDesc() {
-        LM.addLang("descriptions.${this.javaClass.simpleName.toLowerCase()}", desc())
+        LocaleManager.addLang("descriptions.${this.javaClass.simpleName.toLowerCase()}", desc())
     }
 
     abstract fun lang(): Array<String>
@@ -69,6 +69,6 @@ abstract class EnchantmentListener : Listener {
     }
 
     fun getLevel(player: Player): Int {
-        return IM.getHighestLevel(player, this.name())
+        return InventoryManager.getHighestLevel(player, this.name())
     }
 }

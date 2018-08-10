@@ -29,7 +29,7 @@ import org.pixeltime.enchantmentsenhance.gui.menu.icons.GrindIcon;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.ReblathIcon;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
-import org.pixeltime.enchantmentsenhance.manager.MM;
+import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -61,7 +61,7 @@ public class ItemMenu extends GUIAbstract {
         getActions().clear();
 
         Player player = Bukkit.getPlayer(playerName);
-        for (int i = 0; i < MM.stoneTypes.size(); i++) {
+        for (int i = 0; i < MaterialManager.stoneTypes.size(); i++) {
             final int stoneId = i;
             setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1),
                     (clickedItem.containsKey(playerName) && stoneId == clickedItem.get(playerName)
@@ -69,7 +69,7 @@ public class ItemMenu extends GUIAbstract {
                             : MainMenu.stone.getItem(i, player)),
                     (clickType) -> {
                         if (clickType == ClickType.LEFT) {
-                            if (Main.getAPI().getItem(playerName, stoneId) > 0) {
+                            if (Main.getApi().getItem(playerName, stoneId) > 0) {
                                 if (clickedItem.containsKey(playerName) && clickedItem.get(playerName) == stoneId) {
                                     clickedItem.remove(player.getName());
                                 } else {
@@ -79,10 +79,10 @@ public class ItemMenu extends GUIAbstract {
                         }
                         if (clickType == ClickType.RIGHT) {
                             // If play has enough stones.
-                            if (Main.getAPI().getItem(playerName, stoneId) > BUNDLE) {
+                            if (Main.getApi().getItem(playerName, stoneId) > BUNDLE) {
                                 if (!Util.invFull(player)) {
                                     player.getInventory().addItem(ItemManager.itemMaterialize(stoneId, BUNDLE));
-                                    Main.getAPI().addItem(playerName, stoneId, -BUNDLE);
+                                    Main.getApi().addItem(playerName, stoneId, -BUNDLE);
                                 } else {
                                     Util.sendMessage(SettingsManager.lang.getString("Materialize.inventoryFull"), player);
                                 }
@@ -104,12 +104,12 @@ public class ItemMenu extends GUIAbstract {
         setItem(grind.getPosition(), grind.getItem(playerName), (clickType) -> {
             if (clickedItem.containsKey(player.getName())) {
                 // If player has item to failstack.
-                if (Main.getAPI().getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
+                if (Main.getApi().getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
                     int locked = 2;
                     if (PlayerStat.getPlayerStats(playerName) != null) {
                         locked = PlayerStat.getPlayerStats(playerName).getGrind();
                     }
-                    Main.getAPI().addItem(player.getName(), clickedItem.get(player.getName()), -1);
+                    Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), -1);
                     Random random = new Random();
                     double num = random.nextDouble();
                     if (num < 1 / locked) {
@@ -117,7 +117,7 @@ public class ItemMenu extends GUIAbstract {
                         Util.sendMessage(SettingsManager.lang.getString("Grind.success")
                                         .replace("%amount%", Integer.toString(locked))
                                 , player);
-                        Main.getAPI().addItem(player.getName(), clickedItem.get(player.getName()), locked);
+                        Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), locked);
                     } else {
                         // Fail
                         Util.sendMessage(SettingsManager.lang.getString("Grind.failed"), player);
@@ -134,18 +134,18 @@ public class ItemMenu extends GUIAbstract {
         {
             if (clickedItem.containsKey(player.getName())) {
                 // If player has item to failstack.
-                if (Main.getAPI().getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
+                if (Main.getApi().getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
                     // Roll.
                     if ((Math.random() * 100) > reblath.getChance()) {
                         int levelsToAdd = 1;
-                        Main.getAPI().addFailstack(player.getName(), levelsToAdd);
-                        Main.getAPI().addItem(player.getName(), clickedItem.get(player.getName()), -1);
+                        Main.getApi().addFailstack(player.getName(), levelsToAdd);
+                        Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), -1);
                         Util.sendMessage(SettingsManager.lang.getString("Gui.addFailstack")
                                 .replace("%level%", Integer.toString(levelsToAdd))
-                                .replace("%size%", Integer.toString(Main.getAPI().getFailstack(player.getName()))), player);
+                                .replace("%size%", Integer.toString(Main.getApi().getFailstack(player.getName()))), player);
                     } else {
-                        Util.sendMessage(SettingsManager.lang.getString("Gui.resetFailstack").replace("%level%", Integer.toString(Main.getAPI().getFailstack(player.getName()))), player);
-                        Main.getAPI().resetFailstack(player.getName());
+                        Util.sendMessage(SettingsManager.lang.getString("Gui.resetFailstack").replace("%level%", Integer.toString(Main.getApi().getFailstack(player.getName()))), player);
+                        Main.getApi().resetFailstack(player.getName());
                     }
                 } else {
                     Util.sendMessage(SettingsManager.lang.getString("Gui.noItem"), player);

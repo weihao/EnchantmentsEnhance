@@ -24,7 +24,7 @@ import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.Main
 
 
-class IM {
+class InventoryManager {
     companion object {
         private val left_ring = Main.getMain().config.getInt("accessory.left_ring")
         private val right_ring = Main.getMain().config.getInt("accessory.right_ring")
@@ -67,17 +67,17 @@ class IM {
         fun getItemList(player: Player): List<ItemStack> {
             var itemList: List<ItemStack> = ArrayList()
             if (SettingsManager.config.getBoolean("slots.enableArmor")) {
-                itemList += IM.getArmorSlots(player)
+                itemList += InventoryManager.getArmorSlots(player)
             }
             if (SettingsManager.config.getBoolean("slots.enableAcessory")) {
-                itemList += IM.getAccessorySlots(player)
+                itemList += InventoryManager.getAccessorySlots(player)
             }
             return itemList
         }
 
         @JvmStatic
         fun getHighestLevel(player: Player, lore: String): Int {
-            return getItemList(player).map { KM.getLevel(lore, it.itemMeta.lore) }.max() ?: 0
+            return getItemList(player).map { KotlinManager.getLevel(lore, it.itemMeta.lore) }.max() ?: 0
         }
     }
 }

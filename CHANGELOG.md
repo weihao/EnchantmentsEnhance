@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 - Phoenix Enchantment for gear.
 - Pumpking Enchantment for axe.
 - Configuration iteration for enchantment file.
+- Support for ActionBarAPI.
+- Support for BossBarAPI.
 
 ### Fixed
 - Permanent potion removal.

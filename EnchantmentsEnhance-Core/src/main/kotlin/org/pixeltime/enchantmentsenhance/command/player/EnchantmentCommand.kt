@@ -42,11 +42,10 @@ class EnchantmentCommand : SubCommand() {
                     level = Integer.parseInt(args[2])
                 } catch (ex: NumberFormatException) {
                     // Expected
-                } catch (ex: ArrayIndexOutOfBoundsException)
-                {
+                } catch (ex: ArrayIndexOutOfBoundsException) {
                     // Expected
                 }
-                if (Main.getAPI().addCustomEnchant(item, args[1], level)) {
+                if (Main.getApi().addCustomEnchant(item, args[1], level)) {
                     Util.sendMessage(SettingsManager.lang.getString("Config.success"), player)
                 } else {
                     Util.sendMessage(SettingsManager.lang.getString("Config.invalidEnchant"), player)
@@ -64,7 +63,7 @@ class EnchantmentCommand : SubCommand() {
     }
 
     override fun usage(): String {
-        return "/enhance enchantment {add} {enchantment} {level}"
+        return "/enhance enchantment add {enchantment} {level}"
     }
 
     override fun aliases(): Array<String> {

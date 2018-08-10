@@ -23,7 +23,7 @@ import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.event.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
-import org.pixeltime.enchantmentsenhance.manager.MM;
+import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -31,7 +31,7 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 public class StoneIcon extends Clickable {
 
     public ItemStack getItem(int stoneId, Player player) {
-        return new ItemBuilder(MM.stoneTypes.get(stoneId),
+        return new ItemBuilder(MaterialManager.stoneTypes.get(stoneId),
                 (ItemIcon.getOneStoneCountAsCount(player.getName(), stoneId) > 64
                         ? 64 : ItemIcon.getOneStoneCountAsCount(player.getName(), stoneId)))
                 .setName(SettingsManager.lang.getString("Item." + stoneId))
@@ -42,7 +42,7 @@ public class StoneIcon extends Clickable {
     }
 
     public ItemStack getItem(int stoneId) {
-        return new ItemBuilder(MM.stoneTypes.get(stoneId), (1)).setName(SettingsManager.lang.getString("Item." + stoneId)).addLoreLine(ItemIcon.getOneStoneCountAsString(null, stoneId)).toItemStack();
+        return new ItemBuilder(MaterialManager.stoneTypes.get(stoneId), (1)).setName(SettingsManager.lang.getString("Item." + stoneId)).addLoreLine(ItemIcon.getOneStoneCountAsString(null, stoneId)).toItemStack();
     }
 
     public ItemStack getItem(ItemStack item, Player player) {

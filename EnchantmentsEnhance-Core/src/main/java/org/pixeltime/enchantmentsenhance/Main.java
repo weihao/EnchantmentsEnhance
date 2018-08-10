@@ -27,6 +27,9 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 import org.pixeltime.enchantmentsenhance.api.API;
+import org.pixeltime.enchantmentsenhance.chat.Announcer_ActionBar;
+import org.pixeltime.enchantmentsenhance.chat.Announcer_BossBar;
+import org.pixeltime.enchantmentsenhance.chat.Announcer_Chat;
 import org.pixeltime.enchantmentsenhance.gui.GUIListener;
 import org.pixeltime.enchantmentsenhance.gui.GUIManager;
 import org.pixeltime.enchantmentsenhance.gui.menu.handlers.MenuHandler;
@@ -35,9 +38,11 @@ import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
+import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
+import org.pixeltime.enchantmentsenhance.util.reflection.MinecraftVersion;
 import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
 import org.pixeltime.enchantmentsenhance.version.VersionManager;
 
@@ -54,12 +59,12 @@ import java.util.Scanner;
  * @version Mar 30, 2018
  */
 public class Main extends JavaPlugin implements Listener {
-    private static final CompatibilityManager compatibility =
-            new CompatibilityManager();
+    private static CompatibilityManager compatibility;
     private static Database database;
     private static Main main;
     private static API api;
-    public CommandManager commandManager;
+    private static AnnouncerManager announcerManager;
+    private static CommandManager commandManager;
 
     /**
      * Default constructor.
@@ -84,8 +89,16 @@ public class Main extends JavaPlugin implements Listener {
         super(loader, description, dataFolder, file);
     }
 
-    public static Database getDb() {
+    public static CompatibilityManager getCompatibility() {
+        return compatibility;
+    }
+
+    public static Database getDatabase() {
         return database;
+    }
+
+    public static API getApi() {
+        return api;
     }
 
     /**
@@ -97,15 +110,20 @@ public class Main extends JavaPlugin implements Listener {
         return main;
     }
 
-    public static API getAPI() {
-        return api;
-    }
 
     public static WorldGuardPlugin getWorldGuard() {
         Plugin worldguard = Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
         if (worldguard != null && worldguard instanceof WorldGuardPlugin && worldguard.isEnabled())
             return (WorldGuardPlugin) worldguard;
         return null;
+    }
+
+    public static AnnouncerManager getAnnoucerManager() {
+        return announcerManager;
+    }
+
+    public static CommandManager getCommandManager() {
+        return commandManager;
     }
 
     /**
@@ -124,29 +142,52 @@ public class Main extends JavaPlugin implements Listener {
         final long startTime = System.currentTimeMillis();
         main = this;
         api = new API();
+        commandManager = new CommandManager();
+        compatibility = new CompatibilityManager();
+
         // Checks for update.
         VersionManager.versionChecker();
-        // Save the configuration.
-//        saveDefaultConfig();
         // Set up the files.
         SettingsManager.setup();
-        // Register listener.
-        registerCore();
-        // Register all the compatible modules.
-        registerCompatibility();
-        // Register data.
-        commandManager = new CommandManager();
+
         PluginManager pm = Bukkit.getPluginManager();
+        pm.registerEvents(new EnhancedItemListener(), this);
+        if (SettingsManager.config.getBoolean("enableLore")) {
+            pm.registerEvents(new PlayerDeathListener(), this);
+        }
+        pm.registerEvents(new PlayerStreamListener(), this);
+        if (SettingsManager.config.getBoolean("enableLifeskill")) {
+            pm.registerEvents(new LifeskillingListener(), this);
+        }
+        if (SettingsManager.config.getBoolean("enableAnvilFix")) {
+            pm.registerEvents(new RepairListener(), this);
+        }
         if (SettingsManager.config.getBoolean("enableTableEnchant")) {
             pm.registerEvents(new VanillaEnchantListener(), this);
         }
 
-        // Kotlin setup
-        KM.setUp();
-        getLogger().info("Kotlin module is enabled: Hello World!");
+        // Notify Cauldron and MCPC users.
+        if (getServer().getName().contains("Cauldron") || getServer().getName()
+                .contains("MCPC")) {
+            getLogger().info(
+                    "EnchantmentsEnhance runs fine on Cauldron/KCauldron.");
+        }
+        // Start bStats metrics.
+        new Metrics(this);
 
+        Bukkit.getPluginManager().registerEvents(new GUIListener(), Main.getMain());
+        Bukkit.getPluginManager().registerEvents(new MenuHandler(), Main.getMain());
+        Bukkit.getPluginManager().registerEvents(new ItemUseListener(), Main.getMain());
+        // Register all the compatible modules.
+        registerCompatibility();
+
+
+        MaterialManager.setup();
+        ActionBarAPI.setup();
         DataManager.setUp();
         AnimalBreeding.setUp();
+        PackageManager.initializeAll();
+
 
         // When plugin is reloaded, load all the inventory of online players.
         this.getLogger().info(SettingsManager.lang.getString(
@@ -179,7 +220,16 @@ public class Main extends JavaPlugin implements Listener {
             } catch (IOException | SQLException e) {
                 e.printStackTrace();
             }
-
+        }
+        // Annoucer setup
+        if (SettingsManager.config.getBoolean("enableFancyAnnouncer")) {
+            if (MinecraftVersion.getVersion() == MinecraftVersion.MC1_8_R3) {
+                announcerManager = new AnnouncerManager(new Announcer_ActionBar());
+            } else {
+                announcerManager = new AnnouncerManager(new Announcer_BossBar());
+            }
+        } else {
+            announcerManager = new AnnouncerManager(new Announcer_Chat());
         }
 
 
@@ -190,9 +240,8 @@ public class Main extends JavaPlugin implements Listener {
         getLogger().info("EnchantmentsEnhance took " + (System
                 .currentTimeMillis() - startTime) + "ms to setup.");
 
-        // Testing
-        Bukkit.getPluginManager().registerEvents(this, this);
 
+        Bukkit.getPluginManager().registerEvents(this, this);
     }
 
     /**
@@ -217,34 +266,6 @@ public class Main extends JavaPlugin implements Listener {
                 "Config.onDisable"));
     }
 
-    /**
-     * Includes the initialization of the plugin.
-     */
-    private void registerCore() {
-        PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new EnhancedItemListener(), this);
-        if (SettingsManager.config.getBoolean("enableLore")) {
-            pm.registerEvents(new PlayerDeathListener(), this);
-        }
-        pm.registerEvents(new PlayerStreamListener(), this);
-        if (SettingsManager.config.getBoolean("enableLifeskill")) {
-            pm.registerEvents(new LifeskillingListener(), this);
-        }
-        if (SettingsManager.config.getBoolean("enableAnvilFix")) {
-            pm.registerEvents(new RepairListener(), this);
-        }
-        // Notify Cauldron and MCPC users.
-        if (getServer().getName().contains("Cauldron") || getServer().getName()
-                .contains("MCPC")) {
-            getLogger().info(
-                    "EnchantmentsEnhance runs fine on Cauldron/KCauldron.");
-        }
-        // Start bStats metrics.
-        new Metrics(this);
-        Bukkit.getPluginManager().registerEvents(new GUIListener(), Main.getMain());
-        Bukkit.getPluginManager().registerEvents(new MenuHandler(), Main.getMain());
-        Bukkit.getPluginManager().registerEvents(new ItemUseListener(), Main.getMain());
-    }
 
     /**
      * Detects the version of the server is currently running.
@@ -285,9 +306,8 @@ public class Main extends JavaPlugin implements Listener {
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        if (SettingsManager.config.getBoolean("enableEconomy") && DM.setupEconomy()) {
+        if (SettingsManager.config.getBoolean("enableEconomy") && DependencyManager.setupEconomy()) {
             getLogger().info("Enhancement-Vault Hook was successful!");
         }
     }
-
 }
