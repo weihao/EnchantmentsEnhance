@@ -38,7 +38,7 @@ class Plunder : EnchantmentListener() {
 
         if (entityDeathEvent.entity.killer is Player && entityDeathEvent.entity !is Player) {
             val killer = entityDeathEvent.entity.killer
-            if (killer.itemInHand != null && killer.itemInHand.hasItemMeta() && killer.itemInHand.itemMeta.hasLore() && killer.itemInHand.itemMeta.lore.contains(this.name() + " I")) {
+            if (killer.itemInHand != null && killer.inventory.itemInMainHand.hasItemMeta() && killer.inventory.itemInMainHand.itemMeta.hasLore() && killer.inventory.itemInMainHand.itemMeta.lore.contains(this.name() + " I")) {
                 entityDeathEvent.droppedExp = 20
             }
         }

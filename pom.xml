@@ -60,16 +60,16 @@
             <url>http://maven.sk89q.com/repo/</url>
         </repository>
         <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-        <repository>
             <id>bukkit-repo</id>
             <url>http://repo.md-5.net/content/groups/public/</url>
         </repository>
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
     </repositories>
     <dependencies>

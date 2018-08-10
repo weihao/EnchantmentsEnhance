@@ -82,8 +82,8 @@ class Smelt : EnchantmentListener() {
 
     fun calculateFortune(player: Player, material: Material): Int {
         var n = 1
-        if (player.itemInHand.enchantments.containsKey(Enchantment.LOOT_BONUS_BLOCKS)) {
-            var n2 = Random().nextInt(player.itemInHand.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) + 2) - 1
+        if (player.inventory.itemInMainHand.enchantments.containsKey(Enchantment.LOOT_BONUS_BLOCKS)) {
+            var n2 = Random().nextInt(player.inventory.itemInMainHand.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) + 2) - 1
             if (n2 <= 0) {
                 n2 = 1
             }

@@ -30,21 +30,21 @@ class DebugCommand : SubCommand() {
     override val permission: String
         get() = "Enchantmentsenhance.debug"
 
-    override fun onCommand(p: Player, args: Array<String>) {
+    override fun onCommand(player: Player, args: Array<String>) {
         when {
             args[0] == "format" -> {
                 val subcommands = Main.getMain().commandManager.commands.iterator()
                 while (subcommands.hasNext()) {
                     val sc = subcommands.next()
                     val curr = "Command: " + sc.usage() + " Permission: " + sc.permission
-                    Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), p, false)
+                    Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), player, false)
                 }
             }
             args[0] == "info" -> {
-                println(p.itemInHand.toString())
-                println(p.itemInHand.serialize())
-                val item = ItemStack.deserialize(p.itemInHand.serialize())
-                p.inventory.addItem(item)
+                println(player.inventory.itemInMainHand.toString())
+                println(player.inventory.itemInMainHand.serialize())
+                val item = ItemStack.deserialize(player.inventory.itemInMainHand.serialize())
+                player.inventory.addItem(item)
             }
         }
     }
