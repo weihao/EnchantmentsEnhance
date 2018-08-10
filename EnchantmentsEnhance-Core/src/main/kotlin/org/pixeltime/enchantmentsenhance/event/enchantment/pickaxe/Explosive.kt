@@ -40,6 +40,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
+import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.XMaterial
 import java.util.*
@@ -89,7 +90,11 @@ class Explosive : EnchantmentListener() {
                 if (block.type == XMaterial.BEDROCK.parseMaterial()) {
                     return
                 }
-                loc.block.breakNaturally()
+                block.breakNaturally()
+                if (DropManager.mining.contains(block.toString()))
+                    if (DropManager.miningChance > Random().nextDouble()) {
+                        DropManager.randomDrop(player, DropManager.miningLootTable)
+                    }
             }
         }
     }

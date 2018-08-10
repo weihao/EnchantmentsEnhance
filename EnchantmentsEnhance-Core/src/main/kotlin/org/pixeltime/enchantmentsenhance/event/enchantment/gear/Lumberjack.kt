@@ -18,12 +18,15 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment.gear
 
+import com.sk89q.worldguard.bukkit.WGBukkit
 import org.bukkit.Material
 import org.bukkit.block.Block
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
+import org.pixeltime.enchantmentsenhance.manager.DropManager
+import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.XMaterial
 import java.util.*
 
@@ -44,48 +47,56 @@ class Lumberjack : EnchantmentListener() {
         val player = blockBreakEvent.player
 
 
-        try {
-            val level = getLevel(player)
-            if (level > 0
-                    && (blockBreakEvent.block.type == XMaterial.ACACIA_LOG.parseMaterial()
-                            || blockBreakEvent.block.type == XMaterial.BIRCH_LOG.parseMaterial()
-                            || blockBreakEvent.block.type == XMaterial.DARK_OAK_LOG.parseMaterial()
-                            || blockBreakEvent.block.type == XMaterial.OAK_LOG.parseMaterial()
-                            || blockBreakEvent.block.type == XMaterial.SPRUCE_LOG.parseMaterial()
-                            || blockBreakEvent.block.type == XMaterial.STRIPPED_ACACIA_LOG.parseMaterial()
-                            || blockBreakEvent.block.type == XMaterial.STRIPPED_BIRCH_LOG.parseMaterial()
-                            || blockBreakEvent.block.type == XMaterial.STRIPPED_DARK_OAK_LOG.parseMaterial()
-                            || blockBreakEvent.block.type == XMaterial.STRIPPED_JUNGLE_LOG.parseMaterial()
-                            || blockBreakEvent.block.type == XMaterial.STRIPPED_OAK_LOG.parseMaterial()
-                            || blockBreakEvent.block.type == XMaterial.STRIPPED_SPRUCE_LOG.parseMaterial())) {
-                val list = ArrayList<Material>()
-                list.add(XMaterial.ACACIA_LOG.parseMaterial())
-                list.add(XMaterial.BIRCH_LOG.parseMaterial())
-                list.add(XMaterial.DARK_OAK_LOG.parseMaterial())
-                list.add(XMaterial.OAK_LOG.parseMaterial())
-                list.add(XMaterial.SPRUCE_LOG.parseMaterial())
-                list.add(XMaterial.STRIPPED_ACACIA_LOG.parseMaterial())
-                list.add(XMaterial.STRIPPED_BIRCH_LOG.parseMaterial())
-                list.add(XMaterial.STRIPPED_DARK_OAK_LOG.parseMaterial())
-                list.add(XMaterial.STRIPPED_JUNGLE_LOG.parseMaterial())
-                list.add(XMaterial.STRIPPED_OAK_LOG.parseMaterial())
-                list.add(XMaterial.STRIPPED_SPRUCE_LOG.parseMaterial())
-                list.add(XMaterial.ACACIA_LEAVES.parseMaterial())
-                list.add(XMaterial.BIRCH_LEAVES.parseMaterial())
-                list.add(XMaterial.DARK_OAK_LEAVES.parseMaterial())
-                list.add(XMaterial.JUNGLE_LEAVES.parseMaterial())
-                list.add(XMaterial.OAK_LEAVES.parseMaterial())
-                list.add(XMaterial.SPRUCE_LEAVES.parseMaterial())
-                val iterator = this.getTree(blockBreakEvent.block, list).iterator()
-                while (iterator.hasNext()) {
-                    iterator.next().breakNaturally()
+        val level = getLevel(player)
+        if (level > 0
+                && (blockBreakEvent.block.type == XMaterial.ACACIA_LOG.parseMaterial()
+                        || blockBreakEvent.block.type == XMaterial.BIRCH_LOG.parseMaterial()
+                        || blockBreakEvent.block.type == XMaterial.DARK_OAK_LOG.parseMaterial()
+                        || blockBreakEvent.block.type == XMaterial.OAK_LOG.parseMaterial()
+                        || blockBreakEvent.block.type == XMaterial.SPRUCE_LOG.parseMaterial()
+                        || blockBreakEvent.block.type == XMaterial.STRIPPED_ACACIA_LOG.parseMaterial()
+                        || blockBreakEvent.block.type == XMaterial.STRIPPED_BIRCH_LOG.parseMaterial()
+                        || blockBreakEvent.block.type == XMaterial.STRIPPED_DARK_OAK_LOG.parseMaterial()
+                        || blockBreakEvent.block.type == XMaterial.STRIPPED_JUNGLE_LOG.parseMaterial()
+                        || blockBreakEvent.block.type == XMaterial.STRIPPED_OAK_LOG.parseMaterial()
+                        || blockBreakEvent.block.type == XMaterial.STRIPPED_SPRUCE_LOG.parseMaterial())) {
+            val list = ArrayList<Material>()
+            val blocks = arrayOf(
+                    XMaterial.ACACIA_LOG.parseMaterial(),
+                    XMaterial.BIRCH_LOG.parseMaterial(),
+                    XMaterial.DARK_OAK_LOG.parseMaterial(),
+                    XMaterial.OAK_LOG.parseMaterial(),
+                    XMaterial.SPRUCE_LOG.parseMaterial(),
+                    XMaterial.ACACIA_LEAVES.parseMaterial(),
+                    XMaterial.BIRCH_LEAVES.parseMaterial(),
+                    XMaterial.DARK_OAK_LEAVES.parseMaterial(),
+                    XMaterial.JUNGLE_LEAVES.parseMaterial(),
+                    XMaterial.OAK_LEAVES.parseMaterial(),
+                    XMaterial.SPRUCE_LEAVES.parseMaterial()
+            )
+
+            for (block in blocks) {
+                if (!list.contains(block)) {
+                    list.add(block)
                 }
             }
-        } catch (ex: Exception) {
+
+            val iterator = getNearbyBlocks(blockBreakEvent.block, list, HashSet()).iterator()
+            while (iterator.hasNext()) {
+                val block = iterator.next()
+                if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin().canBuild(player, block)) {
+                    return
+                }
+                block.breakNaturally()
+                if (DropManager.chopping.contains(block.type.toString()))
+                    if (DropManager.choppingChance > Random().nextDouble()) {
+                        DropManager.randomDrop(player, DropManager.choppingLootTable)
+                    }
+            }
         }
     }
 
-    private fun getNearbyBlocks(block: Block, list: List<Material>, set: HashSet<Block>): Set<Block> {
+    fun getNearbyBlocks(block: Block, list: List<Material>, set: HashSet<Block>): Set<Block> {
         for (i in -1..1) {
             for (j in -1..1) {
                 for (k in -1..1) {
@@ -98,9 +109,5 @@ class Lumberjack : EnchantmentListener() {
             }
         }
         return set
-    }
-
-    fun getTree(block: Block, list: List<Material>): Set<Block> {
-        return this.getNearbyBlocks(block, list, HashSet())
     }
 }

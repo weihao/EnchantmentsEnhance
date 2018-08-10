@@ -11,7 +11,8 @@ All notable changes to this project will be documented in this file.
 - Enchantment issue with renamed items.
 - Duplication issue with smelted items in furnace.
 - Enchantment command failed and success notification.
-
+- LumberJack Enchantment.
+- Explosive Enchantment drop issue.
 ### Changed
 
 ### Removed
