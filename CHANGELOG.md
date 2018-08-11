@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 ## [5.6.0] - 2018-08-12
 ### Added
+- Firework damage can be disabled.
 ### Fixed
 - Grinding probability issue.
 
