@@ -1,5 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [5.6.0] - 2018-08-12
+### Added
+### Fixed
+- Grinding probability issue.
+
+### Changed
+### Removed
+
 ## [5.5.0] - 2018-08-12
 ### Added
 - Support for TitleBar.
