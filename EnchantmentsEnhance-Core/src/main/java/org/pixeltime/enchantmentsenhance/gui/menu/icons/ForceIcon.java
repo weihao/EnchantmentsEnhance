@@ -35,22 +35,26 @@ public class ForceIcon extends Clickable {
     public ItemStack getItem(String playerName) {
         return new ItemBuilder(XMaterial.RED_WOOL.parseMaterial())
                 .setDyeColor(DyeColor.RED)
-                .setName(SettingsManager.lang.getString("Menu.gui.force"))
+                .setName(SettingsManager.lang.getString("menu.gui.force"))
                 .addLoreLine(SettingsManager.lang.getString(
-                        "Menu.lore.force1")).toItemStack();
+                        "menu.lore.force1")).toItemStack();
     }
 
     public ItemStack getItem(ItemStack item) {
         int enchantLevel = ItemManager.getItemEnchantLevel(item);
         int stoneId = Enhance.getStoneId(item, enchantLevel);
         int costToEnhance = DataManager.costToForceEnchant[enchantLevel + 1];
-        return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.RED_WOOL.parseMaterial())
+        return new ItemBuilder(XMaterial.RED_WOOL.parseMaterial())
                 .setDyeColor(DyeColor.RED)
-                .setName(SettingsManager.lang.getString("Menu.gui.force"))
-                .addLoreLine(SettingsManager.lang.getString("Menu.lore.force1"))
-                .addLoreLine(SettingsManager.lang.getString("Menu.lore.force2")
+                .setName(SettingsManager.lang.getString("menu.gui.force"))
+                .addLoreLine(SettingsManager.lang.getString("menu.lore.force1"))
+                .addLoreLine(SettingsManager.lang.getString("menu.lore.force2")
                         .replaceAll("%COUNT%", Integer.toString(costToEnhance))
-                        .replaceAll("%ITEM%", SettingsManager.lang.getString("Item." + stoneId))).toItemStack());
+                        .replaceAll("%ITEM%", SettingsManager.lang.getString("item." + stoneId))).toItemStack();
+    }
+
+    public ItemStack getGlowingItem(ItemStack item) {
+        return CompatibilityManager.glow.addGlow(getItem(item));
     }
 
     @Override

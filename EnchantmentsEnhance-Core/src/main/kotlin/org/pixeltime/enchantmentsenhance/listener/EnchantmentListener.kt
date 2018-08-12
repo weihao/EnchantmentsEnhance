@@ -32,13 +32,13 @@ abstract class EnchantmentListener : Listener {
         return ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + this.javaClass.simpleName.toLowerCase()))
     }
 
-    fun addPermaPotion(player: Player, type: PotionEffectType, level: Int) {
+    private fun addPermaPotion(player: Player, type: PotionEffectType, level: Int) {
         player.addPotionEffect(PotionEffect(type, 999999999, level - 1))
     }
 
-    fun removePermaPotion(player: Player, type: PotionEffectType, potionlvl: Int) {
+    private fun removePermaPotion(player: Player, type: PotionEffectType, potionlvl: Int) {
         for (PotionEffect in player.activePotionEffects) {
-            if ((PotionEffect.type == type) && (PotionEffect.duration < 1000000000) && (PotionEffect.duration > 500000000)) {
+            if ((PotionEffect.type == type) && (PotionEffect.duration < 1000000000) && (PotionEffect.duration > 10000)) {
                 player.removePotionEffect(type)
             }
         }

@@ -50,7 +50,7 @@ public class ItemMenu extends GUIAbstract {
     private GrindIcon grind = new GrindIcon();
 
     public ItemMenu(Player p) {
-        super(p, 54, SettingsManager.lang.getString("Item.title"));
+        super(p, 54, SettingsManager.lang.getString("item.title"));
         update();
     }
 
@@ -84,10 +84,10 @@ public class ItemMenu extends GUIAbstract {
                                     player.getInventory().addItem(ItemManager.itemMaterialize(stoneId, BUNDLE));
                                     Main.getApi().addItem(playerName, stoneId, -BUNDLE);
                                 } else {
-                                    Util.sendMessage(SettingsManager.lang.getString("Materialize.inventoryFull"), player);
+                                    Util.sendMessage(SettingsManager.lang.getString("materialize.inventoryFull"), player);
                                 }
                             } else {
-                                Util.sendMessage(SettingsManager.lang.getString("Materialize.notEnoughItem"), player);
+                                Util.sendMessage(SettingsManager.lang.getString("materialize.notEnoughItem"), player);
                             }
                         }
                     });
@@ -112,21 +112,22 @@ public class ItemMenu extends GUIAbstract {
                     Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), -1);
                     Random random = new Random();
                     double num = random.nextDouble();
-                    if (num < 1 / locked) {
+
+                    if (num < (1.0 / locked)) {
                         // Reward
-                        Util.sendMessage(SettingsManager.lang.getString("Grind.success")
+                        Util.sendMessage(SettingsManager.lang.getString("grind.success")
                                         .replace("%amount%", Integer.toString(locked))
                                 , player);
                         Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), locked);
                     } else {
                         // Fail
-                        Util.sendMessage(SettingsManager.lang.getString("Grind.failed"), player);
+                        Util.sendMessage(SettingsManager.lang.getString("grind.failed"), player);
                     }
                 } else {
-                    Util.sendMessage(SettingsManager.lang.getString("Gui.noItem"), player);
+                    Util.sendMessage(SettingsManager.lang.getString("gui.noItem"), player);
                 }
             } else {
-                Util.sendMessage(SettingsManager.lang.getString("Gui.missingItem"), player);
+                Util.sendMessage(SettingsManager.lang.getString("gui.missingItem"), player);
             }
         });
 
@@ -140,18 +141,18 @@ public class ItemMenu extends GUIAbstract {
                         int levelsToAdd = 1;
                         Main.getApi().addFailstack(player.getName(), levelsToAdd);
                         Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), -1);
-                        Util.sendMessage(SettingsManager.lang.getString("Gui.addFailstack")
+                        Util.sendMessage(SettingsManager.lang.getString("gui.addFailstack")
                                 .replace("%level%", Integer.toString(levelsToAdd))
                                 .replace("%size%", Integer.toString(Main.getApi().getFailstack(player.getName()))), player);
                     } else {
-                        Util.sendMessage(SettingsManager.lang.getString("Gui.resetFailstack").replace("%level%", Integer.toString(Main.getApi().getFailstack(player.getName()))), player);
+                        Util.sendMessage(SettingsManager.lang.getString("gui.resetFailstack").replace("%level%", Integer.toString(Main.getApi().getFailstack(player.getName()))), player);
                         Main.getApi().resetFailstack(player.getName());
                     }
                 } else {
-                    Util.sendMessage(SettingsManager.lang.getString("Gui.noItem"), player);
+                    Util.sendMessage(SettingsManager.lang.getString("gui.noItem"), player);
                 }
             } else {
-                Util.sendMessage(SettingsManager.lang.getString("Gui.missingItem"), player);
+                Util.sendMessage(SettingsManager.lang.getString("gui.missingItem"), player);
             }
         });
     }

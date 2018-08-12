@@ -51,7 +51,7 @@ public class PlayerStreamListener implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         if (SettingsManager.config.getBoolean("enableWelcomeMessage")) {
-            Util.sendMessage(SettingsManager.lang.getString("Config.welcome")
+            Util.sendMessage(SettingsManager.lang.getString("config.welcome")
                     .replaceAll("%player%", player.getName()), player);
         }
 

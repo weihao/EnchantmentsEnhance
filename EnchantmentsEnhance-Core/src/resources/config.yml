@@ -38,10 +38,16 @@ openMethod: RIGHT_CLICK
 # Fixes color codes when player edits an enhanced item on an anvil.
 enableAnvilFix: true
 
+# Set true the firework will damage the players.
+enableFireworkDamage: false
+
 # 1.8 uses ActionBar. No dependency required.
 # 1.9 and higher use BossBar. No dependency required.
 # Set false to disable fancy announcer, and it will use chat.
 enableFancyAnnouncer: true
+
+# Set true to use Title Bar. No dependency required.
+enableFancyNotify: true
 
 # Set true to enable some features that are related to $.
 enableEconomy: false
@@ -227,6 +233,25 @@ material:
     - STONE_AXE
     - WOOD_AXE
     - IRON_AXE
+  # List of AXE.
+  axe:
+    - DIAMOND_AXE
+    - IRON_AXE
+    - WOODEN_AXE
+    - STONE_AXE
+    - GOLDEN_AXE
+  pickaxe:
+    - DIAMOND_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - STONE_PICKAXE
+    - WOODEN_PICKAXE
+  hoe:
+    - DIAMOND_HOE
+    - IRON_HOE
+    - GOLDEN_HOE
+    - STONE_HOE
+    - WOODEN_HOE
 
 slots:
   # Armor includes armor contents and item in hand.
@@ -307,6 +332,10 @@ enhance:
          - Endless:1
       ARMOR:
          - Endless:1
+      PICKAXE:
+         - Durability:1
+      AXE:
+         - Durability:1
     lore:
       WEAPON:
         - "&3&l&m                                  "
@@ -506,7 +535,7 @@ enhance:
       WEAPON:
          - Corruption:1
          - Launch:5
-         - Damage_All:1
+         - 10?Damage_All:1
       ARMOR:
          - Flame:3
     lore:
@@ -534,7 +563,7 @@ enhance:
        WEAPON:
          - Reborn:3
          - Mischief:3
-         - Damage_All:1
+         - 10?Damage_All:1
        ARMOR:
          - Aegis:1
          - Eyepatch:1
@@ -563,7 +592,7 @@ enhance:
       WEAPON:
          - Crits:1
          - Riftslayer:1
-         - Damage_All:1
+         - 10?Damage_All:1
       ARMOR:
          - Aegis:1
          - Blessed:1
@@ -592,7 +621,7 @@ enhance:
       WEAPON:
          - Hex:3
          - Assassin:3
-         - Damage_All:1
+         - 10?Damage_All:1
       ARMOR:
          - Aegis:1
          - Blessed:1
@@ -621,7 +650,7 @@ enhance:
       WEAPON:
          - Curse:2
          - Strength:1
-         - Damage_All:1
+         - 10?Damage_All:1
       ARMOR:
          - Aegis:1
          - Blessed:1
@@ -650,7 +679,7 @@ enhance:
     enchantments:
       WEAPON:
          - Curse:2
-         - Damage_All:1
+         - 10?Damage_All:1
       ARMOR:
          - Aegis:1
     lore:
@@ -677,7 +706,7 @@ enhance:
     enchantments:
       WEAPON:
          - Speed:1
-         - Damage_All:1
+         - 10?Damage_All:1
       ARMOR:
          - Shield:1
     lore:
@@ -704,7 +733,7 @@ enhance:
     enchantments:
       WEAPON:
          - Siphon:3
-         - Damage_All:1
+         - 10?Damage_All:1
       ARMOR:
          - Saturation:1
     lore:
@@ -733,7 +762,7 @@ enhance:
          - Petrify:3
          - Crushing:3
          - Lifesteal:1
-         - Damage_All:4
+         - 50?Damage_All:2-4
       ARMOR:
          - Dodge:5
     lore:
@@ -763,7 +792,7 @@ enhance:
          - Turmoil:3
          - Crushing:3
          - Lifesteal:1
-         - Damage_All:4
+         - 50?Damage_All:2-4
       ARMOR:
          - Repel:3
          - Molten:3
@@ -793,7 +822,7 @@ enhance:
       WEAPON:
          - Lifesteal:1
          - Paralyze:2
-         - Damage_All:4
+         - 50?Damage_All:2-4
       ARMOR:
          - Reinforced:1
          - Suicide:1
@@ -824,7 +853,7 @@ enhance:
     enchantments:
       WEAPON:
          - Purge:4
-         - Damage_All:4
+         - 50?Damage_All:2-4
       ARMOR:
          - Spiked:3
          - Vitality:1
@@ -854,15 +883,15 @@ enhance:
     prefix: '&c&lPEN'
     suffix: ""
     enchantments:
-          WEAPON:
-             - Damage_All:4
-             - Strength:2
-          ARMOR:
-             - Vitality:2
-             - Cure:2
-             - Immolation:4
-             - Reversal:2
-             - Shield:1
+      WEAPON:
+         - 50?Damage_All:2-4
+         - Strength:2
+      ARMOR:
+         - Vitality:2
+         - Cure:2
+         - Immolation:4
+         - Reversal:2
+         - Shield:1
     lore:
       WEAPON:
       - '&8&l&m                                  '

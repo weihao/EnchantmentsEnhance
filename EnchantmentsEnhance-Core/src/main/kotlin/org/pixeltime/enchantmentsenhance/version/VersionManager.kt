@@ -41,7 +41,7 @@ class VersionManager : EnchantmentListener() {
         fun versionChecker() {
             try {
                 val connection = URL(
-                        "https://api.spigotmc.org/legacy/update.php?resource=51635")
+                        "https://api.spigotmc.org/legacy/update.php?resource=59555")
                         .openConnection() as HttpURLConnection
                 connection.doOutput = true
                 connection.requestMethod = "POST"

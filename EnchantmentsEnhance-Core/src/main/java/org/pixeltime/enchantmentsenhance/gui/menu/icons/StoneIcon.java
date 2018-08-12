@@ -34,15 +34,15 @@ public class StoneIcon extends Clickable {
         return new ItemBuilder(MaterialManager.stoneTypes.get(stoneId),
                 (ItemIcon.getOneStoneCountAsCount(player.getName(), stoneId) > 64
                         ? 64 : ItemIcon.getOneStoneCountAsCount(player.getName(), stoneId)))
-                .setName(SettingsManager.lang.getString("Item." + stoneId))
+                .setName(SettingsManager.lang.getString("item." + stoneId))
                 .addLoreLine(ItemIcon.getOneStoneCountAsString(player.getName(), stoneId))
-                .addLoreLine(SettingsManager.lang.getString("Menu.leftInfo"))
-                .addLoreLine(SettingsManager.lang.getString("Menu.rightInfo"))
+                .addLoreLine(SettingsManager.lang.getString("menu.leftInfo"))
+                .addLoreLine(SettingsManager.lang.getString("menu.rightInfo"))
                 .toItemStack();
     }
 
     public ItemStack getItem(int stoneId) {
-        return new ItemBuilder(MaterialManager.stoneTypes.get(stoneId), (1)).setName(SettingsManager.lang.getString("Item." + stoneId)).addLoreLine(ItemIcon.getOneStoneCountAsString(null, stoneId)).toItemStack();
+        return new ItemBuilder(MaterialManager.stoneTypes.get(stoneId), (1)).setName(SettingsManager.lang.getString("item." + stoneId)).addLoreLine(ItemIcon.getOneStoneCountAsString(null, stoneId)).toItemStack();
     }
 
     public ItemStack getItem(ItemStack item, Player player) {

@@ -36,7 +36,9 @@ import org.pixeltime.enchantmentsenhance.util.datastructure.interfaces.Iterator;
 import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class ItemManager {
 
@@ -115,7 +117,7 @@ public class ItemManager {
     public static void soulbound(ItemStack item) {
         Lore.removeLore(item);
         Lore.addLore(item,
-                SettingsManager.lang.getString("Lore." + SettingsManager.config
+                SettingsManager.lang.getString("lore." + SettingsManager.config
                         .getString("lore.bound") + "Lore"), !SettingsManager.config
                         .getString("lore.bound").contains("un"));
     }
@@ -161,7 +163,7 @@ public class ItemManager {
         int enchantLevel = getItemEnchantLevel(item);
 
         if (enchantLevel > 0) {
-            DoublyLinkedList<String> node = new DoublyLinkedList<>();
+            DoublyLinkedList<List<String>> node = new DoublyLinkedList<>();
             String history = ItemManager.getHistory(item);
             if (!history.isEmpty()) {
                 String[] temp = history
@@ -169,44 +171,57 @@ public class ItemManager {
                         .replace("}", "")
                         .split("; ");
                 for (int i = 0; i < temp.length; i++) {
-                    node.add(temp[i]);
+                    // Nodes
+                    node.add(Arrays.asList(temp[i]
+                            .replace("[", "")
+                            .replace("]", "")
+                            .split(", ")));
                 }
             }
             if (addition) {
                 ItemType type = getItemEnchantmentType(item);
                 List<String> temp = SettingsManager.config.getStringList("enhance."
                         + enchantLevel + ".enchantments." + type.toString());
-
+                ArrayList<String> newNode = new ArrayList<>();
                 //Adding New enchantment.
                 for (String s : temp) {
-                    String[] a = s.split(":");
-                    applyEnchantmentToItem(item, a[0], Integer.parseInt(a[1]));
+                    int level;
+                    // Random level.
+                    if (s.contains("-")) {
+                        String[] prob = s.split(":")[1].split("-");
+                        int upper = Integer.parseInt(prob[1]);
+                        int lower = Integer.parseInt(prob[0]);
+                        level = (int) (Math.random() * (upper - lower)) + lower;
+                    } else {
+                        level = Integer.parseInt(s.split(":")[1]);
+                    }
+
+                    int prob;
+                    String ench;
+                    if (s.contains("?")) {
+                        prob = Integer.parseInt(s.split("\\?")[0]);
+                        ench = s.split("\\?")[1].split(":")[0];
+                    } else {
+                        prob = 100;
+                        ench = s.split(":")[0];
+                    }
+                    Random random = new Random();
+                    if (random.nextDouble() * 100 <= prob) {
+                        applyEnchantmentToItem(item, ench, level);
+                        newNode.add(ench + ":" + level);
+                    }
                 }
-                node.add(temp.toString());
+                node.add(newNode);
                 return setHistory(item, node.toString());
             } else {
-                Iterator<String> it = node.iterator();
-                String downgrade = null;
+                Iterator<List<String>> it = node.iterator();
+                List<String> downgrade = null;
                 while (it.hasNext()) {
                     downgrade = it.next();
                 }
-                if (downgrade == null) {
-                    ItemType type = getItemEnchantmentType(item);
-                    List<String> temp = SettingsManager.config.getStringList("enhance."
-                            + (enchantLevel + 1) + ".enchantments." + type.toString());
-                    //Adding New enchantment.
-                    for (String s : temp) {
-                        String[] a = s.split(":");
-                        applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
-                    }
-                } else {
-                    for (String s : downgrade
-                            .replace("[", "")
-                            .replace("]", "")
-                            .split(", ")) {
-                        String[] a = s.split(":");
-                        applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
-                    }
+                for (String s : downgrade) {
+                    String[] a = s.replace("[", "").replace("]", "").split(":");
+                    applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
                 }
             }
         }
@@ -230,10 +245,11 @@ public class ItemManager {
             String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
             int keptLevel = 0;
             if (enchantment != null) {
+                String currEnch = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', enchantment));
                 for (int i = 0; i < newlore.size(); i++) {
                     String curr = ChatColor.stripColor(newlore.get(i));
-                    String currEnch = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', enchantment));
                     if (curr.contains(currEnch)) {
+                        // Adds original level.
                         keptLevel += Util.romanToInt(curr.split(" ")[1]);
                         newlore.remove(i);
                         i--;
@@ -254,6 +270,13 @@ public class ItemManager {
                                 .addGlow(item);
                     }
                     return true;
+                } else {
+                    meta.setLore(newlore);
+                    item.setItemMeta(meta);
+                    if (item.getEnchantments().isEmpty()) {
+                        CompatibilityManager.glow
+                                .addGlow(item);
+                    }
                 }
             }
             return false;
@@ -300,11 +323,11 @@ public class ItemManager {
     public static ItemStack itemMaterialize(int stoneId, int amount) {
         return CompatibilityManager.glow
                 .addGlow(setGive(new ItemBuilder(MaterialManager.stoneTypes.get(stoneId))
-                                .setName(SettingsManager.lang.getString("Item." + stoneId) + " Bundle: " + amount)
-                                .addLoreLine(SettingsManager.lang.getString("Materialize.info1"))
-                                .addLoreLine(SettingsManager.lang.getString("Materialize.info2")
+                                .setName(SettingsManager.lang.getString("item." + stoneId) + " Bundle: " + amount)
+                                .addLoreLine(SettingsManager.lang.getString("materialize.info1"))
+                                .addLoreLine(SettingsManager.lang.getString("materialize.info2")
                                         .replace("%amount%", Integer.toString(amount))
-                                        .replace("%item%", SettingsManager.lang.getString("Item." + stoneId)))
+                                        .replace("%item%", SettingsManager.lang.getString("item." + stoneId)))
                                 .toItemStack(),
                         stoneId + ":" + amount));
     }
@@ -312,9 +335,9 @@ public class ItemManager {
     public static ItemStack adviceMaterialize(int level) {
         return CompatibilityManager.glow
                 .addGlow(setGive(new ItemBuilder(XMaterial.BOOK.parseItem())
-                                .setName(SettingsManager.lang.getString("Item.valks") + "+" + level)
-                                .addLoreLine(SettingsManager.lang.getString("Materialize.info1"))
-                                .addLoreLine(SettingsManager.lang.getString("Materialize.advice1")
+                                .setName(SettingsManager.lang.getString("item.valks") + "+" + level)
+                                .addLoreLine(SettingsManager.lang.getString("materialize.info1"))
+                                .addLoreLine(SettingsManager.lang.getString("materialize.advice1")
                                         .replace("%level%", Integer.toString(level)))
                                 .toItemStack(),
                         "-1:" + level));

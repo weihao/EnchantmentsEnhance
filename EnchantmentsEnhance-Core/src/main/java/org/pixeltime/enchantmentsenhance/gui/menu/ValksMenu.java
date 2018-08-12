@@ -40,7 +40,7 @@ public class ValksMenu extends GUIAbstract {
     private int currPage = 1;
 
     public ValksMenu(Player player) {
-        super(player, 54, SettingsManager.lang.getString("Valks.gui"));
+        super(player, 54, SettingsManager.lang.getString("valks.gui"));
         update();
     }
 
@@ -56,9 +56,9 @@ public class ValksMenu extends GUIAbstract {
                 final int level = inv.get(index);
                 setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1),
                         CompatibilityManager.glow.addGlow(new ItemBuilder(Material.BOOK, level)
-                                .setName(SettingsManager.lang.getString("Item.valks") + "+" + level)
-                                .addLoreLine(SettingsManager.lang.getString("Menu.leftAdviceInfo"))
-                                .addLoreLine(SettingsManager.lang.getString("Menu.rightInfo"))
+                                .setName(SettingsManager.lang.getString("item.valks") + "+" + level)
+                                .addLoreLine(SettingsManager.lang.getString("menu.leftAdviceInfo"))
+                                .addLoreLine(SettingsManager.lang.getString("menu.rightInfo"))
                                 .toItemStack()), (clickType) -> new BukkitRunnable() {
                             @Override
                             public void run() {
@@ -68,7 +68,7 @@ public class ValksMenu extends GUIAbstract {
                                             Main.getApi().addFailstack(player.getName(), level);
                                             PlayerStat.getPlayerStats(playerName).getValks().remove(index);
                                             Util.sendMessage(SettingsManager.lang.getString(
-                                                    "Valks.used").replaceAll("%LEVEL%", Integer
+                                                    "valks.used").replaceAll("%LEVEL%", Integer
                                                     .toString(level)), player);
                                             new BukkitRunnable() {
                                                 @Override
@@ -79,11 +79,11 @@ public class ValksMenu extends GUIAbstract {
                                             }.runTaskLaterAsynchronously(Main.getMain(), 2L);
                                         } else {
                                             Util.sendMessage(SettingsManager.lang.getString(
-                                                    "Valks.hasFailstack"), player);
+                                                    "valks.hasFailstack"), player);
                                         }
                                     } else {
                                         Util.sendMessage(SettingsManager.lang.getString(
-                                                "Config.invalidNumber"), player);
+                                                "config.invalidNumber"), player);
                                     }
                                 }
                                 if (clickType == ClickType.RIGHT) {
@@ -92,7 +92,7 @@ public class ValksMenu extends GUIAbstract {
                                         PlayerStat.getPlayerStats(playerName).getValks().remove(index);
                                         update();
                                     } else {
-                                        Util.sendMessage(SettingsManager.lang.getString("Materialize.inventoryFull"), player);
+                                        Util.sendMessage(SettingsManager.lang.getString("materialize.inventoryFull"), player);
                                     }
                                 }
                             }
@@ -118,8 +118,8 @@ public class ValksMenu extends GUIAbstract {
         if (inv.size() > currPage * 54) {
             setItem(Util.getSlot(9, 6),
                     new ItemBuilder(Material.ARROW)
-                            .setName(SettingsManager.lang.getString("Menu.gui.next"))
-                            .addLoreLine(SettingsManager.lang.getString("Menu.lore.next"))
+                            .setName(SettingsManager.lang.getString("menu.gui.next"))
+                            .addLoreLine(SettingsManager.lang.getString("menu.lore.next"))
                             .toItemStack(),
                     (clickType) -> {
                         currPage++;

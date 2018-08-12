@@ -68,6 +68,9 @@ public class MenuHandler implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onInventoryClose(InventoryCloseEvent e) {
         Player player = (Player) e.getPlayer();
+        if (MainMenu.inProgress.containsKey(player.getName())) {
+            MainMenu.inProgress.get(player.getName()).cancel();
+        }
         MainMenu.clearPlayer(player.getName());
     }
 }

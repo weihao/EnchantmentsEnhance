@@ -48,13 +48,13 @@ public class ItemUseListener implements Listener {
                 int amount = Integer.parseInt(give[1]);
                 if (id < 0) {
                     Main.getApi().addAdvice(player.getName(), amount);
-                    Util.sendMessage(SettingsManager.lang.getString("Materialize.adviceSucess")
+                    Util.sendMessage(SettingsManager.lang.getString("materialize.adviceSucess")
                             .replace("%level%", Integer.toString(amount)), player);
                 } else {
                     Main.getApi().addItem(player.getName(), id, amount);
-                    Util.sendMessage(SettingsManager.lang.getString("Materialize.success")
+                    Util.sendMessage(SettingsManager.lang.getString("materialize.success")
                             .replace("%amount%", Integer.toString(amount))
-                            .replace("%item%", SettingsManager.lang.getString("Item." + id)), player);
+                            .replace("%item%", SettingsManager.lang.getString("item." + id)), player);
                 }
 
                 // Consume the item.

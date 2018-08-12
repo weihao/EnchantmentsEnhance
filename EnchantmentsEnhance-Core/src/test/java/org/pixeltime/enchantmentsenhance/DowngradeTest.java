@@ -16,15 +16,32 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.chat
+package org.pixeltime.enchantmentsenhance;
 
-import org.bukkit.Bukkit
-import org.pixeltime.enchantmentsenhance.enums.AnnounceType
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.util.Util
+import junit.framework.TestCase;
+import org.pixeltime.enchantmentsenhance.util.datastructure.DoublyLinkedList;
 
-class Announcer_Chat : Announcer {
-    override fun announce(msg: String, type: AnnounceType) {
-        Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString("config.pluginTag") + msg))
+import java.util.ArrayList;
+
+public class DowngradeTest extends TestCase {
+
+    public void testLogic() {
+        DoublyLinkedList<String> node = new DoublyLinkedList<>();
+        ArrayList<String> a = new ArrayList<>();
+        a.add("1");
+        a.add("2");
+        a.add("3");
+        a.add("4");
+        ArrayList<String> b = new ArrayList<>();
+        b.add("one");
+        b.add("two");
+        b.add("three");
+        node.add(a.toString());
+        node.add(b.toString());
+        String history1 = node.toString();
+        String[] temp = history1.split("; ");
+
+
     }
+
 }

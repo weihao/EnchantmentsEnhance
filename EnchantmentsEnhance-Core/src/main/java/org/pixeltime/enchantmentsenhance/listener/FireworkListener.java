@@ -16,15 +16,19 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.chat
+package org.pixeltime.enchantmentsenhance.listener;
 
-import org.bukkit.Bukkit
-import org.pixeltime.enchantmentsenhance.enums.AnnounceType
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.util.Util
+import org.bukkit.entity.EntityType;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 
-class Announcer_Chat : Announcer {
-    override fun announce(msg: String, type: AnnounceType) {
-        Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString("config.pluginTag") + msg))
+public class FireworkListener implements Listener {
+    @EventHandler
+    public void onDamage(final EntityDamageByEntityEvent e) {
+        if (e.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION && e.getDamager().getType() == EntityType.FIREWORK) {
+            e.setCancelled(true);
+        }
     }
 }

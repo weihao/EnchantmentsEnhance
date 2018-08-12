@@ -47,10 +47,10 @@ public class EnhancedItemListener implements Listener {
         if ((DroppedItemStack.hasItemMeta()) && (DroppedItemStack.getItemMeta()
                 .getLore() != null)) {
             if (DroppedItemStack.getItemMeta().getLore().contains(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
-                    SettingsManager.lang.getString("Lore.untradeableLore")))) {
+                    SettingsManager.lang.getString("lore.untradeableLore")))) {
                 e.setCancelled(true);
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "Messages.noDrop"), p);
+                        "messages.noDrop"), p);
             }
         }
     }
@@ -66,17 +66,17 @@ public class EnhancedItemListener implements Listener {
             if ((e.getClick().equals(ClickType.NUMBER_KEY)) && (e.getWhoClicked().getInventory().getItem(e.getHotbarButton()) != null)) {
                 ItemStack itemMoved = e.getWhoClicked().getInventory().getItem(e.getHotbarButton());
                 if ((itemMoved.hasItemMeta()) && (itemMoved.getItemMeta().hasLore())) {
-                    if (itemMoved.getItemMeta().getLore().contains(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("Lore.untradeableLore")))) {
+                    if (itemMoved.getItemMeta().getLore().contains(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.untradeableLore")))) {
                         e.setCancelled(true);
-                        Util.sendMessage(SettingsManager.lang.getString("Messages.noStorage"), e.getWhoClicked());
+                        Util.sendMessage(SettingsManager.lang.getString("messages.noStorage"), e.getWhoClicked());
                     }
                 }
             }
             if (e.getCurrentItem() != null) {
                 if ((e.getCurrentItem().hasItemMeta()) && (e.getCurrentItem().getItemMeta().hasLore())) {
-                    if (e.getCurrentItem().getItemMeta().getLore().contains(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("Lore.untradeableLore")))) {
+                    if (e.getCurrentItem().getItemMeta().getLore().contains(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.untradeableLore")))) {
                         e.setCancelled(true);
-                        Util.sendMessage(SettingsManager.lang.getString("Messages.noStorage"), e.getWhoClicked());
+                        Util.sendMessage(SettingsManager.lang.getString("messages.noStorage"), e.getWhoClicked());
                     }
                 }
             }

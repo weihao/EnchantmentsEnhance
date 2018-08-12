@@ -34,7 +34,7 @@ class EnchantmentCommand : SubCommand() {
             if (args[0].equals("add", ignoreCase = true)) {
                 val item = player.itemInHand
                 if (item == null) {
-                    Util.sendMessage(SettingsManager.lang.getString("Config.invalidItem"), player)
+                    Util.sendMessage(SettingsManager.lang.getString("config.invalidItem"), player)
                     return
                 }
                 var level = 1
@@ -46,15 +46,15 @@ class EnchantmentCommand : SubCommand() {
                     // Expected
                 }
                 if (Main.getApi().addCustomEnchant(item, args[1], level)) {
-                    Util.sendMessage(SettingsManager.lang.getString("Config.success"), player)
+                    Util.sendMessage(SettingsManager.lang.getString("config.success"), player)
                 } else {
-                    Util.sendMessage(SettingsManager.lang.getString("Config.invalidEnchant"), player)
+                    Util.sendMessage(SettingsManager.lang.getString("config.invalidEnchant"), player)
                 }
             } else {
-                Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player)
+                Util.sendMessage(SettingsManager.lang.getString("config.invalidCommand"), player)
             }
         } else {
-            Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player)
+            Util.sendMessage(SettingsManager.lang.getString("config.invalidCommand"), player)
         }
     }
 

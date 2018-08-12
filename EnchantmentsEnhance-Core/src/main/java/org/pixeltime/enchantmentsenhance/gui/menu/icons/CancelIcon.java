@@ -18,30 +18,27 @@
 
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
-import org.bukkit.Material;
+import org.bukkit.DyeColor;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
+import org.pixeltime.enchantmentsenhance.util.XMaterial;
 
-public class ReblathIcon extends Clickable {
+public class CancelIcon extends Clickable {
 
     @Override
     public ItemStack getItem(String playerName) {
-        return new ItemBuilder(Material.ANVIL)
-                .setName(SettingsManager.lang.getString("menu.gui.reblath"))
-                .addLoreLine(SettingsManager.lang.getString("reblath.info1"))
-                .addLoreLine(SettingsManager.lang.getString("reblath.info2"))
+        return new ItemBuilder(XMaterial.RED_WOOL.parseItem())
+                .setDyeColor(DyeColor.RED)
+                .setName(SettingsManager.lang.getString("menu.gui.cancel"))
+                .addLoreLine(SettingsManager.lang.getString("menu.lore.cancel"))
                 .toItemStack();
     }
 
     @Override
     public int getPosition() {
-        return Util.getSlot(1, 4);
-    }
-
-    public double getChance() {
-        return 17.5;
+        return Util.getSlot(4, 5);
     }
 }

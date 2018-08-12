@@ -45,10 +45,10 @@ class ItemCommand : SubCommand() {
                             item = ItemManager.forgeItem(player, item, i, true)
                         }
                     } else if (aimingLevel < level) {
-                        Util.sendMessage(SettingsManager.lang.getString("Config.invalidNumber"), player)
+                        Util.sendMessage(SettingsManager.lang.getString("config.invalidNumber"), player)
                     }
                 } catch (ex: Exception) {
-                    Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player)
+                    Util.sendMessage(SettingsManager.lang.getString("config.invalidCommand"), player)
                 }
                 args[0].equals("setname", ignoreCase = true) -> {
                     val item = player.itemInHand
@@ -60,21 +60,21 @@ class ItemCommand : SubCommand() {
                             ItemManager.forgeItem(player, curr, level, true)
                             MainMenu.clearPlayer(player.name)
                         } catch (ex: Exception) {
-                            Util.sendMessage(SettingsManager.lang.getString("Config.invalidItem"), player)
+                            Util.sendMessage(SettingsManager.lang.getString("config.invalidItem"), player)
                         }
                     } else {
-                        Util.sendMessage(SettingsManager.lang.getString("Config.invalidItem"), player)
+                        Util.sendMessage(SettingsManager.lang.getString("config.invalidItem"), player)
                     }
                 }
                 args[0].equals("lore", ignoreCase = true) -> when {
                     args[1].equals("unbound", ignoreCase = true) -> Lore.removeLore(player.itemInHand)
-                    args[1].equals("tradeable", ignoreCase = true) -> Lore.addLore(player.itemInHand, SettingsManager.lang.getString("Lore.tradeableLore"), true)
-                    args[1].equals("untradeable", ignoreCase = true) -> Lore.addLore(player.itemInHand, SettingsManager.lang.getString("Lore.untradeableLore"), false)
+                    args[1].equals("tradeable", ignoreCase = true) -> Lore.addLore(player.itemInHand, SettingsManager.lang.getString("lore.tradeableLore"), true)
+                    args[1].equals("untradeable", ignoreCase = true) -> Lore.addLore(player.itemInHand, SettingsManager.lang.getString("lore.untradeableLore"), false)
                 }
             }
         } else {
             Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player)
+                    "config.invalidNumber"), player)
         }
     }
 

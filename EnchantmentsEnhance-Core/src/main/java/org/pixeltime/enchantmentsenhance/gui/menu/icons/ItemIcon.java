@@ -32,8 +32,8 @@ public class ItemIcon extends Clickable {
 
     public static String getOneStoneCountAsString(String player, int stoneId) {
         int count = player == null ? 0 : Main.getApi().getItem(player, stoneId);
-        return (SettingsManager.lang.getString("Item.listing").replaceAll(
-                "%ITEM%", SettingsManager.lang.getString("Item." + stoneId))
+        return (SettingsManager.lang.getString("item.listing").replaceAll(
+                "%ITEM%", SettingsManager.lang.getString("item." + stoneId))
                 .replaceAll("%COUNT%", String.valueOf(count)));
     }
 
@@ -48,8 +48,8 @@ public class ItemIcon extends Clickable {
 
     public ItemStack getItem() {
         return (new ItemBuilder(XMaterial.CHEST_MINECART.parseMaterial())
-                .setName(SettingsManager.lang.getString("Item.gui"))
-                .addLoreLine(SettingsManager.lang.getString("Item.gui1"))
+                .setName(SettingsManager.lang.getString("item.gui"))
+                .addLoreLine(SettingsManager.lang.getString("item.gui1"))
                 .toItemStack());
     }
 

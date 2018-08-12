@@ -60,18 +60,18 @@ public class Lore {
                 if (SettingsManager.config.getBoolean(
                         "lore.sendBoundingMessage") && sendMessage) {
                     Util.sendMessage(SettingsManager.lang.getString(
-                            "Messages.already" + x), p);
+                            "messages.already" + x), p);
                 }
                 return;
             }
             loreList.remove(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
-                    SettingsManager.lang.getString("Lore." + y + "Lore")));
+                    SettingsManager.lang.getString("lore." + y + "Lore")));
             loreList.add(lore);
             im.setLore(loreList);
             is.setItemMeta(im);
             if (SettingsManager.config.getBoolean(
                     "lore.sendBoundingMessage") && sendMessage) {
-                Util.sendMessage(SettingsManager.lang.getString("Messages.made"
+                Util.sendMessage(SettingsManager.lang.getString("messages.made"
                         + x), p);
             }
             return;
@@ -82,7 +82,7 @@ public class Lore {
         p.updateInventory();
         if (SettingsManager.config.getBoolean(
                 "lore.sendBoundingMessage") && sendMessage) {
-            Util.sendMessage(SettingsManager.lang.getString("Messages.made"
+            Util.sendMessage(SettingsManager.lang.getString("messages.made"
                     + x), p);
         }
     }
@@ -105,7 +105,7 @@ public class Lore {
                 return;
             }
             loreList.remove(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
-                    SettingsManager.lang.getString("Lore." + y + "Lore")));
+                    SettingsManager.lang.getString("lore." + y + "Lore")));
             loreList.add(lore);
             im.setLore(loreList);
             is.setItemMeta(im);
@@ -126,9 +126,9 @@ public class Lore {
         ItemMeta im = is.getItemMeta();
 
         String x = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
-                SettingsManager.lang.getString("Lore.tradeableLore"));
+                SettingsManager.lang.getString("lore.tradeableLore"));
         String y = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
-                SettingsManager.lang.getString("Lore.untradeableLore"));
+                SettingsManager.lang.getString("lore.untradeableLore"));
         if ((is.hasItemMeta()) && (is.getItemMeta().hasLore())) {
             List<String> loreList = is.getItemMeta().getLore();
             if ((loreList.contains(x)) || (loreList.contains(y))) {
@@ -138,11 +138,11 @@ public class Lore {
             im.setLore(loreList);
             is.setItemMeta(im);
             Util.sendMessage(SettingsManager.lang.getString(
-                    "Messages.madeunbound"), p);
+                    "messages.madeunbound"), p);
             return;
         }
         Util.sendMessage(SettingsManager.lang.getString(
-                "Messages.alreadyunbound"), p);
+                "messages.alreadyunbound"), p);
     }
 
 
@@ -154,9 +154,9 @@ public class Lore {
     public static void removeLore(ItemStack is) {
         ItemMeta im = is.getItemMeta();
         String x = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
-                SettingsManager.lang.getString("Lore.tradeableLore"));
+                SettingsManager.lang.getString("lore.tradeableLore"));
         String y = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
-                SettingsManager.lang.getString("Lore.untradeableLore"));
+                SettingsManager.lang.getString("lore.untradeableLore"));
         if ((is.hasItemMeta()) && (is.getItemMeta().hasLore())) {
             List<String> loreList = is.getItemMeta().getLore();
             if ((loreList.contains(x)) || (loreList.contains(y))) {

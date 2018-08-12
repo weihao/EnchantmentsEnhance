@@ -16,15 +16,14 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.chat
+package org.pixeltime.enchantmentsenhance.manager
 
-import org.bukkit.Bukkit
-import org.pixeltime.enchantmentsenhance.enums.AnnounceType
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.util.Util
+import org.pixeltime.enchantmentsenhance.chat.Notification
+import org.pixeltime.enchantmentsenhance.chat.Notifier
 
-class Announcer_Chat : Announcer {
-    override fun announce(msg: String, type: AnnounceType) {
-        Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString("config.pluginTag") + msg))
+class NotifierManager(val notifier: Notifier) {
+
+    fun call(notification: Notification) {
+        notifier.sendMessage(notification.player, notification.msg as Array<String>)
     }
 }
