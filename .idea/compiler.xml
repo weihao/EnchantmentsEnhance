@@ -6,8 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="enchantmentsenhance" />
+        <module name="EnchantmentsEnhance-1.12" />
+        <module name="EnchantmentsEnhance-1.13" />
+        <module name="EnchantmentsEnhance-API" />
+        <module name="EnchantmentsEnhance-Core" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="EnchantmentsEnhance" target="1.8" />
+      <module name="EnchantmentsEnhance-1.12" target="1.8" />
+      <module name="EnchantmentsEnhance-1.13" target="1.8" />
+      <module name="EnchantmentsEnhance-API" target="1.8" />
+      <module name="EnchantmentsEnhance-Core" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
