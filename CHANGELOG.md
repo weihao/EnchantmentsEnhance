@@ -1,15 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
-## [5.6.0] - 2018-08-12
+## [5.7.0] - 2018-08-13
 ### Added
-- Firework damage can be disabled.
 ### Fixed
-- Grinding probability issue.
-
 ### Changed
 ### Removed
 
-## [5.5.0] - 2018-08-12
+## [5.6.0] - 2018-08-12
+### Added
+- Firework damage can be disabled.
+- Enhancing animation #1.
+### Fixed
+- Grinding probability issue.
+
+## [5.5.0] - 2018-08-11
 ### Added
 - Support for TitleBar.
 - Support for fancy chat.
