@@ -1,11 +1,20 @@
 # Changelog
 All notable changes to this project will be documented in this file.
-## [5.7.0] - 2018-08-13
+## [5.8.0] - 2018-08-14
 ### Added
 ### Fixed
 ### Changed
-- Lang prefix changed to lower case to follow rules of naming convention.
 ### Removed
+
+## [5.7.0] - 2018-08-13
+### Added
+- Tools enhancement.
+- Pickaxe enhancement.
+- Axe enhancement.
+- Hoe enhancement.
+### Changed
+- Lang prefix changed to lower case to follow rules of naming convention.
+- Configuration file structure change.
 
 ## [5.6.0] - 2018-08-12
 ### Added
