@@ -27,6 +27,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.Lore;
+import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -58,6 +59,20 @@ public class ItemManager {
             return ItemType.WEAPON;
         } else if (isValid(item, MaterialManager.armor)) {
             return ItemType.ARMOR;
+        } else if (isValid(item, Arrays.asList(Material.BOW))) {
+            return ItemType.BOW;
+        } else {
+            return ItemType.INVALID;
+        }
+    }
+
+    public static ItemType getToolItemEnchantmentType(ItemStack item) {
+        if (isValid(item, MaterialManager.axe)) {
+            return ItemType.AXE;
+        } else if (isValid(item, MaterialManager.pickaxe)) {
+            return ItemType.PICKAXE;
+        } else if (isValid(item, MaterialManager.hoe)) {
+            return ItemType.HOE;
         } else {
             return ItemType.INVALID;
         }
@@ -80,6 +95,16 @@ public class ItemManager {
         return nbti.getInteger("ELevel");
     }
 
+    public static int getToolEnchantLevel(ItemStack item) {
+        NBTItem nbti = new NBTItem(item);
+        return nbti.getInteger("ETool");
+    }
+
+    public static ItemStack setToolEnchantLevel(ItemStack item, int enhanceLevel) {
+        NBTItem nbti = new NBTItem(item);
+        nbti.setInteger("ETool", enhanceLevel);
+        return nbti.getItem();
+    }
 
     public static String getItemLore(ItemStack item) {
         NBTItem nbti = new NBTItem(item);
@@ -122,8 +147,16 @@ public class ItemManager {
                         .getString("lore.bound").contains("un"));
     }
 
-    public static ItemStack forgeItem(Player player, ItemStack item, int enchantLevel, boolean addition) {
-        ItemStack currItem = setLevel(item, enchantLevel);
+    public static ItemStack forgeItem(Player player, ItemStack item, int enchantLevel, boolean addition, Clickable clicked) {
+        ItemStack currItem;
+        if (clicked.equals(MainMenu.gear)) {
+            currItem = setLevel(item, enchantLevel);
+        } else if (clicked.equals(MainMenu.tool)) {
+            currItem = setToolEnchantLevel(item, enchantLevel);
+        } else {
+            return null;
+        }
+
         // Getting Unique Name.
         List<String> oldLore = KotlinManager.stripLore(item);
 
@@ -132,11 +165,13 @@ public class ItemManager {
         }
 
         // Unique ID applied.
-        currItem = applyEnchantments(currItem, addition);
+        currItem = applyEnchantments(currItem, addition, clicked);
+
         if (SettingsManager.config.getBoolean("enableRename")) {
-            renameItem(currItem);
+            renameItem(currItem, clicked);
         }
-        addlore(currItem, oldLore);
+
+        addlore(currItem, oldLore, clicked);
         if (!SettingsManager.config.getString("lore.bound").equalsIgnoreCase("disabled")) {
             soulbound(currItem);
         }
@@ -146,12 +181,18 @@ public class ItemManager {
         return currItem;
     }
 
-    private static void addlore(ItemStack currItem, List<String> old) {
+    private static void addlore(ItemStack currItem, List<String> old, Clickable clicked) {
         ItemMeta im = currItem.getItemMeta();
         List<String> lore = (old != null && old.size() > 0) ? old : new ArrayList<>();
         List<String> newlore = im.hasLore() ? im.getLore() : new ArrayList<>();
         newlore.removeIf(e -> (!e.startsWith(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', "&7"))));
-        for (String s : (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore." + getItemEnchantmentType(currItem).toString())) {
+        List<String> applyingLores = null;
+        if (clicked.equals(MainMenu.gear)) {
+            applyingLores = (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore");
+        } else if (clicked.equals(MainMenu.tool)) {
+            applyingLores = (List<String>) SettingsManager.config.getList("enhance." + getToolEnchantLevel(currItem) + ".lore");
+        }
+        for (String s : applyingLores) {
             lore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', s));
         }
         newlore.addAll(lore);
@@ -159,9 +200,15 @@ public class ItemManager {
         currItem.setItemMeta(im);
     }
 
-    public static ItemStack applyEnchantments(ItemStack item, boolean addition) {
-        int enchantLevel = getItemEnchantLevel(item);
-
+    public static ItemStack applyEnchantments(ItemStack item, boolean addition, Clickable clicked) {
+        int enchantLevel;
+        if (clicked.equals(MainMenu.gear)) {
+            enchantLevel = getItemEnchantLevel(item);
+        } else if (clicked.equals(MainMenu.tool)) {
+            enchantLevel = getToolEnchantLevel(item);
+        } else {
+            return null;
+        }
         if (enchantLevel > 0) {
             DoublyLinkedList<List<String>> node = new DoublyLinkedList<>();
             String history = ItemManager.getHistory(item);
@@ -179,7 +226,12 @@ public class ItemManager {
                 }
             }
             if (addition) {
-                ItemType type = getItemEnchantmentType(item);
+                ItemType type = null;
+                if (clicked.equals(MainMenu.gear)) {
+                    type = getItemEnchantmentType(item);
+                } else if (clicked.equals(MainMenu.tool)) {
+                    type = getToolItemEnchantmentType(item);
+                }
                 List<String> temp = SettingsManager.config.getStringList("enhance."
                         + enchantLevel + ".enchantments." + type.toString());
                 ArrayList<String> newNode = new ArrayList<>();
@@ -284,8 +336,15 @@ public class ItemManager {
     }
 
 
-    public static void renameItem(ItemStack item) {
-        int enchantLevel = ItemManager.getItemEnchantLevel(item);
+    public static void renameItem(ItemStack item, Clickable clicked) {
+        int enchantLevel;
+        if (clicked.equals(MainMenu.gear)) {
+            enchantLevel = ItemManager.getItemEnchantLevel(item);
+        } else if (clicked.equals(MainMenu.tool)) {
+            enchantLevel = ItemManager.getToolEnchantLevel(item);
+        } else {
+            return;
+        }
         String name = getFriendlyName(item);
 
         if (SettingsManager.config.getBoolean("renamingIncludes.prefix")) {

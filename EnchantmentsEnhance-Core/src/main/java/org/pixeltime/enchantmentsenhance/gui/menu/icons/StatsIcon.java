@@ -42,11 +42,10 @@ public class StatsIcon extends Clickable {
                 .toItemStack();
     }
 
-    @Override
-    public ItemStack getItem(String playerName) {
+    public ItemStack getItem(String playerName, Clickable clicked) {
         if (playerName != null && MainMenu.itemOnEnhancingSlot.get(playerName) != null) {
             return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial()).setDyeColor(DyeColor.LIGHT_BLUE).setName(SettingsManager.lang.getString("menu.gui.stats")).addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack")
-                    + Main.getApi().getFailstack(playerName)).addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName)).addLoreLine(SettingsManager.lang.getString(
+                    + Main.getApi().getFailstack(playerName)).addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName, clicked)).addLoreLine(SettingsManager.lang.getString(
                     "menu.lore.stats1")).addLoreLine(SettingsManager.lang.getString(
                     "menu.lore.stats2")).toItemStack());
         }
@@ -60,6 +59,11 @@ public class StatsIcon extends Clickable {
                     .addLoreLine(SettingsManager.lang.getString("menu.lore.stats2"))
                     .toItemStack());
         }
+        return getItem();
+    }
+
+    @Override
+    public ItemStack getItem(String player) {
         return getItem();
     }
 

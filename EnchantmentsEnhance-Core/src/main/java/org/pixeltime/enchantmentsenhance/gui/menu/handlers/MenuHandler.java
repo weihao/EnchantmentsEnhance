@@ -52,9 +52,16 @@ public class MenuHandler implements Listener {
         if (gui != null && gui.getInventory().equals(e.getInventory())) {
             e.setCancelled(true);
             if (!MainMenu.itemOnEnhancingSlot.containsKey(player.getName())) {
-                if (Enhance.getValidationOfItem(e.getCurrentItem()) && e.getRawSlot() >= 54) {
-                    MainMenu.itemOnEnhancingSlot.put(playerName, e.getCurrentItem());
-                    gui.update();
+                if (MainMenu.enhancingMode.get(player.getName()).equals(MainMenu.gear)) {
+                    if (Enhance.getValidationOfItem(e.getCurrentItem()) && e.getRawSlot() >= 54) {
+                        MainMenu.itemOnEnhancingSlot.put(playerName, e.getCurrentItem());
+                        gui.update();
+                    }
+                } else if (MainMenu.enhancingMode.get(player.getName()).equals(MainMenu.tool)) {
+                    if (Enhance.getValidationOfToolItem(e.getCurrentItem()) && e.getRawSlot() >= 54) {
+                        MainMenu.itemOnEnhancingSlot.put(playerName, e.getCurrentItem());
+                        gui.update();
+                    }
                 }
             }
         }

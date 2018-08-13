@@ -18,8 +18,6 @@
 
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
-import org.bukkit.BanList;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
@@ -31,8 +29,7 @@ public class GearIcon extends Clickable {
     @Override
     public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.DIAMOND_SWORD)
-                .setName("Gear")
-                .addLoreLine(SettingsManager.lang.getString("icon.gear1"))
+                .setName(SettingsManager.lang.getString("icon.gear1"))
                 .addLoreLine(SettingsManager.lang.getString("icon.gear2"))
                 .toItemStack();
     }

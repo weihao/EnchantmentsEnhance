@@ -179,9 +179,7 @@ public class ArrayBasedStackTest extends TestCase {
     }
 
 
-    public void testDebuggerViews()
-
-    {
+    public void testDebuggerViews() {
 
         ArrayBasedStack<String> testStack = new ArrayBasedStack<String>();
 

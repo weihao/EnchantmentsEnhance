@@ -1,14 +1,20 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [5.7.0] - 2018-08-13
+### Added
+### Fixed
+### Changed
+- Lang prefix changed to lower case to follow rules of naming convention.
+### Removed
+
 ## [5.6.0] - 2018-08-12
 ### Added
+- Firework damage can be disabled.
+- Enhancing animation #1.
 ### Fixed
 - Grinding probability issue.
 
-### Changed
-### Removed
-
-## [5.5.0] - 2018-08-12
+## [5.5.0] - 2018-08-11
 ### Added
 - Support for TitleBar.
 - Support for fancy chat.

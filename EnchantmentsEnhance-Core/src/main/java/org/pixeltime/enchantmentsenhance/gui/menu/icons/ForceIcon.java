@@ -40,9 +40,9 @@ public class ForceIcon extends Clickable {
                         "menu.lore.force1")).toItemStack();
     }
 
-    public ItemStack getItem(ItemStack item) {
+    public ItemStack getItem(ItemStack item, Clickable clicked) {
         int enchantLevel = ItemManager.getItemEnchantLevel(item);
-        int stoneId = Enhance.getStoneId(item, enchantLevel);
+        int stoneId = Enhance.getStoneId(item, enchantLevel, clicked);
         int costToEnhance = DataManager.costToForceEnchant[enchantLevel + 1];
         return new ItemBuilder(XMaterial.RED_WOOL.parseMaterial())
                 .setDyeColor(DyeColor.RED)
@@ -53,8 +53,8 @@ public class ForceIcon extends Clickable {
                         .replaceAll("%ITEM%", SettingsManager.lang.getString("item." + stoneId))).toItemStack();
     }
 
-    public ItemStack getGlowingItem(ItemStack item) {
-        return CompatibilityManager.glow.addGlow(getItem(item));
+    public ItemStack getGlowingItem(ItemStack item, Clickable clicked) {
+        return CompatibilityManager.glow.addGlow(getItem(item, clicked));
     }
 
     @Override

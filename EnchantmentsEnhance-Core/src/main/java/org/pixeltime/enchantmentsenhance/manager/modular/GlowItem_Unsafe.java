@@ -36,7 +36,7 @@ public class GlowItem_Unsafe implements GlowItem {
                 | NoSuchMethodException
                 | IllegalAccessException
                 | InvocationTargetException e
-                ) {
+        ) {
             e.printStackTrace();
         }
         return item;

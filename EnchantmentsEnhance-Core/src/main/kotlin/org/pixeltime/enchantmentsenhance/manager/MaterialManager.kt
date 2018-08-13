@@ -32,12 +32,8 @@ class MaterialManager {
                 XMaterial.IRON_SWORD.parseMaterial())
 
         @JvmField
-        val axe = arrayListOf(
-                XMaterial.DIAMOND_AXE.parseMaterial(),
-                XMaterial.IRON_AXE.parseMaterial(),
-                XMaterial.WOODEN_AXE.parseMaterial(),
-                XMaterial.STONE_AXE.parseMaterial(),
-                XMaterial.GOLDEN_AXE.parseMaterial())
+        val axe = mutableListOf<Material>()
+
         @JvmField
         val helmet = arrayListOf(
                 XMaterial.DIAMOND_HELMET.parseMaterial(),
@@ -60,19 +56,11 @@ class MaterialManager {
                 XMaterial.LEATHER_CHESTPLATE.parseMaterial(),
                 XMaterial.CHAINMAIL_CHESTPLATE.parseMaterial())
         @JvmField
-        val pick = arrayListOf(
-                XMaterial.DIAMOND_PICKAXE.parseMaterial(),
-                XMaterial.IRON_PICKAXE.parseMaterial(),
-                XMaterial.GOLDEN_PICKAXE.parseMaterial(),
-                XMaterial.STONE_PICKAXE.parseMaterial(),
-                XMaterial.WOODEN_PICKAXE.parseMaterial())
+        val pickaxe = mutableListOf<Material>()
+
         @JvmField
-        val hoe = arrayListOf(
-                XMaterial.DIAMOND_HOE.parseMaterial(),
-                XMaterial.IRON_HOE.parseMaterial(),
-                XMaterial.GOLDEN_HOE.parseMaterial(),
-                XMaterial.STONE_HOE.parseMaterial(),
-                XMaterial.WOODEN_HOE.parseMaterial())
+        val hoe = mutableListOf<Material>()
+
 
         @JvmField
         val stoneTypes = mutableListOf<Material>()
@@ -82,6 +70,9 @@ class MaterialManager {
 
         @JvmField
         val weapon = mutableListOf<Material>()
+
+        @JvmField
+        val bow = mutableListOf<Material>()
 
         @JvmStatic
         fun setup() {
@@ -98,6 +89,22 @@ class MaterialManager {
             for (s in SettingsManager.config.getStringList(
                     "material.weapon")) {
                 weapon.add(XMaterial.fromString(s).parseMaterial())
+            }
+            for (s in SettingsManager.config.getStringList(
+                    "material.bow")) {
+                bow.add(XMaterial.fromString(s).parseMaterial())
+            }
+            for (s in SettingsManager.config.getStringList(
+                    "material.hoe")) {
+                hoe.add(XMaterial.fromString(s).parseMaterial())
+            }
+            for (s in SettingsManager.config.getStringList(
+                    "material.pickaxe")) {
+                pickaxe.add(XMaterial.fromString(s).parseMaterial())
+            }
+            for (s in SettingsManager.config.getStringList(
+                    "material.axe")) {
+                axe.add(XMaterial.fromString(s).parseMaterial())
             }
         }
     }

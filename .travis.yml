@@ -1,20 +1,20 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 before_install:
-  - cd BuildTools
-  - if [ -e "craftbukkit-1.8.8.jar" ]; then echo "CraftBukkit-1.8.8.jar OK."; else java -jar BuildTools.jar --rev 1.8.8; fi
-  - if [ -e "craftbukkit-1.9.4.jar" ]; then echo "CraftBukkit-1.9.4.jar OK."; else java -jar BuildTools.jar --rev 1.9.4; fi
-  - if [ -e "craftbukkit-1.10.2.jar" ]; then echo "CraftBukkit-1.10.2.jar OK."; else java -jar BuildTools.jar --rev 1.10.2; fi
-  - if [ -e "craftbukkit-1.11.2.jar" ]; then echo "CraftBukkit-1.11.2.jar OK."; else java -jar BuildTools.jar --rev 1.11.2; fi
-  - if [ -e "craftbukkit-1.12.2.jar" ]; then echo "CraftBukkit-1.12.2.jar OK."; else java -jar BuildTools.jar --rev 1.12.2; fi
-  - if [ -e "craftbukkit-1.13.jar" ]; then echo "CraftBukkit-1.13.jar OK."; else java -jar BuildTools.jar --rev 1.13; fi
-  - cd ..
+- cd BuildTools
+- if [ -e "craftbukkit-1.8.8.jar" ]; then echo "CraftBukkit-1.8.8.jar OK."; else java -jar BuildTools.jar --rev 1.8.8; fi
+- if [ -e "craftbukkit-1.9.4.jar" ]; then echo "CraftBukkit-1.9.4.jar OK."; else java -jar BuildTools.jar --rev 1.9.4; fi
+- if [ -e "craftbukkit-1.10.2.jar" ]; then echo "CraftBukkit-1.10.2.jar OK."; else java -jar BuildTools.jar --rev 1.10.2; fi
+- if [ -e "craftbukkit-1.11.2.jar" ]; then echo "CraftBukkit-1.11.2.jar OK."; else java -jar BuildTools.jar --rev 1.11.2; fi
+- if [ -e "craftbukkit-1.12.2.jar" ]; then echo "CraftBukkit-1.12.2.jar OK."; else java -jar BuildTools.jar --rev 1.12.2; fi
+- if [ -e "craftbukkit-1.13.jar" ]; then echo "CraftBukkit-1.13.jar OK."; else java -jar BuildTools.jar --rev 1.13; fi
+- cd ..
 install:
-  - mvn install package
+- mvn install package
 after_success:
-  - mvn clean
+- mvn clean
 cache:
   directories:
-    - $HOME/.m2
-    - BuildTools
+  - $HOME/.m2
+  - BuildTools

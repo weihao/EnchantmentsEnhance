@@ -23,6 +23,7 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.command.SubCommand
 import org.pixeltime.enchantmentsenhance.event.Lore
+import org.pixeltime.enchantmentsenhance.gui.Clickable
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
@@ -40,9 +41,13 @@ class ItemCommand : SubCommand() {
                     var item = player.itemInHand
                     val level = ItemManager.getItemEnchantLevel(item)
                     val aimingLevel = Integer.parseInt(args[1])
+                    var clicked: Clickable = MainMenu.gear
+                    if (args[1].equals("tool")) {
+                        clicked = MainMenu.tool
+                    }
                     if (level < aimingLevel) {
                         for (i in level + 1..aimingLevel) {
-                            item = ItemManager.forgeItem(player, item, i, true)
+                            item = ItemManager.forgeItem(player, item, i, true, clicked)
                         }
                     } else if (aimingLevel < level) {
                         Util.sendMessage(SettingsManager.lang.getString("config.invalidNumber"), player)
@@ -57,7 +62,11 @@ class ItemCommand : SubCommand() {
                         val curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]))
                         try {
                             player.inventory.removeItem(item)
-                            ItemManager.forgeItem(player, curr, level, true)
+                            var clicked: Clickable = MainMenu.gear
+                            if (args[1].equals("tool")) {
+                                clicked = MainMenu.tool
+                            }
+                            ItemManager.forgeItem(player, curr, level, true, clicked)
                             MainMenu.clearPlayer(player.name)
                         } catch (ex: Exception) {
                             Util.sendMessage(SettingsManager.lang.getString("config.invalidItem"), player)
