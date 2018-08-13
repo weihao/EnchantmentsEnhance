@@ -168,7 +168,7 @@ public class Main extends JavaPlugin implements Listener {
         if (SettingsManager.config.getBoolean("enableTableEnchant")) {
             pm.registerEvents(new VanillaEnchantListener(), this);
         }
-        if (!SettingsManager.config.getBoolean("enableFireworkDamage")) {
+        if (SettingsManager.config.getBoolean("enablePreventFireworkDamage")) {
             pm.registerEvents(new FireworkListener(), this);
         }
 

@@ -35,6 +35,7 @@ import org.pixeltime.enchantmentsenhance.gui.menu.icons.*;
 import org.pixeltime.enchantmentsenhance.manager.DataManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.util.DyeColors;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.XMaterial;
@@ -47,7 +48,7 @@ public class MainMenu extends GUIAbstract {
             new ItemBuilder(XMaterial.BLUE_WOOL.parseMaterial()).setDyeColor(DyeColor.BLUE).toItemStack(),
             new ItemBuilder(XMaterial.BROWN_WOOL.parseMaterial()).setDyeColor(DyeColor.BROWN).toItemStack(),
             new ItemBuilder(XMaterial.CYAN_WOOL.parseMaterial()).setDyeColor(DyeColor.CYAN).toItemStack(),
-            new ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.parseMaterial()).setDyeColor(DyeColor.LIGHT_GRAY).toItemStack(),
+            new ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.parseMaterial()).setDyeColor(DyeColors.LIGHT_GRAY.bukkitDyeColor()).toItemStack(),
             new ItemBuilder(XMaterial.GREEN_WOOL.parseMaterial()).setDyeColor(DyeColor.GREEN).toItemStack(),
             new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial()).setDyeColor(DyeColor.LIGHT_BLUE).toItemStack(),
             new ItemBuilder(XMaterial.GRAY_WOOL.parseMaterial()).setDyeColor(DyeColor.GRAY).toItemStack(),

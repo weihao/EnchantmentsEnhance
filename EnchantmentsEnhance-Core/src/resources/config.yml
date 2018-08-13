@@ -39,7 +39,7 @@ openMethod: RIGHT_CLICK
 enableAnvilFix: true
 
 # Set true the firework will damage the players.
-enableFireworkDamage: false
+enablePreventFireworkDamage: true
 
 # 1.8 uses ActionBar. No dependency required.
 # 1.9 and higher use BossBar. No dependency required.
