@@ -27,12 +27,12 @@ import org.pixeltime.enchantmentsenhance.util.Util
 
 class ReloadConsoleCommand : SubConsoleCommand() {
     override fun onCommand(sender: CommandSender, args: Array<String>) {
-        Util.sendMessage(SettingsManager.lang.getString("Config.reloading"),
+        Util.sendMessage(SettingsManager.lang.getString("config.reloading"),
                 sender)
         val console = Bukkit.getServer().consoleSender
         val command = "reload"
         Bukkit.dispatchCommand(console, command)
-        Util.sendMessage(SettingsManager.lang.getString("Config.reload"),
+        Util.sendMessage(SettingsManager.lang.getString("config.reload"),
                 sender)
     }
 

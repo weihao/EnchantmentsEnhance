@@ -16,8 +16,14 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.enums
+package org.pixeltime.enchantmentsenhance.manager
 
-enum class ItemType {
-    WEAPON, ARMOR, ACCESSORY, PICKAXE, HOE, AXE, BOW, INVALID
+import org.pixeltime.enchantmentsenhance.chat.Notification
+import org.pixeltime.enchantmentsenhance.chat.Notifier
+
+class NotifierManager(val notifier: Notifier) {
+
+    fun call(notification: Notification) {
+        notifier.sendMessage(notification.player, notification.msg as Array<String>)
+    }
 }

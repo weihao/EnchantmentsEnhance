@@ -16,8 +16,11 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.enums
+package org.pixeltime.enchantmentsenhance.chat
 
-enum class ItemType {
-    WEAPON, ARMOR, ACCESSORY, PICKAXE, HOE, AXE, BOW, INVALID
+import org.bukkit.entity.Player
+
+
+interface Notifier {
+    fun sendMessage(player: Player, msg: Array<String>)
 }

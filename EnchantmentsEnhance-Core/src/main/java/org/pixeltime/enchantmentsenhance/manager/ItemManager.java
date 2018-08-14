@@ -27,6 +27,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.Lore;
+import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -36,7 +37,9 @@ import org.pixeltime.enchantmentsenhance.util.datastructure.interfaces.Iterator;
 import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class ItemManager {
 
@@ -56,6 +59,20 @@ public class ItemManager {
             return ItemType.WEAPON;
         } else if (isValid(item, MaterialManager.armor)) {
             return ItemType.ARMOR;
+        } else if (isValid(item, Arrays.asList(Material.BOW))) {
+            return ItemType.BOW;
+        } else {
+            return ItemType.INVALID;
+        }
+    }
+
+    public static ItemType getToolItemEnchantmentType(ItemStack item) {
+        if (isValid(item, MaterialManager.axe)) {
+            return ItemType.AXE;
+        } else if (isValid(item, MaterialManager.pickaxe)) {
+            return ItemType.PICKAXE;
+        } else if (isValid(item, MaterialManager.hoe)) {
+            return ItemType.HOE;
         } else {
             return ItemType.INVALID;
         }
@@ -78,6 +95,16 @@ public class ItemManager {
         return nbti.getInteger("ELevel");
     }
 
+    public static int getToolEnchantLevel(ItemStack item) {
+        NBTItem nbti = new NBTItem(item);
+        return nbti.getInteger("ETool");
+    }
+
+    public static ItemStack setToolEnchantLevel(ItemStack item, int enhanceLevel) {
+        NBTItem nbti = new NBTItem(item);
+        nbti.setInteger("ETool", enhanceLevel);
+        return nbti.getItem();
+    }
 
     public static String getItemLore(ItemStack item) {
         NBTItem nbti = new NBTItem(item);
@@ -115,13 +142,21 @@ public class ItemManager {
     public static void soulbound(ItemStack item) {
         Lore.removeLore(item);
         Lore.addLore(item,
-                SettingsManager.lang.getString("Lore." + SettingsManager.config
+                SettingsManager.lang.getString("lore." + SettingsManager.config
                         .getString("lore.bound") + "Lore"), !SettingsManager.config
                         .getString("lore.bound").contains("un"));
     }
 
-    public static ItemStack forgeItem(Player player, ItemStack item, int enchantLevel, boolean addition) {
-        ItemStack currItem = setLevel(item, enchantLevel);
+    public static ItemStack forgeItem(Player player, ItemStack item, int enchantLevel, boolean addition, Clickable clicked) {
+        ItemStack currItem;
+        if (clicked.equals(MainMenu.gear)) {
+            currItem = setLevel(item, enchantLevel);
+        } else if (clicked.equals(MainMenu.tool)) {
+            currItem = setToolEnchantLevel(item, enchantLevel);
+        } else {
+            return null;
+        }
+
         // Getting Unique Name.
         List<String> oldLore = KotlinManager.stripLore(item);
 
@@ -130,11 +165,13 @@ public class ItemManager {
         }
 
         // Unique ID applied.
-        currItem = applyEnchantments(currItem, addition);
+        currItem = applyEnchantments(currItem, addition, clicked);
+
         if (SettingsManager.config.getBoolean("enableRename")) {
-            renameItem(currItem);
+            renameItem(currItem, clicked);
         }
-        addlore(currItem, oldLore);
+
+        addlore(currItem, oldLore, clicked);
         if (!SettingsManager.config.getString("lore.bound").equalsIgnoreCase("disabled")) {
             soulbound(currItem);
         }
@@ -144,12 +181,18 @@ public class ItemManager {
         return currItem;
     }
 
-    private static void addlore(ItemStack currItem, List<String> old) {
+    private static void addlore(ItemStack currItem, List<String> old, Clickable clicked) {
         ItemMeta im = currItem.getItemMeta();
         List<String> lore = (old != null && old.size() > 0) ? old : new ArrayList<>();
         List<String> newlore = im.hasLore() ? im.getLore() : new ArrayList<>();
         newlore.removeIf(e -> (!e.startsWith(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', "&7"))));
-        for (String s : (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore." + getItemEnchantmentType(currItem).toString())) {
+        List<String> applyingLores = null;
+        if (clicked.equals(MainMenu.gear)) {
+            applyingLores = (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore");
+        } else if (clicked.equals(MainMenu.tool)) {
+            applyingLores = (List<String>) SettingsManager.config.getList("enhance." + getToolEnchantLevel(currItem) + ".lore");
+        }
+        for (String s : applyingLores) {
             lore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', s));
         }
         newlore.addAll(lore);
@@ -157,11 +200,17 @@ public class ItemManager {
         currItem.setItemMeta(im);
     }
 
-    public static ItemStack applyEnchantments(ItemStack item, boolean addition) {
-        int enchantLevel = getItemEnchantLevel(item);
-
+    public static ItemStack applyEnchantments(ItemStack item, boolean addition, Clickable clicked) {
+        int enchantLevel;
+        if (clicked.equals(MainMenu.gear)) {
+            enchantLevel = getItemEnchantLevel(item);
+        } else if (clicked.equals(MainMenu.tool)) {
+            enchantLevel = getToolEnchantLevel(item);
+        } else {
+            return null;
+        }
         if (enchantLevel > 0) {
-            DoublyLinkedList<String> node = new DoublyLinkedList<>();
+            DoublyLinkedList<List<String>> node = new DoublyLinkedList<>();
             String history = ItemManager.getHistory(item);
             if (!history.isEmpty()) {
                 String[] temp = history
@@ -169,44 +218,89 @@ public class ItemManager {
                         .replace("}", "")
                         .split("; ");
                 for (int i = 0; i < temp.length; i++) {
-                    node.add(temp[i]);
+                    // Nodes
+                    node.add(Arrays.asList(temp[i]
+                            .replace("[", "")
+                            .replace("]", "")
+                            .split(", ")));
                 }
             }
             if (addition) {
-                ItemType type = getItemEnchantmentType(item);
+                ItemType type = null;
+                if (clicked.equals(MainMenu.gear)) {
+                    type = getItemEnchantmentType(item);
+                } else if (clicked.equals(MainMenu.tool)) {
+                    type = getToolItemEnchantmentType(item);
+                }
                 List<String> temp = SettingsManager.config.getStringList("enhance."
                         + enchantLevel + ".enchantments." + type.toString());
-
+                ArrayList<String> newNode = new ArrayList<>();
                 //Adding New enchantment.
-                for (String s : temp) {
-                    String[] a = s.split(":");
-                    applyEnchantmentToItem(item, a[0], Integer.parseInt(a[1]));
+                for (String str : temp) {
+                    String s = str;
+                    boolean condition = false;
+                    // Conditional Checks.
+                    if (s.contains("!")) {
+                        String processing = s.split("!")[0];
+                        String conditionalEnch;
+                        if (processing.contains("^")) {
+                            conditionalEnch = processing.split("\\^")[1];
+                            condition = (!hasEnchantment(item, conditionalEnch));
+                        } else {
+                            conditionalEnch = processing;
+                            condition = hasEnchantment(item, conditionalEnch);
+                        }
+                        s = s.split("!")[1];
+                    } else {
+                        condition = true;
+                    }
+
+                    // Chance checks.
+                    double prob;
+                    if (s.contains("?")) {
+                        prob = Double.parseDouble(s.split("\\?")[0]);
+                        s = s.split("\\?")[1];
+                    } else {
+                        prob = 100.0;
+                    }
+
+                    // Get enchantment name.
+                    String ench = s.split(":")[0];
+                    s = s.split(":")[1];
+
+
+                    // Get enchantment level.
+                    int level;
+                    // Random level.
+                    if (s.contains("-")) {
+                        String[] range = s.split("-");
+                        int upper = Integer.parseInt(range[1]);
+                        int lower = Integer.parseInt(range[0]);
+                        level = (int) (Math.random() * (upper - lower)) + lower;
+                    } else {
+                        level = Integer.parseInt(s);
+                    }
+                    // Random enchantment.
+                    Random random = new Random();
+                    if (random.nextDouble() * 100.0 <= prob) {
+                        // If all the conditions are met.
+                        if (condition) {
+                            applyEnchantmentToItem(item, ench, level);
+                            newNode.add(ench + ":" + level);
+                        }
+                    }
                 }
-                node.add(temp.toString());
+                node.add(newNode);
                 return setHistory(item, node.toString());
             } else {
-                Iterator<String> it = node.iterator();
-                String downgrade = null;
+                Iterator<List<String>> it = node.iterator();
+                List<String> downgrade = null;
                 while (it.hasNext()) {
                     downgrade = it.next();
                 }
-                if (downgrade == null) {
-                    ItemType type = getItemEnchantmentType(item);
-                    List<String> temp = SettingsManager.config.getStringList("enhance."
-                            + (enchantLevel + 1) + ".enchantments." + type.toString());
-                    //Adding New enchantment.
-                    for (String s : temp) {
-                        String[] a = s.split(":");
-                        applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
-                    }
-                } else {
-                    for (String s : downgrade
-                            .replace("[", "")
-                            .replace("]", "")
-                            .split(", ")) {
-                        String[] a = s.split(":");
-                        applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
-                    }
+                for (String s : downgrade) {
+                    String[] a = s.replace("[", "").replace("]", "").split(":");
+                    applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
                 }
             }
         }
@@ -230,10 +324,11 @@ public class ItemManager {
             String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
             int keptLevel = 0;
             if (enchantment != null) {
+                String currEnch = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', enchantment));
                 for (int i = 0; i < newlore.size(); i++) {
                     String curr = ChatColor.stripColor(newlore.get(i));
-                    String currEnch = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', enchantment));
                     if (curr.contains(currEnch)) {
+                        // Adds original level.
                         keptLevel += Util.romanToInt(curr.split(" ")[1]);
                         newlore.remove(i);
                         i--;
@@ -254,6 +349,13 @@ public class ItemManager {
                                 .addGlow(item);
                     }
                     return true;
+                } else {
+                    meta.setLore(newlore);
+                    item.setItemMeta(meta);
+                    if (item.getEnchantments().isEmpty()) {
+                        CompatibilityManager.glow
+                                .addGlow(item);
+                    }
                 }
             }
             return false;
@@ -261,8 +363,15 @@ public class ItemManager {
     }
 
 
-    public static void renameItem(ItemStack item) {
-        int enchantLevel = ItemManager.getItemEnchantLevel(item);
+    public static void renameItem(ItemStack item, Clickable clicked) {
+        int enchantLevel;
+        if (clicked.equals(MainMenu.gear)) {
+            enchantLevel = ItemManager.getItemEnchantLevel(item);
+        } else if (clicked.equals(MainMenu.tool)) {
+            enchantLevel = ItemManager.getToolEnchantLevel(item);
+        } else {
+            return;
+        }
         String name = getFriendlyName(item);
 
         if (SettingsManager.config.getBoolean("renamingIncludes.prefix")) {
@@ -300,11 +409,11 @@ public class ItemManager {
     public static ItemStack itemMaterialize(int stoneId, int amount) {
         return CompatibilityManager.glow
                 .addGlow(setGive(new ItemBuilder(MaterialManager.stoneTypes.get(stoneId))
-                                .setName(SettingsManager.lang.getString("Item." + stoneId) + " Bundle: " + amount)
-                                .addLoreLine(SettingsManager.lang.getString("Materialize.info1"))
-                                .addLoreLine(SettingsManager.lang.getString("Materialize.info2")
+                                .setName(SettingsManager.lang.getString("item." + stoneId) + " Bundle: " + amount)
+                                .addLoreLine(SettingsManager.lang.getString("materialize.info1"))
+                                .addLoreLine(SettingsManager.lang.getString("materialize.info2")
                                         .replace("%amount%", Integer.toString(amount))
-                                        .replace("%item%", SettingsManager.lang.getString("Item." + stoneId)))
+                                        .replace("%item%", SettingsManager.lang.getString("item." + stoneId)))
                                 .toItemStack(),
                         stoneId + ":" + amount));
     }
@@ -312,11 +421,32 @@ public class ItemManager {
     public static ItemStack adviceMaterialize(int level) {
         return CompatibilityManager.glow
                 .addGlow(setGive(new ItemBuilder(XMaterial.BOOK.parseItem())
-                                .setName(SettingsManager.lang.getString("Item.valks") + "+" + level)
-                                .addLoreLine(SettingsManager.lang.getString("Materialize.info1"))
-                                .addLoreLine(SettingsManager.lang.getString("Materialize.advice1")
+                                .setName(SettingsManager.lang.getString("item.valks") + "+" + level)
+                                .addLoreLine(SettingsManager.lang.getString("materialize.info1"))
+                                .addLoreLine(SettingsManager.lang.getString("materialize.advice1")
                                         .replace("%level%", Integer.toString(level)))
                                 .toItemStack(),
                         "-1:" + level));
+    }
+
+    public static boolean hasEnchantment(ItemStack item, String ench) {
+        Enchantment vanilla = Enchantment.getByName(ench.toUpperCase());
+        if (vanilla != null) {
+            int lvl = (item.getEnchantmentLevel(vanilla));
+            return lvl > 0;
+        } else {
+            String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
+            if (enchantment != null) {
+                String currEnch = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', enchantment));
+                List<String> lores = item.getItemMeta().getLore();
+                for (int i = 0; i < lores.size(); i++) {
+                    String curr = ChatColor.stripColor(lores.get(i));
+                    if (curr.contains(currEnch)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

@@ -23,6 +23,7 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.command.SubCommand
 import org.pixeltime.enchantmentsenhance.event.Lore
+import org.pixeltime.enchantmentsenhance.gui.Clickable
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
@@ -40,15 +41,19 @@ class ItemCommand : SubCommand() {
                     var item = player.itemInHand
                     val level = ItemManager.getItemEnchantLevel(item)
                     val aimingLevel = Integer.parseInt(args[1])
+                    var clicked: Clickable = MainMenu.gear
+                    if (args[1].equals("tool")) {
+                        clicked = MainMenu.tool
+                    }
                     if (level < aimingLevel) {
                         for (i in level + 1..aimingLevel) {
-                            item = ItemManager.forgeItem(player, item, i, true)
+                            item = ItemManager.forgeItem(player, item, i, true, clicked)
                         }
                     } else if (aimingLevel < level) {
-                        Util.sendMessage(SettingsManager.lang.getString("Config.invalidNumber"), player)
+                        Util.sendMessage(SettingsManager.lang.getString("config.invalidNumber"), player)
                     }
                 } catch (ex: Exception) {
-                    Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player)
+                    Util.sendMessage(SettingsManager.lang.getString("config.invalidCommand"), player)
                 }
                 args[0].equals("setname", ignoreCase = true) -> {
                     val item = player.itemInHand
@@ -57,24 +62,28 @@ class ItemCommand : SubCommand() {
                         val curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]))
                         try {
                             player.inventory.removeItem(item)
-                            ItemManager.forgeItem(player, curr, level, true)
+                            var clicked: Clickable = MainMenu.gear
+                            if (args[1].equals("tool")) {
+                                clicked = MainMenu.tool
+                            }
+                            ItemManager.forgeItem(player, curr, level, true, clicked)
                             MainMenu.clearPlayer(player.name)
                         } catch (ex: Exception) {
-                            Util.sendMessage(SettingsManager.lang.getString("Config.invalidItem"), player)
+                            Util.sendMessage(SettingsManager.lang.getString("config.invalidItem"), player)
                         }
                     } else {
-                        Util.sendMessage(SettingsManager.lang.getString("Config.invalidItem"), player)
+                        Util.sendMessage(SettingsManager.lang.getString("config.invalidItem"), player)
                     }
                 }
                 args[0].equals("lore", ignoreCase = true) -> when {
                     args[1].equals("unbound", ignoreCase = true) -> Lore.removeLore(player.itemInHand)
-                    args[1].equals("tradeable", ignoreCase = true) -> Lore.addLore(player.itemInHand, SettingsManager.lang.getString("Lore.tradeableLore"), true)
-                    args[1].equals("untradeable", ignoreCase = true) -> Lore.addLore(player.itemInHand, SettingsManager.lang.getString("Lore.untradeableLore"), false)
+                    args[1].equals("tradeable", ignoreCase = true) -> Lore.addLore(player.itemInHand, SettingsManager.lang.getString("lore.tradeableLore"), true)
+                    args[1].equals("untradeable", ignoreCase = true) -> Lore.addLore(player.itemInHand, SettingsManager.lang.getString("lore.untradeableLore"), false)
                 }
             }
         } else {
             Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player)
+                    "config.invalidNumber"), player)
         }
     }
 

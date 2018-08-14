@@ -89,7 +89,7 @@ public class CommandManager implements CommandExecutor {
 
             if (target == null) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "Config.consoleCommand"), sender);
+                        "config.consoleCommand"), sender);
                 return true;
             }
 
@@ -119,12 +119,12 @@ public class CommandManager implements CommandExecutor {
 
         if (target == null) {
             Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidCommand"), player);
+                    "config.invalidCommand"), player);
             return true;
         }
 
         if (!player.hasPermission(target.getPermission())) {
-            Util.sendMessage(SettingsManager.lang.getString("Config.noPerm"),
+            Util.sendMessage(SettingsManager.lang.getString("config.noPerm"),
                     player);
             return true;
         }

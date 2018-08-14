@@ -27,9 +27,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 import org.pixeltime.enchantmentsenhance.api.API;
-import org.pixeltime.enchantmentsenhance.chat.Announcer_ActionBar;
-import org.pixeltime.enchantmentsenhance.chat.Announcer_BossBar;
-import org.pixeltime.enchantmentsenhance.chat.Announcer_Chat;
+import org.pixeltime.enchantmentsenhance.chat.*;
 import org.pixeltime.enchantmentsenhance.gui.GUIListener;
 import org.pixeltime.enchantmentsenhance.gui.GUIManager;
 import org.pixeltime.enchantmentsenhance.gui.menu.handlers.MenuHandler;
@@ -64,6 +62,7 @@ public class Main extends JavaPlugin implements Listener {
     private static Main main;
     private static API api;
     private static AnnouncerManager announcerManager;
+    private static NotifierManager notifierManager;
     private static CommandManager commandManager;
 
     /**
@@ -122,6 +121,10 @@ public class Main extends JavaPlugin implements Listener {
         return announcerManager;
     }
 
+    public static NotifierManager getNotifierManager() {
+        return notifierManager;
+    }
+
     public static CommandManager getCommandManager() {
         return commandManager;
     }
@@ -165,6 +168,9 @@ public class Main extends JavaPlugin implements Listener {
         if (SettingsManager.config.getBoolean("enableTableEnchant")) {
             pm.registerEvents(new VanillaEnchantListener(), this);
         }
+        if (SettingsManager.config.getBoolean("enablePreventFireworkDamage")) {
+            pm.registerEvents(new FireworkListener(), this);
+        }
 
         // Notify Cauldron and MCPC users.
         if (getServer().getName().contains("Cauldron") || getServer().getName()
@@ -191,7 +197,7 @@ public class Main extends JavaPlugin implements Listener {
 
         // When plugin is reloaded, load all the inventory of online players.
         this.getLogger().info(SettingsManager.lang.getString(
-                "Config.onLoadingInventory"));
+                "config.onLoadingInventory"));
         if (!Bukkit.getOnlinePlayers().isEmpty()) {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 if (PlayerStat.getPlayerStats(player.getName()) != null) {
@@ -232,10 +238,17 @@ public class Main extends JavaPlugin implements Listener {
             announcerManager = new AnnouncerManager(new Announcer_Chat());
         }
 
+        // Notifier setup
+        if (SettingsManager.config.getBoolean("enableFancyNotify")) {
+            notifierManager = new NotifierManager(new Notifier_TitleBar());
+        } else {
+            notifierManager = new NotifierManager(new Notifier_Chat());
+        }
+
 
         // Plugin fully initialized.
         getLogger().info(SettingsManager.lang.getString(
-                "Config.onEnable"));
+                "config.onEnable"));
         // Display final time at the end of the initialization.
         getLogger().info("EnchantmentsEnhance took " + (System
                 .currentTimeMillis() - startTime) + "ms to setup.");
@@ -263,7 +276,7 @@ public class Main extends JavaPlugin implements Listener {
 
         // Plugin fully disabled.
         Bukkit.getServer().getLogger().info(SettingsManager.lang.getString(
-                "Config.onDisable"));
+                "config.onDisable"));
     }
 
 

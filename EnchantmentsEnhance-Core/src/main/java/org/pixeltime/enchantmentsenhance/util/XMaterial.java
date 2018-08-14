@@ -1,21 +1,3 @@
-/*
- *     Copyright (C) 2017-Present HealPot
- *
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- */
-
 package org.pixeltime.enchantmentsenhance.util;
 
 import org.bukkit.Material;
@@ -141,7 +123,7 @@ public enum XMaterial {
     CACTUS("CACTUS", 0),
     CACTUS_GREEN("INK_SACK", 2),
     CAKE("CAKE", 0),
-    CARROT("CARROT", 0),
+    CARROT("CARROT_ITEM", 0),
     CARROTS("CARROT", 0),
     CARROT_ON_A_STICK("CARROT_STICK", 0),
     CARVED_PUMPKIN("PUMPKIN", 0),
@@ -500,7 +482,7 @@ public enum XMaterial {
     MAGMA_CREAM("MAGMA_CREAM", 0),
     MAGMA_CUBE_SPAWN_EGG("MONSTER_EGG", 0),
     MAP("MAP", 0),
-    MELON("MELON", 0),
+    MELON("MELON_BLOCK", 0),
     MELON_SEEDS("MELON_SEEDS", 0),
     MELON_SLICE("MELON", 0),
     MELON_STEM("MELON_STEM", 0),
@@ -513,7 +495,7 @@ public enum XMaterial {
     MOVING_PISTON("PISTON_MOVING_PIECE", 0),
     MULE_SPAWN_EGG("MONSTER_EGG", 0),
     MUSHROOM_STEM("BROWN_MUSHROOM", 0),
-    MUSHROOM_STEW("BROWN_MUSHROOM", 0),
+    MUSHROOM_STEW("MUSHROOM_SOUP", 0),
     MUSIC_DISC_11("GOLD_RECORD", 0),
     MUSIC_DISC_13("GREEN_RECORD", 0),
     MUSIC_DISC_BLOCKS("RECORD_3", 0),
@@ -610,7 +592,7 @@ public enum XMaterial {
     POPPED_CHORUS_FRUIT("CHORUS_FRUIT_POPPED", 0),
     POPPY("RED_ROSE", 0),
     PORKCHOP("PORK", 0),
-    POTATO("POTATO", 0),
+    POTATO("POTATO_ITEM", 0),
     POTATOES("POTATO", 0),
     POTION("POTION", 0),
     POTTED_ACACIA_SAPLING("FLOWER_POT", 0),
@@ -874,7 +856,8 @@ public enum XMaterial {
     ZOMBIE_PIGMAN_SPAWN_EGG("MONSTER_EGG", 0),
     ZOMBIE_SPAWN_EGG("MONSTER_EGG", 0),
     ZOMBIE_VILLAGER_SPAWN_EGG("MONSTER_EGG", 0),
-    ZOMBIE_WALL_HEAD("SKULL", 0),;
+    ZOMBIE_WALL_HEAD("SKULL", 0),
+    ;
     static int newV = -1;
     private static HashMap<String, XMaterial> cachedSearch = new HashMap<>();
     String m;

@@ -35,19 +35,19 @@ class SetCommand : SubCommand() {
                 val leverage: Int = Integer.parseInt(args[0])
                 if (leverage > 1) {
                     PlayerStat.getPlayerStats(player.name).grind = leverage
-                    Util.sendMessage(SettingsManager.lang.getString("Set.success")
+                    Util.sendMessage(SettingsManager.lang.getString("set.success")
                             .replace("%leverage%",
                                     Integer.toString(leverage)), player)
                 } else {
-                    Util.sendMessage(SettingsManager.lang.getString("Set.failed"), player)
+                    Util.sendMessage(SettingsManager.lang.getString("set.failed"), player)
                 }
             } catch (ex: ParseException) {
-                Util.sendMessage(SettingsManager.lang.getString("Config.invalidNumber"), player
+                Util.sendMessage(SettingsManager.lang.getString("config.invalidNumber"), player
                 )
             }
         } else {
             Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player)
+                    "config.invalidNumber"), player)
         }
     }
 

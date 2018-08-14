@@ -32,10 +32,10 @@ public class GrindIcon extends Clickable {
     @Override
     public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.ANVIL)
-                .setName(SettingsManager.lang.getString("Menu.gui.grind"))
-                .addLoreLine(SettingsManager.lang.getString("Grind.info1")
+                .setName(SettingsManager.lang.getString("menu.gui.grind"))
+                .addLoreLine(SettingsManager.lang.getString("grind.info1")
                         .replace("%amount%", Integer.toString(PlayerStat.getPlayerStats(playerName).getGrind())))
-                .addLoreLine(SettingsManager.lang.getString("Grind.info2"))
+                .addLoreLine(SettingsManager.lang.getString("grind.info2"))
                 .toItemStack();
     }
 

@@ -1,10 +1,26 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [6.0.0] - 2018-08-14
+### Added
+- Bow enhancement.
+- Conditional operator.
+- Range operator.
+- Exclusion operator.
+- Possibility operator.
+### Fixed
+- Fixed an error that prevents gui from opening.
+### Changed
+- Renamed `enableFireworkDamage: false` to `enablePreventFireworkDamage: true`.
+
 ## [5.7.0] - 2018-08-13
 ### Added
-### Fixed
+- Tools enhancement.
+- Pickaxe enhancement.
+- Axe enhancement.
+- Hoe enhancement.
 ### Changed
-### Removed
+- Lang prefix changed to lower case to follow rules of naming convention.
+- Configuration file structure change.
 
 ## [5.6.0] - 2018-08-12
 ### Added

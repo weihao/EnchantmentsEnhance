@@ -42,12 +42,13 @@ import java.util.Random;
 public class Util {
     public static final String UNIQUEID = ChatColor.translateAlternateColorCodes('&', "&r&c&r&a&r&4&r&e&r&a&r&8&r&2&r&a&r&5&r&8&r&c&r&4&r&7&r&e&r&b&r&e");
 
+
     /**
      * Lists all the enhancement stone possible.
      */
     public static String pluginTag() {
         return ChatColor.translateAlternateColorCodes('&',
-                SettingsManager.lang.getString("Config.pluginTag"));
+                SettingsManager.lang.getString("config.pluginTag"));
     }
 
     /**
@@ -60,7 +61,6 @@ public class Util {
     public static int getSlot(int x, int y) {
         return (y * 9) - (9 - x) - 1;
     }
-
 
     /**
      * Checks if an item is a valid plugin generated item.
@@ -81,7 +81,6 @@ public class Util {
         }
         return false;
     }
-
 
     /**
      * Sends a colored message to a player.
@@ -107,7 +106,6 @@ public class Util {
             p.sendMessage(pluginTag() + message);
         }
     }
-
 
     /**
      * Sends a colored message to a player.
@@ -171,7 +169,6 @@ public class Util {
         return Bukkit.getServer().getPlayer(str);
     }
 
-
     /**
      * Gets a player's username as a string.
      *
@@ -182,7 +179,6 @@ public class Util {
         return player.getName();
     }
 
-
     /**
      * Removes all the alphabet in a string.
      *
@@ -192,7 +188,6 @@ public class Util {
     public static int extractNumber(String str) {
         return Integer.parseInt(str.replaceAll("[^0-9]", ""));
     }
-
 
     /**
      * Make a string colorful.
@@ -271,7 +266,7 @@ public class Util {
                     intNum += temp;
                 prev = temp;
             } catch
-                    (NullPointerException ex) {
+            (NullPointerException ex) {
                 return Integer.parseInt(num);
             }
 
@@ -306,7 +301,6 @@ public class Util {
         }
         return s;
     }
-
 
     /**
      * Removes any underscores and capitalizes first letter of each word in the

@@ -25,6 +25,6 @@ import org.pixeltime.enchantmentsenhance.util.Util
 
 class Announcer_Chat : Announcer {
     override fun announce(msg: String, type: AnnounceType) {
-        Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString("Config.pluginTag") + msg))
+        Bukkit.broadcastMessage(Util.toColor(SettingsManager.lang.getString("config.pluginTag") + msg))
     }
 }

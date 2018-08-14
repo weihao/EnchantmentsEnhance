@@ -33,7 +33,7 @@ import java.util.List;
 public class ValksIcon extends Clickable {
     @Override
     public ItemStack getItem(String playerName) {
-        return new ItemBuilder(Material.BOOKSHELF).setName(SettingsManager.lang.getString("Valks.gui")).toItemStack();
+        return new ItemBuilder(Material.BOOKSHELF).setName(SettingsManager.lang.getString("valks.gui")).toItemStack();
     }
 
     public ItemStack getItem(Player player) {
