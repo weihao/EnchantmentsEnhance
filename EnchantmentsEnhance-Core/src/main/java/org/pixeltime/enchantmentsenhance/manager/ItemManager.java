@@ -236,31 +236,58 @@ public class ItemManager {
                         + enchantLevel + ".enchantments." + type.toString());
                 ArrayList<String> newNode = new ArrayList<>();
                 //Adding New enchantment.
-                for (String s : temp) {
+                for (String str : temp) {
+                    String s = str;
+                    boolean condition = false;
+                    // Conditional Checks.
+                    if (s.contains("!")) {
+                        String processing = s.split("!")[0];
+                        String conditionalEnch;
+                        if (processing.contains("^")) {
+                            conditionalEnch = processing.split("\\^")[1];
+                            condition = (!hasEnchantment(item, conditionalEnch));
+                        } else {
+                            conditionalEnch = processing;
+                            condition = hasEnchantment(item, conditionalEnch);
+                        }
+                        s = s.split("!")[1];
+                    } else {
+                        condition = true;
+                    }
+
+                    // Chance checks.
+                    double prob;
+                    if (s.contains("?")) {
+                        prob = Double.parseDouble(s.split("\\?")[0]);
+                        s = s.split("\\?")[1];
+                    } else {
+                        prob = 100.0;
+                    }
+
+                    // Get enchantment name.
+                    String ench = s.split(":")[0];
+                    s = s.split(":")[1];
+
+
+                    // Get enchantment level.
                     int level;
                     // Random level.
                     if (s.contains("-")) {
-                        String[] prob = s.split(":")[1].split("-");
-                        int upper = Integer.parseInt(prob[1]);
-                        int lower = Integer.parseInt(prob[0]);
+                        String[] range = s.split("-");
+                        int upper = Integer.parseInt(range[1]);
+                        int lower = Integer.parseInt(range[0]);
                         level = (int) (Math.random() * (upper - lower)) + lower;
                     } else {
-                        level = Integer.parseInt(s.split(":")[1]);
+                        level = Integer.parseInt(s);
                     }
-
-                    int prob;
-                    String ench;
-                    if (s.contains("?")) {
-                        prob = Integer.parseInt(s.split("\\?")[0]);
-                        ench = s.split("\\?")[1].split(":")[0];
-                    } else {
-                        prob = 100;
-                        ench = s.split(":")[0];
-                    }
+                    // Random enchantment.
                     Random random = new Random();
-                    if (random.nextDouble() * 100 <= prob) {
-                        applyEnchantmentToItem(item, ench, level);
-                        newNode.add(ench + ":" + level);
+                    if (random.nextDouble() * 100.0 <= prob) {
+                        // If all the conditions are met.
+                        if (condition) {
+                            applyEnchantmentToItem(item, ench, level);
+                            newNode.add(ench + ":" + level);
+                        }
                     }
                 }
                 node.add(newNode);
@@ -400,5 +427,26 @@ public class ItemManager {
                                         .replace("%level%", Integer.toString(level)))
                                 .toItemStack(),
                         "-1:" + level));
+    }
+
+    public static boolean hasEnchantment(ItemStack item, String ench) {
+        Enchantment vanilla = Enchantment.getByName(ench.toUpperCase());
+        if (vanilla != null) {
+            int lvl = (item.getEnchantmentLevel(vanilla));
+            return lvl > 0;
+        } else {
+            String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
+            if (enchantment != null) {
+                String currEnch = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', enchantment));
+                List<String> lores = item.getItemMeta().getLore();
+                for (int i = 0; i < lores.size(); i++) {
+                    String curr = ChatColor.stripColor(lores.get(i));
+                    if (curr.contains(currEnch)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

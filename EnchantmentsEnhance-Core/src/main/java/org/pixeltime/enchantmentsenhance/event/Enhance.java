@@ -41,7 +41,8 @@ public class Enhance {
      */
     public static int getStoneId(ItemStack item, int level, Clickable clicked) {
         if (clicked.equals(MainMenu.gear)) {
-            if (ItemManager.isValid(item, MaterialManager.weapon) || (ItemManager.isValid(item, MaterialManager.bow))) {
+            if (ItemManager.isValid(item, MaterialManager.weapon)
+                    || (ItemManager.isValid(item, MaterialManager.bow))) {
                 if (DataManager.requireConcentratedStones[level]) {
                     return 2;
                 } else {
