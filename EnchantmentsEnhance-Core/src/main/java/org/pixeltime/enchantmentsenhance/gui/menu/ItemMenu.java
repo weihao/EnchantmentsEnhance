@@ -38,10 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-/**
- * @author HealPotion
- * @version Feb 9, 2018
- */
+
 public class ItemMenu extends GUIAbstract {
     private static final int BUNDLE = 5;
     public static Map<String, Integer> clickedItem = new HashMap<>();

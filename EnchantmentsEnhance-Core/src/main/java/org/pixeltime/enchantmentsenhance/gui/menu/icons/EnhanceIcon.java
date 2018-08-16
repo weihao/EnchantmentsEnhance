@@ -49,10 +49,10 @@ public class EnhanceIcon extends Clickable {
             ib.addLoreLine(SettingsManager.lang.getString(
                     "menu.lore.ifFail"));
         }
-        if (DataManager.downgradeIfFail[level]) {
+        if (DataManager.downgradeChanceIfFail[level] > 0) {
             ib.addLoreLine(SettingsManager.lang.getString("menu.lore.ifDowngrade"));
         }
-        if (DataManager.destroyIfFail[level]) {
+        if (DataManager.destroyChanceIfFail[level] > 0) {
             ib.addLoreLine(SettingsManager.lang.getString(
                     "menu.lore.ifDestroy")).toItemStack();
         }

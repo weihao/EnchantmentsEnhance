@@ -35,9 +35,6 @@ import java.util.Random;
 
 /**
  * Contains a varieties of utility.
- *
- * @author HealPotion
- * @version Feb 9, 2018
  */
 public class Util {
     public static final String UNIQUEID = ChatColor.translateAlternateColorCodes('&', "&r&c&r&a&r&4&r&e&r&a&r&8&r&2&r&a&r&5&r&8&r&c&r&4&r&7&r&e&r&b&r&e");

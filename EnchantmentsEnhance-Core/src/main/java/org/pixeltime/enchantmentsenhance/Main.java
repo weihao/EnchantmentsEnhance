@@ -52,9 +52,6 @@ import java.util.Scanner;
 
 /**
  * Main plugin class.
- *
- * @author HealPotion
- * @version Mar 30, 2018
  */
 public class Main extends JavaPlugin implements Listener {
     private static CompatibilityManager compatibility;
