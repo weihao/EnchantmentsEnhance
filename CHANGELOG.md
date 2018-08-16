@@ -1,5 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [6.0.1] - 2018-08-15
+### Added
+- Aliases for "Wings".
+
+### Fixed
+- Fly issue.
+
+### Changed
+- downgradeIfFail changed to downgradeChanceIfFail.
+- destroyIfFail changed to destroyChanceIfFail.
+
+### Removed
+
+
 ## [6.0.0] - 2018-08-14
 ### Added
 - Bow enhancement.
@@ -37,9 +51,6 @@ All notable changes to this project will be documented in this file.
 - Announcement.
 - Random applies enchantments.
 - Random level enchantments.
-- Doubly Linked List.
-- Concurrent Linked List.
-- Array Based Stack.
 
 ### Fixed
 - An issue with the downgraded item.

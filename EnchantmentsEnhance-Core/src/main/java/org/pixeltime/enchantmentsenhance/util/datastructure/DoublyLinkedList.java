@@ -287,12 +287,6 @@ public class DoublyLinkedList<T> implements List<T> {
         }
     }
 
-    /**
-     * Iterate through the list
-     *
-     * @author group35
-     * @version 2018/04/07
-     */
     private class DLIterator implements Iterator<T> {
         private DLNode<T> current;
 

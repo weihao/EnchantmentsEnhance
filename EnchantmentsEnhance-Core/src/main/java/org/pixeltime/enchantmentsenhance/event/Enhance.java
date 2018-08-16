@@ -30,6 +30,8 @@ import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
+import java.util.Random;
+
 public class Enhance {
 
     /**
@@ -146,7 +148,8 @@ public class Enhance {
         // Add failstack.
         Main.getApi().addFailstack(player.getName(),
                 DataManager.failstackGainedPerFail[level]);
-        if (DataManager.destroyIfFail[level]) {
+        Random random = new Random();
+        if (random.nextDouble() < DataManager.destroyChanceIfFail[level]) {
             // Broadcast
             if (DataManager.broadcastEnhance[level]) {
                 String str = SettingsManager.lang.getString("annoucer.destroyed")
@@ -159,7 +162,7 @@ public class Enhance {
             MainMenu.clearPlayer(player.getName());
             // Adds destroyed message.
             msg[1] = (SettingsManager.lang.getString("enhance.destroyed"));
-        } else if (DataManager.downgradeIfFail[level]) {
+        } else if (random.nextDouble() < DataManager.downgradeChanceIfFail[level]) {
             // Downgrade failed item.
             msg[1] = (SettingsManager.lang.getString("enhance.downgraded"));
             // Play destroyed sound.

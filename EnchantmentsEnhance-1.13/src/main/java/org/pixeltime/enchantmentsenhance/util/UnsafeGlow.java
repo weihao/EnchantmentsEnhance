@@ -29,9 +29,6 @@ import java.lang.reflect.Field;
  * into an anvil.
  * <p>
  * Use it as your glower for your icons or at your cautious.
- *
- * @author HealPotion
- * @version Mar 13, 2018
  */
 public class UnsafeGlow extends EnchantmentWrapper {
 
