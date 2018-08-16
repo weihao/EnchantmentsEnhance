@@ -21,6 +21,7 @@ package org.pixeltime.enchantmentsenhance.listener
 import me.clip.placeholderapi.expansion.PlaceholderExpansion
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.Main
+import org.pixeltime.enchantmentsenhance.version.VersionManager
 
 class PlaceholderListener : PlaceholderExpansion() {
 
@@ -37,7 +38,7 @@ class PlaceholderListener : PlaceholderExpansion() {
     }
 
     override fun getVersion(): String {
-        return "6.0.1"
+        return VersionManager.getPluginVersion()
     }
 
     override fun onPlaceholderRequest(player: Player?, s: String): String? {
