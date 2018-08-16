@@ -16,16 +16,16 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.interfaces;
+package org.pixeltime.enchantmentsenhance.interfaces
 
-import org.bukkit.entity.Player;
+import org.bukkit.entity.Player
 
-public interface SpawnFirework {
-    void launch(Player player, int fireworkCount);
+interface SpawnFirework {
+    fun launch(player: Player, fireworkCount: Int)
 
-    void launch(
-            Player player,
-            int fireworkCount,
-            int fireWorkRounds,
-            int delay);
+    fun launch(
+            player: Player,
+            fireworkCount: Int,
+            fireWorkRounds: Int,
+            delay: Int)
 }

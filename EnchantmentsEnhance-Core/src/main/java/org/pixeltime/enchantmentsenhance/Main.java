@@ -37,6 +37,7 @@ import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
+import org.pixeltime.enchantmentsenhance.listener.PlaceholderListener;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
@@ -242,6 +243,10 @@ public class Main extends JavaPlugin implements Listener {
             notifierManager = new NotifierManager(new Notifier_Chat());
         }
 
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            //Registering placeholder will be use here
+            new PlaceholderListener().register();
+        }
 
         // Plugin fully initialized.
         getLogger().info(SettingsManager.lang.getString(
