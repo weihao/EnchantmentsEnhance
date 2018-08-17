@@ -1,14 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
-## [6.0.2] - 2018-08-16
+## [6.0.3] - 2018-08-16
 ### Added
-- Support for Placeholders.
 
 ### Fixed
-
+- A soul bound item could be glitched.
 ### Changed
 
 ### Removed
+
+## [6.0.2] - 2018-08-16
+### Added
+- Support for Placeholders.
 
 ## [6.0.1] - 2018-08-15
 ### Added

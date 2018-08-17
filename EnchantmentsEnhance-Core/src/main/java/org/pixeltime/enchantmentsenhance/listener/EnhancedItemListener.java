@@ -28,11 +28,17 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class EnhancedItemListener implements Listener {
+    private static Set<String> onClicking = new HashSet<>();
+
     /**
      * Prevents enhanced item from dropping.
      *
@@ -78,6 +84,32 @@ public class EnhancedItemListener implements Listener {
                         e.setCancelled(true);
                         Util.sendMessage(SettingsManager.lang.getString("messages.noStorage"), e.getWhoClicked());
                     }
+                }
+            }
+        }
+    }
+
+
+    /**
+     * Prevents enhanced item from glitching.
+     *
+     * @param inventoryClickEvent
+     */
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
+    public void onItemGlitch(InventoryClickEvent inventoryClickEvent) {
+        ItemStack currentItem = inventoryClickEvent.getCurrentItem();
+        ItemStack cursor = inventoryClickEvent.getCursor();
+        if (inventoryClickEvent.getClickedInventory() != null && inventoryClickEvent.getClickedInventory().firstEmpty() == -1) {
+            if (currentItem != null && currentItem.hasItemMeta() && (currentItem.getItemMeta().hasLore())) {
+                if (currentItem.getItemMeta().getLore().contains(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.untradeableLore")))) {
+                    inventoryClickEvent.setCancelled(true);
+                    Util.sendMessage(SettingsManager.lang.getString("messages.noDrop"), inventoryClickEvent.getWhoClicked());
+                }
+            }
+            if (cursor != null && cursor.hasItemMeta() && (cursor.getItemMeta().hasLore())) {
+                if (cursor.getItemMeta().getLore().contains(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.untradeableLore")))) {
+                    inventoryClickEvent.setCancelled(true);
+                    Util.sendMessage(SettingsManager.lang.getString("messages.noDrop"), inventoryClickEvent.getWhoClicked());
                 }
             }
         }
