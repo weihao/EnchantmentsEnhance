@@ -1,14 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
-## [6.0.3] - 2018-08-16
+## [6.0.4] - 2018-08-18
+### Added
+- Enchantments descriptions in help command.
+### Fixed
+- Permanent Potion removal.
+
+
+## [6.0.3] - 2018-08-18
 ### Added
 - Periodic timer on version information.
 ### Fixed
 - A soul bound item could be glitched.
 - Reload command.
-### Changed
-
-### Removed
 
 ## [6.0.2] - 2018-08-16
 ### Added
