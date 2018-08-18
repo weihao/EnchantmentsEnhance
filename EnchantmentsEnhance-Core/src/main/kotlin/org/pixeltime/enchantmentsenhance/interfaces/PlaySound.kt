@@ -16,16 +16,16 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.interfaces;
+package org.pixeltime.enchantmentsenhance.interfaces
 
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.entity.Player
 
-public interface GlowItem {
+interface PlaySound {
     /**
-     * Makes an item glowing.
+     * Plays a sound to a player.
      *
-     * @param item
-     * @return
+     * @param p
+     * @param type
      */
-    ItemStack addGlow(ItemStack item);
+    fun playSound(p: Player, type: String)
 }

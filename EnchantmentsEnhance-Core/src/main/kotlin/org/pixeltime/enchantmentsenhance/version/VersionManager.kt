@@ -38,6 +38,11 @@ class VersionManager : EnchantmentListener() {
 
     companion object {
         @JvmStatic
+        fun getPluginVersion(): String {
+            return Main::class.java.`package`.implementationVersion
+        }
+
+        @JvmStatic
         fun versionChecker() {
             try {
                 val connection = URL(
@@ -47,7 +52,7 @@ class VersionManager : EnchantmentListener() {
                 connection.requestMethod = "POST"
                 connection.outputStream.write("GET".toByteArray(charset("UTF-8")))
                 val spigotVer = Version(BufferedReader(InputStreamReader(connection.inputStream)).readLine())
-                val currVer = Version(Main::class.java.`package`.implementationVersion)
+                val currVer = Version(getPluginVersion())
                 if (currVer >= spigotVer) {
                     Main.getMain().server.consoleSender.sendMessage("[EnchantmentsEnhance] " + ChatColor.GREEN + "Enchantments Enhance is UP-TO-DATE")
                 } else {

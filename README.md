@@ -18,12 +18,14 @@
 
 ## Life Cycle
 ###### Alpha (1.0 - 4.0)
-##### Beta (4.0.1 - [latest](http://www.soulbound.me:8080/job/EnchantmentsEnhance/))
-This plugin is under active development at the stage of beta phase.
-Completion of the plugin is currently projected at 35%, meaning the general functionality and availability are incomplete.
+###### Beta (4.0.1 - 4.9.1)
+##### Release (5.0 - [latest](http://www.soulbound.me:8080/job/EnchantmentsEnhance/))
+This plugin is under active development at the stage of the release phase.
+Completion of the plugin is currently projected at `70%`, meaning the general functionality are `mostly complete`.
 
 ## Introduction
 [Wiki](https://github.com/25/EnchantmentsEnhance/wiki)
+[Change Log](https://github.com/25/EnchantmentsEnhance/blob/master/CHANGELOG.md)
 
 ## Compatibility
 Version: `1.8.x - 1.12.x`

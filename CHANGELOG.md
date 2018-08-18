@@ -1,5 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [6.0.3] - 2018-08-16
+### Added
+
+### Fixed
+- A soul bound item could be glitched.
+### Changed
+
+### Removed
+
+## [6.0.2] - 2018-08-16
+### Added
+- Support for Placeholders.
+
 ## [6.0.1] - 2018-08-15
 ### Added
 - Aliases for "Wings".
@@ -10,9 +23,6 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - downgradeIfFail changed to downgradeChanceIfFail.
 - destroyIfFail changed to destroyChanceIfFail.
-
-### Removed
-
 
 ## [6.0.0] - 2018-08-14
 ### Added

@@ -6,7 +6,7 @@ authors: [Feier, lgou2w]
 load: postworld
 prefix: EnchantmentsEnhance
 api-version: 1.13
-softdepend: [Vault, WorldEdit, WorldGuard]
+softdepend: [Vault, WorldEdit, WorldGuard, PlaceholderAPI]
 
 main: org.pixeltime.enchantmentsenhance.Main
 database: false
