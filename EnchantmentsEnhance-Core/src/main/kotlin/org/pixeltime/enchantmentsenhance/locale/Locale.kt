@@ -164,6 +164,8 @@ class LocaleManager {
             addLang("menu.leftInfo", arrayOf("&6Left click an item to select to act.", "&6左击物品来进行更多的操作"))
             addLang("menu.rightInfo", arrayOf("&6Right click an item to take it out from your virtual inventory.", "&6右击物品来从虚拟背包里取出物品"))
             addLang("menu.leftAdviceInfo", arrayOf("&6Left click an advice to use it.", "&6左击来使用道具"))
+            addLang("update.outdated", arrayOf("&cEnchantmentsEnhance is OUTDATED!", "&c附魔强化插件需要更新!"))
+            addLang("update.updateToDate", arrayOf("&aEnchantments Enhance is UP-TO-DATE!", "&a附魔强化插件已是最新版!"))
             SettingsManager.lang.options().copyDefaults(true)
             SettingsManager.saveLang()
         }

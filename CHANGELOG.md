@@ -2,9 +2,10 @@
 All notable changes to this project will be documented in this file.
 ## [6.0.3] - 2018-08-16
 ### Added
-
+- Periodic timer on version information.
 ### Fixed
 - A soul bound item could be glitched.
+- Reload command.
 ### Changed
 
 ### Removed
