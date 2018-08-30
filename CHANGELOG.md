@@ -1,5 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [6.1.0] - 2018-08-29
+### Added
+- Disableable virtual inventory and player trading.
+### Fixed
+- ITEMS DUPLICATION.
+- Unable to apply enchantments using commands.
+- Smelt gives ink sac when lapis is mined.
+- Touch enhancement error.
+- Skip animation can overuse items.
+
 ## [6.0.4] - 2018-08-18
 ### Added
 - Enchantments descriptions in help command.
