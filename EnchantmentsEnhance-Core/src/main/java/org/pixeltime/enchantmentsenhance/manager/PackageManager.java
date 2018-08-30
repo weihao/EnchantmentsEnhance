@@ -71,9 +71,6 @@ public class PackageManager {
                 return true;
             }
         }
-        if (ench.contains("Wing")) {
-            return true;
-        }
         return false;
     }
 }
