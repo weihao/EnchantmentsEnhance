@@ -217,6 +217,12 @@ public class Enhance {
             return;
         }
         int stoneId = getStoneId(item, enchantLevel, clicked);
+
+        if (!Enhance.getValidationOfItem(item)
+                || !Enhance.getValidationOfPlayer(item, player, clicked)) {
+            return;
+        }
+
         Main.getApi().addItem(player.getName(), stoneId, -1);
         // Randomly generate a double between 0 to 1
         double random = Math.random();
@@ -259,6 +265,9 @@ public class Enhance {
      * @param player
      */
     public static void forceToEnhancement(ItemStack item, Player player, Clickable clicked) {
+        if (!Enhance.getValidationOfForce(item, player, clicked)) {
+            return;
+        }
         // Current enchant level before enhancing
         int enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
         // Finds the stone used in the enhancement

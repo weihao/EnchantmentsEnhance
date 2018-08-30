@@ -74,7 +74,7 @@ public class ItemMenu extends GUIAbstract {
                                 }
                             }
                         }
-                        if (clickType == ClickType.RIGHT) {
+                        if (clickType == ClickType.RIGHT && SettingsManager.config.getBoolean("enableItemMaterialization")) {
                             // If play has enough stones.
                             if (Main.getApi().getItem(playerName, stoneId) > BUNDLE) {
                                 if (!Util.invFull(player)) {

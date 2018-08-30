@@ -26,6 +26,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.api.API;
 import org.pixeltime.enchantmentsenhance.chat.*;
 import org.pixeltime.enchantmentsenhance.gui.GUIListener;
@@ -37,7 +38,6 @@ import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
-import org.pixeltime.enchantmentsenhance.listener.PlaceholderListener;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
@@ -131,6 +131,7 @@ public class Main extends JavaPlugin implements Listener {
      * When the plugin is enabled, execute following tasks.
      */
     public void onEnable() {
+        // Prints logo.
         try {
             Scanner sc = new Scanner(getClass().getResourceAsStream("/logo.txt"));
             while (sc.hasNextLine()) {
@@ -141,13 +142,14 @@ public class Main extends JavaPlugin implements Listener {
 
         // Start time.
         final long startTime = System.currentTimeMillis();
+
+        // Objects initialization.
         main = this;
         api = new API();
         commandManager = new CommandManager();
         compatibility = new CompatibilityManager();
 
-        // Checks for update.
-        VersionManager.versionChecker();
+
         // Set up the files.
         SettingsManager.setup();
 
@@ -168,6 +170,23 @@ public class Main extends JavaPlugin implements Listener {
         }
         if (SettingsManager.config.getBoolean("enablePreventFireworkDamage")) {
             pm.registerEvents(new FireworkListener(), this);
+        }
+
+        // Checks for update.
+        if (VersionManager.isUpToDate()) {
+            getLogger().info(SettingsManager.lang.getString("update.updateToDate"));
+        } else {
+            getLogger().warning(SettingsManager.lang.getString("update.outdated"));
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        if (p.hasPermission("Enchantments.*") || p.hasPermission("*") || p.isOp()) {
+                            Main.getNotifierManager().call(new Notification(p, SettingsManager.lang.getString("update.updateToDate")));
+                        }
+                    }
+                }
+            }.runTaskTimer(this, 120L, 36000L);
         }
 
         // Notify Cauldron and MCPC users.

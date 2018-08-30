@@ -18,49 +18,35 @@
 
 package org.pixeltime.enchantmentsenhance.version
 
-import org.bukkit.ChatColor
 import org.pixeltime.enchantmentsenhance.Main
-import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import java.io.BufferedReader
-import java.io.IOException
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-class VersionManager : EnchantmentListener() {
-    override fun desc(): Array<String> {
-        return arrayOf("", "")
-    }
-
-    override fun lang(): Array<String> {
-        return arrayOf("")
-    }
-
+class VersionManager {
     companion object {
         @JvmStatic
-        fun getPluginVersion(): String {
+        fun getCurrentVersion(): String {
             return Main::class.java.`package`.implementationVersion
         }
 
         @JvmStatic
-        fun versionChecker() {
-            try {
-                val connection = URL(
-                        "https://api.spigotmc.org/legacy/update.php?resource=59555")
-                        .openConnection() as HttpURLConnection
-                connection.doOutput = true
-                connection.requestMethod = "POST"
-                connection.outputStream.write("GET".toByteArray(charset("UTF-8")))
-                val spigotVer = Version(BufferedReader(InputStreamReader(connection.inputStream)).readLine())
-                val currVer = Version(getPluginVersion())
-                if (currVer >= spigotVer) {
-                    Main.getMain().server.consoleSender.sendMessage("[EnchantmentsEnhance] " + ChatColor.GREEN + "Enchantments Enhance is UP-TO-DATE")
-                } else {
-                    Main.getMain().server.consoleSender.sendMessage("[EnchantmentsEnhance] " + ChatColor.RED + "EnchantmentsEnhance is OUTDATED!")
-                }
-            } catch (e: IOException) {
-                Main.getMain().server.consoleSender.sendMessage("[EnchantmentsEnhance] " + ChatColor.RED + "ERROR: Could not make connection to SpigotMC.org")
-            }
+        fun getLatestVersion(): String {
+            val connection = URL(
+                    "https://api.spigotmc.org/legacy/update.php?resource=59555")
+                    .openConnection() as HttpURLConnection
+            connection.doOutput = true
+            connection.requestMethod = "POST"
+            connection.outputStream.write("GET".toByteArray(charset("UTF-8")))
+            return BufferedReader(InputStreamReader(connection.inputStream)).readLine()
+        }
+
+        @JvmStatic
+        fun isUpToDate(): Boolean {
+            val spigotVer = Version(getLatestVersion())
+            val currVer = Version(getCurrentVersion())
+            return currVer >= spigotVer
         }
     }
 }

@@ -38,7 +38,7 @@ class PlaceholderListener : PlaceholderExpansion() {
     }
 
     override fun getVersion(): String {
-        return VersionManager.getPluginVersion()
+        return VersionManager.getCurrentVersion()
     }
 
     override fun onPlaceholderRequest(player: Player?, s: String): String? {

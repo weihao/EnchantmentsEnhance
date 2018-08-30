@@ -52,6 +52,9 @@ enableFancyNotify: true
 # Set true to enable some features that are related to $.
 enableEconomy: false
 
+# Set false to disallow players take out stones from virtual inventory.
+enableItemMaterialization: true
+
 # Add to disable some special enchantments that may or may not cause an issue on your server.
 disabledEnchantments:
 # Plugin will take control of the player's fly permissions.
@@ -357,7 +360,8 @@ enhance:
     suffix: '&8+2'
     enchantments:
       WEAPON:
-      - Stealth:1
+      - ^Damage_All!Stealth:1
+      - Damage_All!Damage_All:1
       ARMOR:
       - Pyromaniac:1
       PICKAXE:
@@ -386,8 +390,9 @@ enhance:
     suffix: '&8+3'
     enchantments:
       WEAPON:
-      - Stealth:1
-      - Execute:1
+      - ^Damage_All!Stealth:1
+      - ^Damage_All!Execute:1
+      - Damage_All!Damage_All:1
       ARMOR:
       - Pyromaniac:1
       PICKAXE:
@@ -416,9 +421,10 @@ enhance:
     suffix: '&8+4'
     enchantments:
       WEAPON:
-      - Stealth:1
-      - Execute:1
-      - Corruption:1
+      - ^Damage_All!Stealth:1
+      - ^Damage_All!Execute:1
+      - ^Damage_All!Corruption:1
+      - Damage_All!Damage_All:1
       ARMOR:
       - Pyromaniac:1
       - Haste:1
@@ -449,10 +455,11 @@ enhance:
     suffix: '&8+5'
     enchantments:
       WEAPON:
-      - Stealth:1
-      - Execute:1
-      - Corruption:1
-      - Rekt:1
+      - ^Damage_All!Stealth:1
+      - ^Damage_All!Execute:1
+      - ^Damage_All!Corruption:1
+      - ^Damage_All!Rekt:1
+      - Damage_All!Damage_All:1
       ARMOR:
       - Pyromaniac:1
       - Haste:1
@@ -482,9 +489,10 @@ enhance:
     suffix: '&8+6'
     enchantments:
       WEAPON:
-      - Execute:1
-      - Corruption:1
-      - Rekt:1
+      - ^Damage_All!Execute:1
+      - ^Damage_All!Corruption:1
+      - ^Damage_All!Rekt:1
+      - Damage_All!Damage_All:1
       ARMOR:
       - Pyromaniac:1
       - Haste:1
@@ -516,9 +524,10 @@ enhance:
     suffix: '&8+7'
     enchantments:
       WEAPON:
-      - Execute:1
-      - Corruption:1
-      - Plunder:1
+      - ^Damage_All!Execute:1
+      - ^Damage_All!Corruption:1
+      - ^Damage_All!Plunder:1
+      - Damage_All!Damage_All:1
       ARMOR:
       - Jump:1
       - Batvision:1
@@ -548,9 +557,9 @@ enhance:
     suffix: '&2+8'
     enchantments:
       WEAPON:
-      - Corruption:1
-      - Launch:5
-      - 10?Damage_All:1
+      - ^Damage_All!Corruption:1
+      - ^Damage_All!Launch:5
+      - Damage_All!Damage_All:1
       ARMOR:
       - Flame:3
       PICKAXE:
@@ -578,9 +587,9 @@ enhance:
     suffix: '&2+9'
     enchantments:
       WEAPON:
-      - Reborn:3
-      - Mischief:3
-      - 10?Damage_All:1
+      - ^Damage_All!Reborn:3
+      - ^Damage_All!Mischief:3
+      - Damage_All!Damage_All:1
       ARMOR:
       - Aegis:1
       - Eyepatch:1
@@ -609,9 +618,9 @@ enhance:
     suffix: '&2+10'
     enchantments:
       WEAPON:
-      - Crits:1
-      - Riftslayer:1
-      - 10?Damage_All:1
+      - ^Damage_All!Crits:1
+      - ^Damage_All!Riftslayer:1
+      - Damage_All!Damage_All:1
       ARMOR:
       - Aegis:1
       - Blessed:1
@@ -638,9 +647,9 @@ enhance:
     suffix: '&2+11'
     enchantments:
       WEAPON:
-      - Hex:3
-      - Assassin:3
-      - 10?Damage_All:1
+      - ^Damage_All!Hex:3
+      - ^Damage_All!Assassin:3
+      - Damage_All!Damage_All:1
       ARMOR:
       - Aegis:1
       - Blessed:1
@@ -667,9 +676,9 @@ enhance:
     suffix: '&2+12'
     enchantments:
       WEAPON:
-      - Curse:2
-      - Strength:1
-      - 10?Damage_All:1
+      - ^Damage_All!Curse:2
+      - ^Damage_All!Strength:1
+      - Damage_All!Damage_All:1
       ARMOR:
       - Aegis:1
       - Blessed:1
@@ -697,8 +706,8 @@ enhance:
     suffix: '&2+13'
     enchantments:
       WEAPON:
-      - Curse:2
-      - 10?Damage_All:1
+      - ^Damage_All!Curse:2
+      - Damage_All!Damage_All:1
       ARMOR:
       - Aegis:1
       PICKAXE: []
@@ -724,8 +733,8 @@ enhance:
     suffix: '&2+14'
     enchantments:
       WEAPON:
-      - Speed:1
-      - 10?Damage_All:1
+      - ^Damage_All!Speed:1
+      - Damage_All!Damage_All:1
       ARMOR:
       - Shield:1
       PICKAXE: []
@@ -751,8 +760,8 @@ enhance:
     suffix: '&2+15'
     enchantments:
       WEAPON:
-      - Siphon:3
-      - 10?Damage_All:1
+      - ^Damage_All!Siphon:3
+      - Damage_All!Damage_All:1
       ARMOR:
       - Saturation:1
       PICKAXE: []
@@ -778,10 +787,10 @@ enhance:
     suffix: ''
     enchantments:
       WEAPON:
-      - Petrify:3
-      - Crushing:3
-      - Lifesteal:1
-      - 50?Damage_All:2-4
+      - ^Damage_All!Petrify:3
+      - ^Damage_All!Crushing:3
+      - ^Damage_All!Lifesteal:1
+      - Damage_All!Damage_All:1-4
       ARMOR:
       - Dodge:5
       PICKAXE: []
@@ -807,11 +816,11 @@ enhance:
     suffix: ''
     enchantments:
       WEAPON:
-      - Smite:5
-      - Turmoil:3
-      - Crushing:3
-      - Lifesteal:1
-      - 50?Damage_All:2-4
+      - ^Damage_All!Smite:5
+      - ^Damage_All!Turmoil:3
+      - ^Damage_All!Crushing:3
+      - ^Damage_All!Lifesteal:1
+      - Damage_All!Damage_All:1-4
       ARMOR:
       - Repel:3
       - Molten:3
@@ -839,9 +848,9 @@ enhance:
     suffix: ''
     enchantments:
       WEAPON:
-      - Lifesteal:1
-      - Paralyze:2
-      - 50?Damage_All:2-4
+      - ^Damage_All!Lifesteal:1
+      - ^Damage_All!Paralyze:2
+      - Damage_All!Damage_All:1v
       ARMOR:
       - Reinforced:1
       - Suicide:1
@@ -871,8 +880,8 @@ enhance:
     suffix: ''
     enchantments:
       WEAPON:
-      - Purge:4
-      - 50?Damage_All:2-4
+      - ^Damage_All!Purge:4
+      - Damage_All!Damage_All:1-4
       ARMOR:
       - Spiked:3
       - Vitality:1
@@ -903,8 +912,8 @@ enhance:
     suffix: ''
     enchantments:
       WEAPON:
-      - 50?Damage_All:2-4
-      - Strength:2
+      - ^Damage_All!Strength:2
+      - Damage_All!Damage_All:1-4
       ARMOR:
       - Vitality:2
       - Cure:2
