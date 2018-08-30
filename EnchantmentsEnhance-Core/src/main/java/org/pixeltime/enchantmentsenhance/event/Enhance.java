@@ -201,6 +201,26 @@ public class Enhance {
         return Main.getApi().getItem(player.getName(), stoneId) - 1 >= 0;
     }
 
+    public static boolean validate(ItemStack item, Player player, Clickable clicked) {
+        boolean valid = false;
+        if (Enhance.getValidationOfItem(item) && Enhance.getValidationOfPlayer(item, player, clicked)) {
+            valid = true;
+        }
+
+        if (Enhance.getValidationOfToolItem(item) && Enhance.getToolValidationOfPlayer(item, player, clicked)) {
+            valid = true;
+        }
+        return valid;
+    }
+
+    public static boolean validateForce(ItemStack item, Player player, Clickable clicked) {
+        boolean valid = false;
+        if (Enhance.getValidationOfForce(item, player, clicked)) {
+            valid = true;
+        }
+        return valid;
+    }
+
     /**
      * Randomly generates a result to the enhancement.
      *
@@ -218,8 +238,7 @@ public class Enhance {
         }
         int stoneId = getStoneId(item, enchantLevel, clicked);
 
-        if (!Enhance.getValidationOfItem(item)
-                || !Enhance.getValidationOfPlayer(item, player, clicked)) {
+        if (!validate(item, player, clicked)) {
             return;
         }
 
@@ -265,7 +284,7 @@ public class Enhance {
      * @param player
      */
     public static void forceToEnhancement(ItemStack item, Player player, Clickable clicked) {
-        if (!Enhance.getValidationOfForce(item, player, clicked)) {
+        if (!validateForce(item, player, clicked)) {
             return;
         }
         // Current enchant level before enhancing
