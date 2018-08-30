@@ -86,7 +86,7 @@ public class ValksMenu extends GUIAbstract {
                                                 "config.invalidNumber"), player);
                                     }
                                 }
-                                if (clickType == ClickType.RIGHT) {
+                                if (clickType == ClickType.RIGHT && SettingsManager.config.getBoolean("enableItemMaterialization")) {
                                     if (!Util.invFull(player)) {
                                         player.getInventory().addItem(ItemManager.adviceMaterialize(level));
                                         PlayerStat.getPlayerStats(playerName).getValks().remove(index);

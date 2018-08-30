@@ -52,6 +52,9 @@ enableFancyNotify: true
 # Set true to enable some features that are related to $.
 enableEconomy: false
 
+# Set false to disallow players take out stones from virtual inventory.
+enableItemMaterialization: true
+
 # Add to disable some special enchantments that may or may not cause an issue on your server.
 disabledEnchantments:
 # Plugin will take control of the player's fly permissions.
