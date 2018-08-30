@@ -227,7 +227,7 @@ public class CommandManager implements CommandExecutor {
         String tag = "&b&l&m          &d EnchantmentsEnhance&b&l&m          ";
         Util.sendMessage(tag, player, false);
         for (EnchantmentListener ench : PackageManager.getEnabled()) {
-            Util.sendMessage("&b" +ench.name() + " &a" + SettingsManager.lang.getString("descriptions." + ench.getClass().getSimpleName().toLowerCase()), player, false);
+            Util.sendMessage("&b" + ench.name() + " &a" + SettingsManager.lang.getString("descriptions." + ench.getClass().getSimpleName().toLowerCase()), player, false);
         }
     }
 

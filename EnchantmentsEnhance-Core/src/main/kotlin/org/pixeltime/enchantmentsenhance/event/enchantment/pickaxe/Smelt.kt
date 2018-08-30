@@ -74,7 +74,9 @@ class Smelt : EnchantmentListener() {
                 block.type = Material.AIR
             }
             if (block.type == Material.LAPIS_ORE) {
-                blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, ItemStack(XMaterial.INK_SAC.parseMaterial(), calculateFortune, 4.toShort()))
+                val drop = XMaterial.fromString("LAPIS_LAZULI").parseItem()
+                drop.amount = calculateFortune;
+                blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, drop)
                 block.type = Material.AIR
             }
         }
