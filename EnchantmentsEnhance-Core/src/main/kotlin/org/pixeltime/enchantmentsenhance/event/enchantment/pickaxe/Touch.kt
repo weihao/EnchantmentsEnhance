@@ -49,7 +49,7 @@ class Touch : EnchantmentListener() {
             val creatureSpawner = block.state as CreatureSpawner
             val itemStack = ItemStack(creatureSpawner.type, 1, block.data.toShort())
             val itemMeta = itemStack.itemMeta
-            itemMeta.displayName = "${ChatColor.AQUA}  ${creatureSpawner.creatureTypeName.toUpperCase()}"
+            itemMeta.displayName = "${ChatColor.AQUA}${creatureSpawner.creatureTypeName.toUpperCase()}"
             itemStack.itemMeta = itemMeta
             if (!blockBreakEvent.isCancelled) {
                 block.location.world.dropItem(block.location, itemStack)
@@ -63,7 +63,12 @@ class Touch : EnchantmentListener() {
         if (block.type == XMaterial.SPAWNER.parseMaterial()) {
             val item = blockPlaceEvent.itemInHand
             if (item.hasItemMeta() && item.itemMeta.hasDisplayName()) {
-                (block.state as CreatureSpawner).spawnedType = EntityType.valueOf(ChatColor.stripColor(item.itemMeta.displayName).trim())
+                try {
+                    val entity = EntityType.valueOf(ChatColor.stripColor(item.itemMeta.displayName.toUpperCase()).trim())
+                    (block.state as CreatureSpawner).spawnedType = entity
+                } catch (e: IllegalArgumentException) {
+                    // Unknown entity type.
+                }
             }
         }
     }
