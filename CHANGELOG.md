@@ -1,5 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [6.1.1] - 2018-08-30
+### Fixed
+- Fixed touch spawner.
+
 ## [6.1.0] - 2018-08-29
 ### Added
 - Disableable virtual inventory and player trading.
