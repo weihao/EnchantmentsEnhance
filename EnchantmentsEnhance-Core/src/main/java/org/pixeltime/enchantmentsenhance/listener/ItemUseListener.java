@@ -24,6 +24,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
@@ -58,10 +59,10 @@ public class ItemUseListener implements Listener {
                 }
 
                 // Consume the item.
-                if ((item.getAmount() <= 1)) {
-                    player.getInventory().removeItem(item);
-                } else {
-                    item.setAmount(item.getAmount() - 1);
+                if (event.getHand().equals(EquipmentSlot.HAND)) {
+                    player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+                } else if (event.getHand().equals(EquipmentSlot.OFF_HAND)) {
+                    player.getInventory().getItemInOffHand().setAmount(player.getInventory().getItemInOffHand().getAmount() - 1);
                 }
                 event.setCancelled(true);
             }

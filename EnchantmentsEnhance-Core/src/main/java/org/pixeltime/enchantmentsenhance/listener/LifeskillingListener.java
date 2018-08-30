@@ -125,7 +125,7 @@ public class LifeskillingListener implements Listener {
      */
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onBreeding(PlayerInteractEntityEvent e) {
-        if (AnimalBreeding.breeadableFood.contains(e.getPlayer().getItemInHand()
+        if (AnimalBreeding.breeadableFood.contains(e.getPlayer().getInventory().getItemInMainHand()
                 .getType())) {
             if (AnimalBreeding.breeadableAnimals.contains(e.getRightClicked()
                     .getType())) {
