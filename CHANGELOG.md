@@ -1,5 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [6.2.0] - 2018-08-31
+### Fixed
+- Fixed enhance.
+- Addressed spawner issue.
+
 ## [6.1.1] - 2018-08-30
 ### Fixed
 - Fixed touch spawner.
