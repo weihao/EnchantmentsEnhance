@@ -65,7 +65,10 @@ class Touch : EnchantmentListener() {
             if (item.hasItemMeta() && item.itemMeta.hasDisplayName()) {
                 try {
                     val entity = EntityType.valueOf(ChatColor.stripColor(item.itemMeta.displayName.toUpperCase()).trim())
-                    (block.state as CreatureSpawner).spawnedType = entity
+                    val blockState = block.getState()
+                    val spawner = blockState as CreatureSpawner;
+                    spawner.spawnedType = entity
+                    blockState.update()
                 } catch (e: IllegalArgumentException) {
                     // Unknown entity type.
                 }

@@ -26,7 +26,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.util.XMaterial
 import java.util.*
 
 class Smelt : EnchantmentListener() {
@@ -55,28 +54,6 @@ class Smelt : EnchantmentListener() {
             }
             if (block.type == Material.GOLD_ORE) {
                 blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, ItemStack(Material.GOLD_INGOT, calculateFortune))
-                block.type = Material.AIR
-            }
-            if (block.type == Material.COAL_ORE) {
-                blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, ItemStack(Material.COAL, calculateFortune))
-                block.type = Material.AIR
-            }
-            if (block.type == Material.IRON_ORE) {
-                blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, ItemStack(Material.IRON_INGOT, calculateFortune))
-                block.type = Material.AIR
-            }
-            if (block.type == Material.DIAMOND_ORE) {
-                blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, ItemStack(Material.DIAMOND, calculateFortune))
-                block.type = Material.AIR
-            }
-            if (block.type == Material.EMERALD_ORE) {
-                blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, ItemStack(Material.EMERALD, calculateFortune))
-                block.type = Material.AIR
-            }
-            if (block.type == Material.LAPIS_ORE) {
-                val drop = XMaterial.fromString("LAPIS_LAZULI").parseItem()
-                drop.amount = calculateFortune;
-                blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, drop)
                 block.type = Material.AIR
             }
         }

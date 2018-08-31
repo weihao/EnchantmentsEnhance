@@ -58,14 +58,18 @@ class ItemCommand : SubCommand() {
                 args[0].equals("setname", ignoreCase = true) -> {
                     val item = player.itemInHand
                     if (item.type != Material.AIR) {
-                        val level = ItemManager.getItemEnchantLevel(item)
+                        val level: Int
+                        val clicked: Clickable
+                        if (ItemManager.getToolEnchantLevel(item) != 0) {
+                            level = ItemManager.getToolEnchantLevel(item)
+                            clicked = MainMenu.tool
+                        } else {
+                            level = ItemManager.getItemEnchantLevel(item)
+                            clicked = MainMenu.gear
+                        }
                         val curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]))
                         try {
                             player.inventory.removeItem(item)
-                            var clicked: Clickable = MainMenu.gear
-                            if (args[1].equals("tool")) {
-                                clicked = MainMenu.tool
-                            }
                             ItemManager.forgeItem(player, curr, level, true, clicked)
                             MainMenu.clearPlayer(player.name)
                         } catch (ex: Exception) {
