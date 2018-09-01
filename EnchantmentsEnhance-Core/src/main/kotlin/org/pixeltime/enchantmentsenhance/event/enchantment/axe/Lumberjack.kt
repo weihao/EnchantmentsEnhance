@@ -89,7 +89,7 @@ class Lumberjack : EnchantmentListener() {
             for (j in -1..1) {
                 for (k in -1..1) {
                     val block2 = block.location.clone().add(i.toDouble(), j.toDouble(), k.toDouble()).block
-                    if (block2 != null && !set.contains(block2) && list.contains(block2.type)) {
+                    if (block2 != null && !set.contains(block2) && list.contains(block2.type) && set.size < 150) {
                         set.add(block2)
                         set.addAll(this.getNearbyBlocks(block2, list, set))
                     }
