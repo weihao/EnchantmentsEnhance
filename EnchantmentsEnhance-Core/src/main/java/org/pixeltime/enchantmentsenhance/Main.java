@@ -171,22 +171,25 @@ public class Main extends JavaPlugin implements Listener {
         if (SettingsManager.config.getBoolean("enablePreventFireworkDamage")) {
             pm.registerEvents(new FireworkListener(), this);
         }
-
-        // Checks for update.
-        if (VersionManager.isUpToDate()) {
-            getLogger().info(SettingsManager.lang.getString("update.updateToDate"));
-        } else {
-            getLogger().warning(SettingsManager.lang.getString("update.outdated"));
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        if (p.hasPermission("Enchantments.*") || p.hasPermission("*") || p.isOp()) {
-                            Main.getNotifierManager().call(new Notification(p, SettingsManager.lang.getString("update.updateToDate")));
+        try {
+            // Checks for update.
+            if (VersionManager.isUpToDate()) {
+                getLogger().info(SettingsManager.lang.getString("update.updateToDate"));
+            } else {
+                getLogger().warning(SettingsManager.lang.getString("update.outdated"));
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        for (Player p : Bukkit.getOnlinePlayers()) {
+                            if (p.hasPermission("Enchantments.*") || p.hasPermission("*") || p.isOp()) {
+                                Main.getNotifierManager().call(new Notification(p, SettingsManager.lang.getString("update.updateToDate")));
+                            }
                         }
                     }
-                }
-            }.runTaskTimer(this, 120L, 36000L);
+                }.runTaskTimer(this, 120L, 36000L);
+            }
+        } catch (IllegalArgumentException ex) {
+            // Debugging version.
         }
 
         // Notify Cauldron and MCPC users.
@@ -276,6 +279,7 @@ public class Main extends JavaPlugin implements Listener {
 
 
         Bukkit.getPluginManager().registerEvents(this, this);
+
     }
 
     /**

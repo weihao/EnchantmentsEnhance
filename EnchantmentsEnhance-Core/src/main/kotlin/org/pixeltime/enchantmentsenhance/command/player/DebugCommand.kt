@@ -46,7 +46,8 @@ class DebugCommand : SubCommand() {
                 val item = ItemStack.deserialize(player.inventory.itemInMainHand.serialize())
                 player.inventory.addItem(item)
             }
-            args[0] == "bar" -> {
+            args[0] == "test" -> {
+                Util.sendMessage("hello world xD", player)
             }
         }
     }
