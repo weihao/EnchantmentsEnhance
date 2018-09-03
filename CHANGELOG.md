@@ -1,5 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [6.3.0] - 2018-09-2
+### Added
+- Strictly lore compare.
+### Fixed
+- version error.
+- lumberjack overflow.
+### Removed
+- Fuzzy lore compare.
+
 ## [6.2.0] - 2018-08-31
 ### Fixed
 - Fixed enhance.
