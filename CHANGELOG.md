@@ -5,9 +5,12 @@ All notable changes to this project will be documented in this file.
 - Strictly lore compare.
 ### Fixed
 - version error.
-- lumberjack overflow.
+- Lumberjack overflow.
+- Lifeskilling item drops.
 ### Removed
 - Fuzzy lore compare.
+### Changed
+- Changed chopping material list.
 
 ## [6.2.0] - 2018-08-31
 ### Fixed
