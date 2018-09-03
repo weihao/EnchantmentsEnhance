@@ -18,31 +18,38 @@
 
 package org.pixeltime.enchantmentsenhance.manager
 
+import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.util.Util
+import org.pixeltime.enchantmentsenhance.util.XMaterial
 import java.util.*
+import kotlin.collections.ArrayList
 
 class DropManager {
+
+
     companion object {
-        @JvmField
-        val mining = SettingsManager.config.getStringList(
-                "lifeskill.mining")
-        @JvmField
-        val chopping = SettingsManager.config.getStringList(
-                "lifeskill.chopping")
-        @JvmField
-        val fishing = SettingsManager.config.getStringList(
-                "lifeskill.fishing")
-        @JvmField
-        val killing = SettingsManager.config.getStringList(
-                "lifeskill.killing")
-        @JvmField
-        val breeding = SettingsManager.config.getStringList(
-                "lifeskill.breeding")
-        @JvmField
-        val smelting = SettingsManager.config.getStringList(
-                "lifeskill.smelting")
+        @JvmStatic
+        fun setUp() {
+            SettingsManager.config.getStringList("lifeskill.mining").forEach {
+                val mat = XMaterial.fromString(it).parseMaterial()
+                if (!mining.contains(mat)) {
+                    mining.add(mat)
+                }
+            }
+            SettingsManager.config.getStringList("lifeskill.chopping").forEach {
+                val mat = (XMaterial.fromString(it).parseMaterial())
+                if (!chopping.contains(mat)) {
+                    chopping.add(mat)
+                }
+            }
+        }
+
+        @JvmStatic
+        val mining: ArrayList<Material> = ArrayList()
+        @JvmStatic
+        val chopping: ArrayList<Material> = ArrayList()
         @JvmField
         val miningChance = SettingsManager.config.getDouble(
                 "reward.mining.chance")

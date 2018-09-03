@@ -32,7 +32,7 @@ class EnchantmentCommand : SubCommand() {
     override fun onCommand(player: Player, args: Array<String>) {
         if (args.size >= 2) {
             if (args[0].equals("add", ignoreCase = true)) {
-                val item = player.itemInHand
+                val item = player.inventory.itemInMainHand
                 if (item == null) {
                     Util.sendMessage(SettingsManager.lang.getString("config.invalidItem"), player)
                     return

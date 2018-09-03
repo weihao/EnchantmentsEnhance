@@ -75,11 +75,12 @@ class Lumberjack : EnchantmentListener() {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin().canBuild(player, block)) {
                     return
                 }
-                block.breakNaturally()
-                if (DropManager.chopping.contains(block.type.toString()))
+                if (DropManager.chopping.contains(block.type)) {
                     if (DropManager.choppingChance > Random().nextDouble()) {
                         DropManager.randomDrop(player, DropManager.choppingLootTable)
                     }
+                }
+                block.breakNaturally()
             }
         }
     }

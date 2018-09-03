@@ -151,7 +151,7 @@ public class Main extends JavaPlugin implements Listener {
 
 
         // Set up the files.
-        SettingsManager.setup();
+        SettingsManager.setUp();
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new EnhancedItemListener(), this);
@@ -208,11 +208,12 @@ public class Main extends JavaPlugin implements Listener {
         registerCompatibility();
 
 
-        MaterialManager.setup();
-        ActionBarAPI.setup();
+        MaterialManager.setUp();
+        ActionBarAPI.setUp();
         DataManager.setUp();
         AnimalBreeding.setUp();
         PackageManager.initializeAll();
+        DropManager.setUp();
 
 
         // When plugin is reloaded, load all the inventory of online players.

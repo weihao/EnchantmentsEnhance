@@ -45,7 +45,7 @@ public class SettingsManager {
     public SettingsManager() {
     }
 
-    public static void setup() {
+    public static void setUp() {
         // Makes the folder.
         if (!Main.getMain().getDataFolder().exists()) {
             Main.getMain().getDataFolder().mkdir();

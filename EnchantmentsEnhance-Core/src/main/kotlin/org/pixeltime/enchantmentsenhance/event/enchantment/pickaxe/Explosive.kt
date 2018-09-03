@@ -90,11 +90,12 @@ class Explosive : EnchantmentListener() {
                 if (block.type == XMaterial.BEDROCK.parseMaterial()) {
                     return
                 }
-                block.breakNaturally()
-                if (DropManager.mining.contains(block.toString()))
+                if (DropManager.mining.contains(block.type)) {
                     if (DropManager.miningChance > Random().nextDouble()) {
                         DropManager.randomDrop(player, DropManager.miningLootTable)
                     }
+                }
+                block.breakNaturally()
             }
         }
     }
