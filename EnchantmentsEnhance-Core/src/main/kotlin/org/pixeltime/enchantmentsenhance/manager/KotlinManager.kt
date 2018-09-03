@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.manager
 
+import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.util.Util
 
@@ -31,7 +32,7 @@ class KotlinManager {
 
         @JvmStatic
         fun getLevel(lore: String, itemlore: List<String>): Int {
-            itemlore.filter { it.contains(lore) }.forEach {
+            itemlore.filter { lore == ChatColor.stripColor(it).split(" ")[0] }.forEach {
                 val temp = it.split(" ")
                 try {
                     val level = Util.romanToInt((temp)[temp.size - 1])

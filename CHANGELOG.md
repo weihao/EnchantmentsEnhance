@@ -1,5 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [6.3.0] - 2018-09-2
+### Added
+- Strictly lore compare.
+### Fixed
+- version error.
+- Lumberjack overflow.
+- Lifeskilling item drops.
+### Removed
+- Fuzzy lore compare.
+### Changed
+- Changed chopping material list.
+
+## [6.2.0] - 2018-08-31
+### Fixed
+- Fixed enhance.
+- Addressed spawner issue.
+
 ## [6.1.1] - 2018-08-30
 ### Fixed
 - Fixed touch spawner.

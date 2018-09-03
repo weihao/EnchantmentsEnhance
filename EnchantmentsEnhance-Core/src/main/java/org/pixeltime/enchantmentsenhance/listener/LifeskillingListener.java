@@ -57,7 +57,7 @@ public class LifeskillingListener implements Listener {
         if (player.getGameMode() != GameMode.SURVIVAL) {
             return;
         }
-        if (DropManager.mining.contains(e.getBlock().getType().toString()))
+        if (DropManager.getMining() .contains(e.getBlock().getType()))
             if (DropManager.miningChance > random.nextDouble()) {
                 DropManager.randomDrop(player, DropManager.miningLootTable);
             }
@@ -75,7 +75,7 @@ public class LifeskillingListener implements Listener {
         if (player.getGameMode() != GameMode.SURVIVAL) {
             return;
         }
-        if (DropManager.chopping.contains(e.getBlock().getType().toString()))
+        if (DropManager.getChopping().contains(e.getBlock().getType()))
             if (DropManager.choppingChance > random.nextDouble()) {
                 DropManager.randomDrop(player, DropManager.choppingLootTable);
             }

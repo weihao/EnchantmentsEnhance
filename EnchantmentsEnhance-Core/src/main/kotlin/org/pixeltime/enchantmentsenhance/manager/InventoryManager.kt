@@ -60,7 +60,7 @@ class InventoryManager {
 
         @JvmStatic
         fun getArmorSlots(player: Player): List<ItemStack> {
-            return (player.inventory.armorContents.filter { it != null && it.type != Material.AIR } + player.itemInHand).filter { it.hasItemMeta() && it.itemMeta.hasLore() && it.itemMeta.lore.isNotEmpty() }
+            return (player.inventory.armorContents.filter { it != null && it.type != Material.AIR } + player.inventory.itemInMainHand).filter { it.hasItemMeta() && it.itemMeta.hasLore() && it.itemMeta.lore.isNotEmpty() }
         }
 
         @JvmStatic

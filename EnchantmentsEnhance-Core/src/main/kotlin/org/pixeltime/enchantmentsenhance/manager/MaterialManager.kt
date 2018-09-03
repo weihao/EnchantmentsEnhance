@@ -75,7 +75,7 @@ class MaterialManager {
         val bow = mutableListOf<Material>()
 
         @JvmStatic
-        fun setup() {
+        fun setUp() {
             for (s in SettingsManager.config.getStringList(
                     "material.stoneTypes")) {
                 stoneTypes.add(XMaterial.fromString(s).parseMaterial())

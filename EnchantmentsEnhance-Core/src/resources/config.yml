@@ -106,7 +106,6 @@ lifeskill:
   mining:
   - DIAMOND_ORE
   - EMERALD_ORE
-  - GLOWING_REDSTONE_ORE
   - GOLD_ORE
   - IRON_ORE
   - LAPIS_ORE
@@ -114,26 +113,12 @@ lifeskill:
   - REDSTONE_ORE
   # What block counts as chopping blocks?
   chopping:
-  # LOG includes all the tree blocks.
-  - LOG
-  fishing:
-  # What actions counts as fishing?
-  - CAUGHT_FISH
-  # - BITE
-  # - CAUGHT_ENTITY
-  # - FAILED_ATTEMPT
-  # - FISHING
-  # - IN_GROUND
-  # What entity will reward black stones when killed?
-  killing:
-  - MONSTER
-  # - ANIMALS
-  # What entity will reward black stones when bred?
-  breeding:
-  - ANIMALS
-  # What item will reward black stones when smelt?
-  smelting:
-  - ITEM
+  - ACACIA_LOG
+  - BIRCH_LOG
+  - DARK_OAK_LOG
+  - JUNGLE_LOG
+  - OAK_LOG
+  - SPRUCE_LOG
 
 # Stones ID
 # 0 = weapon stone

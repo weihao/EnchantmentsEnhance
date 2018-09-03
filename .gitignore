@@ -72,3 +72,4 @@ dependency-reduced-pom.xml
 
 */target/*
 */target/**
+.idea/artifacts/*

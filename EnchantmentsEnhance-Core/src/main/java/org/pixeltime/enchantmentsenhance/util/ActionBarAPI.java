@@ -112,7 +112,7 @@ public class ActionBarAPI {
         }
     }
 
-    public static void setup() {
+    public static void setUp() {
         nmsver = Bukkit.getServer().getClass().getPackage().getName();
         nmsver = nmsver.substring(nmsver.lastIndexOf(".") + 1);
 

@@ -61,7 +61,6 @@ public class UnsafeGlow extends EnchantmentWrapper {
 
     public static void addGlow(ItemStack item) {
         Enchantment glow = getGlow();
-
         item.addEnchantment(glow, 1);
     }
 
