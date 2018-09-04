@@ -32,22 +32,7 @@ class DebugCommand : SubCommand() {
 
     override fun onCommand(player: Player, args: Array<String>) {
         when {
-            args[0] == "format" -> {
-                val subcommands = Main.getCommandManager().commands.iterator()
-                while (subcommands.hasNext()) {
-                    val sc = subcommands.next()
-                    val curr = "Command: " + sc.usage() + " Permission: " + sc.permission
-                    Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), player, false)
-                }
-            }
-            args[0] == "info" -> {
-                println(player.inventory.itemInMainHand.toString())
-                println(player.inventory.itemInMainHand.serialize())
-                val item = ItemStack.deserialize(player.inventory.itemInMainHand.serialize())
-                player.inventory.addItem(item)
-            }
             args[0] == "test" -> {
-                Util.sendMessage("hello world xD", player)
             }
         }
     }
