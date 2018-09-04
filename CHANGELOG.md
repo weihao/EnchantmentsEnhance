@@ -1,10 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [6.4.0] - 2018-09-3
+### Added
+- Support for MVdWPlaceholderAPI.
+
 ## [6.3.0] - 2018-09-2
 ### Added
 - Strictly lore compare.
 ### Fixed
-- version error.
+- Version error.
 - Lumberjack overflow.
 - Lifeskilling item drops.
 ### Removed
