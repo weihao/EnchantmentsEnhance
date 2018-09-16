@@ -23,6 +23,7 @@ Completion of the plugin is currently projected at `70%`, meaning the general fu
 
 ## Introduction
 [Wiki](https://github.com/25/EnchantmentsEnhance/wiki)
+
 [Change Log](https://github.com/25/EnchantmentsEnhance/blob/master/CHANGELOG.md)
 
 ## Compatibility
