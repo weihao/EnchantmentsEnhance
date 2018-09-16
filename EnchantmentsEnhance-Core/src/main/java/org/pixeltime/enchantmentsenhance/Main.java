@@ -38,6 +38,7 @@ import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
+import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
@@ -214,6 +215,7 @@ public class Main extends JavaPlugin implements Listener {
         AnimalBreeding.setUp();
         PackageManager.initializeAll();
         DropManager.setUp();
+        MVdWPlaceholderAPI.setUp();
 
 
         // When plugin is reloaded, load all the inventory of online players.

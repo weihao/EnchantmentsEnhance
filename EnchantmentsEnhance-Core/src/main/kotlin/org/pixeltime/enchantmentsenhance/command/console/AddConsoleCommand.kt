@@ -55,7 +55,7 @@ class AddConsoleCommand : SubConsoleCommand() {
                         "%number%", Integer.toString(level)).replace("%stone%",
                         SettingsManager.lang.getString("item.$stoneType")), sender)
             } else {
-                if (stoneType == -1) {
+                if (stoneType < 0) {
                     Main.getApi().addAdvice(player.name, level)
                     Util.sendMessage(SettingsManager.lang.getString("materialize.adviceSucess")
                             .replace("%level%", Integer.toString(level)), player)
