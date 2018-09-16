@@ -835,7 +835,7 @@ enhance:
       WEAPON:
       - ^Damage_All!Lifesteal:1
       - ^Damage_All!Paralyze:2
-      - Damage_All!Damage_All:1v
+      - Damage_All!Damage_All:1
       ARMOR:
       - Reinforced:1
       - Suicide:1

@@ -73,3 +73,6 @@ dependency-reduced-pom.xml
 */target/*
 */target/**
 .idea/artifacts/*
+
+*/pom.xml.versionsBackup
+pom.xml.versionsBackup

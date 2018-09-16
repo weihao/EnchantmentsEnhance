@@ -1,5 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## [6.5.0] - 2018-09-16
+### Fixed
+- Fixed an ArrayIndexOutOfBoundsException in the config.
+- Fixed enhancement error.
+- Fixed force enhancing while enhancing in progress.
+- Fixed unable to open menu after reload.
+- Fixed force enhancement at maximum level.
+
 ## [6.4.0] - 2018-09-3
 ### Added
 - Support for MVdWPlaceholderAPI.

@@ -120,6 +120,10 @@ public class MainMenu extends GUIAbstract {
                                             this.cancel();
                                             update();
                                         });
+                                        setItem(force.getPosition(), cancel.getGlowingItem(playerName), (clicktype) -> {
+                                            this.cancel();
+                                            update();
+                                        });
                                     }
                                     if (count == 5) {
                                         try {
@@ -167,6 +171,10 @@ public class MainMenu extends GUIAbstract {
                                 public void run() {
                                     if (count == 0) {
                                         setItem(cancel.getPosition(), cancel.getGlowingItem(playerName), (clicktype) -> {
+                                            this.cancel();
+                                            update();
+                                        });
+                                        setItem(force.getPosition(), cancel.getGlowingItem(playerName), (clicktype) -> {
                                             this.cancel();
                                             update();
                                         });
