@@ -33,15 +33,23 @@ class DropManager {
         @JvmStatic
         fun setUp() {
             SettingsManager.config.getStringList("lifeskill.mining").forEach {
-                val mat = XMaterial.fromString(it).parseMaterial()
-                if (!mining.contains(mat)) {
-                    mining.add(mat)
+                try {
+                    val mat = XMaterial.fromString(it).parseMaterial()
+                    if (!mining.contains(mat)) {
+                        mining.add(mat)
+                    }
+                } catch (ex: NullPointerException) {
+                    Main.getMain().logger.warning("Error trying to add $it to mining lifeskill.")
                 }
             }
             SettingsManager.config.getStringList("lifeskill.chopping").forEach {
-                val mat = (XMaterial.fromString(it).parseMaterial())
-                if (!chopping.contains(mat)) {
-                    chopping.add(mat)
+                try {
+                    val mat = (XMaterial.fromString(it).parseMaterial())
+                    if (!chopping.contains(mat)) {
+                        chopping.add(mat)
+                    }
+                } catch (ex: NullPointerException) {
+                    Main.getMain().logger.warning("Error trying to add $it to chopping lifeskill.")
                 }
             }
         }
