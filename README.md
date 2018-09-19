@@ -1,4 +1,4 @@
- <img src=".images/thumbnail.png" alt="thumbnail" align="center">
+<p align="center"> <img width="200" height="200" src=".images/thumbnail.png"> </p>
 
 # <img src=".images/logo.jpg" alt="Logo" align="right">
 [![Travis CI](https://travis-ci.org/25/EnchantmentsEnhance.svg?branch=master)](https://travis-ci.org/25/EnchantmentsEnhance)
