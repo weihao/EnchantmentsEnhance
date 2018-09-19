@@ -55,9 +55,12 @@ public class ItemIcon extends Clickable {
 
     @Override
     public ItemStack getItem(String player) {
-        for (int i : PlayerStat.getPlayerStats(player).getItems()) {
-            if (i > 0) {
-                return CompatibilityManager.glow.addGlow(getItem());
+        PlayerStat stat = PlayerStat.getPlayerStats(player);
+        if (stat != null && stat.getItems() != null) {
+            for (int i : PlayerStat.getPlayerStats(player).getItems()) {
+                if (i > 0) {
+                    return CompatibilityManager.glow.addGlow(getItem());
+                }
             }
         }
         return getItem();
