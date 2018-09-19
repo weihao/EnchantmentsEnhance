@@ -1,3 +1,5 @@
+ <img src=".images/thumbnail.png" alt="thumbnail" align="center">
+
 # <img src=".images/logo.jpg" alt="Logo" align="right">
 [![Travis CI](https://travis-ci.org/25/EnchantmentsEnhance.svg?branch=master)](https://travis-ci.org/25/EnchantmentsEnhance)
 [![Codebeat Badge](https://codebeat.co/badges/2ef380b7-5479-4ac6-89d9-fd1fb673511c)](https://codebeat.co/projects/github-com-healpotion-enchantmentsenhance-master)
