@@ -79,6 +79,10 @@
             <id>placeholderapi</id>
             <url>http://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
+            <repository>
+                <id>aikar</id>
+                <url>https://repo.aikar.co/content/groups/aikar/</url>
+            </repository>
     </repositories>
     <dependencies>
         <dependency>
