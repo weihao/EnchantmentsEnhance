@@ -29,7 +29,7 @@ Completion of the plugin is currently projected at `70%`, meaning the general fu
 [Change Log](https://github.com/25/EnchantmentsEnhance/blob/master/CHANGELOG.md)
 
 ## Compatibility
-Version: `1.8.x - 1.12.x`
+Version: `1.8.x - 1.13.x`
 - [x] [Bukkit](https://bukkit.org)
 - [x] [Spigot](https://spigotmc.org)
 - [x] [PaperSpigot](https://github.com/PaperMC/Paper)
