@@ -11,7 +11,7 @@
 
 # [<img src=".images/jenkins.png" alt="Download" align="left">](http://soulbound.me/job/EnchantmentsEnhance/)
 [![Jenkins](https://img.shields.io/badge/download-server_online-27AE60.svg?style=flat)](http://soulbound.me/job/EnchantmentsEnhance/)
-[![Jenkins Build Status](http://www.soulbound.me/job/EnchantmentsEnhance-stable/badge/icon)](http://www.soulbound.me/job/EnchantmentsEnhance-stable/)
+[![Jenkins Build Status](http://www.soulbound.me/job/EnchantmentsEnhance_stable/badge/icon)](http://www.soulbound.me/job/EnchantmentsEnhance-stable/)
 [![Jitpack](https://jitpack.io/v/25/EnchantmentsEnhance.svg)](https://jitpack.io/#25/EnchantmentsEnhance/)
 
 
