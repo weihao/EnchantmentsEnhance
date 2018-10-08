@@ -63,7 +63,7 @@ class Explosive : EnchantmentListener() {
         val level = getLevel(player)
         if (level > 0) {
             val locations = ArrayList<Location>()
-            val locRad = 3
+            val locRad =  SettingsManager.enchant.getInt("explosive.$level.radius")
             val r = locRad - 1
             val start = r / 2
 
@@ -78,8 +78,8 @@ class Explosive : EnchantmentListener() {
             for (x in 0 until locRad)
                 for (y in 0 until locRad)
                     for (z in 0 until locRad)
-                        if (!(x == 0 && y == 0 && z == 0) && !(x == r && y == 0 && z == 0) && !(x == 0 && y == r && z == 0) && !(x == 0 && y == 0 && z == r) && !(x == r && y == r && z == 0)
-                                && !(x == 0 && y == r && z == r) && !(x == r && y == 0 && z == r) && !(x == r && y == r && z == r))
+//                        if (!(x == 0 && y == 0 && z == 0) && !(x == r && y == 0 && z == 0) && !(x == 0 && y == r && z == 0) && !(x == 0 && y == 0 && z == r) && !(x == r && y == r && z == 0)
+//                                && !(x == 0 && y == r && z == r) && !(x == r && y == 0 && z == r) && !(x == r && y == r && z == r))
                             locations.add(Location(sL.world, sL.x + x, sL.y + y, sL.z + z))
 
             for (loc in locations) {

@@ -512,3 +512,10 @@ phoenix:
     potion_lvl: 2
   3:
     potion_lvl: 3
+explosive:
+  1:
+    radius: 1
+  2:
+    radius: 2
+  3:
+    radius: 3
