@@ -22,15 +22,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.pixeltime</groupId>
-    <artifactId>EnchantmentsEnhance-Parent</artifactId>
-    <version>6.6.0</version>
-
-    <modules>
-        <module>EnchantmentsEnhance-1.12</module>
-        <module>EnchantmentsEnhance-1.13</module>
-        <module>EnchantmentsEnhance-Core</module>
-        <module>EnchantmentsEnhance-API</module>
-    </modules>
+    <artifactId>EnchantmentsEnhance</artifactId>
+    <version>7.0.0</version>
 
     <description>A plugin of enchantments enhancing system inspired by BDO.</description>
     <packaging>pom</packaging>
@@ -43,18 +36,21 @@
     </issueManagement>
 
     <properties>
-        <kotlin.version>1.2.71</kotlin.version>
+        <ldk.version>0.1.6-rc2</ldk.version>
+        <kotlin.version>1.3.10</kotlin.version>
+        <bukkit.version>1.13.2-R0.1-SNAPSHOT</bukkit.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <modules>
+        <module>EnchantmentsEnhance-API</module>
+        <module>EnchantmentsEnhance-Compatibility</module>
+        <module>EnchantmentsEnhance-Plugin</module>
+    </modules>
 
     <repositories>
-        <repository>
-            <id>vault-repo</id>
-            <url>http://nexus.hc.to/content/repositories/pub_releases</url>
-        </repository>
         <repository>
             <id>sk89q-repo</id>
             <url>http://maven.sk89q.com/repo/</url>
@@ -79,60 +75,88 @@
             <id>placeholderapi</id>
             <url>http://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
-            <repository>
-                <id>aikar</id>
-                <url>https://repo.aikar.co/content/groups/aikar/</url>
-            </repository>
+        <repository>
+            <id>aikar</id>
+            <url>https://repo.aikar.co/content/groups/aikar/</url>
+        </repository>
+        <!-- LuckPerms mirror -->
+        <repository>
+            <id>lucko-repo</id>
+            <url>https://repo.lucko.me</url>
+        </repository>
     </repositories>
+
     <dependencies>
+        <!-- Kotlin -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
-            <version>${kotlin.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
+        <!-- ldk-bukkit-common -->
         <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-runtime</artifactId>
-            <version>${kotlin.version}</version>
+            <groupId>com.github.lgou2w.ldk</groupId>
+            <artifactId>ldk-bukkit-common</artifactId>
+            <version>${ldk.version}</version>
+            <scope>compile</scope>
         </dependency>
+        <!-- Spigot -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.7</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.Slikey</groupId>
-            <artifactId>EffectLib</artifactId>
-            <version>d2da0ac5f1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sk89q.worldguard</groupId>
-            <artifactId>worldguard-legacy</artifactId>
-            <version>6.2</version>
-        </dependency>
-        <dependency>
-            <groupId>net.milkbowl.vault</groupId>
-            <artifactId>VaultAPI</artifactId>
-            <version>1.6</version>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>${bukkit.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Bukkit -->
         <dependency>
-            <groupId>com.sk89q.worldedit</groupId>
-            <artifactId>worldedit-bukkit</artifactId>
-            <version>6.1.4-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>me.clip</groupId>
-            <artifactId>placeholderapi</artifactId>
-            <version>2.8.7</version>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>${bukkit.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
+        <plugins>
+            <!-- Kotlin Plugin -->
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <jvmTarget>${maven.compiler.target}</jvmTarget>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Source Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
