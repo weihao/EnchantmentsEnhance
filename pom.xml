@@ -36,7 +36,7 @@
     </issueManagement>
 
     <properties>
-        <ldk.version>0.1.6-rc2</ldk.version>
+        <ldk.version>0.1.6-rc3</ldk.version>
         <kotlin.version>1.3.10</kotlin.version>
         <bukkit.version>1.13.2-R0.1-SNAPSHOT</bukkit.version>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -97,6 +97,27 @@
         <dependency>
             <groupId>com.github.lgou2w.ldk</groupId>
             <artifactId>ldk-bukkit-common</artifactId>
+            <version>${ldk.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- ldk-bukkit-gui -->
+        <dependency>
+            <groupId>com.github.lgou2w.ldk</groupId>
+            <artifactId>ldk-bukkit-gui</artifactId>
+            <version>${ldk.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- ldk-bukkit-cmd -->
+        <dependency>
+            <groupId>com.github.lgou2w.ldk</groupId>
+            <artifactId>ldk-bukkit-cmd</artifactId>
+            <version>${ldk.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- ldk-hikari -->
+        <dependency>
+            <groupId>com.github.lgou2w.ldk</groupId>
+            <artifactId>ldk-hikari</artifactId>
             <version>${ldk.version}</version>
             <scope>compile</scope>
         </dependency>
