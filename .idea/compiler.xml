@@ -7,11 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="EnchantmentsEnhance-API" />
+        <module name="EnchantmentsEnhance-Compatibility-1.12" />
+        <module name="EnchantmentsEnhance-Compatibility-1.13" />
         <module name="EnchantmentsEnhance-Compatibility-Common" />
         <module name="EnchantmentsEnhance-Plugin" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="EnchantmentsEnhance-1.12" target="1.8" />
+      <module name="EnchantmentsEnhance-1.13" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
