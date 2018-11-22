@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="EnchantmentsEnhance-1.12" />
-        <module name="EnchantmentsEnhance-1.13" />
         <module name="EnchantmentsEnhance-API" />
-        <module name="EnchantmentsEnhance-Core" />
+        <module name="EnchantmentsEnhance-Compatibility-Common" />
+        <module name="EnchantmentsEnhance-Plugin" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+    </bytecodeTargetLevel>
   </component>
 </project>
