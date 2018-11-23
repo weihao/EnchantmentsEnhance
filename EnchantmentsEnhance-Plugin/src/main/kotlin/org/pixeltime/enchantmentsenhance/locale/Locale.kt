@@ -167,6 +167,9 @@ class LocaleManager {
             addLang("update.outdated", arrayOf("&cEnchantmentsEnhance is OUTDATED!", "&c附魔强化插件需要更新!"))
             addLang("update.updateToDate", arrayOf("&aEnchantments Enhance is UP-TO-DATE!", "&a附魔强化插件已是最新版!"))
             addLang("vendor.gui", arrayOf("&8Night Vendor", "&8神秘商人"))
+            addLang("anvil.disabled", arrayOf("&cAnvil is disabled.", "&c铁砧已被禁用"))
+            addLang("anvil.repairDisabled", arrayOf("&cAnvil repair is disabled.", "&c铁砧修复已被禁用"))
+            addLang("anvil.renameDisabled", arrayOf("&cAnvil rename is disabled.", "&c铁砧重命名已被禁用"))
 
             SettingsManager.lang.options().copyDefaults(true)
             SettingsManager.saveLang()

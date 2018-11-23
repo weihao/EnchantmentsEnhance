@@ -21,30 +21,18 @@ package org.pixeltime.enchantmentsenhance
 import com.lgou2w.ldk.bukkit.version.MinecraftBukkitVersion
 import com.lgou2w.ldk.common.isOrLater
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin
+import com.ugleh.anvilrestrict.AnvilRestrict
 import org.bstats.bukkit.Metrics
 import org.bukkit.Bukkit
 import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitRunnable
 import org.pixeltime.enchantmentsenhance.api.API
-import org.pixeltime.enchantmentsenhance.chat.Announcer_ActionBar
-import org.pixeltime.enchantmentsenhance.chat.Announcer_BossBar
-import org.pixeltime.enchantmentsenhance.chat.Announcer_Chat
-import org.pixeltime.enchantmentsenhance.chat.Notification
-import org.pixeltime.enchantmentsenhance.chat.Notifier_Chat
-import org.pixeltime.enchantmentsenhance.chat.Notifier_TitleBar
+import org.pixeltime.enchantmentsenhance.chat.*
 import org.pixeltime.enchantmentsenhance.gui.GUIListener
 import org.pixeltime.enchantmentsenhance.gui.GUIManager
 import org.pixeltime.enchantmentsenhance.gui.menu.handlers.MenuHandler
-import org.pixeltime.enchantmentsenhance.listener.EnhancedItemListener
-import org.pixeltime.enchantmentsenhance.listener.FireworkListener
-import org.pixeltime.enchantmentsenhance.listener.ItemUseListener
-import org.pixeltime.enchantmentsenhance.listener.LifeskillingListener
-import org.pixeltime.enchantmentsenhance.listener.MVdWPlaceholderAPI
-import org.pixeltime.enchantmentsenhance.listener.PlaceholderListener
-import org.pixeltime.enchantmentsenhance.listener.PlayerDeathListener
-import org.pixeltime.enchantmentsenhance.listener.PlayerStreamListener
-import org.pixeltime.enchantmentsenhance.listener.VanillaEnchantListener
+import org.pixeltime.enchantmentsenhance.listener.*
 import org.pixeltime.enchantmentsenhance.manager.*
 import org.pixeltime.enchantmentsenhance.mysql.DataStorage
 import org.pixeltime.enchantmentsenhance.mysql.Database
@@ -125,6 +113,12 @@ class Main : JavaPlugin(), Listener {
         if (SettingsManager.config.getBoolean("enablePreventFireworkDamage")) {
             pm.registerEvents(FireworkListener(), this)
         }
+        if ((SettingsManager.config.getBoolean("enableAnvil")
+                        || SettingsManager.config.getBoolean("enableAnvilRename")
+                        || SettingsManager.config.getBoolean("enableAnvilRepair"))) {
+            pm.registerEvents(AnvilRestrict(), this)
+        }
+
         try {
             // Checks for update.
             if (VersionManager.isUpToDate()) {
@@ -148,7 +142,7 @@ class Main : JavaPlugin(), Listener {
 
         // Notify Cauldron and MCPC users.
         if (server.name.contains("Cauldron") || server.name
-                    .contains("MCPC")) {
+                        .contains("MCPC")) {
             logger.info(
                     "EnchantmentsEnhance runs fine on Cauldron/KCauldron.")
         }
@@ -237,7 +231,7 @@ class Main : JavaPlugin(), Listener {
                 "config.onEnable"))
         // Display final time at the end of the initialization.
         logger.info("EnchantmentsEnhance took " + (System
-                                                       .currentTimeMillis() - startTime) + "ms to setup.")
+                .currentTimeMillis() - startTime) + "ms to setup.")
 
 
         Bukkit.getPluginManager().registerEvents(this, this)
