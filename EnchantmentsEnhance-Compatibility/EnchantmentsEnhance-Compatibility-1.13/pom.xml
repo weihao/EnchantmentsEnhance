@@ -34,7 +34,7 @@
         <!-- EnchantmentsEnhance-Compatibility-Common -->
         <dependency>
             <groupId>org.pixeltime</groupId>
-            <artifactId>EnchantmentsEnhance-Comatibility-Common</artifactId>
+            <artifactId>EnchantmentsEnhance-Compatibility-Common</artifactId>
             <version>7.0.0</version>
             <scope>compile</scope>
         </dependency>
