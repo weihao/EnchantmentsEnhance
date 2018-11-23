@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.manager
 
+import com.lgou2w.ldk.bukkit.entity.EntityFactory
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -62,7 +63,7 @@ class InventoryManager {
 
         @JvmStatic
         fun getArmorSlots(player: Player): List<ItemStack> {
-            return (player.inventory.armorContents.filter { it != null && it.type != Material.AIR } + player.inventory.itemInMainHand).filter { it.hasItemMeta() && it.itemMeta.hasLore() && it.itemMeta.lore.isNotEmpty() }
+            return (player.inventory.armorContents + EntityFactory.getItemInMainHand(player)).filterNotNull().filter { it.type != Material.AIR && it.hasItemMeta() && it.itemMeta.hasLore() && it.itemMeta.lore.isNotEmpty() }
         }
 
         @JvmStatic
