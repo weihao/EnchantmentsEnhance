@@ -1,4 +1,4 @@
-package com.ugleh.anvilrestrict
+package org.pixeltime.enchantmentsenhance.listener
 
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -9,32 +9,28 @@ import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
 
-class AnvilRestrict() : Listener {
+class AnvilRestrict : Listener {
     @EventHandler
     fun onInventoryClick(event: InventoryClickEvent) {
-        if (event.getSlot() != -999) {
+        if (event.slot != -999) {
             val player = event.whoClicked as Player
             val item = event.currentItem
-            if (event.inventory.type == InventoryType.ANVIL) {
+            if (event.inventory.type == InventoryType.ANVIL && (ItemManager.getItemEnchantLevel(item) > 0 || ItemManager.getToolEnchantLevel(item) > 0)) {
                 if (!SettingsManager.config.getBoolean("enableAnvil")) {
                     event.isCancelled = true
                     Util.sendMessage(SettingsManager.lang.getString("anvil.disabled"), player)
-                } else if (!SettingsManager.config.getBoolean("enableAnvilRename")) {
-                    if (item != null) {
-                        var tempname = ""
-                        if (item.itemMeta.hasDisplayName()) {
-                            tempname = item.itemMeta.displayName
-                        }
-                        if (tempname != event.inventory.getItem(0).itemMeta.displayName) {
+                } else if (!SettingsManager.config.getBoolean("enableAnvilRename") && item != null) {
+                    var tempname: String
+                    if (item.hasItemMeta() && item.itemMeta.hasDisplayName()) {
+                        tempname = item.itemMeta.displayName
+                        if (event.inventory.getItem(0) != null && tempname != event.inventory.getItem(0).itemMeta.displayName) {
                             event.isCancelled = true
                             Util.sendMessage(SettingsManager.lang.getString("anvil.renameDisabled"), player)
                         }
                     }
                 } else if (!SettingsManager.config.getBoolean("enableAnvilRepair")) {
-                    if (ItemManager.getItemEnchantLevel(item) > 0 || ItemManager.getToolEnchantLevel(item) > 0) {
-                        event.isCancelled = true
-                        Util.sendMessage(SettingsManager.lang.getString("anvil.repairDisabled"), player)
-                    }
+                    event.isCancelled = true
+                    Util.sendMessage(SettingsManager.lang.getString("anvil.repairDisabled"), player)
                 }
             }
         }

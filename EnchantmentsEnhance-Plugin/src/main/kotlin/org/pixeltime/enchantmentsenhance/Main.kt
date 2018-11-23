@@ -21,7 +21,6 @@ package org.pixeltime.enchantmentsenhance
 import com.lgou2w.ldk.bukkit.version.MinecraftBukkitVersion
 import com.lgou2w.ldk.common.isOrLater
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin
-import com.ugleh.anvilrestrict.AnvilRestrict
 import org.bstats.bukkit.Metrics
 import org.bukkit.Bukkit
 import org.bukkit.event.Listener
@@ -113,9 +112,9 @@ class Main : JavaPlugin(), Listener {
         if (SettingsManager.config.getBoolean("enablePreventFireworkDamage")) {
             pm.registerEvents(FireworkListener(), this)
         }
-        if ((SettingsManager.config.getBoolean("enableAnvil")
-                        || SettingsManager.config.getBoolean("enableAnvilRename")
-                        || SettingsManager.config.getBoolean("enableAnvilRepair"))) {
+        if (!(SettingsManager.config.getBoolean("enableAnvil")
+                        && SettingsManager.config.getBoolean("enableAnvilRename")
+                        && SettingsManager.config.getBoolean("enableAnvilRepair"))) {
             pm.registerEvents(AnvilRestrict(), this)
         }
 
