@@ -24,12 +24,12 @@ import org.pixeltime.enchantmentsenhance.gui.Clickable
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder
 import org.pixeltime.enchantmentsenhance.util.Util
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 
 class CancelIcon : Clickable() {
 
     override fun getItem(playerName: String): ItemStack {
-        return ItemBuilder(XMaterial.RED_WOOL.parseItem())
+        return ItemBuilder(XMaterial.RED_WOOL.toBukkit())
             .setDyeColor(DyeColor.RED)
             .setName(SettingsManager.lang.getString("menu.gui.cancel"))
             .addLoreLine(SettingsManager.lang.getString("menu.lore.cancel"))

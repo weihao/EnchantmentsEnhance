@@ -26,12 +26,12 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder
 import org.pixeltime.enchantmentsenhance.util.Util
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 
 class ItemIcon : Clickable() {
 
     fun getItem(): ItemStack {
-        return ItemBuilder(XMaterial.CHEST_MINECART.parseMaterial())
+        return ItemBuilder(XMaterial.CHEST_MINECART.toBukkit())
             .setName(SettingsManager.lang.getString("item.gui"))
             .addLoreLine(SettingsManager.lang.getString("item.gui1"))
             .toItemStack()

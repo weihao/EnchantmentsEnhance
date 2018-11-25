@@ -26,7 +26,7 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.player.PlayerInteractEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 
 class Plow : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -63,7 +63,7 @@ class Plow : EnchantmentListener() {
                     if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin().canBuild(player, block)) {
                         return
                     }
-                    block.type = XMaterial.FARMLAND.parseMaterial()
+                    block.type = XMaterial.FARMLAND.toBukkit()
                     z++
                 }
                 x++

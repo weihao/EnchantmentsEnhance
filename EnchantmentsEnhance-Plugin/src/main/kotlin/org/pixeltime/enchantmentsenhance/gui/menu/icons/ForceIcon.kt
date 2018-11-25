@@ -28,12 +28,12 @@ import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder
 import org.pixeltime.enchantmentsenhance.util.Util
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 
 class ForceIcon : Clickable() {
 
     override fun getItem(playerName: String): ItemStack {
-        return ItemBuilder(XMaterial.RED_WOOL.parseMaterial())
+        return ItemBuilder(XMaterial.RED_WOOL.toBukkit())
             .setDyeColor(DyeColor.RED)
             .setName(SettingsManager.lang.getString("menu.gui.force"))
             .addLoreLine(SettingsManager.lang.getString(
@@ -45,7 +45,7 @@ class ForceIcon : Clickable() {
         val enchantLevel = ItemManager.getItemEnchantLevel(item)
         val stoneId = Enhance.getStoneId(item, enchantLevel, clicked)
         val costToEnhance = DataManager.costToForceEnchant[enchantLevel + 1]
-        return ItemBuilder(XMaterial.RED_WOOL.parseMaterial())
+        return ItemBuilder(XMaterial.RED_WOOL.toBukkit())
             .setDyeColor(DyeColor.RED)
             .setName(SettingsManager.lang.getString("menu.gui.force"))
             .addLoreLine(SettingsManager.lang.getString("menu.lore.force1"))

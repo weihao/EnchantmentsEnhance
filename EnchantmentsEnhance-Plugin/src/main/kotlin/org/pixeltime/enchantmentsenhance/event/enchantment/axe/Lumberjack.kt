@@ -27,7 +27,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import java.util.*
 
 class Lumberjack : EnchantmentListener() {
@@ -46,17 +46,17 @@ class Lumberjack : EnchantmentListener() {
         }
         val player = blockBreakEvent.player
         val blocks = arrayOf(
-                XMaterial.ACACIA_LOG.parseMaterial(),
-                XMaterial.BIRCH_LOG.parseMaterial(),
-                XMaterial.DARK_OAK_LOG.parseMaterial(),
-                XMaterial.OAK_LOG.parseMaterial(),
-                XMaterial.SPRUCE_LOG.parseMaterial(),
-                XMaterial.ACACIA_LEAVES.parseMaterial(),
-                XMaterial.BIRCH_LEAVES.parseMaterial(),
-                XMaterial.DARK_OAK_LEAVES.parseMaterial(),
-                XMaterial.JUNGLE_LEAVES.parseMaterial(),
-                XMaterial.OAK_LEAVES.parseMaterial(),
-                XMaterial.SPRUCE_LEAVES.parseMaterial()
+                XMaterial.ACACIA_LOG.toBukkit(),
+                XMaterial.BIRCH_LOG.toBukkit(),
+                XMaterial.DARK_OAK_LOG.toBukkit(),
+                XMaterial.OAK_LOG.toBukkit(),
+                XMaterial.SPRUCE_LOG.toBukkit(),
+                XMaterial.ACACIA_LEAVES.toBukkit(),
+                XMaterial.BIRCH_LEAVES.toBukkit(),
+                XMaterial.DARK_OAK_LEAVES.toBukkit(),
+                XMaterial.JUNGLE_LEAVES.toBukkit(),
+                XMaterial.OAK_LEAVES.toBukkit(),
+                XMaterial.SPRUCE_LEAVES.toBukkit()
         )
         val level = getLevel(player)
         if (level > 0

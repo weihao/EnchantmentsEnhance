@@ -28,7 +28,7 @@ import org.bukkit.event.player.PlayerShearEntityEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 
 class Shearer : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -67,7 +67,7 @@ class Shearer : EnchantmentListener() {
             if (entity is Sheep) {
                 if (!entity.isSheared) {
                     entity.isSheared = true
-                    entity.world.dropItem(entity.location, ItemStack(XMaterial.WHITE_WOOL.parseMaterial(), 1, entity.color.woolData.toShort()))
+                    entity.world.dropItem(entity.location, ItemStack(XMaterial.WHITE_WOOL.toBukkit(), 1, entity.color.woolData.toShort()))
                 }
             }
         }

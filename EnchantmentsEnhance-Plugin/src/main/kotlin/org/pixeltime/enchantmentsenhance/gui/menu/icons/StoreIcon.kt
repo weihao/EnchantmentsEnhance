@@ -23,12 +23,12 @@ import org.pixeltime.enchantmentsenhance.gui.Clickable
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder
 import org.pixeltime.enchantmentsenhance.util.Util
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 
 class StoreIcon : Clickable() {
 
     override fun getItem(playerName: String): ItemStack {
-        return ItemBuilder(XMaterial.WRITABLE_BOOK.parseMaterial())
+        return ItemBuilder(XMaterial.WRITABLE_BOOK.toBukkit())
             .setName(SettingsManager.lang.getString("menu.gui.store"))
             .addLoreLine(SettingsManager.lang.getString("menu.lore.store1"))
             .addLoreLine(SettingsManager.lang.getString("menu.lore.store2"))

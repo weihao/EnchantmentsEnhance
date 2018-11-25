@@ -28,12 +28,12 @@ import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder
 import org.pixeltime.enchantmentsenhance.util.Util
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 
 class StatsIcon : Clickable() {
 
     fun getItem(): ItemStack {
-        return ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial())
+        return ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
             .setDyeColor(DyeColor.LIGHT_BLUE)
             .setName(SettingsManager.lang.getString("menu.gui.stats"))
             .addLoreLine(SettingsManager.lang.getString("menu.lore.stats1"))
@@ -43,7 +43,7 @@ class StatsIcon : Clickable() {
 
     fun getItem(playerName: String?, clicked: Clickable): ItemStack {
         if (playerName != null && MainMenu.itemOnEnhancingSlot[playerName] != null) {
-            return CompatibilityManager.glow.addGlow(ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial())
+            return CompatibilityManager.glow.addGlow(ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
                 .setDyeColor(DyeColor.LIGHT_BLUE).setName(SettingsManager.lang.getString("menu.gui.stats"))
                 .addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack") + Main.getApi().getFailstack(playerName))
                 .addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot[playerName]!!, playerName, clicked))
@@ -52,7 +52,7 @@ class StatsIcon : Clickable() {
                     "menu.lore.stats2")).toItemStack())
         }
         return if (playerName != null && Main.getApi().hasFailstack(playerName)) {
-            CompatibilityManager.glow.addGlow(ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial())
+            CompatibilityManager.glow.addGlow(ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
                 .setDyeColor(DyeColor.LIGHT_BLUE)
                 .setName(SettingsManager.lang.getString("menu.gui.stats"))
                 .addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack") + Main.getApi().getFailstack(playerName))

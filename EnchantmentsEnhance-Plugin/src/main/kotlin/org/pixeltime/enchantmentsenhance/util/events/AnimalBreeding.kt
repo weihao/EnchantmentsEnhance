@@ -21,7 +21,7 @@ package org.pixeltime.enchantmentsenhance.util.events
 import org.bukkit.Material
 import org.bukkit.entity.EntityType
 import org.bukkit.inventory.ItemStack
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import java.util.*
 
 object AnimalBreeding {
@@ -58,8 +58,8 @@ object AnimalBreeding {
         goldenCarrot = ItemStack(Material.GOLDEN_CARROT)
         wheat = ItemStack(Material.WHEAT)
         carrot = ItemStack(Material.CARROT)
-        seeds = ItemStack(XMaterial.WHEAT_SEEDS.parseMaterial())
-        dandelions = ItemStack(XMaterial.DANDELION.parseMaterial())
+        seeds = ItemStack(XMaterial.WHEAT_SEEDS.toBukkit())
+        dandelions = ItemStack(XMaterial.DANDELION.toBukkit())
 
         breeadableFood.add(goldenApple.type)
         breeadableFood.add(goldenCarrot.type)

@@ -38,7 +38,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.DyeColors
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder
 import org.pixeltime.enchantmentsenhance.util.Util
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import java.util.*
 
 class MainMenu : GUIAbstract {
@@ -260,28 +260,28 @@ class MainMenu : GUIAbstract {
         }
 
         for (i in MenuCoord.getPlaceHolderCoords()) {
-            setItem(i, ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE.parseMaterial()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack())
+            setItem(i, ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE.toBukkit()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack())
         }
     }
 
     companion object {
         private val WOOL = arrayOf(
-                ItemBuilder(XMaterial.BLACK_WOOL.parseMaterial()).setDyeColor(DyeColor.BLACK).toItemStack(),
-                ItemBuilder(XMaterial.BLUE_WOOL.parseMaterial()).setDyeColor(DyeColor.BLUE).toItemStack(),
-                ItemBuilder(XMaterial.BROWN_WOOL.parseMaterial()).setDyeColor(DyeColor.BROWN).toItemStack(),
-                ItemBuilder(XMaterial.CYAN_WOOL.parseMaterial()).setDyeColor(DyeColor.CYAN).toItemStack(),
-                ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.parseMaterial()).setDyeColor(DyeColors.LIGHT_GRAY.bukkitDyeColor()).toItemStack(),
-                ItemBuilder(XMaterial.GREEN_WOOL.parseMaterial()).setDyeColor(DyeColor.GREEN).toItemStack(),
-                ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial()).setDyeColor(DyeColor.LIGHT_BLUE).toItemStack(),
-                ItemBuilder(XMaterial.GRAY_WOOL.parseMaterial()).setDyeColor(DyeColor.GRAY).toItemStack(),
-                ItemBuilder(XMaterial.LIME_WOOL.parseMaterial()).setDyeColor(DyeColor.LIME).toItemStack(),
-                ItemBuilder(XMaterial.MAGENTA_WOOL.parseMaterial()).setDyeColor(DyeColor.MAGENTA).toItemStack(),
-                ItemBuilder(XMaterial.ORANGE_WOOL.parseMaterial()).setDyeColor(DyeColor.ORANGE).toItemStack(),
-                ItemBuilder(XMaterial.PINK_WOOL.parseMaterial()).setDyeColor(DyeColor.PINK).toItemStack(),
-                ItemBuilder(XMaterial.PURPLE_WOOL.parseMaterial()).setDyeColor(DyeColor.PURPLE).toItemStack(),
-                ItemBuilder(XMaterial.RED_WOOL.parseMaterial()).setDyeColor(DyeColor.RED).toItemStack(),
-                ItemBuilder(XMaterial.WHITE_WOOL.parseMaterial()).setDyeColor(DyeColor.WHITE).toItemStack(),
-                ItemBuilder(XMaterial.YELLOW_WOOL.parseMaterial()).setDyeColor(DyeColor.YELLOW).toItemStack()
+                ItemBuilder(XMaterial.BLACK_WOOL.toBukkit()).setDyeColor(DyeColor.BLACK).toItemStack(),
+                ItemBuilder(XMaterial.BLUE_WOOL.toBukkit()).setDyeColor(DyeColor.BLUE).toItemStack(),
+                ItemBuilder(XMaterial.BROWN_WOOL.toBukkit()).setDyeColor(DyeColor.BROWN).toItemStack(),
+                ItemBuilder(XMaterial.CYAN_WOOL.toBukkit()).setDyeColor(DyeColor.CYAN).toItemStack(),
+                ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.toBukkit()).setDyeColor(DyeColors.LIGHT_GRAY.bukkitDyeColor()).toItemStack(),
+                ItemBuilder(XMaterial.GREEN_WOOL.toBukkit()).setDyeColor(DyeColor.GREEN).toItemStack(),
+                ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit()).setDyeColor(DyeColor.LIGHT_BLUE).toItemStack(),
+                ItemBuilder(XMaterial.GRAY_WOOL.toBukkit()).setDyeColor(DyeColor.GRAY).toItemStack(),
+                ItemBuilder(XMaterial.LIME_WOOL.toBukkit()).setDyeColor(DyeColor.LIME).toItemStack(),
+                ItemBuilder(XMaterial.MAGENTA_WOOL.toBukkit()).setDyeColor(DyeColor.MAGENTA).toItemStack(),
+                ItemBuilder(XMaterial.ORANGE_WOOL.toBukkit()).setDyeColor(DyeColor.ORANGE).toItemStack(),
+                ItemBuilder(XMaterial.PINK_WOOL.toBukkit()).setDyeColor(DyeColor.PINK).toItemStack(),
+                ItemBuilder(XMaterial.PURPLE_WOOL.toBukkit()).setDyeColor(DyeColor.PURPLE).toItemStack(),
+                ItemBuilder(XMaterial.RED_WOOL.toBukkit()).setDyeColor(DyeColor.RED).toItemStack(),
+                ItemBuilder(XMaterial.WHITE_WOOL.toBukkit()).setDyeColor(DyeColor.WHITE).toItemStack(),
+                ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit()).setDyeColor(DyeColor.YELLOW).toItemStack()
         )
         var itemOnEnhancingSlot: MutableMap<String, ItemStack> = HashMap()
         var enhancingMode: MutableMap<String, Clickable> = HashMap()

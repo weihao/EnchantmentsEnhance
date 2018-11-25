@@ -26,7 +26,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 
 class Factory : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -69,8 +69,8 @@ class Factory : EnchantmentListener() {
                         removeItems(player.inventory, Material.GOLD_INGOT, n * 9)
                         player.inventory.addItem(ItemStack(Material.GOLD_BLOCK, n))
                     }
-                    if (itemStack.type == XMaterial.INK_SAC.parseMaterial()) {
-                        removeItems(player.inventory, XMaterial.INK_SAC.parseMaterial(), n * 9)
+                    if (itemStack.type == XMaterial.INK_SAC.toBukkit()) {
+                        removeItems(player.inventory, XMaterial.INK_SAC.toBukkit(), n * 9)
                         player.inventory.addItem(ItemStack(Material.LAPIS_BLOCK, n))
                     }
                     if (itemStack.type == Material.COAL) {
@@ -87,8 +87,8 @@ class Factory : EnchantmentListener() {
                         removeItems(player.inventory, Material.CLAY_BALL, n * 4)
                         player.inventory.addItem(ItemStack(Material.CLAY, n))
                     }
-                    if (itemStack.type == XMaterial.SNOWBALL.parseMaterial()) {
-                        removeItems(player.inventory, XMaterial.SNOWBALL.parseMaterial(), n * 9)
+                    if (itemStack.type == XMaterial.SNOWBALL.toBukkit()) {
+                        removeItems(player.inventory, XMaterial.SNOWBALL.toBukkit(), n * 9)
                         player.inventory.addItem(ItemStack(Material.SNOW, n))
                     }
                 }

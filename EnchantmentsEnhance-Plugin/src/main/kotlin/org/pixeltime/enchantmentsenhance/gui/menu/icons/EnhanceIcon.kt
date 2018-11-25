@@ -27,12 +27,12 @@ import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder
 import org.pixeltime.enchantmentsenhance.util.Util
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 
 class EnhanceIcon : Clickable() {
 
     override fun getItem(playerName: String): ItemStack {
-        return ItemBuilder(XMaterial.YELLOW_WOOL.parseMaterial())
+        return ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit())
             .setDyeColor(DyeColor.YELLOW)
             .setName(SettingsManager.lang.getString("menu.gui.enhance"))
             .addLoreLine(SettingsManager.lang.getString(
@@ -46,7 +46,7 @@ class EnhanceIcon : Clickable() {
 
     fun getItem(item: ItemStack): ItemStack {
         val level = ItemManager.getItemEnchantLevel(item)
-        val ib = ItemBuilder(XMaterial.YELLOW_WOOL.parseMaterial())
+        val ib = ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit())
             .setDyeColor(DyeColor.YELLOW)
             .setName(SettingsManager.lang.getString("menu.gui.enhance"))
             .addLoreLine(SettingsManager.lang.getString("menu.lore.ifSuccess"))

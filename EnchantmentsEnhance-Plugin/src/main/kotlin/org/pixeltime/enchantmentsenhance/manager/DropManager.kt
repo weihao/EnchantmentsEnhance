@@ -22,7 +22,7 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.util.Util
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -34,7 +34,7 @@ class DropManager {
         fun setUp() {
             SettingsManager.config.getStringList("lifeskill.mining").forEach {
                 try {
-                    val mat = XMaterial.fromString(it)!!.parseMaterial()
+                    val mat = XMaterial.searchByType(it)!!.toBukkit()
                     if (!mining.contains(mat)) {
                         mining.add(mat)
                     }
@@ -44,7 +44,7 @@ class DropManager {
             }
             SettingsManager.config.getStringList("lifeskill.chopping").forEach {
                 try {
-                    val mat = (XMaterial.fromString(it)!!.parseMaterial())
+                    val mat = (XMaterial.searchByType(it)!!.toBukkit())
                     if (!chopping.contains(mat)) {
                         chopping.add(mat)
                     }
