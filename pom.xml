@@ -114,6 +114,13 @@
             <version>${ldk.version}</version>
             <scope>compile</scope>
         </dependency>
+        <!-- ldk-bukkit-compatibility -->
+        <dependency>
+            <groupId>com.github.lgou2w.ldk</groupId>
+            <artifactId>ldk-bukkit-compatibility</artifactId>
+            <version>${ldk.version}</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- ldk-hikari -->
         <dependency>
             <groupId>com.github.lgou2w.ldk</groupId>
