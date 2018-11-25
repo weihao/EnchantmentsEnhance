@@ -18,17 +18,15 @@
 
 package org.pixeltime.enchantmentsenhance.reloaded
 
-import com.lgou2w.ldk.bukkit.cmd.CommandExecutor
-import com.lgou2w.ldk.bukkit.cmd.CommandManager
-import com.lgou2w.ldk.bukkit.cmd.CommandRoot
-import com.lgou2w.ldk.bukkit.cmd.DefaultCommandManager
-import com.lgou2w.ldk.bukkit.cmd.RegisteredCommand
-import com.lgou2w.ldk.bukkit.cmd.SimpleCommandFeedback
-import com.lgou2w.ldk.bukkit.cmd.StandardCommand
+import com.lgou2w.ldk.bukkit.cmd.*
+import com.lgou2w.ldk.bukkit.entity.itemInMainHand
+import com.lgou2w.ldk.bukkit.item.isAir
 import com.lgou2w.ldk.chat.ChatColor
 import com.lgou2w.ldk.chat.toColor
 import org.bukkit.command.CommandSender
-import org.pixeltime.enchantmentsenhance.reloaded.command.MenuCommand
+import org.bukkit.entity.Player
+import org.pixeltime.enchantmentsenhance.reloaded.enhance.Enhance
+import org.pixeltime.enchantmentsenhance.reloaded.enhance.EnhanceHelper
 
 class EECommand(val plugin: EnchantmentsEnhance) {
 
@@ -38,10 +36,36 @@ class EECommand(val plugin: EnchantmentsEnhance) {
         manager.completes.addDefaultCompletes()
         manager.transforms.addDefaultTransforms()
         manager.globalFeedback = EnhanceCommandFeedback()
+        manager.transforms
+            .addTransform(Enhance::class.java) { Enhance.fromName(it) }
+        manager.completes
+            .addCompleter(Enhance::class.java) { _, _, value -> Enhance.enhanceNames.filter { it.startsWith(value) } }
     }
 
     @CommandRoot("enhance")
-    private inner class EnhanceCommand : StandardCommand()
+    private inner class EnhanceCommand : StandardCommand() {
+
+        @Command("apply")
+        @Playable
+        fun apply(
+                player: Player,
+                @Parameter("enhance")
+                enhance: Enhance,
+                @Parameter("level")
+                @Optional("1")
+                level: Int
+        ) {
+            val stack = player.itemInMainHand
+            if (stack == null || stack.isAir()) {
+                player.send("&c请手持一个物品后再应用增强附魔.")
+                return
+            }
+            val result = EnhanceHelper.applyEnhance(stack, enhance, level)
+            player.itemInMainHand = stack
+            player.send("&a增强附魔应用结果: $result")
+        }
+    }
+
     private inner class EnhanceCommandFeedback : SimpleCommandFeedback() {
         // TODO Feedback
         override fun onPlayable(sender: CommandSender, name: String, command: RegisteredCommand, executor: CommandExecutor, args: Array<out String>) {
@@ -53,7 +77,6 @@ class EECommand(val plugin: EnchantmentsEnhance) {
     fun init() {
         val enhance = manager.registerCommand(EnhanceCommand())
         enhance.prefix = "&6● EnchantmentsEnhance &8>> &r".toColor()
-        enhance.registerChild(MenuCommand())
         // TODO Other child command
     }
 }

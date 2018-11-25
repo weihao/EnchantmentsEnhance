@@ -16,17 +16,18 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.reloaded.command
+package org.pixeltime.enchantmentsenhance.reloaded.enhance
 
-import com.lgou2w.ldk.bukkit.cmd.Command
-import com.lgou2w.ldk.bukkit.cmd.CommandRoot
-import com.lgou2w.ldk.bukkit.cmd.StandardCommand
-import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 
-@CommandRoot("menu")
-class MenuCommand : StandardCommand() {
+object EnhanceHelper {
 
-    @Command("menu")
-    fun menu(player: Player) {
+    fun applyEnhance(stack: ItemStack, enhance: Enhance, level: Int): Boolean {
+        return enhance.applyTo(stack, level)
+    }
+
+    fun applyEnhance(stack: ItemStack, type: Class<out Enhance>, level: Int): Boolean {
+        val enhance = Enhance.fromClass(type) ?: return false
+        return applyEnhance(stack, enhance, level)
     }
 }

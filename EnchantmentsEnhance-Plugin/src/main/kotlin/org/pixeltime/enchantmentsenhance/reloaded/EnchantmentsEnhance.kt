@@ -25,7 +25,12 @@ class EnchantmentsEnhance : JavaPlugin() {
     private var eeCommand : EECommand? = null
     private var eeConfiguration : EEConfiguration? = null
 
+    companion object {
+        lateinit var main: EnchantmentsEnhance private set
+    }
+
     override fun onEnable() {
+        main = this
         eeConfiguration = EEConfiguration(this)
         eeConfiguration?.reload()
         eeCommand = EECommand(this)
