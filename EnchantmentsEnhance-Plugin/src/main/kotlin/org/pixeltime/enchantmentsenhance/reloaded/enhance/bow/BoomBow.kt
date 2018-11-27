@@ -20,21 +20,21 @@ package org.pixeltime.enchantmentsenhance.reloaded.enhance.bow
 
 import com.lgou2w.ldk.bukkit.entity.itemInMainHand
 import com.lgou2w.ldk.bukkit.event.registerListeners
-import org.bukkit.Material
 import org.bukkit.entity.Arrow
 import org.bukkit.entity.Player
 import org.bukkit.entity.TNTPrimed
+import org.bukkit.event.entity.EntityExplodeEvent
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.entity.ProjectileLaunchEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.metadata.FixedMetadataValue
 import org.pixeltime.enchantmentsenhance.reloaded.EnchantmentsEnhance
-import org.pixeltime.enchantmentsenhance.reloaded.enhance.Enhance
+import org.pixeltime.enchantmentsenhance.reloaded.enhance.EnhancementHelper
 
-class Boom internal constructor() : Enhance() {
+class BoomBow internal constructor() : EnhancementBow() {
 
-    override fun canAccept(stack: ItemStack?): Boolean {
-        return super.canAccept(stack) && stack?.type == Material.BOW
+    override fun isConflict(stack: ItemStack?): Boolean {
+        return EnhancementHelper.has(stack, EnderBow::class.java)
     }
 
     override fun registered() {
@@ -53,15 +53,23 @@ class Boom internal constructor() : Enhance() {
                     val location = hitEntity?.location ?: hitBlock?.location
                     if (location != null) {
                         val tntPrimed = location.world.spawn(location.clone().add(.0, 1.0, .0), TNTPrimed::class.java)
-                        tntPrimed.fuseTicks = 1
+                        tntPrimed.setMetadata(TNT_KEY, FixedMetadataValue(plugin, true))
+                        tntPrimed.fuseTicks = 0
                     }
                     entity.removeMetadata(PROJECTILE_KEY, plugin)
+                }
+            }
+            event<EntityExplodeEvent> {
+                if (entity is TNTPrimed && entity.getMetadata(TNT_KEY).firstOrNull()?.asBoolean() == true) {
+                    entity.removeMetadata(TNT_KEY, plugin)
+                    blockList().clear()
                 }
             }
         }
     }
 
     companion object {
-        const val PROJECTILE_KEY = "EE-Boom-Projectile"
+        const val PROJECTILE_KEY = "EE-BoomBow-Projectile"
+        const val TNT_KEY = "EE-BoomBow-TNT"
     }
 }

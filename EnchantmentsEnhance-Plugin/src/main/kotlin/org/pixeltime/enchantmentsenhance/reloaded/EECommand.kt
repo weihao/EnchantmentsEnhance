@@ -25,8 +25,8 @@ import com.lgou2w.ldk.chat.ChatColor
 import com.lgou2w.ldk.chat.toColor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
-import org.pixeltime.enchantmentsenhance.reloaded.enhance.Enhance
-import org.pixeltime.enchantmentsenhance.reloaded.enhance.EnhanceHelper
+import org.pixeltime.enchantmentsenhance.reloaded.enhance.Enhancement
+import org.pixeltime.enchantmentsenhance.reloaded.enhance.EnhancementHelper
 
 class EECommand(val plugin: EnchantmentsEnhance) {
 
@@ -37,20 +37,21 @@ class EECommand(val plugin: EnchantmentsEnhance) {
         manager.transforms.addDefaultTransforms()
         manager.globalFeedback = EnhanceCommandFeedback()
         manager.transforms
-            .addTransform(Enhance::class.java) { Enhance.fromName(it) }
+            .addTransform(Enhancement::class.java) { Enhancement.fromName(it) }
         manager.completes
-            .addCompleter(Enhance::class.java) { _, _, value -> Enhance.enhanceNames.filter { it.startsWith(value) } }
+            .addCompleter(Enhancement::class.java) { _, _, value -> Enhancement.enhancementNames.filter { it.startsWith(value) } }
     }
 
     @CommandRoot("enhance")
     private inner class EnhanceCommand : StandardCommand() {
 
         @Command("apply")
+        @Permission("EnchantmentsEnhance.apply")
         @Playable
         fun apply(
                 player: Player,
                 @Parameter("enhance")
-                enhance: Enhance,
+                enhance: Enhancement,
                 @Parameter("level")
                 @Optional("1")
                 level: Int
@@ -60,8 +61,7 @@ class EECommand(val plugin: EnchantmentsEnhance) {
                 player.send("&c请手持一个物品后再应用增强附魔.")
                 return
             }
-            val result = EnhanceHelper.applyEnhance(stack, enhance, level)
-            player.itemInMainHand = stack
+            val result = EnhancementHelper.apply(stack, enhance, level)
             player.send("&a增强附魔应用结果: $result")
         }
     }

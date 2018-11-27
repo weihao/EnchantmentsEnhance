@@ -19,6 +19,7 @@
 package org.pixeltime.enchantmentsenhance.reloaded
 
 import org.bukkit.plugin.java.JavaPlugin
+import org.pixeltime.enchantmentsenhance.reloaded.enhance.Enhancement
 
 class EnchantmentsEnhance : JavaPlugin() {
 
@@ -35,6 +36,7 @@ class EnchantmentsEnhance : JavaPlugin() {
         eeConfiguration?.reload()
         eeCommand = EECommand(this)
         eeCommand?.init()
+        Enhancement.init()
     }
 
     override fun onDisable() {

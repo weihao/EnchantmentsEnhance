@@ -16,18 +16,16 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.reloaded.enhance
+package org.pixeltime.enchantmentsenhance.reloaded.enhance.bow
 
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import org.bukkit.inventory.ItemStack
+import org.pixeltime.enchantmentsenhance.reloaded.enhance.Enhancement
 
-object EnhanceHelper {
+abstract class EnhancementBow : Enhancement() {
 
-    fun applyEnhance(stack: ItemStack, enhance: Enhance, level: Int): Boolean {
-        return enhance.applyTo(stack, level)
-    }
-
-    fun applyEnhance(stack: ItemStack, type: Class<out Enhance>, level: Int): Boolean {
-        val enhance = Enhance.fromClass(type) ?: return false
-        return applyEnhance(stack, enhance, level)
+    override fun canAccept(stack: ItemStack?): Boolean {
+        return super.canAccept(stack) &&
+               stack?.type == XMaterial.BOW.toBukkit()
     }
 }
