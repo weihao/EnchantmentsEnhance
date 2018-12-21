@@ -1,4 +1,16 @@
 # Changelog
+## [6.7.0] - 2018-12-21
+### Added
+- Added an option to disable anvil repairs.
+- Added an option to change explosive pickaxe radius.
+
+### Fixed
+- Fixed a compatibility issue.
+
+### Changed
+- Updated to Kotlin 1.3.11.
+- Plugin recode in progress.
+
 All notable changes to this project will be documented in this file.
 ## [6.6.0] - 2018-09-17
 ### Fixed

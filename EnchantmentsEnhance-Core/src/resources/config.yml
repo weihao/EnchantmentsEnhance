@@ -55,6 +55,15 @@ enableEconomy: false
 # Set false to disallow players take out stones from virtual inventory.
 enableItemMaterialization: true
 
+# Set false to disable anvil.
+enableAnvil: true
+
+# Set false to disable renaming an item using an anvil.
+enableAnvilRename: true
+
+# Set false to disable repairing an item using an anvil.
+enableAnvilRepair: true
+
 # Add to disable some special enchantments that may or may not cause an issue on your server.
 disabledEnchantments:
 # Plugin will take control of the player's fly permissions.

@@ -172,6 +172,12 @@ public class Main extends JavaPlugin implements Listener {
         if (SettingsManager.config.getBoolean("enablePreventFireworkDamage")) {
             pm.registerEvents(new FireworkListener(), this);
         }
+        if (!(SettingsManager.config.getBoolean("enableAnvil")
+                && SettingsManager.config.getBoolean("enableAnvilRename")
+                && SettingsManager.config.getBoolean("enableAnvilRepair"))) {
+            pm.registerEvents(new AnvilRestrict(), this);
+        }
+
         try {
             // Checks for update.
             if (VersionManager.isUpToDate()) {
