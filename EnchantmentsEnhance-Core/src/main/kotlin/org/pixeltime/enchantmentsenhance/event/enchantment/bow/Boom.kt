@@ -1,4 +1,3 @@
-
 /*
  *     Copyright (C) 2017-Present HealPot
  *
@@ -39,7 +38,7 @@ class Boom(
     private val key = "ee-bow-boom"
     private val keyTNT = "ee-bow-boom-tnt"
 
-    private fun canWork(bow: ItemStack) : Boolean {
+    private fun canWork(bow: ItemStack): Boolean {
         return bow.hasItemMeta() && "Boom Bow".equals(bow.itemMeta.displayName, true)
     }
 

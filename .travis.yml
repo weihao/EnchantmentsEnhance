@@ -1,12 +1,12 @@
 language: java
 jdk:
-- oraclejdk8
+  - oraclejdk8
 before_install:
 install:
-- mvn install package
+  - mvn install package
 after_success:
-- mvn clean
+  - mvn clean
 cache:
   directories:
-  - $HOME/.m2
-  - BuildTools
+    - $HOME/.m2
+    - BuildTools

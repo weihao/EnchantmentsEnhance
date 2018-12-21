@@ -18,12 +18,8 @@
 
 package org.pixeltime.enchantmentsenhance.command.player
 
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
-import org.bukkit.inventory.ItemStack
-import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.command.SubCommand
-import org.pixeltime.enchantmentsenhance.util.Util
 
 
 class DebugCommand : SubCommand() {

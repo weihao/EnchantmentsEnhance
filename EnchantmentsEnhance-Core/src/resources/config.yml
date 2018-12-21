@@ -66,10 +66,10 @@ enableAnvilRepair: true
 
 # Add to disable some special enchantments that may or may not cause an issue on your server.
 disabledEnchantments:
-# Plugin will take control of the player's fly permissions.
-- Wings
-# Plugin will use the economic plugin.
-- Thief
+  # Plugin will take control of the player's fly permissions.
+  - Wings
+  # Plugin will use the economic plugin.
+  - Thief
 
 # SQL ready!
 mysql:
@@ -113,21 +113,21 @@ enableLifeskill: true
 lifeskill:
   # What ore counts as mining blocks?
   mining:
-  - DIAMOND_ORE
-  - EMERALD_ORE
-  - GOLD_ORE
-  - IRON_ORE
-  - LAPIS_ORE
-  - QUARTZ_ORE
-  - REDSTONE_ORE
+    - DIAMOND_ORE
+    - EMERALD_ORE
+    - GOLD_ORE
+    - IRON_ORE
+    - LAPIS_ORE
+    - QUARTZ_ORE
+    - REDSTONE_ORE
   # What block counts as chopping blocks?
   chopping:
-  - ACACIA_LOG
-  - BIRCH_LOG
-  - DARK_OAK_LOG
-  - JUNGLE_LOG
-  - OAK_LOG
-  - SPRUCE_LOG
+    - ACACIA_LOG
+    - BIRCH_LOG
+    - DARK_OAK_LOG
+    - JUNGLE_LOG
+    - OAK_LOG
+    - SPRUCE_LOG
 
 # Stones ID
 # 0 = weapon stone
@@ -139,43 +139,43 @@ reward:
   mining:
     chance: 0.03
     drops:
-    - 0
-    - 1
-    - 2
-    - 3
+      - 0
+      - 1
+      - 2
+      - 3
   chopping:
     chance: 0.02
     drops:
-    - 0
-    - 1
-    - 2
-    - 3
+      - 0
+      - 1
+      - 2
+      - 3
   fishing:
     chance: 0.05
     drops:
-    - 0
-    - 1
+      - 0
+      - 1
   killing:
     chance: 0.01
     drops:
-    - 0
-    - 1
-    - 2
-    - 3
+      - 0
+      - 1
+      - 2
+      - 3
   breeding:
     chance: 0.01
     drops:
-    - 0
-    - 1
-    - 2
-    - 3
+      - 0
+      - 1
+      - 2
+      - 3
   smelting:
     chance: 0.01
     drops:
-    - 0
-    - 1
-    - 2
-    - 3
+      - 0
+      - 1
+      - 2
+      - 3
 
 # When the enhancement is succeeded, it controls the firework delay launch.
 fireworkDelay: 0
@@ -186,71 +186,71 @@ fireworkCount: 1
 material:
   # stoneTypes is the ID of the item in-game.
   stoneTypes:
-  # 0 weapon stone
-  - GHAST_TEAR
-  # 1 armor stone
-  - GOLD_NUGGET
-  # 2 concentrated weapon stone
-  - SUGAR
-  # 3 concentrated armor stone
-  - GLOWSTONE_DUST
-  # 4 cron stone
-  - SLIME_BALL
+    # 0 weapon stone
+    - GHAST_TEAR
+    # 1 armor stone
+    - GOLD_NUGGET
+    # 2 concentrated weapon stone
+    - SUGAR
+    # 3 concentrated armor stone
+    - GLOWSTONE_DUST
+    # 4 cron stone
+    - SLIME_BALL
   # List of Armor.
   armor:
-  - DIAMOND_HELMET
-  - DIAMOND_CHESTPLATE
-  - DIAMOND_LEGGINGS
-  - DIAMOND_BOOTS
-  - IRON_HELMET
-  - IRON_CHESTPLATE
-  - IRON_LEGGINGS
-  - IRON_BOOTS
-  - GOLD_HELMET
-  - GOLD_CHESTPLATE
-  - GOLD_LEGGINGS
-  - GOLD_BOOTS
-  - LEATHER_HELMET
-  - LEATHER_CHESTPLATE
-  - LEATHER_LEGGINGS
-  - LEATHER_BOOTS
-  - CHAINMAIL_HELMET
-  - CHAINMAIL_CHESTPLATE
-  - CHAINMAIL_LEGGINGS
-  - CHAINMAIL_BOOTS
+    - DIAMOND_HELMET
+    - DIAMOND_CHESTPLATE
+    - DIAMOND_LEGGINGS
+    - DIAMOND_BOOTS
+    - IRON_HELMET
+    - IRON_CHESTPLATE
+    - IRON_LEGGINGS
+    - IRON_BOOTS
+    - GOLD_HELMET
+    - GOLD_CHESTPLATE
+    - GOLD_LEGGINGS
+    - GOLD_BOOTS
+    - LEATHER_HELMET
+    - LEATHER_CHESTPLATE
+    - LEATHER_LEGGINGS
+    - LEATHER_BOOTS
+    - CHAINMAIL_HELMET
+    - CHAINMAIL_CHESTPLATE
+    - CHAINMAIL_LEGGINGS
+    - CHAINMAIL_BOOTS
   # List of weapon.
   weapon:
-  - DIAMOND_SWORD
-  - GOLD_SWORD
-  - STONE_SWORD
-  - WOOD_SWORD
-  - IRON_SWORD
-  - DIAMOND_AXE
-  - GOLD_AXE
-  - STONE_AXE
-  - WOOD_AXE
-  - IRON_AXE
+    - DIAMOND_SWORD
+    - GOLD_SWORD
+    - STONE_SWORD
+    - WOOD_SWORD
+    - IRON_SWORD
+    - DIAMOND_AXE
+    - GOLD_AXE
+    - STONE_AXE
+    - WOOD_AXE
+    - IRON_AXE
   # List of AXE.
   axe:
-  - DIAMOND_AXE
-  - IRON_AXE
-  - WOODEN_AXE
-  - STONE_AXE
-  - GOLDEN_AXE
+    - DIAMOND_AXE
+    - IRON_AXE
+    - WOODEN_AXE
+    - STONE_AXE
+    - GOLDEN_AXE
   pickaxe:
-  - DIAMOND_PICKAXE
-  - IRON_PICKAXE
-  - GOLDEN_PICKAXE
-  - STONE_PICKAXE
-  - WOODEN_PICKAXE
+    - DIAMOND_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - STONE_PICKAXE
+    - WOODEN_PICKAXE
   hoe:
-  - DIAMOND_HOE
-  - IRON_HOE
-  - GOLDEN_HOE
-  - STONE_HOE
-  - WOODEN_HOE
+    - DIAMOND_HOE
+    - IRON_HOE
+    - GOLDEN_HOE
+    - STONE_HOE
+    - WOODEN_HOE
   bow:
-  - BOW
+    - BOW
 slots:
   # Armor includes armor contents and item in hand.
   enableArmor: true
@@ -324,20 +324,20 @@ enhance:
     suffix: '&8+1'
     enchantments:
       WEAPON:
-      - Endless:1
+        - Endless:1
       ARMOR:
-      - Endless:1
+        - Endless:1
       PICKAXE:
-      - Endless:1
+        - Endless:1
       AXE:
-      - Endless:1
+        - Endless:1
       HOE:
-      - Endless:1
+        - Endless:1
       BOW:
-      - Endless:1
+        - Endless:1
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '2':
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -354,20 +354,20 @@ enhance:
     suffix: '&8+2'
     enchantments:
       WEAPON:
-      - ^Damage_All!Stealth:1
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Stealth:1
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Pyromaniac:1
+        - Pyromaniac:1
       PICKAXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       AXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       HOE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '3':
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -384,21 +384,21 @@ enhance:
     suffix: '&8+3'
     enchantments:
       WEAPON:
-      - ^Damage_All!Stealth:1
-      - ^Damage_All!Execute:1
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Stealth:1
+        - ^Damage_All!Execute:1
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Pyromaniac:1
+        - Pyromaniac:1
       PICKAXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       AXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       HOE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '4':
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -415,24 +415,24 @@ enhance:
     suffix: '&8+4'
     enchantments:
       WEAPON:
-      - ^Damage_All!Stealth:1
-      - ^Damage_All!Execute:1
-      - ^Damage_All!Corruption:1
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Stealth:1
+        - ^Damage_All!Execute:1
+        - ^Damage_All!Corruption:1
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Pyromaniac:1
-      - Haste:1
-      - Swimmer:1
+        - Pyromaniac:1
+        - Haste:1
+        - Swimmer:1
       PICKAXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       AXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       HOE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '5':
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -449,25 +449,25 @@ enhance:
     suffix: '&8+5'
     enchantments:
       WEAPON:
-      - ^Damage_All!Stealth:1
-      - ^Damage_All!Execute:1
-      - ^Damage_All!Corruption:1
-      - ^Damage_All!Rekt:1
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Stealth:1
+        - ^Damage_All!Execute:1
+        - ^Damage_All!Corruption:1
+        - ^Damage_All!Rekt:1
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Pyromaniac:1
-      - Haste:1
-      - Swimmer:1
+        - Pyromaniac:1
+        - Haste:1
+        - Swimmer:1
       PICKAXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       AXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       HOE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '6':
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -483,25 +483,25 @@ enhance:
     suffix: '&8+6'
     enchantments:
       WEAPON:
-      - ^Damage_All!Execute:1
-      - ^Damage_All!Corruption:1
-      - ^Damage_All!Rekt:1
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Execute:1
+        - ^Damage_All!Corruption:1
+        - ^Damage_All!Rekt:1
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Pyromaniac:1
-      - Haste:1
-      - Swimmer:1
-      - Jump:1
+        - Pyromaniac:1
+        - Haste:1
+        - Swimmer:1
+        - Jump:1
       PICKAXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       AXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       HOE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '7':
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -518,23 +518,23 @@ enhance:
     suffix: '&8+7'
     enchantments:
       WEAPON:
-      - ^Damage_All!Execute:1
-      - ^Damage_All!Corruption:1
-      - ^Damage_All!Plunder:1
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Execute:1
+        - ^Damage_All!Corruption:1
+        - ^Damage_All!Plunder:1
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Jump:1
-      - Batvision:1
+        - Jump:1
+        - Batvision:1
       PICKAXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       AXE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       HOE:
-      - Dig_Speed:1
+        - Dig_Speed:1
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '8':
     baseChance: 20
     chanceIncreasePerFailstack: 2.5
@@ -551,20 +551,20 @@ enhance:
     suffix: '&2+8'
     enchantments:
       WEAPON:
-      - ^Damage_All!Corruption:1
-      - ^Damage_All!Launch:5
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Corruption:1
+        - ^Damage_All!Launch:5
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Flame:3
+        - Flame:3
       PICKAXE:
-      - Smelt:1
+        - Smelt:1
       AXE:
-      - Lumberjack:1
+        - Lumberjack:1
       HOE: -Plow:1
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '9':
     baseChance: 17.5
     chanceIncreasePerFailstack: 2.0
@@ -581,21 +581,21 @@ enhance:
     suffix: '&2+9'
     enchantments:
       WEAPON:
-      - ^Damage_All!Reborn:3
-      - ^Damage_All!Mischief:3
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Reborn:3
+        - ^Damage_All!Mischief:3
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Aegis:1
-      - Eyepatch:1
+        - Aegis:1
+        - Eyepatch:1
       PICKAXE:
-      - Explosive:1
+        - Explosive:1
       AXE:
-      - Lumberjack:1
+        - Lumberjack:1
       HOE: []
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '10':
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -612,19 +612,19 @@ enhance:
     suffix: '&2+10'
     enchantments:
       WEAPON:
-      - ^Damage_All!Crits:1
-      - ^Damage_All!Riftslayer:1
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Crits:1
+        - ^Damage_All!Riftslayer:1
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Aegis:1
-      - Blessed:1
+        - Aegis:1
+        - Blessed:1
       PICKAXE: []
       AXE: []
       HOE: []
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '11':
     baseChance: 12.5
     chanceIncreasePerFailstack: 1.25
@@ -641,19 +641,19 @@ enhance:
     suffix: '&2+11'
     enchantments:
       WEAPON:
-      - ^Damage_All!Hex:3
-      - ^Damage_All!Assassin:3
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Hex:3
+        - ^Damage_All!Assassin:3
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Aegis:1
-      - Blessed:1
+        - Aegis:1
+        - Blessed:1
       PICKAXE: []
       AXE: []
       HOE: []
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '12':
     baseChance: 10
     chanceIncreasePerFailstack: 0.75
@@ -670,20 +670,20 @@ enhance:
     suffix: '&2+12'
     enchantments:
       WEAPON:
-      - ^Damage_All!Curse:2
-      - ^Damage_All!Strength:1
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Curse:2
+        - ^Damage_All!Strength:1
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Aegis:1
-      - Blessed:1
-      - Demonic:5
+        - Aegis:1
+        - Blessed:1
+        - Demonic:5
       PICKAXE: []
       AXE: []
       HOE: []
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '13':
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.63
@@ -700,17 +700,17 @@ enhance:
     suffix: '&2+13'
     enchantments:
       WEAPON:
-      - ^Damage_All!Curse:2
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Curse:2
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Aegis:1
+        - Aegis:1
       PICKAXE: []
       AXE: []
       HOE: []
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '14':
     baseChance: 5
     chanceIncreasePerFailstack: 0.5
@@ -727,17 +727,17 @@ enhance:
     suffix: '&2+14'
     enchantments:
       WEAPON:
-      - ^Damage_All!Speed:1
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Speed:1
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Shield:1
+        - Shield:1
       PICKAXE: []
       AXE: []
       HOE: []
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '15':
     baseChance: 2.5
     chanceIncreasePerFailstack: 0.5
@@ -754,17 +754,17 @@ enhance:
     suffix: '&2+15'
     enchantments:
       WEAPON:
-      - ^Damage_All!Siphon:3
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Siphon:3
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Saturation:1
+        - Saturation:1
       PICKAXE: []
       AXE: []
       HOE: []
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lLow Tier.'
+      - '&3&l&m                                  '
+      - '&9&lLow Tier.'
   '16':
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -781,19 +781,19 @@ enhance:
     suffix: ''
     enchantments:
       WEAPON:
-      - ^Damage_All!Petrify:3
-      - ^Damage_All!Crushing:3
-      - ^Damage_All!Lifesteal:1
-      - Damage_All!Damage_All:1-4
+        - ^Damage_All!Petrify:3
+        - ^Damage_All!Crushing:3
+        - ^Damage_All!Lifesteal:1
+        - Damage_All!Damage_All:1-4
       ARMOR:
-      - Dodge:5
+        - Dodge:5
       PICKAXE: []
       AXE: []
       HOE: []
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lMid Tier.'
+      - '&3&l&m                                  '
+      - '&9&lMid Tier.'
   '17':
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.75
@@ -810,22 +810,22 @@ enhance:
     suffix: ''
     enchantments:
       WEAPON:
-      - ^Damage_All!Smite:5
-      - ^Damage_All!Turmoil:3
-      - ^Damage_All!Crushing:3
-      - ^Damage_All!Lifesteal:1
-      - Damage_All!Damage_All:1-4
+        - ^Damage_All!Smite:5
+        - ^Damage_All!Turmoil:3
+        - ^Damage_All!Crushing:3
+        - ^Damage_All!Lifesteal:1
+        - Damage_All!Damage_All:1-4
       ARMOR:
-      - Repel:3
-      - Molten:3
-      - Battlecry:3
+        - Repel:3
+        - Molten:3
+        - Battlecry:3
       PICKAXE: []
       AXE: []
       HOE: []
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lMid Tier.'
+      - '&3&l&m                                  '
+      - '&9&lMid Tier.'
   '18':
     baseChance: 5.0
     chanceIncreasePerFailstack: 0.5
@@ -842,22 +842,22 @@ enhance:
     suffix: ''
     enchantments:
       WEAPON:
-      - ^Damage_All!Lifesteal:1
-      - ^Damage_All!Paralyze:2
-      - Damage_All!Damage_All:1
+        - ^Damage_All!Lifesteal:1
+        - ^Damage_All!Paralyze:2
+        - Damage_All!Damage_All:1
       ARMOR:
-      - Reinforced:1
-      - Suicide:1
-      - Frosty:3
-      - Divine:3
-      - Shield:1
+        - Reinforced:1
+        - Suicide:1
+        - Frosty:3
+        - Divine:3
+        - Shield:1
       PICKAXE: []
       AXE: []
       HOE: []
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lMid Tier.'
+      - '&3&l&m                                  '
+      - '&9&lMid Tier.'
   '19':
     baseChance: 2.0
     chanceIncreasePerFailstack: 0.25
@@ -874,22 +874,22 @@ enhance:
     suffix: ''
     enchantments:
       WEAPON:
-      - ^Damage_All!Purge:4
-      - Damage_All!Damage_All:1-4
+        - ^Damage_All!Purge:4
+        - Damage_All!Damage_All:1-4
       ARMOR:
-      - Spiked:3
-      - Vitality:1
-      - Cure:1
-      - Immolation:1
-      - Reversal:1
-      - Shield:1
+        - Spiked:3
+        - Vitality:1
+        - Cure:1
+        - Immolation:1
+        - Reversal:1
+        - Shield:1
       PICKAXE: []
       AXE: []
       HOE: []
       BOW: []
     lore:
-    - '&3&l&m                                  '
-    - '&9&lHigh Tier.'
+      - '&3&l&m                                  '
+      - '&9&lHigh Tier.'
   '20':
     baseChance: 1.5
     chanceIncreasePerFailstack: 0.25
@@ -906,18 +906,18 @@ enhance:
     suffix: ''
     enchantments:
       WEAPON:
-      - ^Damage_All!Strength:2
-      - Damage_All!Damage_All:1-4
+        - ^Damage_All!Strength:2
+        - Damage_All!Damage_All:1-4
       ARMOR:
-      - Vitality:2
-      - Cure:2
-      - Immolation:4
-      - Reversal:2
-      - Shield:1
+        - Vitality:2
+        - Cure:2
+        - Immolation:4
+        - Reversal:2
+        - Shield:1
       PICKAXE: []
       AXE: []
       HOE: []
       BOW: []
     lore:
-    - '&8&l&m                                  '
-    - '&4&lMAX Tier.'
+      - '&8&l&m                                  '
+      - '&4&lMAX Tier.'

@@ -36,9 +36,10 @@ public class VendorMenu extends GUIAbstract {
         update();
     }
 
-    private static  boolean isInCooldown(String playerName) {
+    private static boolean isInCooldown(String playerName) {
         return getCooldown(playerName) > 0;
     }
+
     private static int getCooldown(String playerName) {
         if (cooldownMap.containsKey(playerName)) {
             if (cooldownMap.get(playerName) + COOLDOWNTIME >= System.currentTimeMillis()) {

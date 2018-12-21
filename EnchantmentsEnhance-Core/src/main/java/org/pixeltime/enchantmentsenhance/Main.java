@@ -38,7 +38,6 @@ import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
-import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;

@@ -54,7 +54,7 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/src/resources/Lib/MVdWPlaceholderAPI.jar</systemPath>
         </dependency>
-</dependencies>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
