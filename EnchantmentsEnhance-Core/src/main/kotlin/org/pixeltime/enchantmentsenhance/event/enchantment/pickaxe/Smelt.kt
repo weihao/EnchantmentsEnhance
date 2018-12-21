@@ -26,6 +26,7 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
+import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.*
 
 class Smelt : EnchantmentListener() {
