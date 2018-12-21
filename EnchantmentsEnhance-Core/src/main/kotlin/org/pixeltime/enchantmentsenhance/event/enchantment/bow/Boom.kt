@@ -30,6 +30,7 @@ import org.bukkit.event.entity.ProjectileLaunchEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.metadata.FixedMetadataValue
 import org.bukkit.plugin.Plugin
+import org.pixeltime.enchantmentsenhance.util.Util
 
 class Boom(
         private val plugin: Plugin
@@ -46,7 +47,7 @@ class Boom(
     fun onLanunch(event: ProjectileLaunchEvent) {
         val projectile = event.entity
         if (projectile is Arrow && projectile.shooter is Player) {
-            val bow = (projectile.shooter as Player).itemInHand // itemInHand or itemInMainHand or itemInOffHand
+            val bow = Util.getMainHand(projectile.shooter as Player)
             if (canWork(bow))
                 projectile.setMetadata(key, FixedMetadataValue(plugin, 1))
         }

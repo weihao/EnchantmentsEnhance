@@ -38,7 +38,7 @@ class ItemCommand : SubCommand() {
         if (args.size >= 2) {
             when {
                 args[0].equals("upgrade", ignoreCase = true) -> try {
-                    var item = player.inventory.itemInMainHand
+                    var item = Util.getMainHand(player)
                     val level = ItemManager.getItemEnchantLevel(item)
                     val aimingLevel = Integer.parseInt(args[1])
                     var clicked: Clickable = MainMenu.gear
@@ -56,7 +56,7 @@ class ItemCommand : SubCommand() {
                     Util.sendMessage(SettingsManager.lang.getString("config.invalidCommand"), player)
                 }
                 args[0].equals("setname", ignoreCase = true) -> {
-                    val item = player.inventory.itemInMainHand
+                    val item = Util.getMainHand(player)
                     if (item.type != Material.AIR) {
                         val level: Int
                         val clicked: Clickable
@@ -80,9 +80,9 @@ class ItemCommand : SubCommand() {
                     }
                 }
                 args[0].equals("lore", ignoreCase = true) -> when {
-                    args[1].equals("unbound", ignoreCase = true) -> Lore.removeLore(player.inventory.itemInMainHand)
-                    args[1].equals("tradeable", ignoreCase = true) -> Lore.addLore(player.inventory.itemInMainHand, SettingsManager.lang.getString("lore.tradeableLore"), true)
-                    args[1].equals("untradeable", ignoreCase = true) -> Lore.addLore(player.inventory.itemInMainHand, SettingsManager.lang.getString("lore.untradeableLore"), false)
+                    args[1].equals("unbound", ignoreCase = true) -> Lore.removeLore(Util.getMainHand(player))
+                    args[1].equals("tradeable", ignoreCase = true) -> Lore.addLore(Util.getMainHand(player), SettingsManager.lang.getString("lore.tradeableLore"), true)
+                    args[1].equals("untradeable", ignoreCase = true) -> Lore.addLore(Util.getMainHand(player), SettingsManager.lang.getString("lore.untradeableLore"), false)
                 }
             }
         } else {

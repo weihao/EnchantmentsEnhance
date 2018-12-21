@@ -39,6 +39,13 @@ import java.util.Random;
 public class Util {
     public static final String UNIQUEID = ChatColor.translateAlternateColorCodes('&', "&r&c&r&a&r&4&r&e&r&a&r&8&r&2&r&a&r&5&r&8&r&c&r&4&r&7&r&e&r&b&r&e");
 
+    public static ItemStack getMainHand(Player player) {
+        try {
+            return player.getInventory().getItemInMainHand();
+        } catch (Exception ex) {
+            return player.getInventory().getItemInHand();
+        }
+    }
 
     /**
      * Lists all the enhancement stone possible.

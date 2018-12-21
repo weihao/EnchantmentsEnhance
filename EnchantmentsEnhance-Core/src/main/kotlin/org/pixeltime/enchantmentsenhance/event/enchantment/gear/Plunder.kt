@@ -23,6 +23,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDeathEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
+import org.pixeltime.enchantmentsenhance.util.Util
 
 class Plunder : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -38,7 +39,7 @@ class Plunder : EnchantmentListener() {
 
         if (entityDeathEvent.entity.killer is Player && entityDeathEvent.entity !is Player) {
             val killer = entityDeathEvent.entity.killer
-            if (killer.itemInHand != null && killer.inventory.itemInMainHand.hasItemMeta() && killer.inventory.itemInMainHand.itemMeta.hasLore() && killer.inventory.itemInMainHand.itemMeta.lore.contains(this.name() + " I")) {
+            if (killer.itemInHand != null && (Util.getMainHand(killer)).hasItemMeta() && Util.getMainHand(killer).itemMeta.hasLore() && killer.inventory.itemInMainHand.itemMeta.lore.contains(this.name() + " I")) {
                 entityDeathEvent.droppedExp = 20
             }
         }

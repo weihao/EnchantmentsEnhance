@@ -60,7 +60,7 @@ public class ItemUseListener implements Listener {
 
                 // Consume the item.
                 if (event.getHand().equals(EquipmentSlot.HAND)) {
-                    player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+                    Util.getMainHand(player).setAmount(Util.getMainHand(player).getAmount() - 1);
                 } else if (event.getHand().equals(EquipmentSlot.OFF_HAND)) {
                     player.getInventory().getItemInOffHand().setAmount(player.getInventory().getItemInOffHand().getAmount() - 1);
                 }

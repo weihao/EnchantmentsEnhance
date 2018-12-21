@@ -22,6 +22,7 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.Main
+import org.pixeltime.enchantmentsenhance.util.Util
 
 
 class InventoryManager {
@@ -60,7 +61,7 @@ class InventoryManager {
 
         @JvmStatic
         fun getArmorSlots(player: Player): List<ItemStack> {
-            return (player.inventory.armorContents.filter { it != null && it.type != Material.AIR } + player.inventory.itemInMainHand).filter { it.hasItemMeta() && it.itemMeta.hasLore() && it.itemMeta.lore.isNotEmpty() }
+            return (player.inventory.armorContents.filter { it != null && it.type != Material.AIR } + Util.getMainHand(player)).filter { it.hasItemMeta() && it.itemMeta.hasLore() && it.itemMeta.lore.isNotEmpty() }
         }
 
         @JvmStatic
