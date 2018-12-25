@@ -41,7 +41,6 @@ public class Util {
 
     public static ItemStack getMainHand(Player player) {
         try {
-        } catch (Exception ex) {
             ItemStack item = player.getInventory().getItemInMainHand();
             return item;
         } catch (NoSuchMethodError ex) {
