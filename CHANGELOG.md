@@ -1,4 +1,9 @@
 # Changelog
+## [6.8.0] - 2019-1-1
+### Fixed
+- Fixed an issue with consuming item in 1.8.
+- Fixed counting issue with black stone bundle.
+
 ## [6.7.0] - 2018-12-21
 ### Added
 - Added an option to disable anvil repairs.

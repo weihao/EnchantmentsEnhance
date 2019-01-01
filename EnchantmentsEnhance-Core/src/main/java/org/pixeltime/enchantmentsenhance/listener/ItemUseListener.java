@@ -59,13 +59,26 @@ public class ItemUseListener implements Listener {
                 }
 
                 // Consume the item.
-                if (event.getHand().equals(EquipmentSlot.HAND)) {
-                    Util.getMainHand(player).setAmount(Util.getMainHand(player).getAmount() - 1);
-                } else if (event.getHand().equals(EquipmentSlot.OFF_HAND)) {
-                    player.getInventory().getItemInOffHand().setAmount(player.getInventory().getItemInOffHand().getAmount() - 1);
+                try {
+                    if (event.getHand().equals(EquipmentSlot.HAND)) {
+                        consumeItem(Util.getMainHand(player), player);
+                    } else if (event.getHand().equals(EquipmentSlot.OFF_HAND)) {
+                        consumeItem(player.getInventory().getItemInOffHand(), player);
+                    }
+                } catch (NoSuchMethodError ex) {
+                    consumeItem(Util.getMainHand(player), player);
                 }
                 event.setCancelled(true);
             }
+        }
+    }
+
+    private static void consumeItem(ItemStack item, Player player) {
+        int afterConsume = Util.getMainHand(player).getAmount() - 1;
+        if (afterConsume == 0) {
+            player.getInventory().remove(item);
+        } else {
+            Util.getMainHand(player).setAmount(afterConsume);
         }
     }
 }
