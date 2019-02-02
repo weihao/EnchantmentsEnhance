@@ -134,7 +134,13 @@ public class Util {
      * @return
      */
     public static String toColor(String str) {
-        return ChatColor.translateAlternateColorCodes('&', str);
+        String temp = str;
+        try {
+            temp = ChatColor.translateAlternateColorCodes('&', str);
+        } catch (NullPointerException ex) {
+            // ?
+        }
+        return temp;
     }
 
     /**

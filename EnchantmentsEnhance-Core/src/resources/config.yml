@@ -80,13 +80,13 @@ mysql:
   # MySQL server port (default 3306)
   port: 3306
   # Database name (NOTE! You need to create the database, then the plugin will create the tables.)
-  database: 'mydatabase'
+  database: "mydatabase"
   # Table name (the plugin will auto create them)
-  table: 'enchantmentsenhance'
+  table: "enchantmentsenhance"
   # User name
-  user: 'root'
+  user: "root"
   # User password
-  password: 'by_healpot_with_love'
+  password: "by_healpot_with_love"
 
 # Set false to disable keep item on death.
 enableLore: true
@@ -272,7 +272,7 @@ accessory:
 # Vanilla Enchantments Reference: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
 # Custom Enchantments Reference: https://github.com/25/EnchantmentsEnhance/wiki/Enchantments-en
 enhance:
-  '0':
+  "0":
     # The success rate of item at the level.
     baseChance: 100
     # Chance increase per failstack you have.
@@ -308,7 +308,7 @@ enhance:
       HOE: []
       BOW: []
     lore: []
-  '1':
+  "1":
     baseChance: 100
     chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
@@ -320,8 +320,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&8+1'
+    prefix: ""
+    suffix: "&8+1"
     enchantments:
       WEAPON:
         - Endless:1
@@ -336,9 +336,9 @@ enhance:
       BOW:
         - Endless:1
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '2':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "2":
     baseChance: 100
     chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
@@ -350,8 +350,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&8+2'
+    prefix: ""
+    suffix: "&8+2"
     enchantments:
       WEAPON:
         - ^Damage_All!Stealth:1
@@ -366,9 +366,9 @@ enhance:
         - Dig_Speed:1
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '3':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "3":
     baseChance: 100
     chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
@@ -380,8 +380,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&8+3'
+    prefix: ""
+    suffix: "&8+3"
     enchantments:
       WEAPON:
         - ^Damage_All!Stealth:1
@@ -397,9 +397,9 @@ enhance:
         - Dig_Speed:1
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '4':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "4":
     baseChance: 100
     chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
@@ -411,8 +411,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&8+4'
+    prefix: ""
+    suffix: "&8+4"
     enchantments:
       WEAPON:
         - ^Damage_All!Stealth:1
@@ -431,9 +431,9 @@ enhance:
         - Dig_Speed:1
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '5':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "5":
     baseChance: 100
     chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
@@ -445,8 +445,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&8+5'
+    prefix: ""
+    suffix: "&8+5"
     enchantments:
       WEAPON:
         - ^Damage_All!Stealth:1
@@ -466,9 +466,9 @@ enhance:
         - Dig_Speed:1
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '6':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "6":
     baseChance: 100
     chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
@@ -479,8 +479,8 @@ enhance:
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&8+6'
+    prefix: ""
+    suffix: "&8+6"
     enchantments:
       WEAPON:
         - ^Damage_All!Execute:1
@@ -500,9 +500,9 @@ enhance:
         - Dig_Speed:1
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '7':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "7":
     baseChance: 100
     chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
@@ -514,8 +514,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: false
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&8+7'
+    prefix: ""
+    suffix: "&8+7"
     enchantments:
       WEAPON:
         - ^Damage_All!Execute:1
@@ -533,9 +533,9 @@ enhance:
         - Dig_Speed:1
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '8':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "8":
     baseChance: 20
     chanceIncreasePerFailstack: 2.5
     maximumFailstackApplied: 13
@@ -547,8 +547,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&2+8'
+    prefix: ""
+    suffix: "&2+8"
     enchantments:
       WEAPON:
         - ^Damage_All!Corruption:1
@@ -563,9 +563,9 @@ enhance:
       HOE: -Plow:1
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '9':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "9":
     baseChance: 17.5
     chanceIncreasePerFailstack: 2.0
     maximumFailstackApplied: 14
@@ -577,8 +577,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&2+9'
+    prefix: ""
+    suffix: "&2+9"
     enchantments:
       WEAPON:
         - ^Damage_All!Reborn:3
@@ -594,9 +594,9 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '10':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "10":
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
     maximumFailstackApplied: 15
@@ -608,8 +608,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&2+10'
+    prefix: ""
+    suffix: "&2+10"
     enchantments:
       WEAPON:
         - ^Damage_All!Crits:1
@@ -623,9 +623,9 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '11':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "11":
     baseChance: 12.5
     chanceIncreasePerFailstack: 1.25
     maximumFailstackApplied: 16
@@ -637,8 +637,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&2+11'
+    prefix: ""
+    suffix: "&2+11"
     enchantments:
       WEAPON:
         - ^Damage_All!Hex:3
@@ -652,9 +652,9 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '12':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "12":
     baseChance: 10
     chanceIncreasePerFailstack: 0.75
     maximumFailstackApplied: 18
@@ -666,8 +666,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&2+12'
+    prefix: ""
+    suffix: "&2+12"
     enchantments:
       WEAPON:
         - ^Damage_All!Curse:2
@@ -682,9 +682,9 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '13':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "13":
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.63
     maximumFailstackApplied: 20
@@ -696,8 +696,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&2+13'
+    prefix: ""
+    suffix: "&2+13"
     enchantments:
       WEAPON:
         - ^Damage_All!Curse:2
@@ -709,9 +709,9 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '14':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "14":
     baseChance: 5
     chanceIncreasePerFailstack: 0.5
     maximumFailstackApplied: 25
@@ -723,8 +723,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&2+14'
+    prefix: ""
+    suffix: "&2+14"
     enchantments:
       WEAPON:
         - ^Damage_All!Speed:1
@@ -736,9 +736,9 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '15':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "15":
     baseChance: 2.5
     chanceIncreasePerFailstack: 0.5
     maximumFailstackApplied: 25
@@ -750,8 +750,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: ''
-    suffix: '&2+15'
+    prefix: ""
+    suffix: "&2+15"
     enchantments:
       WEAPON:
         - ^Damage_All!Siphon:3
@@ -763,9 +763,9 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lLow Tier.'
-  '16':
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "16":
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
     maximumFailstackApplied: 25
@@ -777,8 +777,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: '&9&lPRI'
-    suffix: ''
+    prefix: "&9&lPRI"
+    suffix: ""
     enchantments:
       WEAPON:
         - ^Damage_All!Petrify:3
@@ -792,9 +792,9 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lMid Tier.'
-  '17':
+      - "&3&l&m                                  "
+      - "&9&lMid Tier."
+  "17":
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.75
     maximumFailstackApplied: 35
@@ -806,8 +806,8 @@ enhance:
     broadcastEnhance: false
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: '&9&lDUO'
-    suffix: ''
+    prefix: "&9&lDUO"
+    suffix: ""
     enchantments:
       WEAPON:
         - ^Damage_All!Smite:5
@@ -824,9 +824,9 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lMid Tier.'
-  '18':
+      - "&3&l&m                                  "
+      - "&9&lMid Tier."
+  "18":
     baseChance: 5.0
     chanceIncreasePerFailstack: 0.5
     maximumFailstackApplied: 44
@@ -838,8 +838,8 @@ enhance:
     broadcastEnhance: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: '&6&lTRI'
-    suffix: ''
+    prefix: "&6&lTRI"
+    suffix: ""
     enchantments:
       WEAPON:
         - ^Damage_All!Lifesteal:1
@@ -856,9 +856,9 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lMid Tier.'
-  '19':
+      - "&3&l&m                                  "
+      - "&9&lMid Tier."
+  "19":
     baseChance: 2.0
     chanceIncreasePerFailstack: 0.25
     maximumFailstackApplied: 90
@@ -870,8 +870,8 @@ enhance:
     broadcastEnhance: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: '&6&lTET'
-    suffix: ''
+    prefix: "&6&lTET"
+    suffix: ""
     enchantments:
       WEAPON:
         - ^Damage_All!Purge:4
@@ -888,9 +888,9 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&3&l&m                                  '
-      - '&9&lHigh Tier.'
-  '20':
+      - "&3&l&m                                  "
+      - "&9&lHigh Tier."
+  "20":
     baseChance: 1.5
     chanceIncreasePerFailstack: 0.25
     maximumFailstackApplied: 124
@@ -902,8 +902,8 @@ enhance:
     broadcastEnhance: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: '&c&lPEN'
-    suffix: ''
+    prefix: "&c&lPEN"
+    suffix: ""
     enchantments:
       WEAPON:
         - ^Damage_All!Strength:2
@@ -919,5 +919,5 @@ enhance:
       HOE: []
       BOW: []
     lore:
-      - '&8&l&m                                  '
-      - '&4&lMAX Tier.'
+      - "&8&l&m                                  "
+      - "&4&lMAX Tier."
