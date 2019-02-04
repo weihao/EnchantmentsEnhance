@@ -23,7 +23,7 @@ import org.bukkit.block.BlockState;
 import org.bukkit.entity.Entity;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.util.GsonWrapper;
+import org.pixeltime.enchantmentsenhance.util.reflection.GsonWrapper;
 import org.pixeltime.enchantmentsenhance.util.reflection.MethodNames;
 import org.pixeltime.enchantmentsenhance.util.reflection.MinecraftVersion;
 

@@ -16,7 +16,7 @@
  *
  */
 
-package org.pixeltime.enchantmentsenhance.util;
+package org.pixeltime.enchantmentsenhance.util.reflection;
 
 import com.google.gson.Gson;
 
@@ -41,5 +41,4 @@ public class GsonWrapper {
             return null;
         }
     }
-
 }
