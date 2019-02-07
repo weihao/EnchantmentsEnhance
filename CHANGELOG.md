@@ -1,4 +1,16 @@
 # Changelog
+## [6.9.0] - 2019-2-6
+### Added
+- enhance set permission.
+
+### Fixed
+- Fixed enhance item duplication bug.
+- Fixed color codes error
+
+### Changed
+- Updated to Spigot 1.13.2
+- Updated to Kotlin 1.3
+
 ## [6.8.0] - 2019-1-1
 ### Fixed
 - Fixed an issue with consuming item in 1.8.
