@@ -49,3 +49,6 @@ permissions:
   Enchantmentsenhance.ench:
     description: Allows you to add enchantments to an item.
     default: op
+  Enchantmentsenhance.set:
+    description: Allows you to set grinding multiplier.
+    default: op

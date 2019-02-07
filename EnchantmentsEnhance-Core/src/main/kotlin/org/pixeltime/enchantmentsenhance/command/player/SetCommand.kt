@@ -27,7 +27,7 @@ import java.text.ParseException
 
 class SetCommand : SubCommand() {
     override val permission: String
-        get() = "Enchantmentsenhance.enhance"
+        get() = "Enchantmentsenhance.set"
 
     override fun onCommand(player: Player, args: Array<String>) {
         if (args.size == 1) {
