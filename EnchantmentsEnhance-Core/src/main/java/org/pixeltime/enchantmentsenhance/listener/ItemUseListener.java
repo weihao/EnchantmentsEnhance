@@ -32,6 +32,15 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class ItemUseListener implements Listener {
+    private static void consumeItem(ItemStack item, Player player) {
+        int afterConsume = Util.getMainHand(player).getAmount() - 1;
+        if (afterConsume == 0) {
+            player.getInventory().remove(item);
+        } else {
+            Util.getMainHand(player).setAmount(afterConsume);
+        }
+    }
+
     @EventHandler
     public void onItemClick(final PlayerInteractEvent event) {
         final Player player = event.getPlayer();
@@ -70,15 +79,6 @@ public class ItemUseListener implements Listener {
                 }
                 event.setCancelled(true);
             }
-        }
-    }
-
-    private static void consumeItem(ItemStack item, Player player) {
-        int afterConsume = Util.getMainHand(player).getAmount() - 1;
-        if (afterConsume == 0) {
-            player.getInventory().remove(item);
-        } else {
-            Util.getMainHand(player).setAmount(afterConsume);
         }
     }
 }
