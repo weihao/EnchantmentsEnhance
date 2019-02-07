@@ -39,7 +39,6 @@ import org.bukkit.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.manager.DropManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
-
 import java.util.Random;
 
 public class LifeskillingListener implements Listener {
@@ -185,7 +184,7 @@ public class LifeskillingListener implements Listener {
         boolean click = e.getClick().isShiftClick() || e.getClick()
                 .isLeftClick() && e.getRawSlot() == 2;
         boolean item = fi.getResult() != null;
-        if (click && item && !Util.invFull(player)) {
+        if (click && item && Material&& !Util.invFull(player)) {
             for (int i = 0; i < fi.getResult().getAmount(); i++) {
                 if (DropManager.smeltingChance > random.nextDouble()) {
                     DropManager.randomDrop(player, DropManager.smeltingLootTable);
