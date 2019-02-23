@@ -1,4 +1,12 @@
 # Changelog
+## [6.9.2] - 2019-2-23
+### Added
+-  Breeding includes turtle and llama.
+
+## [6.9.1] - 2019-2-21
+### Added
+- 1.12.2 compatibility.
+
 ## [6.9.0] - 2019-2-6
 ### Added
 - enhance set permission.
