@@ -38,7 +38,6 @@ class Blessed : EnchantmentListener() {
         val player = playerMoveEvent.player
         try {
             val level = getLevel(player)
-            val n = (Math.random() * 100.0).toInt()
             if (level > 0 && roll(level)) {
                 player.health = player.maxHealth
                 player.foodLevel = 20

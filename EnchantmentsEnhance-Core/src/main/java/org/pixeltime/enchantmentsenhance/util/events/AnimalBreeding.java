@@ -71,7 +71,7 @@ public class AnimalBreeding {
                 breeadableFood.add(haybale.getType());
                 breeadableFood.add(seagrass.getType());
         }
-        catch (Exception ex)
+        catch (NoSuchFieldError ex)
         {
             //
         }
@@ -106,7 +106,7 @@ public class AnimalBreeding {
             breeadableAnimals.add(llama);
             breeadableAnimals.add(turtle);
         }
-        catch (Exception ex)
+        catch (NoSuchFieldError ex)
         {
             //
         }

@@ -98,19 +98,25 @@ public class EnhancedItemListener implements Listener {
     public void onItemGlitch(InventoryClickEvent inventoryClickEvent) {
         ItemStack currentItem = inventoryClickEvent.getCurrentItem();
         ItemStack cursor = inventoryClickEvent.getCursor();
-        if (inventoryClickEvent.getClickedInventory() != null && inventoryClickEvent.getClickedInventory().firstEmpty() == -1) {
-            if (currentItem != null && currentItem.hasItemMeta() && (currentItem.getItemMeta().hasLore())) {
-                if (currentItem.getItemMeta().getLore().contains(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.untradeableLore")))) {
-                    inventoryClickEvent.setCancelled(true);
-                    Util.sendMessage(SettingsManager.lang.getString("messages.noDrop"), inventoryClickEvent.getWhoClicked());
+        try{
+            if (inventoryClickEvent.getClickedInventory() != null && inventoryClickEvent.getClickedInventory().firstEmpty() == -1) {
+                if (currentItem != null && currentItem.hasItemMeta() && (currentItem.getItemMeta().hasLore())) {
+                    if (currentItem.getItemMeta().getLore().contains(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.untradeableLore")))) {
+                        inventoryClickEvent.setCancelled(true);
+                        Util.sendMessage(SettingsManager.lang.getString("messages.noDrop"), inventoryClickEvent.getWhoClicked());
+                    }
+                }
+                if (cursor != null && cursor.hasItemMeta() && (cursor.getItemMeta().hasLore())) {
+                    if (cursor.getItemMeta().getLore().contains(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.untradeableLore")))) {
+                        inventoryClickEvent.setCancelled(true);
+                        Util.sendMessage(SettingsManager.lang.getString("messages.noDrop"), inventoryClickEvent.getWhoClicked());
+                    }
                 }
             }
-            if (cursor != null && cursor.hasItemMeta() && (cursor.getItemMeta().hasLore())) {
-                if (cursor.getItemMeta().getLore().contains(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.untradeableLore")))) {
-                    inventoryClickEvent.setCancelled(true);
-                    Util.sendMessage(SettingsManager.lang.getString("messages.noDrop"), inventoryClickEvent.getWhoClicked());
-                }
-            }
+        }
+        catch (NoSuchMethodError ex)
+        {
+            // craftbukkit
         }
     }
 }
