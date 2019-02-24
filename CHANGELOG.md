@@ -1,4 +1,8 @@
 # Changelog
+## [6.9.3] - 2019-2-24
+### Fixed
+-  Compatibility with craftbukkit 
+
 ## [6.9.2] - 2019-2-23
 ### Added
 -  Breeding includes turtle and llama.
