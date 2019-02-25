@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.event;
 
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.Main;
@@ -62,7 +63,8 @@ public class Enhance {
             if (ItemManager.isValid(item, MaterialManager.weapon)
                     || ItemManager.isValid(item, MaterialManager.pickaxe)
                     || ItemManager.isValid(item, MaterialManager.axe)
-                    || ItemManager.isValid(item, MaterialManager.hoe)) {
+                    || ItemManager.isValid(item, MaterialManager.hoe)
+                    || ItemManager.isValid(item , MaterialManager.shovel)) {
                 if (DataManager.requireConcentratedStones[level]) {
                     return 2;
                 } else {

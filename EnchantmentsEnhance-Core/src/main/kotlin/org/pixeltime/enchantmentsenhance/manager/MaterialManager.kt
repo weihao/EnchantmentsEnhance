@@ -61,7 +61,8 @@ class MaterialManager {
         @JvmField
         val hoe = mutableListOf<Material>()
 
-
+        @JvmField
+        val shovel = mutableListOf<Material>()
         @JvmField
         val stoneTypes = mutableListOf<Material>()
 
@@ -97,6 +98,10 @@ class MaterialManager {
             for (s in SettingsManager.config.getStringList(
                     "material.hoe")) {
                 hoe.add(XMaterial.fromString(s).parseMaterial())
+            }
+            for (s in SettingsManager.config.getStringList(
+                    "material.shovel")) {
+                shovel.add(XMaterial.fromString(s).parseMaterial())
             }
             for (s in SettingsManager.config.getStringList(
                     "material.pickaxe")) {

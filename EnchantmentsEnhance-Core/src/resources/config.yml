@@ -64,6 +64,9 @@ enableAnvilRename: true
 # Set false to disable repairing an item using an anvil.
 enableAnvilRepair: true
 
+# Set false to disable the explosion sound when using explosive enchantments.
+enableExplosionSound: true
+
 # Add to disable some special enchantments that may or may not cause an issue on your server.
 disabledEnchantments:
   # Plugin will take control of the player's fly permissions.
@@ -249,6 +252,12 @@ material:
     - GOLDEN_HOE
     - STONE_HOE
     - WOODEN_HOE
+  shovel:
+    - DIAMOND_SHOVEL
+    - IRON_SHOVEL
+    - GOLDEN_SHOVEL
+    - STONE_SHOVEL
+    - WOODEN_SHOVEL
   bow:
     - BOW
 slots:
@@ -306,6 +315,7 @@ enhance:
       PICKAXE: []
       AXE: []
       HOE: []
+      SHOEVEL: []
       BOW: []
     lore: []
   "1":
@@ -332,6 +342,8 @@ enhance:
       AXE:
         - Endless:1
       HOE:
+        - Endless:1
+      SHOEVEL:
         - Endless:1
       BOW:
         - Endless:1
@@ -364,6 +376,8 @@ enhance:
         - Dig_Speed:1
       HOE:
         - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -394,6 +408,8 @@ enhance:
       AXE:
         - Dig_Speed:1
       HOE:
+        - Dig_Speed:1
+      SHOVEL:
         - Dig_Speed:1
       BOW: []
     lore:
@@ -428,6 +444,8 @@ enhance:
       AXE:
         - Dig_Speed:1
       HOE:
+        - Dig_Speed:1
+      SHOVEL:
         - Dig_Speed:1
       BOW: []
     lore:
@@ -464,6 +482,8 @@ enhance:
         - Dig_Speed:1
       HOE:
         - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -498,6 +518,8 @@ enhance:
         - Dig_Speed:1
       HOE:
         - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -531,6 +553,8 @@ enhance:
         - Dig_Speed:1
       HOE:
         - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -560,7 +584,10 @@ enhance:
         - Smelt:1
       AXE:
         - Lumberjack:1
-      HOE: -Plow:1
+      HOE:
+        -Plow:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -591,7 +618,10 @@ enhance:
         - Explosive:1
       AXE:
         - Lumberjack:1
-      HOE: []
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -618,9 +648,14 @@ enhance:
       ARMOR:
         - Aegis:1
         - Blessed:1
-      PICKAXE: []
-      AXE: []
-      HOE: []
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -647,9 +682,14 @@ enhance:
       ARMOR:
         - Aegis:1
         - Blessed:1
-      PICKAXE: []
-      AXE: []
-      HOE: []
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -677,9 +717,14 @@ enhance:
         - Aegis:1
         - Blessed:1
         - Demonic:5
-      PICKAXE: []
-      AXE: []
-      HOE: []
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -704,9 +749,14 @@ enhance:
         - Damage_All!Damage_All:1
       ARMOR:
         - Aegis:1
-      PICKAXE: []
-      AXE: []
-      HOE: []
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -731,9 +781,14 @@ enhance:
         - Damage_All!Damage_All:1
       ARMOR:
         - Shield:1
-      PICKAXE: []
-      AXE: []
-      HOE: []
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -758,9 +813,14 @@ enhance:
         - Damage_All!Damage_All:1
       ARMOR:
         - Saturation:1
-      PICKAXE: []
-      AXE: []
-      HOE: []
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -787,9 +847,14 @@ enhance:
         - Damage_All!Damage_All:1-4
       ARMOR:
         - Dodge:5
-      PICKAXE: []
-      AXE: []
-      HOE: []
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Explosive:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -819,9 +884,14 @@ enhance:
         - Repel:3
         - Molten:3
         - Battlecry:3
-      PICKAXE: []
-      AXE: []
-      HOE: []
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Explosive:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -851,9 +921,14 @@ enhance:
         - Frosty:3
         - Divine:3
         - Shield:1
-      PICKAXE: []
-      AXE: []
-      HOE: []
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Explosive:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -883,9 +958,14 @@ enhance:
         - Immolation:1
         - Reversal:1
         - Shield:1
-      PICKAXE: []
-      AXE: []
-      HOE: []
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Explosive:1
       BOW: []
     lore:
       - "&3&l&m                                  "
@@ -914,9 +994,14 @@ enhance:
         - Immolation:4
         - Reversal:2
         - Shield:1
-      PICKAXE: []
-      AXE: []
-      HOE: []
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Explosive:1
       BOW: []
     lore:
       - "&8&l&m                                  "

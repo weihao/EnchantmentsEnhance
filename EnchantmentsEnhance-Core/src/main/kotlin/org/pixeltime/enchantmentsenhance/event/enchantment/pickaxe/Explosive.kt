@@ -68,8 +68,9 @@ class Explosive : EnchantmentListener() {
             val start = r / 2
 
             val sL = event.block.location
-
-            player.world.createExplosion(sL, 0f) // Create a fake explosion
+            if (SettingsManager.config.getBoolean("enableExplosionSound")) {
+                player.world.createExplosion(sL, 0f) // Create a fake explosion
+            }
 
             sL.x = sL.x - start
             sL.y = sL.y - start

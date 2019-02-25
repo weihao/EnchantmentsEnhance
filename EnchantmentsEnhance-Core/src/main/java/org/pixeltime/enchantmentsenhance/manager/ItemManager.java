@@ -73,6 +73,8 @@ public class ItemManager {
             return ItemType.PICKAXE;
         } else if (isValid(item, MaterialManager.hoe)) {
             return ItemType.HOE;
+        } else if (isValid(item , MaterialManager.shovel)) {
+            return ItemType.SHOVEL;
         } else {
             return ItemType.INVALID;
         }

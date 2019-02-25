@@ -27,6 +27,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.util.Util
+import java.lang.NullPointerException
 import java.util.*
 
 class Smelt : EnchantmentListener() {
@@ -62,12 +63,18 @@ class Smelt : EnchantmentListener() {
 
     fun calculateFortune(player: Player, material: Material): Int {
         var n = 1
-        if (Util.getMainHand(player).enchantments.containsKey(Enchantment.LOOT_BONUS_BLOCKS)) {
-            var n2 = Random().nextInt(Util.getMainHand(player).getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) + 2) - 1
-            if (n2 <= 0) {
-                n2 = 1
+        try {
+            if (Util.getMainHand(player).enchantments.containsKey(Enchantment.LOOT_BONUS_BLOCKS)) {
+                var n2 = Random().nextInt(Util.getMainHand(player).getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) + 2) - 1
+                if (n2 <= 0) {
+                    n2 = 1
+                }
+                n = (if (material == Material.LAPIS_ORE) 4 + Random().nextInt(5) else 1) * (n2 + 1)
             }
-            n = (if (material == Material.LAPIS_ORE) 4 + Random().nextInt(5) else 1) * (n2 + 1)
+        }
+        catch (ex: NullPointerException)
+        {
+            // Empty enchantments.
         }
         return n
     }
