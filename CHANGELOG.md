@@ -1,4 +1,8 @@
 # Changelog
+## [6.9.3] - 2019-2-25
+### Removed
+- Fuzzy name compares
+
 ## [6.9.3] - 2019-2-24
 ### Fixed
 -  Compatibility with craftbukkit 
