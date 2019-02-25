@@ -1,5 +1,5 @@
 # Changelog
-## [6.9.3] - 2019-2-25
+## [6.9.4] - 2019-2-25
 ### Removed
 - Fuzzy name compares
 
