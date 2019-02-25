@@ -22,6 +22,7 @@ import org.bukkit.DyeColor;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.event.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
+import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.DataManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
@@ -41,7 +42,14 @@ public class ForceIcon extends Clickable {
     }
 
     public ItemStack getItem(ItemStack item, Clickable clicked) {
-        int enchantLevel = ItemManager.getItemEnchantLevel(item);
+        int enchantLevel;
+        if (clicked.equals(MainMenu.gear)) {
+            enchantLevel = ItemManager.getItemEnchantLevel(item);
+        } else if (clicked.equals(MainMenu.tool)) {
+            enchantLevel = ItemManager.getToolEnchantLevel(item);
+        } else {
+            return null;
+        }
         int stoneId = Enhance.getStoneId(item, enchantLevel, clicked);
         int costToEnhance = DataManager.costToForceEnchant[enchantLevel + 1];
         return new ItemBuilder(XMaterial.RED_WOOL.parseMaterial())

@@ -331,7 +331,8 @@ public class Enhance {
     public static String getChance(ItemStack item, String playerName, Clickable clicked) {
         // Enchantment type
         ItemType type = ItemManager.getItemEnchantmentType(item);
-        if (type != ItemType.INVALID) {
+        ItemType tooltype = ItemManager.getToolItemEnchantmentType(item);
+        if (type != ItemType.INVALID || tooltype != ItemType.INVALID) {
             // Display failstack
             String placeholder = "";
             if (clicked.equals(MainMenu.gear)) {
