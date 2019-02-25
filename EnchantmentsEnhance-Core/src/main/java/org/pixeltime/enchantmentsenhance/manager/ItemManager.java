@@ -326,10 +326,11 @@ public class ItemManager {
             if (enchantment != null) {
                 String currEnch = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', enchantment));
                 for (int i = 0; i < newlore.size(); i++) {
-                    String curr = ChatColor.stripColor(newlore.get(i));
-                    if (curr.equals(currEnch)) {
+                    String[] curr = ChatColor.stripColor(newlore.get(i)).split(
+                            " ");
+                    if (curr[0].equals(currEnch)) {
                         // Adds original level.
-                        keptLevel += Util.romanToInt(curr.split(" ")[1]);
+                        keptLevel += Util.romanToInt(curr[1]);
                         newlore.remove(i);
                         i--;
                     }
@@ -440,8 +441,9 @@ public class ItemManager {
                 String currEnch = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', enchantment));
                 List<String> lores = item.getItemMeta().getLore();
                 for (int i = 0; i < lores.size(); i++) {
-                    String curr = ChatColor.stripColor(lores.get(i));
-                    if (curr.equals(currEnch)) {
+                    String[] curr = ChatColor.stripColor(lores.get(i)).split(
+                            " ");
+                    if (curr[0].equals(currEnch)) {
                         return true;
                     }
                 }
