@@ -1,4 +1,8 @@
 # Changelog
+## [6.9.5] - 2019-2-26
+### Fixed
+- Force enhancement
+
 ## [6.9.4] - 2019-2-25
 ### Removed
 - Fuzzy name compares

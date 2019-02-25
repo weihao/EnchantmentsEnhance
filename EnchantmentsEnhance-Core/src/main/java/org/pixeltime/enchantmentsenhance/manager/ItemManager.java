@@ -300,7 +300,14 @@ public class ItemManager {
                 }
                 for (String s : downgrade) {
                     String[] a = s.replace("[", "").replace("]", "").split(":");
-                    applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
+                    try
+                    {
+                        applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
+                    }
+                    catch (ArrayIndexOutOfBoundsException ex)
+                    {
+                        // Empty linked list
+                    }
                 }
             }
         }

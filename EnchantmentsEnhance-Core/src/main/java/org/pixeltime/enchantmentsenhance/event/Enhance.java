@@ -85,7 +85,8 @@ public class Enhance {
             return false;
         }
         return (ItemManager.getItemEnchantmentType(item) != ItemType.INVALID)
-                && (ItemManager.getItemEnchantLevel(item) == 0 || (ItemManager.getItemEnchantLevel(item) < DataManager.levels - 1));
+                && (ItemManager.getItemEnchantLevel(item) == 0 || (ItemManager.getItemEnchantLevel(item) < DataManager.levels - 1))
+                && ItemManager.getToolEnchantLevel(item) == 0;
     }
 
     /**
@@ -256,20 +257,35 @@ public class Enhance {
 
     }
 
-    public static int getForceEnhanceCost(ItemStack item, Player player) {
+    public static int getForceEnhanceCost(ItemStack item, Player player,
+                                          Clickable clicked) {
         // Current enchant level before enhancing
-        int enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
+        int enchantLevel;
+        if (clicked.equals(MainMenu.gear)) {
+            enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
+        } else if (clicked.equals(MainMenu.tool)) {
+            enchantLevel = ItemManager.getToolEnchantLevel(item) + 1;
+        } else {
+            return -1;
+        }
         // Gets the cost of force enhancing
         return DataManager.costToForceEnchant[enchantLevel];
     }
 
     public static boolean getValidationOfForce(ItemStack item, Player player, Clickable clicked) {
         // Current enchant level before enhancing
-        int enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
+        int enchantLevel;
+        if (clicked.equals(MainMenu.gear)) {
+            enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
+        } else if (clicked.equals(MainMenu.tool)) {
+            enchantLevel = ItemManager.getToolEnchantLevel(item) + 1;
+        } else {
+            return false;
+        }
         // Finds the stone used in the enhancement
         int stoneId = getStoneId(item, enchantLevel, clicked);
         // Finds the cost of enhance.
-        int costToEnhance = getForceEnhanceCost(item, player);
+        int costToEnhance = getForceEnhanceCost(item, player, clicked);
         if (costToEnhance <= 0) {
             return false;
         }
@@ -288,11 +304,18 @@ public class Enhance {
             return;
         }
         // Current enchant level before enhancing
-        int enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
+        int enchantLevel;
+        if (clicked.equals(MainMenu.gear)) {
+            enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
+        } else if (clicked.equals(MainMenu.tool)) {
+            enchantLevel = ItemManager.getToolEnchantLevel(item) + 1;
+        } else {
+            return;
+        }
         // Finds the stone used in the enhancement
         int stoneId = getStoneId(item, enchantLevel, clicked);
         // Finds the cost of enhance.
-        int costToEnhance = getForceEnhanceCost(item, player);
+        int costToEnhance = getForceEnhanceCost(item, player, clicked);
         Main.getApi().addItem(player.getName(), stoneId, -costToEnhance);
         enhanceSuccess(item, player, true, enchantLevel, clicked);
     }
@@ -337,6 +360,7 @@ public class Enhance {
             return false;
         }
         return (ItemManager.getToolItemEnchantmentType(item) != ItemType.INVALID)
-                && (ItemManager.getToolEnchantLevel(item) >= 0 && (ItemManager.getToolEnchantLevel(item) < DataManager.levels - 1));
+                && (ItemManager.getToolEnchantLevel(item) >= 0 && (ItemManager.getToolEnchantLevel(item) < DataManager.levels - 1))
+                && ItemManager.getItemEnchantLevel(item) == 0;
     }
 }
