@@ -328,7 +328,7 @@ public class ItemManager {
                 for (int i = 0; i < newlore.size(); i++) {
                     String[] curr = ChatColor.stripColor(newlore.get(i)).split(
                             " ");
-                    if (curr.length > 1 && curr[0].equals(currEnch)) {
+                    if (curr.length == 2 && curr[0].equals(currEnch)) {
                         // Adds original level.
                         keptLevel += Util.romanToInt(curr[1]);
                         newlore.remove(i);
