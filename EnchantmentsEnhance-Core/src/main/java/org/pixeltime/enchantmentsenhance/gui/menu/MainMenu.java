@@ -216,8 +216,10 @@ public class MainMenu extends GUIAbstract {
             }
 
 
-            if (DataManager.maximumFailstackApplied[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0
-                    && DataManager.costToForceEnchant[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0) {
+            if ((DataManager.maximumFailstackApplied[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0
+                    || DataManager.maximumFailstackApplied[ItemManager.getToolEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0)
+                    && (DataManager.costToForceEnchant[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0
+            || DataManager.costToForceEnchant[ItemManager.getToolEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0)) {
                 if (Enhance.getValidationOfForce(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName))) {
                     setItem(force.getPosition(), force.getGlowingItem(itemOnEnhancingSlot.get(playerName), enhancingMode.get(playerName)), (clickType) -> {
                         Enhance.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
