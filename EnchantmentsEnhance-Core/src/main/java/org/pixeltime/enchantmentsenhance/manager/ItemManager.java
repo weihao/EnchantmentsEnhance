@@ -328,7 +328,7 @@ public class ItemManager {
                 for (int i = 0; i < newlore.size(); i++) {
                     String[] curr = ChatColor.stripColor(newlore.get(i)).split(
                             " ");
-                    if (curr[0].equals(currEnch)) {
+                    if (curr.length > 0 && curr[0].equals(currEnch)) {
                         // Adds original level.
                         keptLevel += Util.romanToInt(curr[1]);
                         newlore.remove(i);
@@ -443,7 +443,7 @@ public class ItemManager {
                 for (int i = 0; i < lores.size(); i++) {
                     String[] curr = ChatColor.stripColor(lores.get(i)).split(
                             " ");
-                    if (curr[0].equals(currEnch)) {
+                    if (curr.length > 0 && curr[0].equals(currEnch)) {
                         return true;
                     }
                 }
