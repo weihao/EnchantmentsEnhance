@@ -23,7 +23,7 @@
 
     <groupId>org.pixeltime</groupId>
     <artifactId>EnchantmentsEnhance-Parent</artifactId>
-    <version>6.9.5</version>
+    <version>7.0.0</version>
 
     <modules>
         <module>EnchantmentsEnhance-1.12</module>

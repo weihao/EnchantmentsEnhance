@@ -1,23 +1,18 @@
 # Changelog
-## [6.9.5] - 2019-2-26
-### Fixed
-- Force enhancement
-
-## [6.9.4] - 2019-2-25
-### Removed
-- Fuzzy name compares
-
-## [6.9.3] - 2019-2-24
-### Fixed
--  Compatibility with craftbukkit 
-
-## [6.9.2] - 2019-2-23
+## [7.0.0] - 2019-2-25
 ### Added
--  Breeding includes turtle and llama.
-
-## [6.9.1] - 2019-2-21
-### Added
+- Breeding includes turtle and llama.
 - 1.12.2 compatibility.
+
+### Fixed
+- Force enhancement.
+- Compatibility with craftbukkit.
+
+### Removed
+- Fuzzy name compares.
+
+### Changed
+- Tools can now be force enhanced.
 
 ## [6.9.0] - 2019-2-6
 ### Added
@@ -25,11 +20,11 @@
 
 ### Fixed
 - Fixed enhance item duplication bug.
-- Fixed color codes error
+- Fixed color codes error.
 
 ### Changed
-- Updated to Spigot 1.13.2
-- Updated to Kotlin 1.3
+- Updated to Spigot 1.13.2.
+- Updated to Kotlin 1.3.
 
 ## [6.8.0] - 2019-1-1
 ### Fixed
