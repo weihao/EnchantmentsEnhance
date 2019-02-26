@@ -75,7 +75,9 @@ public class ItemManager {
             return ItemType.HOE;
         } else if (isValid(item , MaterialManager.shovel)) {
             return ItemType.SHOVEL;
-        } else {
+        } else if (isValid(item, MaterialManager.knife)) {
+            return ItemType.KNIFE;
+        } else{
             return ItemType.INVALID;
         }
     }

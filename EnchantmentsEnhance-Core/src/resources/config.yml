@@ -258,6 +258,12 @@ material:
     - GOLDEN_SHOVEL
     - STONE_SHOVEL
     - WOODEN_SHOVEL
+  knife:
+    - DIAMOND_SWORD
+    - GOLD_SWORD
+    - STONE_SWORD
+    - WOOD_SWORD
+    - IRON_SWORD
   bow:
     - BOW
 slots:
@@ -317,6 +323,7 @@ enhance:
       HOE: []
       SHOEVEL: []
       BOW: []
+      KNIFE: []
     lore: []
   "1":
     baseChance: 100
@@ -346,6 +353,8 @@ enhance:
       SHOEVEL:
         - Endless:1
       BOW:
+        - Endless:1
+      KNIFE:
         - Endless:1
     lore:
       - "&3&l&m                                  "
@@ -378,7 +387,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Fire:1
+      KNIFE:
+        - Fire_Aspect:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -411,7 +423,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Fire:1
+      KNIFE:
+        - Fire_Aspect:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -447,7 +462,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Infinite:1
+      KNIFE:
+        - Damage_Arthropods:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -484,7 +502,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Arthropods:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -520,7 +541,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Arthropods:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -555,7 +579,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Arthropods:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -588,7 +615,10 @@ enhance:
         -Plow:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Arthropods:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -622,7 +652,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Undead:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -656,7 +689,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Undead:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -690,7 +726,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Undead:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -725,7 +764,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Undead:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -757,7 +799,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Undead:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -789,7 +834,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Loot_Bonus_Mobs:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -821,7 +869,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Dig_Speed:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Loot_Bonus_Mobs:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -855,7 +906,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Explosive:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Loot_Bonus_Mobs:1
     lore:
       - "&3&l&m                                  "
       - "&9&lMid Tier."
@@ -892,7 +946,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Explosive:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Loot_Bonus_Mobs:1
     lore:
       - "&3&l&m                                  "
       - "&9&lMid Tier."
@@ -929,7 +986,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Explosive:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Loot_Bonus_Mobs:1
     lore:
       - "&3&l&m                                  "
       - "&9&lMid Tier."
@@ -950,7 +1010,7 @@ enhance:
     enchantments:
       WEAPON:
         - ^Damage_All!Purge:4
-        - Damage_All!Damage_All:1-4
+        - Damage_All!Damage_All:1-5
       ARMOR:
         - Spiked:3
         - Vitality:1
@@ -966,7 +1026,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Explosive:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_All:1-5
     lore:
       - "&3&l&m                                  "
       - "&9&lHigh Tier."
@@ -987,7 +1050,7 @@ enhance:
     enchantments:
       WEAPON:
         - ^Damage_All!Strength:2
-        - Damage_All!Damage_All:1-4
+        - Damage_All!Damage_All:5-10
       ARMOR:
         - Vitality:2
         - Cure:2
@@ -1002,7 +1065,10 @@ enhance:
         - Dig_Speed:1
       SHOVEL:
         - Explosive:1
-      BOW: []
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_All:1-5
     lore:
       - "&8&l&m                                  "
       - "&4&lMAX Tier."

@@ -63,6 +63,10 @@ class MaterialManager {
 
         @JvmField
         val shovel = mutableListOf<Material>()
+
+        @JvmField
+        val knife = mutableListOf<Material>()
+
         @JvmField
         val stoneTypes = mutableListOf<Material>()
 
@@ -102,6 +106,10 @@ class MaterialManager {
             for (s in SettingsManager.config.getStringList(
                     "material.shovel")) {
                 shovel.add(XMaterial.fromString(s).parseMaterial())
+            }
+            for (s in SettingsManager.config.getStringList(
+                    "material.knife")) {
+                knife.add(XMaterial.fromString(s).parseMaterial())
             }
             for (s in SettingsManager.config.getStringList(
                     "material.pickaxe")) {
