@@ -1,4 +1,18 @@
 # Changelog
+## [7.1.0] - 2019-2-28
+### Added
+- Grinding can be disabled.
+- Reblath failstacking can be disabled.
+- Sword can be enhanced as tool.
+- Shovel can be enhanced as tool.
+
+### Fixed
+- Issue displaying enchantments chance.
+- Items can be glitched into menu.
+
+### Changed
+- Configuration file changed to adapt knife and shovel.
+
 ## [7.0.0] - 2019-2-25
 ### Added
 - Breeding includes turtle and llama.

@@ -18,15 +18,21 @@
 
 package org.pixeltime.enchantmentsenhance.gui;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class GUIListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -47,6 +53,7 @@ public class GUIListener implements Listener {
         if (e.getRawSlot() > 53) {
             return;
         }
+
         Player player = (Player) e.getWhoClicked();
         String playerName = player.getName();
         GUIAbstract gui = GUIManager.getMap().get(playerName);
@@ -62,6 +69,27 @@ public class GUIListener implements Listener {
                 e.setCancelled(true);
                 player.closeInventory();
             }
+        }
+    }
+
+
+    /**
+     * Prevents item glitched into menu.
+     *
+     * @param e
+     */
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
+    public void onInventoryClick(InventoryClickEvent e) {
+        if ((e.getInventory().getType() != InventoryType.CRAFTING) && (e.getInventory().getType() != InventoryType.PLAYER)) {
+            if ((e.getClick().equals(ClickType.NUMBER_KEY)) && (e.getWhoClicked().getInventory().getItem(e.getHotbarButton()) != null)) {
+                Player player = (Player) e.getWhoClicked();
+                String playerName = player.getName();
+                GUIAbstract gui = GUIManager.getMap().get(playerName);
+                if (gui != null && gui.getInventory().equals(e.getInventory()))
+                {
+                    e.setCancelled(true);
+                }
+                }
         }
     }
 
