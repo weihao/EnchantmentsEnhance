@@ -99,7 +99,7 @@ public class ItemMenu extends GUIAbstract {
             }
         }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 
-        if (SettingsManager.config.getBoolean("enableReblathFailstacking")) {
+        if (SettingsManager.config.getBoolean("enableGrinding")) {
         setItem(grind.getPosition(), grind.getItem(playerName), (clickType) -> {
             if (clickedItem.containsKey(player.getName())) {
                 // If player has item to failstack.
@@ -131,7 +131,8 @@ public class ItemMenu extends GUIAbstract {
         });
         }
 
-        setItem(reblath.getPosition(), reblath.getItem(playerName), (clickType) ->
+        if (SettingsManager.config.getBoolean("enableReblathFailstacking")) {
+            setItem(reblath.getPosition(), reblath.getItem(playerName), (clickType) ->
         {
             if (clickedItem.containsKey(player.getName())) {
                 // If player has item to failstack.
@@ -156,4 +157,5 @@ public class ItemMenu extends GUIAbstract {
             }
         });
     }
+        }
 }
