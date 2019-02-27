@@ -84,6 +84,9 @@ class DebugConsoleCommand : SubConsoleCommand() {
                 }
             }
         }
+        if (args[0] == "test") {
+            sb.append("Hello World")
+        }
         print(sb.toString())
     }
 

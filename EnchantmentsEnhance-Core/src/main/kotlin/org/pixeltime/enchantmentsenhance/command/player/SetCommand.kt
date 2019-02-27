@@ -23,6 +23,7 @@ import org.pixeltime.enchantmentsenhance.command.SubCommand
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat
 import org.pixeltime.enchantmentsenhance.util.Util
+import java.lang.NumberFormatException
 import java.text.ParseException
 
 class SetCommand : SubCommand() {
@@ -44,6 +45,9 @@ class SetCommand : SubCommand() {
             } catch (ex: ParseException) {
                 Util.sendMessage(SettingsManager.lang.getString("config.invalidNumber"), player
                 )
+            } catch (ex: NumberFormatException) {
+                Util.sendMessage(SettingsManager.lang.getString("config" +
+                        ".invalidNumber"), player)
             }
         } else {
             Util.sendMessage(SettingsManager.lang.getString(
