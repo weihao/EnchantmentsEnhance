@@ -174,7 +174,7 @@
                 <filtering>true</filtering>
             </resource>
             <resource>
-                <directory>${project.basedir}/</directory>
+                <directory>${project.basedir}/../</directory>
                 <includes>
                     <include>*.md</include>
                     <include>LICENSE</include>
