@@ -4,7 +4,8 @@
 # +------------------------------------------------------+ #
 ############################################################
 # If you have encountered any problems, use: https://github.com/25/EnchantmentsEnhance/issues
-
+# For config reference guide, use: https://github.com/25/EnchantmentsEnhance/blob/master/EnchantmentsEnhance-Core/src/resources/config.yml
+guide: https://github.com/25/EnchantmentsEnhance/blob/master/EnchantmentsEnhance-Core/src/resources/config.yml
 # Key Concepts:
 # Enhancing is the act of increasing the stats of your items.
 # Failstack is used to signify the number of failed attempts a player has made at enhancing. Failstacks increase the chance of a successful enhancement attempt.
