@@ -37,6 +37,7 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 
 public class ItemMenu extends GUIAbstract {
@@ -98,6 +99,7 @@ public class ItemMenu extends GUIAbstract {
             }
         }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 
+        if (SettingsManager.config.getBoolean("enableReblathFailstacking")) {
         setItem(grind.getPosition(), grind.getItem(playerName), (clickType) -> {
             if (clickedItem.containsKey(player.getName())) {
                 // If player has item to failstack.
@@ -127,6 +129,7 @@ public class ItemMenu extends GUIAbstract {
                 Util.sendMessage(SettingsManager.lang.getString("gui.missingItem"), player);
             }
         });
+        }
 
         setItem(reblath.getPosition(), reblath.getItem(playerName), (clickType) ->
         {
