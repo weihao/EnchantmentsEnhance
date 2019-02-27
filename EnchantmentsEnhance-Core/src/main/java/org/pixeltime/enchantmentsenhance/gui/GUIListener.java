@@ -18,7 +18,6 @@
 
 package org.pixeltime.enchantmentsenhance.gui;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,9 +29,6 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class GUIListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -85,11 +81,10 @@ public class GUIListener implements Listener {
                 Player player = (Player) e.getWhoClicked();
                 String playerName = player.getName();
                 GUIAbstract gui = GUIManager.getMap().get(playerName);
-                if (gui != null && gui.getInventory().equals(e.getInventory()))
-                {
+                if (gui != null && gui.getInventory().equals(e.getInventory())) {
                     e.setCancelled(true);
                 }
-                }
+            }
         }
     }
 

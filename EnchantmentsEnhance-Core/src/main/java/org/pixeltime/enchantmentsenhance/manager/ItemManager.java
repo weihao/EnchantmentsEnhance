@@ -73,11 +73,11 @@ public class ItemManager {
             return ItemType.PICKAXE;
         } else if (isValid(item, MaterialManager.hoe)) {
             return ItemType.HOE;
-        } else if (isValid(item , MaterialManager.shovel)) {
+        } else if (isValid(item, MaterialManager.shovel)) {
             return ItemType.SHOVEL;
         } else if (isValid(item, MaterialManager.knife)) {
             return ItemType.KNIFE;
-        } else{
+        } else {
             return ItemType.INVALID;
         }
     }
@@ -304,12 +304,9 @@ public class ItemManager {
                 }
                 for (String s : downgrade) {
                     String[] a = s.replace("[", "").replace("]", "").split(":");
-                    try
-                    {
+                    try {
                         applyEnchantmentToItem(item, a[0], -Integer.parseInt(a[1]));
-                    }
-                    catch (ArrayIndexOutOfBoundsException ex)
-                    {
+                    } catch (ArrayIndexOutOfBoundsException ex) {
                         // Empty linked list
                     }
                 }

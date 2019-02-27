@@ -49,11 +49,11 @@ public class StatsIcon extends Clickable {
                             .setDyeColor(DyeColor.LIGHT_BLUE)
                             .setName(SettingsManager.lang.getString("menu.gui.stats"))
                             .addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack")
-                    + Main.getApi().getFailstack(playerName))
+                                    + Main.getApi().getFailstack(playerName))
                             .addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName, clicked))
                             .addLoreLine(SettingsManager.lang.getString(
-                    "menu.lore.stats1")).addLoreLine(SettingsManager.lang.getString(
-                    "menu.lore.stats2")).toItemStack());
+                                    "menu.lore.stats1")).addLoreLine(SettingsManager.lang.getString(
+                                    "menu.lore.stats2")).toItemStack());
         }
         if (playerName != null && Main.getApi().hasFailstack(playerName)) {
             return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial())

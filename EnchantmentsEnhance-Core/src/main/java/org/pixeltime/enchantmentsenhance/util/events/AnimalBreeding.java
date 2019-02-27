@@ -65,14 +65,12 @@ public class AnimalBreeding {
         breeadableFood.add(dandelions.getType());
 
         // 1.13
-        try{
-                haybale = new ItemStack(Material.HAY_BLOCK);
-                seagrass = new ItemStack(Material.SEAGRASS);
-                breeadableFood.add(haybale.getType());
-                breeadableFood.add(seagrass.getType());
-        }
-        catch (NoSuchFieldError ex)
-        {
+        try {
+            haybale = new ItemStack(Material.HAY_BLOCK);
+            seagrass = new ItemStack(Material.SEAGRASS);
+            breeadableFood.add(haybale.getType());
+            breeadableFood.add(seagrass.getType());
+        } catch (NoSuchFieldError ex) {
             //
         }
     }
@@ -99,15 +97,13 @@ public class AnimalBreeding {
         breeadableAnimals.add(rabbit);
 
         // 1.13
-        try{
+        try {
             llama = EntityType.LLAMA;
             turtle = EntityType.TURTLE;
 
             breeadableAnimals.add(llama);
             breeadableAnimals.add(turtle);
-        }
-        catch (NoSuchFieldError ex)
-        {
+        } catch (NoSuchFieldError ex) {
             //
         }
     }

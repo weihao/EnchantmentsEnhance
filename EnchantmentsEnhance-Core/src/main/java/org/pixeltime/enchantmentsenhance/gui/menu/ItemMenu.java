@@ -37,7 +37,6 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 
 public class ItemMenu extends GUIAbstract {
@@ -100,62 +99,62 @@ public class ItemMenu extends GUIAbstract {
         }.runTaskLaterAsynchronously(Main.getMain(), 2L));
 
         if (SettingsManager.config.getBoolean("enableGrinding")) {
-        setItem(grind.getPosition(), grind.getItem(playerName), (clickType) -> {
-            if (clickedItem.containsKey(player.getName())) {
-                // If player has item to failstack.
-                if (Main.getApi().getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
-                    int locked = 2;
-                    if (PlayerStat.getPlayerStats(playerName) != null) {
-                        locked = PlayerStat.getPlayerStats(playerName).getGrind();
-                    }
-                    Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), -1);
-                    Random random = new Random();
-                    double num = random.nextDouble();
+            setItem(grind.getPosition(), grind.getItem(playerName), (clickType) -> {
+                if (clickedItem.containsKey(player.getName())) {
+                    // If player has item to failstack.
+                    if (Main.getApi().getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
+                        int locked = 2;
+                        if (PlayerStat.getPlayerStats(playerName) != null) {
+                            locked = PlayerStat.getPlayerStats(playerName).getGrind();
+                        }
+                        Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), -1);
+                        Random random = new Random();
+                        double num = random.nextDouble();
 
-                    if (num < (1.0 / locked)) {
-                        // Reward
-                        Util.sendMessage(SettingsManager.lang.getString("grind.success")
-                                        .replace("%amount%", Integer.toString(locked))
-                                , player);
-                        Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), locked);
+                        if (num < (1.0 / locked)) {
+                            // Reward
+                            Util.sendMessage(SettingsManager.lang.getString("grind.success")
+                                            .replace("%amount%", Integer.toString(locked))
+                                    , player);
+                            Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), locked);
+                        } else {
+                            // Fail
+                            Util.sendMessage(SettingsManager.lang.getString("grind.failed"), player);
+                        }
                     } else {
-                        // Fail
-                        Util.sendMessage(SettingsManager.lang.getString("grind.failed"), player);
+                        Util.sendMessage(SettingsManager.lang.getString("gui.noItem"), player);
                     }
                 } else {
-                    Util.sendMessage(SettingsManager.lang.getString("gui.noItem"), player);
+                    Util.sendMessage(SettingsManager.lang.getString("gui.missingItem"), player);
                 }
-            } else {
-                Util.sendMessage(SettingsManager.lang.getString("gui.missingItem"), player);
-            }
-        });
+            });
         }
 
         if (SettingsManager.config.getBoolean("enableReblathFailstacking")) {
             setItem(reblath.getPosition(), reblath.getItem(playerName), (clickType) ->
-        {
-            if (clickedItem.containsKey(player.getName())) {
-                // If player has item to failstack.
-                if (Main.getApi().getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
-                    // Roll.
-                    if ((Math.random() * 100) > reblath.getChance()) {
-                        int levelsToAdd = 1;
-                        Main.getApi().addFailstack(player.getName(), levelsToAdd);
-                        Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), -1);
-                        Util.sendMessage(SettingsManager.lang.getString("gui.addFailstack")
-                                .replace("%level%", Integer.toString(levelsToAdd))
-                                .replace("%size%", Integer.toString(Main.getApi().getFailstack(player.getName()))), player);
+            {
+                if (clickedItem.containsKey(player.getName())) {
+                    // If player has item to failstack.
+                    if (Main.getApi().getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
+                        // Roll.
+                        if ((Math.random() * 100) > reblath.getChance()) {
+                            int levelsToAdd = 1;
+                            Main.getApi().addFailstack(player.getName(), levelsToAdd);
+                            Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), -1);
+                            Util.sendMessage(SettingsManager.lang.getString("gui.addFailstack")
+                                    .replace("%level%", Integer.toString(levelsToAdd))
+                                    .replace("%size%", Integer.toString(Main.getApi().getFailstack(player.getName()))), player);
+                        } else {
+                            Util.sendMessage(SettingsManager.lang.getString("gui.resetFailstack").replace("%level%", Integer.toString(Main.getApi().getFailstack(player.getName()))), player);
+                            Main.getApi().resetFailstack(player.getName());
+                        }
                     } else {
-                        Util.sendMessage(SettingsManager.lang.getString("gui.resetFailstack").replace("%level%", Integer.toString(Main.getApi().getFailstack(player.getName()))), player);
-                        Main.getApi().resetFailstack(player.getName());
+                        Util.sendMessage(SettingsManager.lang.getString("gui.noItem"), player);
                     }
                 } else {
-                    Util.sendMessage(SettingsManager.lang.getString("gui.noItem"), player);
+                    Util.sendMessage(SettingsManager.lang.getString("gui.missingItem"), player);
                 }
-            } else {
-                Util.sendMessage(SettingsManager.lang.getString("gui.missingItem"), player);
-            }
-        });
-    }
+            });
         }
+    }
 }

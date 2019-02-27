@@ -27,7 +27,6 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.util.Util
-import java.lang.NullPointerException
 import java.util.*
 
 class Smelt : EnchantmentListener() {
@@ -71,9 +70,7 @@ class Smelt : EnchantmentListener() {
                 }
                 n = (if (material == Material.LAPIS_ORE) 4 + Random().nextInt(5) else 1) * (n2 + 1)
             }
-        }
-        catch (ex: NullPointerException)
-        {
+        } catch (ex: NullPointerException) {
             // Empty enchantments.
         }
         return n
