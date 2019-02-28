@@ -74,6 +74,9 @@ enableReblathFailstacking: true
 # Set false to disable player gaining black stones from grinding.
 enableGrinding: true
 
+# Set true to only allow Enchantments Enhance renamed item to be enhanced.
+enableEERenamedItemOnly: false
+
 # Add to disable some special enchantments that may or may not cause an issue on your server.
 disabledEnchantments:
   # Plugin will take control of the player's fly permissions.

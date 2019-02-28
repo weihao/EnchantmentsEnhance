@@ -86,6 +86,9 @@ public class Enhance {
         if (!SettingsManager.config.getBoolean("enableStackedItem") && item.getAmount() > 1) {
             return false;
         }
+        if (SettingsManager.config.getBoolean("enableEERenamedItemOnly") && ItemManager.getItemName(item).isEmpty()) {
+            return false;
+        }
         return (ItemManager.getItemEnchantmentType(item) != ItemType.INVALID)
                 && (ItemManager.getItemEnchantLevel(item) == 0 || (ItemManager.getItemEnchantLevel(item) < DataManager.levels - 1))
                 && ItemManager.getToolEnchantLevel(item) == 0;
@@ -360,6 +363,9 @@ public class Enhance {
     public static boolean getValidationOfToolItem(ItemStack item) {
         // If item cannot be enhanced
         if (!SettingsManager.config.getBoolean("enableStackedItem") && item.getAmount() > 1) {
+            return false;
+        }
+        if (SettingsManager.config.getBoolean("enableEERenamedItemOnly") && ItemManager.getItemName(item).isEmpty()) {
             return false;
         }
         return (ItemManager.getToolItemEnchantmentType(item) != ItemType.INVALID)
