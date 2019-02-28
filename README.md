@@ -4,8 +4,8 @@
 [![Travis CI](https://travis-ci.org/25/EnchantmentsEnhance.svg?branch=master)](https://travis-ci.org/25/EnchantmentsEnhance)
 [![Codebeat Badge](https://codebeat.co/badges/2ef380b7-5479-4ac6-89d9-fd1fb673511c)](https://codebeat.co/projects/github-com-healpotion-enchantmentsenhance-master)
 [![bStats](https://img.shields.io/badge/bStats-deployed-3366ff.svg?style=flat)](https://bstats.org/plugin/bukkit/EnchantmentsEnhance)
-[![Open Source](https://badges.frapsoft.com/os/v1/open-source.png?v=102)](https://github.com/25/EnchantmentsEnhance)
-[![License](https://badges.frapsoft.com/os/gpl/gpl.png?v=102)](http://www.gnu.org/licenses/gpl-3.0)
+[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/25/EnchantmentsEnhance)
+[![License](https://badges.frapsoft.com/os/gpl/gpl.svg?v=102)](http://www.gnu.org/licenses/gpl-3.0)
 [![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/pulls)
 [![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
 
