@@ -31,14 +31,14 @@ import org.pixeltime.enchantmentsenhance.util.XMaterial;
 public class ItemIcon extends Clickable {
 
     public static String getOneStoneCountAsString(String player, int stoneId) {
-        int count = player == null ? 0 : Main.getAPI().getItem(player, stoneId);
-        return (SettingsManager.lang.getString("Item.listing").replaceAll(
-                "%ITEM%", SettingsManager.lang.getString("Item." + stoneId))
+        int count = player == null ? 0 : Main.getApi().getItem(player, stoneId);
+        return (SettingsManager.lang.getString("item.listing").replaceAll(
+                "%ITEM%", SettingsManager.lang.getString("item." + stoneId))
                 .replaceAll("%COUNT%", String.valueOf(count)));
     }
 
     public static int getOneStoneCountAsInt(String player, int stoneId) {
-        return Main.getAPI().getItem(player, stoneId);
+        return Main.getApi().getItem(player, stoneId);
     }
 
     public static int getOneStoneCountAsCount(String player, int stoneId) {
@@ -48,16 +48,19 @@ public class ItemIcon extends Clickable {
 
     public ItemStack getItem() {
         return (new ItemBuilder(XMaterial.CHEST_MINECART.parseMaterial())
-                .setName(SettingsManager.lang.getString("Item.gui"))
-                .addLoreLine(SettingsManager.lang.getString("Item.gui1"))
+                .setName(SettingsManager.lang.getString("item.gui"))
+                .addLoreLine(SettingsManager.lang.getString("item.gui1"))
                 .toItemStack());
     }
 
     @Override
     public ItemStack getItem(String player) {
-        for (int i : PlayerStat.getPlayerStats(player).getItems()) {
-            if (i > 0) {
-                return CompatibilityManager.glow.addGlow(getItem());
+        PlayerStat stat = PlayerStat.getPlayerStats(player);
+        if (stat != null && stat.getItems() != null) {
+            for (int i : PlayerStat.getPlayerStats(player).getItems()) {
+                if (i > 0) {
+                    return CompatibilityManager.glow.addGlow(getItem());
+                }
             }
         }
         return getItem();

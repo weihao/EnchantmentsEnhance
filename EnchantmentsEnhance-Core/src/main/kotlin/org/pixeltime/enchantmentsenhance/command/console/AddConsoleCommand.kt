@@ -22,7 +22,7 @@ import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand
-import org.pixeltime.enchantmentsenhance.manager.MM
+import org.pixeltime.enchantmentsenhance.manager.MaterialManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
 
@@ -36,7 +36,7 @@ class AddConsoleCommand : SubConsoleCommand() {
             val level: Int
             val player = Bukkit.getPlayer(args[0])
             if (player == null) {
-                Util.sendMessage(SettingsManager.lang.getString("Config.playerNotFound"), sender)
+                Util.sendMessage(SettingsManager.lang.getString("config.playerNotFound"), sender)
                 return
             }
             try {
@@ -44,23 +44,29 @@ class AddConsoleCommand : SubConsoleCommand() {
                 level = Integer.parseInt(args[2])
             } catch (e: Exception) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "Config.invalidNumber"), sender)
+                        "config.invalidNumber"), sender)
                 return
             }
 
-            if (stoneType != -1 && level != -1 && stoneType <= MM.stoneTypes.size) {
-                Main.getAPI().addItem(args[0], stoneType, level)
+            if (stoneType != -1 && level != -1 && stoneType <= MaterialManager.stoneTypes.size) {
+                Main.getApi().addItem(args[0], stoneType, level)
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "Add.successful").replace("%player%", player.name).replace(
+                        "add.successful").replace("%player%", player.name).replace(
                         "%number%", Integer.toString(level)).replace("%stone%",
-                        SettingsManager.lang.getString("Item.$stoneType")), sender)
+                        SettingsManager.lang.getString("item.$stoneType")), sender)
             } else {
-                Util.sendMessage(SettingsManager.lang.getString(
-                        "Config.invalidNumber"), sender)
+                if (stoneType < 0) {
+                    Main.getApi().addAdvice(player.name, level)
+                    Util.sendMessage(SettingsManager.lang.getString("materialize.adviceSucess")
+                            .replace("%level%", Integer.toString(level)), player)
+                } else {
+                    Util.sendMessage(SettingsManager.lang.getString(
+                            "config.invalidNumber"), sender)
+                }
             }
         } else {
             Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidCommand"), sender)
+                    "config.invalidCommand"), sender)
         }
     }
 

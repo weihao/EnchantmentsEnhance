@@ -32,30 +32,37 @@ import org.pixeltime.enchantmentsenhance.util.XMaterial;
 public class EnhanceIcon extends Clickable {
     @Override
     public ItemStack getItem(String playerName) {
-        return new ItemBuilder(XMaterial.YELLOW_WOOL.parseMaterial()).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("Menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.ifSuccess")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.ifFail")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.ifDowngrade")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.ifDestroy")).toItemStack();
+        return new ItemBuilder(XMaterial.YELLOW_WOOL.parseMaterial()).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
+                "menu.lore.ifSuccess")).addLoreLine(SettingsManager.lang.getString(
+                "menu.lore.ifFail")).addLoreLine(SettingsManager.lang.getString(
+                "menu.lore.ifDowngrade")).addLoreLine(SettingsManager.lang.getString(
+                "menu.lore.ifDestroy")).addLoreLine(SettingsManager.lang.getString(
+                "menu.lore.skip"))
+                .toItemStack();
     }
 
     public ItemStack getItem(ItemStack item) {
-
         int level = ItemManager.getItemEnchantLevel(item);
-        ItemBuilder ib = new ItemBuilder(XMaterial.YELLOW_WOOL.parseMaterial()).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("Menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.ifSuccess"));
+        ItemBuilder ib = new ItemBuilder(XMaterial.YELLOW_WOOL.parseMaterial()).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
+                "menu.lore.ifSuccess"));
         if (DataManager.baseChance[level] != 100.0) {
             ib.addLoreLine(SettingsManager.lang.getString(
-                    "Menu.lore.ifFail"));
+                    "menu.lore.ifFail"));
         }
-        if (DataManager.downgradeIfFail[level]) {
-            ib.addLoreLine(SettingsManager.lang.getString("Menu.lore.ifDowngrade"));
+        if (DataManager.downgradeChanceIfFail[level] > 0) {
+            ib.addLoreLine(SettingsManager.lang.getString("menu.lore.ifDowngrade"));
         }
-        if (DataManager.destroyIfFail[level]) {
+        if (DataManager.destroyChanceIfFail[level] > 0) {
             ib.addLoreLine(SettingsManager.lang.getString(
-                    "Menu.lore.ifDestroy")).toItemStack();
+                    "menu.lore.ifDestroy")).toItemStack();
         }
-        return CompatibilityManager.glow.addGlow(ib.toItemStack());
+        ib.addLoreLine(SettingsManager.lang.getString(
+                "menu.lore.skip")).toItemStack();
+        return ib.toItemStack();
+    }
+
+    public ItemStack getGlowingItem(ItemStack item) {
+        return CompatibilityManager.glow.addGlow(getItem(item));
     }
 
     @Override

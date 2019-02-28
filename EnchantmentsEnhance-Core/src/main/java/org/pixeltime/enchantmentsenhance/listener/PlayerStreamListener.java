@@ -50,8 +50,10 @@ public class PlayerStreamListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        Util.sendMessage(SettingsManager.lang.getString("Config.welcome")
-                .replaceAll("%player%", player.getName()), player);
+        if (SettingsManager.config.getBoolean("enableWelcomeMessage")) {
+            Util.sendMessage(SettingsManager.lang.getString("config.welcome")
+                    .replaceAll("%player%", player.getName()), player);
+        }
 
         if (PlayerStat.getPlayerStats(player.getName()) != null) {
             PlayerStat.removePlayer(player.getName());

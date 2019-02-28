@@ -18,7 +18,6 @@
 
 package org.pixeltime.enchantmentsenhance.api
 
-import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.ItemIcon
@@ -30,13 +29,19 @@ import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.*
 
 class API : AbstractAPI {
-
-    override fun getNumberOfStone(player: Player, stoneId: Int): Int {
-        return ItemIcon.getOneStoneCountAsInt(player.name, stoneId)
+    override fun addAdvice(player: String, level: Int) {
+        if (level != 0) {
+            PlayerStat.getPlayerStats(player).valks.add(level)
+            Collections.sort(PlayerStat.getPlayerStats(player)!!.valks, Collections.reverseOrder())
+        }
     }
 
-    override fun addCustomEnchant(item: ItemStack, enchantment: String, level: Int) {
-        ItemManager.applyEnchantmentToItem(item, enchantment, level)
+    override fun getNumberOfStone(playerName: String, stoneId: Int): Int {
+        return ItemIcon.getOneStoneCountAsInt(playerName, stoneId)
+    }
+
+    override fun addCustomEnchant(item: ItemStack, enchantment: String, level: Int): Boolean {
+        return ItemManager.applyEnchantmentToItem(item, enchantment, level)
     }
 
 
@@ -105,18 +110,12 @@ class API : AbstractAPI {
     }
 
 
-    /**
-     * Adds a player's failstack to the HashMap storage.
-     *
-     * @param player Targeted player.
-     */
-
     override fun addAdvice(player: String) {
         val level = getFailstack(player)
         if (level != 0) {
             PlayerStat.getPlayerStats(player)!!.valks.add(level)
             Collections.sort(PlayerStat.getPlayerStats(player)!!.valks, Collections.reverseOrder())
-            Util.sendMessage(SettingsManager.lang.getString("Save.createFailstack")
+            Util.sendMessage(SettingsManager.lang.getString("save.createFailstack")
                     .replace("%failstack%".toRegex(), Integer.toString(getFailstack(
                             player))), player)
             resetFailstack(player)

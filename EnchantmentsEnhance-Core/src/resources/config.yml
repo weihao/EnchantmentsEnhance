@@ -4,7 +4,8 @@
 # +------------------------------------------------------+ #
 ############################################################
 # If you have encountered any problems, use: https://github.com/25/EnchantmentsEnhance/issues
-
+# For config reference guide, use: https://github.com/25/EnchantmentsEnhance/blob/master/EnchantmentsEnhance-Core/src/resources/config.yml
+guide: https://github.com/25/EnchantmentsEnhance/blob/master/EnchantmentsEnhance-Core/src/resources/config.yml
 # Key Concepts:
 # Enhancing is the act of increasing the stats of your items.
 # Failstack is used to signify the number of failed attempts a player has made at enhancing. Failstacks increase the chance of a successful enhancement attempt.
@@ -21,6 +22,12 @@
 # Supported language: ZH_CN, EN_US.
 language: EN_US
 
+# Set false to disable on join message.
+enableWelcomeMessage: true
+
+# Set false to disallow stacked item to be enhanced.
+enableStackedItem: false
+
 # Set true to enable vanilla enchanting table and when someone uses it, CROUCHING + RIGHT click on it will open enhance menu.
 enableTableEnchant: true
 # LEFT_CLICK - the player won't be able to destroy an enchantment table if you bind it to left click.
@@ -32,13 +39,45 @@ openMethod: RIGHT_CLICK
 # Fixes color codes when player edits an enhanced item on an anvil.
 enableAnvilFix: true
 
+# Set true the firework will damage the players.
+enablePreventFireworkDamage: true
+
+# 1.8 uses ActionBar. No dependency required.
+# 1.9 and higher use BossBar. No dependency required.
+# Set false to disable fancy announcer, and it will use chat.
+enableFancyAnnouncer: true
+
+# Set true to use Title Bar. No dependency required.
+enableFancyNotify: true
+
 # Set true to enable some features that are related to $.
 enableEconomy: false
+
+# Set false to disallow players take out stones from virtual inventory.
+enableItemMaterialization: true
+
+# Set false to disable anvil.
+enableAnvil: true
+
+# Set false to disable renaming an item using an anvil.
+enableAnvilRename: true
+
+# Set false to disable repairing an item using an anvil.
+enableAnvilRepair: true
+
+# Set false to disable the explosion sound when using explosive enchantments.
+enableExplosionSound: true
+
+# Set false to disable player gaining failstack from reblath.
+enableReblathFailstacking: true
+
+# Set false to disable player gaining black stones from grinding.
+enableGrinding: true
 
 # Add to disable some special enchantments that may or may not cause an issue on your server.
 disabledEnchantments:
   # Plugin will take control of the player's fly permissions.
-  - Wing
+  - Wings
   # Plugin will use the economic plugin.
   - Thief
 
@@ -51,13 +90,13 @@ mysql:
   # MySQL server port (default 3306)
   port: 3306
   # Database name (NOTE! You need to create the database, then the plugin will create the tables.)
-  database: 'mydatabase'
+  database: "mydatabase"
   # Table name (the plugin will auto create them)
-  table: 'enchantmentsenhance'
+  table: "enchantmentsenhance"
   # User name
-  user: 'root'
+  user: "root"
   # User password
-  password: 'by_healpot_with_love'
+  password: "by_healpot_with_love"
 
 # Set false to disable keep item on death.
 enableLore: true
@@ -86,7 +125,6 @@ lifeskill:
   mining:
     - DIAMOND_ORE
     - EMERALD_ORE
-    - GLOWING_REDSTONE_ORE
     - GOLD_ORE
     - IRON_ORE
     - LAPIS_ORE
@@ -94,26 +132,12 @@ lifeskill:
     - REDSTONE_ORE
   # What block counts as chopping blocks?
   chopping:
-    # LOG includes all the tree blocks.
-    - LOG
-  fishing:
-    # What actions counts as fishing?
-    - CAUGHT_FISH
-    # - BITE
-    # - CAUGHT_ENTITY
-    # - FAILED_ATTEMPT
-    # - FISHING
-    # - IN_GROUND
-# What entity will reward black stones when killed?
-  killing:
-    - MONSTER
-    # - ANIMALS
-# What entity will reward black stones when bred?
-  breeding:
-    - ANIMALS
-# What item will reward black stones when smelt?
-  smelting:
-    - ITEM
+    - ACACIA_LOG
+    - BIRCH_LOG
+    - DARK_OAK_LOG
+    - JUNGLE_LOG
+    - OAK_LOG
+    - SPRUCE_LOG
 
 # Stones ID
 # 0 = weapon stone
@@ -216,7 +240,39 @@ material:
     - STONE_AXE
     - WOOD_AXE
     - IRON_AXE
-
+  # List of AXE.
+  axe:
+    - DIAMOND_AXE
+    - IRON_AXE
+    - WOODEN_AXE
+    - STONE_AXE
+    - GOLDEN_AXE
+  pickaxe:
+    - DIAMOND_PICKAXE
+    - IRON_PICKAXE
+    - GOLDEN_PICKAXE
+    - STONE_PICKAXE
+    - WOODEN_PICKAXE
+  hoe:
+    - DIAMOND_HOE
+    - IRON_HOE
+    - GOLDEN_HOE
+    - STONE_HOE
+    - WOODEN_HOE
+  shovel:
+    - DIAMOND_SHOVEL
+    - IRON_SHOVEL
+    - GOLDEN_SHOVEL
+    - STONE_SHOVEL
+    - WOODEN_SHOVEL
+  knife:
+    - DIAMOND_SWORD
+    - GOLD_SWORD
+    - STONE_SWORD
+    - WOOD_SWORD
+    - IRON_SWORD
+  bow:
+    - BOW
 slots:
   # Armor includes armor contents and item in hand.
   enableArmor: true
@@ -235,25 +291,24 @@ accessory:
   necklace: 27
   belt: 28
 
-
 # Vanilla Enchantments Reference: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
 # Custom Enchantments Reference: https://github.com/25/EnchantmentsEnhance/wiki/Enchantments-en
 enhance:
-  0:
+  "0":
     # The success rate of item at the level.
     baseChance: 100
     # Chance increase per failstack you have.
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     # The maximum failstack applied to the enhancement.
     maximumFailstackApplied: -1
     # Failstack gained from failing an enhancement at this level.
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     # Cost of black stone to enhance the item.
     costToForceEnchant: -1
-    # Downgrade the item if the enhance failed.
-    downgradeIfFail: false
-    # Destroy the item if the enhance failed.
-    destroyIfFail: false
+    # 0% Chance downgrade the item if the enhance failed.
+    downgradeChanceIfFail: 0.0
+    # 0% Chance destroy the item if the enhance failed.
+    destroyChanceIfFail: 0.0
     # Enable to require concentrated magical stone to enhance the item.
     requireConcentratedStones: false
     # Broadcast enhancement results.
@@ -267,24 +322,24 @@ enhance:
     # Suffix of the item
     suffix: ""
     # Applying enchantment.
-    lore:
-      WEAPON:
-        - "Placeholder"
-      ARMOR:
-        - "Placeholder"
     enchantments:
-      WEAPON:
-        # - DAMAGE_ALL:1
-      ARMOR:
-        # - PROTECTION_ENVIRONMENTAL:1
-  1:
+      WEAPON: []
+      ARMOR: []
+      PICKAXE: []
+      AXE: []
+      HOE: []
+      SHOEVEL: []
+      BOW: []
+      KNIFE: []
+    lore: []
+  "1":
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: false
@@ -293,24 +348,32 @@ enhance:
     suffix: "&8+1"
     enchantments:
       WEAPON:
-         - Endless:1
+        - Endless:1
       ARMOR:
-         - Endless:1
+        - Endless:1
+      PICKAXE:
+        - Endless:1
+      AXE:
+        - Endless:1
+      HOE:
+        - Endless:1
+      SHOEVEL:
+        - Endless:1
+      BOW:
+        - Endless:1
+      KNIFE:
+        - Endless:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  2:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "2":
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: false
@@ -319,24 +382,33 @@ enhance:
     suffix: "&8+2"
     enchantments:
       WEAPON:
-         - Stealth:1
+        - ^Damage_All!Stealth:1
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Pyromaniac:1
+        - Pyromaniac:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Fire:1
+      KNIFE:
+        - Fire_Aspect:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  3:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "3":
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: false
@@ -345,25 +417,34 @@ enhance:
     suffix: "&8+3"
     enchantments:
       WEAPON:
-         - Stealth:1
-         - Execute:1
+        - ^Damage_All!Stealth:1
+        - ^Damage_All!Execute:1
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Pyromaniac:1
+        - Pyromaniac:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Fire:1
+      KNIFE:
+        - Fire_Aspect:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  4:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "4":
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: false
@@ -372,28 +453,37 @@ enhance:
     suffix: "&8+4"
     enchantments:
       WEAPON:
-         - Stealth:1
-         - Execute:1
-         - Corruption:1
+        - ^Damage_All!Stealth:1
+        - ^Damage_All!Execute:1
+        - ^Damage_All!Corruption:1
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Pyromaniac:1
-         - Haste:1
-         - Swimmer:1
+        - Pyromaniac:1
+        - Haste:1
+        - Swimmer:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Infinite:1
+      KNIFE:
+        - Damage_Arthropods:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  5:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "5":
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: false
@@ -402,60 +492,77 @@ enhance:
     suffix: "&8+5"
     enchantments:
       WEAPON:
-         - Stealth:1
-         - Execute:1
-         - Corruption:1
-         - Rekt:1
+        - ^Damage_All!Stealth:1
+        - ^Damage_All!Execute:1
+        - ^Damage_All!Corruption:1
+        - ^Damage_All!Rekt:1
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Pyromaniac:1
-         - Haste:1
-         - Swimmer:1
+        - Pyromaniac:1
+        - Haste:1
+        - Swimmer:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Arthropods:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  6:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "6":
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
-    fireworkIfSuccessful: &8
     fireworkRounds: 1
     prefix: ""
     suffix: "&8+6"
     enchantments:
       WEAPON:
-         - Execute:1
-         - Corruption:1
-         - Rekt:1
+        - ^Damage_All!Execute:1
+        - ^Damage_All!Corruption:1
+        - ^Damage_All!Rekt:1
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Pyromaniac:1
-         - Haste:1
-         - Swimmer:1
-         - Jump:1
+        - Pyromaniac:1
+        - Haste:1
+        - Swimmer:1
+        - Jump:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Arthropods:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  7:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "7":
     baseChance: 100
-    chanceIncreasePerFailstack: -1
+    chanceIncreasePerFailstack: 0
     maximumFailstackApplied: -1
-    failstackGainedPerFail: -1
+    failstackGainedPerFail: 1
     costToForceEnchant: -1
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: false
@@ -464,27 +571,36 @@ enhance:
     suffix: "&8+7"
     enchantments:
       WEAPON:
-         - Execute:1
-         - Corruption:1
-         - Plunder:1
+        - ^Damage_All!Execute:1
+        - ^Damage_All!Corruption:1
+        - ^Damage_All!Plunder:1
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Jump:1
-         - Batvision:1
+        - Jump:1
+        - Batvision:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Arthropods:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  8:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "8":
     baseChance: 20
     chanceIncreasePerFailstack: 2.5
     maximumFailstackApplied: 13
     failstackGainedPerFail: 1
     costToForceEnchant: 3
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: true
@@ -493,26 +609,34 @@ enhance:
     suffix: "&2+8"
     enchantments:
       WEAPON:
-         - Corruption:1
-         - Launch:5
-         - Damage_All:1
+        - ^Damage_All!Corruption:1
+        - ^Damage_All!Launch:5
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Flame:3
+        - Flame:3
+      PICKAXE:
+        - Smelt:1
+      AXE:
+        - Lumberjack:1
+      HOE:
+        -Plow:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Arthropods:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  9:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "9":
     baseChance: 17.5
     chanceIncreasePerFailstack: 2.0
     maximumFailstackApplied: 14
     failstackGainedPerFail: 1
     costToForceEnchant: 4
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: true
@@ -520,28 +644,36 @@ enhance:
     prefix: ""
     suffix: "&2+9"
     enchantments:
-       WEAPON:
-         - Reborn:3
-         - Mischief:3
-         - Damage_All:1
-       ARMOR:
-         - Aegis:1
-         - Eyepatch:1
-    lore:
       WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
+        - ^Damage_All!Reborn:3
+        - ^Damage_All!Mischief:3
+        - Damage_All!Damage_All:1
       ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  10:
+        - Aegis:1
+        - Eyepatch:1
+      PICKAXE:
+        - Explosive:1
+      AXE:
+        - Lumberjack:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Undead:1
+    lore:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "10":
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
     maximumFailstackApplied: 15
     failstackGainedPerFail: 1
     costToForceEnchant: 5
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: true
@@ -550,27 +682,35 @@ enhance:
     suffix: "&2+10"
     enchantments:
       WEAPON:
-         - Crits:1
-         - Riftslayer:1
-         - Damage_All:1
+        - ^Damage_All!Crits:1
+        - ^Damage_All!Riftslayer:1
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Aegis:1
-         - Blessed:1
+        - Aegis:1
+        - Blessed:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Undead:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  11:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "11":
     baseChance: 12.5
     chanceIncreasePerFailstack: 1.25
     maximumFailstackApplied: 16
     failstackGainedPerFail: 1
     costToForceEnchant: 7
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: true
@@ -579,27 +719,35 @@ enhance:
     suffix: "&2+11"
     enchantments:
       WEAPON:
-         - Hex:3
-         - Assassin:3
-         - Damage_All:1
+        - ^Damage_All!Hex:3
+        - ^Damage_All!Assassin:3
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Aegis:1
-         - Blessed:1
+        - Aegis:1
+        - Blessed:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Undead:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  12:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "12":
     baseChance: 10
     chanceIncreasePerFailstack: 0.75
     maximumFailstackApplied: 18
     failstackGainedPerFail: 1
     costToForceEnchant: 9
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: true
@@ -608,28 +756,36 @@ enhance:
     suffix: "&2+12"
     enchantments:
       WEAPON:
-         - Curse:2
-         - Strength:1
-         - Damage_All:1
+        - ^Damage_All!Curse:2
+        - ^Damage_All!Strength:1
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Aegis:1
-         - Blessed:1
-         - Demonic:5
+        - Aegis:1
+        - Blessed:1
+        - Demonic:5
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Undead:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  13:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "13":
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.63
     maximumFailstackApplied: 20
     failstackGainedPerFail: 1
     costToForceEnchant: 12
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: true
@@ -638,25 +794,33 @@ enhance:
     suffix: "&2+13"
     enchantments:
       WEAPON:
-         - Curse:2
-         - Damage_All:1
+        - ^Damage_All!Curse:2
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Aegis:1
+        - Aegis:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_Undead:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  14:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "14":
     baseChance: 5
     chanceIncreasePerFailstack: 0.5
     maximumFailstackApplied: 25
     failstackGainedPerFail: 1
     costToForceEnchant: 15
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: true
@@ -665,25 +829,33 @@ enhance:
     suffix: "&2+14"
     enchantments:
       WEAPON:
-         - Speed:1
-         - Damage_All:1
+        - ^Damage_All!Speed:1
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Shield:1
+        - Shield:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Loot_Bonus_Mobs:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  15:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "15":
     baseChance: 2.5
     chanceIncreasePerFailstack: 0.5
     maximumFailstackApplied: 25
     failstackGainedPerFail: 1
     costToForceEnchant: 18
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: false
     broadcastEnhance: false
     fireworkIfSuccessful: true
@@ -692,25 +864,33 @@ enhance:
     suffix: "&2+15"
     enchantments:
       WEAPON:
-         - Siphon:3
-         - Damage_All:1
+        - ^Damage_All!Siphon:3
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Saturation:1
+        - Saturation:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Dig_Speed:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Loot_Bonus_Mobs:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lLow Tier."
-  16:
+      - "&3&l&m                                  "
+      - "&9&lLow Tier."
+  "16":
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
     maximumFailstackApplied: 25
     failstackGainedPerFail: 1
     costToForceEnchant: 22
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: true
     broadcastEnhance: false
     fireworkIfSuccessful: true
@@ -719,27 +899,35 @@ enhance:
     suffix: ""
     enchantments:
       WEAPON:
-         - Petrify:3
-         - Crushing:3
-         - Lifesteal:1
-         - Damage_All:4
+        - ^Damage_All!Petrify:3
+        - ^Damage_All!Crushing:3
+        - ^Damage_All!Lifesteal:1
+        - Damage_All!Damage_All:1-4
       ARMOR:
-         - Dodge:5
+        - Dodge:5
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Explosive:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Loot_Bonus_Mobs:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lMid Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lMid Tier."
-  17:
+      - "&3&l&m                                  "
+      - "&9&lMid Tier."
+  "17":
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.75
     maximumFailstackApplied: 35
     failstackGainedPerFail: 2
     costToForceEnchant: 27
-    downgradeIfFail: false
-    destroyIfFail: false
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: true
     broadcastEnhance: false
     fireworkIfSuccessful: true
@@ -748,30 +936,38 @@ enhance:
     suffix: ""
     enchantments:
       WEAPON:
-         - Smite:5
-         - Turmoil:3
-         - Crushing:3
-         - Lifesteal:1
-         - Damage_All:4
+        - ^Damage_All!Smite:5
+        - ^Damage_All!Turmoil:3
+        - ^Damage_All!Crushing:3
+        - ^Damage_All!Lifesteal:1
+        - Damage_All!Damage_All:1-4
       ARMOR:
-         - Repel:3
-         - Molten:3
-         - Battlecry:3
+        - Repel:3
+        - Molten:3
+        - Battlecry:3
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Explosive:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Loot_Bonus_Mobs:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lMid Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lMid Tier."
-  18:
+      - "&3&l&m                                  "
+      - "&9&lMid Tier."
+  "18":
     baseChance: 5.0
     chanceIncreasePerFailstack: 0.5
     maximumFailstackApplied: 44
     failstackGainedPerFail: 3
     costToForceEnchant: 45
-    downgradeIfFail: true
-    destroyIfFail: false
+    downgradeChanceIfFail: 100.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: true
     broadcastEnhance: true
     fireworkIfSuccessful: true
@@ -780,30 +976,38 @@ enhance:
     suffix: ""
     enchantments:
       WEAPON:
-         - Lifesteal:1
-         - Paralyze:2
-         - Damage_All:4
+        - ^Damage_All!Lifesteal:1
+        - ^Damage_All!Paralyze:2
+        - Damage_All!Damage_All:1
       ARMOR:
-         - Reinforced:1
-         - Suicide:1
-         - Frosty:3
-         - Divine:3
-         - Shield:1
+        - Reinforced:1
+        - Suicide:1
+        - Frosty:3
+        - Divine:3
+        - Shield:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Explosive:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Loot_Bonus_Mobs:1
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lMid Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lMid Tier."
-  19:
+      - "&3&l&m                                  "
+      - "&9&lMid Tier."
+  "19":
     baseChance: 2.0
     chanceIncreasePerFailstack: 0.25
     maximumFailstackApplied: 90
     failstackGainedPerFail: 4
     costToForceEnchant: -1
-    downgradeIfFail: true
-    destroyIfFail: false
+    downgradeChanceIfFail: 100.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: true
     broadcastEnhance: true
     fireworkIfSuccessful: true
@@ -812,222 +1016,66 @@ enhance:
     suffix: ""
     enchantments:
       WEAPON:
-         - Purge:4
-         - Damage_All:4
+        - ^Damage_All!Purge:4
+        - Damage_All!Damage_All:1-5
       ARMOR:
-         - Spiked:3
-         - Vitality:1
-         - Cure:1
-         - Immolation:1
-         - Reversal:1
-         - Shield:1
+        - Spiked:3
+        - Vitality:1
+        - Cure:1
+        - Immolation:1
+        - Reversal:1
+        - Shield:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Explosive:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_All:1-5
     lore:
-      WEAPON:
-        - "&3&l&m                                  "
-        - "&9&lHigh Tier."
-      ARMOR:
-        - "&3&l&m                                  "
-        - "&9&lHigh Tier."
-  20:
+      - "&3&l&m                                  "
+      - "&9&lHigh Tier."
+  "20":
     baseChance: 1.5
     chanceIncreasePerFailstack: 0.25
     maximumFailstackApplied: 124
     failstackGainedPerFail: 5
     costToForceEnchant: -1
-    downgradeIfFail: true
-    destroyIfFail: false
+    downgradeChanceIfFail: 100.0
+    destroyChanceIfFail: 0.0
     requireConcentratedStones: true
     broadcastEnhance: true
     fireworkIfSuccessful: true
     fireworkRounds: 1
-    prefix: '&c&lPEN'
+    prefix: "&c&lPEN"
     suffix: ""
     enchantments:
-          WEAPON:
-             - Damage_All:4
-             - Strength:2
-          ARMOR:
-             - Vitality:2
-             - Cure:2
-             - Immolation:4
-             - Reversal:2
-             - Shield:1
-    lore:
       WEAPON:
-      - '&8&l&m                                  '
-      - '&4&lMAX Tier.'
+        - ^Damage_All!Strength:2
+        - Damage_All!Damage_All:5-10
       ARMOR:
-      - '&8&l&m                                  '
-      - '&4&lMAX Tier.'
-
-# Reform an item grade. [Working In Progress]
-weaponGrade:
-  0:
-    prefix: ""
-    enchantments: []
-  1:
-    prefix: "Crimson Flame"
-    enchantments:
-        - FIRE_ASPECT:1
-  2:
-    prefix: "Destruction"
-    enchantments:
-        - DAMAGE_ALL:1
-  3:
-    prefix: "Temptation"
-    enchantments:
-        - LOOT_BONUS_MOBS:1
-  4:
-    prefix: "Ultimate"
-    enchantments:
-        - Damage_All:1
-        - DURABILITY:2
-  5:
-    prefix: "Kzarka"
-    enchantments:
-        - DAMAGE_ALL:3
-        - DURABILITY:3
-  6:
-    prefix: "Dandelion"
-    enchantments:
-        - DAMAGE_ARTHROPODS:3
-        - DAMAGE_UNDEAD:3
-        - DURABILITY:3
-        - LOOT_BONUS_MOBS:3
-armorGrade:
-  0:
-    prefix: ""
-    enchantments: []
-  1:
-    prefix: "Agility"
-    enchantments:
-        - PROTECTION_FALL:1
-  2:
-    prefix: "Intimidation"
-    enchantments:
-        - THORNS:1
-  3:
-    prefix: "Iron Wall"
-    enchantments:
-        - PROTECTION_EXPLOSIONS:1
-  4:
-    prefix: "Ultimate"
-    enchantments:
-        - PROTECTION_ENVIRONMENTAL:2
-        - DURABILITY:2
-pickaxe:
-  0:
-    name: "Broken Pickaxe"
-    enchantments: []
-  1:
-    name: "Improved Pickaxe"
-    enchantments:
-      - DURABILITY:1
-  2:
-    name: "Sharp Pickaxe"
-    enchantments:
-      - DIG_SPEED:1
-  3:
-    name: "Steel Pickaxe"
-    enchantments:
-      - DIG_SPEED:1
-      - DURABILITY:1
-  4:
-    name: "Lucky Steel Pickaxe"
-    enchantments:
-      - DIG_SPEED:3
-      - DURABILITY:3
-      - LOOT_BONUS_BLOCKS:1
-  5:
-    name: "Magic Pickaxe"
-    enchantments:
-      - DIG_SPEED:4
-      - DURABILITY:4
-  6:
-    name: "Lucky Magic Pickaxe"
-    enchantments:
-      - DIG_SPEED:5
-      - DURABILITY:5
-      - LOOT_BONUS_BLOCKS:2
-  7:
-    name: "Master Pickaxe"
-    enchantments:
-      - DIG_SPEED:6
-      - DURABILITY:6
-  8:
-    name: "Lucky Master Pickaxe"
-    enchantments:
-      - DIG_SPEED:7
-      - DURABILITY:7
-      - LOOT_BONUS_BLOCKS:3
-  9:
-    name: "Lucky Shining Magic Pickaxe"
-    enchantments:
-      - DIG_SPEED:8
-      - DURABILITY:8
-      - LOOT_BONUS_BLOCKS:4
-  10:
-    name: "Lucky Shining Master Pickaxe"
-    enchantments:
-      - DIG_SPEED:10
-      - DURABILITY:10
-      - LOOT_BONUS_BLOCKS:5
-fishing rod:
-  0:
-    name: "Broken Fishing Rod"
-    enchantments: []
-  1:
-    name: "Fishing Rod"
-    enchantments:
-      - DURABILITY:1
-  2:
-    name: "Old Fishing Rod"
-    enchantments:
-      - LUCK:1
-  3:
-    name: "Thick Fishing Rod"
-    enchantments:
-      - LUCK:1
-      - DURABILITY:1
-  4:
-    name: "Steel Fishing Rod"
-    enchantments:
-      - LUCK:3
-      - LURE:3
-      - DURABILITY:3
-  5:
-    name: "Triple-Float Rod"
-    enchantments:
-      - LUCK:3
-      - LURE:3
-      - DURABILITY:4
-  6:
-    name: "Lucky Silver Fishing Rod"
-    enchantments:
-      - LUCK:3
-      - LURE:4
-      - DURABILITY:4
-  7:
-    name: "Lucky Golden Fishing Rod"
-    enchantments:
-      - LUCK:4
-      - LURE:4
-      - DURABILITY:4
-  8:
-    name: "Splendid Golden Fishing Rod"
-    enchantments:
-      - LUCK:4
-      - LURE:4
-      - DURABILITY:5
-  9:
-    name: "Fancy Golden Fishing Rod"
-    enchantments:
-      - LUCK:4
-      - LURE:4
-      - DURABILITY:5
-  10:
-    name: "Artisan Fishing Rod"
-    enchantments:
-      - LUCK:5
-      - LURE:5
-      - DURABILITY:5
+        - Vitality:2
+        - Cure:2
+        - Immolation:4
+        - Reversal:2
+        - Shield:1
+      PICKAXE:
+        - Dig_Speed:1
+      AXE:
+        - Dig_Speed:1
+      HOE:
+        - Dig_Speed:1
+      SHOVEL:
+        - Explosive:1
+      BOW:
+        - Arrow_Damage:1
+      KNIFE:
+        - Damage_All:1-5
+    lore:
+      - "&8&l&m                                  "
+      - "&4&lMAX Tier."

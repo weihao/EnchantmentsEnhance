@@ -35,18 +35,22 @@ public class ColorHandler {
     }
 
     public static ItemStack colorItemWithPermissions(final ItemStack item, final Player p) {
-        final ItemMeta itemMeta = item.getItemMeta();
-        String coloredName = ChatColor.translateAlternateColorCodes('&', itemMeta.getDisplayName());
-        for (int i = 0; i < coloredName.length(); ++i) {
-            if (coloredName.charAt(i) == '§') {
-                final char c = coloredName.charAt(i + 1);
-                if (ItemManager.getItemEnchantLevel(item) < 1) {
-                    coloredName = coloredName.replaceAll("§" + c, "&" + c);
+        if (item.hasItemMeta()) {
+            final ItemMeta itemMeta = item.getItemMeta();
+            if (itemMeta.hasDisplayName()) {
+                String coloredName = ChatColor.translateAlternateColorCodes('&', itemMeta.getDisplayName());
+                for (int i = 0; i < coloredName.length(); ++i) {
+                    if (coloredName.charAt(i) == '§') {
+                        final char c = coloredName.charAt(i + 1);
+                        if (ItemManager.getItemEnchantLevel(item) < 1) {
+                            coloredName = coloredName.replaceAll("§" + c, "&" + c);
+                        }
+                    }
                 }
+                itemMeta.setDisplayName(coloredName);
+                item.setItemMeta(itemMeta);
             }
         }
-        itemMeta.setDisplayName(coloredName);
-        item.setItemMeta(itemMeta);
         return item;
     }
 }

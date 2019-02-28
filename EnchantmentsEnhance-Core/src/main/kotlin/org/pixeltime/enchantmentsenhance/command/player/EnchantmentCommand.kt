@@ -30,15 +30,31 @@ class EnchantmentCommand : SubCommand() {
         get() = "Enchantmentsenhance.ench"
 
     override fun onCommand(player: Player, args: Array<String>) {
-        if (args.size == 3) {
+        if (args.size >= 2) {
             if (args[0].equals("add", ignoreCase = true)) {
-                val item = player.itemInHand
-                Main.getAPI().addCustomEnchant(item, args[1], Integer.parseInt(args[2]))
+                val item = Util.getMainHand(player)
+                if (item == null) {
+                    Util.sendMessage(SettingsManager.lang.getString("config.invalidItem"), player)
+                    return
+                }
+                var level = 1
+                try {
+                    level = Integer.parseInt(args[2])
+                } catch (ex: NumberFormatException) {
+                    // Expected
+                } catch (ex: ArrayIndexOutOfBoundsException) {
+                    // Expected
+                }
+                if (Main.getApi().addCustomEnchant(item, args[1], level)) {
+                    Util.sendMessage(SettingsManager.lang.getString("config.success"), player)
+                } else {
+                    Util.sendMessage(SettingsManager.lang.getString("config.invalidEnchant"), player)
+                }
             } else {
-                Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player)
+                Util.sendMessage(SettingsManager.lang.getString("config.invalidCommand"), player)
             }
         } else {
-            Util.sendMessage(SettingsManager.lang.getString("Config.invalidCommand"), player)
+            Util.sendMessage(SettingsManager.lang.getString("config.invalidCommand"), player)
         }
     }
 
@@ -47,7 +63,7 @@ class EnchantmentCommand : SubCommand() {
     }
 
     override fun usage(): String {
-        return "/enhance enchantment {add} {enchantment} {level}"
+        return "/enhance enchantment add {enchantment} {level}"
     }
 
     override fun aliases(): Array<String> {

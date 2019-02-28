@@ -1,4 +1,4 @@
-* [Chinese](README-zh.md) 
+<p align="center"> <img width="200" height="200" src=".images/thumbnail.png"> </p>
 
 # <img src=".images/logo.jpg" alt="Logo" align="right">
 [![Travis CI](https://travis-ci.org/25/EnchantmentsEnhance.svg?branch=master)](https://travis-ci.org/25/EnchantmentsEnhance)
@@ -9,26 +9,27 @@
 [![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/pulls)
 [![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
 
-# [<img src=".images/jenkins.png" alt="Download" align="left">](http://soulbound.me:8080/job/EnchantmentsEnhance/)
-[![Jenkins](https://img.shields.io/badge/download-server_online-27AE60.svg?style=flat)](http://soulbound.me:8080/job/EnchantmentsEnhance/)
-[![Jenkins Build Status](http://soulbound.me:8080/job/EnchantmentsEnhance/badge/icon)](http://soulbound.me:8080/job/EnchantmentsEnhance/)
+# [<img src=".images/jenkins.png" alt="Download" align="left">](http://www.soulbound.me/job/EnchantmentsEnhance_stable/)
+[![Jenkins](https://img.shields.io/badge/download-server_online-27AE60.svg?style=flat)](http://soulbound.me/job/EnchantmentsEnhance_stable/)
+[![Jenkins Build Status](http://www.soulbound.me/job/EnchantmentsEnhance_stable/badge/icon)](http://www.soulbound.me/job/EnchantmentsEnhance_stable/)
 [![Jitpack](https://jitpack.io/v/25/EnchantmentsEnhance.svg)](https://jitpack.io/#25/EnchantmentsEnhance/)
-[![YAML](https://img.shields.io/badge/yaml-supported-27AE60.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/blob/master/src/resources/playerdata.yml)
-[![SQL](https://img.shields.io/badge/sql-supported-27AE60.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/blob/master/src/resources/tables.sql)
 
 
 
 ## Life Cycle
 ###### Alpha (1.0 - 4.0)
-##### Beta (4.0.1 - [latest](http://www.soulbound.me:8080/job/EnchantmentsEnhance/))
-This plugin is under active development at the stage of beta phase.
-Completion of the plugin is currently projected at 35%, meaning the general functionality and availability are incomplete.
+###### Beta (4.0.1 - 4.9.1)
+##### Release (5.0 - [latest](http://www.soulbound.me/job/EnchantmentsEnhance_stable/))
+This plugin is under active development at the stage of the release phase.
+Completion of the plugin is currently projected at `70%`, meaning the general functionality are `mostly complete`.
 
 ## Introduction
 [Wiki](https://github.com/25/EnchantmentsEnhance/wiki)
 
+[Change Log](https://github.com/25/EnchantmentsEnhance/blob/master/CHANGELOG.md)
+
 ## Compatibility
-Version: `1.8.x - 1.12.x`
+Version: `1.8.x - 1.13.x`
 - [x] [Bukkit](https://bukkit.org)
 - [x] [Spigot](https://spigotmc.org)
 - [x] [PaperSpigot](https://github.com/PaperMC/Paper)

@@ -37,6 +37,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.FurnaceInventory;
 import org.bukkit.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.manager.DropManager;
+import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 
 import java.util.Random;
@@ -56,7 +57,7 @@ public class LifeskillingListener implements Listener {
         if (player.getGameMode() != GameMode.SURVIVAL) {
             return;
         }
-        if (DropManager.mining.contains(e.getBlock().getType().toString()))
+        if (DropManager.getMining().contains(e.getBlock().getType()))
             if (DropManager.miningChance > random.nextDouble()) {
                 DropManager.randomDrop(player, DropManager.miningLootTable);
             }
@@ -74,7 +75,7 @@ public class LifeskillingListener implements Listener {
         if (player.getGameMode() != GameMode.SURVIVAL) {
             return;
         }
-        if (DropManager.chopping.contains(e.getBlock().getType().toString()))
+        if (DropManager.getChopping().contains(e.getBlock().getType()))
             if (DropManager.choppingChance > random.nextDouble()) {
                 DropManager.randomDrop(player, DropManager.choppingLootTable);
             }
@@ -124,7 +125,7 @@ public class LifeskillingListener implements Listener {
      */
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onBreeding(PlayerInteractEntityEvent e) {
-        if (AnimalBreeding.breeadableFood.contains(e.getPlayer().getItemInHand()
+        if (AnimalBreeding.breeadableFood.contains(Util.getMainHand(e.getPlayer())
                 .getType())) {
             if (AnimalBreeding.breeadableAnimals.contains(e.getRightClicked()
                     .getType())) {
@@ -165,6 +166,7 @@ public class LifeskillingListener implements Listener {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onSmelting2(InventoryClickEvent e) {
         Inventory clickedInventory = null;
+        Player player = (Player) e.getWhoClicked();
         if (e.getSlot() < 0) {
             clickedInventory = null;
         } else if (e.getView().getTopInventory() != null && e.getSlot() < e
@@ -183,10 +185,11 @@ public class LifeskillingListener implements Listener {
         boolean click = e.getClick().isShiftClick() || e.getClick()
                 .isLeftClick() && e.getRawSlot() == 2;
         boolean item = fi.getResult() != null;
-        if (click && item) {
+
+        if (click && item && !fi.getResult().getType().isFuel() && !Util.invFull(player)) {
             for (int i = 0; i < fi.getResult().getAmount(); i++) {
                 if (DropManager.smeltingChance > random.nextDouble()) {
-                    DropManager.randomDrop((Player) e.getWhoClicked(), DropManager.smeltingLootTable);
+                    DropManager.randomDrop(player, DropManager.smeltingLootTable);
                 }
             }
         }

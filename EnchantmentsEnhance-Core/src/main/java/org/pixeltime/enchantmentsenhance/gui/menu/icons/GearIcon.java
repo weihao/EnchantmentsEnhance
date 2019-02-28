@@ -29,9 +29,8 @@ public class GearIcon extends Clickable {
     @Override
     public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.DIAMOND_SWORD)
-                .setName("Gear")
-                .addLoreLine(SettingsManager.lang.getString("Icon.gear1"))
-                .addLoreLine(SettingsManager.lang.getString("Icon.gear2"))
+                .setName(SettingsManager.lang.getString("icon.gear1"))
+                .addLoreLine(SettingsManager.lang.getString("icon.gear2"))
                 .toItemStack();
     }
 

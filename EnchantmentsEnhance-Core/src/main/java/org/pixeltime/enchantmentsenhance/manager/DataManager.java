@@ -30,8 +30,8 @@ public class DataManager {
     public static boolean[] fireworks;
     public static int[] fireworkRounds;
     public static String[] name;
-    public static boolean[] downgradeIfFail;
-    public static boolean[] destroyIfFail;
+    public static double[] downgradeChanceIfFail;
+    public static double[] destroyChanceIfFail;
     public static boolean[] requireConcentratedStones;
     public static boolean[] broadcastEnhance;
 
@@ -47,8 +47,8 @@ public class DataManager {
         DataManager.fireworks = new boolean[levels];
         DataManager.fireworkRounds = new int[levels];
         DataManager.name = new String[levels];
-        DataManager.downgradeIfFail = new boolean[levels];
-        DataManager.destroyIfFail = new boolean[levels];
+        DataManager.downgradeChanceIfFail = new double[levels];
+        DataManager.destroyChanceIfFail = new double[levels];
         DataManager.requireConcentratedStones = new boolean[levels];
         DataManager.broadcastEnhance = new boolean[levels];
 
@@ -75,12 +75,12 @@ public class DataManager {
                 } else if (key2.equalsIgnoreCase("costToForceEnchant")) {
                     DataManager.costToForceEnchant[i] = SettingsManager.config
                             .getInt("enhance." + i + "." + key2);
-                } else if (key2.equalsIgnoreCase("downgradeIfFail")) {
-                    DataManager.downgradeIfFail[i] = SettingsManager.config
-                            .getBoolean("enhance." + i + "." + key2);
-                } else if (key2.equalsIgnoreCase("destroyIfFail")) {
-                    DataManager.destroyIfFail[i] = SettingsManager.config
-                            .getBoolean("enhance." + i + "." + key2);
+                } else if (key2.equalsIgnoreCase("downgradeChanceIfFail")) {
+                    DataManager.downgradeChanceIfFail[i] = SettingsManager.config
+                            .getDouble("enhance." + i + "." + key2);
+                } else if (key2.equalsIgnoreCase("destroyChanceIfFail")) {
+                    DataManager.destroyChanceIfFail[i] = SettingsManager.config
+                            .getDouble("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("requireConcentratedStones")) {
                     DataManager.requireConcentratedStones[i] = SettingsManager.config
                             .getBoolean("enhance." + i + "." + key2);

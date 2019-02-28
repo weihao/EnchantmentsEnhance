@@ -21,7 +21,7 @@ package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 import org.bukkit.DyeColor;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.event.blackspirit.Enhance;
+import org.pixeltime.enchantmentsenhance.event.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
@@ -36,30 +36,40 @@ public class StatsIcon extends Clickable {
     public ItemStack getItem() {
         return new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial())
                 .setDyeColor(DyeColor.LIGHT_BLUE)
-                .setName(SettingsManager.lang.getString("Menu.gui.stats"))
-                .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats1"))
-                .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats2"))
+                .setName(SettingsManager.lang.getString("menu.gui.stats"))
+                .addLoreLine(SettingsManager.lang.getString("menu.lore.stats1"))
+                .addLoreLine(SettingsManager.lang.getString("menu.lore.stats2"))
                 .toItemStack();
     }
 
-    @Override
-    public ItemStack getItem(String playerName) {
+    public ItemStack getItem(String playerName, Clickable clicked) {
         if (playerName != null && MainMenu.itemOnEnhancingSlot.get(playerName) != null) {
-            return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial()).setDyeColor(DyeColor.LIGHT_BLUE).setName(SettingsManager.lang.getString("Menu.gui.stats")).addLoreLine(SettingsManager.lang.getString("Enhance.currentFailstack")
-                    + Main.getAPI().getFailstack(playerName)).addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName)).addLoreLine(SettingsManager.lang.getString(
-                    "Menu.lore.stats1")).addLoreLine(SettingsManager.lang.getString(
-                    "Menu.lore.stats2")).toItemStack());
+            return CompatibilityManager.glow
+                    .addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial())
+                            .setDyeColor(DyeColor.LIGHT_BLUE)
+                            .setName(SettingsManager.lang.getString("menu.gui.stats"))
+                            .addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack")
+                                    + Main.getApi().getFailstack(playerName))
+                            .addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName, clicked))
+                            .addLoreLine(SettingsManager.lang.getString(
+                                    "menu.lore.stats1")).addLoreLine(SettingsManager.lang.getString(
+                                    "menu.lore.stats2")).toItemStack());
         }
-        if (playerName != null && Main.getAPI().hasFailstack(playerName)) {
+        if (playerName != null && Main.getApi().hasFailstack(playerName)) {
             return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial())
                     .setDyeColor(DyeColor.LIGHT_BLUE)
-                    .setName(SettingsManager.lang.getString("Menu.gui.stats"))
-                    .addLoreLine(SettingsManager.lang.getString("Enhance.currentFailstack")
-                            + Main.getAPI().getFailstack(playerName))
-                    .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats1"))
-                    .addLoreLine(SettingsManager.lang.getString("Menu.lore.stats2"))
+                    .setName(SettingsManager.lang.getString("menu.gui.stats"))
+                    .addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack")
+                            + Main.getApi().getFailstack(playerName))
+                    .addLoreLine(SettingsManager.lang.getString("menu.lore.stats1"))
+                    .addLoreLine(SettingsManager.lang.getString("menu.lore.stats2"))
                     .toItemStack());
         }
+        return getItem();
+    }
+
+    @Override
+    public ItemStack getItem(String player) {
         return getItem();
     }
 

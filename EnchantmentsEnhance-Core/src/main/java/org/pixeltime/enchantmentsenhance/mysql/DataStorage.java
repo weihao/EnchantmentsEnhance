@@ -22,7 +22,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.manager.MM;
+import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -75,7 +75,7 @@ public class DataStorage {
                 System.out.println("Failed to load faction " + pData.getPlayername() + ": " + ioException.getMessage());
             }
         } else {
-            Database database = Main.getDb();
+            Database database = Main.getDatabase();
 
             if (!database.checkConnection()) {
                 return;
@@ -122,7 +122,7 @@ public class DataStorage {
             public void run() {
                 boolean sqlEnabled = Main.getMain().getConfig().getBoolean("mysql.enabled");
                 if (sqlEnabled) {
-                    Database database = Main.getDb();
+                    Database database = Main.getDatabase();
 
                     if (!database.checkConnection()) {
                         return;
@@ -131,7 +131,7 @@ public class DataStorage {
                     if (!database.doesPlayerExist(pData.getPlayername())) {
                         database.createNewPlayer(pData.getPlayername());
                         pData.setFailstack(0);
-                        pData.setItems(new int[MM.stoneTypes.size()]);
+                        pData.setItems(new int[MaterialManager.stoneTypes.size()]);
                         pData.setValks(new ArrayList<>());
                         pData.setGrind(2);
                     } else {
@@ -154,7 +154,7 @@ public class DataStorage {
                             if (resultSet != null && resultSet.next()) {
                                 pData.setFailstack(resultSet.getInt("failstack"));
 
-                                int[] items = Arrays.copyOf(Arrays.stream(resultSet.getString("items").replace("[", "").replace("]", "").split(", ")).mapToInt(Integer::parseInt).toArray(), MM.stoneTypes.size());
+                                int[] items = Arrays.copyOf(Arrays.stream(resultSet.getString("items").replace("[", "").replace("]", "").split(", ")).mapToInt(Integer::parseInt).toArray(), MaterialManager.stoneTypes.size());
                                 ArrayList<Integer> valks = new ArrayList<>();
                                 for (String s : resultSet.getString("valks").replace("[", "").replace("]", "").split(", ")) {
                                     if (!s.isEmpty()) {
@@ -201,7 +201,7 @@ public class DataStorage {
                         copyDefaults(playerFile);
                         FileConfiguration fc = YamlConfiguration.loadConfiguration(playerFile);
                         pData.setFailstack(fc.getInt("failstack"));
-                        int[] items = Arrays.copyOf(Arrays.stream(fc.getString("items").replace("[", "").replace("]", "").split(", ")).mapToInt(Integer::parseInt).toArray(), MM.stoneTypes.size());
+                        int[] items = Arrays.copyOf(Arrays.stream(fc.getString("items").replace("[", "").replace("]", "").split(", ")).mapToInt(Integer::parseInt).toArray(), MaterialManager.stoneTypes.size());
                         ArrayList<Integer> valks = new ArrayList<>();
                         for (String s : fc.getString("valks").replace("[", "").replace("]", "").split(", ")) {
                             if (!s.isEmpty()) {
@@ -239,7 +239,7 @@ public class DataStorage {
                 System.out.println("Failed to load faction " + playername + ": " + ioException.getMessage());
             }
         } else {
-            Database database = Main.getDb();
+            Database database = Main.getDatabase();
 
             if (!database.checkConnection()) {
                 return;

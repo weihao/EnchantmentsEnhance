@@ -28,9 +28,9 @@ import java.util.ArrayList;
 public class AnimalBreeding {
 
     public static ItemStack goldenApple, goldenCarrot, wheat, carrot, seeds,
-            dandelions;
+            dandelions, seagrass, haybale, bamboo, sweetberries;
     public static EntityType horse, sheep, cow, mooshroomCow, pig, chicken,
-            rabbit;
+            rabbit, llama, turtle, panda, fox;
     public static ArrayList<Material> breeadableFood =
             new ArrayList<Material>();
     public static ArrayList<EntityType> breeadableAnimals =
@@ -63,6 +63,16 @@ public class AnimalBreeding {
         breeadableFood.add(carrot.getType());
         breeadableFood.add(seeds.getType());
         breeadableFood.add(dandelions.getType());
+
+        // 1.13
+        try {
+            haybale = new ItemStack(Material.HAY_BLOCK);
+            seagrass = new ItemStack(Material.SEAGRASS);
+            breeadableFood.add(haybale.getType());
+            breeadableFood.add(seagrass.getType());
+        } catch (NoSuchFieldError ex) {
+            //
+        }
     }
 
 
@@ -85,6 +95,17 @@ public class AnimalBreeding {
         breeadableAnimals.add(pig);
         breeadableAnimals.add(chicken);
         breeadableAnimals.add(rabbit);
+
+        // 1.13
+        try {
+            llama = EntityType.LLAMA;
+            turtle = EntityType.TURTLE;
+
+            breeadableAnimals.add(llama);
+            breeadableAnimals.add(turtle);
+        } catch (NoSuchFieldError ex) {
+            //
+        }
     }
 
 }

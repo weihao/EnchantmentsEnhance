@@ -18,26 +18,17 @@
 
 package org.pixeltime.enchantmentsenhance.command.player
 
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
-import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.command.SubCommand
-import org.pixeltime.enchantmentsenhance.util.Util
 
 
 class DebugCommand : SubCommand() {
     override val permission: String
         get() = "Enchantmentsenhance.debug"
 
-    override fun onCommand(p: Player, args: Array<String>) {
+    override fun onCommand(player: Player, args: Array<String>) {
         when {
-            args[0] == "format" -> {
-                val subcommands = Main.getMain().commandManager.commands.iterator()
-                while (subcommands.hasNext()) {
-                    val sc = subcommands.next()
-                    val curr = "Command: " + sc.usage() + " Permission: " + sc.permission
-                    Util.sendMessage(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', curr)), p, false)
-                }
+            args[0] == "test" -> {
             }
         }
     }

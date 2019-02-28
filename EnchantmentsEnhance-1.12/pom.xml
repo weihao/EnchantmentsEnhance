@@ -23,7 +23,7 @@
     <parent>
         <artifactId>EnchantmentsEnhance-Parent</artifactId>
         <groupId>org.pixeltime</groupId>
-        <version>5.1.1</version>
+        <version>7.1.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -38,21 +38,13 @@
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
+            <artifactId>spigot-api</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
@@ -95,7 +87,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.8.0</version>
                 <executions>
                     <!-- Replacing default-compile as it is treated specially by maven -->
                     <execution>
@@ -126,7 +118,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.1.1</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -143,7 +135,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.2.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -165,14 +157,6 @@
         <resources>
             <resource>
                 <directory>src/resources/</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>${project.basedir}/</directory>
-                <includes>
-                    <include>*.md</include>
-                    <include>LICENSE</include>
-                </includes>
                 <filtering>true</filtering>
             </resource>
         </resources>

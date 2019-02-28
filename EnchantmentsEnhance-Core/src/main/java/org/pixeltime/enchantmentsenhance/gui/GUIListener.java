@@ -23,9 +23,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.Inventory;
 
 public class GUIListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -46,6 +49,7 @@ public class GUIListener implements Listener {
         if (e.getRawSlot() > 53) {
             return;
         }
+
         Player player = (Player) e.getWhoClicked();
         String playerName = player.getName();
         GUIAbstract gui = GUIManager.getMap().get(playerName);
@@ -53,8 +57,33 @@ public class GUIListener implements Listener {
             e.setCancelled(true);
             GUIAbstract.GUIAction action = gui.getActions().get(e.getSlot());
             if (action != null) {
-                action.click();
+                action.click(e.getClick());
                 gui.update();
+            }
+        } else {
+            if (isCreatedGUI(e.getInventory())) {
+                e.setCancelled(true);
+                player.closeInventory();
+            }
+        }
+    }
+
+
+    /**
+     * Prevents item glitched into menu.
+     *
+     * @param e
+     */
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
+    public void onInventoryClick(InventoryClickEvent e) {
+        if ((e.getInventory().getType() != InventoryType.CRAFTING) && (e.getInventory().getType() != InventoryType.PLAYER)) {
+            if ((e.getClick().equals(ClickType.NUMBER_KEY)) && (e.getWhoClicked().getInventory().getItem(e.getHotbarButton()) != null)) {
+                Player player = (Player) e.getWhoClicked();
+                String playerName = player.getName();
+                GUIAbstract gui = GUIManager.getMap().get(playerName);
+                if (gui != null && gui.getInventory().equals(e.getInventory())) {
+                    e.setCancelled(true);
+                }
             }
         }
     }
@@ -72,5 +101,14 @@ public class GUIListener implements Listener {
         Player player = e.getPlayer();
         String playerName = player.getName();
         GUIManager.getMap().remove(playerName);
+    }
+
+    public boolean isCreatedGUI(Inventory inventory) {
+        for (GUIAbstract inv : GUIManager.getSet()) {
+            if (inventory.equals(inv.getInventory())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

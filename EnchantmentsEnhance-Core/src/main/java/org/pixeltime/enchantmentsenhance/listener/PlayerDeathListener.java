@@ -18,7 +18,6 @@
 
 package org.pixeltime.enchantmentsenhance.listener;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -37,7 +36,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 public class PlayerDeathListener implements Listener {
     private static final Main m = Main.getMain();
@@ -56,7 +54,7 @@ public class PlayerDeathListener implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
         List<ItemStack> newInventory = new ArrayList<ItemStack>();
-        File playerFile = new File(m.getDataFolder()  + "/death/" + p.getName() + ".yml");
+        File playerFile = new File(m.getDataFolder() + "/death/" + p.getName() + ".yml");
         FileConfiguration pFile = YamlConfiguration.loadConfiguration(playerFile);
         pFile.set("PlayerName", p.getName());
         if (!e.getDrops().isEmpty() || e.getDrops() != null) {
@@ -68,8 +66,8 @@ public class PlayerDeathListener implements Listener {
                         List<String> lore = meta.getLore();
                         for (String s : lore) {
                             s = ChatColor.stripColor(s);
-                            if (s.contains(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("Lore.untradeableLore"))))
-                                    || s.contains(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("Lore.tradeableLore"))))) {
+                            if (s.contains(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.untradeableLore"))))
+                                    || s.contains(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.tradeableLore"))))) {
                                 newInventory.add(e.getDrops().get(i));
                             }
                         }

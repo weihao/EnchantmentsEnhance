@@ -23,11 +23,12 @@ import org.pixeltime.enchantmentsenhance.command.SubCommand
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat
 import org.pixeltime.enchantmentsenhance.util.Util
+import java.lang.NumberFormatException
 import java.text.ParseException
 
 class SetCommand : SubCommand() {
     override val permission: String
-        get() = "Enchantmentsenhance.enhance"
+        get() = "Enchantmentsenhance.set"
 
     override fun onCommand(player: Player, args: Array<String>) {
         if (args.size == 1) {
@@ -35,19 +36,22 @@ class SetCommand : SubCommand() {
                 val leverage: Int = Integer.parseInt(args[0])
                 if (leverage > 1) {
                     PlayerStat.getPlayerStats(player.name).grind = leverage
-                    Util.sendMessage(SettingsManager.lang.getString("Set.success")
+                    Util.sendMessage(SettingsManager.lang.getString("set.success")
                             .replace("%leverage%",
                                     Integer.toString(leverage)), player)
                 } else {
-                    Util.sendMessage(SettingsManager.lang.getString("Set.failed"), player)
+                    Util.sendMessage(SettingsManager.lang.getString("set.failed"), player)
                 }
             } catch (ex: ParseException) {
-                Util.sendMessage(SettingsManager.lang.getString("Config.invalidNumber"), player
+                Util.sendMessage(SettingsManager.lang.getString("config.invalidNumber"), player
                 )
+            } catch (ex: NumberFormatException) {
+                Util.sendMessage(SettingsManager.lang.getString("config" +
+                        ".invalidNumber"), player)
             }
         } else {
             Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidNumber"), player)
+                    "config.invalidNumber"), player)
         }
     }
 

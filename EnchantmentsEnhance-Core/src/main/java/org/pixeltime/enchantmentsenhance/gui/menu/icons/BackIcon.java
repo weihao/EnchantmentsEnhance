@@ -30,8 +30,8 @@ public class BackIcon extends Clickable {
     @Override
     public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.ARROW)
-                .setName(SettingsManager.lang.getString("Menu.gui.back"))
-                .addLoreLine(SettingsManager.lang.getString("Menu.lore.back"))
+                .setName(SettingsManager.lang.getString("menu.gui.back"))
+                .addLoreLine(SettingsManager.lang.getString("menu.lore.back"))
                 .toItemStack();
     }
 

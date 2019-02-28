@@ -29,7 +29,7 @@ public class AccessoryIcon extends Clickable {
     public ItemStack getItem(String playerName) {
         return new ItemBuilder(Material.DIAMOND)
                 .setName("Accessory")
-                .addLoreLine("NOT FINISHED")
+                .addLoreLine("&9NOT FINISHED")
                 .toItemStack();
     }
 

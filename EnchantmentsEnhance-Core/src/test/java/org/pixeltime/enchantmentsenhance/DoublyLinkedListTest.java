@@ -19,8 +19,8 @@
 package org.pixeltime.enchantmentsenhance;
 
 import junit.framework.TestCase;
-import org.pixeltime.enchantmentsenhance.util.data.DoublyLinkedList;
-import org.pixeltime.enchantmentsenhance.util.data.Iterator;
+import org.pixeltime.enchantmentsenhance.util.datastructure.DoublyLinkedList;
+import org.pixeltime.enchantmentsenhance.util.datastructure.interfaces.Iterator;
 
 import java.util.Arrays;
 import java.util.List;

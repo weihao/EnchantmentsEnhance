@@ -28,6 +28,7 @@ import org.pixeltime.enchantmentsenhance.command.SubCommand;
 import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand;
 import org.pixeltime.enchantmentsenhance.command.console.*;
 import org.pixeltime.enchantmentsenhance.command.player.*;
+import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.ArrayList;
@@ -89,7 +90,7 @@ public class CommandManager implements CommandExecutor {
 
             if (target == null) {
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "Config.consoleCommand"), sender);
+                        "config.consoleCommand"), sender);
                 return true;
             }
 
@@ -119,12 +120,12 @@ public class CommandManager implements CommandExecutor {
 
         if (target == null) {
             Util.sendMessage(SettingsManager.lang.getString(
-                    "Config.invalidCommand"), player);
+                    "config.invalidCommand"), player);
             return true;
         }
 
         if (!player.hasPermission(target.getPermission())) {
-            Util.sendMessage(SettingsManager.lang.getString("Config.noPerm"),
+            Util.sendMessage(SettingsManager.lang.getString("config.noPerm"),
                     player);
             return true;
         }
@@ -217,6 +218,18 @@ public class CommandManager implements CommandExecutor {
         }
     }
 
+    /**
+     * Print enchantments for a player.
+     *
+     * @param player
+     */
+    public void printEnchantments(Player player) {
+        String tag = "&b&l&m          &d EnchantmentsEnhance&b&l&m          ";
+        Util.sendMessage(tag, player, false);
+        for (EnchantmentListener ench : PackageManager.getEnabled()) {
+            Util.sendMessage("&b" + ench.name() + " &a" + SettingsManager.lang.getString("descriptions." + ench.getClass().getSimpleName().toLowerCase()), player, false);
+        }
+    }
 
     /**
      * Print help for console.

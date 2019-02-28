@@ -29,9 +29,9 @@ public class StoreIcon extends Clickable {
     @Override
     public ItemStack getItem(String playerName) {
         return new ItemBuilder(XMaterial.WRITABLE_BOOK.parseMaterial()).setName(SettingsManager.lang
-                .getString("Menu.gui.store")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.store1")).addLoreLine(SettingsManager.lang.getString(
-                "Menu.lore.store2")).toItemStack();
+                .getString("menu.gui.store")).addLoreLine(SettingsManager.lang.getString(
+                "menu.lore.store1")).addLoreLine(SettingsManager.lang.getString(
+                "menu.lore.store2")).toItemStack();
     }
 
     @Override

@@ -18,31 +18,46 @@
 
 package org.pixeltime.enchantmentsenhance.manager
 
+import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.util.Util
+import org.pixeltime.enchantmentsenhance.util.XMaterial
 import java.util.*
+import kotlin.collections.ArrayList
 
 class DropManager {
+
+
     companion object {
-        @JvmField
-        val mining = SettingsManager.config.getStringList(
-                "lifeskill.mining")
-        @JvmField
-        val chopping = SettingsManager.config.getStringList(
-                "lifeskill.chopping")
-        @JvmField
-        val fishing = SettingsManager.config.getStringList(
-                "lifeskill.fishing")
-        @JvmField
-        val killing = SettingsManager.config.getStringList(
-                "lifeskill.killing")
-        @JvmField
-        val breeding = SettingsManager.config.getStringList(
-                "lifeskill.breeding")
-        @JvmField
-        val smelting = SettingsManager.config.getStringList(
-                "lifeskill.smelting")
+        @JvmStatic
+        fun setUp() {
+            SettingsManager.config.getStringList("lifeskill.mining").forEach {
+                try {
+                    val mat = XMaterial.fromString(it).parseMaterial()
+                    if (!mining.contains(mat)) {
+                        mining.add(mat)
+                    }
+                } catch (ex: NullPointerException) {
+                    Main.getMain().logger.warning("Error trying to add $it to mining lifeskill.")
+                }
+            }
+            SettingsManager.config.getStringList("lifeskill.chopping").forEach {
+                try {
+                    val mat = (XMaterial.fromString(it).parseMaterial())
+                    if (!chopping.contains(mat)) {
+                        chopping.add(mat)
+                    }
+                } catch (ex: NullPointerException) {
+                    Main.getMain().logger.warning("Error trying to add $it to chopping lifeskill.")
+                }
+            }
+        }
+
+        @JvmStatic
+        val mining: ArrayList<Material> = ArrayList()
+        @JvmStatic
+        val chopping: ArrayList<Material> = ArrayList()
         @JvmField
         val miningChance = SettingsManager.config.getDouble(
                 "reward.mining.chance")
@@ -83,9 +98,9 @@ class DropManager {
         @JvmStatic
         fun randomDrop(player: Player, table: List<Int>) {
             val stoneType = table[((0..table.size).random())]
-            Main.getAPI().addItem(
+            Main.getApi().addItem(
                     player.name, stoneType, 1)
-            Util.sendMessage(SettingsManager.lang.getString("Item.get").replace("%ITEM%", SettingsManager.lang.getString("Item.$stoneType")), player)
+            Util.sendMessage(SettingsManager.lang.getString("item.get").replace("%ITEM%", SettingsManager.lang.getString("item.$stoneType")), player)
         }
 
         @JvmStatic

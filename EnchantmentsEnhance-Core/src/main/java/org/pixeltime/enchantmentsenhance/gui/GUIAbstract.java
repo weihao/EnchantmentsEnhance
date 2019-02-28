@@ -20,6 +20,7 @@ package org.pixeltime.enchantmentsenhance.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -35,8 +36,9 @@ public abstract class GUIAbstract {
     public GUIAbstract(Player player, int invSize, String invName) {
         this.inventory = Bukkit.createInventory(null, invSize, Util.toColor(invName));
         this.actions = new HashMap<>();
-        GUIManager.getMap().put(player.getName(), this);
         this.playerName = player.getName();
+        GUIManager.getMap().put(player.getName(), this);
+        GUIManager.getSet().add(this);
     }
 
     public Inventory getInventory() {
@@ -65,6 +67,6 @@ public abstract class GUIAbstract {
     public abstract void update();
 
     public interface GUIAction {
-        void click();
+        void click(ClickType clicktype);
     }
 }

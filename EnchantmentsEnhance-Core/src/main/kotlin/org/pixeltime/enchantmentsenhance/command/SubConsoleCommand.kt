@@ -51,6 +51,6 @@ abstract class SubConsoleCommand {
     abstract fun aliases(): Array<String>
 
     fun info(): String {
-        return "&b${usage()} ${SettingsManager.lang.getString("Help.${name()}")}"
+        return "&b${usage()} ${SettingsManager.lang.getString("help.${name()}")}"
     }
 }
