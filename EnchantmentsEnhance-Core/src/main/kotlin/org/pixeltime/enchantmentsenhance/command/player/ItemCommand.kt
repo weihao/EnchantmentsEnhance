@@ -40,9 +40,9 @@ class ItemCommand : SubCommand() {
                 args[0].equals("upgrade", ignoreCase = true) -> try {
                     var item = Util.getMainHand(player)
                     val level = ItemManager.getItemEnchantLevel(item)
-                    val aimingLevel = Integer.parseInt(args[1])
+                    val aimingLevel = Integer.parseInt(args[2])
                     var clicked: Clickable = MainMenu.gear
-                    if (args[1].equals("tool")) {
+                    if (args[1].equals("tool", ignoreCase = true)) {
                         clicked = MainMenu.tool
                     }
                     if (level < aimingLevel) {
@@ -97,7 +97,7 @@ class ItemCommand : SubCommand() {
     }
 
     override fun usage(): String {
-        return "/enhance item { upgrade {level} } | setname {name} | lore { tradeable | untradeable | unbound }"
+        return "/enhance item { upgrade {type} {level} } | setname {name} | lore { tradeable | untradeable | unbound }"
     }
 
     override fun aliases(): Array<String> {
