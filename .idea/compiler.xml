@@ -13,10 +13,5 @@
         <module name="EnchantmentsEnhance-Plugin" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="EnchantmentsEnhance-1.12" target="1.8" />
-      <module name="EnchantmentsEnhance-1.13" target="1.8" />
-      <module name="EnchantmentsEnhance-Core" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
