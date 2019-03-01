@@ -18,8 +18,8 @@
   -->
 
 <project
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
@@ -29,7 +29,38 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>EnchantmentsEnhance-API</artifactId>
+    <artifactId>EnchantmentsEnhance-Compatibility</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>EnchantmentsEnhance-Compatibility-Common</module>
+        <module>EnchantmentsEnhance-Compatibility-1.12</module>
+        <module>EnchantmentsEnhance-Compatibility-1.13</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- ldk-reflect -->
+        <dependency>
+            <groupId>com.github.lgou2w.ldk</groupId>
+            <artifactId>ldk-reflect</artifactId>
+            <version>0.1.8-beta2</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- ldk-bukkit-version -->
+        <dependency>
+            <groupId>com.github.lgou2w.ldk</groupId>
+            <artifactId>ldk-bukkit-version</artifactId>
+            <version>0.1.8-beta2</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
