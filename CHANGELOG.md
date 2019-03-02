@@ -1,4 +1,12 @@
 # Changelog
+## [7.2.0] - 2019-3-2
+### Fixed
+- Menu async problem
+- Glow enchantment error
+
+### Changed
+- Changed dependency to LDK compatibility.
+
 ## [7.1.0] - 2019-2-28
 ### Added
 - Grinding can be disabled.
