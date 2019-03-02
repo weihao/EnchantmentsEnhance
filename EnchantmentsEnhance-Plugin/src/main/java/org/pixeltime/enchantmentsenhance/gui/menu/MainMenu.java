@@ -267,7 +267,7 @@ public class MainMenu extends GUIAbstract {
                         player.closeInventory();
                         new ItemMenu(player).open();
                     }
-                }.runTaskLaterAsynchronously(Main.getMain(), 2L));
+                }.runTaskLater(Main.getMain(), 2L));
 
         setItem(valks.getPosition(), valks.getItem(player), (clickType) ->
                 new BukkitRunnable() {
@@ -276,7 +276,7 @@ public class MainMenu extends GUIAbstract {
                         player.closeInventory();
                         new ValksMenu(player).open();
                     }
-                }.runTaskLaterAsynchronously(Main.getMain(), 2L));
+                }.runTaskLater(Main.getMain(), 2L));
 
         setItem(gear.getPosition(), (enhancingMode.containsKey(playerName) && enhancingMode.get(playerName).equals(gear))
                         ? gear.getGlowingItem(playerName)
