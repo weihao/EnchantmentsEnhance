@@ -77,6 +77,8 @@ public class ItemManager {
             return ItemType.SHOVEL;
         } else if (isValid(item, MaterialManager.knife)) {
             return ItemType.KNIFE;
+        } else if (isValid(item, MaterialManager.rod)) {
+            return ItemType.ROD;
         } else {
             return ItemType.INVALID;
         }

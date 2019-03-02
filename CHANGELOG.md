@@ -5,13 +5,19 @@
 - Reblath failstacking can be disabled.
 - Sword can be enhanced as tool.
 - Shovel can be enhanced as tool.
+- Item set can now support tool.
+- Option to only accept EE renamed item
+- Fishing rod can be enhanced as tool.
 
 ### Fixed
 - Issue displaying enchantments chance.
 - Items can be glitched into menu.
+- Overflow error.
 
 ### Changed
+- Plugin is now compatible with `1.8`-`1.13.2`
 - Configuration file changed to adapt knife and shovel.
+- Jar files now contains markdown files.
 
 ## [7.0.0] - 2019-2-25
 ### Added

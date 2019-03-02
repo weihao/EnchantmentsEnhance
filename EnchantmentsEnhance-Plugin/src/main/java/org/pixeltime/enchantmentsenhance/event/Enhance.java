@@ -64,7 +64,8 @@ public class Enhance {
                     || ItemManager.isValid(item, MaterialManager.axe)
                     || ItemManager.isValid(item, MaterialManager.hoe)
                     || ItemManager.isValid(item, MaterialManager.shovel)
-                    || ItemManager.isValid(item, MaterialManager.knife)) {
+                    || ItemManager.isValid(item, MaterialManager.knife)
+                    || ItemManager.isValid(item, MaterialManager.rod)) {
                 if (DataManager.requireConcentratedStones[level]) {
                     return 2;
                 } else {

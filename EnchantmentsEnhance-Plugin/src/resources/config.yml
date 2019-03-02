@@ -276,6 +276,8 @@ material:
     - IRON_SWORD
   bow:
     - BOW
+  rod:
+    - FISHING_ROD
 slots:
   # Armor includes armor contents and item in hand.
   enableArmor: true
@@ -334,6 +336,7 @@ enhance:
       SHOEVEL: []
       BOW: []
       KNIFE: []
+      ROD: []
     lore: []
   "1":
     baseChance: 100
@@ -365,6 +368,8 @@ enhance:
       BOW:
         - Endless:1
       KNIFE:
+        - Endless:1
+      Rod:
         - Endless:1
     lore:
       - "&3&l&m                                  "
@@ -401,6 +406,8 @@ enhance:
         - Arrow_Fire:1
       KNIFE:
         - Fire_Aspect:1
+      ROD:
+        - Lure:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -437,6 +444,8 @@ enhance:
         - Arrow_Fire:1
       KNIFE:
         - Fire_Aspect:1
+      ROD:
+        - Lure:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -476,6 +485,8 @@ enhance:
         - Arrow_Infinite:1
       KNIFE:
         - Damage_Arthropods:1
+      ROD:
+        - Lure:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -516,6 +527,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Damage_Arthropods:1
+      ROD:
+        - Lure:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -555,6 +568,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Damage_Arthropods:1
+      ROD:
+        - Lure:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -593,6 +608,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Damage_Arthropods:1
+      ROD:
+        - Luck:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -629,6 +646,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Damage_Arthropods:1
+      ROD:
+        - Luck:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -666,6 +685,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Damage_Undead:1
+      ROD:
+        - Luck:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -703,6 +724,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Damage_Undead:1
+      ROD:
+        - Luck:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -740,6 +763,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Damage_Undead:1
+      ROD:
+        - Luck:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -778,6 +803,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Damage_Undead:1
+      ROD:
+        - Luck:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -813,6 +840,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Damage_Undead:1
+      ROD:
+        - Luck:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -848,6 +877,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Loot_Bonus_Mobs:1
+      ROD:
+        - Luck:1
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -920,6 +951,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Loot_Bonus_Mobs:1
+      ROD:
+        - Luck:1
     lore:
       - "&3&l&m                                  "
       - "&9&lMid Tier."
@@ -960,6 +993,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Loot_Bonus_Mobs:1
+      ROD:
+        - Knockback:5
     lore:
       - "&3&l&m                                  "
       - "&9&lMid Tier."
@@ -1000,6 +1035,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Loot_Bonus_Mobs:1
+      ROD:
+        - Luck:10
     lore:
       - "&3&l&m                                  "
       - "&9&lMid Tier."
@@ -1040,6 +1077,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Damage_All:1-5
+      ROD:
+        - Lure:10
     lore:
       - "&3&l&m                                  "
       - "&9&lHigh Tier."
@@ -1079,6 +1118,8 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Damage_All:1-5
+      ROD:
+        - Damage_All:1-20
     lore:
       - "&8&l&m                                  "
       - "&4&lMAX Tier."
