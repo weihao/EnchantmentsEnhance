@@ -3,21 +3,21 @@
 ### Added
 - Grinding can be disabled.
 - Reblath failstacking can be disabled.
-- Sword can be enhanced as tool.
-- Shovel can be enhanced as tool.
-- Item set can now support tool.
+- Sword can be enhanced as a tool.
+- The shovel can be enhanced as a tool.
+- Item set command can now support tool.
 - Option to only accept EE renamed item
-- Fishing rod can be enhanced as tool.
+- The fishing rod can be enhanced as a tool.
 
 ### Fixed
 - Issue displaying enchantments chance.
-- Items can be glitched into menu.
+- Items can be glitched into the menu.
 - Overflow error.
 
 ### Changed
-- Plugin is now compatible with `1.8`-`1.13.2`
-- Configuration file changed to adapt knife and shovel.
-- Jar files now contains markdown files.
+- The plugin is now compatible with `1.8`-`1.13.2`
+- Configuration file changed to adapt the knife and shovel.
+- Jar files now contain markdown files.
 
 ## [7.0.0] - 2019-2-25
 ### Added
@@ -49,7 +49,7 @@
 ## [6.8.0] - 2019-1-1
 ### Fixed
 - Fixed an issue with consuming item in 1.8.
-- Fixed counting issue with black stone bundle.
+- Fixed counting issue with the black stone bundle.
 
 ## [6.7.0] - 2018-12-21
 ### Added
@@ -61,7 +61,7 @@
 
 ### Changed
 - Updated to Kotlin 1.3.11.
-- Plugin recode in progress.
+- Plugin recodes in progress.
 
 All notable changes to this project will be documented in this file.
 ## [6.6.0] - 2018-09-17
@@ -74,7 +74,7 @@ All notable changes to this project will be documented in this file.
 - Fixed enhancement error.
 - Fixed force enhancing while enhancing in progress.
 - Fixed unable to open menu after reload.
-- Fixed force enhancement at maximum level.
+- Fixed force enhancement at the maximum level.
 
 ## [6.4.0] - 2018-09-3
 ### Added
@@ -172,7 +172,7 @@ All notable changes to this project will be documented in this file.
 ## [5.5.0] - 2018-08-11
 ### Added
 - Support for TitleBar.
-- Support for fancy chat.
+- Support for the fancy chat.
 - Notification.
 - Announcement.
 - Random applies enchantments.
