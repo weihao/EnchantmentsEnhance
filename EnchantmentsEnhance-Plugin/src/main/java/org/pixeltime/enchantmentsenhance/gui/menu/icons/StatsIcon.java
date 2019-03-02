@@ -28,13 +28,13 @@ import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
-import org.pixeltime.enchantmentsenhance.util.XMaterial;
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 
 public class StatsIcon extends Clickable {
 
 
     public ItemStack getItem() {
-        return new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial())
+        return new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
                 .setDyeColor(DyeColor.LIGHT_BLUE)
                 .setName(SettingsManager.lang.getString("menu.gui.stats"))
                 .addLoreLine(SettingsManager.lang.getString("menu.lore.stats1"))
@@ -45,7 +45,7 @@ public class StatsIcon extends Clickable {
     public ItemStack getItem(String playerName, Clickable clicked) {
         if (playerName != null && MainMenu.itemOnEnhancingSlot.get(playerName) != null) {
             return CompatibilityManager.glow
-                    .addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial())
+                    .addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
                             .setDyeColor(DyeColor.LIGHT_BLUE)
                             .setName(SettingsManager.lang.getString("menu.gui.stats"))
                             .addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack")
@@ -56,7 +56,7 @@ public class StatsIcon extends Clickable {
                                     "menu.lore.stats2")).toItemStack());
         }
         if (playerName != null && Main.getApi().hasFailstack(playerName)) {
-            return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial())
+            return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
                     .setDyeColor(DyeColor.LIGHT_BLUE)
                     .setName(SettingsManager.lang.getString("menu.gui.stats"))
                     .addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack")

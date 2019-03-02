@@ -27,7 +27,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import java.util.*
 
 class Pumpking : EnchantmentListener() {
@@ -47,8 +47,8 @@ class Pumpking : EnchantmentListener() {
         val player = blockBreakEvent.player
         val level = getLevel(player)
         if (level > 0
-                && (blockBreakEvent.block.type == XMaterial.PUMPKIN.parseMaterial()
-                        || blockBreakEvent.block.type == XMaterial.MELON.parseMaterial())) {
+                && (blockBreakEvent.block.type == XMaterial.PUMPKIN.toBukkit()
+                        || blockBreakEvent.block.type == XMaterial.MELON.toBukkit())) {
             val list = ArrayList<Material>()
 
             if (!list.contains(blockBreakEvent.block.type)) {

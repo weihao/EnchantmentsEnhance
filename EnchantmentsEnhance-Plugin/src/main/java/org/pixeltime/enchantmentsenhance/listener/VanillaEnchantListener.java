@@ -25,13 +25,13 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.util.XMaterial;
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 
 
 public class VanillaEnchantListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onOpenEnchantmentTable(PlayerInteractEvent event) {
-        if (event.getClickedBlock() != null && event.getClickedBlock().getType() == XMaterial.ENCHANTING_TABLE.parseMaterial()) {
+        if (event.getClickedBlock() != null && event.getClickedBlock().getType() == XMaterial.ENCHANTING_TABLE.toBukkit()) {
             if (SettingsManager.config.getString("openMethod").equalsIgnoreCase("LEFT_CLICK")) {
                 if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
                     event.setCancelled(true);

@@ -26,7 +26,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
-import org.pixeltime.enchantmentsenhance.util.XMaterial;
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 
 public class ItemIcon extends Clickable {
 
@@ -47,7 +47,7 @@ public class ItemIcon extends Clickable {
 
 
     public ItemStack getItem() {
-        return (new ItemBuilder(XMaterial.CHEST_MINECART.parseMaterial())
+        return (new ItemBuilder(XMaterial.CHEST_MINECART.toBukkit())
                 .setName(SettingsManager.lang.getString("item.gui"))
                 .addLoreLine(SettingsManager.lang.getString("item.gui1"))
                 .toItemStack());

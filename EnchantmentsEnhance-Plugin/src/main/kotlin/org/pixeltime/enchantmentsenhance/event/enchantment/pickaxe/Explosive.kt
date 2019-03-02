@@ -42,7 +42,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import java.util.*
 
 
@@ -88,7 +88,7 @@ class Explosive : EnchantmentListener() {
                 if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin().canBuild(player, block)) {
                     return
                 }
-                if (block.type == XMaterial.BEDROCK.parseMaterial()) {
+                if (block.type == XMaterial.BEDROCK.toBukkit()) {
                     return
                 }
                 if (DropManager.mining.contains(block.type)) {

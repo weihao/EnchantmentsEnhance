@@ -29,12 +29,12 @@ import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
-import org.pixeltime.enchantmentsenhance.util.XMaterial;
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 
 public class ForceIcon extends Clickable {
     @Override
     public ItemStack getItem(String playerName) {
-        return new ItemBuilder(XMaterial.RED_WOOL.parseMaterial())
+        return new ItemBuilder(XMaterial.RED_WOOL.toBukkit())
                 .setDyeColor(DyeColor.RED)
                 .setName(SettingsManager.lang.getString("menu.gui.force"))
                 .addLoreLine(SettingsManager.lang.getString(
@@ -52,7 +52,7 @@ public class ForceIcon extends Clickable {
         }
         int stoneId = Enhance.getStoneId(item, enchantLevel, clicked);
         int costToEnhance = DataManager.costToForceEnchant[enchantLevel + 1];
-        return new ItemBuilder(XMaterial.RED_WOOL.parseMaterial())
+        return new ItemBuilder(XMaterial.RED_WOOL.toBukkit())
                 .setDyeColor(DyeColor.RED)
                 .setName(SettingsManager.lang.getString("menu.gui.force"))
                 .addLoreLine(SettingsManager.lang.getString("menu.lore.force1"))

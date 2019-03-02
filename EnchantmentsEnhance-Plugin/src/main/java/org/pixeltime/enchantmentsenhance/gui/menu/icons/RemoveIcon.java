@@ -24,13 +24,13 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.DyeColors;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
-import org.pixeltime.enchantmentsenhance.util.XMaterial;
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 
 public class RemoveIcon extends Clickable {
 
     @Override
     public ItemStack getItem(String playerName) {
-        return new ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.parseMaterial()).setDyeColor(DyeColors.LIGHT_GRAY.bukkitDyeColor()).setName(SettingsManager.lang.getString("menu.gui.remove")).addLoreLine(SettingsManager.lang.getString(
+        return new ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.toBukkit()).setDyeColor(DyeColors.LIGHT_GRAY.bukkitDyeColor()).setName(SettingsManager.lang.getString("menu.gui.remove")).addLoreLine(SettingsManager.lang.getString(
                 "menu.lore.remove")).toItemStack();
     }
 

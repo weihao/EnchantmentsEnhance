@@ -21,7 +21,7 @@ package org.pixeltime.enchantmentsenhance.util.events;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.util.XMaterial;
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 
 import java.util.ArrayList;
 
@@ -54,8 +54,8 @@ public class AnimalBreeding {
         goldenCarrot = new ItemStack(Material.GOLDEN_CARROT);
         wheat = new ItemStack(Material.WHEAT);
         carrot = new ItemStack(Material.CARROT);
-        seeds = new ItemStack(XMaterial.WHEAT_SEEDS.parseMaterial());
-        dandelions = new ItemStack(XMaterial.DANDELION.parseMaterial());
+        seeds = new ItemStack(XMaterial.WHEAT_SEEDS.toBukkit());
+        dandelions = new ItemStack(XMaterial.DANDELION.toBukkit());
 
         breeadableFood.add(goldenApple.getType());
         breeadableFood.add(goldenCarrot.getType());

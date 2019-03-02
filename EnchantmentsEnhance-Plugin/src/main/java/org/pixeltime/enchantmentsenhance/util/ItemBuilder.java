@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.util;
 
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -307,7 +308,7 @@ public class ItemBuilder {
      * @param color The DyeColor to set the wool item to.
      */
     public ItemBuilder setWoolColor(DyeColor color) {
-        if (!is.getType().equals(XMaterial.WHITE_WOOL.parseMaterial()))
+        if (!is.getType().equals(XMaterial.WHITE_WOOL.toBukkit()))
             return this;
 
         this.is.setDurability(color.getWoolData());

@@ -31,6 +31,9 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>EnchantmentsEnhance-Plugin</artifactId>
     <packaging>jar</packaging>
+    <properties>
+        <ldk.version>0.1.6-rc4</ldk.version>
+    </properties>
 
     <repositories>
         <repository>
@@ -118,6 +121,34 @@
             <version>2.5.1</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/src/resources/Lib/MVdWPlaceholderAPI.jar</systemPath>
+        </dependency>
+        <!-- ldk-bukkit-common -->
+        <dependency>
+            <groupId>com.github.lgou2w.ldk</groupId>
+            <artifactId>ldk-bukkit-common</artifactId>
+            <version>${ldk.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- ldk-bukkit-gui -->
+        <dependency>
+            <groupId>com.github.lgou2w.ldk</groupId>
+            <artifactId>ldk-bukkit-gui</artifactId>
+            <version>${ldk.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- ldk-bukkit-cmd -->
+        <dependency>
+            <groupId>com.github.lgou2w.ldk</groupId>
+            <artifactId>ldk-bukkit-cmd</artifactId>
+            <version>${ldk.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- ldk-bukkit-compatibility -->
+        <dependency>
+            <groupId>com.github.lgou2w.ldk</groupId>
+            <artifactId>ldk-bukkit-compatibility</artifactId>
+            <version>${ldk.version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

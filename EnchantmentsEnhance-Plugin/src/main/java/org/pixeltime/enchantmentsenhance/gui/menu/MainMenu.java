@@ -38,28 +38,28 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.DyeColors;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
-import org.pixeltime.enchantmentsenhance.util.XMaterial;
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 
 import java.util.*;
 
 public class MainMenu extends GUIAbstract {
     public static final ItemStack[] WOOL = {
-            new ItemBuilder(XMaterial.BLACK_WOOL.parseMaterial()).setDyeColor(DyeColor.BLACK).toItemStack(),
-            new ItemBuilder(XMaterial.BLUE_WOOL.parseMaterial()).setDyeColor(DyeColor.BLUE).toItemStack(),
-            new ItemBuilder(XMaterial.BROWN_WOOL.parseMaterial()).setDyeColor(DyeColor.BROWN).toItemStack(),
-            new ItemBuilder(XMaterial.CYAN_WOOL.parseMaterial()).setDyeColor(DyeColor.CYAN).toItemStack(),
-            new ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.parseMaterial()).setDyeColor(DyeColors.LIGHT_GRAY.bukkitDyeColor()).toItemStack(),
-            new ItemBuilder(XMaterial.GREEN_WOOL.parseMaterial()).setDyeColor(DyeColor.GREEN).toItemStack(),
-            new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.parseMaterial()).setDyeColor(DyeColor.LIGHT_BLUE).toItemStack(),
-            new ItemBuilder(XMaterial.GRAY_WOOL.parseMaterial()).setDyeColor(DyeColor.GRAY).toItemStack(),
-            new ItemBuilder(XMaterial.LIME_WOOL.parseMaterial()).setDyeColor(DyeColor.LIME).toItemStack(),
-            new ItemBuilder(XMaterial.MAGENTA_WOOL.parseMaterial()).setDyeColor(DyeColor.MAGENTA).toItemStack(),
-            new ItemBuilder(XMaterial.ORANGE_WOOL.parseMaterial()).setDyeColor(DyeColor.ORANGE).toItemStack(),
-            new ItemBuilder(XMaterial.PINK_WOOL.parseMaterial()).setDyeColor(DyeColor.PINK).toItemStack(),
-            new ItemBuilder(XMaterial.PURPLE_WOOL.parseMaterial()).setDyeColor(DyeColor.PURPLE).toItemStack(),
-            new ItemBuilder(XMaterial.RED_WOOL.parseMaterial()).setDyeColor(DyeColor.RED).toItemStack(),
-            new ItemBuilder(XMaterial.WHITE_WOOL.parseMaterial()).setDyeColor(DyeColor.WHITE).toItemStack(),
-            new ItemBuilder(XMaterial.YELLOW_WOOL.parseMaterial()).setDyeColor(DyeColor.YELLOW).toItemStack()
+            new ItemBuilder(XMaterial.BLACK_WOOL.toBukkit()).setDyeColor(DyeColor.BLACK).toItemStack(),
+            new ItemBuilder(XMaterial.BLUE_WOOL.toBukkit()).setDyeColor(DyeColor.BLUE).toItemStack(),
+            new ItemBuilder(XMaterial.BROWN_WOOL.toBukkit()).setDyeColor(DyeColor.BROWN).toItemStack(),
+            new ItemBuilder(XMaterial.CYAN_WOOL.toBukkit()).setDyeColor(DyeColor.CYAN).toItemStack(),
+            new ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.toBukkit()).setDyeColor(DyeColors.LIGHT_GRAY.bukkitDyeColor()).toItemStack(),
+            new ItemBuilder(XMaterial.GREEN_WOOL.toBukkit()).setDyeColor(DyeColor.GREEN).toItemStack(),
+            new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit()).setDyeColor(DyeColor.LIGHT_BLUE).toItemStack(),
+            new ItemBuilder(XMaterial.GRAY_WOOL.toBukkit()).setDyeColor(DyeColor.GRAY).toItemStack(),
+            new ItemBuilder(XMaterial.LIME_WOOL.toBukkit()).setDyeColor(DyeColor.LIME).toItemStack(),
+            new ItemBuilder(XMaterial.MAGENTA_WOOL.toBukkit()).setDyeColor(DyeColor.MAGENTA).toItemStack(),
+            new ItemBuilder(XMaterial.ORANGE_WOOL.toBukkit()).setDyeColor(DyeColor.ORANGE).toItemStack(),
+            new ItemBuilder(XMaterial.PINK_WOOL.toBukkit()).setDyeColor(DyeColor.PINK).toItemStack(),
+            new ItemBuilder(XMaterial.PURPLE_WOOL.toBukkit()).setDyeColor(DyeColor.PURPLE).toItemStack(),
+            new ItemBuilder(XMaterial.RED_WOOL.toBukkit()).setDyeColor(DyeColor.RED).toItemStack(),
+            new ItemBuilder(XMaterial.WHITE_WOOL.toBukkit()).setDyeColor(DyeColor.WHITE).toItemStack(),
+            new ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit()).setDyeColor(DyeColor.YELLOW).toItemStack()
     };
     public static Map<String, ItemStack> itemOnEnhancingSlot = new HashMap<String, ItemStack>();
     public static Map<String, Clickable> enhancingMode = new HashMap<>();
@@ -302,7 +302,7 @@ public class MainMenu extends GUIAbstract {
                 });
 
         for (int i : MenuCoord.getPlaceHolderCoords()) {
-            setItem(i, new ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE.parseMaterial()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack());
+            setItem(i, new ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE.toBukkit()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack());
         }
     }
 }

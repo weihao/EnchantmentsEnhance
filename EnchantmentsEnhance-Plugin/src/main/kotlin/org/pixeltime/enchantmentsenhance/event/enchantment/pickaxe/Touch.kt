@@ -26,7 +26,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.util.XMaterial
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 
 
 class Touch : EnchantmentListener() {
@@ -45,7 +45,7 @@ class Touch : EnchantmentListener() {
         val player = blockBreakEvent.player
         val block = blockBreakEvent.block
         val level = getLevel(player)
-        if (level > 0 && block.type == XMaterial.SPAWNER.parseMaterial()) {
+        if (level > 0 && block.type == XMaterial.SPAWNER.toBukkit()) {
             val creatureSpawner = block.state as CreatureSpawner
             val itemStack = ItemStack(creatureSpawner.type, 1, block.data.toShort())
             val itemMeta = itemStack.itemMeta
@@ -60,7 +60,7 @@ class Touch : EnchantmentListener() {
     @EventHandler
     fun onPlace(blockPlaceEvent: BlockPlaceEvent) {
         val block = blockPlaceEvent.block
-        if (block.type == XMaterial.SPAWNER.parseMaterial()) {
+        if (block.type == XMaterial.SPAWNER.toBukkit()) {
             val item = blockPlaceEvent.itemInHand
             if (item.hasItemMeta() && item.itemMeta.hasDisplayName()) {
                 try {

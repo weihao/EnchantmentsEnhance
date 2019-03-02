@@ -31,7 +31,7 @@ import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
-import org.pixeltime.enchantmentsenhance.util.XMaterial;
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.pixeltime.enchantmentsenhance.util.datastructure.DoublyLinkedList;
 import org.pixeltime.enchantmentsenhance.util.datastructure.interfaces.Iterator;
 import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
@@ -431,7 +431,7 @@ public class ItemManager {
 
     public static ItemStack adviceMaterialize(int level) {
         return CompatibilityManager.glow
-                .addGlow(setGive(new ItemBuilder(XMaterial.BOOK.parseItem())
+                .addGlow(setGive(new ItemBuilder(XMaterial.BOOK.toBukkit())
                                 .setName(SettingsManager.lang.getString("item.valks") + "+" + level)
                                 .addLoreLine(SettingsManager.lang.getString("materialize.info1"))
                                 .addLoreLine(SettingsManager.lang.getString("materialize.advice1")
