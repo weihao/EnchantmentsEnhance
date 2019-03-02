@@ -109,7 +109,11 @@ class API : AbstractAPI {
         }
     }
 
-
+    /**
+     * Adds a player's failstack to the HashMap storage.
+     *
+     * @param player Targeted player.
+     */
     override fun addAdvice(player: String) {
         val level = getFailstack(player)
         if (level != 0) {
@@ -122,7 +126,11 @@ class API : AbstractAPI {
         }
     }
 
-
+    /**
+     * Adds a specific level of advice to a player.
+     *
+     * @param player Targeted player.
+     */
     override fun getEnchantmentMaxLevel(ench: String): Int {
         return if (SettingsManager.enchant.getConfigurationSection(ench.toLowerCase()) == null) {
             1
