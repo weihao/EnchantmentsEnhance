@@ -1,5 +1,5 @@
 /*
- *     Copyright (C) 2017-Present HealPot
+ *     Copyright (C) 2017-Present 25
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@ import org.pixeltime.enchantmentsenhance.command.SubCommand
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat
 import org.pixeltime.enchantmentsenhance.util.Util
-import java.lang.NumberFormatException
 import java.text.ParseException
 
 class SetCommand : SubCommand() {

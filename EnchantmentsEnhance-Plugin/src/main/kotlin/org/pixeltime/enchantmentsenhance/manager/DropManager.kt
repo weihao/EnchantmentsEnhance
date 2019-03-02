@@ -1,5 +1,5 @@
 /*
- *     Copyright (C) 2017-Present HealPot
+ *     Copyright (C) 2017-Present 25
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,11 +18,11 @@
 
 package org.pixeltime.enchantmentsenhance.manager
 
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.util.Util
-import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import java.util.*
 import kotlin.collections.ArrayList
 

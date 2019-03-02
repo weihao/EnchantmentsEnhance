@@ -1,5 +1,5 @@
 /*
- *     Copyright (C) 2017-Present HealPot
+ *     Copyright (C) 2017-Present 25
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,13 +18,13 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment.gear
 
+import com.lgou2w.ldk.bukkit.compatibility.Sounds
 import org.bukkit.entity.Damageable
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import com.lgou2w.ldk.bukkit.compatibility.Sounds
 
 
 class Crits : EnchantmentListener() {

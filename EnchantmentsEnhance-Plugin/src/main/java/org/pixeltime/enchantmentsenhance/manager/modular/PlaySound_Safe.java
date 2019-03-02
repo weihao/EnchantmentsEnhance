@@ -1,5 +1,5 @@
 /*
- *     Copyright (C) 2017-Present HealPot
+ *     Copyright (C) 2017-Present 25
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,9 +18,9 @@
 
 package org.pixeltime.enchantmentsenhance.manager.modular;
 
+import com.lgou2w.ldk.bukkit.compatibility.Sounds;
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.interfaces.PlaySound;
-import com.lgou2w.ldk.bukkit.compatibility.Sounds;
 
 public class PlaySound_Safe implements PlaySound {
     public void playSound(Player p, String type) {

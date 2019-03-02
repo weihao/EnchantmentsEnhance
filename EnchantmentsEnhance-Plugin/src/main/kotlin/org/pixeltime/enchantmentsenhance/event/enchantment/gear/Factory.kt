@@ -1,5 +1,5 @@
 /*
- *     Copyright (C) 2017-Present HealPot
+ *     Copyright (C) 2017-Present 25
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.event.enchantment.gear
 
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -26,7 +27,6 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 
 class Factory : EnchantmentListener() {
     override fun desc(): Array<String> {

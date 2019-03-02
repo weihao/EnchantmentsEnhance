@@ -1,5 +1,5 @@
 /*
- *     Copyright (C) 2017-Present HealPot
+ *     Copyright (C) 2017-Present 25
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.DyeColor;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.event.Enhance;
@@ -29,7 +30,6 @@ import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
-import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 
 public class ForceIcon extends Clickable {
     @Override

@@ -1,5 +1,5 @@
 /*
- *     Copyright (C) 2017-Present HealPot
+ *     Copyright (C) 2017-Present 25
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -34,6 +34,7 @@
 */
 package org.pixeltime.enchantmentsenhance.event.enchantment.pickaxe
 
+import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import com.sk89q.worldguard.bukkit.WGBukkit
 import org.bukkit.Location
 import org.bukkit.event.EventHandler
@@ -42,7 +43,6 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import java.util.*
 
 

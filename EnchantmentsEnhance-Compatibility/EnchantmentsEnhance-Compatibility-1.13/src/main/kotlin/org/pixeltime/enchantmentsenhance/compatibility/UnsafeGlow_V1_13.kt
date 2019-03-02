@@ -1,5 +1,5 @@
 /*
- *     Copyright (C) 2017-Present HealPot
+ *     Copyright (C) 2017-Present 25
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -39,13 +39,13 @@ class UnsafeGlow_V1_13 : UnsafeGlow {
         const val MAX_LEVEL = 10
         const val START_LEVEL = 1
         @JvmStatic
-        private val GLOW : Enchantment by lazy {
+        private val GLOW: Enchantment by lazy {
             val glow = UnsafeGlowWrapper()
             if (Enchantment.getByKey(glow.key) == null) {
                 val acceptingNew = FuzzyReflect.of(Enchantment::class.java, true)
-                    .useFieldMatcher()
-                    .withName("acceptingNew")
-                    .resultAccessorAs<Enchantment, Boolean>()
+                        .useFieldMatcher()
+                        .withName("acceptingNew")
+                        .resultAccessorAs<Enchantment, Boolean>()
                 acceptingNew[null] = true
                 Enchantment.registerEnchantment(glow)
                 acceptingNew[null] = false

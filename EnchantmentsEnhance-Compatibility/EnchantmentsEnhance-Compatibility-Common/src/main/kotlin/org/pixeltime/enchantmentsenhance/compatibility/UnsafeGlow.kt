@@ -1,5 +1,5 @@
 /*
- *     Copyright (C) 2017-Present HealPot
+ *     Copyright (C) 2017-Present 25
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ import org.bukkit.inventory.ItemStack
 
 interface UnsafeGlow {
 
-    val wrapper : Enchantment
+    val wrapper: Enchantment
 
     fun addGlow(stack: ItemStack): ItemStack
 
@@ -39,6 +39,7 @@ interface UnsafeGlow {
                         "$PACKAGE.UnsafeGlow_V1_12"
             ) as Class<UnsafeGlow>
         }
+
         fun create(): UnsafeGlow {
             return CLASS_UNSAFE_GLOW.newInstance()
         }
