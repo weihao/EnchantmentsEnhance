@@ -42,13 +42,15 @@ class UnsafeGlow_V1_12 : UnsafeGlow {
         @JvmStatic
         private val GLOW : Enchantment by lazy {
             val glow = UnsafeGlowWrapper()
-            val acceptingNew = FuzzyReflect.of(Enchantment::class.java, true)
-                .useFieldMatcher()
-                .withName("acceptingNew")
-                .resultAccessorAs<Enchantment, Boolean>()
-            acceptingNew[null] = true
-            Enchantment.registerEnchantment(glow)
-            acceptingNew[null] = false
+            if (Enchantment.getByName(glow.name) == null) {
+                val acceptingNew = FuzzyReflect.of(Enchantment::class.java, true)
+                    .useFieldMatcher()
+                    .withName("acceptingNew")
+                    .resultAccessorAs<Enchantment, Boolean>()
+                acceptingNew[null] = true
+                Enchantment.registerEnchantment(glow)
+                acceptingNew[null] = false
+            }
             glow
         }
     }
