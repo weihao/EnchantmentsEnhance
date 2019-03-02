@@ -76,7 +76,7 @@ public class ValksMenu extends GUIAbstract {
                                                     player.closeInventory();
                                                     new MainMenu(player).open();
                                                 }
-                                            }.runTaskLaterAsynchronously(Main.getMain(), 2L);
+                                            }.runTaskLater(Main.getMain(), 2L);
                                         } else {
                                             Util.sendMessage(SettingsManager.lang.getString(
                                                     "valks.hasFailstack"), player);
@@ -113,7 +113,7 @@ public class ValksMenu extends GUIAbstract {
                     currPage--;
                 }
             }
-        }.runTaskLaterAsynchronously(Main.getMain(), 2L));
+        }.runTaskLater(Main.getMain(), 2L));
 
         if (inv.size() > currPage * 54) {
             setItem(Util.getSlot(9, 6),

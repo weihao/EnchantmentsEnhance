@@ -96,7 +96,7 @@ public class ItemMenu extends GUIAbstract {
                 player.closeInventory();
                 new MainMenu(player).open();
             }
-        }.runTaskLaterAsynchronously(Main.getMain(), 2L));
+        }.runTaskLater(Main.getMain(), 2L));
 
         if (SettingsManager.config.getBoolean("enableGrinding")) {
             setItem(grind.getPosition(), grind.getItem(playerName), (clickType) -> {
