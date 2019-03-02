@@ -24,7 +24,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
-import org.pixeltime.enchantmentsenhance.util.Sounds
+import com.lgou2w.ldk.bukkit.compatibility.Sounds
 
 
 class Crits : EnchantmentListener() {
@@ -47,7 +47,7 @@ class Crits : EnchantmentListener() {
                 val currentHealth = (player2 as Damageable).health
                 if (currentHealth > damage) {
                     (player2 as Damageable).health = currentHealth - damage
-                    player.location.world.playSound(player.location, Sounds.ENDERDRAGON_GROWL.bukkitSound(), 0.1f, 0.1f)
+                    player.location.world.playSound(player.location, Sounds.ENDERDRAGON_GROWL.toBukkit(), 0.1f, 0.1f)
                 }
             }
         }

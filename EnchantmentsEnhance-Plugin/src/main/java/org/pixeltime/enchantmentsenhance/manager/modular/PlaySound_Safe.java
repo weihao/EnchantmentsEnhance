@@ -20,7 +20,7 @@ package org.pixeltime.enchantmentsenhance.manager.modular;
 
 import org.bukkit.entity.Player;
 import org.pixeltime.enchantmentsenhance.interfaces.PlaySound;
-import org.pixeltime.enchantmentsenhance.util.Sounds;
+import com.lgou2w.ldk.bukkit.compatibility.Sounds;
 
 public class PlaySound_Safe implements PlaySound {
     public void playSound(Player p, String type) {
@@ -28,19 +28,19 @@ public class PlaySound_Safe implements PlaySound {
 
         switch (playingType) {
             case SUCCESS:
-                p.playSound(p.getLocation(), Sounds.NOTE_PLING.bukkitSound(),
+                p.playSound(p.getLocation(), Sounds.NOTE_PLING.toBukkit(),
                         1.0F, 2.0F);
                 break;
             case FAILED:
-                p.playSound(p.getLocation(), Sounds.ANVIL_BREAK.bukkitSound(),
+                p.playSound(p.getLocation(), Sounds.ANVIL_BREAK.toBukkit(),
                         1.0F, 2.0F);
                 break;
             case DOWNGRADED:
-                p.playSound(p.getLocation(), Sounds.EXPLODE.bukkitSound(), 1.0F,
+                p.playSound(p.getLocation(), Sounds.EXPLODE.toBukkit(), 1.0F,
                         2.0F);
                 break;
             default:
-                p.playSound(p.getLocation(), Sounds.ANVIL_USE.bukkitSound(),
+                p.playSound(p.getLocation(), Sounds.ANVIL_USE.toBukkit(),
                         1.0F, 2.0F);
         }
     }
