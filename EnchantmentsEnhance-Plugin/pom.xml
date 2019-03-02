@@ -32,7 +32,7 @@
     <artifactId>EnchantmentsEnhance-Plugin</artifactId>
     <packaging>jar</packaging>
     <properties>
-        <ldk.version>0.1.6-rc4</ldk.version>
+        <ldk.version>0.1.8-beta2</ldk.version>
     </properties>
 
     <repositories>
