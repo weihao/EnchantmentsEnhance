@@ -10,6 +10,10 @@
 [![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
 
 # [<img src=".images/jenkins.png" alt="Download" align="left">](http://www.soulbound.me/job/EnchantmentsEnhance_stable/)
+[![Download](https://img.shields.io/spiget/downloads/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
+[![Language](https://img.shields.io/github/languages/count/25/EnchantmentsEnhance.svg)](https://github.com/25/EnchantmentsEnhance/issues)
+[![Spiget Stars](https://img.shields.io/spiget/stars/59555.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
+[![Spiget Rating](https://img.shields.io/spiget/rating/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Jenkins](https://img.shields.io/website-up-down-green-red/http/www.soulbound.me.svg)](http://soulbound.me/job/EnchantmentsEnhance_stable/)
 [![Jenkins Build Status](http://www.soulbound.me/job/EnchantmentsEnhance_stable/badge/icon)](http://www.soulbound.me/job/EnchantmentsEnhance_stable/)
 [![Jitpack](https://jitpack.io/v/25/EnchantmentsEnhance.svg)](https://jitpack.io/#25/EnchantmentsEnhance/)
@@ -47,10 +51,6 @@ Version: `1.8.x - 1.13.x`
 > Build of Craftbukkit and Bukkit for local maven repository. See [BuildTools](https://www.spigotmc.org/wiki/buildtools/) Tools for more information.
 
 EnchantmentsEnhance uses `Maven` to manage project dependencies.
-
-1.12: Parent(resolve dependencies) -> Core(build plugin) -> 1.12 Shade(1.8 - 1.12 compatibility)
-
-1.13: Parent(resolve dependencies) -> Core(build plugin) -> 1.13 Shade(1.3 compatibility)
 
 #### Requirements
 - IntelliJ IDEA
