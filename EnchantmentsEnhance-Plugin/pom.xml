@@ -39,6 +39,10 @@
             <id>aikar</id>
             <url>https://repo.aikar.co/content/groups/aikar/</url>
         </repository>
+        <repository>
+            <id>CodeMC</id>
+            <url>https://repo.codemc.org/repository/maven-public</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -131,6 +135,12 @@
             <groupId>com.github.lgou2w.ldk</groupId>
             <artifactId>ldk-bukkit-compatibility</artifactId>
             <version>${ldk.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>1.4</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

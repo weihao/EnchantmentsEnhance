@@ -17,6 +17,7 @@
  */
 package org.pixeltime.enchantmentsenhance;
 
+import be.maximvdw.placeholderapi.internal.bstats.bukkit.Metrics;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -40,7 +41,6 @@ import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
-import org.pixeltime.enchantmentsenhance.util.metrics.Metrics;
 import org.pixeltime.enchantmentsenhance.util.reflection.MinecraftVersion;
 import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
 import org.pixeltime.enchantmentsenhance.version.VersionManager;
