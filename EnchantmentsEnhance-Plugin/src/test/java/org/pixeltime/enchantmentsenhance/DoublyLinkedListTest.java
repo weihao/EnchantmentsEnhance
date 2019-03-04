@@ -20,9 +20,9 @@ package org.pixeltime.enchantmentsenhance;
 
 import junit.framework.TestCase;
 import org.pixeltime.enchantmentsenhance.util.datastructure.DoublyLinkedList;
-import org.pixeltime.enchantmentsenhance.util.datastructure.interfaces.Iterator;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -63,82 +63,6 @@ public class DoublyLinkedListTest extends TestCase {
 
 
     /**
-     * Tests that objects can be removed at the beginning and end and that the
-     * size is changed
-     */
-    public void testRemoveIndex() {
-        list.add("A");
-        list.add("B");
-        assertTrue(list.remove(1));
-        assertEquals(1, list.getLength());
-        list.add("B");
-        assertTrue(list.remove(0));
-        assertEquals(1, list.getLength());
-    }
-
-
-    /**
-     * Tests the add method. Ensures that it adds the object is added at the end
-     * and the size is increased
-     */
-    public void testAdd() {
-        assertEquals(0, list.getLength());
-        list.add("A");
-        assertEquals(1, list.getLength());
-        list.add("B");
-        assertEquals(2, list.getLength());
-        assertEquals("B", list.getEntry(1));
-
-    }
-
-
-    /**
-     * Tests that objects can be added at the beginning and end and that they
-     * are placed correctly
-     */
-    public void testAddIndex() {
-        list.add("B");
-        list.add(0, "A");
-        assertEquals("A", list.getEntry(0));
-        assertEquals(2, list.getLength());
-        list.add(2, "D");
-        assertEquals("D", list.getEntry(2));
-        list.add(2, "C");
-        assertEquals("C", list.getEntry(2));
-    }
-
-
-    /**
-     * This tests that the add method throws a null pointer exception when
-     * adding null data to the list
-     */
-    public void testAddNullException() {
-        Exception e = null;
-        try {
-            list.add(null);
-        } catch (Exception exception) {
-            e = exception;
-        }
-        assertTrue(e instanceof IllegalArgumentException);
-    }
-
-
-    /**
-     * This tests that the add method throws a Invalid argument when adding null
-     * data to the list
-     */
-    public void testAddIndexNullException() {
-        Exception e = null;
-        try {
-            list.add(0, null);
-        } catch (Exception exception) {
-            e = exception;
-        }
-        assertTrue(e instanceof IllegalArgumentException);
-    }
-
-
-    /**
      * This tests when the add method is called and the index is greater than
      * size or less than zero
      */
@@ -158,70 +82,6 @@ public class DoublyLinkedListTest extends TestCase {
             e = exception;
         }
         assertTrue(e instanceof IndexOutOfBoundsException);
-    }
-
-
-    /**
-     * Tests removing a object changes the size appropiately and that you can
-     * remove the first and last elements
-     */
-    public void testRemoveObj() {
-        assertFalse(list.remove(null));
-        list.add("A");
-        list.add("B");
-        assertTrue(list.remove("A"));
-        assertEquals("B", list.getEntry(0));
-        assertEquals(1, list.getLength());
-        list.add("C");
-        assertTrue(list.remove("C"));
-        assertEquals("B", list.getEntry(0));
-    }
-
-
-    /**
-     * Tests get when the index is greater than or equal to size and when the
-     * index is less than zero
-     */
-    public void testGetException() {
-        Exception exception = null;
-        try {
-            list.getEntry(-1);
-        } catch (Exception e) {
-            exception = e;
-        }
-        assertTrue(exception instanceof IndexOutOfBoundsException);
-        exception = null;
-        list.add("A");
-        try {
-            list.getEntry(1);
-        } catch (IndexOutOfBoundsException e) {
-            exception = e;
-        }
-        assertTrue(exception instanceof IndexOutOfBoundsException);
-    }
-
-
-    /**
-     * Test geEntry()
-     */
-    public void testGet() {
-        list.add("aaaa");
-        list.add("bbbb");
-        list.add("cccc");
-        list.add("dddd");
-
-        assertEquals("aaaa", list.getEntry(0));
-        assertEquals("bbbb", list.getEntry(1));
-        assertEquals("cccc", list.getEntry(2));
-        assertEquals("dddd", list.getEntry(3));
-
-        Exception exception = null;
-        try {
-            list.getEntry(10);
-        } catch (Exception e) {
-            exception = e;
-        }
-        assertTrue(exception instanceof IndexOutOfBoundsException);
     }
 
 
@@ -246,18 +106,6 @@ public class DoublyLinkedListTest extends TestCase {
         list.add("A");
         assertFalse(list.isEmpty());
     }
-
-
-    /**
-     * Test clear()
-     */
-    public void testClear() {
-        list.add("A");
-        list.clear();
-        assertEquals(0, list.getLength());
-        assertFalse(list.contains("A"));
-    }
-
 
     /**
      * Test toString()
@@ -359,20 +207,6 @@ public class DoublyLinkedListTest extends TestCase {
 
     }
 
-
-    /**
-     * Test toArray()
-     */
-    public void testSwap() {
-        list.add("aaaa");
-        list.add("bbbb");
-        list.add("cccc");
-        list.add("dddd");
-        list.swap(2, 3);
-        assertEquals(list.toString(), "{aaaa; bbbb; dddd; cccc}");
-        list.swap(2, 1);
-        assertEquals(list.toString(), "{aaaa; dddd; bbbb; cccc}");
-    }
 
     public void testLogic() {
         Integer[] temp = {1, 2, 3, 4};
