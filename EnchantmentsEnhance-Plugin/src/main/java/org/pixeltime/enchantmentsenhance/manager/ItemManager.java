@@ -177,7 +177,7 @@ public class ItemManager {
             renameItem(currItem, clicked);
         }
 
-        addlore(currItem, oldLore, clicked);
+        addlore(currItem, oldLore, clicked, player.getDisplayName());
         if (!SettingsManager.config.getString("lore.bound").equalsIgnoreCase("disabled")) {
             soulbound(currItem);
         }
@@ -187,7 +187,7 @@ public class ItemManager {
         return currItem;
     }
 
-    private static void addlore(ItemStack currItem, List<String> old, Clickable clicked) {
+    private static void addlore(ItemStack currItem, List<String> old, Clickable clicked, String playerName) {
         ItemMeta im = currItem.getItemMeta();
         List<String> lore = (old != null && old.size() > 0) ? old : new ArrayList<>();
         List<String> newlore = im.hasLore() ? im.getLore() : new ArrayList<>();
@@ -199,7 +199,9 @@ public class ItemManager {
             applyingLores = (List<String>) SettingsManager.config.getList("enhance." + getToolEnchantLevel(currItem) + ".lore");
         }
         for (String s : applyingLores) {
-            lore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', s));
+            lore.add(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', s)
+                    .replaceAll("%player%", playerName)
+                    .replaceAll("%date%", Util.getCurrentDate()));
         }
         newlore.addAll(lore);
         im.setLore(newlore);

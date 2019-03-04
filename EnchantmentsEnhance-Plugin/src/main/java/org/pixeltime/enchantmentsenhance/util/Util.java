@@ -28,6 +28,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -39,6 +41,11 @@ import java.util.Random;
 public class Util {
     public static final String UNIQUEID = ChatColor.translateAlternateColorCodes('&', "&r&c&r&a&r&4&r&e&r&a&r&8&r&2&r&a&r&5&r&8&r&c&r&4&r&7&r&e&r&b&r&e");
 
+    public static String getCurrentDate(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate localDate = LocalDate.now();
+        return dtf.format(localDate);
+    }
     public static ItemStack getMainHand(Player player) {
         try {
             ItemStack item = player.getInventory().getItemInMainHand();
