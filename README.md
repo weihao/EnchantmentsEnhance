@@ -8,10 +8,10 @@
 [![License](https://img.shields.io/badge/license-GPL-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/pulls)
 [![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
+[![Language](https://img.shields.io/github/languages/count/25/EnchantmentsEnhance.svg)](https://github.com/25/EnchantmentsEnhance/issues)
 
 # [<img src=".images/jenkins.png" alt="Download" align="left">](http://www.soulbound.me/job/EnchantmentsEnhance_stable/)
 [![Download](https://img.shields.io/spiget/downloads/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
-[![Language](https://img.shields.io/github/languages/count/25/EnchantmentsEnhance.svg)](https://github.com/25/EnchantmentsEnhance/issues)
 [![Spiget Stars](https://img.shields.io/spiget/stars/59555.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Spiget Rating](https://img.shields.io/spiget/rating/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Jenkins](https://img.shields.io/website-up-down-green-red/http/www.soulbound.me.svg)](http://soulbound.me/job/EnchantmentsEnhance_stable/)
