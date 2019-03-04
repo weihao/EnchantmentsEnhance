@@ -18,7 +18,6 @@
 
 package org.pixeltime.enchantmentsenhance.gui.menu;
 
-import com.lgou2w.ldk.bukkit.compatibility.DyeColors;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
@@ -40,27 +39,12 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MainMenu extends GUIAbstract {
-    public static final ItemStack[] WOOL = {
-            new ItemBuilder(XMaterial.BLACK_WOOL.toBukkit()).setDyeColor(DyeColor.BLACK).toItemStack(),
-            new ItemBuilder(XMaterial.BLUE_WOOL.toBukkit()).setDyeColor(DyeColor.BLUE).toItemStack(),
-            new ItemBuilder(XMaterial.BROWN_WOOL.toBukkit()).setDyeColor(DyeColor.BROWN).toItemStack(),
-            new ItemBuilder(XMaterial.CYAN_WOOL.toBukkit()).setDyeColor(DyeColor.CYAN).toItemStack(),
-            new ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.toBukkit()).setDyeColor(DyeColors.LIGHT_GRAY.toBukkit()).toItemStack(),
-            new ItemBuilder(XMaterial.GREEN_WOOL.toBukkit()).setDyeColor(DyeColor.GREEN).toItemStack(),
-            new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit()).setDyeColor(DyeColor.LIGHT_BLUE).toItemStack(),
-            new ItemBuilder(XMaterial.GRAY_WOOL.toBukkit()).setDyeColor(DyeColor.GRAY).toItemStack(),
-            new ItemBuilder(XMaterial.LIME_WOOL.toBukkit()).setDyeColor(DyeColor.LIME).toItemStack(),
-            new ItemBuilder(XMaterial.MAGENTA_WOOL.toBukkit()).setDyeColor(DyeColor.MAGENTA).toItemStack(),
-            new ItemBuilder(XMaterial.ORANGE_WOOL.toBukkit()).setDyeColor(DyeColor.ORANGE).toItemStack(),
-            new ItemBuilder(XMaterial.PINK_WOOL.toBukkit()).setDyeColor(DyeColor.PINK).toItemStack(),
-            new ItemBuilder(XMaterial.PURPLE_WOOL.toBukkit()).setDyeColor(DyeColor.PURPLE).toItemStack(),
-            new ItemBuilder(XMaterial.RED_WOOL.toBukkit()).setDyeColor(DyeColor.RED).toItemStack(),
-            new ItemBuilder(XMaterial.WHITE_WOOL.toBukkit()).setDyeColor(DyeColor.WHITE).toItemStack(),
-            new ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit()).setDyeColor(DyeColor.YELLOW).toItemStack()
-    };
     public static Map<String, ItemStack> itemOnEnhancingSlot = new HashMap<String, ItemStack>();
     public static Map<String, Clickable> enhancingMode = new HashMap<>();
     public static Map<String, BukkitTask> inProgress = new HashMap<>();
@@ -86,10 +70,6 @@ public class MainMenu extends GUIAbstract {
         itemOnEnhancingSlot.remove(playerName);
     }
 
-    public static ItemStack randomWool() {
-        Random random = new Random();
-        return WOOL[random.nextInt(WOOL.length)];
-    }
 
     @Override
     public void update() {
@@ -136,7 +116,7 @@ public class MainMenu extends GUIAbstract {
                                         inProgress.remove(playerName);
                                         return;
                                     }
-                                    animate.add(randomWool());
+                                    animate.add(Util.randomWool());
                                     if (count >= 0) {
                                         for (int i = 0; i < animate.size(); i++) {
                                             setItem(Util.getSlot(3 + i, 4), animate.get(animate.size() - i - 1));
@@ -190,7 +170,7 @@ public class MainMenu extends GUIAbstract {
                                         inProgress.remove(playerName);
                                         return;
                                     }
-                                    animate.add(randomWool());
+                                    animate.add(Util.randomWool());
                                     if (count >= 0) {
                                         for (int i = 0; i < animate.size(); i++) {
                                             setItem(Util.getSlot(3 + i, 4), animate.get(animate.size() - i - 1));
