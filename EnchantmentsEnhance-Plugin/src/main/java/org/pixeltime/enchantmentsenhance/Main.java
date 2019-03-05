@@ -17,8 +17,8 @@
  */
 package org.pixeltime.enchantmentsenhance;
 
-import be.maximvdw.placeholderapi.internal.bstats.bukkit.Metrics;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;

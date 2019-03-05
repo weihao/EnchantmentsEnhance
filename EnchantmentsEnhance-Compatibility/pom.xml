@@ -33,14 +33,14 @@
         <dependency>
             <groupId>com.github.lgou2w.ldk</groupId>
             <artifactId>ldk-reflect</artifactId>
-            <version>0.1.8-beta2</version>
+            <version>${ldk.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- ldk-bukkit-version -->
         <dependency>
             <groupId>com.github.lgou2w.ldk</groupId>
             <artifactId>ldk-bukkit-version</artifactId>
-            <version>0.1.8-beta2</version>
+            <version>${ldk.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

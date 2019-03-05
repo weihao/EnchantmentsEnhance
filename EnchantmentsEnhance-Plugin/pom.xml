@@ -14,9 +14,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>EnchantmentsEnhance-Plugin</artifactId>
     <packaging>jar</packaging>
-    <properties>
-        <ldk.version>0.1.8-beta3</ldk.version>
-    </properties>
 
     <repositories>
         <repository>
@@ -227,6 +224,12 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.bstats.bukkit</pattern>
+                                    <shadedPattern>org.pixeltime.enchantmentsenhance</shadedPattern>
+                                </relocation>
+                            </relocations>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer
