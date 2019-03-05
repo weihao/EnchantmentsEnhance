@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
+import com.lgou2w.ldk.bukkit.compatibility.DyeColors;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.DyeColor;
 import org.bukkit.inventory.ItemStack;
@@ -32,7 +33,7 @@ import org.pixeltime.enchantmentsenhance.util.Util;
 public class EnhanceIcon extends Clickable {
     @Override
     public ItemStack getItem(String playerName) {
-        return new ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit()).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
+        return new ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit()).setDyeColor(DyeColors.YELLOW.toBukkit()).setName(SettingsManager.lang.getString("menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
                 "menu.lore.ifSuccess")).addLoreLine(SettingsManager.lang.getString(
                 "menu.lore.ifFail")).addLoreLine(SettingsManager.lang.getString(
                 "menu.lore.ifDowngrade")).addLoreLine(SettingsManager.lang.getString(
@@ -43,7 +44,7 @@ public class EnhanceIcon extends Clickable {
 
     public ItemStack getItem(ItemStack item) {
         int level = ItemManager.getItemEnchantLevel(item);
-        ItemBuilder ib = new ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit()).setDyeColor(DyeColor.YELLOW).setName(SettingsManager.lang.getString("menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
+        ItemBuilder ib = new ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit()).setDyeColor(DyeColors.YELLOW.toBukkit()).setName(SettingsManager.lang.getString("menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
                 "menu.lore.ifSuccess"));
         if (DataManager.baseChance[level] != 100.0) {
             ib.addLoreLine(SettingsManager.lang.getString(

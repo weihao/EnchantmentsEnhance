@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.gui.menu;
 
+import com.lgou2w.ldk.bukkit.compatibility.DyeColors;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
@@ -282,7 +283,7 @@ public class MainMenu extends GUIAbstract {
                 });
 
         for (int i : MenuCoord.getPlaceHolderCoords()) {
-            setItem(i, new ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE.toBukkit()).setDyeColor(DyeColor.BLACK).setName("&0").toItemStack());
+            setItem(i, new ItemBuilder(XMaterial.BLACK_STAINED_GLASS_PANE.toBukkit()).setDyeColor(DyeColors.BLACK.toBukkit()).setName("&0").toItemStack());
         }
     }
 }

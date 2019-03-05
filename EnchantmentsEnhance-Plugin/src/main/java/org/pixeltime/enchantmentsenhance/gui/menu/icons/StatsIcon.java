@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
+import com.lgou2w.ldk.bukkit.compatibility.DyeColors;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.DyeColor;
 import org.bukkit.inventory.ItemStack;
@@ -35,7 +36,7 @@ public class StatsIcon extends Clickable {
 
     public ItemStack getItem() {
         return new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
-                .setDyeColor(DyeColor.LIGHT_BLUE)
+                .setDyeColor(DyeColors.LIGHT_BLUE.toBukkit())
                 .setName(SettingsManager.lang.getString("menu.gui.stats"))
                 .addLoreLine(SettingsManager.lang.getString("menu.lore.stats1"))
                 .addLoreLine(SettingsManager.lang.getString("menu.lore.stats2"))
@@ -46,7 +47,7 @@ public class StatsIcon extends Clickable {
         if (playerName != null && MainMenu.itemOnEnhancingSlot.get(playerName) != null) {
             return CompatibilityManager.glow
                     .addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
-                            .setDyeColor(DyeColor.LIGHT_BLUE)
+                            .setDyeColor(DyeColors.LIGHT_BLUE.toBukkit())
                             .setName(SettingsManager.lang.getString("menu.gui.stats"))
                             .addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack")
                                     + Main.getApi().getFailstack(playerName))
@@ -57,7 +58,7 @@ public class StatsIcon extends Clickable {
         }
         if (playerName != null && Main.getApi().hasFailstack(playerName)) {
             return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
-                    .setDyeColor(DyeColor.LIGHT_BLUE)
+                    .setDyeColor(DyeColors.LIGHT_BLUE.toBukkit())
                     .setName(SettingsManager.lang.getString("menu.gui.stats"))
                     .addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack")
                             + Main.getApi().getFailstack(playerName))

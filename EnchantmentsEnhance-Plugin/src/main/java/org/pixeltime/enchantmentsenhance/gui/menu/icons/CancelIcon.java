@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
+import com.lgou2w.ldk.bukkit.compatibility.DyeColors;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.DyeColor;
 import org.bukkit.inventory.ItemStack;
@@ -31,7 +32,7 @@ public class CancelIcon extends Clickable {
     @Override
     public ItemStack getItem(String playerName) {
         return new ItemBuilder(XMaterial.RED_WOOL.toBukkit())
-                .setDyeColor(DyeColor.RED)
+                .setDyeColor(DyeColors.RED.toBukkit())
                 .setName(SettingsManager.lang.getString("menu.gui.cancel"))
                 .addLoreLine(SettingsManager.lang.getString("menu.lore.cancel"))
                 .toItemStack();

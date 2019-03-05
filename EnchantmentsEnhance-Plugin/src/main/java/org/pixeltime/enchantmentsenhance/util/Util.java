@@ -43,26 +43,26 @@ import java.util.Random;
 public class Util {
     public static final String UNIQUEID = ChatColor.translateAlternateColorCodes('&', "&r&c&r&a&r&4&r&e&r&a&r&8&r&2&r&a&r&5&r&8&r&c&r&4&r&7&r&e&r&b&r&e");
 
-    public static final ItemStack[] WOOL = {
-            new ItemBuilder(XMaterial.BLACK_WOOL.toBukkit()).setDyeColor(DyeColor.BLACK).toItemStack(),
-            new ItemBuilder(XMaterial.BLUE_WOOL.toBukkit()).setDyeColor(DyeColor.BLUE).toItemStack(),
-            new ItemBuilder(XMaterial.BROWN_WOOL.toBukkit()).setDyeColor(DyeColor.BROWN).toItemStack(),
-            new ItemBuilder(XMaterial.CYAN_WOOL.toBukkit()).setDyeColor(DyeColor.CYAN).toItemStack(),
-            new ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.toBukkit()).setDyeColor(DyeColors.LIGHT_GRAY.toBukkit()).toItemStack(),
-            new ItemBuilder(XMaterial.GREEN_WOOL.toBukkit()).setDyeColor(DyeColor.GREEN).toItemStack(),
-            new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit()).setDyeColor(DyeColor.LIGHT_BLUE).toItemStack(),
-            new ItemBuilder(XMaterial.GRAY_WOOL.toBukkit()).setDyeColor(DyeColor.GRAY).toItemStack(),
-            new ItemBuilder(XMaterial.LIME_WOOL.toBukkit()).setDyeColor(DyeColor.LIME).toItemStack(),
-            new ItemBuilder(XMaterial.MAGENTA_WOOL.toBukkit()).setDyeColor(DyeColor.MAGENTA).toItemStack(),
-            new ItemBuilder(XMaterial.ORANGE_WOOL.toBukkit()).setDyeColor(DyeColor.ORANGE).toItemStack(),
-            new ItemBuilder(XMaterial.PINK_WOOL.toBukkit()).setDyeColor(DyeColor.PINK).toItemStack(),
-            new ItemBuilder(XMaterial.PURPLE_WOOL.toBukkit()).setDyeColor(DyeColor.PURPLE).toItemStack(),
-            new ItemBuilder(XMaterial.RED_WOOL.toBukkit()).setDyeColor(DyeColor.RED).toItemStack(),
-            new ItemBuilder(XMaterial.WHITE_WOOL.toBukkit()).setDyeColor(DyeColor.WHITE).toItemStack(),
-            new ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit()).setDyeColor(DyeColor.YELLOW).toItemStack()
-    };
 
     public static ItemStack randomWool() {
+        ItemStack[] WOOL = {
+                new ItemBuilder(XMaterial.BLACK_WOOL.toBukkit()).setDyeColor(DyeColors.BLACK.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.BLUE_WOOL.toBukkit()).setDyeColor(DyeColors.BLUE.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.BROWN_WOOL.toBukkit()).setDyeColor(DyeColors.BROWN.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.CYAN_WOOL.toBukkit()).setDyeColor(DyeColors.CYAN.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.LIGHT_GRAY_WOOL.toBukkit()).setDyeColor(DyeColors.LIGHT_GRAY.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.GREEN_WOOL.toBukkit()).setDyeColor(DyeColors.GREEN.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit()).setDyeColor(DyeColors.LIGHT_BLUE.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.GRAY_WOOL.toBukkit()).setDyeColor(DyeColors.GRAY.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.LIME_WOOL.toBukkit()).setDyeColor(DyeColors.LIME.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.MAGENTA_WOOL.toBukkit()).setDyeColor(DyeColors.MAGENTA.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.ORANGE_WOOL.toBukkit()).setDyeColor(DyeColors.ORANGE.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.PINK_WOOL.toBukkit()).setDyeColor(DyeColors.PINK.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.PURPLE_WOOL.toBukkit()).setDyeColor(DyeColors.PURPLE.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.RED_WOOL.toBukkit()).setDyeColor(DyeColors.RED.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.WHITE_WOOL.toBukkit()).setDyeColor(DyeColors.WHITE.toBukkit()).toItemStack(),
+                new ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit()).setDyeColor(DyeColors.YELLOW.toBukkit()).toItemStack()
+        };
         Random random = new Random();
         return WOOL[random.nextInt(WOOL.length)];
     }

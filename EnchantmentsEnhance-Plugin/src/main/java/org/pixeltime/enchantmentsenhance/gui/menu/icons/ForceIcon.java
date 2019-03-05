@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
+import com.lgou2w.ldk.bukkit.compatibility.DyeColors;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.DyeColor;
 import org.bukkit.inventory.ItemStack;
@@ -35,7 +36,7 @@ public class ForceIcon extends Clickable {
     @Override
     public ItemStack getItem(String playerName) {
         return new ItemBuilder(XMaterial.RED_WOOL.toBukkit())
-                .setDyeColor(DyeColor.RED)
+                .setDyeColor(DyeColors.RED.toBukkit())
                 .setName(SettingsManager.lang.getString("menu.gui.force"))
                 .addLoreLine(SettingsManager.lang.getString(
                         "menu.lore.force1")).toItemStack();
@@ -53,7 +54,7 @@ public class ForceIcon extends Clickable {
         int stoneId = Enhance.getStoneId(item, enchantLevel, clicked);
         int costToEnhance = DataManager.costToForceEnchant[enchantLevel + 1];
         return new ItemBuilder(XMaterial.RED_WOOL.toBukkit())
-                .setDyeColor(DyeColor.RED)
+                .setDyeColor(DyeColors.RED.toBukkit())
                 .setName(SettingsManager.lang.getString("menu.gui.force"))
                 .addLoreLine(SettingsManager.lang.getString("menu.lore.force1"))
                 .addLoreLine(SettingsManager.lang.getString("menu.lore.force2")
