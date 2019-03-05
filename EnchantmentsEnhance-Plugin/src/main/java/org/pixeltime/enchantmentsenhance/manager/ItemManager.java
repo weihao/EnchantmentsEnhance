@@ -177,6 +177,13 @@ public class ItemManager {
         if (!SettingsManager.config.getString("lore.bound").equalsIgnoreCase("disabled")) {
             soulbound(currItem);
         }
+
+        return currItem;
+    }
+
+    public static ItemStack forgeItemWithReplacement(Player player, ItemStack item, int enchantLevel, boolean addition, Clickable clicked) {
+        ItemStack currItem = forgeItem(player, item, enchantLevel, addition, clicked);
+
         player.getInventory().removeItem(item);
         MainMenu.itemOnEnhancingSlot.put(player.getName(), currItem);
         player.getInventory().addItem(currItem);

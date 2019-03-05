@@ -39,15 +39,16 @@ class ItemCommand : SubCommand() {
             when {
                 args[0].equals("upgrade", ignoreCase = true) -> try {
                     var item = Util.getMainHand(player)
-                    val level = ItemManager.getItemEnchantLevel(item)
+                    var level = ItemManager.getItemEnchantLevel(item)
                     val aimingLevel = Integer.parseInt(args[2])
                     var clicked: Clickable = MainMenu.gear
                     if (args[1].equals("tool", ignoreCase = true)) {
                         clicked = MainMenu.tool
+                        level = ItemManager.getToolEnchantLevel(item)
                     }
                     if (level < aimingLevel) {
                         for (i in level + 1..aimingLevel) {
-                            item = ItemManager.forgeItem(player, item, i, true, clicked)
+                            item = ItemManager.forgeItemWithReplacement(player, item, i, true, clicked)
                         }
                     } else if (aimingLevel < level) {
                         Util.sendMessage(SettingsManager.lang.getString("config.invalidNumber"), player)
@@ -70,7 +71,7 @@ class ItemCommand : SubCommand() {
                         val curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]))
                         try {
                             player.inventory.removeItem(item)
-                            ItemManager.forgeItem(player, curr, level, true, clicked)
+                            ItemManager.forgeItemWithReplacement(player, curr, level, true, clicked)
                             MainMenu.clearPlayer(player.name)
                         } catch (ex: Exception) {
                             Util.sendMessage(SettingsManager.lang.getString("config.invalidItem"), player)

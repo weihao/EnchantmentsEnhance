@@ -111,7 +111,7 @@ public class Enhance {
             Clickable clicked) {
         // Enchant level after a successful enhancement
 
-        ItemStack forged = ItemManager.forgeItem(player, item, enchantLevel, true, clicked);
+        ItemStack forged = ItemManager.forgeItemWithReplacement(player, item, enchantLevel, true, clicked);
 
         // Play sound
         CompatibilityManager.playsound.playSound(player, "SUCCESS");
@@ -177,7 +177,7 @@ public class Enhance {
             // Item level after failing.
             int enchantLevel = level - 2;
             // Updates the item.
-            ItemManager.forgeItem(player, item, enchantLevel, false, clicked);
+            ItemManager.forgeItemWithReplacement(player, item, enchantLevel, false, clicked);
             // Broadcast
             if (DataManager.broadcastEnhance[level]) {
                 String str = SettingsManager.lang.getString("annoucer.failed")

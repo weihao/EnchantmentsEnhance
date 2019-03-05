@@ -21,7 +21,6 @@ package org.pixeltime.enchantmentsenhance.gui.menu;
 import com.lgou2w.ldk.bukkit.compatibility.DyeColors;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.Bukkit;
-import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -61,6 +60,7 @@ public class MainMenu extends GUIAbstract {
     public static ToolIcon tool = new ToolIcon();
     public static AccessoryIcon accessory = new AccessoryIcon();
     public static CancelIcon cancel = new CancelIcon();
+    public static ForgedIcon forged = new ForgedIcon();
 
     public MainMenu(Player player) {
         super(player, 54, SettingsManager.lang.getString("menu.gui.title"));
@@ -230,6 +230,7 @@ public class MainMenu extends GUIAbstract {
 
             setItem(stone.getPosition(), stone.getItem(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName)));
 
+            setItem(forged.getPosition(), forged.getItem(player, itemOnEnhancingSlot.get(playerName), enhancingMode.get(playerName)));
         } else {
             setItem(Util.getSlot(8, 4), new ItemStack(Material.AIR));
             setItem(remove.getPosition(), new ItemStack(Material.AIR));
