@@ -11,8 +11,8 @@
 [![Language](https://img.shields.io/github/languages/count/25/EnchantmentsEnhance.svg)](https://github.com/25/EnchantmentsEnhance/issues)
 
 # [<img src=".images/jenkins.png" alt="Download" align="left">](http://www.soulbound.me/job/EnchantmentsEnhance_stable/)
-[![bStats](https://img.shields.io/badge/bStats-deployed-3366ff.svg?style=flat)](https://bstats.org/plugin/bukkit/EnchantmentsEnhance)
 [![Download](https://img.shields.io/spiget/downloads/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
+[![bStats](https://img.shields.io/badge/bStats-deployed-3366ff.svg?style=flat)](https://bstats.org/plugin/bukkit/EnchantmentsEnhance)
 [![Spiget Stars](https://img.shields.io/spiget/stars/59555.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Spiget Rating](https://img.shields.io/spiget/rating/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Jitpack](https://jitpack.io/v/25/EnchantmentsEnhance.svg)](https://jitpack.io/#25/EnchantmentsEnhance/)
