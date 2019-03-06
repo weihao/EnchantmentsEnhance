@@ -55,7 +55,7 @@ public class ValksMenu extends GUIAbstract {
                 final int index = i + ((currPage - 1) * 54);
                 final int level = inv.get(index);
                 setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1),
-                        CompatibilityManager.glow.addGlow(new ItemBuilder(Material.BOOK, level)
+                        CompatibilityManager.glow.addGlow(new ItemBuilder(Material.BOOK, level > 64 ? 64 : level)
                                 .setName(SettingsManager.lang.getString("item.valks") + "+" + level)
                                 .addLoreLine(SettingsManager.lang.getString("menu.leftAdviceInfo"))
                                 .addLoreLine(SettingsManager.lang.getString("menu.rightInfo"))

@@ -20,7 +20,7 @@ public class ForgedIcon extends Clickable {
         } else if (clicked.equals(MainMenu.tool)) {
             enchantLevel = ItemManager.getToolEnchantLevel(item);
         }
-        return ItemManager.forgeItemWithReplacement(player, item, enchantLevel, true, clicked);
+        return ItemManager.forgeItem(player, item, enchantLevel + 1, true, clicked);
     }
 
     @Override

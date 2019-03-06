@@ -20,7 +20,6 @@ package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
 import com.lgou2w.ldk.bukkit.compatibility.DyeColors;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
-import org.bukkit.DyeColor;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.event.Enhance;

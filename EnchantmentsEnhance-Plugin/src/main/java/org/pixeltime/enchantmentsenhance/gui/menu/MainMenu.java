@@ -83,6 +83,23 @@ public class MainMenu extends GUIAbstract {
         }
 
         if (itemOnEnhancingSlot.containsKey(playerName)) {
+            ItemStack item = itemOnEnhancingSlot.get(playerName);
+            Clickable clicked = enhancingMode.get(playerName);
+            int enchantLevel;
+            if (clicked.equals(MainMenu.gear)) {
+                enchantLevel = ItemManager.getItemEnchantLevel(item) + 1;
+            } else if (clicked.equals(MainMenu.tool)) {
+                enchantLevel = ItemManager.getToolEnchantLevel(item) + 1;
+            } else {
+                clearPlayer(playerName);
+                update();
+                return;
+            }
+            if (enchantLevel < 0 || enchantLevel >= DataManager.levels) {
+                clearPlayer(playerName);
+                update();
+                return;
+            }
             // Sets Enhancing item on display.
             setItem(Util.getSlot(8, 4), itemOnEnhancingSlot.get(playerName));
             // Sets Enhance button.
@@ -133,7 +150,6 @@ public class MainMenu extends GUIAbstract {
                     });
                 } else {
                     setItem(enhance.getPosition(), enhance.getItem(itemOnEnhancingSlot.get(playerName)), (clickType) -> {
-                        int enchantLevel = ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1;
                         int stoneId = Enhance.getStoneId(itemOnEnhancingSlot.get(playerName), enchantLevel, enhancingMode.get(playerName));
                         Util.sendMessage(SettingsManager.lang.getString("item.noItem")
                                 .replaceAll("%STONE%", SettingsManager.lang.getString(
@@ -187,7 +203,6 @@ public class MainMenu extends GUIAbstract {
                     });
                 } else {
                     setItem(enhance.getPosition(), enhance.getItem(itemOnEnhancingSlot.get(playerName)), (clickType) -> {
-                        int enchantLevel = ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1;
                         int stoneId = Enhance.getStoneId(itemOnEnhancingSlot.get(playerName), enchantLevel, enhancingMode.get(playerName));
                         Util.sendMessage(SettingsManager.lang.getString("item.noItem")
                                 .replaceAll("%STONE%", SettingsManager.lang.getString(
@@ -197,18 +212,14 @@ public class MainMenu extends GUIAbstract {
             }
 
 
-            if ((DataManager.maximumFailstackApplied[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0
-                    || DataManager.maximumFailstackApplied[ItemManager.getToolEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0)
-                    && (DataManager.costToForceEnchant[ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0
-                    || DataManager.costToForceEnchant[ItemManager.getToolEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1] > 0)) {
+            if (DataManager.maximumFailstackApplied[enchantLevel] > 0
+                    && DataManager.costToForceEnchant[enchantLevel] > 0) {
                 if (Enhance.getValidationOfForce(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName))) {
                     setItem(force.getPosition(), force.getGlowingItem(itemOnEnhancingSlot.get(playerName), enhancingMode.get(playerName)), (clickType) -> {
                         Enhance.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
                     });
                 } else {
                     setItem(force.getPosition(), force.getItem(itemOnEnhancingSlot.get(playerName), enhancingMode.get(playerName)), (clickType) -> {
-                        // Current enchant level before enhancing
-                        int enchantLevel = ItemManager.getItemEnchantLevel(itemOnEnhancingSlot.get(playerName)) + 1;
                         // Finds the stone used in the enhancement
                         int stoneId = Enhance.getStoneId(itemOnEnhancingSlot.get(playerName), enchantLevel, enhancingMode.get(playerName));
                         Util.sendMessage(SettingsManager.lang.getString("item.noItem")
