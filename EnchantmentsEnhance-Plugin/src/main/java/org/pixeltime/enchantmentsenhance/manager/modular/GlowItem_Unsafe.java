@@ -29,6 +29,7 @@ public class GlowItem_Unsafe implements GlowItem {
 
     public GlowItem_Unsafe() {
         inst = UnsafeGlow.Factory.create();
+        inst.getWrapper(); // 服务器启动后就注册，防止 lazy 造成不发光
     }
 
     @NotNull
