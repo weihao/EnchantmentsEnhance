@@ -7,7 +7,7 @@
 ### Fixed
 - Menu async problem.
 - Glow enchantment error.
-- 
+
 ### Changed
 - Changed dependency to LDK compatibility.
 
