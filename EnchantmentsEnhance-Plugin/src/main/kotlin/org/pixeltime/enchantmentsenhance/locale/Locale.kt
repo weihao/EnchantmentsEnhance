@@ -24,7 +24,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 class LocaleManager {
     companion object {
         @JvmStatic
-        val lang = LangType.valueOf(SettingsManager.config.getString("language").toUpperCase()).id
+        val lang = LangType.valueOf(SettingsManager.config.getString("language")!!.toUpperCase()).id
 
         @JvmStatic
         fun addLang(path: String, locale: Array<String>) {

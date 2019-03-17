@@ -100,7 +100,7 @@ class DropManager {
             val stoneType = table[((0..table.size).random())]
             Main.getApi().addItem(
                     player.name, stoneType, 1)
-            Util.sendMessage(SettingsManager.lang.getString("item.get").replace("%ITEM%", SettingsManager.lang.getString("item.$stoneType")), player)
+            Util.sendMessage(SettingsManager.lang.getString("item.get")!!.replace("%ITEM%", SettingsManager.lang.getString("item.$stoneType")!!), player)
         }
 
         @JvmStatic

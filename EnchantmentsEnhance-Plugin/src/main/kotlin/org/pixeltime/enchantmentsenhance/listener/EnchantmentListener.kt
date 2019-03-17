@@ -29,7 +29,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 abstract class EnchantmentListener : Listener {
     fun name(): String {
-        return ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + this.javaClass.simpleName.toLowerCase()))
+        return ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + this.javaClass.simpleName.toLowerCase())!!)
     }
 
     private fun addPermaPotion(player: Player, type: PotionEffectType, level: Int) {

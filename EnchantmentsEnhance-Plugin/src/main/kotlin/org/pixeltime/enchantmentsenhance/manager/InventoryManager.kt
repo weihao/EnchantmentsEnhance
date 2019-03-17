@@ -39,29 +39,31 @@ class InventoryManager {
 
             val accessory = arrayListOf<ItemStack>()
             if (left_ring != -1 && inv.getItem(left_ring) != null) {
-                accessory.add(inv.getItem(left_ring))
+                accessory.add(inv.getItem(left_ring)!!)
             }
             if (right_ring != -1 && inv.getItem(right_ring) != null) {
-                accessory.add(inv.getItem(right_ring))
+                accessory.add(inv.getItem(right_ring)!!)
             }
             if (left_earring != -1 && inv.getItem(left_earring) != null) {
-                accessory.add(inv.getItem(left_earring))
+                accessory.add(inv.getItem(left_earring)!!)
             }
             if (right_earring != -1 && inv.getItem(right_earring) != null) {
-                accessory.add(inv.getItem(right_earring))
+                accessory.add(inv.getItem(right_earring)!!)
             }
             if (necklace != -1 && inv.getItem(necklace) != null) {
-                accessory.add(inv.getItem(necklace))
+                accessory.add(inv.getItem(necklace)!!)
             }
             if (belt != -1 && inv.getItem(belt) != null) {
-                accessory.add(inv.getItem(belt))
+                accessory.add(inv.getItem(belt)!!)
             }
-            return accessory.filter { it.hasItemMeta() && it.itemMeta.hasLore() && it.itemMeta.lore.isNotEmpty() }
+            return accessory.filter { it.hasItemMeta() && it.itemMeta!!.hasLore() && it.itemMeta!!.lore!!.isNotEmpty() }
         }
 
         @JvmStatic
         fun getArmorSlots(player: Player): List<ItemStack> {
-            return (player.inventory.armorContents + Util.getMainHand(player)).filterNotNull().filter { it.type != Material.AIR && it.hasItemMeta() && it.itemMeta.hasLore() && it.itemMeta.lore.isNotEmpty() }
+            return (player.inventory.armorContents + Util.getMainHand(player))
+                .filterNotNull()
+                .filter { it.type != Material.AIR && it.hasItemMeta() && it.itemMeta!!.hasLore() && it.itemMeta!!.lore!!.isNotEmpty() }
         }
 
         @JvmStatic
@@ -78,7 +80,7 @@ class InventoryManager {
 
         @JvmStatic
         fun getHighestLevel(player: Player, lore: String): Int {
-            return getItemList(player).map { KotlinManager.getLevel(lore, it.itemMeta.lore) }.max() ?: 0
+            return getItemList(player).map { KotlinManager.getLevel(lore, it.itemMeta!!.lore!!) }.max() ?: 0
         }
     }
 }

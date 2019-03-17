@@ -67,7 +67,7 @@ class Shearer : EnchantmentListener() {
             if (entity is Sheep) {
                 if (!entity.isSheared) {
                     entity.isSheared = true
-                    entity.world.dropItem(entity.location, ItemStack(XMaterial.WHITE_WOOL.toBukkit(), 1, entity.color.woolData.toShort()))
+                    entity.world.dropItem(entity.location, ItemStack(XMaterial.WHITE_WOOL.toBukkit(), 1, entity.color!!.woolData.toShort()))
                 }
             }
         }

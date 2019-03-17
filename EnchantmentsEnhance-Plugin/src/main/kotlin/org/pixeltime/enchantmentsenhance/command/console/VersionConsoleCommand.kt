@@ -28,7 +28,7 @@ class VersionConsoleCommand : SubConsoleCommand() {
 
     override fun onCommand(sender: CommandSender, args: Array<String>) {
         Util.sendMessage(SettingsManager.lang.getString(
-                "config.checkingVersion").replace("%version%".toRegex(), Main.getMain()
+                "config.checkingVersion")!!.replace("%version%".toRegex(), Main.getMain()
                 .description.version), sender)
     }
 

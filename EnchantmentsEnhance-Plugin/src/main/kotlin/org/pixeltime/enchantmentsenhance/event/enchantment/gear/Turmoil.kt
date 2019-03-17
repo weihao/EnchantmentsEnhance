@@ -42,7 +42,7 @@ class Turmoil : EnchantmentListener() {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
-        val translateAlternateColorCodes: String = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "turmoil"))
+        val translateAlternateColorCodes: String = ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + "turmoil")!!)
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             val player2 = entityDamageByEntityEvent.entity as Player

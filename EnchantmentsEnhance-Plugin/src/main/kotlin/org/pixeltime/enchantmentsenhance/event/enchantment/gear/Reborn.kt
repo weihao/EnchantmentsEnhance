@@ -41,7 +41,7 @@ class Reborn : EnchantmentListener() {
 
         val entity = playerDeathEvent.entity
         if (entity.killer is Player) {
-            val player = entity.killer
+            val player = entity.killer!!
             try {
                 val level = getLevel(player)
                 if (level > 0) {

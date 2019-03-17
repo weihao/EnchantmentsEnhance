@@ -44,7 +44,7 @@ class Endless : EnchantmentListener() {
         if (entityDamageByEntityEvent.damager is Player) {
             val player = entityDamageByEntityEvent.damager as Player
             InventoryManager.getItemList(player)
-                    .filter { KotlinManager.getLevel(this.name(), it.itemMeta.lore) > 0 }
+                    .filter { KotlinManager.getLevel(this.name(), it.itemMeta!!.lore!!) > 0 }
                     .forEach {
                         it.durability = 0
                     }
@@ -52,7 +52,7 @@ class Endless : EnchantmentListener() {
         if (entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.entity as Player
             InventoryManager.getItemList(player)
-                    .filter { KotlinManager.getLevel(this.name(), it.itemMeta.lore) > 0 }
+                    .filter { KotlinManager.getLevel(this.name(), it.itemMeta!!.lore!!) > 0 }
                     .forEach {
                         it.durability = 0
                     }
@@ -64,7 +64,7 @@ class Endless : EnchantmentListener() {
         if (entityShootBowEvent.entity is Player) {
             val player = entityShootBowEvent.entity as Player
             InventoryManager.getItemList(player)
-                    .filter { KotlinManager.getLevel(this.name(), it.itemMeta.lore) > 0 }
+                    .filter { KotlinManager.getLevel(this.name(), it.itemMeta!!.lore!!) > 0 }
                     .forEach {
                         it.durability = 0
                     }
@@ -75,7 +75,7 @@ class Endless : EnchantmentListener() {
     fun noWeaponBreakDamage(playerInteractEvent: PlayerInteractEvent) {
         val player = playerInteractEvent.player as Player
         InventoryManager.getItemList(player)
-                .filter { KotlinManager.getLevel(this.name(), it.itemMeta.lore) > 0 }
+                .filter { KotlinManager.getLevel(this.name(), it.itemMeta!!.lore!!) > 0 }
                 .forEach {
                     it.durability = 0
                 }
@@ -84,8 +84,8 @@ class Endless : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onPlayerItemDamage(e: PlayerItemDamageEvent) {
         val item = e.item
-        if (item.hasItemMeta() && item.itemMeta.hasLore()) {
-            if (KotlinManager.getLevel(this.name(), item.itemMeta.lore) > 0) {
+        if (item.hasItemMeta() && item.itemMeta!!.hasLore()) {
+            if (KotlinManager.getLevel(this.name(), item.itemMeta!!.lore!!) > 0) {
                 e.isCancelled = true
             }
         }

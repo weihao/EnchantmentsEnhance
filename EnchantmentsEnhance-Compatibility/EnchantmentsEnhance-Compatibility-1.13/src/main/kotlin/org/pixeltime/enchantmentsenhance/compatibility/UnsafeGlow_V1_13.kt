@@ -55,11 +55,11 @@ class UnsafeGlow_V1_13 : UnsafeGlow {
     }
 
     private class UnsafeGlowWrapper : EnchantmentWrapper(NAME) {
-        override fun canEnchantItem(item: ItemStack?): Boolean = true
-        override fun getItemTarget(): EnchantmentTarget? = null
+        override fun canEnchantItem(item: ItemStack): Boolean = true
+        override fun getItemTarget(): EnchantmentTarget = EnchantmentTarget.ALL
         override fun getMaxLevel(): Int = MAX_LEVEL
         override fun getStartLevel(): Int = START_LEVEL
-        override fun conflictsWith(other: Enchantment?): Boolean = false
+        override fun conflictsWith(other: Enchantment): Boolean = false
         override fun getName(): String = NAME
     }
 }

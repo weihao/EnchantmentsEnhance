@@ -31,21 +31,21 @@ class Announcer_BossBar : Announcer {
     override fun announce(msg: String, type: AnnounceType) {
         when (type) {
             AnnounceType.FAIL -> {
-                failed.title = ChatColor.translateAlternateColorCodes('&', msg)
+                failed.setTitle(ChatColor.translateAlternateColorCodes('&', msg))
                 for (p in Bukkit.getOnlinePlayers()) {
                     failed.addPlayer(p)
                 }
                 Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getMain(), { failed.removeAll() }, AnnouncerManager.DELAY)
             }
             AnnounceType.SUCCESS -> {
-                success.title = ChatColor.translateAlternateColorCodes('&', msg)
+                success.setTitle(ChatColor.translateAlternateColorCodes('&', msg))
                 for (p in Bukkit.getOnlinePlayers()) {
                     success.addPlayer(p)
                 }
                 Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getMain(), { success.removeAll() }, AnnouncerManager.DELAY)
             }
             else -> {
-                info.title = ChatColor.translateAlternateColorCodes('&', msg)
+                info.setTitle(ChatColor.translateAlternateColorCodes('&', msg))
                 for (p in Bukkit.getOnlinePlayers()) {
                     info.addPlayer(p)
                 }
