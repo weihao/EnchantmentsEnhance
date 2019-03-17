@@ -194,7 +194,7 @@ public class Main extends JavaPlugin implements Listener {
                     }
                 }.runTaskTimer(this, 120L, 36000L);
             }
-        } catch (IllegalArgumentException ex) {
+        } catch (Exception ex) {
             // Debugging version.
         }
 
