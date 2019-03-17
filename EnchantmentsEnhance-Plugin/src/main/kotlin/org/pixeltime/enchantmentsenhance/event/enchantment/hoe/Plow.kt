@@ -47,7 +47,7 @@ class Plow : EnchantmentListener() {
         val level = getLevel(player)
         if (level > 0) {
             val clickedBlock = playerInteractEvent.clickedBlock
-            if (clickedBlock.type != Material.DIRT && clickedBlock.type != Material.GRASS) {
+            if (clickedBlock!!.type != Material.DIRT && clickedBlock.type != Material.GRASS) {
                 return
             }
             val radius = 1.0
@@ -56,7 +56,7 @@ class Plow : EnchantmentListener() {
             while (x <= location.blockX + radius) {
                 var z = location.blockZ - radius
                 while (z <= location.blockZ + radius) {
-                    val block = location.world.getBlockAt(Location(clickedBlock.world, x, clickedBlock.y.toDouble(), z))
+                    val block = location.world!!.getBlockAt(Location(clickedBlock.world, x, clickedBlock.y.toDouble(), z))
                     if (block.type != Material.GRASS && block.type != Material.DIRT) {
                         return
                     }

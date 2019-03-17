@@ -39,9 +39,9 @@ class AnvilRestrict : Listener {
                     Util.sendMessage(SettingsManager.lang.getString("anvil.disabled"), player)
                 } else if (!SettingsManager.config.getBoolean("enableAnvilRename") && item != null) {
                     var tempname: String
-                    if (item.hasItemMeta() && item.itemMeta.hasDisplayName()) {
-                        tempname = item.itemMeta.displayName
-                        if (event.inventory.getItem(0) != null && tempname != event.inventory.getItem(0).itemMeta.displayName) {
+                    if (item.hasItemMeta() && item.itemMeta!!.hasDisplayName()) {
+                        tempname = item.itemMeta!!.displayName
+                        if (event.inventory.getItem(0) != null && tempname != event.inventory.getItem(0)!!.itemMeta!!.displayName) {
                             event.isCancelled = true
                             Util.sendMessage(SettingsManager.lang.getString("anvil.renameDisabled"), player)
                         }

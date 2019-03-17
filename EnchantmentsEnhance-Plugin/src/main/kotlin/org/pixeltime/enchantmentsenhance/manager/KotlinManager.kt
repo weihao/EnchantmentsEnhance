@@ -32,7 +32,7 @@ class KotlinManager {
 
         @JvmStatic
         fun getLevel(lore: String, itemlore: List<String>): Int {
-            itemlore.filter { lore == ChatColor.stripColor(it).split(" ")[0] }.forEach {
+            itemlore.filter { lore == ChatColor.stripColor(it)!!.split(" ")[0] }.forEach {
                 val temp = it.split(" ")
                 try {
                     val level = Util.romanToInt((temp)[temp.size - 1])
@@ -45,9 +45,9 @@ class KotlinManager {
 
         @JvmStatic
         fun stripLore(item: ItemStack): List<String>? {
-            if (item.hasItemMeta() && item.itemMeta.hasLore() && item.itemMeta.lore.isNotEmpty()) {
-                val lores = item.itemMeta.lore
-                return lores.filter { !it.startsWith(Util.UNIQUEID) }
+            if (item.hasItemMeta() && item.itemMeta!!.hasLore() && item.itemMeta!!.lore!!.isNotEmpty()) {
+                val lores = item.itemMeta!!.lore
+                return lores!!.filter { !it.startsWith(Util.UNIQUEID) }
             }
             return null
         }

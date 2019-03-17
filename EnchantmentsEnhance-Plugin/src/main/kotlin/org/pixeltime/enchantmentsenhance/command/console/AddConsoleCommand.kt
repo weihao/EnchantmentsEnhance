@@ -51,14 +51,14 @@ class AddConsoleCommand : SubConsoleCommand() {
             if (stoneType != -1 && level != -1 && stoneType <= MaterialManager.stoneTypes.size) {
                 Main.getApi().addItem(args[0], stoneType, level)
                 Util.sendMessage(SettingsManager.lang.getString(
-                        "add.successful").replace("%player%", player.name).replace(
+                        "add.successful")!!.replace("%player%", player.name).replace(
                         "%number%", Integer.toString(level)).replace("%stone%",
-                        SettingsManager.lang.getString("item.$stoneType")), sender)
+                        SettingsManager.lang.getString("item.$stoneType")!!), sender)
             } else {
                 if (stoneType < 0) {
                     Main.getApi().addAdvice(player.name, level)
                     Util.sendMessage(SettingsManager.lang.getString("materialize.adviceSucess")
-                            .replace("%level%", Integer.toString(level)), player)
+                            !!.replace("%level%", Integer.toString(level)), player)
                 } else {
                     Util.sendMessage(SettingsManager.lang.getString(
                             "config.invalidNumber"), sender)

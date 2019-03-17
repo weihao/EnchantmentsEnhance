@@ -120,7 +120,7 @@ class API : AbstractAPI {
             PlayerStat.getPlayerStats(player)!!.valks.add(level)
             Collections.sort(PlayerStat.getPlayerStats(player)!!.valks, Collections.reverseOrder())
             Util.sendMessage(SettingsManager.lang.getString("save.createFailstack")
-                    .replace("%failstack%".toRegex(), Integer.toString(getFailstack(
+                    !!.replace("%failstack%".toRegex(), Integer.toString(getFailstack(
                             player))), player)
             resetFailstack(player)
         }
@@ -135,7 +135,7 @@ class API : AbstractAPI {
         return if (SettingsManager.enchant.getConfigurationSection(ench.toLowerCase()) == null) {
             1
         } else {
-            SettingsManager.enchant.getConfigurationSection(ench.toLowerCase()).getKeys(false).size
+            SettingsManager.enchant.getConfigurationSection(ench.toLowerCase())!!.getKeys(false).size
         }
     }
 

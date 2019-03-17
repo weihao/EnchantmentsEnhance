@@ -47,7 +47,7 @@ class Crits : EnchantmentListener() {
                 val currentHealth = (player2 as Damageable).health
                 if (currentHealth > damage) {
                     (player2 as Damageable).health = currentHealth - damage
-                    player.location.world.playSound(player.location, Sounds.ENDERDRAGON_GROWL.toBukkit(), 0.1f, 0.1f)
+                    player.location.world!!.playSound(player.location, Sounds.ENDERDRAGON_GROWL.toBukkit(), 0.1f, 0.1f)
                 }
             }
         }

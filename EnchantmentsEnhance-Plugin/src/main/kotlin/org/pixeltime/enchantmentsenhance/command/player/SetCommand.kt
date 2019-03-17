@@ -36,7 +36,7 @@ class SetCommand : SubCommand() {
                 if (leverage > 1) {
                     PlayerStat.getPlayerStats(player.name).grind = leverage
                     Util.sendMessage(SettingsManager.lang.getString("set.success")
-                            .replace("%leverage%",
+                            !!.replace("%leverage%",
                                     Integer.toString(leverage)), player)
                 } else {
                     Util.sendMessage(SettingsManager.lang.getString("set.failed"), player)

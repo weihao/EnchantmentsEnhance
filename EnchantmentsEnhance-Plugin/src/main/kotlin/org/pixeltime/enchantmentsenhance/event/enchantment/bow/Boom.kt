@@ -39,7 +39,7 @@ class Boom(
     private val keyTNT = "ee-bow-boom-tnt"
 
     private fun canWork(bow: ItemStack): Boolean {
-        return bow.hasItemMeta() && "Boom Bow".equals(bow.itemMeta.displayName, true)
+        return bow.hasItemMeta() && "Boom Bow".equals(bow.itemMeta?.displayName, true)
     }
 
     @EventHandler()
@@ -58,7 +58,7 @@ class Boom(
         if (projectile is Arrow && projectile.getMetadata(key).firstOrNull()?.value() == 1) {
             val location = event.hitEntity?.location ?: event.hitBlock?.location
             if (location != null) {
-                val tnt = location.world.spawn(location.clone().add(0.0, 1.0, 0.0), TNTPrimed::class.java)
+                val tnt = location.world!!.spawn(location.clone().add(0.0, 1.0, 0.0), TNTPrimed::class.java)
                 tnt.setMetadata(keyTNT, FixedMetadataValue(plugin, 1))
                 tnt.fuseTicks = 1
             }
