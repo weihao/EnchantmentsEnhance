@@ -1,4 +1,10 @@
 # Changelog
+## [7.3.0] - 2019-3-17
+### Fixed
+- Build failing.
+- Glow does not register after reload.
+- Advice does not display.
+
 ## [7.2.0] - 2019-3-2
 ### Added
 - Preview enhancement.
