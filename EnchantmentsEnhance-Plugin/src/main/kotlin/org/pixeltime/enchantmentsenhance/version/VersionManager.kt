@@ -44,9 +44,13 @@ class VersionManager {
 
         @JvmStatic
         fun isUpToDate(): Boolean {
-            val spigotVer = Version(getLatestVersion())
-            val currVer = Version(getCurrentVersion())
-            return currVer >= spigotVer
+            return try {
+                val spigotVer = Version(getLatestVersion())
+                val currVer = Version(getCurrentVersion())
+                currVer >= spigotVer
+            } catch (ex: Exception) {
+                true
+            }
         }
     }
 }
