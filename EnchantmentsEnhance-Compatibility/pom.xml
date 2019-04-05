@@ -8,7 +8,7 @@
     <parent>
         <artifactId>EnchantmentsEnhance-Parent</artifactId>
         <groupId>org.pixeltime</groupId>
-        <version>7.3.0</version>
+        <version>7.4.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -21,24 +21,17 @@
         <module>EnchantmentsEnhance-Compatibility-1.13</module>
     </modules>
 
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <!-- ldk-reflect -->
         <dependency>
-            <groupId>com.github.lgou2w.ldk</groupId>
+            <groupId>com.lgou2w</groupId>
             <artifactId>ldk-reflect</artifactId>
             <version>${ldk.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- ldk-bukkit-version -->
         <dependency>
-            <groupId>com.github.lgou2w.ldk</groupId>
+            <groupId>com.lgou2w</groupId>
             <artifactId>ldk-bukkit-version</artifactId>
             <version>${ldk.version}</version>
             <scope>compile</scope>

@@ -8,7 +8,7 @@
     <parent>
         <artifactId>EnchantmentsEnhance-Parent</artifactId>
         <groupId>org.pixeltime</groupId>
-        <version>7.3.0</version>
+        <version>7.4.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -19,10 +19,6 @@
         <repository>
             <id>sk89q-repo</id>
             <url>http://maven.sk89q.com/repo/</url>
-        </repository>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
         </repository>
         <repository>
             <id>inventive-repo</id>
@@ -63,13 +59,6 @@
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
-        <!-- EffectLib -->
-        <dependency>
-            <groupId>com.github.Slikey</groupId>
-            <artifactId>EffectLib</artifactId>
-            <version>d2da0ac5f1</version>
-            <scope>provided</scope>
-        </dependency>
         <!-- WorldGuard -->
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
@@ -108,28 +97,28 @@
         </dependency>
         <!-- ldk-bukkit-common -->
         <dependency>
-            <groupId>com.github.lgou2w.ldk</groupId>
+            <groupId>com.lgou2w</groupId>
             <artifactId>ldk-bukkit-common</artifactId>
             <version>${ldk.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- ldk-bukkit-gui -->
         <dependency>
-            <groupId>com.github.lgou2w.ldk</groupId>
+            <groupId>com.lgou2w</groupId>
             <artifactId>ldk-bukkit-gui</artifactId>
             <version>${ldk.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- ldk-bukkit-cmd -->
         <dependency>
-            <groupId>com.github.lgou2w.ldk</groupId>
+            <groupId>com.lgou2w</groupId>
             <artifactId>ldk-bukkit-cmd</artifactId>
             <version>${ldk.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- ldk-bukkit-compatibility -->
         <dependency>
-            <groupId>com.github.lgou2w.ldk</groupId>
+            <groupId>com.lgou2w</groupId>
             <artifactId>ldk-bukkit-compatibility</artifactId>
             <version>${ldk.version}</version>
             <scope>compile</scope>
