@@ -19,6 +19,9 @@
 package org.pixeltime.enchantmentsenhance.manager;
 
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
+import com.lgou2w.ldk.bukkit.item.ItemFactory;
+import com.lgou2w.ldk.nbt.NBTTagCompound;
+import kotlin.Unit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -33,7 +36,6 @@ import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.datastructure.DoublyLinkedList;
-import org.pixeltime.enchantmentsenhance.util.nbt.NBTItem;
 
 import java.util.*;
 
@@ -81,63 +83,74 @@ public class ItemManager {
     }
 
     public static ItemStack setLevel(ItemStack item, int enhanceLevel) {
-        NBTItem nbti = new NBTItem(item);
-        nbti.setInteger("ELevel", enhanceLevel);
-        return nbti.getItem();
+        return ItemFactory.modifyTag(item, tag -> {
+            tag.putInt("ELevel", enhanceLevel);
+            return Unit.INSTANCE;
+        });
     }
 
     public static ItemStack setName(ItemStack item, String name) {
-        NBTItem nbti = new NBTItem(item);
-        nbti.setString("EName", name);
-        return nbti.getItem();
+        return ItemFactory.modifyTag(item, tag -> {
+            tag.putString("EName", name);
+            return Unit.INSTANCE;
+        });
     }
 
     public static int getItemEnchantLevel(ItemStack item) {
-        NBTItem nbti = new NBTItem(item);
-        return nbti.getInteger("ELevel");
+        NBTTagCompound tag = ItemFactory.readTagSafe(item);
+        Integer level = tag.getIntOrNull("ELevel");
+        return level != null ? level : 0;
     }
 
     public static int getToolEnchantLevel(ItemStack item) {
-        NBTItem nbti = new NBTItem(item);
-        return nbti.getInteger("ETool");
+        NBTTagCompound tag = ItemFactory.readTagSafe(item);
+        Integer level = tag.getIntOrNull("ETool");
+        return level != null ? level : 0;
     }
 
     public static ItemStack setToolEnchantLevel(ItemStack item, int enhanceLevel) {
-        NBTItem nbti = new NBTItem(item);
-        nbti.setInteger("ETool", enhanceLevel);
-        return nbti.getItem();
+        return ItemFactory.modifyTag(item, tag -> {
+            tag.putInt("ETool", enhanceLevel);
+            return Unit.INSTANCE;
+        });
     }
 
     public static String getItemLore(ItemStack item) {
-        NBTItem nbti = new NBTItem(item);
-        return nbti.getString("ELore");
+        NBTTagCompound tag = ItemFactory.readTagSafe(item);
+        String lore = tag.getStringOrNull("ELore");
+        return lore != null ? lore : "";
     }
 
     public static String getItemName(ItemStack item) {
-        NBTItem nbti = new NBTItem(item);
-        return nbti.getString("EName");
+        NBTTagCompound tag = ItemFactory.readTagSafe(item);
+        String name = tag.getStringOrNull("EName");
+        return name != null ? name : "";
     }
 
     public static ItemStack setHistory(ItemStack item, String history) {
-        NBTItem nbti = new NBTItem(item);
-        nbti.setString("EHistory", history);
-        return nbti.getItem();
+        return ItemFactory.modifyTag(item, tag -> {
+            tag.putString("EHistory", history);
+            return Unit.INSTANCE;
+        });
     }
 
     public static String getHistory(ItemStack item) {
-        NBTItem nbti = new NBTItem(item);
-        return nbti.getString("EHistory");
+        NBTTagCompound tag = ItemFactory.readTagSafe(item);
+        String history = tag.getStringOrNull("EHistory");
+        return history != null ? history : "";
     }
 
     public static ItemStack setGive(ItemStack item, String give) {
-        NBTItem nbti = new NBTItem(item);
-        nbti.setString("EGive", give);
-        return nbti.getItem();
+        return ItemFactory.modifyTag(item, tag -> {
+            tag.putString("EGive", give);
+            return Unit.INSTANCE;
+        });
     }
 
     public static String getGive(ItemStack item) {
-        NBTItem nbti = new NBTItem(item);
-        return nbti.getString("EGive");
+        NBTTagCompound tag = ItemFactory.readTagSafe(item);
+        String give = tag.getStringOrNull("EGive");
+        return give != null ? give : "";
     }
 
 

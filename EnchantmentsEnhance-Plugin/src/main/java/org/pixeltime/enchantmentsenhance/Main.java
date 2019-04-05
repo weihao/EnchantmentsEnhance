@@ -17,6 +17,7 @@
  */
 package org.pixeltime.enchantmentsenhance;
 
+import com.lgou2w.ldk.bukkit.version.MinecraftBukkitVersion;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
@@ -41,8 +42,6 @@ import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
-import org.pixeltime.enchantmentsenhance.util.reflection.MinecraftVersion;
-import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
 import org.pixeltime.enchantmentsenhance.version.VersionManager;
 
 import java.io.File;
@@ -257,10 +256,10 @@ public class Main extends JavaPlugin implements Listener {
         }
         // Annoucer setup
         if (SettingsManager.config.getBoolean("enableFancyAnnouncer")) {
-            if (MinecraftVersion.getVersion() == MinecraftVersion.MC1_8_R3) {
-                announcerManager = new AnnouncerManager(new Announcer_ActionBar());
-            } else {
+            if (MinecraftBukkitVersion.isV19OrLater()) {
                 announcerManager = new AnnouncerManager(new Announcer_BossBar());
+            } else {
+                announcerManager = new AnnouncerManager(new Announcer_ActionBar());
             }
         } else {
             announcerManager = new AnnouncerManager(new Announcer_Chat());
@@ -318,7 +317,7 @@ public class Main extends JavaPlugin implements Listener {
      */
     private void registerCompatibility() {
         Main.getMain().getLogger().info("Your server is running version "
-                + Reflection_V2.getVERSION());
+                + MinecraftBukkitVersion.getCURRENT().getVersion());
         Main.getMain().getLogger().info("Your server is running on " + System
                 .getProperty("os.name"));
         if (compatibility.setupGlow()) {
