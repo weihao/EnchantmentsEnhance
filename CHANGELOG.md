@@ -1,4 +1,10 @@
 # Changelog
+## [7.4.0] - 2019-4-11
+### Fixed
+- Renamed jarfile crashes the plugin.
+- Version check freezes the server.
+- Reflection optimization.
+
 ## [7.3.0] - 2019-3-17
 ### Fixed
 - Build failing.
