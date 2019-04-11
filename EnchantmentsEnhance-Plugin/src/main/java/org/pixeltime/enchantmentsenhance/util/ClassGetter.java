@@ -18,7 +18,9 @@
 
 package org.pixeltime.enchantmentsenhance.util;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.pixeltime.enchantmentsenhance.Main;
 
 import java.io.IOException;
 import java.net.URL;
@@ -58,23 +60,28 @@ public class ClassGetter {
         JarFile jarFile;
         try {
             jarFile = new JarFile(jarPath);
+            Enumeration<JarEntry> entries = jarFile.entries();
+            while (entries.hasMoreElements()) {
+                JarEntry entry = entries.nextElement();
+                String entryName = entry.getName();
+                String className = null;
+                if (entryName.endsWith(".class") && entryName.startsWith(relPath)
+                        && entryName.length() > (relPath.length() + "/".length())) {
+                    className = entryName.replace('/', '.').replace('\\', '.').replace(".class", "");
+                }
+                if (className != null) {
+                    Class<?> c = loadClass(className);
+                    if (c != null)
+                        classes.add(c);
+                }
+            }
         } catch (IOException e) {
-            throw new RuntimeException("Unexpected IOException reading JAR File '" + jarPath + "'. Do you have strange characters in your folders? Such as #?", e);
-        }
-        Enumeration<JarEntry> entries = jarFile.entries();
-        while (entries.hasMoreElements()) {
-            JarEntry entry = entries.nextElement();
-            String entryName = entry.getName();
-            String className = null;
-            if (entryName.endsWith(".class") && entryName.startsWith(relPath)
-                    && entryName.length() > (relPath.length() + "/".length())) {
-                className = entryName.replace('/', '.').replace('\\', '.').replace(".class", "");
+//            throw new RuntimeException("Unexpected IOException reading JAR File '" + jarPath + "'. Do you have strange characters in your folders? Such as #?", e);
+            for (int i = 0; i < 10; i++) {
+                Main.getMain().getLogger().severe("Unexpected IOException. Do Not Rename the Jar File!");
             }
-            if (className != null) {
-                Class<?> c = loadClass(className);
-                if (c != null)
-                    classes.add(c);
-            }
+            Main.getMain().getLogger().severe("Plugin disabled.");
+            Bukkit.getPluginManager().disablePlugin(Main.getMain());
         }
     }
 }
