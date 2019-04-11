@@ -176,26 +176,29 @@ public class Main extends JavaPlugin implements Listener {
             pm.registerEvents(new AnvilRestrict(), this);
         }
 
-        try {
-            // Checks for update.
-            if (VersionManager.isUpToDate()) {
-                getLogger().info(SettingsManager.lang.getString("update.updateToDate"));
-            } else {
-                getLogger().warning(SettingsManager.lang.getString("update.outdated"));
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        for (Player p : Bukkit.getOnlinePlayers()) {
-                            if (p.hasPermission("Enchantments.*") || p.hasPermission("*") || p.isOp()) {
-                                Main.getNotifierManager().call(new Notification(p, SettingsManager.lang.getString("update.updateToDate")));
+        this.getServer().getScheduler().runTaskAsynchronously(this, () -> {
+            try {
+                // Checks for update.
+                if (VersionManager.isUpToDate()) {
+                    getLogger().info(SettingsManager.lang.getString("update.updateToDate"));
+                } else {
+                    getLogger().warning(SettingsManager.lang.getString("update.outdated"));
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            for (Player p : Bukkit.getOnlinePlayers()) {
+                                if (p.hasPermission("Enchantments.*") || p.hasPermission("*") || p.isOp()) {
+                                    Main.getNotifierManager().call(new Notification(p, SettingsManager.lang.getString("update.updateToDate")));
+                                }
                             }
                         }
-                    }
-                }.runTaskTimer(this, 120L, 36000L);
+                    }.runTaskTimer(Main.getMain(), 120L, 36000L);
+                }
+            } catch (
+                    Exception ex) {
+                // Debugging version.
             }
-        } catch (Exception ex) {
-            // Debugging version.
-        }
+        });
 
         // Notify Cauldron and MCPC users.
         if (getServer().getName().contains("Cauldron") || getServer().getName()
