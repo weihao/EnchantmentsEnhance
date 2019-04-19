@@ -21,7 +21,6 @@ package org.pixeltime.enchantmentsenhance.command.player
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.command.SubCommand
 import org.pixeltime.enchantmentsenhance.util.Util
-import java.lang.NullPointerException
 
 
 class DebugCommand : SubCommand() {
