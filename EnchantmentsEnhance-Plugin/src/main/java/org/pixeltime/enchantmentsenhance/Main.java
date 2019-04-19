@@ -206,8 +206,16 @@ public class Main extends JavaPlugin implements Listener {
             getLogger().info(
                     "EnchantmentsEnhance runs fine on Cauldron/KCauldron.");
         }
-        // Start bStats metrics.
-        new Metrics(this);
+
+        try {
+            // Start bStats metrics.
+            new Metrics(this);
+        } catch (Exception ex) {
+            getLogger().info("Failed to setup metrics!");
+        } catch (ExceptionInInitializerError error) {
+            getLogger().info("Debugging mode!");
+        }
+
 
         Bukkit.getPluginManager().registerEvents(new GUIListener(), Main.getMain());
         Bukkit.getPluginManager().registerEvents(new MenuHandler(), Main.getMain());
