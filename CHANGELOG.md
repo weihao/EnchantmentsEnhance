@@ -1,4 +1,8 @@
 # Changelog
+## [7.4.0] - 2019-4-22
+### Fixed
+- Config regenerates deleted enchantment levels.
+
 ## [7.3.0] - 2019-3-17
 ### Fixed
 - Build failing.

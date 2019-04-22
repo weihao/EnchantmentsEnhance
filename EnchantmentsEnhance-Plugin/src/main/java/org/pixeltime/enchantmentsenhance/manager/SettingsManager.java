@@ -156,6 +156,10 @@ public class SettingsManager {
         if (defConfigStream != null) {
             YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defConfigStream));
             for (String string : defConfig.getKeys(true)) {
+                if (string.startsWith("enhance"))
+                {
+                    continue;
+                }
                 if (!config.contains(string)) {
                     config.set(string, defConfig.get(string));
                     addedSettings++;
