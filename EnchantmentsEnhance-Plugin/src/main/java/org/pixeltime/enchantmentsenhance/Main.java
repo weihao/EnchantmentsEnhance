@@ -17,7 +17,13 @@
  */
 package org.pixeltime.enchantmentsenhance;
 
+import com.lgou2w.ldk.bukkit.cmd.CommandFeedback;
+import com.lgou2w.ldk.bukkit.cmd.CommandManager;
+import com.lgou2w.ldk.bukkit.cmd.DefaultCommandManager;
+import com.lgou2w.ldk.bukkit.cmd.SimpleChineseCommandFeedback;
+import com.lgou2w.ldk.bukkit.cmd.SimpleCommandFeedback;
 import com.lgou2w.ldk.bukkit.version.MinecraftBukkitVersion;
+import com.lgou2w.ldk.common.Enums;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
@@ -36,6 +42,8 @@ import org.pixeltime.enchantmentsenhance.chat.Announcer_Chat;
 import org.pixeltime.enchantmentsenhance.chat.Notification;
 import org.pixeltime.enchantmentsenhance.chat.Notifier_Chat;
 import org.pixeltime.enchantmentsenhance.chat.Notifier_TitleBar;
+import org.pixeltime.enchantmentsenhance.command.EnhanceCommand;
+import org.pixeltime.enchantmentsenhance.enums.LangType;
 import org.pixeltime.enchantmentsenhance.gui.GUIListener;
 import org.pixeltime.enchantmentsenhance.gui.GUIManager;
 import org.pixeltime.enchantmentsenhance.gui.menu.handlers.MenuHandler;
@@ -49,8 +57,8 @@ import org.pixeltime.enchantmentsenhance.listener.PlaceholderListener;
 import org.pixeltime.enchantmentsenhance.listener.PlayerDeathListener;
 import org.pixeltime.enchantmentsenhance.listener.PlayerStreamListener;
 import org.pixeltime.enchantmentsenhance.listener.VanillaEnchantListener;
+import org.pixeltime.enchantmentsenhance.locale.LocaleManager;
 import org.pixeltime.enchantmentsenhance.manager.AnnouncerManager;
-import org.pixeltime.enchantmentsenhance.manager.CommandManager;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.DataManager;
 import org.pixeltime.enchantmentsenhance.manager.DependencyManager;
@@ -145,10 +153,6 @@ public class Main extends JavaPlugin implements Listener {
         return notifierManager;
     }
 
-    public static CommandManager getCommandManager() {
-        return commandManager;
-    }
-
     /**
      * When the plugin is enabled, execute following tasks.
      */
@@ -168,12 +172,21 @@ public class Main extends JavaPlugin implements Listener {
         // Objects initialization.
         main = this;
         api = new API();
-        commandManager = new CommandManager();
         compatibility = new CompatibilityManager();
-
 
         // Set up the files.
         SettingsManager.setUp();
+
+        // Command
+        LangType langType = Enums.ofOriginNotNull(LangType.class, LocaleManager.getLang());
+        CommandFeedback feedback;
+        if (langType == LangType.ZH_CN) feedback = new SimpleChineseCommandFeedback();
+        else feedback = new SimpleCommandFeedback();
+        commandManager = new DefaultCommandManager(this);
+        commandManager.getTransforms().addDefaultTransforms();
+        commandManager.getCompletes().addDefaultCompletes();
+        commandManager.setGlobalFeedback(feedback);
+        commandManager.registerCommand(new EnhanceCommand(this));
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new EnhancedItemListener(), this);
@@ -327,6 +340,10 @@ public class Main extends JavaPlugin implements Listener {
      * When the plugin is disabled, execute following tasks.
      */
     public void onDisable() {
+
+        commandManager.unregisterCommands();
+        commandManager = null;
+
         for (PlayerStat fData : PlayerStat.getPlayers()) {
             DataStorage.get().saveStats(fData);
         }
