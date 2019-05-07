@@ -42,7 +42,7 @@ public class GUIListener implements Listener {
             return;
         }
         // Handles empty slot.
-        if (e.getCurrentItem().getType() == (Material.AIR)) {
+        if (e.getCurrentItem() != null && e.getCurrentItem().getType() == (Material.AIR)) {
             return;
         }
         // Handles non-gui inventory.

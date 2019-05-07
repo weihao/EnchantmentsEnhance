@@ -43,7 +43,7 @@ public class MenuHandler implements Listener {
             return;
         }
         // Handles empty slot.
-        if (e.getCurrentItem().getType() == (Material.AIR)) {
+        if (e.getCurrentItem() != null && e.getCurrentItem().getType() == (Material.AIR)) {
             return;
         }
         Player player = (Player) e.getWhoClicked();
