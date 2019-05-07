@@ -87,6 +87,9 @@ public class Enhance {
      * @return
      */
     public static boolean getValidationOfItem(ItemStack item) {
+        if (item == null) {
+            return false;
+        }
         // If item cannot be enhanced
         if (!SettingsManager.config.getBoolean("enableStackedItem") && item.getAmount() > 1) {
             return false;
@@ -115,7 +118,7 @@ public class Enhance {
             Clickable clicked) {
         // Enchant level after a successful enhancement
 
-        ItemStack forged = ItemManager.forgeItemWithReplacement(player, item, enchantLevel, true, clicked);
+        ItemStack forged = ItemManager.forgeItem(player, item, enchantLevel, true, clicked);
 
         // Play sound
         CompatibilityManager.playsound.playSound(player, "SUCCESS");
@@ -181,7 +184,7 @@ public class Enhance {
             // Item level after failing.
             int enchantLevel = level - 2;
             // Updates the item.
-            ItemManager.forgeItemWithReplacement(player, item, enchantLevel, false, clicked);
+            ItemManager.forgeItem(player, item, enchantLevel, false, clicked);
             // Broadcast
             if (DataManager.broadcastEnhance[level]) {
                 String str = SettingsManager.lang.getString("annoucer.failed")
@@ -366,6 +369,9 @@ public class Enhance {
 
 
     public static boolean getValidationOfToolItem(ItemStack item) {
+        if (item == null) {
+            return false;
+        }
         // If item cannot be enhanced
         if (!SettingsManager.config.getBoolean("enableStackedItem") && item.getAmount() > 1) {
             return false;

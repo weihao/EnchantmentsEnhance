@@ -194,12 +194,8 @@ public class ItemManager {
         return currItem;
     }
 
-    public static ItemStack forgeItemWithReplacement(Player player, ItemStack item, int enchantLevel, boolean addition, Clickable clicked) {
-        ItemStack currItem = forgeItem(player, item, enchantLevel, addition, clicked);
-
-        player.getInventory().removeItem(item);
-        MainMenu.itemOnEnhancingSlot.put(player.getName(), currItem);
-        player.getInventory().addItem(currItem);
+    public static ItemStack forgeItemWithoutReplacement(Player player, ItemStack item, int enchantLevel, boolean addition, Clickable clicked) {
+        ItemStack currItem = forgeItem(player, item.clone(), enchantLevel, addition, clicked);
         return currItem;
     }
 
