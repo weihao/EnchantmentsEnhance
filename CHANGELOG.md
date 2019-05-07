@@ -4,7 +4,7 @@
 - Support for 1.14
 ### Fixed
 - Fixed a security issue.
-###Changed
+### Changed
 - Refactored NBTAPI to LDK-NBT
 
 ## [7.4.0] - 2019-4-22
