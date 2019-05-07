@@ -56,13 +56,13 @@ class DebugConsoleCommand : SubConsoleCommand() {
                     sb.appendln("=====Generating English Commands Wiki=====")
                     sb.appendln("| Player Command| Permission| Aliases|")
                     sb.appendln("| :---|:---|:---|")
-//                    for (command in Main.getCommandManager().commands) {
-//                        try {
-//                            sb.appendln(("|" + command.usage().replace("|", "&#124;") + " - " + SettingsManager.lang.getString("help." + command.name())!!.replace("|", "&#124;") + "|" + command.permission + "|" + Arrays.toString(command.aliases()) + "|").replace("&[a-z0-9]".toRegex(), "").replace("\n", "<br />"))
-//                        } catch (ex: Exception) {
-//                            ex.printStackTrace()
-//                        }
-//                    }
+                    for (command in Main.getCommandManager().commands) {
+                        try {
+                            sb.appendln(("|" + command.usage().replace("|", "&#124;") + " - " + SettingsManager.lang.getString("help." + command.name())!!.replace("|", "&#124;") + "|" + command.permission + "|" + Arrays.toString(command.aliases()) + "|").replace("&[a-z0-9]".toRegex(), "").replace("\n", "<br />"))
+                        } catch (ex: Exception) {
+                            ex.printStackTrace()
+                        }
+                    }
                 }
                 args[1] == "cn" -> {
                     // Generate Chinese Enchantments Wiki.

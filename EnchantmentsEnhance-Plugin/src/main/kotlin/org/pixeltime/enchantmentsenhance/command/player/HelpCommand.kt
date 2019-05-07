@@ -29,6 +29,11 @@ class HelpCommand : SubCommand() {
         get() = "Enchantmentsenhance.enhance"
 
     override fun onCommand(player: Player, args: Array<String>) {
+        if (args.isNotEmpty() && args[0] == "2") {
+            Main.getCommandManager().printEnchantments(player)
+        } else {
+            Main.getCommandManager().printHelp(player)
+        }
     }
 
 

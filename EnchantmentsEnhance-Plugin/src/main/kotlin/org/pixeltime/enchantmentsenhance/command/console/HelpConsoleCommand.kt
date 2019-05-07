@@ -25,6 +25,7 @@ import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand
 class HelpConsoleCommand : SubConsoleCommand() {
 
     override fun onCommand(sender: CommandSender, args: Array<String>) {
+        Main.getCommandManager().printHelp(sender)
     }
 
 
