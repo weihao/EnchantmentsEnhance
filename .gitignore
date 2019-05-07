@@ -77,3 +77,4 @@ dependency-reduced-pom.xml
 */pom.xml.versionsBackup
 pom.xml.versionsBackup
 target
+.idea/misc.xml

@@ -17,6 +17,7 @@
  */
 package org.pixeltime.enchantmentsenhance;
 
+import com.lgou2w.ldk.bukkit.version.MinecraftBukkitVersion;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
@@ -29,20 +30,41 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.api.API;
-import org.pixeltime.enchantmentsenhance.chat.*;
+import org.pixeltime.enchantmentsenhance.chat.Announcer_ActionBar;
+import org.pixeltime.enchantmentsenhance.chat.Announcer_BossBar;
+import org.pixeltime.enchantmentsenhance.chat.Announcer_Chat;
+import org.pixeltime.enchantmentsenhance.chat.Notification;
+import org.pixeltime.enchantmentsenhance.chat.Notifier_Chat;
+import org.pixeltime.enchantmentsenhance.chat.Notifier_TitleBar;
 import org.pixeltime.enchantmentsenhance.gui.GUIListener;
 import org.pixeltime.enchantmentsenhance.gui.GUIManager;
 import org.pixeltime.enchantmentsenhance.gui.menu.handlers.MenuHandler;
-import org.pixeltime.enchantmentsenhance.listener.*;
-import org.pixeltime.enchantmentsenhance.manager.*;
+import org.pixeltime.enchantmentsenhance.listener.AnvilRestrict;
+import org.pixeltime.enchantmentsenhance.listener.EnhancedItemListener;
+import org.pixeltime.enchantmentsenhance.listener.FireworkListener;
+import org.pixeltime.enchantmentsenhance.listener.ItemUseListener;
+import org.pixeltime.enchantmentsenhance.listener.LifeskillingListener;
+import org.pixeltime.enchantmentsenhance.listener.MVdWPlaceholderAPI;
+import org.pixeltime.enchantmentsenhance.listener.PlaceholderListener;
+import org.pixeltime.enchantmentsenhance.listener.PlayerDeathListener;
+import org.pixeltime.enchantmentsenhance.listener.PlayerStreamListener;
+import org.pixeltime.enchantmentsenhance.listener.VanillaEnchantListener;
+import org.pixeltime.enchantmentsenhance.manager.AnnouncerManager;
+import org.pixeltime.enchantmentsenhance.manager.CommandManager;
+import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
+import org.pixeltime.enchantmentsenhance.manager.DataManager;
+import org.pixeltime.enchantmentsenhance.manager.DependencyManager;
+import org.pixeltime.enchantmentsenhance.manager.DropManager;
+import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
+import org.pixeltime.enchantmentsenhance.manager.NotifierManager;
+import org.pixeltime.enchantmentsenhance.manager.PackageManager;
+import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
-import org.pixeltime.enchantmentsenhance.util.reflection.MinecraftVersion;
-import org.pixeltime.enchantmentsenhance.util.reflection.Reflection_V2;
 import org.pixeltime.enchantmentsenhance.version.VersionManager;
 
 import java.io.File;
@@ -177,26 +199,29 @@ public class Main extends JavaPlugin implements Listener {
             pm.registerEvents(new AnvilRestrict(), this);
         }
 
-        try {
-            // Checks for update.
-            if (VersionManager.isUpToDate()) {
-                getLogger().info(SettingsManager.lang.getString("update.updateToDate"));
-            } else {
-                getLogger().warning(SettingsManager.lang.getString("update.outdated"));
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        for (Player p : Bukkit.getOnlinePlayers()) {
-                            if (p.hasPermission("Enchantments.*") || p.hasPermission("*") || p.isOp()) {
-                                Main.getNotifierManager().call(new Notification(p, SettingsManager.lang.getString("update.updateToDate")));
+        this.getServer().getScheduler().runTaskAsynchronously(this, () -> {
+            try {
+                // Checks for update.
+                if (VersionManager.isUpToDate()) {
+                    getLogger().info(SettingsManager.lang.getString("update.updateToDate"));
+                } else {
+                    getLogger().warning(SettingsManager.lang.getString("update.outdated"));
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            for (Player p : Bukkit.getOnlinePlayers()) {
+                                if (p.hasPermission("Enchantments.*") || p.hasPermission("*") || p.isOp()) {
+                                    Main.getNotifierManager().call(new Notification(p, SettingsManager.lang.getString("update.updateToDate")));
+                                }
                             }
                         }
-                    }
-                }.runTaskTimer(this, 120L, 36000L);
+                    }.runTaskTimer(Main.getMain(), 120L, 36000L);
+                }
+            } catch (
+                    Exception ex) {
+                // Debugging version.
             }
-        } catch (Exception ex) {
-            // Debugging version.
-        }
+        });
 
         // Notify Cauldron and MCPC users.
         if (getServer().getName().contains("Cauldron") || getServer().getName()
@@ -204,8 +229,16 @@ public class Main extends JavaPlugin implements Listener {
             getLogger().info(
                     "EnchantmentsEnhance runs fine on Cauldron/KCauldron.");
         }
-        // Start bStats metrics.
-        new Metrics(this);
+
+        try {
+            // Start bStats metrics.
+            new Metrics(this);
+        } catch (Exception ex) {
+            getLogger().info("Failed to setup metrics!");
+        } catch (ExceptionInInitializerError error) {
+            getLogger().info("Debugging mode!");
+        }
+
 
         Bukkit.getPluginManager().registerEvents(new GUIListener(), Main.getMain());
         Bukkit.getPluginManager().registerEvents(new MenuHandler(), Main.getMain());
@@ -257,10 +290,10 @@ public class Main extends JavaPlugin implements Listener {
         }
         // Annoucer setup
         if (SettingsManager.config.getBoolean("enableFancyAnnouncer")) {
-            if (MinecraftVersion.getVersion() == MinecraftVersion.MC1_8_R3) {
-                announcerManager = new AnnouncerManager(new Announcer_ActionBar());
-            } else {
+            if (MinecraftBukkitVersion.isV19OrLater()) {
                 announcerManager = new AnnouncerManager(new Announcer_BossBar());
+            } else {
+                announcerManager = new AnnouncerManager(new Announcer_ActionBar());
             }
         } else {
             announcerManager = new AnnouncerManager(new Announcer_Chat());
@@ -318,7 +351,7 @@ public class Main extends JavaPlugin implements Listener {
      */
     private void registerCompatibility() {
         Main.getMain().getLogger().info("Your server is running version "
-                + Reflection_V2.getVERSION());
+                + MinecraftBukkitVersion.getCURRENT().getVersion());
         Main.getMain().getLogger().info("Your server is running on " + System
                 .getProperty("os.name"));
         if (compatibility.setupGlow()) {

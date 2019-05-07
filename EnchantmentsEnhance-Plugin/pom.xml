@@ -21,10 +21,6 @@
             <url>http://maven.sk89q.com/repo/</url>
         </repository>
         <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-        <repository>
             <id>inventive-repo</id>
             <url>https://repo.inventivetalent.org/content/groups/public/</url>
         </repository>
@@ -62,13 +58,6 @@
             <artifactId>EnchantmentsEnhance-Compatibility-1.13</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
-        </dependency>
-        <!-- EffectLib -->
-        <dependency>
-            <groupId>com.github.Slikey</groupId>
-            <artifactId>EffectLib</artifactId>
-            <version>d2da0ac5f1</version>
-            <scope>provided</scope>
         </dependency>
         <!-- WorldGuard -->
         <dependency>
@@ -108,28 +97,28 @@
         </dependency>
         <!-- ldk-bukkit-common -->
         <dependency>
-            <groupId>com.github.lgou2w.ldk</groupId>
+            <groupId>com.lgou2w</groupId>
             <artifactId>ldk-bukkit-common</artifactId>
             <version>${ldk.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- ldk-bukkit-gui -->
         <dependency>
-            <groupId>com.github.lgou2w.ldk</groupId>
+            <groupId>com.lgou2w</groupId>
             <artifactId>ldk-bukkit-gui</artifactId>
             <version>${ldk.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- ldk-bukkit-cmd -->
         <dependency>
-            <groupId>com.github.lgou2w.ldk</groupId>
+            <groupId>com.lgou2w</groupId>
             <artifactId>ldk-bukkit-cmd</artifactId>
             <version>${ldk.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- ldk-bukkit-compatibility -->
         <dependency>
-            <groupId>com.github.lgou2w.ldk</groupId>
+            <groupId>com.lgou2w</groupId>
             <artifactId>ldk-bukkit-compatibility</artifactId>
             <version>${ldk.version}</version>
             <scope>compile</scope>
@@ -180,7 +169,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <executions>
                     <!-- Replacing default-compile as it is treated specially by maven -->
                     <execution>

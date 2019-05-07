@@ -2,6 +2,9 @@
 ## [7.4.0] - 2019-4-22
 ### Fixed
 - Config regenerates deleted enchantment levels.
+- Renamed jarfile crashes the plugin.
+- Version check freezes the server.
+- Reflection optimization.
 
 ## [7.3.0] - 2019-3-17
 ### Fixed
