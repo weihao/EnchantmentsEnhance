@@ -1,4 +1,12 @@
 # Changelog
+## [7.5.0] - 2019-5-6
+### Added
+- Support for 1.14
+### Fixed
+- Fixed a security issue.
+###Changed
+- Refactored NBTAPI to LDK-NBT
+
 ## [7.4.0] - 2019-4-22
 ### Fixed
 - Config regenerates deleted enchantment levels.

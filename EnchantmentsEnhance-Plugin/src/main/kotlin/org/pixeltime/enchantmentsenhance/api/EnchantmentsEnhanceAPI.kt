@@ -120,8 +120,8 @@ class API : AbstractAPI {
             PlayerStat.getPlayerStats(player)!!.valks.add(level)
             Collections.sort(PlayerStat.getPlayerStats(player)!!.valks, Collections.reverseOrder())
             Util.sendMessage(SettingsManager.lang.getString("save.createFailstack")
-                    !!.replace("%failstack%".toRegex(), Integer.toString(getFailstack(
-                            player))), player)
+            !!.replace("%failstack%".toRegex(), Integer.toString(getFailstack(
+                    player))), player)
             resetFailstack(player)
         }
     }
