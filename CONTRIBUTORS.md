@@ -12,3 +12,7 @@ EnchantmentsEnhance contributors (unsorted)
 * **[NitroFox0](https://www.spigotmc.org/members/nitrofox0.14320/)**
 
   * Graphics
+
+* **[AndiSlash0723](https://github.com/AndiSlash0723)**
+
+  * Translator (Traditional Chinese)
