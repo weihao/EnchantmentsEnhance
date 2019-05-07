@@ -33,9 +33,9 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Random;
+import java.util.TreeMap;
 
 /**
  * Contains a varieties of utility.
@@ -292,60 +292,30 @@ public class Util {
         i.setItemMeta(im);
         return i;
     }
+    private final static TreeMap<Integer, String> map = new TreeMap<Integer, String>();
 
-    public static int romanToInt(String num) {
-        if (num.isEmpty() || num.equals(" ")) {
-            return 0;
-        }
-        Hashtable<Character, Integer> ht = new Hashtable<Character, Integer>();
-        ht.put('I', 1);
-        ht.put('X', 10);
-        ht.put('V', 5);
-        int intNum = 0;
-        int prev = 0;
-        for (int i = num.length() - 1; i >= 0; i--) {
-            try {
-                int temp = ht.get(num.charAt(i));
-                if (temp < prev)
-                    intNum -= temp;
-                else
-                    intNum += temp;
-                prev = temp;
-            } catch
-            (NullPointerException ex) {
-                return Integer.parseInt(num);
-            }
-
-        }
-        return intNum;
+    static {
+        map.put(1000, "M");
+        map.put(900, "CM");
+        map.put(500, "D");
+        map.put(400, "CD");
+        map.put(100, "C");
+        map.put(90, "XC");
+        map.put(50, "L");
+        map.put(40, "XL");
+        map.put(10, "X");
+        map.put(9, "IX");
+        map.put(5, "V");
+        map.put(4, "IV");
+        map.put(1, "I");
     }
 
-    public static String intToRoman(int input) {
-        if (input > 10) {
-            return Integer.toString(input);
+    public static String intToRoman(int number) {
+        int l =  map.floorKey(number);
+        if ( number == l ) {
+            return map.get(number);
         }
-        String s = "";
-        while (input >= 10) {
-            s += "X";
-            input -= 10;
-        }
-        while (input >= 9) {
-            s += "IX";
-            input -= 9;
-        }
-        while (input >= 5) {
-            s += "V";
-            input -= 5;
-        }
-        while (input >= 4) {
-            s += "IV";
-            input -= 4;
-        }
-        while (input >= 1) {
-            s += "I";
-            input -= 1;
-        }
-        return s;
+        return map.get(l) + intToRoman(number-l);
     }
 
     /**

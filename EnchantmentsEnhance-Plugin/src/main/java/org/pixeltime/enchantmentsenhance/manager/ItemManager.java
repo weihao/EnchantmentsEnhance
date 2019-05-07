@@ -26,6 +26,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.Main;
@@ -37,7 +38,11 @@ import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.datastructure.DoublyLinkedList;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
 public class ItemManager {
 
@@ -190,6 +195,10 @@ public class ItemManager {
         if (!SettingsManager.config.getString("lore.bound").equalsIgnoreCase("disabled")) {
             soulbound(currItem);
         }
+        ItemMeta itemMeta = currItem.getItemMeta();
+        itemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
+
+        currItem.setItemMeta(itemMeta);
 
         return currItem;
     }
@@ -358,7 +367,8 @@ public class ItemManager {
                             " ");
                     if (curr.length == 2 && curr[0].equals(currEnch)) {
                         // Adds original level.
-                        keptLevel += Util.romanToInt(curr[1]);
+                        // TODO
+//                        keptLevel += Util.romanToInt(curr[1]);
                         newlore.remove(i);
                         i--;
                     }
