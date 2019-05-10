@@ -349,6 +349,10 @@ public class ItemManager {
             }
             return true;
         } else {
+            if (ench.equalsIgnoreCase("random")) {
+                String name = PackageManager.getEnabled().get(new Random().nextInt(PackageManager.getEnabled().size())).name();
+                return applyEnchantmentToItem(item, name, level);
+            }
             String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
             int keptLevel = 0;
             if (enchantment != null) {
