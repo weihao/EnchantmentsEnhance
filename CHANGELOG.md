@@ -1,4 +1,12 @@
 # Changelog
+## [7.5.2] - 2019-5-17
+### Added
+- Added Random Enhancement.
+### Fixed
+- Fixed item disappears after set name.
+### Changed
+- Updated dependencies.
+
 ## [7.5.0] - 2019-5-6
 ### Added
 - Support for 1.14
