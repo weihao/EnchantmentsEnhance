@@ -70,8 +70,8 @@ class ItemCommand : SubCommand() {
                         }
                         val curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]))
                         try {
-                            player.inventory.removeItem(item)
-                            ItemManager.forgeItem(player, curr, level, true, clicked)
+                            ItemManager.forgeItem(player, curr, level, true,
+                                    clicked)
                             MainMenu.clearPlayer(player.name)
                         } catch (ex: Exception) {
                             Util.sendMessage(SettingsManager.lang.getString("config.invalidItem"), player)
