@@ -4,6 +4,7 @@
 - Added Random Enhancement.
 ### Fixed
 - Fixed item disappears after set name.
+- WorldGuard soft depend.
 ### Changed
 - Updated dependencies.
 
