@@ -51,8 +51,7 @@ import java.util.Scanner;
 /**
  * Main plugin class.
  */
-public class Main extends JavaPlugin implements Listener
-{
+public class Main extends JavaPlugin implements Listener {
     private static CompatibilityManager compatibility;
     private static Database database;
     private static Main main;
@@ -64,8 +63,7 @@ public class Main extends JavaPlugin implements Listener
     /**
      * Default constructor.
      */
-    public Main()
-    {
+    public Main() {
         super();
     }
 
@@ -81,23 +79,19 @@ public class Main extends JavaPlugin implements Listener
             JavaPluginLoader loader,
             PluginDescriptionFile description,
             File dataFolder,
-            File file)
-    {
+            File file) {
         super(loader, description, dataFolder, file);
     }
 
-    public static CompatibilityManager getCompatibility()
-    {
+    public static CompatibilityManager getCompatibility() {
         return compatibility;
     }
 
-    public static Database getDatabase()
-    {
+    public static Database getDatabase() {
         return database;
     }
 
-    public static API getApi()
-    {
+    public static API getApi() {
         return api;
     }
 
@@ -106,44 +100,35 @@ public class Main extends JavaPlugin implements Listener
      *
      * @return returns an instance of the plugin.
      */
-    public static Main getMain()
-    {
+    public static Main getMain() {
         return main;
     }
 
 
-    public static AnnouncerManager getAnnoucerManager()
-    {
+    public static AnnouncerManager getAnnoucerManager() {
         return announcerManager;
     }
 
-    public static NotifierManager getNotifierManager()
-    {
+    public static NotifierManager getNotifierManager() {
         return notifierManager;
     }
 
-    public static CommandManager getCommandManager()
-    {
+    public static CommandManager getCommandManager() {
         return commandManager;
     }
 
     /**
      * When the plugin is enabled, execute following tasks.
      */
-    public void onEnable()
-    {
+    public void onEnable() {
         // Prints logo.
-        try
-        {
+        try {
             Scanner sc = new Scanner(getClass().getResourceAsStream("/logo" +
                     ".txt"));
-            while (sc.hasNextLine())
-            {
+            while (sc.hasNextLine()) {
                 Bukkit.getConsoleSender().sendMessage((sc.nextLine()));
             }
-        }
-        catch (NullPointerException ex)
-        {
+        } catch (NullPointerException ex) {
         }
 
         // Start time.
@@ -161,90 +146,68 @@ public class Main extends JavaPlugin implements Listener
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new EnhancedItemListener(), this);
-        if (SettingsManager.config.getBoolean("enableLore"))
-        {
+        if (SettingsManager.config.getBoolean("enableLore")) {
             pm.registerEvents(new PlayerDeathListener(), this);
         }
         pm.registerEvents(new PlayerStreamListener(), this);
-        if (SettingsManager.config.getBoolean("enableLifeskill"))
-        {
+        if (SettingsManager.config.getBoolean("enableLifeskill")) {
             pm.registerEvents(new LifeskillingListener(), this);
         }
-        if (SettingsManager.config.getBoolean("enableAnvilFix"))
-        {
+        if (SettingsManager.config.getBoolean("enableAnvilFix")) {
             pm.registerEvents(new RepairListener(), this);
         }
-        if (SettingsManager.config.getBoolean("enableTableEnchant"))
-        {
+        if (SettingsManager.config.getBoolean("enableTableEnchant")) {
             pm.registerEvents(new VanillaEnchantListener(), this);
         }
-        if (SettingsManager.config.getBoolean("enablePreventFireworkDamage"))
-        {
+        if (SettingsManager.config.getBoolean("enablePreventFireworkDamage")) {
             pm.registerEvents(new FireworkListener(), this);
         }
         if (!(SettingsManager.config.getBoolean("enableAnvil")
                 && SettingsManager.config.getBoolean("enableAnvilRename")
-                && SettingsManager.config.getBoolean("enableAnvilRepair")))
-        {
+                && SettingsManager.config.getBoolean("enableAnvilRepair"))) {
             pm.registerEvents(new AnvilRestrict(), this);
         }
 
         this.getServer().getScheduler().runTaskAsynchronously(this, () ->
         {
-            try
-            {
+            try {
                 // Checks for update.
-                if (VersionManager.isUpToDate())
-                {
+                if (VersionManager.isUpToDate()) {
                     getLogger().info(SettingsManager.lang.getString("update" +
                             ".updateToDate"));
-                }
-                else
-                {
+                } else {
                     getLogger().warning(SettingsManager.lang.getString(
                             "update.outdated"));
-                    new BukkitRunnable()
-                    {
+                    new BukkitRunnable() {
                         @Override
-                        public void run()
-                        {
-                            for (Player p : Bukkit.getOnlinePlayers())
-                            {
-                                if (p.hasPermission("Enchantments.*") || p.hasPermission("*") || p.isOp())
-                                {
+                        public void run() {
+                            for (Player p : Bukkit.getOnlinePlayers()) {
+                                if (p.hasPermission("Enchantments.*") || p.hasPermission("*") || p.isOp()) {
                                     Main.getNotifierManager().call(new Notification(p, SettingsManager.lang.getString("update.updateToDate")));
                                 }
                             }
                         }
                     }.runTaskTimer(Main.getMain(), 120L, 36000L);
                 }
-            }
-            catch (
-                    Exception ex)
-            {
+            } catch (
+                    Exception ex) {
                 // Debugging version.
             }
         });
 
         // Notify Cauldron and MCPC users.
         if (getServer().getName().contains("Cauldron") || getServer().getName()
-                .contains("MCPC"))
-        {
+                .contains("MCPC")) {
             getLogger().info(
                     "EnchantmentsEnhance runs fine on Cauldron/KCauldron.");
         }
 
-        try
-        {
+        try {
             // Start bStats metrics.
             new Metrics(this);
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             getLogger().info("Failed to setup metrics!");
-        }
-        catch (ExceptionInInitializerError error)
-        {
+        } catch (ExceptionInInitializerError error) {
             getLogger().info("Debugging mode!");
         }
 
@@ -271,12 +234,9 @@ public class Main extends JavaPlugin implements Listener
         // When plugin is reloaded, load all the inventory of online players.
         this.getLogger().info(SettingsManager.lang.getString(
                 "config.onLoadingInventory"));
-        if (!Bukkit.getOnlinePlayers().isEmpty())
-        {
-            for (Player player : Bukkit.getOnlinePlayers())
-            {
-                if (PlayerStat.getPlayerStats(player.getName()) != null)
-                {
+        if (!Bukkit.getOnlinePlayers().isEmpty()) {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                if (PlayerStat.getPlayerStats(player.getName()) != null) {
                     PlayerStat.removePlayer(player.getName());
                 }
                 PlayerStat.getPlayers().add(new PlayerStat(player));
@@ -284,65 +244,46 @@ public class Main extends JavaPlugin implements Listener
         }
 
         // MySql setup
-        if (SettingsManager.config.getBoolean("mysql.enabled"))
-        {
-            try
-            {
+        if (SettingsManager.config.getBoolean("mysql.enabled")) {
+            try {
                 database = new Database();
-                if (!database.checkConnection())
-                {
+                if (!database.checkConnection()) {
                     return;
                 }
                 Main.getMain().getLogger().info("MySQL enabled!");
-            }
-            catch (ClassNotFoundException | SQLException e)
-            {
+            } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
-            if (!database.checkConnection())
-            {
+            if (!database.checkConnection()) {
                 return;
             }
-            try
-            {
+            try {
                 database.createTables();
-            }
-            catch (IOException | SQLException e)
-            {
+            } catch (IOException | SQLException e) {
                 e.printStackTrace();
             }
         }
         // Annoucer setup
-        if (SettingsManager.config.getBoolean("enableFancyAnnouncer"))
-        {
-            if (MinecraftBukkitVersion.isV19OrLater())
-            {
+        if (SettingsManager.config.getBoolean("enableFancyAnnouncer")) {
+            if (MinecraftBukkitVersion.isV19OrLater()) {
                 announcerManager =
                         new AnnouncerManager(new Announcer_BossBar());
-            }
-            else
-            {
+            } else {
                 announcerManager =
                         new AnnouncerManager(new Announcer_ActionBar());
             }
-        }
-        else
-        {
+        } else {
             announcerManager = new AnnouncerManager(new Announcer_Chat());
         }
 
         // Notifier setup
-        if (SettingsManager.config.getBoolean("enableFancyNotify"))
-        {
+        if (SettingsManager.config.getBoolean("enableFancyNotify")) {
             notifierManager = new NotifierManager(new Notifier_TitleBar());
-        }
-        else
-        {
+        } else {
             notifierManager = new NotifierManager(new Notifier_Chat());
         }
 
-        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI"))
-        {
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             //Registering placeholder will be use here
             new PlaceholderListener().register();
         }
@@ -362,20 +303,15 @@ public class Main extends JavaPlugin implements Listener
     /**
      * When the plugin is disabled, execute following tasks.
      */
-    public void onDisable()
-    {
-        for (PlayerStat fData : PlayerStat.getPlayers())
-        {
+    public void onDisable() {
+        for (PlayerStat fData : PlayerStat.getPlayers()) {
             DataStorage.get().saveStats(fData);
         }
 
         // Write player data to the memory.
-        if (!Bukkit.getOnlinePlayers().isEmpty())
-        {
-            for (Player player : Bukkit.getOnlinePlayers())
-            {
-                if (GUIManager.getMap().containsKey(player.getName()))
-                {
+        if (!Bukkit.getOnlinePlayers().isEmpty()) {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                if (GUIManager.getMap().containsKey(player.getName())) {
                     player.closeInventory();
                 }
             }
@@ -390,18 +326,14 @@ public class Main extends JavaPlugin implements Listener
     /**
      * Detects the version of the server is currently running.
      */
-    private void registerCompatibility()
-    {
+    private void registerCompatibility() {
         Main.getMain().getLogger().info("Your server is running version "
                 + MinecraftBukkitVersion.getCURRENT().getVersion());
         Main.getMain().getLogger().info("Your server is running on " + System
                 .getProperty("os.name"));
-        if (compatibility.setupGlow())
-        {
+        if (compatibility.setupGlow()) {
             getLogger().info("Enhancement Glower setup was successful!");
-        }
-        else
-        {
+        } else {
 
             getLogger().severe("Failed to setup Enhancement Glower!");
             getLogger().severe(
@@ -410,12 +342,9 @@ public class Main extends JavaPlugin implements Listener
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        if (compatibility.setupSound())
-        {
+        if (compatibility.setupSound()) {
             getLogger().info("Enhancement Sound setup was successful!");
-        }
-        else
-        {
+        } else {
 
             getLogger().severe("Failed to setup Enhancement Sound!");
             getLogger().severe(
@@ -423,12 +352,9 @@ public class Main extends JavaPlugin implements Listener
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        if (compatibility.setupFirework())
-        {
+        if (compatibility.setupFirework()) {
             getLogger().info("Enhancement Firework setup was successful!");
-        }
-        else
-        {
+        } else {
 
             getLogger().severe("Failed to setup Enhancement Firework!");
             getLogger().severe(
@@ -436,8 +362,7 @@ public class Main extends JavaPlugin implements Listener
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        if (SettingsManager.config.getBoolean("enableEconomy") && DependencyManager.setupEconomy())
-        {
+        if (SettingsManager.config.getBoolean("enableEconomy") && DependencyManager.setupEconomy()) {
             getLogger().info("Enhancement-Vault Hook was successful!");
         }
     }
