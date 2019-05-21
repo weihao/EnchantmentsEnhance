@@ -27,6 +27,7 @@
 ### Fixed
 - Build failing due to issues with dependencies.
 - Glow does not register after reload.
+- Advice does not display properly.
 - Plugin failed to work in offline mode.
 
 ## [7.2.0] - 2019-3-2
