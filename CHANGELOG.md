@@ -1,5 +1,5 @@
 # Changelog
-## [7.5.2] - 2019-5-17
+## [7.6.0] - 2019-5-21
 ### Added
 - Added Random Enhancement.
 ### Fixed
