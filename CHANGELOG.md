@@ -25,14 +25,13 @@
 
 ## [7.3.0] - 2019-3-17
 ### Fixed
-- Build failing.
+- Build failing due to issues with dependencies.
 - Glow does not register after reload.
-- Advice does not display.
-- Plugin offline.
+- Plugin failed to work in offline mode.
 
 ## [7.2.0] - 2019-3-2
 ### Added
-- Preview enhancement.
+- Preview enhancement when enhancing.
 - Item engraving.
 
 ### Fixed

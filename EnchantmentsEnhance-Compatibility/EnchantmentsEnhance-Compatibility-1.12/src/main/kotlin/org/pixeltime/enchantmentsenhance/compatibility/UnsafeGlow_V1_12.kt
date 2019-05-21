@@ -36,7 +36,7 @@ class UnsafeGlow_V1_12 : UnsafeGlow {
 
     companion object Constants {
         const val ID = 255
-        const val NAME = "Glow"
+        const val NAME = "eeglow"
         const val MAX_LEVEL = 10
         const val START_LEVEL = 1
         @JvmStatic
