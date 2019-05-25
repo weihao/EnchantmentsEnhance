@@ -20,9 +20,11 @@ package org.pixeltime.enchantmentsenhance.command
 
 import com.lgou2w.ldk.bukkit.cmd.*
 import com.lgou2w.ldk.chat.toColor
+import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.permissions.PermissionDefault
+import org.bukkit.scheduler.BukkitRunnable
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
@@ -33,6 +35,7 @@ class EnhanceCommand(val main: Main) : StandardCommand() {
     override fun initialize() {
         command.mappingExecutorDescriptions(mapOf(
                 "enhance" to SettingsManager.lang.getString("help.help"),
+                "add" to SettingsManager.lang.getString("help.add"),
                 "help" to SettingsManager.lang.getString("help.help"),
                 "inventory" to SettingsManager.lang.getString("help.inventory"),
                 "list" to SettingsManager.lang.getString("help.list"),
@@ -55,12 +58,18 @@ class EnhanceCommand(val main: Main) : StandardCommand() {
 
     @Command("add")
     @Permission("Enchantmentsenhance.add")
-    @PlayerOnly
-    fun add(player: Player, stoneId: Int, amount: Int) {
+    fun add(sender: CommandSender, player: Player, stoneId: Int, amount: Int) {
         Main.getApi().addItem(player.name, stoneId, amount)
         Util.sendMessage(SettingsManager.lang.getString(
                 "add.successful")!!
                 .replace("%player%", player.name)
+                .replace("%number%", amount.toString())
+                .replace("%number%", amount.toString())
+                .replace("%stone%", SettingsManager.lang.getString("item.$stoneId")!!), sender)
+        Util.sendMessage(SettingsManager.lang.getString(
+                "add.successful")!!
+                .replace("%player%", player.name)
+                .replace("%number%", amount.toString())
                 .replace("%number%", amount.toString())
                 .replace("%stone%", SettingsManager.lang.getString("item.$stoneId")!!), player)
 
@@ -70,6 +79,7 @@ class EnhanceCommand(val main: Main) : StandardCommand() {
     @Permission("Enchantmentsenhance.inventory")
     @PlayerOnly
     fun inventory(player: Player) {
+
     }
 
     @Command("list")
@@ -96,6 +106,8 @@ class EnhanceCommand(val main: Main) : StandardCommand() {
 
     @Command("debug")
     @Permission("Enchantmentsenhance.debug")
-    fun debug(sender: CommandSender) {
+    @PlayerOnly
+    fun debug(player: Player) {
+        Util.sendMessage("hello world!!", player)
     }
 }
