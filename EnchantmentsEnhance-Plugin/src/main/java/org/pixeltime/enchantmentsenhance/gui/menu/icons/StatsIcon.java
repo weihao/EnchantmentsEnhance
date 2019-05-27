@@ -22,10 +22,10 @@ import com.lgou2w.ldk.bukkit.compatibility.DyeColors;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.compatibility.EnchantmentGlow;
 import org.pixeltime.enchantmentsenhance.event.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
-import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
@@ -44,7 +44,7 @@ public class StatsIcon extends Clickable {
 
     public ItemStack getItem(String playerName, Clickable clicked) {
         if (playerName != null && MainMenu.itemOnEnhancingSlot.get(playerName) != null) {
-            return CompatibilityManager.glow
+            return EnchantmentGlow.Factory
                     .addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
                             .setDyeColor(DyeColors.LIGHT_BLUE.toBukkit())
                             .setName(SettingsManager.lang.getString("menu.gui.stats"))
@@ -56,7 +56,7 @@ public class StatsIcon extends Clickable {
                                     "menu.lore.stats2")).toItemStack());
         }
         if (playerName != null && Main.getApi().hasFailstack(playerName)) {
-            return CompatibilityManager.glow.addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
+            return EnchantmentGlow.Factory.addGlow(new ItemBuilder(XMaterial.LIGHT_BLUE_WOOL.toBukkit())
                     .setDyeColor(DyeColors.LIGHT_BLUE.toBukkit())
                     .setName(SettingsManager.lang.getString("menu.gui.stats"))
                     .addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack")

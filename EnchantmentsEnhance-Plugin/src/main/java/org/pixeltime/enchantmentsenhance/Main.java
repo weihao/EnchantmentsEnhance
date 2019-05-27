@@ -41,6 +41,7 @@ import org.pixeltime.enchantmentsenhance.chat.Notification;
 import org.pixeltime.enchantmentsenhance.chat.Notifier_Chat;
 import org.pixeltime.enchantmentsenhance.chat.Notifier_TitleBar;
 import org.pixeltime.enchantmentsenhance.command.EnhanceCommand;
+import org.pixeltime.enchantmentsenhance.compatibility.EnchantmentGlow;
 import org.pixeltime.enchantmentsenhance.enums.LangType;
 import org.pixeltime.enchantmentsenhance.gui.GUIListener;
 import org.pixeltime.enchantmentsenhance.gui.GUIManager;
@@ -57,7 +58,6 @@ import org.pixeltime.enchantmentsenhance.listener.PlayerStreamListener;
 import org.pixeltime.enchantmentsenhance.listener.VanillaEnchantListener;
 import org.pixeltime.enchantmentsenhance.locale.LocaleManager;
 import org.pixeltime.enchantmentsenhance.manager.AnnouncerManager;
-import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.DataManager;
 import org.pixeltime.enchantmentsenhance.manager.DependencyManager;
 import org.pixeltime.enchantmentsenhance.manager.DropManager;
@@ -77,13 +77,13 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
 
 
 /**
  * Main plugin class.
  */
 public class Main extends JavaPlugin implements Listener {
-    private static CompatibilityManager compatibility;
     private static Database database;
     private static Main main;
     private static API api;
@@ -112,10 +112,6 @@ public class Main extends JavaPlugin implements Listener {
             File dataFolder,
             File file) {
         super(loader, description, dataFolder, file);
-    }
-
-    public static CompatibilityManager getCompatibility() {
-        return compatibility;
     }
 
     public static Database getDatabase() {
@@ -164,7 +160,6 @@ public class Main extends JavaPlugin implements Listener {
         // Objects initialization.
         main = this;
         api = new API();
-        compatibility = new CompatibilityManager();
 
         // Set up the files.
         SettingsManager.setUp();
@@ -367,41 +362,18 @@ public class Main extends JavaPlugin implements Listener {
      * Detects the version of the server is currently running.
      */
     private void registerCompatibility() {
-        Main.getMain().getLogger().info("Your server is running version "
-                + MinecraftBukkitVersion.getCURRENT().getVersion());
-        Main.getMain().getLogger().info("Your server is running on " + System
-                .getProperty("os.name"));
-        if (compatibility.setupGlow()) {
+        Main.getMain().getLogger().info("Your server is running version " + MinecraftBukkitVersion.getCURRENT().getVersion());
+        Main.getMain().getLogger().info("Your server is running on " + System.getProperty("os.name"));
+
+        try {
+            EnchantmentGlow.Factory.init();
             getLogger().info("Enhancement Glower setup was successful!");
-        } else {
-
+        } catch (Exception e) {
             getLogger().severe("Failed to setup Enhancement Glower!");
-            getLogger().severe(
-                    "Error in EnchantmentsEnhance! (Outdated plugin?)");
-
+            getLogger().severe("Error in EnchantmentsEnhance! (Outdated plugin?)");
+            getLogger().log(Level.SEVERE, e.getMessage(), e);
             Bukkit.getPluginManager().disablePlugin(this);
         }
-
-        if (compatibility.setupSound()) {
-            getLogger().info("Enhancement Sound setup was successful!");
-        } else {
-
-            getLogger().severe("Failed to setup Enhancement Sound!");
-            getLogger().severe(
-                    "Error in EnchantmentsEnhance! (Outdated plugin?)");
-            Bukkit.getPluginManager().disablePlugin(this);
-        }
-
-        if (compatibility.setupFirework()) {
-            getLogger().info("Enhancement Firework setup was successful!");
-        } else {
-
-            getLogger().severe("Failed to setup Enhancement Firework!");
-            getLogger().severe(
-                    "Error in EnchantmentsEnhance! (Outdated plugin?)");
-            Bukkit.getPluginManager().disablePlugin(this);
-        }
-
         if (SettingsManager.config.getBoolean("enableEconomy") && DependencyManager.setupEconomy()) {
             getLogger().info("Enhancement-Vault Hook was successful!");
         }

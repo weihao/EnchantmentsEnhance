@@ -18,8 +18,13 @@
 
 package org.pixeltime.enchantmentsenhance.event;
 
+import com.lgou2w.ldk.bukkit.compatibility.Sounds;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.chat.Announcement;
 import org.pixeltime.enchantmentsenhance.chat.Notification;
@@ -27,7 +32,6 @@ import org.pixeltime.enchantmentsenhance.enums.AnnounceType;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
-import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.DataManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
@@ -121,11 +125,10 @@ public class Enhance {
         ItemStack forged = ItemManager.forgeItem(player, item, enchantLevel, true, clicked);
 
         // Play sound
-        CompatibilityManager.playsound.playSound(player, "SUCCESS");
+        Sounds.NOTE_PLING.tryPlay(player.getLocation(), 1f, 2f);
+//        CompatibilityManager.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
-        CompatibilityManager.spawnFirework.launch(player, 1,
-                DataManager.fireworkRounds[enchantLevel], SettingsManager.config
-                        .getInt("fireworkDelay"));
+        launchFireworks(player, 1, DataManager.fireworkRounds[enchantLevel], SettingsManager.config.getInt("fireworkDelay"));
         // Do not clear failstack if force enhanced
         if (forceEnhanced) {
             Util.sendMessage(SettingsManager.lang.getString(
@@ -144,6 +147,27 @@ public class Enhance {
         }
     }
 
+    private static final Random RNG = new Random();
+    private static void launchFireworks(Player player, int count, int fireworkRounds, int delay) {
+        Main.getMain().getServer().getScheduler().scheduleSyncDelayedTask(Main.getMain(), () -> {
+            FireworkEffect.Type[] fireworkTypes = FireworkEffect.Type.values();
+            for (int i = 0; i < count; i++) {
+                Firework firework = player.getWorld().spawn(player.getLocation(), Firework.class);
+                FireworkMeta meta = firework.getFireworkMeta();
+                meta.addEffect(FireworkEffect.builder()
+                        .with(fireworkTypes[RNG.nextInt(fireworkTypes.length)])
+                        .withColor(Color.fromRGB(RNG.nextInt(255), RNG.nextInt(255), RNG.nextInt(255)))
+                        .withFade(Color.fromRGB(RNG.nextInt(255), RNG.nextInt(255), RNG.nextInt(255)))
+                        .trail(RNG.nextBoolean())
+                        .flicker(RNG.nextBoolean())
+                        .build()
+                );
+                meta.setPower(RNG.nextInt(3));
+                firework.setFireworkMeta(meta);
+            }
+        });
+    }
+
     /**
      * Calls when enhancement is failed.
      *
@@ -158,7 +182,8 @@ public class Enhance {
         String[] msg = new String[2];
         msg[0] = SettingsManager.lang.getString("enhance.enhanceFailed");
         // Play failed sound.
-        CompatibilityManager.playsound.playSound(player, "FAILED");
+        Sounds.ANVIL_BREAK.tryPlay(player.getLocation(), 1f, 2f);
+//        CompatibilityManager.playsound.playSound(player, "FAILED");
         // Add failstack.
         Main.getApi().addFailstack(player.getName(),
                 DataManager.failstackGainedPerFail[level]);
@@ -180,7 +205,8 @@ public class Enhance {
             // Downgrade failed item.
             msg[1] = (SettingsManager.lang.getString("enhance.downgraded"));
             // Play destroyed sound.
-            CompatibilityManager.playsound.playSound(player, "DOWNGRADED");
+            Sounds.EXPLODE.tryPlay(player.getLocation(), 1f, 2f);
+//            CompatibilityManager.playsound.playSound(player, "DOWNGRADED");
             // Item level after failing.
             int enchantLevel = level - 2;
             // Updates the item.

@@ -10,6 +10,11 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/EnchantmentsEnhance-Compatibility/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />

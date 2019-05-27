@@ -15,6 +15,11 @@
     <artifactId>EnchantmentsEnhance-Plugin</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
     <repositories>
         <repository>
             <id>sk89q-repo</id>
@@ -43,19 +48,6 @@
         <dependency>
             <groupId>org.pixeltime</groupId>
             <artifactId>EnchantmentsEnhance-API</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <!-- EnchantmentsEnhance-Compatibility -->
-        <dependency>
-            <groupId>org.pixeltime</groupId>
-            <artifactId>EnchantmentsEnhance-Compatibility-1.12</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.pixeltime</groupId>
-            <artifactId>EnchantmentsEnhance-Compatibility-1.13</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
@@ -94,6 +86,13 @@
             <version>2.5.1</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/src/resources/Lib/MVdWPlaceholderAPI.jar</systemPath>
+        </dependency>
+        <!-- ldk-asm -->
+        <dependency>
+            <groupId>com.lgou2w</groupId>
+            <artifactId>ldk-asm</artifactId>
+            <version>${ldk.version}</version>
+            <scope>compile</scope>
         </dependency>
         <!-- ldk-bukkit-common -->
         <dependency>
@@ -145,6 +144,7 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
+                            <jvmTarget>1.8</jvmTarget>
                             <sourceDirs>
                                 <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
                                 <sourceDir>${project.basedir}/src/main/java</sourceDir>
@@ -157,6 +157,7 @@
                             <goal>test-compile</goal>
                         </goals>
                         <configuration>
+                            <jvmTarget>1.8</jvmTarget>
                             <sourceDirs>
                                 <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
                                 <sourceDir>${project.basedir}/src/test/java</sourceDir>

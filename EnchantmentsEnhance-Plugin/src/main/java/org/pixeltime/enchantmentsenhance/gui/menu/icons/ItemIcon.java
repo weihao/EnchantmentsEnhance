@@ -21,8 +21,8 @@ package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.compatibility.EnchantmentGlow;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
-import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
@@ -59,7 +59,7 @@ public class ItemIcon extends Clickable {
         if (stat != null && stat.getItems() != null) {
             for (int i : PlayerStat.getPlayerStats(player).getItems()) {
                 if (i > 0) {
-                    return CompatibilityManager.glow.addGlow(getItem());
+                    return EnchantmentGlow.Factory.addGlow(getItem());
                 }
             }
         }

@@ -24,9 +24,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.compatibility.EnchantmentGlow;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.BackIcon;
-import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
@@ -55,7 +55,7 @@ public class ValksMenu extends GUIAbstract {
                 final int index = i + ((currPage - 1) * 54);
                 final int level = inv.get(index);
                 setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1),
-                        CompatibilityManager.glow.addGlow(new ItemBuilder(Material.BOOK, level > 64 ? 64 : level)
+                        EnchantmentGlow.Factory.addGlow(new ItemBuilder(Material.BOOK, level > 64 ? 64 : level)
                                 .setName(SettingsManager.lang.getString("item.valks") + "+" + level)
                                 .addLoreLine(SettingsManager.lang.getString("menu.leftAdviceInfo"))
                                 .addLoreLine(SettingsManager.lang.getString("menu.rightInfo"))

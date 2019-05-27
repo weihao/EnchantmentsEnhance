@@ -23,11 +23,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.compatibility.EnchantmentGlow;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.BackIcon;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.GrindIcon;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.ReblathIcon;
-import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
@@ -62,7 +62,7 @@ public class ItemMenu extends GUIAbstract {
             final int stoneId = i;
             setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1),
                     (clickedItem.containsKey(playerName) && stoneId == clickedItem.get(playerName)
-                            ? CompatibilityManager.glow.addGlow(MainMenu.stone.getItem(i, player))
+                            ? EnchantmentGlow.Factory.addGlow(MainMenu.stone.getItem(i, player))
                             : MainMenu.stone.getItem(i, player)),
                     (clickType) -> {
                         if (clickType == ClickType.LEFT) {

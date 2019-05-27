@@ -27,7 +27,6 @@
 
     <modules>
         <module>EnchantmentsEnhance-API</module>
-        <module>EnchantmentsEnhance-Compatibility</module>
         <module>EnchantmentsEnhance-Plugin</module>
     </modules>
 

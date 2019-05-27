@@ -29,6 +29,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.compatibility.EnchantmentGlow;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.Lore;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
@@ -378,16 +379,14 @@ public class ItemManager {
                     meta.setLore(newlore);
                     item.setItemMeta(meta);
                     if (item.getEnchantments().isEmpty()) {
-                        CompatibilityManager.glow
-                                .addGlow(item);
+                        EnchantmentGlow.Factory.addGlow(item);
                     }
                     return true;
                 } else {
                     meta.setLore(newlore);
                     item.setItemMeta(meta);
                     if (item.getEnchantments().isEmpty()) {
-                        CompatibilityManager.glow
-                                .addGlow(item);
+                        EnchantmentGlow.Factory.addGlow(item);
                     }
                 }
             }
@@ -440,7 +439,7 @@ public class ItemManager {
     }
 
     public static ItemStack itemMaterialize(int stoneId, int amount) {
-        return CompatibilityManager.glow
+        return EnchantmentGlow.Factory
                 .addGlow(setGive(new ItemBuilder(MaterialManager.stoneTypes.get(stoneId))
                                 .setName(SettingsManager.lang.getString("item." + stoneId) + " Bundle: " + amount)
                                 .addLoreLine(SettingsManager.lang.getString("materialize.info1"))
@@ -452,7 +451,7 @@ public class ItemManager {
     }
 
     public static ItemStack adviceMaterialize(int level) {
-        return CompatibilityManager.glow
+        return EnchantmentGlow.Factory
                 .addGlow(setGive(new ItemBuilder(XMaterial.BOOK.toBukkit())
                                 .setName(SettingsManager.lang.getString("item.valks") + "+" + level)
                                 .addLoreLine(SettingsManager.lang.getString("materialize.info1"))
