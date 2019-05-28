@@ -18,14 +18,20 @@
 
 package org.pixeltime.enchantmentsenhance.command
 
-import com.lgou2w.ldk.bukkit.cmd.*
+import com.lgou2w.ldk.bukkit.cmd.Command
+import com.lgou2w.ldk.bukkit.cmd.CommandHelper
+import com.lgou2w.ldk.bukkit.cmd.CommandRoot
+import com.lgou2w.ldk.bukkit.cmd.Permission
+import com.lgou2w.ldk.bukkit.cmd.PermissionDefaultValue
+import com.lgou2w.ldk.bukkit.cmd.PlayerOnly
+import com.lgou2w.ldk.bukkit.cmd.StandardCommand
 import com.lgou2w.ldk.chat.toColor
-import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.permissions.PermissionDefault
-import org.bukkit.scheduler.BukkitRunnable
 import org.pixeltime.enchantmentsenhance.Main
+import org.pixeltime.enchantmentsenhance.gui.MainGui
+import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
 
@@ -92,6 +98,13 @@ class EnhanceCommand(val main: Main) : StandardCommand() {
     @Permission("Enchantmentsenhance.menu")
     @PlayerOnly
     fun menu(player: Player) {
+        MainGui().open(player)
+    }
+
+    @Command("menuold")
+    @PlayerOnly
+    fun menuOld(player: Player) {
+        MainMenu(player).open()
     }
 
     @Command("reload")
