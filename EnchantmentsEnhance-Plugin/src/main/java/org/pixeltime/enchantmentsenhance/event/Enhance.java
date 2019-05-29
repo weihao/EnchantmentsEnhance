@@ -125,7 +125,7 @@ public class Enhance {
         ItemStack forged = ItemManager.forgeItem(player, item, enchantLevel, true, clicked);
 
         // Play sound
-        Sounds.NOTE_PLING.tryPlay(player.getLocation(), 1f, 2f);
+        Sounds.LEVEL_UP.tryPlay(player.getLocation(), 1f, 0f);
 //        CompatibilityManager.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
         launchFireworks(player, 1, DataManager.fireworkRounds[enchantLevel], SettingsManager.config.getInt("fireworkDelay"));
@@ -182,7 +182,7 @@ public class Enhance {
         String[] msg = new String[2];
         msg[0] = SettingsManager.lang.getString("enhance.enhanceFailed");
         // Play failed sound.
-        Sounds.ANVIL_BREAK.tryPlay(player.getLocation(), 1f, 2f);
+        Sounds.ANVIL_DESTROY.tryPlay(player.getLocation(), 1f, 0f);
 //        CompatibilityManager.playsound.playSound(player, "FAILED");
         // Add failstack.
         Main.getApi().addFailstack(player.getName(),

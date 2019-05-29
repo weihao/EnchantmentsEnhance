@@ -18,6 +18,7 @@
 
 package org.pixeltime.enchantmentsenhance.gui
 
+import com.lgou2w.ldk.bukkit.cancelTask
 import com.lgou2w.ldk.bukkit.compatibility.Sounds
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial
 import com.lgou2w.ldk.bukkit.compatibility.notEq
@@ -27,11 +28,15 @@ import com.lgou2w.ldk.bukkit.gui.GuiType
 import com.lgou2w.ldk.bukkit.item.builder
 import com.lgou2w.ldk.chat.toColor
 import com.lgou2w.ldk.common.ApplicatorFunction
+import com.lgou2w.ldk.common.Runnable
 import com.lgou2w.ldk.common.notNull
 import org.bukkit.Material
 import org.bukkit.entity.HumanEntity
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
+import org.bukkit.scheduler.BukkitRunnable
+import org.bukkit.scheduler.BukkitTask
+import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.applyGlow
 import org.pixeltime.enchantmentsenhance.event.Enhance
 import org.pixeltime.enchantmentsenhance.getStringNotNull
@@ -62,22 +67,29 @@ class MainGui : GuiBase(
     private fun initBasic() {
         isAllowMove = false
         isActivated = false
+        isInProgressing = false
     }
 
     private var isActivated : Boolean
         get() = getPropertyAsNotNull("activated")
         set(value) { setProperty("activated", value) }
 
+    private var isInProgressing : Boolean
+        get() = getPropertyAsNotNull("progressing")
+        set(value) { setProperty("progressing", value) }
+
     private fun initListeners() {
         onClicked = { _, event ->
             val player = event.whoClicked as? Player
             val enhanceItem = event.currentItem
             if (player != null && event.rawSlot > size &&
-                enhanceItem != null && enhanceItem notEq XMaterial.AIR &&
-                !isActivated
+                enhanceItem != null && enhanceItem notEq XMaterial.AIR
             ) {
                 readyEnhanceItem(player, enhanceItem)
             }
+        }
+        onClosed = { _, event ->
+            cancelEnhanceItem(event.player as Player)
         }
     }
 
@@ -94,19 +106,75 @@ class MainGui : GuiBase(
     }
 
     private fun initFunctions(player: Player) {
-        // Enhance icon
         setButton(Icon.Enhance) { stack(player.name) }
         setButton(Icon.Display) { null }
         setButton(Icon.Cancel) { null }
     }
 
+    private var progressingTask : BukkitTask? = null
+    private val progressingButtonXIndexes = intArrayOf(3, 4, 5, 6, 7)
+    private val progressingButtonXIndexesSize = progressingButtonXIndexes.size
+    private val progressingButtonY = 4
+
+    private fun enterEnhanceProgressing(
+            player: Player,
+            enhanceItem: ItemStack,
+            onCompleted: Runnable
+    ) {
+        isInProgressing = true
+        progressingTask = object : BukkitRunnable() {
+            var life = 0
+            override fun run() {
+                if (life == 0) {
+                    progressingButtonXIndexes
+                        .forEach { x -> setButton(x, progressingButtonY) }
+                }
+                if (life == progressingButtonXIndexesSize) {
+                    onCompleted()
+                    return
+                }
+                getButton(progressingButtonXIndexes[life], progressingButtonY)
+                    ?.stack = randomWool()
+                life++
+            }
+        }.runTaskTimer(Main.getMain(), 0L, 10L)
+    }
+
+    private fun randomWool() = XMaterial.values()
+        .asSequence()
+        .filter { it.name.endsWith("WOOL") }
+        .map { it.createStack(1) }
+        .toList()
+        .random()
+        .applyGlow(true)
+
+    private fun leaveEnhanceProgressing(player: Player) {
+        isInProgressing = false
+        progressingTask.cancelTask()
+        progressingButtonXIndexes
+            .forEach { x -> removeButton(x, progressingButtonY) }
+    }
+
+    private fun filterCanEnhanceItem(player: Player, enhanceItem: ItemStack): Boolean {
+        if (isActivated || isInProgressing)
+            return false
+        return true
+    }
+
     private fun readyEnhanceItem(player: Player, enhanceItem: ItemStack) {
+        if (!filterCanEnhanceItem(player, enhanceItem))
+            return
         if (!isActivated) {
             isActivated = true
             Sounds.NOTE_PIANO.tryPlay(player.location, 0.5f, 2f)
-            getButton(Icon.Display).stack = enhanceItem.clone()
+            getButton(Icon.Display).stack = enhanceItem
             getButton(Icon.Enhance).stack = Icon.Enhance.stack(enhanceItem)
-            getButton(Icon.Enhance).onClicked = { startEnhanceItem(player, enhanceItem) }
+            getButton(Icon.Enhance).onClicked = { event ->
+                val isLeftClick = event.source.isLeftClick
+                val isRightClick = event.source.isRightClick
+                if (isLeftClick) startEnhanceItem(player, enhanceItem, skipProgressing = false)
+                else if (isRightClick) startEnhanceItem(player, enhanceItem, skipProgressing = true)
+            }
             getButton(Icon.Cancel).stack = Icon.Cancel.stack(player.name)
             getButton(Icon.Cancel).onClicked = { cancelEnhanceItem(player) }
         } else {
@@ -115,8 +183,9 @@ class MainGui : GuiBase(
     }
 
     private fun cancelEnhanceItem(player: Player) {
-        isActivated = false
         Sounds.NOTE_SNARE_DRUM.tryPlay(player.location, 0.5f, 0f)
+        isActivated = false
+        leaveEnhanceProgressing(player)
         getButton(Icon.Display).stack = null
         getButton(Icon.Enhance).stack = Icon.Enhance.stack(player.name)
         getButton(Icon.Enhance).onClicked = null
@@ -124,7 +193,20 @@ class MainGui : GuiBase(
         getButton(Icon.Cancel).onClicked = null
     }
 
-    private fun startEnhanceItem(player: Player, enhanceItem: ItemStack) {
+    private fun startEnhanceItem(player: Player, enhanceItem: ItemStack, skipProgressing: Boolean) {
+        if (isInProgressing)
+            return
+        if (skipProgressing) {
+            completeEnhanceItem(player, enhanceItem)
+        } else {
+            enterEnhanceProgressing(player, enhanceItem) {
+                leaveEnhanceProgressing(player)
+                completeEnhanceItem(player, enhanceItem)
+            }
+        }
+    }
+
+    private fun completeEnhanceItem(player: Player, enhanceItem: ItemStack) {
         Enhance.diceToEnhancement(enhanceItem, player, MainMenu.gear)
     }
 
