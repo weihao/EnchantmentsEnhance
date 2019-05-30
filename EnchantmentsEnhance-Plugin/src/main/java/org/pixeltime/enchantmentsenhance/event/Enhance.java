@@ -125,7 +125,7 @@ public class Enhance {
         ItemStack forged = ItemManager.forgeItem(player, item, enchantLevel, true, clicked);
 
         // Play sound
-        Sounds.LEVEL_UP.tryPlay(player.getLocation(), 1f, 0f);
+        Sounds.LEVEL_UP.tryPlay(player.getLocation(), 1f, 0.6f);
 //        CompatibilityManager.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
         launchFireworks(player, 1, DataManager.fireworkRounds[enchantLevel], SettingsManager.config.getInt("fireworkDelay"));
@@ -149,23 +149,25 @@ public class Enhance {
 
     private static final Random RNG = new Random();
     private static void launchFireworks(Player player, int count, int fireworkRounds, int delay) {
-        Main.getMain().getServer().getScheduler().scheduleSyncDelayedTask(Main.getMain(), () -> {
-            FireworkEffect.Type[] fireworkTypes = FireworkEffect.Type.values();
-            for (int i = 0; i < count; i++) {
-                Firework firework = player.getWorld().spawn(player.getLocation(), Firework.class);
-                FireworkMeta meta = firework.getFireworkMeta();
-                meta.addEffect(FireworkEffect.builder()
-                        .with(fireworkTypes[RNG.nextInt(fireworkTypes.length)])
-                        .withColor(Color.fromRGB(RNG.nextInt(255), RNG.nextInt(255), RNG.nextInt(255)))
-                        .withFade(Color.fromRGB(RNG.nextInt(255), RNG.nextInt(255), RNG.nextInt(255)))
-                        .trail(RNG.nextBoolean())
-                        .flicker(RNG.nextBoolean())
-                        .build()
-                );
-                meta.setPower(RNG.nextInt(3));
-                firework.setFireworkMeta(meta);
-            }
-        });
+        for (int i = 0; i < fireworkRounds; i++) {
+            Main.getMain().getServer().getScheduler().scheduleSyncDelayedTask(Main.getMain(), () -> {
+                FireworkEffect.Type[] fireworkTypes = FireworkEffect.Type.values();
+                for (int j = 0; j < count; j++) {
+                    Firework firework = player.getWorld().spawn(player.getLocation(), Firework.class);
+                    FireworkMeta meta = firework.getFireworkMeta();
+                    meta.addEffect(FireworkEffect.builder()
+                            .with(fireworkTypes[RNG.nextInt(fireworkTypes.length)])
+                            .withColor(Color.fromRGB(RNG.nextInt(255), RNG.nextInt(255), RNG.nextInt(255)))
+                            .withFade(Color.fromRGB(RNG.nextInt(255), RNG.nextInt(255), RNG.nextInt(255)))
+                            .trail(RNG.nextBoolean())
+                            .flicker(RNG.nextBoolean())
+                            .build()
+                    );
+                    meta.setPower(RNG.nextInt(3));
+                    firework.setFireworkMeta(meta);
+                }
+            }, (long) delay);
+        }
     }
 
     /**
@@ -182,7 +184,7 @@ public class Enhance {
         String[] msg = new String[2];
         msg[0] = SettingsManager.lang.getString("enhance.enhanceFailed");
         // Play failed sound.
-        Sounds.ANVIL_DESTROY.tryPlay(player.getLocation(), 1f, 0f);
+        Sounds.ANVIL_DESTROY.tryPlay(player.getLocation(), 2f, 1.4f);
 //        CompatibilityManager.playsound.playSound(player, "FAILED");
         // Add failstack.
         Main.getApi().addFailstack(player.getName(),

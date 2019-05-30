@@ -98,7 +98,7 @@ class EnhanceCommand(val main: Main) : StandardCommand() {
     @Permission("Enchantmentsenhance.menu")
     @PlayerOnly
     fun menu(player: Player) {
-        MainGui().open(player)
+        MainGui(Main.getMain()).open(player)
     }
 
     @Command("menuold")
