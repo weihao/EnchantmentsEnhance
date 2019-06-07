@@ -43,6 +43,13 @@
     </repositories>
 
     <dependencies>
+        <!-- ldk -->
+        <dependency>
+            <groupId>com.lgou2w</groupId>
+            <artifactId>ldk</artifactId>
+            <version>${ldk.version}</version>
+            <type>pom</type>
+        </dependency>
         <!-- Kotlin -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
