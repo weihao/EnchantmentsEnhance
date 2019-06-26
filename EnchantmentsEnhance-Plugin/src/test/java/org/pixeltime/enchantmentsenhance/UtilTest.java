@@ -77,11 +77,6 @@ public class UtilTest {
     }
 
     @Test
-    public void testGetClassName() {
-        assertEquals(this.getClass().getSimpleName(), "UtilTest");
-    }
-
-    @Test
     public void testHashing() {
         String sha256hex = Hashing.sha256().hashString("xD", StandardCharsets.UTF_8).toString().toUpperCase();
         assertEquals(64, sha256hex.length());
