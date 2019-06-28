@@ -26,4 +26,7 @@ docker-build:
 	@printf "$(OK_COLOR)Building EnchantmentsEnhance ${VERSION} jar...$(NO_COLOR)\n"
 	@printf "$(OK_COLOR)Launching Docker...$(NO_COLOR)\n"
 	docker build -t ${DOCKER_IMAGE}:${VERSION} ./
-	@echo "$(OK_COLOR)Done!$(NO_COLOR)"
+	@printf "$(OK_COLOR)Copying Artifact...$(NO_COLOR)\n"
+	@mkdir -p ./out
+	docker cp $$(docker create ${DOCKER_IMAGE}:${VERSION}):/usr/src/enchantmentsenhance/EnchantmentsEnhance-Plugin/target/EnchantmentsEnhance-Plugin-${VERSION}.jar ./out/
+	@printf "$(OK_COLOR)Done! Find the jar in the /out Directory$(NO_COLOR)\n"
