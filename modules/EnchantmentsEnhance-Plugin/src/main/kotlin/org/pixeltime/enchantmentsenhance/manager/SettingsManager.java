@@ -166,7 +166,8 @@ public class SettingsManager {
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd@HH:mm:ss");
         String timestamp = formatter.format(date);
-        FileUtil.copy(cfile, new File(cfile.getName() + "." + timestamp));
+        File dataDirectory = Main.getMain().getDataFolder();
+        FileUtil.copy(cfile, new File(dataDirectory + cfile.getName() + "." + timestamp));
     }
 
     public static void generateEnchantments() throws IOException {
