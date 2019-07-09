@@ -138,7 +138,7 @@ public class SettingsManager {
 
         InputStream defConfigStream = Main.getMain().getResource("config.yml");
 
-        backup_config();
+        backupConfig();
         if (defConfigStream != null) {
             YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defConfigStream));
             for (String string : defConfig.getKeys(true)) {
@@ -162,7 +162,7 @@ public class SettingsManager {
         }
     }
 
-    private static void backup_config() {
+    private static void backupConfig() {
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd@HH:mm:ss");
         String timestamp = formatter.format(date);
