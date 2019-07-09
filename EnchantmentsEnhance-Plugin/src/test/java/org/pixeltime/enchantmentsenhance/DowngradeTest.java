@@ -40,8 +40,6 @@ public class DowngradeTest extends TestCase {
         node.add(b.toString());
         String history1 = node.toString();
         String[] temp = history1.split("; ");
-
-
     }
 
 }

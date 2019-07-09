@@ -1,4 +1,11 @@
 # Changelog
+## [7.7.0] - 2019-6-22
+### Fixed
+- Fixed an error on startup.
+### Changed
+- Updated bukkit to 1.14.3
+- Updated kotlin to 1.3.40
+
 ## [7.6.0] - 2019-5-21
 ### Added
 - Added Random Enhancement.
