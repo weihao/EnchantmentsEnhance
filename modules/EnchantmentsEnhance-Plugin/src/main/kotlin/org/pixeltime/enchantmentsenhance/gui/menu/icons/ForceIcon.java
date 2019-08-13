@@ -7,7 +7,7 @@ import org.pixeltime.enchantmentsenhance.event.Enhance;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
-import org.pixeltime.enchantmentsenhance.manager.DataManager;
+import org.pixeltime.enchantmentsenhance.manager.ConfigManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
@@ -33,7 +33,7 @@ public class ForceIcon extends Clickable {
             return null;
         }
         int stoneId = Enhance.getStoneId(item, enchantLevel, clicked);
-        int costToEnhance = DataManager.costToForceEnchant[enchantLevel + 1];
+        int costToEnhance = ConfigManager.costToForceEnchant[enchantLevel + 1];
         return new ItemBuilder(XMaterial.RED_WOOL.toBukkit())
                 .setDyeColor(DyeColors.RED.toBukkit())
                 .setName(SettingsManager.lang.getString("menu.gui.force"))

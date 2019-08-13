@@ -15,7 +15,7 @@ import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.MenuCoord;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.*;
-import org.pixeltime.enchantmentsenhance.manager.DataManager;
+import org.pixeltime.enchantmentsenhance.manager.ConfigManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
@@ -77,7 +77,7 @@ public class MainMenu extends GUIAbstract {
                 update();
                 return;
             }
-            if (enchantLevel < 0 || enchantLevel >= DataManager.levels) {
+            if (enchantLevel < 0 || enchantLevel >= ConfigManager.levels) {
                 clearPlayer(playerName);
                 update();
                 return;
@@ -194,8 +194,8 @@ public class MainMenu extends GUIAbstract {
             }
 
 
-            if (DataManager.maximumFailstackApplied[enchantLevel] > 0
-                    && DataManager.costToForceEnchant[enchantLevel] > 0) {
+            if (ConfigManager.maximumFailstackApplied[enchantLevel] > 0
+                    && ConfigManager.costToForceEnchant[enchantLevel] > 0) {
                 if (Enhance.getValidationOfForce(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName))) {
                     setItem(force.getPosition(), force.getGlowingItem(itemOnEnhancingSlot.get(playerName), enhancingMode.get(playerName)), (clickType) -> {
                         Enhance.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));

@@ -2,7 +2,7 @@ package org.pixeltime.enchantmentsenhance.manager;
 
 import java.util.Set;
 
-public class DataManager {
+public class ConfigManager {
     public static int levels;
     public static double[] baseChance;
     public static double[] chanceIncreasePerFailstack;
@@ -21,18 +21,18 @@ public class DataManager {
         Set<String> temp = SettingsManager.config.getConfigurationSection(
                 "enhance").getKeys(false);
         levels = temp.size();
-        DataManager.baseChance = new double[levels];
-        DataManager.chanceIncreasePerFailstack = new double[levels];
-        DataManager.maximumFailstackApplied = new int[levels];
-        DataManager.failstackGainedPerFail = new int[levels];
-        DataManager.costToForceEnchant = new int[levels];
-        DataManager.fireworks = new boolean[levels];
-        DataManager.fireworkRounds = new int[levels];
-        DataManager.name = new String[levels];
-        DataManager.downgradeChanceIfFail = new double[levels];
-        DataManager.destroyChanceIfFail = new double[levels];
-        DataManager.requireConcentratedStones = new boolean[levels];
-        DataManager.broadcastEnhance = new boolean[levels];
+        ConfigManager.baseChance = new double[levels];
+        ConfigManager.chanceIncreasePerFailstack = new double[levels];
+        ConfigManager.maximumFailstackApplied = new int[levels];
+        ConfigManager.failstackGainedPerFail = new int[levels];
+        ConfigManager.costToForceEnchant = new int[levels];
+        ConfigManager.fireworks = new boolean[levels];
+        ConfigManager.fireworkRounds = new int[levels];
+        ConfigManager.name = new String[levels];
+        ConfigManager.downgradeChanceIfFail = new double[levels];
+        ConfigManager.destroyChanceIfFail = new double[levels];
+        ConfigManager.requireConcentratedStones = new boolean[levels];
+        ConfigManager.broadcastEnhance = new boolean[levels];
 
 
         Set<String> temp2 = SettingsManager.config.getConfigurationSection(
@@ -40,43 +40,43 @@ public class DataManager {
         for (String key2 : temp2) {
             for (int i = 0; i < levels; i++) {
                 if (key2.equalsIgnoreCase("baseChance")) {
-                    DataManager.baseChance[i] = SettingsManager.config
+                    ConfigManager.baseChance[i] = SettingsManager.config
                             .getDouble("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("chanceIncreasePerFailstack")) {
-                    DataManager.chanceIncreasePerFailstack[i] =
+                    ConfigManager.chanceIncreasePerFailstack[i] =
                             SettingsManager.config.getDouble("enhance." + i + "."
                                     + key2);
                 } else if (key2.equalsIgnoreCase("maximumFailstackApplied")) {
-                    DataManager.maximumFailstackApplied[i] =
+                    ConfigManager.maximumFailstackApplied[i] =
                             SettingsManager.config.getInt("enhance." + i + "."
                                     + key2);
                 } else if (key2.equalsIgnoreCase("failstackGainedPerFail")) {
-                    DataManager.failstackGainedPerFail[i] =
+                    ConfigManager.failstackGainedPerFail[i] =
                             SettingsManager.config.getInt("enhance." + i + "."
                                     + key2);
                 } else if (key2.equalsIgnoreCase("costToForceEnchant")) {
-                    DataManager.costToForceEnchant[i] = SettingsManager.config
+                    ConfigManager.costToForceEnchant[i] = SettingsManager.config
                             .getInt("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("downgradeChanceIfFail")) {
-                    DataManager.downgradeChanceIfFail[i] = SettingsManager.config
+                    ConfigManager.downgradeChanceIfFail[i] = SettingsManager.config
                             .getDouble("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("destroyChanceIfFail")) {
-                    DataManager.destroyChanceIfFail[i] = SettingsManager.config
+                    ConfigManager.destroyChanceIfFail[i] = SettingsManager.config
                             .getDouble("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("requireConcentratedStones")) {
-                    DataManager.requireConcentratedStones[i] = SettingsManager.config
+                    ConfigManager.requireConcentratedStones[i] = SettingsManager.config
                             .getBoolean("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("fireworks")) {
-                    DataManager.fireworks[i] = SettingsManager.config
+                    ConfigManager.fireworks[i] = SettingsManager.config
                             .getBoolean("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("fireworkRounds")) {
-                    DataManager.fireworkRounds[i] = SettingsManager.config
+                    ConfigManager.fireworkRounds[i] = SettingsManager.config
                             .getInt("enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("name")) {
-                    DataManager.name[i] = SettingsManager.config.getString(
+                    ConfigManager.name[i] = SettingsManager.config.getString(
                             "enhance." + i + "." + key2);
                 } else if (key2.equalsIgnoreCase("broadcastEnhance")) {
-                    DataManager.broadcastEnhance[i] = SettingsManager.config.getBoolean(
+                    ConfigManager.broadcastEnhance[i] = SettingsManager.config.getBoolean(
                             "enhance." + i + "." + key2);
                 }
             }

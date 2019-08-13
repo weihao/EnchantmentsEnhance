@@ -5,7 +5,7 @@ import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
-import org.pixeltime.enchantmentsenhance.manager.DataManager;
+import org.pixeltime.enchantmentsenhance.manager.ConfigManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
@@ -28,14 +28,14 @@ public class EnhanceIcon extends Clickable {
                 ItemManager.getToolEnchantLevel(item));
         ItemBuilder ib = new ItemBuilder(XMaterial.YELLOW_WOOL.toBukkit()).setDyeColor(DyeColors.YELLOW.toBukkit()).setName(SettingsManager.lang.getString("menu.gui.enhance")).addLoreLine(SettingsManager.lang.getString(
                 "menu.lore.ifSuccess"));
-        if (DataManager.baseChance[level] != 100.0) {
+        if (ConfigManager.baseChance[level] != 100.0) {
             ib.addLoreLine(SettingsManager.lang.getString(
                     "menu.lore.ifFail"));
         }
-        if (DataManager.downgradeChanceIfFail[level] > 0) {
+        if (ConfigManager.downgradeChanceIfFail[level] > 0) {
             ib.addLoreLine(SettingsManager.lang.getString("menu.lore.ifDowngrade"));
         }
-        if (DataManager.destroyChanceIfFail[level] > 0) {
+        if (ConfigManager.destroyChanceIfFail[level] > 0) {
             ib.addLoreLine(SettingsManager.lang.getString(
                     "menu.lore.ifDestroy")).toItemStack();
         }

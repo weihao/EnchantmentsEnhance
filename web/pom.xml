@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <artifactId>EnchantmentsEnhance-Model</artifactId>
+    <artifactId>EnchantmentsEnhance-Web</artifactId>
     <packaging>jar</packaging>
-    <name>EnchantmentsEnhance-Model</name>
+    <name>EnchantmentsEnhance-Web</name>
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -12,6 +12,14 @@
         <groupId>org.pixeltime</groupId>
         <version>7.8.0</version>
     </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.pixeltime</groupId>
+            <artifactId>EnchantmentsEnhance-Model</artifactId>
+            <version>7.8.0</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

@@ -37,7 +37,7 @@ import org.pixeltime.enchantmentsenhance.manager.*;
 import org.pixeltime.enchantmentsenhance.model.PlayerStat;
 import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
-import org.pixeltime.enchantmentsenhance.mysql.DatabaseManager;
+import org.pixeltime.enchantmentsenhance.manager.DatabaseManager;
 import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
@@ -225,7 +225,7 @@ public class Main extends JavaPlugin implements Listener {
 
         MaterialManager.setUp();
         ActionBarAPI.setUp();
-        DataManager.setUp();
+        ConfigManager.setUp();
         AnimalBreeding.setUp();
         PackageManager.initializeAll();
         DropManager.setUp();

@@ -3,10 +3,10 @@ package org.pixeltime.enchantmentsenhance.api
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.ItemIcon
-import org.pixeltime.enchantmentsenhance.manager.DataManager
+import org.pixeltime.enchantmentsenhance.manager.ConfigManager
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.mysql.DatabaseManager
+import org.pixeltime.enchantmentsenhance.manager.DatabaseManager
 import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.*
 
@@ -77,9 +77,9 @@ class API : AbstractAPI {
 
     override fun getChance(playerName: String, enchantLevel: Int): Double {
         var failstack = getFailstack(playerName)
-        val maximumFailstack = DataManager.maximumFailstackApplied[enchantLevel]
-        val baseChance = DataManager.baseChance[enchantLevel]
-        val increasePerFailstack = DataManager.chanceIncreasePerFailstack[enchantLevel]
+        val maximumFailstack = ConfigManager.maximumFailstackApplied[enchantLevel]
+        val baseChance = ConfigManager.baseChance[enchantLevel]
+        val increasePerFailstack = ConfigManager.chanceIncreasePerFailstack[enchantLevel]
 
         if (failstack > maximumFailstack) {
             failstack = maximumFailstack

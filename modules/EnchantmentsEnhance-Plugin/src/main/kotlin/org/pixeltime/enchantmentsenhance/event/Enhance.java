@@ -27,14 +27,14 @@ public class Enhance {
         if (clicked.equals(MainMenu.gear)) {
             if (ItemManager.isValid(item, MaterialManager.weapon)
                     || (ItemManager.isValid(item, MaterialManager.bow))) {
-                if (DataManager.requireConcentratedStones[level]) {
+                if (ConfigManager.requireConcentratedStones[level]) {
                     return 2;
                 } else {
                     return 0;
                 }
             }
             if (ItemManager.isValid(item, MaterialManager.armor)) {
-                if (DataManager.requireConcentratedStones[level]) {
+                if (ConfigManager.requireConcentratedStones[level]) {
                     return 3;
                 } else {
                     return 1;
@@ -48,7 +48,7 @@ public class Enhance {
                     || ItemManager.isValid(item, MaterialManager.shovel)
                     || ItemManager.isValid(item, MaterialManager.knife)
                     || ItemManager.isValid(item, MaterialManager.rod)) {
-                if (DataManager.requireConcentratedStones[level]) {
+                if (ConfigManager.requireConcentratedStones[level]) {
                     return 2;
                 } else {
                     return 0;
@@ -76,7 +76,7 @@ public class Enhance {
             return false;
         }
         return (ItemManager.getItemEnchantmentType(item) != ItemType.INVALID)
-                && (ItemManager.getItemEnchantLevel(item) == 0 || (ItemManager.getItemEnchantLevel(item) < DataManager.levels - 1))
+                && (ItemManager.getItemEnchantLevel(item) == 0 || (ItemManager.getItemEnchantLevel(item) < ConfigManager.levels - 1))
                 && ItemManager.getToolEnchantLevel(item) == 0;
     }
 
@@ -102,7 +102,7 @@ public class Enhance {
         CompatibilityManager.playsound.playSound(player, "SUCCESS");
         // Launch fireworks
         CompatibilityManager.spawnFirework.launch(player, 1,
-                DataManager.fireworkRounds[enchantLevel], SettingsManager.config
+                ConfigManager.fireworkRounds[enchantLevel], SettingsManager.config
                         .getInt("fireworkDelay"));
         // Do not clear failstack if force enhanced
         if (forceEnhanced) {
@@ -114,7 +114,7 @@ public class Enhance {
             Main.getNotifierManager()
                     .call(new Notification(player, SettingsManager.lang.getString("enhance.enhanceSuccess")));
         }
-        if (DataManager.broadcastEnhance[enchantLevel]) {
+        if (ConfigManager.broadcastEnhance[enchantLevel]) {
             String msg = SettingsManager.lang.getString("annoucer.success")
                     .replace("%player%", player.getName())
                     .replace("%item%", forged.getItemMeta().getDisplayName());
@@ -139,11 +139,11 @@ public class Enhance {
         CompatibilityManager.playsound.playSound(player, "FAILED");
         // Add failstack.
         Main.getApi().addFailstack(player.getName(),
-                DataManager.failstackGainedPerFail[level]);
+                ConfigManager.failstackGainedPerFail[level]);
         Random random = new Random();
-        if (random.nextDouble() < DataManager.destroyChanceIfFail[level]) {
+        if (random.nextDouble() < ConfigManager.destroyChanceIfFail[level]) {
             // Broadcast
-            if (DataManager.broadcastEnhance[level]) {
+            if (ConfigManager.broadcastEnhance[level]) {
                 String str = SettingsManager.lang.getString("annoucer.destroyed")
                         .replace("%player%", player.getName())
                         .replace("%item%", item.getItemMeta().getDisplayName());
@@ -154,7 +154,7 @@ public class Enhance {
             MainMenu.clearPlayer(player.getName());
             // Adds destroyed message.
             msg[1] = (SettingsManager.lang.getString("enhance.destroyed"));
-        } else if (random.nextDouble() < DataManager.downgradeChanceIfFail[level]) {
+        } else if (random.nextDouble() < ConfigManager.downgradeChanceIfFail[level]) {
             // Downgrade failed item.
             msg[1] = (SettingsManager.lang.getString("enhance.downgraded"));
             // Play destroyed sound.
@@ -164,7 +164,7 @@ public class Enhance {
             // Updates the item.
             ItemManager.forgeItem(player, item, enchantLevel, false, clicked);
             // Broadcast
-            if (DataManager.broadcastEnhance[level]) {
+            if (ConfigManager.broadcastEnhance[level]) {
                 String str = SettingsManager.lang.getString("annoucer.failed")
                         .replace("%player%", player.getName())
                         .replace("%item%", item.getItemMeta().getDisplayName());
@@ -260,7 +260,7 @@ public class Enhance {
             return -1;
         }
         // Gets the cost of force enhancing
-        return DataManager.costToForceEnchant[enchantLevel];
+        return ConfigManager.costToForceEnchant[enchantLevel];
     }
 
     public static boolean getValidationOfForce(ItemStack item, Player player, Clickable clicked) {
@@ -358,7 +358,7 @@ public class Enhance {
             return false;
         }
         return (ItemManager.getToolItemEnchantmentType(item) != ItemType.INVALID)
-                && (ItemManager.getToolEnchantLevel(item) >= 0 && (ItemManager.getToolEnchantLevel(item) < DataManager.levels - 1))
+                && (ItemManager.getToolEnchantLevel(item) >= 0 && (ItemManager.getToolEnchantLevel(item) < ConfigManager.levels - 1))
                 && ItemManager.getItemEnchantLevel(item) == 0;
     }
 }
