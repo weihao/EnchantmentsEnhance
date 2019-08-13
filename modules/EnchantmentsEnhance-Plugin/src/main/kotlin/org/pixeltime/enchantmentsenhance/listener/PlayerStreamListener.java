@@ -10,9 +10,10 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.manager.DatabaseManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.model.PlayerStat;
 import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
-import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class PlayerStreamListener implements Listener {
@@ -36,11 +37,7 @@ public class PlayerStreamListener implements Listener {
             Util.sendMessage(SettingsManager.lang.getString("config.welcome")
                     .replaceAll("%player%", player.getName()), player);
         }
-
-        if (PlayerStat.getPlayerStats(player.getName()) != null) {
-            PlayerStat.removePlayer(player.getName());
-        }
-        PlayerStat.getPlayers().add(new PlayerStat(player));
+        DatabaseManager.addPlayerStat(player);
     }
 
 
@@ -53,14 +50,14 @@ public class PlayerStreamListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onQuit(PlayerQuitEvent e) {
         String playername = e.getPlayer().getName();
-        PlayerStat playerstat = PlayerStat.getPlayerStats(playername);
+        PlayerStat playerstat = DatabaseManager.getPlayerStat(playername);
         if (playerstat != null) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
                     try {
                         DataStorage.get().saveStats(playerstat);
-                        PlayerStat.removePlayer(playername);
+                        DatabaseManager.removePlayerStat(playername);
                     } catch (Exception ex) {
                         // Unexpected Error.
                         ex.printStackTrace();
@@ -79,11 +76,11 @@ public class PlayerStreamListener implements Listener {
      */
     @EventHandler(priority = EventPriority.MONITOR)
     public void onKick(PlayerKickEvent e) {
-        if (PlayerStat.getPlayerStats(e.getPlayer().getName()) != null) {
+        if (DatabaseManager.getPlayerStat(e.getPlayer().getName()) != null) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    PlayerStat.removePlayer(e.getPlayer().getName());
+                    DatabaseManager.removePlayerStat(e.getPlayer().getName());
                 }
             }.runTaskLater(Main.getMain(), 20);
         }

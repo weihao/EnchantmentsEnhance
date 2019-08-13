@@ -15,6 +15,7 @@
     <modules>
         <module>modules</module>
         <module>model</module>
+        <module>web</module>
     </modules>
 
 
