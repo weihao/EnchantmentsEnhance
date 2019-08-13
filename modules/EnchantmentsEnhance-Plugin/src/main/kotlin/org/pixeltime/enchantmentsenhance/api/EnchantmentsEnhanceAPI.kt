@@ -6,15 +6,15 @@ import org.pixeltime.enchantmentsenhance.gui.menu.icons.ItemIcon
 import org.pixeltime.enchantmentsenhance.manager.DataManager
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.mysql.PlayerStat
+import org.pixeltime.enchantmentsenhance.mysql.DatabaseManager
 import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.*
 
 class API : AbstractAPI {
     override fun addAdvice(player: String, level: Int) {
         if (level != 0) {
-            PlayerStat.getPlayerStats(player).valks.add(level)
-            Collections.sort(PlayerStat.getPlayerStats(player)!!.valks, Collections.reverseOrder())
+            DatabaseManager.getPlayerStat(player).valks.add(level)
+            Collections.sort(DatabaseManager.getPlayerStat(player)!!.valks, Collections.reverseOrder())
         }
     }
 
@@ -29,7 +29,7 @@ class API : AbstractAPI {
 
     override fun setItem(player: String, type: Int, level: Int) {
         try {
-            PlayerStat.getPlayerStats(player)!!.items[type] = level
+            DatabaseManager.getPlayerStat(player)!!.items[type] = level
         } catch (e: Exception) {
             Main.getMain().logger.info(
                     "Error when setting the player data.")
@@ -45,7 +45,7 @@ class API : AbstractAPI {
 
 
     override fun getItem(player: String, type: Int): Int {
-        return if (PlayerStat.getPlayerStats(player) == null) 0 else PlayerStat.getPlayerStats(player)!!.items[type]
+        return if (DatabaseManager.getPlayerStat(player) == null) 0 else DatabaseManager.getPlayerStat(player)!!.items[type]
     }
 
 
@@ -55,7 +55,7 @@ class API : AbstractAPI {
 
 
     override fun setFailstack(player: String, level: Int) {
-        PlayerStat.getPlayerStats(player)!!.failstack = level
+        DatabaseManager.getPlayerStat(player)!!.failstack = level
     }
 
 
@@ -66,7 +66,7 @@ class API : AbstractAPI {
 
 
     override fun getFailstack(player: String): Int {
-        return if (PlayerStat.getPlayerStats(player) == null) 0 else PlayerStat.getPlayerStats(player)!!.failstack
+        return if (DatabaseManager.getPlayerStat(player) == null) 0 else DatabaseManager.getPlayerStat(player)!!.failstack
     }
 
 
@@ -99,8 +99,8 @@ class API : AbstractAPI {
     override fun addAdvice(player: String) {
         val level = getFailstack(player)
         if (level != 0) {
-            PlayerStat.getPlayerStats(player)!!.valks.add(level)
-            Collections.sort(PlayerStat.getPlayerStats(player)!!.valks, Collections.reverseOrder())
+            DatabaseManager.getPlayerStat(player)!!.valks.add(level)
+            Collections.sort(DatabaseManager.getPlayerStat(player)!!.valks, Collections.reverseOrder())
             Util.sendMessage(SettingsManager.lang.getString("save.createFailstack")
             !!.replace("%failstack%".toRegex(), Integer.toString(getFailstack(
                     player))), player)

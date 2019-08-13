@@ -34,9 +34,10 @@ import org.pixeltime.enchantmentsenhance.gui.GUIManager;
 import org.pixeltime.enchantmentsenhance.gui.menu.handlers.MenuHandler;
 import org.pixeltime.enchantmentsenhance.listener.*;
 import org.pixeltime.enchantmentsenhance.manager.*;
+import org.pixeltime.enchantmentsenhance.model.PlayerStat;
 import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
-import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
+import org.pixeltime.enchantmentsenhance.mysql.DatabaseManager;
 import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
@@ -236,10 +237,7 @@ public class Main extends JavaPlugin implements Listener {
                 "config.onLoadingInventory"));
         if (!Bukkit.getOnlinePlayers().isEmpty()) {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (PlayerStat.getPlayerStats(player.getName()) != null) {
-                    PlayerStat.removePlayer(player.getName());
-                }
-                PlayerStat.getPlayers().add(new PlayerStat(player));
+
             }
         }
 
@@ -304,7 +302,7 @@ public class Main extends JavaPlugin implements Listener {
      * When the plugin is disabled, execute following tasks.
      */
     public void onDisable() {
-        for (PlayerStat fData : PlayerStat.getPlayers()) {
+        for (PlayerStat fData : DatabaseManager.getPlayerStats()) {
             DataStorage.get().saveStats(fData);
         }
 
