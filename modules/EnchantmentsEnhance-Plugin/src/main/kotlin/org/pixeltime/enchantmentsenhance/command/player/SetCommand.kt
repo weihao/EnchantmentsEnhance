@@ -16,7 +16,7 @@ class SetCommand : SubCommand() {
             try {
                 val leverage: Int = Integer.parseInt(args[0])
                 if (leverage > 1) {
-                    DatabaseManager.getPlayerStat(player.name).grind = leverage
+                    DatabaseManager.getPlayerStat(player.name)!!.grind = leverage
                     Util.sendMessage(SettingsManager.lang.getString("set.success")
                     !!.replace("%leverage%",
                             Integer.toString(leverage)), player)
