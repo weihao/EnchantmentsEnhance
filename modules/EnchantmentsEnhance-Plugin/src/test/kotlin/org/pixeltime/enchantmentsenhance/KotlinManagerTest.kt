@@ -25,7 +25,7 @@ class KotlinManagerTest : TestCase() {
         var current = 1
         var notexceeding = 7
         for (i in current until notexceeding) {
-            Assert.assertTrue(i < notexceeding)
+            assertTrue(i < notexceeding)
         }
     }
 }

@@ -5,6 +5,8 @@ import junit.framework.TestCase
 import org.junit.Test
 import org.pixeltime.enchantmentsenhance.version.Version
 import java.util.*
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 
 class VersionTest : TestCase() {
@@ -48,8 +50,8 @@ class VersionTest : TestCase() {
         versions.add(Version("1.0.5"))
         versions.add(Version("1.01.0"))
         versions.add(Version("1.00.1"))
-        Assert.assertEquals(Collections.min(versions).version, "1.00.1") // return min version
-        Assert.assertEquals(Collections.max(versions).version, "2")// return max version
+        assertEquals(Collections.min(versions).version, "1.00.1") // return min version
+        assertEquals(Collections.max(versions).version, "2")// return max version
 
     }
 }
