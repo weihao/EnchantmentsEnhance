@@ -39,6 +39,11 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.pixeltime</groupId>
+            <artifactId>EnchantmentsEnhance-Model</artifactId>
+            <version>7.8.0</version>
+        </dependency>
         <!-- EnchantmentsEnhance-API -->
         <dependency>
             <groupId>org.pixeltime</groupId>
@@ -147,7 +152,6 @@
                         <configuration>
                             <sourceDirs>
                                 <sourceDir>src/main/kotlin</sourceDir>
-                                <sourceDir>src/main/java</sourceDir>
                             </sourceDirs>
                         </configuration>
                     </execution>
@@ -159,7 +163,6 @@
                         <configuration>
                             <sourceDirs>
                                 <sourceDir>src/test/kotlin</sourceDir>
-                                <sourceDir>src/test/java</sourceDir>
                             </sourceDirs>
                         </configuration>
                     </execution>

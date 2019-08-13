@@ -4,16 +4,16 @@ import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.ItemIcon
 import org.pixeltime.enchantmentsenhance.manager.ConfigManager
+import org.pixeltime.enchantmentsenhance.manager.DatabaseManager
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.manager.DatabaseManager
 import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.*
 
 class API : AbstractAPI {
     override fun addAdvice(player: String, level: Int) {
         if (level != 0) {
-            DatabaseManager.getPlayerStat(player).valks.add(level)
+            DatabaseManager.getPlayerStat(player).valks!!.add(level)
             Collections.sort(DatabaseManager.getPlayerStat(player)!!.valks, Collections.reverseOrder())
         }
     }
@@ -29,7 +29,7 @@ class API : AbstractAPI {
 
     override fun setItem(player: String, type: Int, level: Int) {
         try {
-            DatabaseManager.getPlayerStat(player)!!.items[type] = level
+            DatabaseManager.getPlayerStat(player).items?.set(type, level)
         } catch (e: Exception) {
             Main.getMain().logger.info(
                     "Error when setting the player data.")
@@ -45,7 +45,7 @@ class API : AbstractAPI {
 
 
     override fun getItem(player: String, type: Int): Int {
-        return if (DatabaseManager.getPlayerStat(player) == null) 0 else DatabaseManager.getPlayerStat(player)!!.items[type]
+        return (if (DatabaseManager.getPlayerStat(player) == null) 0 else DatabaseManager.getPlayerStat(player).items?.get(type))!!
     }
 
 
@@ -99,7 +99,7 @@ class API : AbstractAPI {
     override fun addAdvice(player: String) {
         val level = getFailstack(player)
         if (level != 0) {
-            DatabaseManager.getPlayerStat(player)!!.valks.add(level)
+            DatabaseManager.getPlayerStat(player).valks?.add(level)
             Collections.sort(DatabaseManager.getPlayerStat(player)!!.valks, Collections.reverseOrder())
             Util.sendMessage(SettingsManager.lang.getString("save.createFailstack")
             !!.replace("%failstack%".toRegex(), Integer.toString(getFailstack(
