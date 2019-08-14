@@ -8,9 +8,10 @@ import java.util.*
 
 class DatabaseManager {
 
-
     companion object {
-        private val playerStats = ArrayList<PlayerStat>()
+        @JvmStatic
+        val playerStats = ArrayList<PlayerStat>()
+
         @JvmStatic
         fun addPlayerStat(player: Player) {
             DatabaseManager.removePlayerStat(player.name)

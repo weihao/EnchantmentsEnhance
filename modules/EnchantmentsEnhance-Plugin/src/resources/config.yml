@@ -25,6 +25,9 @@ language: EN_US
 # Set false to disable on join message.
 enableWelcomeMessage: true
 
+# Set false to disable update checker and update notification.
+enableUpdateChecker: true
+
 # Set false to disallow stacked item to be enhanced.
 enableStackedItem: false
 
