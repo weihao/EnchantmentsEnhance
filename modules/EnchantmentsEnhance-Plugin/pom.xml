@@ -39,11 +39,6 @@
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>org.pixeltime</groupId>
-            <artifactId>EnchantmentsEnhance-Model</artifactId>
-            <version>7.8.0</version>
-        </dependency>
         <!-- EnchantmentsEnhance-API -->
         <dependency>
             <groupId>org.pixeltime</groupId>
