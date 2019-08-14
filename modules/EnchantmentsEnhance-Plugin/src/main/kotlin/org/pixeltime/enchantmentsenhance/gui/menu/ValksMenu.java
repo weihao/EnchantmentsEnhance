@@ -30,8 +30,8 @@ public class ValksMenu extends GUIAbstract {
     public void update() {
         getInventory().clear();
         getActions().clear();
-        Player player = Bukkit.getPlayer(playerName);
-        List<Integer> inv = PlayerStat.getPlayerStats(playerName).getValks();
+        Player player = Bukkit.getPlayer(getPlayerName());
+        List<Integer> inv = PlayerStat.getPlayerStats(getPlayerName()).getValks();
         try {
             for (int i = 0; i < (inv.size() > 54 ? 54 : inv.size()); i++) {
                 final int index = i + ((currPage - 1) * 54);
@@ -48,7 +48,7 @@ public class ValksMenu extends GUIAbstract {
                                     if (level > 0) {
                                         if (Main.getApi().getFailstack(player.getName()) == 0) {
                                             Main.getApi().addFailstack(player.getName(), level);
-                                            PlayerStat.getPlayerStats(playerName).getValks().remove(index);
+                                            PlayerStat.getPlayerStats(getPlayerName()).getValks().remove(index);
                                             Util.sendMessage(SettingsManager.lang.getString(
                                                     "valks.used").replaceAll("%LEVEL%", Integer
                                                     .toString(level)), player);
@@ -71,7 +71,7 @@ public class ValksMenu extends GUIAbstract {
                                 if (clickType == ClickType.RIGHT && SettingsManager.config.getBoolean("enableItemMaterialization")) {
                                     if (!Util.invFull(player)) {
                                         player.getInventory().addItem(ItemManager.adviceMaterialize(level));
-                                        PlayerStat.getPlayerStats(playerName).getValks().remove(index);
+                                        PlayerStat.getPlayerStats(getPlayerName()).getValks().remove(index);
                                         update();
                                     } else {
                                         Util.sendMessage(SettingsManager.lang.getString("materialize.inventoryFull"), player);
@@ -85,7 +85,7 @@ public class ValksMenu extends GUIAbstract {
             // Expected.
         }
 
-        setItem(back.getPosition(), back.getItem(playerName), (clickType) -> new BukkitRunnable() {
+        setItem(back.getPosition(), back.getItem(getPlayerName()), (clickType) -> new BukkitRunnable() {
             @Override
             public void run() {
                 if (currPage == 1) {

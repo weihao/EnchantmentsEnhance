@@ -44,6 +44,6 @@ public class VendorMenu extends GUIAbstract {
     public void update() {
         getInventory().clear();
         getActions().clear();
-        Player player = Bukkit.getPlayer(playerName);
+        Player player = Bukkit.getPlayer(getPlayerName());
     }
 }

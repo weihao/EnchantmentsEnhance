@@ -2,7 +2,7 @@ package org.pixeltime.enchantmentsenhance.gui
 
 import org.pixeltime.enchantmentsenhance.util.Util
 
-class MenuCoord {
+class GUICoord {
     companion object {
         @JvmStatic
         fun getPlaceHolderCoords(): IntArray {

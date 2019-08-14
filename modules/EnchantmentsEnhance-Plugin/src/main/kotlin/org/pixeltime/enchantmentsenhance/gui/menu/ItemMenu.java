@@ -39,17 +39,17 @@ public class ItemMenu extends GUIAbstract {
         getInventory().clear();
         getActions().clear();
 
-        Player player = Bukkit.getPlayer(playerName);
+        Player player = Bukkit.getPlayer(getPlayerName());
         for (int i = 0; i < MaterialManager.stoneTypes.size(); i++) {
             final int stoneId = i;
             setItem(Util.getSlot((i % 9) + 1, (i / 9) + 1),
-                    (clickedItem.containsKey(playerName) && stoneId == clickedItem.get(playerName)
+                    (clickedItem.containsKey(getPlayerName()) && stoneId == clickedItem.get(getPlayerName())
                             ? CompatibilityManager.glow.addGlow(MainMenu.stone.getItem(i, player))
                             : MainMenu.stone.getItem(i, player)),
                     (clickType) -> {
                         if (clickType == ClickType.LEFT) {
-                            if (Main.getApi().getItem(playerName, stoneId) > 0) {
-                                if (clickedItem.containsKey(playerName) && clickedItem.get(playerName) == stoneId) {
+                            if (Main.getApi().getItem(getPlayerName(), stoneId) > 0) {
+                                if (clickedItem.containsKey(getPlayerName()) && clickedItem.get(getPlayerName()) == stoneId) {
                                     clickedItem.remove(player.getName());
                                 } else {
                                     clickedItem.put(player.getName(), stoneId);
@@ -58,10 +58,10 @@ public class ItemMenu extends GUIAbstract {
                         }
                         if (clickType == ClickType.RIGHT && SettingsManager.config.getBoolean("enableItemMaterialization")) {
                             // If play has enough stones.
-                            if (Main.getApi().getItem(playerName, stoneId) >= BUNDLE) {
+                            if (Main.getApi().getItem(getPlayerName(), stoneId) >= BUNDLE) {
                                 if (!Util.invFull(player)) {
                                     player.getInventory().addItem(ItemManager.itemMaterialize(stoneId, BUNDLE));
-                                    Main.getApi().addItem(playerName, stoneId, -BUNDLE);
+                                    Main.getApi().addItem(getPlayerName(), stoneId, -BUNDLE);
                                 } else {
                                     Util.sendMessage(SettingsManager.lang.getString("materialize.inventoryFull"), player);
                                 }
@@ -72,7 +72,7 @@ public class ItemMenu extends GUIAbstract {
                     });
         }
 
-        setItem(back.getPosition(), back.getItem(playerName), (clickType) -> new BukkitRunnable() {
+        setItem(back.getPosition(), back.getItem(getPlayerName()), (clickType) -> new BukkitRunnable() {
             @Override
             public void run() {
                 player.closeInventory();
@@ -81,13 +81,13 @@ public class ItemMenu extends GUIAbstract {
         }.runTaskLater(Main.getMain(), 2L));
 
         if (SettingsManager.config.getBoolean("enableGrinding")) {
-            setItem(grind.getPosition(), grind.getItem(playerName), (clickType) -> {
+            setItem(grind.getPosition(), grind.getItem(getPlayerName()), (clickType) -> {
                 if (clickedItem.containsKey(player.getName())) {
                     // If player has item to failstack.
                     if (Main.getApi().getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
                         int locked = 2;
-                        if (PlayerStat.getPlayerStats(playerName) != null) {
-                            locked = PlayerStat.getPlayerStats(playerName).getGrind();
+                        if (PlayerStat.getPlayerStats(getPlayerName()) != null) {
+                            locked = PlayerStat.getPlayerStats(getPlayerName()).getGrind();
                         }
                         Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), -1);
                         Random random = new Random();
@@ -113,7 +113,7 @@ public class ItemMenu extends GUIAbstract {
         }
 
         if (SettingsManager.config.getBoolean("enableReblathFailstacking")) {
-            setItem(reblath.getPosition(), reblath.getItem(playerName), (clickType) ->
+            setItem(reblath.getPosition(), reblath.getItem(getPlayerName()), (clickType) ->
             {
                 if (clickedItem.containsKey(player.getName())) {
                     // If player has item to failstack.
