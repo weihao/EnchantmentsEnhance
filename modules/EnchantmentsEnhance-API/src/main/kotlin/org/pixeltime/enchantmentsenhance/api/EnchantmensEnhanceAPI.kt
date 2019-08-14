@@ -2,7 +2,7 @@ package org.pixeltime.enchantmentsenhance.api
 
 import org.bukkit.inventory.ItemStack
 
-interface AbstractAPI {
+interface EnchantmensEnhanceAPI {
     fun getNumberOfStone(playerName: String, stoneId: Int): Int
     fun addCustomEnchant(item: ItemStack, enchantment: String, level: Int): Boolean
     fun setItem(player: String, type: Int, level: Int)

@@ -10,7 +10,7 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.*
 
-class API : AbstractAPI {
+class API : EnchantmensEnhanceAPI {
     override fun addAdvice(player: String, level: Int) {
         if (level != 0) {
             DatabaseManager.getPlayerStat(player)?.valks!!.add(level)
