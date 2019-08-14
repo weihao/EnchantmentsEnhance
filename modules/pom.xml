@@ -45,12 +45,6 @@
             <version>${ldk.version}</version>
             <type>pom</type>
         </dependency>
-        <!-- Kotlin -->
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
         <!-- Spigot -->
         <dependency>
             <groupId>org.spigotmc</groupId>
