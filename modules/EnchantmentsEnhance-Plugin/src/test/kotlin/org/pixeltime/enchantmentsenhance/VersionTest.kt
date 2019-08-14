@@ -1,12 +1,10 @@
 package org.pixeltime.enchantmentsenhance
 
-import junit.framework.Assert
 import junit.framework.TestCase
 import org.junit.Test
 import org.pixeltime.enchantmentsenhance.version.Version
-import java.util.*
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
+import java.util.ArrayList
+import java.util.Collections
 
 
 class VersionTest : TestCase() {

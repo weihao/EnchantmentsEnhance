@@ -15,13 +15,11 @@ import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.PlayerFishEvent
 import org.bukkit.event.player.PlayerFishEvent.State
 import org.bukkit.event.player.PlayerInteractEntityEvent
-import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.FurnaceInventory
 import org.bukkit.inventory.Inventory
 import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.enchantmentsenhance.util.Util
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding
-
 import java.util.Random
 
 class LifeskillingListener : Listener {

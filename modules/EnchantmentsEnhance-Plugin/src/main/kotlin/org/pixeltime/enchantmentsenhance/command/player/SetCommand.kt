@@ -2,8 +2,8 @@ package org.pixeltime.enchantmentsenhance.command.player
 
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.command.SubCommand
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.manager.DatabaseManager
+import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
 import java.text.ParseException
 

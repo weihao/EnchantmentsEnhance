@@ -6,7 +6,6 @@ import org.bukkit.event.inventory.ClickType
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.util.Util
-
 import java.util.HashMap
 
 abstract class GUIAbstract(player: Player, invSize: Int, invName: String) {

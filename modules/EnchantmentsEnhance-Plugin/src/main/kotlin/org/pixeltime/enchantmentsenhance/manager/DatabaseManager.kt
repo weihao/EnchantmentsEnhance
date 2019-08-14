@@ -4,7 +4,7 @@ package org.pixeltime.enchantmentsenhance.manager
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.model.PlayerStat
 import org.pixeltime.enchantmentsenhance.mysql.DataStorage
-import java.util.*
+import java.util.ArrayList
 
 class DatabaseManager {
 

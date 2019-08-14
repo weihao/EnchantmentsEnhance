@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance
 
-import junit.framework.Assert
 import junit.framework.TestCase
 import org.junit.Test
 
