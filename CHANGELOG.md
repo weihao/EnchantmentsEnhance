@@ -6,9 +6,6 @@
 ### Fixed
 - Fixed tests.
 
-### Changed
-- Separated Data Models.
-
 ## [7.7.0] - 2019-6-22
 ### Fixed
 - Fixed an error on startup.

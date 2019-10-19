@@ -5,7 +5,8 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.util.Util
-import java.util.Random
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DropManager {
 

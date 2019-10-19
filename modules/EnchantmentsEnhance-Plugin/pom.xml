@@ -46,12 +46,6 @@
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
-        <!-- EnchantmentsEnhance-Model -->
-        <dependency>
-            <groupId>org.pixeltime</groupId>
-            <artifactId>EnchantmentsEnhance-Model</artifactId>
-            <version>7.8.0</version>
-        </dependency>
         <!-- EnchantmentsEnhance-Compatibility -->
         <dependency>
             <groupId>org.pixeltime</groupId>
@@ -83,14 +77,14 @@
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
-            <version>7.0.1</version>
+            <version>7.0.0</version>
             <scope>provided</scope>
         </dependency>
         <!-- PlaceholderAPI -->
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
-            <version>2.10.4</version>
+            <version>2.10.3</version>
             <scope>provided</scope>
         </dependency>
         <!-- MVdWPlaceholderAPI -->
@@ -152,7 +146,8 @@
                         </goals>
                         <configuration>
                             <sourceDirs>
-                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                                <sourceDir>src/main/kotlin</sourceDir>
+                                <sourceDir>src/main/java</sourceDir>
                             </sourceDirs>
                         </configuration>
                     </execution>
@@ -163,7 +158,8 @@
                         </goals>
                         <configuration>
                             <sourceDirs>
-                                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
+                                <sourceDir>src/test/kotlin</sourceDir>
+                                <sourceDir>src/test/java</sourceDir>
                             </sourceDirs>
                         </configuration>
                     </execution>
@@ -240,11 +236,11 @@
         </plugins>
         <resources>
             <resource>
-                <directory>src/main/kotlin</directory>
+                <directory>src/resources</directory>
                 <filtering>true</filtering>
             </resource>
             <resource>
-                <directory>${project.basedir}/../</directory>
+                <directory>../..</directory>
                 <includes>
                     <include>*.md</include>
                     <include>LICENSE</include>

@@ -6,7 +6,7 @@ import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.ClassGetter
-import java.util.Arrays
+import java.util.*
 
 class DebugConsoleCommand : SubConsoleCommand() {
 

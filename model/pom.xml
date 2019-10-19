@@ -13,23 +13,5 @@
         <version>7.8.0</version>
     </parent>
 
-    <build>
-        <sourceDirectory>src/main/kotlin</sourceDirectory>
-        <plugins>
-            <!-- Kotlin -->
-            <plugin>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+
 </project>
