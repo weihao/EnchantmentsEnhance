@@ -1,75 +1,68 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <groupId>org.pixeltime</groupId>
     <artifactId>EnchantmentsEnhance-Parent</artifactId>
     <name>EnchantmentsEnhance</name>
+    <version>7.8.0</version>
     <packaging>pom</packaging>
-    <version>7.7.0</version>
-    <description>A plugin of enchantments enhancing system inspired by BDO.</description>
     <url>https://github.com/25/EnchantmentsEnhance</url>
+
+    <description>EE is a game progression mechanism plugin for spigot.</description>
+
+    <modules>
+        <module>modules</module>
+        <module>model</module>
+        <module>web</module>
+    </modules>
+
+
+    <scm>
+        <url>https://github.com/25/EnchantmentsEnhance</url>
+        <connection>scm:git:git://github.com/25/EnchantmentsEnhance.git</connection>
+        <developerConnection>scm:git:git@github.com:25/EnchantmentsEnhance.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <organization>
+        <name>PixelTime Network</name>
+        <url>https://github.com/PixelTimeNet</url>
+    </organization>
 
     <issueManagement>
         <url>https://github.com/25/EnchantmentsEnhance/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 
-    <properties>
-        <ldk.version>0.1.8-rc2</ldk.version>
-        <kotlin.version>1.3.41</kotlin.version>
-        <bukkit.version>1.14.3-R0.1-SNAPSHOT</bukkit.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-    <modules>
-        <module>EnchantmentsEnhance-API</module>
-        <module>EnchantmentsEnhance-Compatibility</module>
-        <module>EnchantmentsEnhance-Plugin</module>
-    </modules>
 
-    <repositories>
+    <distributionManagement>
         <repository>
-            <id>bukkit-repo</id>
-            <url>http://repo.md-5.net/content/groups/public/</url>
+            <id>releases</id>
+            <name>releases repo</name>
+            <url>null</url>
+            <uniqueVersion>false</uniqueVersion>
         </repository>
-        <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
-        </repository>
-    </repositories>
-
-    <dependencies>
-        <!-- ldk -->
-        <dependency>
-            <groupId>com.lgou2w</groupId>
-            <artifactId>ldk</artifactId>
-            <version>${ldk.version}</version>
-            <type>pom</type>
-        </dependency>
-        <!-- Kotlin -->
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-        <!-- Spigot -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>${bukkit.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Bukkit -->
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>${bukkit.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>snapshots repo</name>
+            <url>null</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
+

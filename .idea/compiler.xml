@@ -8,9 +8,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="EnchantmentsEnhance-Compatibility-1.13" />
         <module name="EnchantmentsEnhance-Plugin" />
+        <module name="EnchantmentsEnhance-Compatibility-1.12" />
+        <module name="EnchantmentsEnhance-Model" />
         <module name="EnchantmentsEnhance-API" />
         <module name="EnchantmentsEnhance-Compatibility-Common" />
-        <module name="EnchantmentsEnhance-Compatibility-1.12" />
       </profile>
     </annotationProcessing>
   </component>

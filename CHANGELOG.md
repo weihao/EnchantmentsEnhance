@@ -1,4 +1,11 @@
 # Changelog
+## [7.8.0] - 2019-8-13
+### Added
+- Added an option to disable update notification.
+
+### Fixed
+- Fixed tests.
+
 ## [7.7.0] - 2019-6-22
 ### Fixed
 - Fixed an error on startup.

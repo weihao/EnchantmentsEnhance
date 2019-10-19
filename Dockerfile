@@ -4,4 +4,4 @@ RUN java -version
 COPY . /usr/src/enchantmentsenhance/
 WORKDIR /usr/src/enchantmentsenhance/
 RUN apk --no-cache add maven && mvn --version
-RUN mvn clean package
+RUN mvn install clean package
