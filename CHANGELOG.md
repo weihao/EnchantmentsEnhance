@@ -3,8 +3,8 @@
 ### Added
 - Added an option to disable update notification.
 
-### Fixed
-- Fixed tests.
+### Changed
+- **Moved the player data files to a different directory**.
 
 ## [7.7.0] - 2019-6-22
 ### Fixed
