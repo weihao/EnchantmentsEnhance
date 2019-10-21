@@ -26,7 +26,8 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import java.util.*
+import java.util.ArrayList
+import java.util.Random
 
 
 class Explosive : EnchantmentListener() {
