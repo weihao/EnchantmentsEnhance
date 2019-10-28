@@ -1,9 +1,8 @@
 # Changelog
 ## [7.9.0] - 2019-10-28
-### Added
-- 
 ### Fixed
 - Fixed offhand item duplication
+- Fixed skipping disabled enchantments in enhancements
 
 ## [7.8.0] - 2019-8-13
 ### Added
