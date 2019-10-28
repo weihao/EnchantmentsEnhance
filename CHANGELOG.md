@@ -1,4 +1,10 @@
 # Changelog
+## [7.9.0] - 2019-10-28
+### Added
+- 
+### Fixed
+- Fixed offhand item duplication
+
 ## [7.8.0] - 2019-8-13
 ### Added
 - Added an option to disable update notification.

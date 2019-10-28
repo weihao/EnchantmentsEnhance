@@ -30,3 +30,6 @@ docker-build:
 	@mkdir -p ./out
 	docker cp $$(docker create ${DOCKER_IMAGE}:${VERSION}):/usr/src/enchantmentsenhance/modules/EnchantmentsEnhance-Plugin/target/EnchantmentsEnhance-Plugin-${VERSION}.jar ./out/
 	@printf "$(OK_COLOR)Done! Find the jar in the /out Directory$(NO_COLOR)\n"
+
+set:
+    mvn versions:set -DnewVersion=$(v)
