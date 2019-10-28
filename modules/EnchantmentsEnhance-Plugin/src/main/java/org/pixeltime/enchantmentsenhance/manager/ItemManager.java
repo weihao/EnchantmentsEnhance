@@ -318,6 +318,9 @@ public class ItemManager {
     }
 
     public static boolean applyEnchantmentToItem(ItemStack item, String ench, int level) {
+        if (PackageManager.getDisabled().contains(ench)) {
+            return false;
+        }
         ItemMeta meta = item.getItemMeta();
         List<String> newlore = (meta.hasLore() ? meta.getLore() : new ArrayList<>());
         Enchantment vanilla = Enchantment.getByName(ench.toUpperCase());
