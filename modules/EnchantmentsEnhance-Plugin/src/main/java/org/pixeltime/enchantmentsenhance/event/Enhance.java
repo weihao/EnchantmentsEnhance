@@ -9,7 +9,11 @@ import org.pixeltime.enchantmentsenhance.enums.AnnounceType;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
-import org.pixeltime.enchantmentsenhance.manager.*;
+import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
+import org.pixeltime.enchantmentsenhance.manager.ConfigManager;
+import org.pixeltime.enchantmentsenhance.manager.ItemManager;
+import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
+import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.Random;

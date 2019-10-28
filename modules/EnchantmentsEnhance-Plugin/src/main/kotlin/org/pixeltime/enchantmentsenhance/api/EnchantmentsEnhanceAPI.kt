@@ -8,7 +8,7 @@ import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.mysql.PlayerStat
 import org.pixeltime.enchantmentsenhance.util.Util
-import java.util.*
+import java.util.Collections
 
 class API : EnchantmentsEnhanceAPI {
     override fun addAdvice(player: String, level: Int) {

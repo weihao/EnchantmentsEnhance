@@ -9,7 +9,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.util.Util
-import java.util.*
+import java.util.Random
 
 class Smelt : EnchantmentListener() {
     override fun desc(): Array<String> {
