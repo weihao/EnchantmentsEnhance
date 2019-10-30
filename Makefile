@@ -32,4 +32,4 @@ docker-build:
 	@printf "$(OK_COLOR)Done! Find the jar in the /out Directory$(NO_COLOR)\n"
 
 set:
-    mvn versions:set -DnewVersion=$(v)
+	mvn versions:set -DnewVersion=$(v)
