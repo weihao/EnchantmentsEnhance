@@ -134,7 +134,9 @@ public class Main extends JavaPlugin implements Listener {
             while (sc.hasNextLine()) {
                 Bukkit.getConsoleSender().sendMessage((sc.nextLine()));
             }
+            sc.close();
         } catch (NullPointerException ex) {
+            //
         }
 
         // Start time.

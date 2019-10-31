@@ -39,6 +39,7 @@ public class SettingsManager {
         // Config file.
         cfile = new File(Main.getMain().getDataFolder(), "config.yml");
         // Copy default.
+        backupConfig();
         if (!cfile.exists()) {
             Main.getMain().saveResource("config.yml", true);
             config = YamlConfiguration.loadConfiguration(cfile);
@@ -167,7 +168,13 @@ public class SettingsManager {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd@HH:mm:ss");
         String timestamp = formatter.format(date);
         File dataDirectory = Main.getMain().getDataFolder();
-        FileUtil.copy(cfile, new File(dataDirectory + cfile.getName() + "." + timestamp));
+        File playerDataDirectory = new File(dataDirectory, "config_backup");
+
+        if (!playerDataDirectory.exists() && !playerDataDirectory.mkdirs()) {
+            return;
+        }
+
+        FileUtil.copy(cfile, new File(playerDataDirectory, timestamp + "_" + cfile.getName()));
     }
 
     public static void generateEnchantments() throws IOException {
