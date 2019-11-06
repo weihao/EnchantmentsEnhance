@@ -14,7 +14,7 @@ public class PlaySound_Safe implements PlaySound {
                         1.0F, 2.0F);
                 break;
             case FAILED:
-                p.playSound(p.getLocation(), Sounds.ANVIL_BREAK.toBukkit(),
+                p.playSound(p.getLocation(), Sounds.ANVIL_DESTROY.toBukkit(),
                         1.0F, 2.0F);
                 break;
             case DOWNGRADED:
