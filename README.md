@@ -9,6 +9,7 @@
 [![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/pulls)
 [![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
 [![Language](https://img.shields.io/github/languages/count/25/EnchantmentsEnhance.svg)](https://github.com/25/EnchantmentsEnhance/issues)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F25%2FEnchantmentsEnhance.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F25%2FEnchantmentsEnhance?ref=badge_shield)
 
 # [<img src=".images/jenkins.png" alt="Download" align="left">](http://www.soulbound.me/job/EnchantmentsEnhance_stable/)
 [![Download](https://img.shields.io/spiget/downloads/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
@@ -69,3 +70,7 @@ mvn install package
 ```
 
 You can find the output file in the `target` directory of the corresponding module.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F25%2FEnchantmentsEnhance.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2F25%2FEnchantmentsEnhance?ref=badge_large)
