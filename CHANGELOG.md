@@ -1,4 +1,8 @@
 # Changelog
+## [7.9.2] - 2019-11-9
+### Fixed
+- To color an empty string throws an error
+
 ## [7.9.1] - 2019-10-31
 ### Fixed
 - Config backup to an unexpected directory
