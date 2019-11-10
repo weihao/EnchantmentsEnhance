@@ -23,7 +23,7 @@ import java.util.Random;
  * Contains a varieties of utility.
  */
 public class Util {
-    public static final String UNIQUEID = ChatColor.translateAlternateColorCodes('&', "&r&c&r&a&r&4&r&e&r&a&r&8&r&2&r&a&r&5&r&8&r&c&r&4&r&7&r&e&r&b&r&e");
+    public static final String UNIQUEID = Util.toColor("&r&c&r&a&r&4&r&e&r&a&r&8&r&2&r&a&r&5&r&8&r&c&r&4&r&7&r&e&r&b&r&e");
 
 
     public static ItemStack randomWool() {
@@ -69,7 +69,7 @@ public class Util {
      * Lists all the enhancement stone possible.
      */
     public static String pluginTag() {
-        return ChatColor.translateAlternateColorCodes('&',
+        return Util.toColor(
                 SettingsManager.lang.getString("config.pluginTag"));
     }
 
@@ -111,7 +111,7 @@ public class Util {
      * @param player
      */
     public static void sendMessage(String msg, CommandSender player) {
-        String message = ChatColor.translateAlternateColorCodes('&', msg);
+        String message = Util.toColor(msg);
         player.sendMessage(pluginTag() + message);
     }
 
@@ -123,7 +123,7 @@ public class Util {
      */
     public static void sendMessage(String msg, String player) {
         Player p = Bukkit.getPlayer(player);
-        String message = ChatColor.translateAlternateColorCodes('&', msg);
+        String message = Util.toColor(msg);
         if (p != null) {
             p.sendMessage(pluginTag() + message);
         }
@@ -139,7 +139,7 @@ public class Util {
             String msg,
             CommandSender player,
             boolean addPlugintag) {
-        String message = ChatColor.translateAlternateColorCodes('&', msg);
+        String message = Util.toColor(msg);
         player.sendMessage(message);
     }
 

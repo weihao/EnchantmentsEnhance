@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,8 +49,8 @@ public class PlayerDeathListener implements Listener {
                         List<String> lore = meta.getLore();
                         for (String s : lore) {
                             s = ChatColor.stripColor(s);
-                            if (s.contains(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.untradeableLore"))))
-                                    || s.contains(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("lore.tradeableLore"))))) {
+                            if (s.contains(ChatColor.stripColor(Util.toColor( SettingsManager.lang.getString("lore.untradeableLore"))))
+                                    || s.contains(ChatColor.stripColor(Util.toColor( SettingsManager.lang.getString("lore.tradeableLore"))))) {
                                 newInventory.add(e.getDrops().get(i));
                             }
                         }

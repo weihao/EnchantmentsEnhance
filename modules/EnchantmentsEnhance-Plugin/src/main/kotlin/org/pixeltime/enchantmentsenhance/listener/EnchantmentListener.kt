@@ -8,10 +8,11 @@ import org.bukkit.potion.PotionEffectType
 import org.pixeltime.enchantmentsenhance.locale.LocaleManager
 import org.pixeltime.enchantmentsenhance.manager.InventoryManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
+import org.pixeltime.enchantmentsenhance.util.Util
 
 abstract class EnchantmentListener : Listener {
     fun name(): String {
-        return ChatColor.translateAlternateColorCodes('&', SettingsManager.lang.getString("enchantments." + this.javaClass.simpleName.toLowerCase())!!)
+        return Util.toColor( SettingsManager.lang.getString("enchantments." + this.javaClass.simpleName.toLowerCase())!!)
     }
 
     private fun addPermaPotion(player: Player, type: PotionEffectType, level: Int) {

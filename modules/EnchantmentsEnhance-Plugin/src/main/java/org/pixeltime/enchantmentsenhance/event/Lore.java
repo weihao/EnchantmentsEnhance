@@ -26,7 +26,7 @@ public class Lore {
             boolean tradeable,
             boolean sendMessage) {
         ItemMeta im = is.getItemMeta();
-        String lore = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', str);
+        String lore = Util.UNIQUEID + Util.toColor( str);
         String x, y;
         if (tradeable) {
             x = "tradeable";
@@ -46,7 +46,7 @@ public class Lore {
                 }
                 return;
             }
-            loreList.remove(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
+            loreList.remove(Util.UNIQUEID + Util.toColor(
                     SettingsManager.lang.getString("lore." + y + "Lore")));
             loreList.add(lore);
             im.setLore(loreList);
@@ -71,7 +71,7 @@ public class Lore {
 
 
     public static void addLore(ItemStack is, String str, boolean tradeable) {
-        String lore = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&', str);
+        String lore = Util.UNIQUEID + Util.toColor( str);
         ItemMeta im = is.getItemMeta();
 
         String y;
@@ -86,7 +86,7 @@ public class Lore {
             if (loreList.contains(lore)) {
                 return;
             }
-            loreList.remove(Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
+            loreList.remove(Util.UNIQUEID + Util.toColor(
                     SettingsManager.lang.getString("lore." + y + "Lore")));
             loreList.add(lore);
             im.setLore(loreList);
@@ -107,9 +107,9 @@ public class Lore {
     public static void removeLore(ItemStack is, Player p) {
         ItemMeta im = is.getItemMeta();
 
-        String x = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
+        String x = Util.UNIQUEID + Util.toColor(
                 SettingsManager.lang.getString("lore.tradeableLore"));
-        String y = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
+        String y = Util.UNIQUEID + Util.toColor(
                 SettingsManager.lang.getString("lore.untradeableLore"));
         if ((is.hasItemMeta()) && (is.getItemMeta().hasLore())) {
             List<String> loreList = is.getItemMeta().getLore();
@@ -135,9 +135,9 @@ public class Lore {
      */
     public static void removeLore(ItemStack is) {
         ItemMeta im = is.getItemMeta();
-        String x = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
+        String x = Util.UNIQUEID + Util.toColor(
                 SettingsManager.lang.getString("lore.tradeableLore"));
-        String y = Util.UNIQUEID + ChatColor.translateAlternateColorCodes('&',
+        String y = Util.UNIQUEID + Util.toColor(
                 SettingsManager.lang.getString("lore.untradeableLore"));
         if ((is.hasItemMeta()) && (is.getItemMeta().hasLore())) {
             List<String> loreList = is.getItemMeta().getLore();

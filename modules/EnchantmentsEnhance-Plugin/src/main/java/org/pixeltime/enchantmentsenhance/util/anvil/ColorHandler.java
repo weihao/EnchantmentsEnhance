@@ -6,6 +6,7 @@ import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
+import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class ColorHandler {
     public static ItemStack getTranslatedItem(final Player p, final AnvilInventory inv, final AnvilTask task) {
@@ -20,7 +21,7 @@ public class ColorHandler {
         if (item.hasItemMeta()) {
             final ItemMeta itemMeta = item.getItemMeta();
             if (itemMeta.hasDisplayName()) {
-                String coloredName = ChatColor.translateAlternateColorCodes('&', itemMeta.getDisplayName());
+                String coloredName = Util.toColor( itemMeta.getDisplayName());
                 for (int i = 0; i < coloredName.length(); ++i) {
                     if (coloredName.charAt(i) == '§') {
                         final char c = coloredName.charAt(i + 1);

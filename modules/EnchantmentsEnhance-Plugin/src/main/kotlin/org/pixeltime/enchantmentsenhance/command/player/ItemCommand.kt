@@ -50,7 +50,7 @@ class ItemCommand : SubCommand() {
                             level = ItemManager.getItemEnchantLevel(item)
                             clicked = MainMenu.gear
                         }
-                        val curr = ItemManager.setName(item, ChatColor.translateAlternateColorCodes('&', args[1]))
+                        val curr = ItemManager.setName(item, Util.toColor( args[1]))
                         try {
                             ItemManager.forgeItem(player, curr, level, true,
                                     clicked)
