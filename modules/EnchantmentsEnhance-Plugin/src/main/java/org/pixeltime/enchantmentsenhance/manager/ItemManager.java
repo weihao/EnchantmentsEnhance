@@ -19,11 +19,8 @@ import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.datastructure.DoublyLinkedList;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+
 
 public class ItemManager {
 
@@ -83,9 +80,13 @@ public class ItemManager {
     }
 
     public static int getItemEnchantLevel(ItemStack item) {
-        NBTTagCompound tag = ItemFactory.readTagSafe(item);
-        Integer level = tag.getIntOrNull("ELevel");
-        return level != null ? level : 0;
+        try {
+            NBTTagCompound tag = ItemFactory.readTagSafe(item);
+            Integer level = tag.getIntOrNull("ELevel");
+            return level != null ? level : 0;
+        } catch (UnsupportedOperationException ex) {
+            return 0;
+        }
     }
 
     public static int getToolEnchantLevel(ItemStack item) {
@@ -189,7 +190,7 @@ public class ItemManager {
         ItemMeta im = currItem.getItemMeta();
         List<String> lore = (old != null && old.size() > 0) ? old : new ArrayList<>();
         List<String> newlore = im.hasLore() ? im.getLore() : new ArrayList<>();
-        newlore.removeIf(e -> (!e.startsWith(Util.UNIQUEID + Util.toColor( "&7"))));
+        newlore.removeIf(e -> (!e.startsWith(Util.UNIQUEID + Util.toColor("&7"))));
         List<String> applyingLores = null;
         if (clicked.equals(MainMenu.gear)) {
             applyingLores = (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore");
@@ -197,7 +198,7 @@ public class ItemManager {
             applyingLores = (List<String>) SettingsManager.config.getList("enhance." + getToolEnchantLevel(currItem) + ".lore");
         }
         for (String s : applyingLores) {
-            lore.add(Util.UNIQUEID + Util.toColor( s)
+            lore.add(Util.UNIQUEID + Util.toColor(s)
                     .replaceAll("%player%", playerName)
                     .replaceAll("%date%", Util.getCurrentDate()));
         }
@@ -341,7 +342,7 @@ public class ItemManager {
             String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
             int keptLevel = 0;
             if (enchantment != null) {
-                String currEnch = ChatColor.stripColor(Util.toColor( enchantment));
+                String currEnch = ChatColor.stripColor(Util.toColor(enchantment));
                 for (int i = 0; i < newlore.size(); i++) {
                     String[] curr = ChatColor.stripColor(newlore.get(i)).split(
                             " ");
@@ -359,7 +360,7 @@ public class ItemManager {
                 }
                 int finalLevel = ((level + keptLevel) > max) ? max : level + keptLevel;
                 if (finalLevel > 0) {
-                    newlore.add(Util.UNIQUEID + Util.toColor( "&7" + enchantment + " " + Util.intToRoman(finalLevel)));
+                    newlore.add(Util.UNIQUEID + Util.toColor("&7" + enchantment + " " + Util.intToRoman(finalLevel)));
                     meta.setLore(newlore);
                     item.setItemMeta(meta);
                     if (item.getEnchantments().isEmpty()) {
@@ -455,7 +456,7 @@ public class ItemManager {
         } else {
             String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
             if (enchantment != null) {
-                String currEnch = ChatColor.stripColor(Util.toColor( enchantment));
+                String currEnch = ChatColor.stripColor(Util.toColor(enchantment));
                 List<String> lores = item.getItemMeta().getLore();
                 for (int i = 0; i < lores.size(); i++) {
                     String[] curr = ChatColor.stripColor(lores.get(i)).split(
