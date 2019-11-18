@@ -1,4 +1,8 @@
 # Changelog
+## [7.9.3] - 2019-11-18
+### Fixed
+- Fixed an UnsupportedOperationException
+
 ## [7.9.2] - 2019-11-9
 ### Fixed
 - To color an empty string throws an error

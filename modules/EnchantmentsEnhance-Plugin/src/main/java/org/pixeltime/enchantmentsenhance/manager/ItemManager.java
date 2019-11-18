@@ -19,7 +19,11 @@ import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.datastructure.DoublyLinkedList;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
 
 public class ItemManager {
@@ -80,11 +84,14 @@ public class ItemManager {
     }
 
     public static int getItemEnchantLevel(ItemStack item) {
+        if (item == null || item.getType() == Material.AIR)
+            return 0;
         try {
             NBTTagCompound tag = ItemFactory.readTagSafe(item);
             Integer level = tag.getIntOrNull("ELevel");
             return level != null ? level : 0;
         } catch (UnsupportedOperationException ex) {
+            // Because illegal item material
             return 0;
         }
     }
