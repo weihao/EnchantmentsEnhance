@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance.listener;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -53,7 +52,7 @@ public class EnhancedItemListener implements Listener {
             if ((e.getClick().equals(ClickType.NUMBER_KEY)) && (e.getWhoClicked().getInventory().getItem(e.getHotbarButton()) != null)) {
                 ItemStack itemMoved = e.getWhoClicked().getInventory().getItem(e.getHotbarButton());
                 if ((itemMoved.hasItemMeta()) && (itemMoved.getItemMeta().hasLore())) {
-                    if (itemMoved.getItemMeta().getLore().contains(Util.UNIQUEID + Util.toColor( SettingsManager.lang.getString("lore.untradeableLore")))) {
+                    if (itemMoved.getItemMeta().getLore().contains(Util.UNIQUEID + Util.toColor(SettingsManager.lang.getString("lore.untradeableLore")))) {
                         e.setCancelled(true);
                         Util.sendMessage(SettingsManager.lang.getString("messages.noStorage"), e.getWhoClicked());
                     }
@@ -61,7 +60,7 @@ public class EnhancedItemListener implements Listener {
             }
             if (e.getCurrentItem() != null) {
                 if ((e.getCurrentItem().hasItemMeta()) && (e.getCurrentItem().getItemMeta().hasLore())) {
-                    if (e.getCurrentItem().getItemMeta().getLore().contains(Util.UNIQUEID + Util.toColor( SettingsManager.lang.getString("lore.untradeableLore")))) {
+                    if (e.getCurrentItem().getItemMeta().getLore().contains(Util.UNIQUEID + Util.toColor(SettingsManager.lang.getString("lore.untradeableLore")))) {
                         e.setCancelled(true);
                         Util.sendMessage(SettingsManager.lang.getString("messages.noStorage"), e.getWhoClicked());
                     }
@@ -83,13 +82,13 @@ public class EnhancedItemListener implements Listener {
         try {
             if (inventoryClickEvent.getClickedInventory() != null && inventoryClickEvent.getClickedInventory().firstEmpty() == -1) {
                 if (currentItem != null && currentItem.hasItemMeta() && (currentItem.getItemMeta().hasLore())) {
-                    if (currentItem.getItemMeta().getLore().contains(Util.UNIQUEID + Util.toColor( SettingsManager.lang.getString("lore.untradeableLore")))) {
+                    if (currentItem.getItemMeta().getLore().contains(Util.UNIQUEID + Util.toColor(SettingsManager.lang.getString("lore.untradeableLore")))) {
                         inventoryClickEvent.setCancelled(true);
                         Util.sendMessage(SettingsManager.lang.getString("messages.noDrop"), inventoryClickEvent.getWhoClicked());
                     }
                 }
                 if (cursor != null && cursor.hasItemMeta() && (cursor.getItemMeta().hasLore())) {
-                    if (cursor.getItemMeta().getLore().contains(Util.UNIQUEID + Util.toColor( SettingsManager.lang.getString("lore.untradeableLore")))) {
+                    if (cursor.getItemMeta().getLore().contains(Util.UNIQUEID + Util.toColor(SettingsManager.lang.getString("lore.untradeableLore")))) {
                         inventoryClickEvent.setCancelled(true);
                         Util.sendMessage(SettingsManager.lang.getString("messages.noDrop"), inventoryClickEvent.getWhoClicked());
                     }

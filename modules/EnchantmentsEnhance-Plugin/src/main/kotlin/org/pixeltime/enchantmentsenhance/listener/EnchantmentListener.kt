@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance.listener
 
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.potion.PotionEffect
@@ -12,7 +11,7 @@ import org.pixeltime.enchantmentsenhance.util.Util
 
 abstract class EnchantmentListener : Listener {
     fun name(): String {
-        return Util.toColor( SettingsManager.lang.getString("enchantments." + this.javaClass.simpleName.toLowerCase())!!)
+        return Util.toColor(SettingsManager.lang.getString("enchantments." + this.javaClass.simpleName.toLowerCase())!!)
     }
 
     private fun addPermaPotion(player: Player, type: PotionEffectType, level: Int) {

@@ -37,3 +37,9 @@ set:
 
 bump:
 	make set v=${NEXT_VERSION}
+
+bump-push:
+	make bump
+	git add .
+	git commit -m "Bump a version"
+	git push

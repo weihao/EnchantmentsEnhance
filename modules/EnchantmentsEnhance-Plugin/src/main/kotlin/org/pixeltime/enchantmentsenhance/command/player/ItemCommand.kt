@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance.command.player
 
-import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.command.SubCommand
@@ -50,7 +49,7 @@ class ItemCommand : SubCommand() {
                             level = ItemManager.getItemEnchantLevel(item)
                             clicked = MainMenu.gear
                         }
-                        val curr = ItemManager.setName(item, Util.toColor( args[1]))
+                        val curr = ItemManager.setName(item, Util.toColor(args[1]))
                         try {
                             ItemManager.forgeItem(player, curr, level, true,
                                     clicked)

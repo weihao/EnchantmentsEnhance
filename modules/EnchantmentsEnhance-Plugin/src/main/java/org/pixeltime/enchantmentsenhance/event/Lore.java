@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance.event;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -26,7 +25,7 @@ public class Lore {
             boolean tradeable,
             boolean sendMessage) {
         ItemMeta im = is.getItemMeta();
-        String lore = Util.UNIQUEID + Util.toColor( str);
+        String lore = Util.UNIQUEID + Util.toColor(str);
         String x, y;
         if (tradeable) {
             x = "tradeable";
@@ -71,7 +70,7 @@ public class Lore {
 
 
     public static void addLore(ItemStack is, String str, boolean tradeable) {
-        String lore = Util.UNIQUEID + Util.toColor( str);
+        String lore = Util.UNIQUEID + Util.toColor(str);
         ItemMeta im = is.getItemMeta();
 
         String y;

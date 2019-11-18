@@ -49,8 +49,8 @@ public class PlayerDeathListener implements Listener {
                         List<String> lore = meta.getLore();
                         for (String s : lore) {
                             s = ChatColor.stripColor(s);
-                            if (s.contains(ChatColor.stripColor(Util.toColor( SettingsManager.lang.getString("lore.untradeableLore"))))
-                                    || s.contains(ChatColor.stripColor(Util.toColor( SettingsManager.lang.getString("lore.tradeableLore"))))) {
+                            if (s.contains(ChatColor.stripColor(Util.toColor(SettingsManager.lang.getString("lore.untradeableLore"))))
+                                    || s.contains(ChatColor.stripColor(Util.toColor(SettingsManager.lang.getString("lore.tradeableLore"))))) {
                                 newInventory.add(e.getDrops().get(i));
                             }
                         }

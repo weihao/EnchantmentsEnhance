@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance.util.anvil;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.ItemStack;
@@ -21,7 +20,7 @@ public class ColorHandler {
         if (item.hasItemMeta()) {
             final ItemMeta itemMeta = item.getItemMeta();
             if (itemMeta.hasDisplayName()) {
-                String coloredName = Util.toColor( itemMeta.getDisplayName());
+                String coloredName = Util.toColor(itemMeta.getDisplayName());
                 for (int i = 0; i < coloredName.length(); ++i) {
                     if (coloredName.charAt(i) == '§') {
                         final char c = coloredName.charAt(i + 1);
