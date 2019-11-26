@@ -45,8 +45,8 @@ bump-push:
 	git push
 
 ci:
+	mvn install clean package
 	rm -rf build
 	mkdir -p build
-	make build
 	cp modules/*/target/*.jar ./build
 	rm ./build/original*
