@@ -35,7 +35,7 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      - run: Make ci
+      - run: make ci
 
       - store_artifacts:
           path: ./build
