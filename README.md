@@ -17,11 +17,10 @@
 [![Jitpack](https://jitpack.io/v/25/EnchantmentsEnhance.svg)](https://jitpack.io/#25/EnchantmentsEnhance/)
 
 
-
-## Life Cycle
+## Releases
 ###### Alpha (1.0 - 4.0)
 ###### Beta (4.0.1 - 4.9.1)
-##### Release (5.0 - [latest](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml/)[![CircleCI](https://circleci.com/gh/25/EnchantmentsEnhance.svg?style=svg)](https://circleci.com/gh/25/EnchantmentsEnhance))
+##### Release [![CircleCI](https://circleci.com/gh/25/EnchantmentsEnhance.svg?style=svg)](https://circleci.com/gh/25/EnchantmentsEnhance) (5.0 - [latest](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml/))
 This plugin is under active development at the stage of the release phase.
 The completion of the plugin is currently projected at `70%`, meaning the general functionality are `mostly complete`.
 
@@ -56,7 +55,8 @@ EnchantmentsEnhance uses `Maven` to manage project dependencies.
 - Kotlin 1.3.x
 - Maven 3.5.x
 - Git
-
+- Make (_Optional_)
+- Docker (_Optional_)
 
 
 Then run:
