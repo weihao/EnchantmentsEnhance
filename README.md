@@ -1,13 +1,13 @@
 <p align="center"> <img width="200" height="200" src=".images/thumbnail.png"> </p>
 
 # <img src=".images/logo.jpg" alt="Logo" align="right">
+[![CircleCI](https://circleci.com/gh/25/EnchantmentsEnhance.svg?style=svg)](https://circleci.com/gh/25/EnchantmentsEnhance)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.3%2b-brightgreen.svg)](https://kotlinlang.org)
 [![Java](https://img.shields.io/badge/Java-8%2b-brightgreen.svg)](https://www.java.com/)
 [![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/pulls)
 [![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
 [![Language](https://img.shields.io/github/languages/count/25/EnchantmentsEnhance.svg)](https://github.com/25/EnchantmentsEnhance/issues)
 [![License](https://img.shields.io/badge/license-GPL-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F25%2FEnchantmentsEnhance.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F25%2FEnchantmentsEnhance?ref=badge_shield)
 
 # [<img src=".images/jenkins.png" alt="Download" align="left">](http://www.soulbound.me/job/EnchantmentsEnhance_stable/)
 [![Download](https://img.shields.io/spiget/downloads/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
@@ -15,7 +15,6 @@
 [![Spiget Stars](https://img.shields.io/spiget/stars/59555.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Spiget Rating](https://img.shields.io/spiget/rating/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Jitpack](https://jitpack.io/v/25/EnchantmentsEnhance.svg)](https://jitpack.io/#25/EnchantmentsEnhance/)
-[![CircleCI](https://circleci.com/gh/25/EnchantmentsEnhance.svg?style=svg)](https://circleci.com/gh/25/EnchantmentsEnhance)
 
 ## Introduction
 [Wiki](https://github.com/25/EnchantmentsEnhance/wiki)
