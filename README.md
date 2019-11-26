@@ -20,7 +20,7 @@
 ## Releases
 ###### Alpha (1.0 - 4.0)
 ###### Beta (4.0.1 - 4.9.1)
-##### Release [![CircleCI](https://circleci.com/gh/25/EnchantmentsEnhance.svg?style=svg)](https://circleci.com/gh/25/EnchantmentsEnhance) (5.0 - [latest](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml/))
+#### Release [![CircleCI](https://circleci.com/gh/25/EnchantmentsEnhance.svg?style=svg)](https://circleci.com/gh/25/EnchantmentsEnhance) (5.0 - [latest](https://github.com/25/EnchantmentsEnhance/blob/master/pom.xml/))
 This plugin is under active development at the stage of the release phase.
 The completion of the plugin is currently projected at `70%`, meaning the general functionality are `mostly complete`.
 
