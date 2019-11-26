@@ -38,4 +38,4 @@ jobs:
       - run: make ci
 
       - store_artifacts:
-          path: /build
+          path: ./build
