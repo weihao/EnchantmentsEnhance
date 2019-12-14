@@ -18,7 +18,7 @@
     <repositories>
         <repository>
             <id>sk89q-repo</id>
-            <url>http://maven.sk89q.com/repo/</url>
+            <url>https://maven.sk89q.com/repo/</url>
         </repository>
         <repository>
             <id>inventive-repo</id>
@@ -26,7 +26,7 @@
         </repository>
         <repository>
             <id>placeholderapi</id>
-            <url>http://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
         <repository>
             <id>aikar</id>
@@ -145,6 +145,7 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
+                            <jvmTarget>1.8</jvmTarget>
                             <sourceDirs>
                                 <sourceDir>src/main/kotlin</sourceDir>
                                 <sourceDir>src/main/java</sourceDir>
@@ -157,6 +158,7 @@
                             <goal>test-compile</goal>
                         </goals>
                         <configuration>
+                            <jvmTarget>1.8</jvmTarget>
                             <sourceDirs>
                                 <sourceDir>src/test/kotlin</sourceDir>
                                 <sourceDir>src/test/java</sourceDir>
