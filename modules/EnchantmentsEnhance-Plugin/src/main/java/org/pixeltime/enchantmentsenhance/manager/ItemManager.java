@@ -78,8 +78,8 @@ public class ItemManager {
 
     @Nullable
     private static ItemStack modifyTagSafely(
-      @Nullable ItemStack item,
-      @NotNull Consumer<NBTTagCompound> block
+        @Nullable ItemStack item,
+        @NotNull Consumer<NBTTagCompound> block
     ) {
         if (item == null || item.getType() == Material.AIR)
             return null;
@@ -90,14 +90,14 @@ public class ItemManager {
                 return Unit.INSTANCE;
             });
         } catch (UnsupportedOperationException e) {
-            return null;
+            return item;
         }
     }
 
     @Nullable
     private static <R> R readTagSafely(
-      @Nullable ItemStack item,
-      @NotNull Function<NBTTagCompound, R> block
+        @Nullable ItemStack item,
+        @NotNull Function<NBTTagCompound, R> block
     ) {
         if (item == null || item.getType() == Material.AIR)
             return null;
