@@ -10,6 +10,8 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.event.Lore;
@@ -24,6 +26,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 
 public class ItemManager {
@@ -69,81 +73,102 @@ public class ItemManager {
         }
     }
 
-    public static ItemStack setLevel(ItemStack item, int enhanceLevel) {
-        return ItemFactory.modifyTag(item, tag -> {
-            tag.putInt("ELevel", enhanceLevel);
-            return Unit.INSTANCE;
-        });
-    }
+    /// See: https://github.com/25/EnchantmentsEnhance/issues/174
+    /// by lgou2w on 17/12/2019
 
-    public static ItemStack setName(ItemStack item, String name) {
-        return ItemFactory.modifyTag(item, tag -> {
-            tag.putString("EName", name);
-            return Unit.INSTANCE;
-        });
-    }
-
-    public static int getItemEnchantLevel(ItemStack item) {
+    @Nullable
+    private static ItemStack modifyTagSafely(
+        @Nullable ItemStack item,
+        @NotNull Consumer<NBTTagCompound> block
+    ) {
         if (item == null || item.getType() == Material.AIR)
-            return 0;
+            return null;
+
         try {
-            NBTTagCompound tag = ItemFactory.readTagSafe(item);
-            Integer level = tag.getIntOrNull("ELevel");
-            return level != null ? level : 0;
-        } catch (UnsupportedOperationException ex) {
-            // Because illegal item material
-            return 0;
+            return ItemFactory.modifyTag(item, tag -> {
+                block.accept(tag);
+                return Unit.INSTANCE;
+            });
+        } catch (UnsupportedOperationException e) {
+            return item;
         }
     }
 
+    @Nullable
+    private static <R> R readTagSafely(
+        @Nullable ItemStack item,
+        @NotNull Function<NBTTagCompound, R> block
+    ) {
+        if (item == null || item.getType() == Material.AIR)
+            return null;
+
+        try {
+            NBTTagCompound tag = ItemFactory.readTagSafe(item);
+            return block.apply(tag);
+        } catch (UnsupportedOperationException e) {
+            return null;
+        }
+    }
+
+    ///
+
+    public static ItemStack setLevel(ItemStack item, int enhanceLevel) {
+        return modifyTagSafely(item, tag ->
+          tag.putInt("ELevel", enhanceLevel)
+        );
+    }
+
+    public static ItemStack setName(ItemStack item, String name) {
+        return modifyTagSafely(item, tag ->
+            tag.putString("EName", name)
+        );
+    }
+
+    public static int getItemEnchantLevel(ItemStack item) {
+        Integer level = readTagSafely(item, tag -> tag.getIntOrNull("ELevel"));
+        return level != null ? level : 0;
+    }
+
     public static int getToolEnchantLevel(ItemStack item) {
-        NBTTagCompound tag = ItemFactory.readTagSafe(item);
-        Integer level = tag.getIntOrNull("ETool");
+        Integer level = readTagSafely(item, tag -> tag.getIntOrNull("ETool"));
         return level != null ? level : 0;
     }
 
     public static ItemStack setToolEnchantLevel(ItemStack item, int enhanceLevel) {
-        return ItemFactory.modifyTag(item, tag -> {
-            tag.putInt("ETool", enhanceLevel);
-            return Unit.INSTANCE;
-        });
+        return modifyTagSafely(item, tag ->
+            tag.putInt("ETool", enhanceLevel)
+        );
     }
 
     public static String getItemLore(ItemStack item) {
-        NBTTagCompound tag = ItemFactory.readTagSafe(item);
-        String lore = tag.getStringOrNull("ELore");
+        String lore = readTagSafely(item, tag -> tag.getStringOrNull("ELore"));
         return lore != null ? lore : "";
     }
 
     public static String getItemName(ItemStack item) {
-        NBTTagCompound tag = ItemFactory.readTagSafe(item);
-        String name = tag.getStringOrNull("EName");
+        String name = readTagSafely(item, tag -> tag.getStringOrNull("EName"));
         return name != null ? name : "";
     }
 
     public static ItemStack setHistory(ItemStack item, String history) {
-        return ItemFactory.modifyTag(item, tag -> {
-            tag.putString("EHistory", history);
-            return Unit.INSTANCE;
-        });
+        return modifyTagSafely(item, tag ->
+            tag.putString("EHistory", history)
+        );
     }
 
     public static String getHistory(ItemStack item) {
-        NBTTagCompound tag = ItemFactory.readTagSafe(item);
-        String history = tag.getStringOrNull("EHistory");
+        String history = readTagSafely(item, tag -> tag.getStringOrNull("EHistory"));
         return history != null ? history : "";
     }
 
     public static ItemStack setGive(ItemStack item, String give) {
-        return ItemFactory.modifyTag(item, tag -> {
-            tag.putString("EGive", give);
-            return Unit.INSTANCE;
-        });
+        return modifyTagSafely(item, tag ->
+            tag.putString("EGive", give)
+        );
     }
 
     public static String getGive(ItemStack item) {
-        NBTTagCompound tag = ItemFactory.readTagSafe(item);
-        String give = tag.getStringOrNull("EGive");
+        String give = readTagSafely(item, tag -> tag.getStringOrNull("EGive"));
         return give != null ? give : "";
     }
 
