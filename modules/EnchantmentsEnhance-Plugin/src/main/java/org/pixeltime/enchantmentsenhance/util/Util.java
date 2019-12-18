@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
+import org.jetbrains.annotations.Nullable;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 
 import java.time.LocalDate;
@@ -147,16 +148,12 @@ public class Util {
      * Translates color codes.
      *
      * @param str
-     * @return
+     * @return null or translated str
      */
-    public static String toColor(String str) {
-        String temp = str;
-        try {
-            temp = ChatColor.translateAlternateColorCodes('&', str);
-        } catch (NullPointerException ex) {
-            // ?
-        }
-        return temp;
+    @Nullable
+    public static String toColor(@Nullable String str) {
+        if (str == null) return null;
+        return ChatColor.translateAlternateColorCodes('&', str);
     }
 
     /**
