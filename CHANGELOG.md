@@ -1,4 +1,12 @@
 # Changelog
+## [7.9.4] - 2019-12-28
+### Added
+- Added support for 1.15.1
+
+### Fixed
+- Fixed an issue with Util toColor IllegalArgumentException and kotlin compile
+- Fixed NBT operational problems with null or air item, and if not supported, return the source item
+
 ## [7.9.3] - 2019-11-18
 ### Fixed
 - Fixed an UnsupportedOperationException
