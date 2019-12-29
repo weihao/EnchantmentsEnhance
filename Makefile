@@ -3,7 +3,7 @@ help:
 	@echo "You have the following options when using this Makefile:"
 	@echo
 	@echo "$(OK_COLOR)Development related:"
-	@echo "$(OK_COLOR)  build $(NO_COLOR)- builds EE"
+	@echo "$(OK_COLOR)  b $(NO_COLOR)- builds EE"
 	@echo "$(OK_COLOR)  docker-build $(NO_COLOR)- builds EE using Docker"
 
 
@@ -20,7 +20,7 @@ WARN_COLOR=\x1b[33;01m
 
 ########################################
 
-build:
+b:
 	mvn install clean package
 
 docker-build:
