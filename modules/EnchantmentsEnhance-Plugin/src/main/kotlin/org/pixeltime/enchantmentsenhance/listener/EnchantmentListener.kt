@@ -11,7 +11,9 @@ import org.pixeltime.enchantmentsenhance.util.Util
 
 abstract class EnchantmentListener : Listener {
     fun name(): String {
-        return Util.toColor(SettingsManager.lang.getString("enchantments." + this.javaClass.simpleName.toLowerCase())!!)
+        // FIXME: NPE hidden risks -> #172
+        val name = SettingsManager.lang.getString("enchantments." + javaClass.simpleName.toLowerCase())!!
+        return Util.toColor(name)!!
     }
 
     private fun addPermaPotion(player: Player, type: PotionEffectType, level: Int) {

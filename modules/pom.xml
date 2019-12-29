@@ -15,8 +15,6 @@
         <ldk.version>0.1.9</ldk.version>
         <kotlin.version>1.3.61</kotlin.version>
         <bukkit.version>1.15.1-R0.1-SNAPSHOT</bukkit.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -29,7 +27,7 @@
     <repositories>
         <repository>
             <id>bukkit-repo</id>
-            <url>http://repo.md-5.net/content/groups/public/</url>
+            <url>https://repo.md-5.net/content/groups/public/</url>
         </repository>
         <repository>
             <id>spigot-repo</id>
