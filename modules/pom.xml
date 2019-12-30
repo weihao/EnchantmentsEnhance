@@ -33,6 +33,11 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
+        <!-- if you need use LDK snapshot version, add sonatype repo -->
+        <repository>
+            <id>sonatype-repo</id>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
