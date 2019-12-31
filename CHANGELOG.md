@@ -6,6 +6,7 @@
 ### Fixed
 - Fixed an issue with Util toColor IllegalArgumentException and kotlin compile
 - Fixed NBT operational problems with null or air item, and if not supported, return the source item
+- Fixed a glitch that shift right click enchantment table causes issue
 
 ## [7.9.3] - 2019-11-18
 ### Fixed
