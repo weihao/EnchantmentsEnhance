@@ -14,11 +14,7 @@ install:
   - mvn install
 
 script:
-  - make b
   - make docker-build
-
-after_success:
-  - mvn clean
 
 cache:
   directories:
