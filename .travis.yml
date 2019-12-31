@@ -14,7 +14,7 @@ install:
   - mvn install
 
 script:
-  - make build
+  - make b
   - make docker-build
 
 after_success:
