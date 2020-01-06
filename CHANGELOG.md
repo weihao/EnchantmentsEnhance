@@ -1,4 +1,8 @@
 # Changelog
+## [7.9.5] - 2019-1-6
+### Fixed
+- Fixed all the enchantments in the package does not initalize correctly with a path containing unicodes.
+
 ## [7.9.4] - 2019-12-28
 ### Added
 - Added support for 1.15.1
