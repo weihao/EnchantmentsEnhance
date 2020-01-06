@@ -4,8 +4,8 @@ import org.bukkit.command.CommandSender
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
+import org.pixeltime.enchantmentsenhance.manager.PackageManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.util.ClassGetter
 import java.util.Arrays
 
 class DebugConsoleCommand : SubConsoleCommand() {
@@ -21,7 +21,7 @@ class DebugConsoleCommand : SubConsoleCommand() {
                     sb.appendln("=====Generating English Enchantments Wiki=====")
                     sb.appendln("| Enchantments ID| Effect| Level|")
                     sb.appendln("| :---:| :---------| :---:")
-                    for (enchClass in ClassGetter.getClassesForPackage(Main.getMain(), "org.pixeltime.enchantmentsenhance.event.enchantment")) {
+                    for (enchClass in PackageManager.getEnchClasses()) {
                         if (EnchantmentListener::class.java.isAssignableFrom(enchClass)) {
                             try {
                                 val enchantmentListener = enchClass.newInstance() as EnchantmentListener
@@ -51,7 +51,7 @@ class DebugConsoleCommand : SubConsoleCommand() {
                     sb.appendln("=====Generating Chinese Enchantments Wiki=====")
                     sb.appendln("| 附魔ID| 中文名称| 效果|")
                     sb.appendln("| :---:|:---:| :--------------------------:|")
-                    for (enchClass in ClassGetter.getClassesForPackage(Main.getMain(), "org.pixeltime.enchantmentsenhance.event.enchantment")) {
+                    for (enchClass in PackageManager.getEnchClasses()) {
                         if (EnchantmentListener::class.java.isAssignableFrom(enchClass)) {
                             try {
                                 val enchantmentListener = enchClass.newInstance() as EnchantmentListener
