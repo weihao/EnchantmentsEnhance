@@ -1,8 +1,8 @@
 name: EnchantmentsEnhance
 version: ${project.version}
 description: This is a Black Desert Online Style of Enchantment enhancing
-author: Feier
-authors: [Feier, lgou2w]
+author: HealPot
+authors: [HealPot, lgou2w]
 load: POSTWORLD
 prefix: EnchantmentsEnhance
 api-version: 1.13
