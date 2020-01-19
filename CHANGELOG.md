@@ -1,8 +1,14 @@
 # Changelog
+## [7.9.7] - 2019-1-19
+### Fixed
+- Fixed an issue caused player to lose max health
+
+
 ## [7.9.6] - 2019-1-19
 ### Changed
 - **Changed mysql schema to not use id column**
 - **Changed charset from latin1 to utf8** 
+
 ### Fixed
 - Fixed a mysql exception
 
