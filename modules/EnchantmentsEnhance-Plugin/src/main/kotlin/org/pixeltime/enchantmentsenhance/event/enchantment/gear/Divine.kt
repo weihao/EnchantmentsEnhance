@@ -32,8 +32,8 @@ class Divine : EnchantmentListener() {
                 }
                 val level = getLevel(player)
                 if ((level > 0) && (roll(level))) {
-                    if (player.health + entityDamageByEntityEvent.damage > 20.0) {
-                        player.health = 20.0
+                    if (player.health + entityDamageByEntityEvent.damage > player.maxHealth) {
+                        player.health = player.maxHealth
                     } else {
                         player.health = player.health + entityDamageByEntityEvent.damage
                     }
