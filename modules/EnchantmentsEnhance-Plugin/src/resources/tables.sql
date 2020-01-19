@@ -1,16 +1,14 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
-CREATE TABLE IF NOT EXISTS `enchantmentsenhance` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `playername` VARCHAR(256) NOT NULL UNIQUE,
-  `failstack` INT NOT NULL DEFAULT 0,
-  `items` VARCHAR(256) NOT NULL,
-  `valks` VARCHAR(256) NOT NULL,
-  `grind` INT DEFAULT 2,
-  PRIMARY KEY (`id`),
-  KEY (`playername`)
+CREATE TABLE IF NOT EXISTS `enchantmentsenhance`
+(
+    `playername` VARCHAR(255) NOT NULL UNIQUE,
+    `failstack`  INT          NOT NULL DEFAULT 0,
+    `items`      text         NOT NULL,
+    `valks`      text         NOT NULL,
+    `grind`      INT                   DEFAULT 2,
+    PRIMARY KEY (`playername`)
 )
-
-  ENGINE =InnoDB
-  DEFAULT CHARSET =latin1;
+    ENGINE = InnoDB
+    DEFAULT CHARSET = utf8;
 

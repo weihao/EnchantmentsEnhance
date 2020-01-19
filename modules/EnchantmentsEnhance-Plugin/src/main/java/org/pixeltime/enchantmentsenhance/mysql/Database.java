@@ -184,9 +184,9 @@ public class Database {
             StringBuilder queryBuilder = new StringBuilder();
             queryBuilder.append("INSERT INTO `enchantmentsenhance` ");
             // Query
-            queryBuilder.append("(`id`, `playername`, `failstack`, `items`, `valks`, `grind`) ");
+            queryBuilder.append("(`playername`, `failstack`, `items`, `valks`, `grind`) ");
             queryBuilder.append("VALUES ");
-            queryBuilder.append("(NULL, ?, 0, ?, ?, ?);");
+            queryBuilder.append("(?, 0, ?, ?, ?);");
             preparedStatement = connection.prepareStatement(queryBuilder.toString());
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, Arrays.toString(new int[MaterialManager.stoneTypes.size()]));
