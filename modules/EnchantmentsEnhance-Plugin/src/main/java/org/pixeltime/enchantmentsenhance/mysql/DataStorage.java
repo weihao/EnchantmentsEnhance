@@ -69,7 +69,7 @@ public class DataStorage {
             try {
                 StringBuilder queryBuilder = new StringBuilder();
                 queryBuilder.append("UPDATE `enchantmentsenhance` SET ");
-                queryBuilder.append("`failstack` = ?, `items` = ?, `valks` = ?, `grind` = ?");
+                queryBuilder.append("`failstack` = ?, `items` = ?, `valks` = ?, `grind` = ? ");
                 queryBuilder.append("WHERE `playername` = ?;");
 
                 preparedStatement = connection.prepareStatement(queryBuilder.toString());
@@ -80,7 +80,6 @@ public class DataStorage {
                 preparedStatement.setString(3, pData.getValks().toString());
                 preparedStatement.setInt(4, pData.getGrind());
                 preparedStatement.setString(5, pData.getPlayername());
-
                 preparedStatement.executeUpdate();
 
             } catch (final SQLException sqlException) {
