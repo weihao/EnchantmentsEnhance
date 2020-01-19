@@ -1,4 +1,12 @@
 # Changelog
+## [7.9.6] - 2019-1-19
+### Changed
+- **Changed mysql schema to not use id column**
+- **Changed charset from latin1 to utf8** 
+### Fixed
+- Fixed a mysql exception
+
+
 ## [7.9.5] - 2019-1-6
 ### Fixed
 - Fixed all the enchantments in the package does not initalize correctly with a path containing unicodes.
