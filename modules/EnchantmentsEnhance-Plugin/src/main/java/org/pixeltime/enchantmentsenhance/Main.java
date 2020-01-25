@@ -213,7 +213,7 @@ public class Main extends JavaPlugin implements Listener {
 
         try {
             // Start bStats metrics.
-            new Metrics(this);
+            new Metrics(this, 2323);
         } catch (Exception ex) {
             getLogger().info("Failed to setup metrics!");
         } catch (ExceptionInInitializerError error) {
