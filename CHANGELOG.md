@@ -1,7 +1,8 @@
 # Changelog
-## [7.9.7] - 2019-1-19
+## [7.9.7] - 2019-1-26
 ### Fixed
 - Fixed an issue caused player to lose max health
+- Fixed an issue caused player to lose player data when mysql is enabled
 
 
 ## [7.9.6] - 2019-1-19
