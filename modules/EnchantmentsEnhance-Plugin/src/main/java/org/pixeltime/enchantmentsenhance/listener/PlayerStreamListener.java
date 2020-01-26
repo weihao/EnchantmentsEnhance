@@ -36,11 +36,15 @@ public class PlayerStreamListener implements Listener {
             Util.sendMessage(SettingsManager.lang.getString("config.welcome")
                     .replaceAll("%player%", player.getName()), player);
         }
-
-        if (PlayerStat.getPlayerStats(player.getName()) != null) {
-            PlayerStat.removePlayer(player.getName());
-        }
-        PlayerStat.getPlayers().add(new PlayerStat(player));
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (PlayerStat.getPlayerStats(player.getName()) != null) {
+                    PlayerStat.removePlayer(player.getName());
+                }
+                PlayerStat.getPlayers().add(new PlayerStat(player));
+            }
+        }.runTaskLater(Main.getMain(), 20L);
     }
 
 
@@ -66,7 +70,7 @@ public class PlayerStreamListener implements Listener {
                         ex.printStackTrace();
                     }
                 }
-            }.runTaskLater(Main.getMain(), 20);
+            }.runTaskLater(Main.getMain(), 20L);
         }
     }
 
