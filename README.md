@@ -1,12 +1,12 @@
 <p align="center"> <img width="200" height="200" src=".images/thumbnail.png"> </p>
 
 # <img src=".images/logo.jpg" alt="Logo" align="right">
-[![CircleCI](https://circleci.com/gh/25/EnchantmentsEnhance.svg?style=svg)](https://circleci.com/gh/25/EnchantmentsEnhance)
+[![CircleCI](https://circleci.com/gh/weihao/EnchantmentsEnhance.svg?style=svg)](https://circleci.com/gh/weihao/EnchantmentsEnhance)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.3%2b-brightgreen.svg)](https://kotlinlang.org)
 [![Java](https://img.shields.io/badge/Java-8%2b-brightgreen.svg)](https://www.java.com/)
-[![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/pulls)
-[![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/25/EnchantmentsEnhance/issues)
-[![Language](https://img.shields.io/github/languages/count/25/EnchantmentsEnhance.svg)](https://github.com/25/EnchantmentsEnhance/issues)
+[![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/weihao/EnchantmentsEnhance/pulls)
+[![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/weihao/EnchantmentsEnhance/issues)
+[![Language](https://img.shields.io/github/languages/count/weihao/EnchantmentsEnhance.svg)](https://github.com/weihao/EnchantmentsEnhance/issues)
 [![License](https://img.shields.io/badge/license-GPL-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![bStats](https://img.shields.io/badge/bStats-deployed-3366ff.svg?style=flat)](https://bstats.org/plugin/bukkit/EnchantmentsEnhance)
 
@@ -14,12 +14,12 @@
 [![Download](https://img.shields.io/spiget/downloads/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Spiget Stars](https://img.shields.io/spiget/stars/59555.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Spiget Rating](https://img.shields.io/spiget/rating/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
-[![Jitpack](https://jitpack.io/v/25/EnchantmentsEnhance.svg)](https://jitpack.io/#25/EnchantmentsEnhance/)
+[![Jitpack](https://jitpack.io/v/weihao/EnchantmentsEnhance.svg)](https://jitpack.io/#weihao/EnchantmentsEnhance/)
 
 ## Introduction
-[Wiki](https://github.com/25/EnchantmentsEnhance/wiki)
+[Wiki](https://github.com/weihao/EnchantmentsEnhance/wiki)
 
-[Change Log](https://github.com/25/EnchantmentsEnhance/blob/master/CHANGELOG.md)
+[Change Log](https://github.com/weihao/EnchantmentsEnhance/blob/master/CHANGELOG.md)
 
 [Website](.)
 
@@ -56,7 +56,7 @@ EnchantmentsEnhance uses `Maven` to manage project dependencies.
 Then run:
 
 ```sh
-git clone https://github.com/25/EnchantmentsEnhance.git
+git clone https://github.com/weihao/EnchantmentsEnhance.git
 cd EnchantmentsEnhance
 mvn install package
 ```

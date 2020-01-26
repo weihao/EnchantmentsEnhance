@@ -10,7 +10,7 @@ softdepend: [Vault, WorldEdit, WorldGuard, PlaceholderAPI, MVdWPlaceholderAPI]
 
 main: org.pixeltime.enchantmentsenhance.Main
 database: false
-website: https://github.com/25
+website: https://weihaogao.me/
 
 
 commands:

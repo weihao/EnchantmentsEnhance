@@ -3,9 +3,9 @@
 # |                       Notes                          | #
 # +------------------------------------------------------+ #
 ############################################################
-# If you have encountered any problems, use: https://github.com/25/EnchantmentsEnhance/issues
-# For config reference guide, use: https://github.com/25/EnchantmentsEnhance/blob/master/EnchantmentsEnhance-Core/src/resources/config.yml
-guide: https://github.com/25/EnchantmentsEnhance/blob/master/EnchantmentsEnhance-Core/src/resources/config.yml
+# If you have encountered any problems, use: https://github.com/weihao/EnchantmentsEnhance/issues
+# For config reference guide, use: https://github.com/weihao/EnchantmentsEnhance/blob/master/EnchantmentsEnhance-Core/src/resources/config.yml
+guide: https://github.com/weihao/EnchantmentsEnhance/blob/master/EnchantmentsEnhance-Core/src/resources/config.yml
 # Key Concepts:
 # Enhancing is the act of increasing the stats of your items.
 # Failstack is used to signify the number of failed attempts a player has made at enhancing. Failstacks increase the chance of a successful enhancement attempt.
@@ -288,7 +288,7 @@ slots:
   enableAcessory: false
 # Accessory slots.
 # Player will place their items to those position in order to use their accessories.
-# Player Inventory Slot Reference: https://github.com/25/EnchantmentsEnhance/blob/master/.images/player_inventory.png
+# Player Inventory Slot Reference: https://github.com/weihao/EnchantmentsEnhance/blob/master/.images/player_inventory.png
 accessory:
   # Set accessory to -1 to disable an slot
   # left_ring:-1
@@ -300,7 +300,7 @@ accessory:
   belt: 28
 
 # Vanilla Enchantments Reference: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
-# Custom Enchantments Reference: https://github.com/25/EnchantmentsEnhance/wiki/Enchantments-en
+# Custom Enchantments Reference: https://github.com/weihao/EnchantmentsEnhance/wiki/Enchantments-en
 enhance:
   "0":
     # The success rate of item at the level.

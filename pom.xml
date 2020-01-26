@@ -8,7 +8,7 @@
     <name>EnchantmentsEnhance</name>
     <version>7.9.7</version>
     <packaging>pom</packaging>
-    <url>https://github.com/25/EnchantmentsEnhance</url>
+    <url>https://github.com/weihao/EnchantmentsEnhance</url>
 
     <description>EE is a game progression mechanism plugin for spigot.</description>
 
@@ -24,9 +24,9 @@
     </properties>
 
     <scm>
-        <url>https://github.com/25/EnchantmentsEnhance</url>
-        <connection>scm:git:git://github.com/25/EnchantmentsEnhance.git</connection>
-        <developerConnection>scm:git:git@github.com:25/EnchantmentsEnhance.git</developerConnection>
+        <url>https://github.com/weihao/EnchantmentsEnhance</url>
+        <connection>scm:git:git://github.com/weihao/EnchantmentsEnhance.git</connection>
+        <developerConnection>scm:git:git@github.com:weihao/EnchantmentsEnhance.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -36,7 +36,7 @@
     </organization>
 
     <issueManagement>
-        <url>https://github.com/25/EnchantmentsEnhance/issues</url>
+        <url>https://github.com/weihao/EnchantmentsEnhance/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 

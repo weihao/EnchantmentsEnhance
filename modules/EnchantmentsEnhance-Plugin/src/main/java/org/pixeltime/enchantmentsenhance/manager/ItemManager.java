@@ -73,13 +73,13 @@ public class ItemManager {
         }
     }
 
-    /// See: https://github.com/25/EnchantmentsEnhance/issues/174
+    /// See: https://github.com/weihao/EnchantmentsEnhance/issues/174
     /// by lgou2w on 17/12/2019
 
     @Nullable
     private static ItemStack modifyTagSafely(
-        @Nullable ItemStack item,
-        @NotNull Consumer<NBTTagCompound> block
+            @Nullable ItemStack item,
+            @NotNull Consumer<NBTTagCompound> block
     ) {
         if (item == null || item.getType() == Material.AIR)
             return null;
@@ -96,8 +96,8 @@ public class ItemManager {
 
     @Nullable
     private static <R> R readTagSafely(
-        @Nullable ItemStack item,
-        @NotNull Function<NBTTagCompound, R> block
+            @Nullable ItemStack item,
+            @NotNull Function<NBTTagCompound, R> block
     ) {
         if (item == null || item.getType() == Material.AIR)
             return null;
@@ -114,13 +114,13 @@ public class ItemManager {
 
     public static ItemStack setLevel(ItemStack item, int enhanceLevel) {
         return modifyTagSafely(item, tag ->
-          tag.putInt("ELevel", enhanceLevel)
+                tag.putInt("ELevel", enhanceLevel)
         );
     }
 
     public static ItemStack setName(ItemStack item, String name) {
         return modifyTagSafely(item, tag ->
-            tag.putString("EName", name)
+                tag.putString("EName", name)
         );
     }
 
@@ -136,7 +136,7 @@ public class ItemManager {
 
     public static ItemStack setToolEnchantLevel(ItemStack item, int enhanceLevel) {
         return modifyTagSafely(item, tag ->
-            tag.putInt("ETool", enhanceLevel)
+                tag.putInt("ETool", enhanceLevel)
         );
     }
 
@@ -152,7 +152,7 @@ public class ItemManager {
 
     public static ItemStack setHistory(ItemStack item, String history) {
         return modifyTagSafely(item, tag ->
-            tag.putString("EHistory", history)
+                tag.putString("EHistory", history)
         );
     }
 
@@ -163,7 +163,7 @@ public class ItemManager {
 
     public static ItemStack setGive(ItemStack item, String give) {
         return modifyTagSafely(item, tag ->
-            tag.putString("EGive", give)
+                tag.putString("EGive", give)
         );
     }
 

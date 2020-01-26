@@ -1,7 +1,7 @@
 EnchantmentsEnhance contributors (unsorted)
 ============================================
 
-* **[25](https://github.com/25)**
+* **[weihao](https://github.com/weihao)**
 
   * Project Lead
 

@@ -27,7 +27,7 @@ public class VanillaEnchantListener implements Listener {
                     event.setCancelled(true);
                     GUIAbstract gui = GUIManager.getMap().get(event.getPlayer().getName());
                     if (gui == null)
-                      new MainMenu(event.getPlayer()).open();
+                        new MainMenu(event.getPlayer()).open();
                 }
             } else if (SettingsManager.config.getString("openMethod").equalsIgnoreCase("SHIFT_AND_LEFT_CLICK")) {
                 if (event.getAction() == Action.LEFT_CLICK_BLOCK && event.getPlayer().isSneaking()) {

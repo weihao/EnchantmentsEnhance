@@ -16,9 +16,9 @@ class AnvilRestrict : Listener {
     fun onInventoryClick(event: InventoryClickEvent) {
         if (event.slot != -999) {
             val player = event.whoClicked as Player
-            val item : ItemStack? = event.currentItem
+            val item: ItemStack? = event.currentItem
 
-            // See: https://github.com/25/EnchantmentsEnhance/issues/174
+            // See: https://github.com/weihao/EnchantmentsEnhance/issues/174
             if (item == null || item.type == Material.AIR)
                 return
 

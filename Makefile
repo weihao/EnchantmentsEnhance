@@ -8,7 +8,7 @@ help:
 
 
 ########################################
-DOCKER_IMAGE := 25/enchantmentsenhance
+DOCKER_IMAGE := weihao/enchantmentsenhance
 RELEASE_VERSION := $(shell mvn -q -Dexec.executable="echo" -Dexec.args='$${project.version}' --non-recursive exec:exec)
 NEXT_VERSION  := $(shell echo $(RELEASE_VERSION) | perl -pe 's{^(([0-9]\.)+)?([0-9]+)$$}{$$1 . ($$3 + 1)}e')
 
