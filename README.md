@@ -24,7 +24,7 @@
 [Website](.)
 
 ## Compatibility
-Version: `1.8.x - 1.13.x`
+Version: `1.8.x - 1.15.x`
 - [x] [Bukkit](https://bukkit.org)
 - [x] [Spigot](https://spigotmc.org)
 - [x] [Paper](https://github.com/PaperMC/Paper)
