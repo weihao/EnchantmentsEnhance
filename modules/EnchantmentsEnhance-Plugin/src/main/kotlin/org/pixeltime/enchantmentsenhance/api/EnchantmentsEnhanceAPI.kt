@@ -10,6 +10,7 @@ import org.pixeltime.enchantmentsenhance.mysql.PlayerStat
 import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.Collections
 
+
 class API : EnchantmentsEnhanceAPI {
     override fun addAdvice(player: String, level: Int) {
         if (level != 0) {
@@ -121,4 +122,11 @@ class API : EnchantmentsEnhanceAPI {
         }
     }
 
+    override fun getGearEnchantmentLevel(item: ItemStack): Int {
+        return ItemManager.getItemEnchantLevel(item)
+    }
+
+    override fun getToolEnchantmentLevel(item: ItemStack): Int {
+        return ItemManager.getToolEnchantLevel(item)
+    }
 }
