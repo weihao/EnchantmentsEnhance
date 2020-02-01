@@ -17,4 +17,6 @@ interface EnchantmentsEnhanceAPI {
     fun addAdvice(player: String)
     fun addAdvice(player: String, level: Int)
     fun getEnchantmentMaxLevel(ench: String): Int
+    fun getGearEnchantmentLevel(item: ItemStack): Int
+    fun getToolEnchantmentLevel(item: ItemStack): Int
 }
