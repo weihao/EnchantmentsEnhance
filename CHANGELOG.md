@@ -1,4 +1,8 @@
 # Changelog
+## [7.9.8] - 2019-2-1
+### Added
+- Added getter methods to Api that get the level of player's weapon, armor, and tool.
+
 ## [7.9.7] - 2019-1-26
 ### Fixed
 - Fixed an issue caused player to lose max health
