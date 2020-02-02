@@ -71,17 +71,10 @@
 
     <distributionManagement>
         <repository>
-            <id>releases</id>
-            <name>releases repo</name>
-            <url>null</url>
-            <uniqueVersion>false</uniqueVersion>
+            <id>github</id>
+            <name>weihao</name>
+            <url>https://maven.pkg.github.com/weihao/EnchantmentsEnhance</url>
         </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>snapshots repo</name>
-            <url>null</url>
-        </snapshotRepository>
     </distributionManagement>
-
 </project>
 

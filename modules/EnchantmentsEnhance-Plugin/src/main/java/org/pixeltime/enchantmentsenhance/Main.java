@@ -11,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.api.API;
+import org.pixeltime.enchantmentsenhance.api.EnchantmentsEnhanceAPI;
 import org.pixeltime.enchantmentsenhance.chat.Announcer_ActionBar;
 import org.pixeltime.enchantmentsenhance.chat.Announcer_BossBar;
 import org.pixeltime.enchantmentsenhance.chat.Announcer_Chat;
@@ -61,7 +62,7 @@ public class Main extends JavaPlugin implements Listener {
     private static CompatibilityManager compatibility;
     private static Database database;
     private static Main main;
-    private static API api;
+    private static EnchantmentsEnhanceAPI api;
     private static AnnouncerManager announcerManager;
     private static NotifierManager notifierManager;
     private static CommandManager commandManager;
@@ -97,7 +98,7 @@ public class Main extends JavaPlugin implements Listener {
         return database;
     }
 
-    public static API getApi() {
+    public static EnchantmentsEnhanceAPI getApi() {
         return api;
     }
 
