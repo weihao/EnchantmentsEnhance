@@ -40,10 +40,11 @@ import org.pixeltime.enchantmentsenhance.manager.DropManager;
 import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
 import org.pixeltime.enchantmentsenhance.manager.NotifierManager;
 import org.pixeltime.enchantmentsenhance.manager.PackageManager;
+import org.pixeltime.enchantmentsenhance.manager.PlayerStatsManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
+import org.pixeltime.enchantmentsenhance.model.PlayerStat;
 import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
-import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
@@ -246,10 +247,10 @@ public class Main extends JavaPlugin implements Listener {
                 "config.onLoadingInventory"));
         if (!Bukkit.getOnlinePlayers().isEmpty()) {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (PlayerStat.getPlayerStats(player.getName()) != null) {
-                    PlayerStat.removePlayer(player.getName());
+                if (PlayerStatsManager.getPlayerStats(player.getName()) != null) {
+                    PlayerStatsManager.removePlayerStats(player.getName());
                 }
-                PlayerStat.getPlayers().add(new PlayerStat(player));
+                PlayerStatsManager.getPlayerStatsList().add(PlayerStatsManager.getOne(player));
             }
         }
 
@@ -314,7 +315,7 @@ public class Main extends JavaPlugin implements Listener {
      * When the plugin is disabled, execute following tasks.
      */
     public void onDisable() {
-        for (PlayerStat fData : PlayerStat.getPlayers()) {
+        for (PlayerStat fData : PlayerStatsManager.getPlayerStatsList()) {
             DataStorage.get().saveStats(fData);
         }
 

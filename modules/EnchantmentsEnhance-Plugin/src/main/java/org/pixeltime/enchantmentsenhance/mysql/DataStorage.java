@@ -5,6 +5,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
+import org.pixeltime.enchantmentsenhance.model.PlayerStat;
 
 import java.io.File;
 import java.io.IOException;

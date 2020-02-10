@@ -5,8 +5,9 @@ import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
+import org.pixeltime.enchantmentsenhance.manager.PlayerStatsManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
+import org.pixeltime.enchantmentsenhance.model.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
@@ -37,9 +38,9 @@ public class ItemIcon extends Clickable {
 
     @Override
     public ItemStack getItem(String player) {
-        PlayerStat stat = PlayerStat.getPlayerStats(player);
+        PlayerStat stat = PlayerStatsManager.getPlayerStats(player);
         if (stat != null && stat.getItems() != null) {
-            for (int i : PlayerStat.getPlayerStats(player).getItems()) {
+            for (int i : PlayerStatsManager.getPlayerStats(player).getItems()) {
                 if (i > 0) {
                     return CompatibilityManager.glow.addGlow(getItem());
                 }

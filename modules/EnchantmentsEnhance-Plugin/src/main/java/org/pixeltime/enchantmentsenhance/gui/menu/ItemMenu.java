@@ -12,8 +12,8 @@ import org.pixeltime.enchantmentsenhance.gui.menu.icons.ReblathIcon;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
+import org.pixeltime.enchantmentsenhance.manager.PlayerStatsManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.HashMap;
@@ -86,8 +86,8 @@ public class ItemMenu extends GUIAbstract {
                     // If player has item to failstack.
                     if (Main.getApi().getItem(player.getName(), clickedItem.get(player.getName())) > 0) {
                         int locked = 2;
-                        if (PlayerStat.getPlayerStats(playerName) != null) {
-                            locked = PlayerStat.getPlayerStats(playerName).getGrind();
+                        if (PlayerStatsManager.getPlayerStats(playerName) != null) {
+                            locked = PlayerStatsManager.getPlayerStats(playerName).getGrind();
                         }
                         Main.getApi().addItem(player.getName(), clickedItem.get(player.getName()), -1);
                         Random random = new Random();

@@ -55,6 +55,12 @@
         </dependency>
         <dependency>
             <groupId>org.pixeltime</groupId>
+            <artifactId>EnchantmentsEnhance-Model</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.pixeltime</groupId>
             <artifactId>EnchantmentsEnhance-Compatibility-1.13</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>

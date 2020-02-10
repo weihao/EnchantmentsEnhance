@@ -10,8 +10,8 @@ import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.BackIcon;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
+import org.pixeltime.enchantmentsenhance.manager.PlayerStatsManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
-import org.pixeltime.enchantmentsenhance.mysql.PlayerStat;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
@@ -31,7 +31,7 @@ public class ValksMenu extends GUIAbstract {
         getInventory().clear();
         getActions().clear();
         Player player = Bukkit.getPlayer(playerName);
-        List<Integer> inv = PlayerStat.getPlayerStats(playerName).getValks();
+        List<Integer> inv = PlayerStatsManager.getPlayerStats(playerName).getValks();
         try {
             for (int i = 0; i < (inv.size() > 54 ? 54 : inv.size()); i++) {
                 final int index = i + ((currPage - 1) * 54);
@@ -48,7 +48,7 @@ public class ValksMenu extends GUIAbstract {
                                     if (level > 0) {
                                         if (Main.getApi().getFailstack(player.getName()) == 0) {
                                             Main.getApi().addFailstack(player.getName(), level);
-                                            PlayerStat.getPlayerStats(playerName).getValks().remove(index);
+                                            PlayerStatsManager.getPlayerStats(playerName).getValks().remove(index);
                                             Util.sendMessage(SettingsManager.lang.getString(
                                                     "valks.used").replaceAll("%LEVEL%", Integer
                                                     .toString(level)), player);
@@ -71,7 +71,7 @@ public class ValksMenu extends GUIAbstract {
                                 if (clickType == ClickType.RIGHT && SettingsManager.config.getBoolean("enableItemMaterialization")) {
                                     if (!Util.invFull(player)) {
                                         player.getInventory().addItem(ItemManager.adviceMaterialize(level));
-                                        PlayerStat.getPlayerStats(playerName).getValks().remove(index);
+                                        PlayerStatsManager.getPlayerStats(playerName).getValks().remove(index);
                                         update();
                                     } else {
                                         Util.sendMessage(SettingsManager.lang.getString("materialize.inventoryFull"), player);

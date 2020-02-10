@@ -5,8 +5,8 @@ import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.gui.menu.icons.ItemIcon
 import org.pixeltime.enchantmentsenhance.manager.ConfigManager
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
+import org.pixeltime.enchantmentsenhance.manager.PlayerStatsManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import org.pixeltime.enchantmentsenhance.mysql.PlayerStat
 import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.Collections
 
@@ -14,8 +14,8 @@ import java.util.Collections
 class API : EnchantmentsEnhanceAPI {
     override fun addAdvice(player: String, level: Int) {
         if (level != 0) {
-            PlayerStat.getPlayerStats(player).valks.add(level)
-            Collections.sort(PlayerStat.getPlayerStats(player)!!.valks, Collections.reverseOrder())
+            PlayerStatsManager.getPlayerStats(player).valks.add(level)
+            Collections.sort(PlayerStatsManager.getPlayerStats(player)!!.valks, Collections.reverseOrder())
         }
     }
 
@@ -30,7 +30,7 @@ class API : EnchantmentsEnhanceAPI {
 
     override fun setItem(player: String, type: Int, level: Int) {
         try {
-            PlayerStat.getPlayerStats(player)!!.items[type] = level
+            PlayerStatsManager.getPlayerStats(player)!!.items[type] = level
         } catch (e: Exception) {
             Main.getMain().logger.info(
                     "Error when setting the player data.")
@@ -46,7 +46,7 @@ class API : EnchantmentsEnhanceAPI {
 
 
     override fun getItem(player: String, type: Int): Int {
-        return if (PlayerStat.getPlayerStats(player) == null) 0 else PlayerStat.getPlayerStats(player)!!.items[type]
+        return if (PlayerStatsManager.getPlayerStats(player) == null) 0 else PlayerStatsManager.getPlayerStats(player)!!.items[type]
     }
 
 
@@ -56,7 +56,7 @@ class API : EnchantmentsEnhanceAPI {
 
 
     override fun setFailstack(player: String, level: Int) {
-        PlayerStat.getPlayerStats(player)!!.failstack = level
+        PlayerStatsManager.getPlayerStats(player)!!.failstack = level
     }
 
 
@@ -67,7 +67,7 @@ class API : EnchantmentsEnhanceAPI {
 
 
     override fun getFailstack(player: String): Int {
-        return if (PlayerStat.getPlayerStats(player) == null) 0 else PlayerStat.getPlayerStats(player)!!.failstack
+        return if (PlayerStatsManager.getPlayerStats(player) == null) 0 else PlayerStatsManager.getPlayerStats(player)!!.failstack
     }
 
 
@@ -100,8 +100,8 @@ class API : EnchantmentsEnhanceAPI {
     override fun addAdvice(player: String) {
         val level = getFailstack(player)
         if (level != 0) {
-            PlayerStat.getPlayerStats(player)!!.valks.add(level)
-            Collections.sort(PlayerStat.getPlayerStats(player)!!.valks, Collections.reverseOrder())
+            PlayerStatsManager.getPlayerStats(player)!!.valks.add(level)
+            Collections.sort(PlayerStatsManager.getPlayerStats(player)!!.valks, Collections.reverseOrder())
             Util.sendMessage(SettingsManager.lang.getString("save.createFailstack")
             !!.replace("%failstack%".toRegex(), Integer.toString(getFailstack(
                     player))), player)
