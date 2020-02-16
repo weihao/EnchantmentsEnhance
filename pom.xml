@@ -24,11 +24,43 @@
     </properties>
 
     <scm>
-        <url>https://github.com/weihao/EnchantmentsEnhance</url>
+        <url>git@github.com:weihao/EnchantmentsEnhance.git</url>
         <connection>scm:git:git://github.com/weihao/EnchantmentsEnhance.git</connection>
         <developerConnection>scm:git:git@github.com:weihao/EnchantmentsEnhance.git</developerConnection>
-        <tag>HEAD</tag>
     </scm>
+    <licenses>
+        <license>
+            <name>GNU General Public License v3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>weihao</name>
+            <email>weihao.gao@outlook.com</email>
+            <url>https://github.com/weihao</url>
+            <timezone>-5</timezone>
+            <roles>
+                <role>Owner</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>lgou2w</id>
+            <name>lgou2w</name>
+            <email>lgou2w@hotmail.com</email>
+            <url>https://lgou2w.com</url>
+            <timezone>+8</timezone>
+            <roles>
+                <role>Owner</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+
+    </developers>
+
 
     <organization>
         <name>PixelTime Network</name>
