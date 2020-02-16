@@ -8,7 +8,7 @@
     <parent>
         <artifactId>EnchantmentsEnhance-Modules</artifactId>
         <groupId>org.pixeltime</groupId>
-        <version>7.9.8</version>
+        <version>7.9.9</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
