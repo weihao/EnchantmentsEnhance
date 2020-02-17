@@ -229,10 +229,12 @@ public class ItemManager {
         } else if (clicked.equals(MainMenu.tool)) {
             applyingLores = (List<String>) SettingsManager.config.getList("enhance." + getToolEnchantLevel(currItem) + ".lore");
         }
-        for (String s : applyingLores) {
-            lore.add(Util.UNIQUEID + Util.toColor(s)
-                    .replaceAll("%player%", playerName)
-                    .replaceAll("%date%", Util.getCurrentDate()));
+        if (applyingLores != null) {
+            for (String s : applyingLores) {
+                lore.add(Util.UNIQUEID + Util.toColor(s)
+                        .replaceAll("%player%", playerName)
+                        .replaceAll("%date%", Util.getCurrentDate()));
+            }
         }
         newlore.addAll(lore);
         im.setLore(newlore);
