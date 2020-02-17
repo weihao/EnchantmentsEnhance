@@ -1,4 +1,8 @@
 # Changelog
+## [7.9.10] - 2019-2-17
+### Fixed
+- Fixed an error caused by clicking enhance icons too fast
+
 ## [7.9.9] - 2019-2-16
 ### Removed
 - **Temporarily removed badly implemented enchantments to fix plugin performance**
