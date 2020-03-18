@@ -1,5 +1,6 @@
 package org.pixeltime.enchantmentsenhance.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerStat {
@@ -19,6 +20,11 @@ public class PlayerStat {
     }
 
     public PlayerStat() {
+        this.playername = "";
+        this.failstack = 0;
+        this.grind = 2;
+        this.items = new int[5];
+        this.valks = new ArrayList<>();
     }
 
     public int getGrind() {

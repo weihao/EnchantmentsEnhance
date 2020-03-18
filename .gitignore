@@ -81,3 +81,8 @@ target
 
 
 build/
+
+# Visual Studio Code
+.settings
+.vscode
+.factorypath
