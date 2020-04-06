@@ -74,7 +74,7 @@ class DropManager {
                 .getIntegerList("reward.breeding.drops")
         @JvmField
         val smeltingLootTable = SettingsManager.config
-                .getIntegerList("reward.breeding.drops")
+                .getIntegerList("reward.smelting.drops")
 
         @JvmStatic
         fun randomDrop(player: Player, table: List<Int>) {
