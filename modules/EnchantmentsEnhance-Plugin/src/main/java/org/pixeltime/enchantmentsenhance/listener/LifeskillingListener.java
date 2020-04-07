@@ -116,7 +116,7 @@ public class LifeskillingListener implements Listener {
                     if (DropManager.breedingChance > random.nextDouble()) {
                         DropManager.randomDrop(e.getPlayer(), DropManager.breedingLootTable);
                     }
-                    a.setBreed(true);
+                    a.setBreed(false);
                 }
             }
         }
