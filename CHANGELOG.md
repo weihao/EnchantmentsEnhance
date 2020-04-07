@@ -1,13 +1,18 @@
 # Changelog
-## [7.9.10] - 2019-2-17
+## [7.9.11] - 2020-4-7
+### Fixed
+- Fixed smelting loot table
+- Fixed a black stone duplication glitching in animal breeding
+
+## [7.9.10] - 2020-2-17
 ### Fixed
 - Fixed an error caused by clicking enhance icons too fast
 
-## [7.9.9] - 2019-2-16
+## [7.9.9] - 2020-2-16
 ### Removed
 - **Temporarily removed badly implemented enchantments to fix plugin performance**
 
-## [7.9.8] - 2019-2-1
+## [7.9.8] - 2020-2-1
 ### Added
 - Added getter methods to Api that get the level of player's weapon, armor, and tool
 
@@ -15,13 +20,13 @@
 - Separated data models
 - Abstracted EE API
 
-## [7.9.7] - 2019-1-26
+## [7.9.7] - 2020-1-26
 ### Fixed
 - Fixed an issue caused player to lose max health
 - Fixed an issue caused player to lose player data when mysql is enabled
 
 
-## [7.9.6] - 2019-1-19
+## [7.9.6] - 2020-1-19
 ### Changed
 - **Changed mysql schema to not use id column**
 - **Changed charset from latin1 to utf8** 
@@ -30,7 +35,7 @@
 - Fixed a mysql exception
 
 
-## [7.9.5] - 2019-1-6
+## [7.9.5] - 2020-1-6
 ### Fixed
 - Fixed all the enchantments in the package does not initalize correctly with a path containing unicodes.
 
