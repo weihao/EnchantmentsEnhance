@@ -22,12 +22,13 @@ import org.pixeltime.enchantmentsenhance.manager.DropManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 
+import java.util.HashSet;
 import java.util.Random;
 
 public class LifeskillingListener implements Listener {
     private final Random random = new Random();
 
-
+    private final HashSet<Animals> breed = new HashSet<>();
     /**
      * Mining gives enhancement stone.
      *
@@ -112,11 +113,12 @@ public class LifeskillingListener implements Listener {
             if (AnimalBreeding.breeadableAnimals.contains(e.getRightClicked()
                     .getType())) {
                 Animals a = (Animals) e.getRightClicked();
-                if (a.canBreed()) {
+                if (a.isAdult() && a.canBreed() && !breed.contains(a)) {
                     if (DropManager.breedingChance > random.nextDouble()) {
                         DropManager.randomDrop(e.getPlayer(), DropManager.breedingLootTable);
                     }
-                    a.setBreed(false);
+                    a.setBreed(true);
+                    breed.add(a);
                 }
             }
         }

@@ -1,4 +1,8 @@
 # Changelog
+## [7.9.12] - 2020-4-10
+### Fixed
+- Fixed animal breeding
+
 ## [7.9.11] - 2020-4-7
 ### Fixed
 - Fixed smelting loot table
