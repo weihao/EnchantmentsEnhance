@@ -20,7 +20,6 @@ import org.bukkit.inventory.FurnaceInventory;
 import org.bukkit.inventory.Inventory;
 import org.pixeltime.enchantmentsenhance.manager.DropManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
-import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -108,20 +107,7 @@ public class LifeskillingListener implements Listener {
      */
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onBreeding(PlayerInteractEntityEvent e) {
-        if (AnimalBreeding.breeadableFood.contains(Util.getMainHand(e.getPlayer())
-                .getType())) {
-            if (AnimalBreeding.breeadableAnimals.contains(e.getRightClicked()
-                    .getType())) {
-                Animals a = (Animals) e.getRightClicked();
-                if (a.isAdult() && a.canBreed() && !breed.contains(a)) {
-                    if (DropManager.breedingChance > random.nextDouble()) {
-                        DropManager.randomDrop(e.getPlayer(), DropManager.breedingLootTable);
-                    }
-                    a.setBreed(true);
-                    breed.add(a);
-                }
-            }
-        }
+
     }
 
 

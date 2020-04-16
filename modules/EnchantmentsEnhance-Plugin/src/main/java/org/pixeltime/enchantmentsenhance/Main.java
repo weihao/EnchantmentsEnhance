@@ -47,7 +47,6 @@ import org.pixeltime.enchantmentsenhance.mysql.DataStorage;
 import org.pixeltime.enchantmentsenhance.mysql.Database;
 import org.pixeltime.enchantmentsenhance.util.ActionBarAPI;
 import org.pixeltime.enchantmentsenhance.util.anvil.RepairListener;
-import org.pixeltime.enchantmentsenhance.util.events.AnimalBreeding;
 import org.pixeltime.enchantmentsenhance.version.VersionManager;
 
 import java.io.File;
@@ -236,7 +235,6 @@ public class Main extends JavaPlugin implements Listener {
         MaterialManager.setUp();
         ActionBarAPI.setUp();
         ConfigManager.setUp();
-        AnimalBreeding.setUp();
         PackageManager.initializeAll();
         DropManager.setUp();
         MVdWPlaceholderAPI.setUp();
