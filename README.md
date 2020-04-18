@@ -4,12 +4,11 @@
 [![CircleCI](https://circleci.com/gh/weihao/EnchantmentsEnhance.svg?style=svg)](https://circleci.com/gh/weihao/EnchantmentsEnhance)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.3%2b-brightgreen.svg)](https://kotlinlang.org)
 [![Java](https://img.shields.io/badge/Java-8%2b-brightgreen.svg)](https://www.java.com/)
-[![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/weihao/EnchantmentsEnhance/pulls)
-[![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/weihao/EnchantmentsEnhance/issues)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=weihao/EnchantmentsEnhance)](https://dependabot.com)
 [![Languages](https://img.shields.io/github/languages/count/weihao/EnchantmentsEnhance.svg)](https://github.com/weihao/EnchantmentsEnhance/issues)
 [![License](https://img.shields.io/badge/license-GPL-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![bStats](https://img.shields.io/badge/bStats-deployed-3366ff.svg?style=flat)](https://bstats.org/plugin/bukkit/EnchantmentsEnhance)
-
+[![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/weihao/EnchantmentsEnhance/issues)
 # [<img src=".images/jenkins.png" alt="Download" align="left">](https://app.circleci.com/github/weihao/EnchantmentsEnhance/pipelines)
 [![Download](https://img.shields.io/spiget/downloads/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Spiget Stars](https://img.shields.io/spiget/stars/59555.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
@@ -29,6 +28,11 @@ Version: `1.8.x - 1.15.x`
 - [x] [Bukkit](https://bukkit.org)
 - [x] [Spigot](https://spigotmc.org)
 - [x] [Paper](https://github.com/PaperMC/Paper)
+
+## Localization
+- [x] English
+- [x] Simplified Chinese
+- [x] Russian
 
 ## Install
 1. Download plugin jarfile
@@ -64,6 +68,8 @@ mvn install package
 
 You can find the output file in the `target` directory of the corresponding module.
 
+## Contributing
+PRs are welcome! If you want, added yourself in the CONTRIBUTORS.md when you submit a PR.
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F25%2FEnchantmentsEnhance.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2F25%2FEnchantmentsEnhance?ref=badge_large)
