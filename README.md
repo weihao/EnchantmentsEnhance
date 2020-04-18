@@ -5,7 +5,7 @@
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.3%2b-brightgreen.svg)](https://kotlinlang.org)
 [![Java](https://img.shields.io/badge/Java-8%2b-brightgreen.svg)](https://www.java.com/)
 [![PR](https://img.shields.io/badge/contributing-welcome-FF69B4.svg?style=flat)](https://github.com/weihao/EnchantmentsEnhance/pulls)
-[![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/weihao/EnchantmentsEnhance/issues)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=weihao/EnchantmentsEnhance)](https://dependabot.com)
 [![Languages](https://img.shields.io/github/languages/count/weihao/EnchantmentsEnhance.svg)](https://github.com/weihao/EnchantmentsEnhance/issues)
 [![License](https://img.shields.io/badge/license-GPL-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![bStats](https://img.shields.io/badge/bStats-deployed-3366ff.svg?style=flat)](https://bstats.org/plugin/bukkit/EnchantmentsEnhance)
