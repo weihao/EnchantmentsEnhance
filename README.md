@@ -30,6 +30,11 @@ Version: `1.8.x - 1.15.x`
 - [x] [Spigot](https://spigotmc.org)
 - [x] [Paper](https://github.com/PaperMC/Paper)
 
+## Localization
+- [x] English
+- [x] Simplified Chinese
+- [x] Russian
+
 ## Install
 1. Download plugin jarfile
 2. Stop the server
