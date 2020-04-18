@@ -19,7 +19,7 @@ guide: https://github.com/weihao/EnchantmentsEnhance/blob/master/EnchantmentsEnh
 # +------------------------------------------------------+ #
 ############################################################
 
-# Supported language: ZH_CN, EN_US.
+# Supported language: ZH_CN, EN_US, RU_RU.
 language: EN_US
 
 # Set false to disable on join message.

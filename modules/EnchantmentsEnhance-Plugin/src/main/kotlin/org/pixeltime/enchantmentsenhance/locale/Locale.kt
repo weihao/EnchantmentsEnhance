@@ -65,7 +65,7 @@ class LocaleManager {
             addLang("help.menu", arrayOf("&aopen enhancement menu.", "&a突破物品潜力界面.", "&aоткрыть меню усиления."))
             addLang("help.reload", arrayOf("&areload plugin.", "&a重新载入插件配置文件.", "&aперезагрузить плагин."))
             addLang("help.version", arrayOf("&acheck version.", "&a检查当前插件版本.", "&aпроверить версию."))
-            addLang("help.inventory", arrayOf("&asee items that you have collected.", "&a查看你已收集的道具.""&aпросмотр собранных предметов."))
+            addLang("help.inventory", arrayOf("&asee items that you have collected.", "&a查看你已收集的道具.", "&aпросмотр собранных предметов."))
             addLang("help.add", arrayOf("&agive a player an enhancing items.\n0 = &6Black Stone (&3Weapon&6)&a, 1 = &6Black Stone (&7Armor&6)&a, 2 = &6Concentrated Magical Black Stone (&3Weapon&6)&a, 3 = &6Concentrated Magical Black Stone (&7Armor&6)", "&a给予一个玩家指定黑石.\n 0 = &6黑石 (&3武器&6)&a, 1 = &6黑石 (&7防具&6)&a, 2 = &6凝聚魔力的黑石 (&3武器&6)&a, 3 = &6凝聚魔力的黑石 (&7防具&6)", "&aДать игроку камни усиления.\n0 = &6Чёрный камень (&3Оружие&6)&a, 1 = &6Чёрный камень (&7Броня&6)&a, 2 = &6Концентрированный Магический Чёрный Камень (&3Оружие&6)&a, 3 = &6Концентрированный Магический Чёрный Камень (&7Броня&6)"))
             addLang("help.debug", arrayOf("&acollect debugging information for developer to fix issues.", "&a收集数据以帮助开发者解决问题.", "&aсобирать отладочную информацию для разработчика, чтобы исправлять неполадки."))
             addLang("help.item", arrayOf("&aedit an item in hand.", "&a编辑手中物品.", "&aредактировать предмет в руке."))

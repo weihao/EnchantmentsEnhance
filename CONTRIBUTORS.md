@@ -16,3 +16,7 @@ EnchantmentsEnhance contributors (unsorted)
 * **[AndiSlash0723](https://github.com/AndiSlash0723)**
 
   * Translator (Traditional Chinese)
+
+* **[Neuter](https://www.spigotmc.org/members/neuter.25980/)**
+
+  * Translator (Russian)
