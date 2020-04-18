@@ -8,7 +8,7 @@
 [![Languages](https://img.shields.io/github/languages/count/weihao/EnchantmentsEnhance.svg)](https://github.com/weihao/EnchantmentsEnhance/issues)
 [![License](https://img.shields.io/badge/license-GPL-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![bStats](https://img.shields.io/badge/bStats-deployed-3366ff.svg?style=flat)](https://bstats.org/plugin/bukkit/EnchantmentsEnhance)
-
+[![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/weihao/EnchantmentsEnhance/issues)
 # [<img src=".images/jenkins.png" alt="Download" align="left">](https://app.circleci.com/github/weihao/EnchantmentsEnhance/pipelines)
 [![Download](https://img.shields.io/spiget/downloads/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Spiget Stars](https://img.shields.io/spiget/stars/59555.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
