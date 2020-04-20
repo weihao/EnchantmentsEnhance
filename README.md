@@ -15,19 +15,18 @@
 [![Spiget Rating](https://img.shields.io/spiget/rating/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Jitpack](https://jitpack.io/v/weihao/EnchantmentsEnhance.svg)](https://jitpack.io/#weihao/EnchantmentsEnhance/)
 [![Spiget Download Size](https://img.shields.io/spiget/download-size/51635)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
+## Compatibility
+![Spiget tested server versions](https://img.shields.io/spiget/tested-versions/51635)
+- [x] [Bukkit](https://bukkit.org)
+- [x] [Spigot](https://spigotmc.org)
+- [x] [Paper](https://github.com/PaperMC/Paper)
+
 ## Introduction
 [Wiki](https://github.com/weihao/EnchantmentsEnhance/wiki)
 
 [Change Log](https://github.com/weihao/EnchantmentsEnhance/blob/master/CHANGELOG.md)
 
 [Website](.)
-
-
-## Compatibility
-Version: `1.8.x - 1.15.x`
-- [x] [Bukkit](https://bukkit.org)
-- [x] [Spigot](https://spigotmc.org)
-- [x] [Paper](https://github.com/PaperMC/Paper)
 
 ## Localization
 - [x] English
