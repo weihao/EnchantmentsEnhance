@@ -46,8 +46,6 @@
 
 ## Building
 #### Dependency
-> Build of Craftbukkit and Bukkit for local maven repository. See [BuildTools](https://www.spigotmc.org/wiki/buildtools/) Tools for more information.
-
 EnchantmentsEnhance uses `Maven` to manage project dependencies.
 
 #### Requirements
