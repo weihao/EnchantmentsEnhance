@@ -17,8 +17,11 @@
 [![Spiget Download Size](https://img.shields.io/spiget/download-size/51635)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 ## Compatibility
 ![Spiget tested server versions](https://img.shields.io/spiget/tested-versions/51635)
+
 [Bukkit](https://bukkit.org)
+
 [Spigot](https://spigotmc.org)
+
 [Paper](https://github.com/PaperMC/Paper)
 
 ## Introduction
