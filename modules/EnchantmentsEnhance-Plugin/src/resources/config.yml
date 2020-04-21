@@ -65,6 +65,9 @@ enableAnvil: true
 # Set false to disable renaming an item using an anvil.
 enableAnvilRename: true
 
+# Set false to disable renaming enhance items.
+enableAnvilItemRename: true
+
 # Set false to disable repairing an item using an anvil.
 enableAnvilRepair: true
 

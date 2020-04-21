@@ -1,4 +1,8 @@
 # Changelog
+## [7.9.13] - 2020-4-21
+### Added
+- Added anvil item renaming
+
 ## [7.9.12] - 2020-4-10
 ### Fixed
 - Fixed animal breeding

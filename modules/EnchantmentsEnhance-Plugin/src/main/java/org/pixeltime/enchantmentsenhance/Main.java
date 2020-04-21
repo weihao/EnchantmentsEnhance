@@ -24,6 +24,7 @@ import org.pixeltime.enchantmentsenhance.gui.menu.handlers.MenuHandler;
 import org.pixeltime.enchantmentsenhance.listener.AnvilRestrict;
 import org.pixeltime.enchantmentsenhance.listener.EnhancedItemListener;
 import org.pixeltime.enchantmentsenhance.listener.FireworkListener;
+import org.pixeltime.enchantmentsenhance.listener.ItemRenameListener;
 import org.pixeltime.enchantmentsenhance.listener.ItemUseListener;
 import org.pixeltime.enchantmentsenhance.listener.LifeskillingListener;
 import org.pixeltime.enchantmentsenhance.listener.MVdWPlaceholderAPI;
@@ -170,6 +171,9 @@ public class Main extends JavaPlugin implements Listener {
         }
         if (SettingsManager.config.getBoolean("enablePreventFireworkDamage")) {
             pm.registerEvents(new FireworkListener(), this);
+        }
+        if (SettingsManager.config.getBoolean("enableAnvilItemRename")) {
+            pm.registerEvents(new ItemRenameListener(), this);
         }
         if (!(SettingsManager.config.getBoolean("enableAnvil")
                 && SettingsManager.config.getBoolean("enableAnvilRename")
