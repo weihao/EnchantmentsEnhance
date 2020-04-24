@@ -54,8 +54,8 @@ public class DataStorage {
                 fc.set("grind", pData.getGrind());
                 fc.save(playerFile);
 
-            } catch (IOException ioException) {
-                System.out.println("Failed to load faction " + pData.getPlayername() + ": " + ioException.getMessage());
+            } catch (Exception exception) {
+                System.out.println("Failed to load player " + pData.getPlayername() + ": " + exception.getMessage());
             }
         } else {
             Database database = Main.getDatabase();
@@ -217,8 +217,8 @@ public class DataStorage {
                 if (!playerFile.exists() && !playerFile.createNewFile()) {
                 }
                 playerFile.delete();
-            } catch (IOException ioException) {
-                System.out.println("Failed to load faction " + playername + ": " + ioException.getMessage());
+            } catch (Exception exception) {
+                System.out.println("Failed to load player " + playername + ": " + exception.getMessage());
             }
         } else {
             Database database = Main.getDatabase();
