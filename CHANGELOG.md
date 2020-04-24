@@ -1,4 +1,11 @@
 # Changelog
+## [7.9.14] - 2020-4-23
+### Fixed
+- Fixed an error when opening enhance inventory
+- Fixed an error when opening enhance backpack
+### Removed
+- Removed reward for animal breeding **temporarily**
+
 ## [7.9.13] - 2020-4-21
 ### Added
 - Language support for Russian
