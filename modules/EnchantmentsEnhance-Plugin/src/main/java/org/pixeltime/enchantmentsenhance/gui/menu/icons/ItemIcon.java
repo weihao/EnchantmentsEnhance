@@ -15,9 +15,15 @@ public class ItemIcon extends Clickable {
 
     public static String getOneStoneCountAsString(String player, int stoneId) {
         int count = player == null ? 0 : Main.getApi().getItem(player, stoneId);
-        return (SettingsManager.lang.getString("item.listing").replaceAll(
-                "%ITEM%", SettingsManager.lang.getString("item." + stoneId))
-                .replaceAll("%COUNT%", String.valueOf(count)));
+        try {
+            String s = SettingsManager.lang.getString("item.listing")
+                    .replaceAll("%ITEM%", SettingsManager.lang.getString("item." + stoneId))
+                    .replaceAll("%COUNT%", String.valueOf(count));
+            return s;
+        } catch (Exception ex) {
+            Main.getMain().getLogger().warning("Error trying to add parse " + player + "'s " + stoneId + " stone count.");
+            return "";
+        }
     }
 
     public static int getOneStoneCountAsInt(String player, int stoneId) {
