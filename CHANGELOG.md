@@ -1,4 +1,9 @@
 # Changelog
+## [7.9.15] - 2020-5-5
+### Fixed
+- Fixed an AnvilInventory error occured when repairing an item
+- Fixed flying in spectator
+
 ## [7.9.14] - 2020-4-23
 ### Fixed
 - Fixed an error when opening enhance inventory

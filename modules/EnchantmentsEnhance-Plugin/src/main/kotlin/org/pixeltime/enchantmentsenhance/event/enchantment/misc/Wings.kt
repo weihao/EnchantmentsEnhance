@@ -19,6 +19,6 @@ class Wings : EnchantmentListener() {
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         val level = getLevel(player)
-        player.allowFlight = level > 0 || player.gameMode == GameMode.CREATIVE
+        player.allowFlight = level > 0 || player.gameMode == GameMode.CREATIVE || player.gameMode == GameMode.SPECTATOR
     }
 }
