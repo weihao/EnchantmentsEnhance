@@ -1,3 +1,6 @@
+/*
+   Code Owner: GuyfromhellMC
+ */
 package org.pixeltime.enchantmentsenhance.listener;
 
 import org.bukkit.entity.HumanEntity;
@@ -65,5 +68,4 @@ I think inv.getItem(rawSlot) would be possible too
             }
         }
     }
-
 }
