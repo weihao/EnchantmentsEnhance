@@ -15,6 +15,7 @@ class InventoryManager {
         private val right_earring = Main.getMain().config.getInt("accessory.right_earring")
         private val necklace = Main.getMain().config.getInt("accessory.necklace")
         private val belt = Main.getMain().config.getInt("accessory.belt")
+
         @JvmStatic
         fun getAccessorySlots(player: Player): List<ItemStack> {
             val inv = player.inventory

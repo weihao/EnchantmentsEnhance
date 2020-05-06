@@ -37,41 +37,54 @@ class DropManager {
 
         @JvmStatic
         val mining: ArrayList<Material> = ArrayList()
+
         @JvmStatic
         val chopping: ArrayList<Material> = ArrayList()
+
         @JvmField
         val miningChance = SettingsManager.config.getDouble(
                 "reward.mining.chance")
+
         @JvmField
         val choppingChance = SettingsManager.config.getDouble(
                 "reward.chopping.chance")
+
         @JvmField
         val fishingChance = SettingsManager.config.getDouble(
                 "reward.fishing.chance")
+
         @JvmField
         val killingChance = SettingsManager.config.getDouble(
                 "reward.killing.chance")
+
         @JvmField
         val breedingChance = SettingsManager.config.getDouble(
                 "reward.breeding.chance")
+
         @JvmField
         val smeltingChance = SettingsManager.config.getDouble(
                 "reward.smelting.chance")
+
         @JvmField
         val miningLootTable = SettingsManager.config
                 .getIntegerList("reward.mining.drops")
+
         @JvmField
         val choppingLootTable = SettingsManager.config
                 .getIntegerList("reward.chopping.drops")
+
         @JvmField
         val fishingLootTable = SettingsManager.config
                 .getIntegerList("reward.fishing.drops")
+
         @JvmField
         val killingLootTable = SettingsManager.config
                 .getIntegerList("reward.killing.drops")
+
         @JvmField
         val breedingLootTable = SettingsManager.config
                 .getIntegerList("reward.breeding.drops")
+
         @JvmField
         val smeltingLootTable = SettingsManager.config
                 .getIntegerList("reward.smelting.drops")

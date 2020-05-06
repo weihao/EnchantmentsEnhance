@@ -1,6 +1,7 @@
 package org.pixeltime.enchantmentsenhance.listener;
 
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.Animals;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
@@ -28,6 +29,7 @@ public class LifeskillingListener implements Listener {
     private final Random random = new Random();
 
     private final HashSet<Animals> breed = new HashSet<>();
+
     /**
      * Mining gives enhancement stone.
      *
@@ -151,12 +153,15 @@ public class LifeskillingListener implements Listener {
         if (!clickedInventory.getType().equals(InventoryType.FURNACE)) {
             return;
         }
+        if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) {
+            return;
+        }
         FurnaceInventory fi = (FurnaceInventory) clickedInventory;
         boolean click = e.getClick().isShiftClick() || e.getClick()
                 .isLeftClick() && e.getRawSlot() == 2;
         boolean item = fi.getResult() != null;
 
-        if (click && item && !fi.getResult().getType().isFuel() && !Util.invFull(player)) {
+        if (click && item && !fi.getResult().getType().isFuel() && !fi.getResult().getType().isBurnable() && !Util.invFull(player)) {
             for (int i = 0; i < fi.getResult().getAmount(); i++) {
                 if (DropManager.smeltingChance > random.nextDouble()) {
                     DropManager.randomDrop(player, DropManager.smeltingLootTable);

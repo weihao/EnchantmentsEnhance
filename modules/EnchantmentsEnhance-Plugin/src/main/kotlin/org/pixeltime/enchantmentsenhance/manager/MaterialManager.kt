@@ -23,6 +23,7 @@ class MaterialManager {
                 XMaterial.IRON_HELMET.toBukkit(),
                 XMaterial.LEATHER_HELMET.toBukkit(),
                 XMaterial.CHAINMAIL_HELMET.toBukkit())
+
         @JvmField
         val boot = arrayListOf(
                 XMaterial.DIAMOND_BOOTS.toBukkit(),
@@ -30,6 +31,7 @@ class MaterialManager {
                 XMaterial.GOLDEN_BOOTS.toBukkit(),
                 XMaterial.LEATHER_BOOTS.toBukkit(),
                 XMaterial.CHAINMAIL_BOOTS.toBukkit())
+
         @JvmField
         val chestplate = arrayListOf(
                 XMaterial.DIAMOND_CHESTPLATE.toBukkit(),
@@ -37,6 +39,7 @@ class MaterialManager {
                 XMaterial.GOLDEN_CHESTPLATE.toBukkit(),
                 XMaterial.LEATHER_CHESTPLATE.toBukkit(),
                 XMaterial.CHAINMAIL_CHESTPLATE.toBukkit())
+
         @JvmField
         val pickaxe = mutableListOf<Material>()
 

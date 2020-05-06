@@ -3,6 +3,7 @@
 ### Fixed
 - Fixed an AnvilInventory error occured when repairing an item
 - Fixed flying in spectator
+- Fixed furnace duplication
 
 ## [7.9.14] - 2020-4-23
 ### Fixed

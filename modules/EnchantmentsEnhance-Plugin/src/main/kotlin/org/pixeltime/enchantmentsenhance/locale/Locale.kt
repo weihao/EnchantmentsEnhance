@@ -18,7 +18,7 @@ class LocaleManager {
 
         @JvmStatic
         fun addLocale() {
-            addLang("config.pluginTag", arrayOf("&7[&3Enchantments&cEnhance&7] ", "&f[&6强化插件&f] ","&7[&3Enchantments&cEnhance&7] "))
+            addLang("config.pluginTag", arrayOf("&7[&3Enchantments&cEnhance&7] ", "&f[&6强化插件&f] ", "&7[&3Enchantments&cEnhance&7] "))
             addLang("config.checkingVersion", arrayOf("&aYou are using EnchantmentsEnhance v%version%", "&a您正在使用的插件版本是v%version%", "&aВы используете EnchantmentsEnhance v%version%"))
             addLang("config.onEnable", arrayOf("EnchantmentsEnhance is enabled!", "强化插件已开启!", "EnchantmentsEnhance Включен!"))
             addLang("config.onDisable", arrayOf("EnchantmentsEnhance is disabled!", "强化插件已禁用!", "EnchantmentsEnhance Выключен!"))
