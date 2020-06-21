@@ -20,8 +20,8 @@ WARN_COLOR=\x1b[33;01m
 
 ########################################
 
-b:
-	mvn install clean package
+maven-build:
+	@mvn clean package
 
 docker-build:
 	@printf "$(OK_COLOR)Building EnchantmentsEnhance ${RELEASE_VERSION} jar...$(NO_COLOR)\n"
@@ -39,14 +39,14 @@ bump:
 	make set v=${NEXT_VERSION}
 
 bump-push:
-	make bump
-	git add .
-	git commit -m "Bump a version"
-	git push
+	@make bump
+	@git add .
+	@git commit -m "Bump a version"
+	@git push
 
 ci:
-	mvn install clean package
-	rm -rf build
-	mkdir -p build
-	cp modules/*/target/*.jar ./build
-	rm ./build/original*
+	@mvn clean package
+	@rm -rf build
+	@mkdir -p build
+	@cp modules/*/target/*.jar ./build
+	@rm ./build/original*
