@@ -4,17 +4,15 @@
 [![CircleCI](https://circleci.com/gh/weihao/EnchantmentsEnhance.svg?style=svg)](https://circleci.com/gh/weihao/EnchantmentsEnhance)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.3%2b-brightgreen.svg)](https://kotlinlang.org)
 [![Java](https://img.shields.io/badge/Java-8%2b-brightgreen.svg)](https://www.java.com/)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=weihao/EnchantmentsEnhance)](https://dependabot.com)
 [![Languages](https://img.shields.io/github/languages/count/weihao/EnchantmentsEnhance.svg)](https://github.com/weihao/EnchantmentsEnhance/issues)
 [![License](https://img.shields.io/badge/license-GPL-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![bStats](https://img.shields.io/badge/bStats-deployed-3366ff.svg?style=flat)](https://bstats.org/plugin/bukkit/EnchantmentsEnhance)
-[![Issues](https://img.shields.io/badge/issues-report-E74C3C.svg?style=flat)](https://github.com/weihao/EnchantmentsEnhance/issues)
+[![Spiget Download Size](https://img.shields.io/spiget/download-size/51635)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 # [<img src=".images/jenkins.png" alt="Download" align="left">](https://app.circleci.com/github/weihao/EnchantmentsEnhance/pipelines)
 [![Download](https://img.shields.io/spiget/downloads/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Spiget Stars](https://img.shields.io/spiget/stars/59555.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Spiget Rating](https://img.shields.io/spiget/rating/51635.svg)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 [![Jitpack](https://jitpack.io/v/weihao/EnchantmentsEnhance.svg)](https://jitpack.io/#weihao/EnchantmentsEnhance/)
-[![Spiget Download Size](https://img.shields.io/spiget/download-size/51635)](https://www.spigotmc.org/resources/enchantmentsenhance-gear-progression-mechanics-with-customized-enchantments.51635/)
 ## Compatibility
 ![Spiget tested server versions](https://img.shields.io/spiget/tested-versions/51635)
 
