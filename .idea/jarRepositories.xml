@@ -7,9 +7,9 @@
       <option name="url" value="https://maven.sk89q.com/repo/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="central" />
-      <option name="name" value="Central Repository" />
-      <option name="url" value="https://repo.maven.apache.org/maven2" />
+      <option name="id" value="github" />
+      <option name="name" value="weihao" />
+      <option name="url" value="https://maven.pkg.github.com/weihao" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="aikar" />
@@ -45,6 +45,11 @@
       <option name="id" value="placeholderapi" />
       <option name="name" value="placeholderapi" />
       <option name="url" value="http://repo.extendedclip.com/content/repositories/placeholderapi/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="central" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="sonatype-repo" />
