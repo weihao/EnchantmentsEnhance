@@ -112,6 +112,19 @@ public class ItemManager {
 
     ///
 
+    public static ItemStack setSoulbound(ItemStack item, boolean soulbound) {
+        return modifyTagSafely(item, tag ->
+                tag.putBoolean("ESoulbound", soulbound)
+        );
+    }
+
+    public static ItemStack setTradeable(ItemStack item, boolean tradeable) {
+        return modifyTagSafely(item, tag ->
+                tag.putBoolean("ESoulbound", tradeable)
+        );
+    }
+
+
     public static ItemStack setLevel(ItemStack item, int enhanceLevel) {
         return modifyTagSafely(item, tag ->
                 tag.putInt("ELevel", enhanceLevel)
@@ -123,6 +136,17 @@ public class ItemManager {
                 tag.putString("EName", name)
         );
     }
+
+    public static boolean getSoulbound(ItemStack item) {
+        Boolean sb = readTagSafely(item, tag -> tag.getBooleanOrNull("ESoulbound"));
+        return sb != null && sb;
+    }
+
+    public static boolean getTradeable(ItemStack item) {
+        Boolean tradeable = readTagSafely(item, tag -> tag.getBooleanOrNull("ETradeable"));
+        return tradeable != null && tradeable;
+    }
+
 
     public static int getItemEnchantLevel(ItemStack item) {
         Integer level = readTagSafely(item, tag -> tag.getIntOrNull("ELevel"));

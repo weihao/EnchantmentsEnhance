@@ -30,6 +30,7 @@ public class EnhancedItemListener implements Listener {
         ItemStack DroppedItemStack = droppedItem.getItemStack();
         Player p = e.getPlayer();
         // Checks if the item is a bounded item
+
         if ((DroppedItemStack.hasItemMeta()) && (DroppedItemStack.getItemMeta()
                 .getLore() != null)) {
             if (DroppedItemStack.getItemMeta().getLore().contains(Util.UNIQUEID + Util.toColor(
