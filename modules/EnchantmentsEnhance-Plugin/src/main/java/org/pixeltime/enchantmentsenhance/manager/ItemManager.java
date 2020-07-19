@@ -214,7 +214,7 @@ public class ItemManager {
         // Getting Unique Name.
         List<String> oldLore = KotlinManager.stripLore(item);
 
-        if (enchantLevel == 1 && getItemName(currItem) == null && SettingsManager.config.getBoolean("enableRename")) {
+        if (enchantLevel == 1 && getItemName(currItem).equals("") && SettingsManager.config.getBoolean("enableRename")) {
             currItem = setName(currItem, currItem.getItemMeta().getDisplayName());
         }
 
