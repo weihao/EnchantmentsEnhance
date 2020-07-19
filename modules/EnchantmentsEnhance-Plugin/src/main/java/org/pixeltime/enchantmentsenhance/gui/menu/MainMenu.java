@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.event.Enhance;
+import org.pixeltime.enchantmentsenhance.manager.EnhanceManager;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.MenuCoord;
@@ -98,7 +98,7 @@ public class MainMenu extends GUIAbstract {
             setItem(Util.getSlot(8, 4), itemOnEnhancingSlot.get(playerName));
             // Sets Enhance button.
             if (enhancingMode.get(playerName).equals(gear)) {
-                if (Enhance.getValidationOfItem(itemOnEnhancingSlot.get(playerName)) && Enhance.getValidationOfPlayer(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName))) {
+                if (EnhanceManager.getValidationOfItem(itemOnEnhancingSlot.get(playerName)) && EnhanceManager.getValidationOfPlayer(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName))) {
                     setItem(enhance.getPosition(), enhance.getGlowingItem(itemOnEnhancingSlot.get(playerName)), (clickType) -> {
                         if (clickType == ClickType.LEFT || clickType == ClickType.DOUBLE_CLICK) {
                             inProgress.put(playerName, new BukkitRunnable() {
@@ -119,7 +119,7 @@ public class MainMenu extends GUIAbstract {
                                     }
                                     if (count == 5) {
                                         try {
-                                            Enhance.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
+                                            EnhanceManager.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
                                         } catch (Exception ex) {
                                             // Player might not be online.
                                         }
@@ -139,19 +139,19 @@ public class MainMenu extends GUIAbstract {
                             }.runTaskTimer(Main.getMain(), 0L, 10L));
                         } else {
                             // Right click.
-                            Enhance.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
+                            EnhanceManager.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
                         }
                     });
                 } else {
                     setItem(enhance.getPosition(), enhance.getItem(itemOnEnhancingSlot.get(playerName)), (clickType) -> {
-                        int stoneId = Enhance.getStoneId(itemOnEnhancingSlot.get(playerName), enchantLevel, enhancingMode.get(playerName));
+                        int stoneId = EnhanceManager.getStoneId(itemOnEnhancingSlot.get(playerName), enchantLevel, enhancingMode.get(playerName));
                         Util.sendMessage(SettingsManager.lang.getString("item.noItem")
                                 .replaceAll("%STONE%", SettingsManager.lang.getString(
                                         "item." + stoneId)), player);
                     });
                 }
             } else if (enhancingMode.get(playerName).equals(tool)) {
-                if (Enhance.getValidationOfToolItem(itemOnEnhancingSlot.get(playerName)) && Enhance.getToolValidationOfPlayer(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName))) {
+                if (EnhanceManager.getValidationOfToolItem(itemOnEnhancingSlot.get(playerName)) && EnhanceManager.getToolValidationOfPlayer(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName))) {
                     setItem(enhance.getPosition(), enhance.getGlowingItem(itemOnEnhancingSlot.get(playerName)), (clickType) -> {
                         if (clickType == ClickType.LEFT || clickType == ClickType.DOUBLE_CLICK) {
                             inProgress.put(playerName, new BukkitRunnable() {
@@ -172,7 +172,7 @@ public class MainMenu extends GUIAbstract {
                                     }
                                     if (count == 5) {
                                         try {
-                                            Enhance.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
+                                            EnhanceManager.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
                                         } catch (Exception ex) {
                                             // Player might not be online.
                                         }
@@ -192,12 +192,12 @@ public class MainMenu extends GUIAbstract {
                             }.runTaskTimer(Main.getMain(), 0L, 10L));
                         } else {
                             // Right click.
-                            Enhance.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
+                            EnhanceManager.diceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
                         }
                     });
                 } else {
                     setItem(enhance.getPosition(), enhance.getItem(itemOnEnhancingSlot.get(playerName)), (clickType) -> {
-                        int stoneId = Enhance.getStoneId(itemOnEnhancingSlot.get(playerName), enchantLevel, enhancingMode.get(playerName));
+                        int stoneId = EnhanceManager.getStoneId(itemOnEnhancingSlot.get(playerName), enchantLevel, enhancingMode.get(playerName));
                         Util.sendMessage(SettingsManager.lang.getString("item.noItem")
                                 .replaceAll("%STONE%", SettingsManager.lang.getString(
                                         "item." + stoneId)), player);
@@ -208,14 +208,14 @@ public class MainMenu extends GUIAbstract {
 
             if (ConfigManager.maximumFailstackApplied[enchantLevel] > 0
                     && ConfigManager.costToForceEnchant[enchantLevel] > 0) {
-                if (Enhance.getValidationOfForce(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName))) {
+                if (EnhanceManager.getValidationOfForce(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName))) {
                     setItem(force.getPosition(), force.getGlowingItem(itemOnEnhancingSlot.get(playerName), enhancingMode.get(playerName)), (clickType) -> {
-                        Enhance.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
+                        EnhanceManager.forceToEnhancement(itemOnEnhancingSlot.get(playerName), player, enhancingMode.get(playerName));
                     });
                 } else {
                     setItem(force.getPosition(), force.getItem(itemOnEnhancingSlot.get(playerName), enhancingMode.get(playerName)), (clickType) -> {
                         // Finds the stone used in the enhancement
-                        int stoneId = Enhance.getStoneId(itemOnEnhancingSlot.get(playerName), enchantLevel, enhancingMode.get(playerName));
+                        int stoneId = EnhanceManager.getStoneId(itemOnEnhancingSlot.get(playerName), enchantLevel, enhancingMode.get(playerName));
                         Util.sendMessage(SettingsManager.lang.getString("item.noItem")
                                 .replaceAll("%STONE%", SettingsManager.lang.getString(
                                         "item." + stoneId)), player);

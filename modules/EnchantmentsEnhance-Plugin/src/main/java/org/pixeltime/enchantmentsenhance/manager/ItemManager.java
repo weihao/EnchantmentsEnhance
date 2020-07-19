@@ -14,7 +14,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
-import org.pixeltime.enchantmentsenhance.event.Lore;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
@@ -198,10 +197,7 @@ public class ItemManager {
 
 
     public static void soulbound(ItemStack item) {
-        Lore.removeLore(item);
-        Lore.addLore(item,
-                SettingsManager.lang.getString("lore." + SettingsManager.config
-                        .getString("lore.bound") + "Lore"), !SettingsManager.config
+        SoulboundManager.addLore(item, !SettingsManager.config
                         .getString("lore.bound").contains("un"));
     }
 

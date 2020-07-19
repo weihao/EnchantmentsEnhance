@@ -3,7 +3,7 @@ package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 import com.lgou2w.ldk.bukkit.compatibility.DyeColors;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.event.Enhance;
+import org.pixeltime.enchantmentsenhance.manager.EnhanceManager;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
@@ -32,7 +32,7 @@ public class ForceIcon extends Clickable {
         } else {
             return null;
         }
-        int stoneId = Enhance.getStoneId(item, enchantLevel, clicked);
+        int stoneId = EnhanceManager.getStoneId(item, enchantLevel, clicked);
         int costToEnhance = ConfigManager.costToForceEnchant[enchantLevel + 1];
         return new ItemBuilder(XMaterial.RED_WOOL.toBukkit())
                 .setDyeColor(DyeColors.RED.toBukkit())

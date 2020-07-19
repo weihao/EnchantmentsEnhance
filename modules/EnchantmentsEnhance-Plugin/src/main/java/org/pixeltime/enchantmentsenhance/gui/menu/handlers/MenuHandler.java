@@ -7,7 +7,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.pixeltime.enchantmentsenhance.event.Enhance;
+import org.pixeltime.enchantmentsenhance.manager.EnhanceManager;
 import org.pixeltime.enchantmentsenhance.gui.GUIAbstract;
 import org.pixeltime.enchantmentsenhance.gui.GUIManager;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
@@ -35,12 +35,12 @@ public class MenuHandler implements Listener {
             e.setCancelled(true);
             if (!MainMenu.itemOnEnhancingSlot.containsKey(playerName) && MainMenu.enhancingMode.containsKey(playerName)) {
                 if (MainMenu.enhancingMode.get(playerName).equals(MainMenu.gear)) {
-                    if (Enhance.getValidationOfItem(e.getCurrentItem()) && e.getRawSlot() >= 54) {
+                    if (EnhanceManager.getValidationOfItem(e.getCurrentItem()) && e.getRawSlot() >= 54) {
                         MainMenu.itemOnEnhancingSlot.put(playerName, e.getCurrentItem());
                         gui.update();
                     }
                 } else if (MainMenu.enhancingMode.get(playerName).equals(MainMenu.tool)) {
-                    if (Enhance.getValidationOfToolItem(e.getCurrentItem()) && e.getRawSlot() >= 54) {
+                    if (EnhanceManager.getValidationOfToolItem(e.getCurrentItem()) && e.getRawSlot() >= 54) {
                         MainMenu.itemOnEnhancingSlot.put(playerName, e.getCurrentItem());
                         gui.update();
                     }
