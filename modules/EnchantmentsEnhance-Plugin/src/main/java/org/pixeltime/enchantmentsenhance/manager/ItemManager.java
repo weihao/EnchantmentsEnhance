@@ -119,7 +119,7 @@ public class ItemManager {
 
     public static ItemStack setTradeable(ItemStack item, boolean tradeable) {
         return modifyTagSafely(item, tag ->
-                tag.putBoolean("ESoulbound", tradeable)
+                tag.putBoolean("ETradeable", tradeable)
         );
     }
 

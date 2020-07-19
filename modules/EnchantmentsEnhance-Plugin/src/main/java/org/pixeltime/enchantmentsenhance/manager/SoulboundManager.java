@@ -31,8 +31,7 @@ public class SoulboundManager {
         addLore(is, tradeable);
         if (SettingsManager.config.getBoolean(
                 "lore.sendBoundingMessage")) {
-            Util.sendMessage(SettingsManager.lang.getString("messages.made"
-                    + tradeable), p);
+            Util.sendMessage(SettingsManager.lang.getString("messages.made" + (tradeable ? "tradeable" : "untradeable")), p);
         }
     }
 
