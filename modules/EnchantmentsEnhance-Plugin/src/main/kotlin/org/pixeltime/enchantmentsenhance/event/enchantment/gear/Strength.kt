@@ -20,6 +20,10 @@ class Strength : EnchantmentListener() {
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         val level = getLevel(player)
-        permaPotion(player, PotionEffectType.INCREASE_DAMAGE, SettingsManager.enchant.getInt("strength.$level.potion_lvl"))
+        permaPotion(
+            player,
+            PotionEffectType.INCREASE_DAMAGE,
+            SettingsManager.enchant.getInt("strength.$level.potion_lvl")
+        )
     }
 }

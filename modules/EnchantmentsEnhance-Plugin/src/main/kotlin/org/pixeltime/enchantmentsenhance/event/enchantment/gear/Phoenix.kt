@@ -20,6 +20,10 @@ class Phoenix : EnchantmentListener() {
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         val level = getLevel(player)
-        permaPotion(player, PotionEffectType.REGENERATION, SettingsManager.enchant.getInt("${this.javaClass.simpleName.toLowerCase()}.$level.potion_lvl"))
+        permaPotion(
+            player,
+            PotionEffectType.REGENERATION,
+            SettingsManager.enchant.getInt("${this.javaClass.simpleName.toLowerCase()}.$level.potion_lvl")
+        )
     }
 }

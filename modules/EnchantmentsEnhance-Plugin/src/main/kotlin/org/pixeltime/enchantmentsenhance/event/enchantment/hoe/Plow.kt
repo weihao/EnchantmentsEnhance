@@ -38,11 +38,14 @@ class Plow : EnchantmentListener() {
             while (x <= location.blockX + radius) {
                 var z = location.blockZ - radius
                 while (z <= location.blockZ + radius) {
-                    val block = location.world!!.getBlockAt(Location(clickedBlock.world, x, clickedBlock.y.toDouble(), z))
+                    val block =
+                        location.world!!.getBlockAt(Location(clickedBlock.world, x, clickedBlock.y.toDouble(), z))
                     if (block.type != Material.GRASS && block.type != Material.DIRT) {
                         return
                     }
-                    if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin().canBuild(player, block)) {
+                    if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin()
+                            .canBuild(player, block)
+                    ) {
                         return
                     }
                     block.type = XMaterial.FARMLAND.toBukkit()

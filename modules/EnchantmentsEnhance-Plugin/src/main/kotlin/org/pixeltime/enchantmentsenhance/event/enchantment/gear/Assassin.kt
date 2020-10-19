@@ -30,13 +30,21 @@ class Assassin : EnchantmentListener() {
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world).getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world)
+                    .getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+            ) {
                 return
             }
             try {
                 val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
-                    victim.addPotionEffect(PotionEffect(PotionEffectType.POISON, SettingsManager.enchant.getInt("assassin.$level.duration") * 20, 0))
+                    victim.addPotionEffect(
+                        PotionEffect(
+                            PotionEffectType.POISON,
+                            SettingsManager.enchant.getInt("assassin.$level.duration") * 20,
+                            0
+                        )
+                    )
                 }
             } catch (ex: Exception) {
             }

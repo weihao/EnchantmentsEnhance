@@ -28,13 +28,16 @@ class Execute : EnchantmentListener() {
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world).getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world)
+                    .getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+            ) {
                 return
             }
             try {
                 val level = getLevel(player)
                 if (level > 0 && (roll(level)) && player.isSneaking) {
-                    entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * SettingsManager.enchant.getDouble("execute.$level.multiplier")
+                    entityDamageByEntityEvent.damage =
+                        entityDamageByEntityEvent.damage * SettingsManager.enchant.getDouble("execute.$level.multiplier")
                 }
             } catch (ex: Exception) {
             }

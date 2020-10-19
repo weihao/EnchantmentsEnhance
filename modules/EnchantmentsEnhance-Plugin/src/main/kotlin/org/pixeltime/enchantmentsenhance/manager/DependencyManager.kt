@@ -13,7 +13,8 @@ class DependencyManager {
 
         @JvmStatic
         fun setupEconomy(): Boolean {
-            val registration = Main.getMain().server.servicesManager.getRegistration<Any>(Economy::class.java as Class<Any>)
+            val registration =
+                Main.getMain().server.servicesManager.getRegistration<Any>(Economy::class.java as Class<Any>)
                     ?: return false
             economy = registration.provider as Economy
             return true

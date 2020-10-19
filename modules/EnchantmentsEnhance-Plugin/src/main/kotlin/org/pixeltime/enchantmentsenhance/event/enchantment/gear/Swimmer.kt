@@ -20,6 +20,10 @@ class Swimmer : EnchantmentListener() {
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         val level = getLevel(player)
-        permaPotion(player, PotionEffectType.WATER_BREATHING, SettingsManager.enchant.getInt("swimmer.$level.potion_lvl"))
+        permaPotion(
+            player,
+            PotionEffectType.WATER_BREATHING,
+            SettingsManager.enchant.getInt("swimmer.$level.potion_lvl")
+        )
     }
 }

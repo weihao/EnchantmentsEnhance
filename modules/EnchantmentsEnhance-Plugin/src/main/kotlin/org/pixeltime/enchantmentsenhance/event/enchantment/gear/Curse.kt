@@ -29,12 +29,20 @@ class Curse : EnchantmentListener() {
                 if (entityDamageByEntityEvent.isCancelled) {
                     return
                 }
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world)
+                        .getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+                ) {
                     return
                 }
                 val level = getLevel(player)
                 if ((level > 0) && (roll(level))) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.WITHER, SettingsManager.enchant.getInt("curse.$level.duration") * 20, SettingsManager.enchant.getInt("curse.$level.potion_lvl") - 1))
+                    player.addPotionEffect(
+                        PotionEffect(
+                            PotionEffectType.WITHER,
+                            SettingsManager.enchant.getInt("curse.$level.duration") * 20,
+                            SettingsManager.enchant.getInt("curse.$level.potion_lvl") - 1
+                        )
+                    )
                 }
             } catch (ex: Exception) {
             }

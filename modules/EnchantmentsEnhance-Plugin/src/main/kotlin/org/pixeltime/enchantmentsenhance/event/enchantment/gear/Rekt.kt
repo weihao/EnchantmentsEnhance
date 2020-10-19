@@ -31,7 +31,8 @@ class Rekt : EnchantmentListener() {
             try {
                 val level = getLevel(player)
                 if (level > 0) {
-                    entityDamageByEntityEvent.damage = entityDamageByEntityEvent.damage * SettingsManager.enchant.getDouble("rekt.$level.multiplier")
+                    entityDamageByEntityEvent.damage =
+                        entityDamageByEntityEvent.damage * SettingsManager.enchant.getDouble("rekt.$level.multiplier")
                 }
             } catch (ex: Exception) {
             }

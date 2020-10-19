@@ -14,7 +14,10 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Thief : EnchantmentListener() {
     override fun desc(): Array<String> {
-        return arrayOf("While PvPing, you have a chance to steal some % of the money from your opponent", "当你PVP时有几率偷取别人的一部分钱")
+        return arrayOf(
+            "While PvPing, you have a chance to steal some % of the money from your opponent",
+            "当你PVP时有几率偷取别人的一部分钱"
+        )
     }
 
     override fun lang(): Array<String> {
@@ -30,13 +33,18 @@ class Thief : EnchantmentListener() {
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world).getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world)
+                    .getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+            ) {
                 return
             }
             try {
                 val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
-                    val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DependencyManager.economy!!.getBalance(victim as OfflinePlayer))
+                    val n2 =
+                        SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DependencyManager.economy!!.getBalance(
+                            victim as OfflinePlayer
+                        ))
                     DependencyManager.economy!!.withdrawPlayer(victim as OfflinePlayer, n2)
                     DependencyManager.economy!!.depositPlayer(player as OfflinePlayer, n2)
                 }

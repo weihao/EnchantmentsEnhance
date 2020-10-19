@@ -26,15 +26,15 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import java.util.ArrayList
-import java.util.Random
+import java.util.*
 
 
 class Explosive : EnchantmentListener() {
     override fun desc(): Array<String> {
         return arrayOf(
-                "When destroying a block that your tool was meant for you cause an explosion that breaks similar blocks arround that.",
-                "破坏方块时产生爆炸")
+            "When destroying a block that your tool was meant for you cause an explosion that breaks similar blocks arround that.",
+            "破坏方块时产生爆炸"
+        )
     }
 
     override fun lang(): Array<String> {
@@ -69,7 +69,9 @@ class Explosive : EnchantmentListener() {
 
             for (loc in locations) {
                 val block = loc.block
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin().canBuild(player, block)) {
+                if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin()
+                        .canBuild(player, block)
+                ) {
                     return
                 }
                 if (block.type == XMaterial.BEDROCK.toBukkit()) {

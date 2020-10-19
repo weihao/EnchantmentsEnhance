@@ -30,7 +30,13 @@ class Petrify : EnchantmentListener() {
             try {
                 val level = getLevel(victim)
                 if (level > 0 && (roll(level))) {
-                    player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, SettingsManager.enchant.getInt("petrify.$level.duration") * 20, SettingsManager.enchant.getInt("petrify.$level.potion_lvl") - 1))
+                    player.addPotionEffect(
+                        PotionEffect(
+                            PotionEffectType.SLOW,
+                            SettingsManager.enchant.getInt("petrify.$level.duration") * 20,
+                            SettingsManager.enchant.getInt("petrify.$level.potion_lvl") - 1
+                        )
+                    )
 
                 }
             } catch (ex: Exception) {

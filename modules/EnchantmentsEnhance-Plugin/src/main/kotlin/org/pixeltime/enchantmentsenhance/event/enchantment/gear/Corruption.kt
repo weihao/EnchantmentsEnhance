@@ -30,12 +30,20 @@ class Corruption : EnchantmentListener() {
                 if (entityDamageByEntityEvent.isCancelled) {
                     return
                 }
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world).getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world)
+                        .getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+                ) {
                     return
                 }
                 val level = getLevel(player)
                 if ((level > 0) && ((roll(level)))) {
-                    victim.addPotionEffect(PotionEffect(PotionEffectType.WEAKNESS, SettingsManager.enchant.getInt("corruption.$level.duration") * 20, SettingsManager.enchant.getInt("corruption.$level.potion_lvl") - 1))
+                    victim.addPotionEffect(
+                        PotionEffect(
+                            PotionEffectType.WEAKNESS,
+                            SettingsManager.enchant.getInt("corruption.$level.duration") * 20,
+                            SettingsManager.enchant.getInt("corruption.$level.potion_lvl") - 1
+                        )
+                    )
                 }
             } catch (ex: Exception) {
             }

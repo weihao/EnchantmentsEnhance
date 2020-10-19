@@ -334,17 +334,17 @@ enhance:
     suffix: ""
     # Applying enchantment.
     enchantments:
-      WEAPON: []
-      ARMOR: []
-      PICKAXE: []
-      AXE: []
-      HOE: []
-      SHOEVEL: []
-      BOW: []
-      KNIFE: []
-      ROD: []
+      WEAPON: [ ]
+      ARMOR: [ ]
+      PICKAXE: [ ]
+      AXE: [ ]
+      HOE: [ ]
+      SHOEVEL: [ ]
+      BOW: [ ]
+      KNIFE: [ ]
+      ROD: [ ]
     # Item engraving supports: %player% %date%
-    lore: []
+    lore: [ ]
   "1":
     baseChance: 100
     chanceIncreasePerFailstack: 0

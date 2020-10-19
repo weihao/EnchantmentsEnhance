@@ -37,7 +37,10 @@ abstract class EnchantmentListener : Listener {
     }
 
     fun addLang() {
-        LocaleManager.addLang("enchantments.${this.javaClass.simpleName.toLowerCase()}", arrayOf(this.javaClass.simpleName) + lang())
+        LocaleManager.addLang(
+            "enchantments.${this.javaClass.simpleName.toLowerCase()}",
+            arrayOf(this.javaClass.simpleName) + lang()
+        )
     }
 
     fun addDesc() {

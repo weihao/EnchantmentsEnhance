@@ -14,7 +14,10 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Shearer : EnchantmentListener() {
     override fun desc(): Array<String> {
-        return arrayOf("When left clicking the item having this enchant in the air, all Sheep within the radius will be sheared", "拿着剪刀对着空中点击，周围的羊都会被剃毛")
+        return arrayOf(
+            "When left clicking the item having this enchant in the air, all Sheep within the radius will be sheared",
+            "拿着剪刀对着空中点击，周围的羊都会被剃毛"
+        )
     }
 
     override fun lang(): Array<String> {
@@ -49,7 +52,10 @@ class Shearer : EnchantmentListener() {
             if (entity is Sheep) {
                 if (!entity.isSheared) {
                     entity.isSheared = true
-                    entity.world.dropItem(entity.location, ItemStack(XMaterial.WHITE_WOOL.toBukkit(), 1, entity.color!!.woolData.toShort()))
+                    entity.world.dropItem(
+                        entity.location,
+                        ItemStack(XMaterial.WHITE_WOOL.toBukkit(), 1, entity.color!!.woolData.toShort())
+                    )
                 }
             }
         }

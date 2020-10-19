@@ -12,7 +12,10 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Divine : EnchantmentListener() {
     override fun desc(): Array<String> {
-        return arrayOf("A chance to heal you relative to the damage you inflict upon your enemy without taking their health", "有几率恢复收到的伤害")
+        return arrayOf(
+            "A chance to heal you relative to the damage you inflict upon your enemy without taking their health",
+            "有几率恢复收到的伤害"
+        )
     }
 
     override fun lang(): Array<String> {
@@ -27,7 +30,11 @@ class Divine : EnchantmentListener() {
                 if (entityDamageByEntityEvent.isCancelled) {
                     return
                 }
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(
+                        entityDamageByEntityEvent.entity.world
+                    ).getApplicableRegions(entityDamageByEntityEvent.entity.location)
+                        .queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+                ) {
                     return
                 }
                 val level = getLevel(player)

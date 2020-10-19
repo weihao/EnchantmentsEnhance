@@ -17,21 +17,24 @@ class Announcer_BossBar : Announcer {
                 for (p in Bukkit.getOnlinePlayers()) {
                     failed.addPlayer(p)
                 }
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getMain(), { failed.removeAll() }, AnnouncerManager.DELAY)
+                Bukkit.getScheduler()
+                    .scheduleSyncDelayedTask(Main.getMain(), { failed.removeAll() }, AnnouncerManager.DELAY)
             }
             AnnounceType.SUCCESS -> {
                 success.setTitle(Util.toColor(msg))
                 for (p in Bukkit.getOnlinePlayers()) {
                     success.addPlayer(p)
                 }
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getMain(), { success.removeAll() }, AnnouncerManager.DELAY)
+                Bukkit.getScheduler()
+                    .scheduleSyncDelayedTask(Main.getMain(), { success.removeAll() }, AnnouncerManager.DELAY)
             }
             else -> {
                 info.setTitle(Util.toColor(msg))
                 for (p in Bukkit.getOnlinePlayers()) {
                     info.addPlayer(p)
                 }
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getMain(), { info.removeAll() }, AnnouncerManager.DELAY)
+                Bukkit.getScheduler()
+                    .scheduleSyncDelayedTask(Main.getMain(), { info.removeAll() }, AnnouncerManager.DELAY)
             }
         }
     }

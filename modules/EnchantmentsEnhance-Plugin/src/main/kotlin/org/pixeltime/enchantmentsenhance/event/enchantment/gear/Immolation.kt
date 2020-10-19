@@ -23,13 +23,19 @@ class Immolation : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onSneak(playerToggleSneakEvent: PlayerToggleSneakEvent) {
         val player = playerToggleSneakEvent.player
-        if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+        if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world)
+                .getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+        ) {
             return
         }
         try {
             val level = getLevel(player)
             if (level > 0 && (roll(level))) {
-                for (entity in player.getNearbyEntities(SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"), SettingsManager.enchant.getDouble("immolation.$level.radius"))) {
+                for (entity in player.getNearbyEntities(
+                    SettingsManager.enchant.getDouble("immolation.$level.radius"),
+                    SettingsManager.enchant.getDouble("immolation.$level.radius"),
+                    SettingsManager.enchant.getDouble("immolation.$level.radius")
+                )) {
                     if (entity is Player) {
                         entity.setFireTicks(SettingsManager.enchant.getInt("immolation.$level.duration") * 20)
                     }
