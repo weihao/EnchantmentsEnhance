@@ -2,9 +2,9 @@ package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.manager.EnhanceManager;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
+import org.pixeltime.enchantmentsenhance.manager.EnhanceManager;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;

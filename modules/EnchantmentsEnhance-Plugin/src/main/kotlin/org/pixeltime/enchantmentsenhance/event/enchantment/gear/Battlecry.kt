@@ -28,12 +28,19 @@ class Battlecry : EnchantmentListener() {
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(
+                    entityDamageByEntityEvent.entity.world
+                ).getApplicableRegions(entityDamageByEntityEvent.entity.location)
+                    .queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+            ) {
                 return
             }
             val level = getLevel(player)
             if (level > 0) {
-                if ((player.hasPotionEffect(PotionEffectType.POISON)) || player.hasPotionEffect(PotionEffectType.CONFUSION) || player.hasPotionEffect(PotionEffectType.WITHER) || player.hasPotionEffect(PotionEffectType.WEAKNESS)) {
+                if ((player.hasPotionEffect(PotionEffectType.POISON)) || player.hasPotionEffect(PotionEffectType.CONFUSION) || player.hasPotionEffect(
+                        PotionEffectType.WITHER
+                    ) || player.hasPotionEffect(PotionEffectType.WEAKNESS)
+                ) {
                     if ((roll(level))) {
                         try {
                             player.removePotionEffect(PotionEffectType.BLINDNESS)

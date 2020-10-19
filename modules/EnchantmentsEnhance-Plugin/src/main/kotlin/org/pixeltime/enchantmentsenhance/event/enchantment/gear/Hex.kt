@@ -29,7 +29,9 @@ class Hex : EnchantmentListener() {
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world).getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world)
+                    .getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+            ) {
                 return
             }
 
@@ -37,7 +39,13 @@ class Hex : EnchantmentListener() {
                 val level = getLevel(player)
                 if (level > 0) {
                     if ((roll(level))) {
-                        victim.addPotionEffect(PotionEffect(PotionEffectType.BLINDNESS, SettingsManager.enchant.getInt("hex.$level.duration") * 20, 0))
+                        victim.addPotionEffect(
+                            PotionEffect(
+                                PotionEffectType.BLINDNESS,
+                                SettingsManager.enchant.getInt("hex.$level.duration") * 20,
+                                0
+                            )
+                        )
                     }
                 }
             } catch (ex: Exception) {

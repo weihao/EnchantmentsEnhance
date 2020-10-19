@@ -6,8 +6,9 @@ interface SpawnFirework {
     fun launch(player: Player, fireworkCount: Int)
 
     fun launch(
-            player: Player,
-            fireworkCount: Int,
-            fireWorkRounds: Int,
-            delay: Int)
+        player: Player,
+        fireworkCount: Int,
+        fireWorkRounds: Int,
+        delay: Int
+    )
 }

@@ -198,7 +198,7 @@ public class ItemManager {
 
     public static void soulbound(ItemStack item) {
         SoulboundManager.addLore(item, !SettingsManager.config
-                        .getString("lore.bound").contains("un"));
+                .getString("lore.bound").contains("un"));
     }
 
     public static ItemStack forgeItem(Player player, ItemStack item, int enchantLevel, boolean addition, Clickable clicked) {

@@ -6,7 +6,7 @@ import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.PackageManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import java.util.Arrays
+import java.util.*
 
 class DebugConsoleCommand : SubConsoleCommand() {
 
@@ -25,7 +25,10 @@ class DebugConsoleCommand : SubConsoleCommand() {
                         if (EnchantmentListener::class.java.isAssignableFrom(enchClass)) {
                             try {
                                 val enchantmentListener = enchClass.newInstance() as EnchantmentListener
-                                sb.appendln("|" + enchantmentListener.javaClass.simpleName + "|" + enchantmentListener.desc()[0] + "|" + Main.getApi().getEnchantmentMaxLevel(enchantmentListener.javaClass.simpleName) + "|")
+                                sb.appendln(
+                                    "|" + enchantmentListener.javaClass.simpleName + "|" + enchantmentListener.desc()[0] + "|" + Main.getApi()
+                                        .getEnchantmentMaxLevel(enchantmentListener.javaClass.simpleName) + "|"
+                                )
                             } catch (e: InstantiationException) {
                                 e.printStackTrace()
                             } catch (e: IllegalAccessException) {
@@ -40,7 +43,18 @@ class DebugConsoleCommand : SubConsoleCommand() {
                     sb.appendln("| :---|:---|:---|")
                     for (command in Main.getCommandManager().commands) {
                         try {
-                            sb.appendln(("|" + command.usage().replace("|", "&#124;") + " - " + SettingsManager.lang.getString("help." + command.name())!!.replace("|", "&#124;") + "|" + command.permission + "|" + Arrays.toString(command.aliases()) + "|").replace("&[a-z0-9]".toRegex(), "").replace("\n", "<br />"))
+                            sb.appendln(
+                                ("|" + command.usage().replace(
+                                    "|",
+                                    "&#124;"
+                                ) + " - " + SettingsManager.lang.getString("help." + command.name())!!.replace(
+                                    "|",
+                                    "&#124;"
+                                ) + "|" + command.permission + "|" + Arrays.toString(command.aliases()) + "|").replace(
+                                    "&[a-z0-9]".toRegex(),
+                                    ""
+                                ).replace("\n", "<br />")
+                            )
                         } catch (ex: Exception) {
                             ex.printStackTrace()
                         }

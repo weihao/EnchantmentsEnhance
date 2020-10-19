@@ -17,22 +17,34 @@ class SetCommand : SubCommand() {
                 val leverage: Int = Integer.parseInt(args[0])
                 if (leverage > 1) {
                     PlayerStatsManager.getPlayerStats(player.name).grind = leverage
-                    Util.sendMessage(SettingsManager.lang.getString("set.success")
-                    !!.replace("%leverage%",
-                            Integer.toString(leverage)), player)
+                    Util.sendMessage(
+                        SettingsManager.lang.getString("set.success")
+                        !!.replace(
+                            "%leverage%",
+                            Integer.toString(leverage)
+                        ), player
+                    )
                 } else {
                     Util.sendMessage(SettingsManager.lang.getString("set.failed"), player)
                 }
             } catch (ex: ParseException) {
-                Util.sendMessage(SettingsManager.lang.getString("config.invalidNumber"), player
+                Util.sendMessage(
+                    SettingsManager.lang.getString("config.invalidNumber"), player
                 )
             } catch (ex: NumberFormatException) {
-                Util.sendMessage(SettingsManager.lang.getString("config" +
-                        ".invalidNumber"), player)
+                Util.sendMessage(
+                    SettingsManager.lang.getString(
+                        "config" +
+                                ".invalidNumber"
+                    ), player
+                )
             }
         } else {
-            Util.sendMessage(SettingsManager.lang.getString(
-                    "config.invalidNumber"), player)
+            Util.sendMessage(
+                SettingsManager.lang.getString(
+                    "config.invalidNumber"
+                ), player
+            )
         }
     }
 
