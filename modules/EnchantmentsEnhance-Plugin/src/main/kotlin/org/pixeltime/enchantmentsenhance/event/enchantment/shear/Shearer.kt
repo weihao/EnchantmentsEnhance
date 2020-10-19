@@ -24,7 +24,7 @@ class Shearer : EnchantmentListener() {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onInteract(playerInteractEvent: PlayerInteractEvent) {
         val player = playerInteractEvent.player
-        if ((playerInteractEvent.action == Action.RIGHT_CLICK_BLOCK) || (playerInteractEvent == Action.RIGHT_CLICK_AIR)) {
+        if ((playerInteractEvent.action == Action.RIGHT_CLICK_BLOCK) || (playerInteractEvent.action == Action.RIGHT_CLICK_AIR)) {
             val level = getLevel(player)
             if (level > 0) {
                 shear(player, level)
