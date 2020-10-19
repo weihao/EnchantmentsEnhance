@@ -24,7 +24,7 @@ class Shadowstep : EnchantmentListener() {
         if (entityDamageByEntityEvent.entity is Player && entityDamageByEntityEvent.damager is Player) {
 
             val player = entityDamageByEntityEvent.entity as Player
-            val player2 = entityDamageByEntityEvent.damager as Player
+            val victim = entityDamageByEntityEvent.damager as Player
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
@@ -34,7 +34,7 @@ class Shadowstep : EnchantmentListener() {
             try {
                 val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
-                    player.teleport(player2.location.add(player2.location.direction.multiply(SettingsManager.enchant.getInt("shadowstep.$level.distance") * -1.0)))
+                    player.teleport(victim.location.add(victim.location.direction.multiply(SettingsManager.enchant.getInt("shadowstep.$level.distance") * -1.0)))
                 }
             } catch (ex: Exception) {
             }

@@ -1,4 +1,4 @@
-package org.pixeltime.enchantmentsenhance.event;
+package org.pixeltime.enchantmentsenhance.manager;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -9,16 +9,11 @@ import org.pixeltime.enchantmentsenhance.enums.AnnounceType;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
-import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
-import org.pixeltime.enchantmentsenhance.manager.ConfigManager;
-import org.pixeltime.enchantmentsenhance.manager.ItemManager;
-import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.Random;
 
-public class Enhance {
+public class EnhanceManager {
 
     /**
      * Finds the corresponding enhancement stone ID.
@@ -199,11 +194,11 @@ public class Enhance {
 
     public static boolean validate(ItemStack item, Player player, Clickable clicked) {
         boolean valid = false;
-        if (Enhance.getValidationOfItem(item) && Enhance.getValidationOfPlayer(item, player, clicked)) {
+        if (EnhanceManager.getValidationOfItem(item) && EnhanceManager.getValidationOfPlayer(item, player, clicked)) {
             valid = true;
         }
 
-        if (Enhance.getValidationOfToolItem(item) && Enhance.getToolValidationOfPlayer(item, player, clicked)) {
+        if (EnhanceManager.getValidationOfToolItem(item) && EnhanceManager.getToolValidationOfPlayer(item, player, clicked)) {
             valid = true;
         }
         return valid;
@@ -211,7 +206,7 @@ public class Enhance {
 
     public static boolean validateForce(ItemStack item, Player player, Clickable clicked) {
         boolean valid = false;
-        if (Enhance.getValidationOfForce(item, player, clicked)) {
+        if (EnhanceManager.getValidationOfForce(item, player, clicked)) {
             valid = true;
         }
         return valid;

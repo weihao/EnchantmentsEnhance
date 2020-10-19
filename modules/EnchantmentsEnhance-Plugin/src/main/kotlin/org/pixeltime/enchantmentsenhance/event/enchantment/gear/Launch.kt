@@ -21,10 +21,10 @@ class Launch : EnchantmentListener() {
     fun onEntityDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.entity is Player && entityDamageByEntityEvent.damager is Player) {
             val player = entityDamageByEntityEvent.entity as Player
-            val player2 = entityDamageByEntityEvent.damager as Player
+            val victim = entityDamageByEntityEvent.damager as Player
 
             try {
-                val level = getLevel(player2)
+                val level = getLevel(victim)
                 if (level > 0 && (roll(level))) {
                     player.velocity = Vector(0, SettingsManager.enchant.getInt("launch.$level.height"), 0)
                 }

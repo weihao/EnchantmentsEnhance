@@ -26,21 +26,21 @@ class Purge : EnchantmentListener() {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
 
             val player = entityDamageByEntityEvent.damager as Player
-            val player2 = entityDamageByEntityEvent.entity as Player
+            val victim = entityDamageByEntityEvent.entity as Player
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world).getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                 return
             }
             try {
                 val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
-                    player2.world.strikeLightningEffect(player2.location)
-                    val iterator = player2.activePotionEffects.iterator()
+                    victim.world.strikeLightningEffect(victim.location)
+                    val iterator = victim.activePotionEffects.iterator()
                     while (iterator.hasNext()) {
-                        player2.removePotionEffect((iterator.next() as PotionEffect).type)
-                        player2.damage(2.0)
+                        victim.removePotionEffect((iterator.next() as PotionEffect).type)
+                        victim.damage(2.0)
                     }
                 }
             } catch (ex: Exception) {

@@ -14,7 +14,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
-import org.pixeltime.enchantmentsenhance.event.Lore;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.util.ItemBuilder;
@@ -112,6 +111,19 @@ public class ItemManager {
 
     ///
 
+    public static ItemStack setSoulbound(ItemStack item, boolean soulbound) {
+        return modifyTagSafely(item, tag ->
+                tag.putBoolean("ESoulbound", soulbound)
+        );
+    }
+
+    public static ItemStack setTradeable(ItemStack item, boolean tradeable) {
+        return modifyTagSafely(item, tag ->
+                tag.putBoolean("ETradeable", tradeable)
+        );
+    }
+
+
     public static ItemStack setLevel(ItemStack item, int enhanceLevel) {
         return modifyTagSafely(item, tag ->
                 tag.putInt("ELevel", enhanceLevel)
@@ -123,6 +135,17 @@ public class ItemManager {
                 tag.putString("EName", name)
         );
     }
+
+    public static boolean getSoulbound(ItemStack item) {
+        Boolean sb = readTagSafely(item, tag -> tag.getBooleanOrNull("ESoulbound"));
+        return sb != null && sb;
+    }
+
+    public static boolean getTradeable(ItemStack item) {
+        Boolean tradeable = readTagSafely(item, tag -> tag.getBooleanOrNull("ETradeable"));
+        return tradeable != null && tradeable;
+    }
+
 
     public static int getItemEnchantLevel(ItemStack item) {
         Integer level = readTagSafely(item, tag -> tag.getIntOrNull("ELevel"));
@@ -174,10 +197,7 @@ public class ItemManager {
 
 
     public static void soulbound(ItemStack item) {
-        Lore.removeLore(item);
-        Lore.addLore(item,
-                SettingsManager.lang.getString("lore." + SettingsManager.config
-                        .getString("lore.bound") + "Lore"), !SettingsManager.config
+        SoulboundManager.addLore(item, !SettingsManager.config
                         .getString("lore.bound").contains("un"));
     }
 
@@ -194,7 +214,7 @@ public class ItemManager {
         // Getting Unique Name.
         List<String> oldLore = KotlinManager.stripLore(item);
 
-        if (enchantLevel == 1 && getItemName(currItem) == null && SettingsManager.config.getBoolean("enableRename")) {
+        if (enchantLevel == 1 && getItemName(currItem).equals("") && SettingsManager.config.getBoolean("enableRename")) {
             currItem = setName(currItem, currItem.getItemMeta().getDisplayName());
         }
 

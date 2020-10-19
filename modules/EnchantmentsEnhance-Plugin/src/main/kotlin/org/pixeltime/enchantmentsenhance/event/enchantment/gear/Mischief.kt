@@ -27,17 +27,17 @@ class Mischief : EnchantmentListener() {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
 
             val player = entityDamageByEntityEvent.damager as Player
-            val player2 = entityDamageByEntityEvent.entity as Player
+            val victim = entityDamageByEntityEvent.entity as Player
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world).getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                 return
             }
             try {
                 val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
-                    player2.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, SettingsManager.enchant.getInt("mischief.$level.duration") * 20, SettingsManager.enchant.getInt("mischief.$level.potion_lvl") - 1))
+                    victim.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, SettingsManager.enchant.getInt("mischief.$level.duration") * 20, SettingsManager.enchant.getInt("mischief.$level.potion_lvl") - 1))
                 }
             } catch (ex: Exception) {
             }

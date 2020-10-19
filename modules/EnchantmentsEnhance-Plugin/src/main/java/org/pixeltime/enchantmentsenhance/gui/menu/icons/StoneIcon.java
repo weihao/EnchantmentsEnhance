@@ -2,7 +2,7 @@ package org.pixeltime.enchantmentsenhance.gui.menu.icons;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.event.Enhance;
+import org.pixeltime.enchantmentsenhance.manager.EnhanceManager;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.ItemManager;
@@ -31,9 +31,9 @@ public class StoneIcon extends Clickable {
     public ItemStack getItem(ItemStack item, Player player, Clickable clicked) {
         int stoneId;
         if (clicked.equals(MainMenu.gear)) {
-            stoneId = Enhance.getStoneId(item, ItemManager.getItemEnchantLevel(item) + 1, clicked);
+            stoneId = EnhanceManager.getStoneId(item, ItemManager.getItemEnchantLevel(item) + 1, clicked);
         } else if (clicked.equals(MainMenu.tool)) {
-            stoneId = Enhance.getStoneId(item, ItemManager.getToolEnchantLevel(item) + 1, clicked);
+            stoneId = EnhanceManager.getStoneId(item, ItemManager.getToolEnchantLevel(item) + 1, clicked);
         } else {
             return null;
         }

@@ -3,7 +3,7 @@ package org.pixeltime.enchantmentsenhance.command.player
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.command.SubCommand
-import org.pixeltime.enchantmentsenhance.event.Lore
+import org.pixeltime.enchantmentsenhance.manager.SoulboundManager
 import org.pixeltime.enchantmentsenhance.gui.Clickable
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
@@ -62,9 +62,9 @@ class ItemCommand : SubCommand() {
                     }
                 }
                 args[0].equals("lore", ignoreCase = true) -> when {
-                    args[1].equals("unbound", ignoreCase = true) -> Lore.removeLore(Util.getMainHand(player))
-                    args[1].equals("tradeable", ignoreCase = true) -> Lore.addLore(Util.getMainHand(player), SettingsManager.lang.getString("lore.tradeableLore"), true)
-                    args[1].equals("untradeable", ignoreCase = true) -> Lore.addLore(Util.getMainHand(player), SettingsManager.lang.getString("lore.untradeableLore"), false)
+                    args[1].equals("unbound", ignoreCase = true) -> SoulboundManager.removeLore(Util.getMainHand(player))
+                    args[1].equals("tradeable", ignoreCase = true) -> SoulboundManager.addLore(Util.getMainHand(player), true)
+                    args[1].equals("untradeable", ignoreCase = true) -> SoulboundManager.addLore(Util.getMainHand(player), false)
                 }
             }
         } else {

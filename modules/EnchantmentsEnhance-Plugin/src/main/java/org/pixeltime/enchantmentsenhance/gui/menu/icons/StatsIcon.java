@@ -4,7 +4,7 @@ import com.lgou2w.ldk.bukkit.compatibility.DyeColors;
 import com.lgou2w.ldk.bukkit.compatibility.XMaterial;
 import org.bukkit.inventory.ItemStack;
 import org.pixeltime.enchantmentsenhance.Main;
-import org.pixeltime.enchantmentsenhance.event.Enhance;
+import org.pixeltime.enchantmentsenhance.manager.EnhanceManager;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
 import org.pixeltime.enchantmentsenhance.manager.CompatibilityManager;
@@ -32,7 +32,7 @@ public class StatsIcon extends Clickable {
                             .setName(SettingsManager.lang.getString("menu.gui.stats"))
                             .addLoreLine(SettingsManager.lang.getString("enhance.currentFailstack")
                                     + Main.getApi().getFailstack(playerName))
-                            .addLoreLine(Enhance.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName, clicked))
+                            .addLoreLine(EnhanceManager.getChance(MainMenu.itemOnEnhancingSlot.get(playerName), playerName, clicked))
                             .addLoreLine(SettingsManager.lang.getString(
                                     "menu.lore.stats1")).addLoreLine(SettingsManager.lang.getString(
                                     "menu.lore.stats2")).toItemStack());

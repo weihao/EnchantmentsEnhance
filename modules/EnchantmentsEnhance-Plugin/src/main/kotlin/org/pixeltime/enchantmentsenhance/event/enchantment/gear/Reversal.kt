@@ -24,7 +24,7 @@ class Reversal : EnchantmentListener() {
 
         if (entityDamageByEntityEvent.entity is Player && entityDamageByEntityEvent.damager is Player) {
             val player = entityDamageByEntityEvent.entity as Player
-            val player2 = entityDamageByEntityEvent.damager as Player
+            val victim = entityDamageByEntityEvent.damager as Player
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
@@ -34,7 +34,7 @@ class Reversal : EnchantmentListener() {
             try {
                 val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
-                    player2.damage(entityDamageByEntityEvent.damage)
+                    victim.damage(entityDamageByEntityEvent.damage)
                     entityDamageByEntityEvent.damage = 0.0
                 }
             } catch (ex: Exception) {
