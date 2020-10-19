@@ -22,13 +22,13 @@ class Crits : EnchantmentListener() {
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.damager as Player
-            val player2 = entityDamageByEntityEvent.entity as Player
+            val victim = entityDamageByEntityEvent.entity as Player
             val level = getLevel(player)
             if (level > 0) {
                 val damage = entityDamageByEntityEvent.damage * 2.0
-                val currentHealth = (player2 as Damageable).health
+                val currentHealth = (victim as Damageable).health
                 if (currentHealth > damage) {
-                    (player2 as Damageable).health = currentHealth - damage
+                    (victim as Damageable).health = currentHealth - damage
                     player.location.world!!.playSound(player.location, Sounds.ENDERDRAGON_GROWL.toBukkit(), 0.1f, 0.1f)
                 }
             }

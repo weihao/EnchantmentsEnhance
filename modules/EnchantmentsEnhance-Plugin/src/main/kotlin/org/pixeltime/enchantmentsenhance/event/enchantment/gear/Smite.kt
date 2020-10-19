@@ -25,7 +25,7 @@ class Smite : EnchantmentListener() {
         if (entityDamageByEntityEvent.entity is Player && entityDamageByEntityEvent.damager is Player) {
 
             val player = entityDamageByEntityEvent.entity as Player
-            val player2 = entityDamageByEntityEvent.damager as Player
+            val victim = entityDamageByEntityEvent.damager as Player
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
@@ -34,7 +34,7 @@ class Smite : EnchantmentListener() {
             }
 
             try {
-                val level = getLevel(player2)
+                val level = getLevel(victim)
                 if (level > 0 && (roll(level))) {
                     player.world.strikeLightningEffect(player.location)
                     val iterator = player.activePotionEffects.iterator()

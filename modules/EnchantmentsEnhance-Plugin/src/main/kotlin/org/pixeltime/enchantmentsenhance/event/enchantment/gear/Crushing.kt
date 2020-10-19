@@ -24,11 +24,11 @@ class Crushing : EnchantmentListener() {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             try {
                 val player = entityDamageByEntityEvent.damager as Player
-                val player2 = entityDamageByEntityEvent.entity as Player
+                val victim = entityDamageByEntityEvent.entity as Player
                 if (entityDamageByEntityEvent.isCancelled) {
                     return
                 }
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world).getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                     return
                 }
                 val level = getLevel(player)

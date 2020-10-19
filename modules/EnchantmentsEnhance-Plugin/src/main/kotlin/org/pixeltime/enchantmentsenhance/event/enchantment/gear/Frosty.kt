@@ -23,10 +23,10 @@ class Frosty : EnchantmentListener() {
     fun onDamage(entityDamageByEntityEvent: EntityDamageByEntityEvent) {
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.damager as Player
-            val player2 = entityDamageByEntityEvent.entity as Player
+            val victim = entityDamageByEntityEvent.entity as Player
             val level = getLevel(player)
             if (level > 0) {
-                player2.addPotionEffect(PotionEffect(PotionEffectType.SLOW, SettingsManager.enchant.getInt("frosty.$level.duration") * 20, 10))
+                victim.addPotionEffect(PotionEffect(PotionEffectType.SLOW, SettingsManager.enchant.getInt("frosty.$level.duration") * 20, 10))
             }
         }
     }

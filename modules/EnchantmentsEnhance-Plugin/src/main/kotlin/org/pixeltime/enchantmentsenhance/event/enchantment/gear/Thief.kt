@@ -26,18 +26,18 @@ class Thief : EnchantmentListener() {
 
         if (entityDamageByEntityEvent.damager is Player && entityDamageByEntityEvent.entity is Player) {
             val player = entityDamageByEntityEvent.damager as Player
-            val player2 = entityDamageByEntityEvent.entity as Player
+            val victim = entityDamageByEntityEvent.entity as Player
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player2.world).getApplicableRegions(player2.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world).getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
                 return
             }
             try {
                 val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
-                    val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DependencyManager.economy!!.getBalance(player2 as OfflinePlayer))
-                    DependencyManager.economy!!.withdrawPlayer(player2 as OfflinePlayer, n2)
+                    val n2 = SettingsManager.enchant.getInt("thief.$level.money-percent") / 100.0 * (DependencyManager.economy!!.getBalance(victim as OfflinePlayer))
+                    DependencyManager.economy!!.withdrawPlayer(victim as OfflinePlayer, n2)
                     DependencyManager.economy!!.depositPlayer(player as OfflinePlayer, n2)
                 }
             } catch (ex: Exception) {

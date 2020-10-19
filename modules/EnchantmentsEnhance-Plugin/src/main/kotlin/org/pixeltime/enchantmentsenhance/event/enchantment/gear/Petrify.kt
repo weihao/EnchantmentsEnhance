@@ -23,12 +23,12 @@ class Petrify : EnchantmentListener() {
 
         if (entityDamageByEntityEvent.entity is Player && entityDamageByEntityEvent.damager is Player) {
             val player = entityDamageByEntityEvent.entity as Player
-            val player2 = entityDamageByEntityEvent.damager as Player
+            val victim = entityDamageByEntityEvent.damager as Player
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
             try {
-                val level = getLevel(player2)
+                val level = getLevel(victim)
                 if (level > 0 && (roll(level))) {
                     player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, SettingsManager.enchant.getInt("petrify.$level.duration") * 20, SettingsManager.enchant.getInt("petrify.$level.potion_lvl") - 1))
 
