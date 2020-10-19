@@ -20,6 +20,10 @@ class Molten : EnchantmentListener() {
     fun onWalk(playerMoveEvent: PlayerMoveEvent) {
         val player = playerMoveEvent.player
         val level = getLevel(player)
-        permaPotion(player, PotionEffectType.FIRE_RESISTANCE, SettingsManager.enchant.getInt("molten.$level.potion_lvl"))
+        permaPotion(
+            player,
+            PotionEffectType.FIRE_RESISTANCE,
+            SettingsManager.enchant.getInt("molten.$level.potion_lvl")
+        )
     }
 }

@@ -16,8 +16,9 @@ class VersionManager {
         @JvmStatic
         fun getLatestVersion(): String {
             val connection = URL(
-                    "https://api.spigotmc.org/legacy/update.php?resource=59555")
-                    .openConnection() as HttpURLConnection
+                "https://api.spigotmc.org/legacy/update.php?resource=59555"
+            )
+                .openConnection() as HttpURLConnection
             connection.doOutput = true
             connection.requestMethod = "POST"
             connection.outputStream.write("GET".toByteArray(charset("UTF-8")))

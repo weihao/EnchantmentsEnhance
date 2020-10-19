@@ -21,6 +21,10 @@ class Reinforced : EnchantmentListener() {
 
         val player = playerMoveEvent.player
         val level = getLevel(player)
-        permaPotion(player, PotionEffectType.DAMAGE_RESISTANCE, SettingsManager.enchant.getInt("reinforced.$level.potion_lvl"))
+        permaPotion(
+            player,
+            PotionEffectType.DAMAGE_RESISTANCE,
+            SettingsManager.enchant.getInt("reinforced.$level.potion_lvl")
+        )
     }
 }

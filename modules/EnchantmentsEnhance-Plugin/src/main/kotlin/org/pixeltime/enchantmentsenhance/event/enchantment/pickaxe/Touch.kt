@@ -14,8 +14,9 @@ import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 class Touch : EnchantmentListener() {
     override fun desc(): Array<String> {
         return arrayOf(
-                "You can harvest mob spawners.",
-                "你可以敲下刷怪笼")
+            "You can harvest mob spawners.",
+            "你可以敲下刷怪笼"
+        )
     }
 
     override fun lang(): Array<String> {
@@ -46,7 +47,8 @@ class Touch : EnchantmentListener() {
             val item = blockPlaceEvent.itemInHand
             if (item.hasItemMeta() && item.itemMeta!!.hasDisplayName()) {
                 try {
-                    val entity = EntityType.valueOf(ChatColor.stripColor(item.itemMeta!!.displayName.toUpperCase())!!.trim())
+                    val entity =
+                        EntityType.valueOf(ChatColor.stripColor(item.itemMeta!!.displayName.toUpperCase())!!.trim())
                     val blockState = block.getState()
                     val spawner = blockState as CreatureSpawner
                     spawner.spawnedType = entity

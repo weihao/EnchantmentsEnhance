@@ -14,7 +14,7 @@ import org.bukkit.plugin.Plugin
 import org.pixeltime.enchantmentsenhance.util.Util
 
 class Boom(
-        private val plugin: Plugin
+    private val plugin: Plugin
 ) : Listener {
 
     private val key = "ee-bow-boom"

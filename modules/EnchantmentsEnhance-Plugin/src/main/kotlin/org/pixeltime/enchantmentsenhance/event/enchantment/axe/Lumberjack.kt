@@ -10,9 +10,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import java.util.ArrayList
-import java.util.HashSet
-import java.util.Random
+import java.util.*
 
 class Lumberjack : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -30,21 +28,22 @@ class Lumberjack : EnchantmentListener() {
         }
         val player = blockBreakEvent.player
         val blocks = arrayOf(
-                XMaterial.ACACIA_LOG.toBukkit(),
-                XMaterial.BIRCH_LOG.toBukkit(),
-                XMaterial.DARK_OAK_LOG.toBukkit(),
-                XMaterial.OAK_LOG.toBukkit(),
-                XMaterial.SPRUCE_LOG.toBukkit(),
-                XMaterial.ACACIA_LEAVES.toBukkit(),
-                XMaterial.BIRCH_LEAVES.toBukkit(),
-                XMaterial.DARK_OAK_LEAVES.toBukkit(),
-                XMaterial.JUNGLE_LEAVES.toBukkit(),
-                XMaterial.OAK_LEAVES.toBukkit(),
-                XMaterial.SPRUCE_LEAVES.toBukkit()
+            XMaterial.ACACIA_LOG.toBukkit(),
+            XMaterial.BIRCH_LOG.toBukkit(),
+            XMaterial.DARK_OAK_LOG.toBukkit(),
+            XMaterial.OAK_LOG.toBukkit(),
+            XMaterial.SPRUCE_LOG.toBukkit(),
+            XMaterial.ACACIA_LEAVES.toBukkit(),
+            XMaterial.BIRCH_LEAVES.toBukkit(),
+            XMaterial.DARK_OAK_LEAVES.toBukkit(),
+            XMaterial.JUNGLE_LEAVES.toBukkit(),
+            XMaterial.OAK_LEAVES.toBukkit(),
+            XMaterial.SPRUCE_LEAVES.toBukkit()
         )
         val level = getLevel(player)
         if (level > 0
-                && (blocks.contains(blockBreakEvent.block.type))) {
+            && (blocks.contains(blockBreakEvent.block.type))
+        ) {
             val list = ArrayList<Material>()
 
             for (block in blocks) {
@@ -56,7 +55,9 @@ class Lumberjack : EnchantmentListener() {
             val iterator = getNearbyBlocks(blockBreakEvent.block, list, HashSet()).iterator()
             while (iterator.hasNext()) {
                 val block = iterator.next()
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin().canBuild(player, block)) {
+                if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin()
+                        .canBuild(player, block)
+                ) {
                     return
                 }
                 if (DropManager.chopping.contains(block.type)) {

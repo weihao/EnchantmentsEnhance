@@ -14,7 +14,10 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Stealth : EnchantmentListener() {
     override fun desc(): Array<String> {
-        return arrayOf("When you sneak, nearby enemies aiming near you have a chance to get blindness", "当你潜行时，瞄准你的敌人有几率失明")
+        return arrayOf(
+            "When you sneak, nearby enemies aiming near you have a chance to get blindness",
+            "当你潜行时，瞄准你的敌人有几率失明"
+        )
     }
 
     override fun lang(): Array<String> {
@@ -25,7 +28,9 @@ class Stealth : EnchantmentListener() {
     fun onSneak(playerToggleSneakEvent: PlayerToggleSneakEvent) {
         val player = playerToggleSneakEvent.player
 
-        if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+        if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world)
+                .getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+        ) {
             return
         }
 
@@ -35,7 +40,13 @@ class Stealth : EnchantmentListener() {
                 val int1 = SettingsManager.enchant.getInt("stealth.$level.radius")
                 for (entity in player.getNearbyEntities(int1.toDouble(), int1.toDouble(), int1.toDouble())) {
                     if (entity is Player) {
-                        entity.addPotionEffect(PotionEffect(PotionEffectType.BLINDNESS, SettingsManager.enchant.getInt("stealth.$level.duration") * 20, 0))
+                        entity.addPotionEffect(
+                            PotionEffect(
+                                PotionEffectType.BLINDNESS,
+                                SettingsManager.enchant.getInt("stealth.$level.duration") * 20,
+                                0
+                            )
+                        )
                     }
                 }
             }

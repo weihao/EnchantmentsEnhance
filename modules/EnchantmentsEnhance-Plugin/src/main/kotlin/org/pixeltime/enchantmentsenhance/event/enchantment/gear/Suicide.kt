@@ -26,7 +26,10 @@ class Suicide : EnchantmentListener() {
             val level = getLevel(player)
             if (level > 0 && (roll(level))) {
                 for (i in 1..5) {
-                    val tnt = player.world.spawn(player.getTargetBlock(HashSet<Material>(), 50).location.add(0.0, 1.0, 0.0), TNTPrimed::class.java)
+                    val tnt = player.world.spawn(
+                        player.getTargetBlock(HashSet<Material>(), 50).location.add(0.0, 1.0, 0.0),
+                        TNTPrimed::class.java
+                    )
                     (tnt as TNTPrimed).fuseTicks = 10
                 }
             }

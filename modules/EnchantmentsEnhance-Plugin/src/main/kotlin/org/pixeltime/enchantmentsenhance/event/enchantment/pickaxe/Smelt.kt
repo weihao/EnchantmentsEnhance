@@ -9,7 +9,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.util.Util
-import java.util.Random
+import java.util.*
 
 class Smelt : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -32,11 +32,17 @@ class Smelt : EnchantmentListener() {
             val block = blockBreakEvent.block
             val calculateFortune = this.calculateFortune(player, block.type)
             if (block.type == Material.IRON_ORE) {
-                blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, ItemStack(Material.IRON_INGOT, calculateFortune))
+                blockBreakEvent.block.world.dropItemNaturally(
+                    blockBreakEvent.block.location,
+                    ItemStack(Material.IRON_INGOT, calculateFortune)
+                )
                 block.type = Material.AIR
             }
             if (block.type == Material.GOLD_ORE) {
-                blockBreakEvent.block.world.dropItemNaturally(blockBreakEvent.block.location, ItemStack(Material.GOLD_INGOT, calculateFortune))
+                blockBreakEvent.block.world.dropItemNaturally(
+                    blockBreakEvent.block.location,
+                    ItemStack(Material.GOLD_INGOT, calculateFortune)
+                )
                 block.type = Material.AIR
             }
         }
@@ -46,7 +52,9 @@ class Smelt : EnchantmentListener() {
         var n = 1
         try {
             if (Util.getMainHand(player).enchantments.containsKey(Enchantment.LOOT_BONUS_BLOCKS)) {
-                var n2 = Random().nextInt(Util.getMainHand(player).getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) + 2) - 1
+                var n2 = Random().nextInt(
+                    Util.getMainHand(player).getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) + 2
+                ) - 1
                 if (n2 <= 0) {
                     n2 = 1
                 }

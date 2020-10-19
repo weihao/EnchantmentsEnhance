@@ -27,7 +27,11 @@ class Siphon : EnchantmentListener() {
                 if (entityDamageByEntityEvent.isCancelled) {
                     return
                 }
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(
+                        entityDamageByEntityEvent.entity.world
+                    ).getApplicableRegions(entityDamageByEntityEvent.entity.location)
+                        .queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+                ) {
                     return
                 }
                 if (entityDamageByEntityEvent.entity is Player) {

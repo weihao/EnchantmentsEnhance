@@ -28,13 +28,23 @@ class Shadowstep : EnchantmentListener() {
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world).getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(player.world)
+                    .getApplicableRegions(player.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+            ) {
                 return
             }
             try {
                 val level = getLevel(player)
                 if (level > 0 && (roll(level))) {
-                    player.teleport(victim.location.add(victim.location.direction.multiply(SettingsManager.enchant.getInt("shadowstep.$level.distance") * -1.0)))
+                    player.teleport(
+                        victim.location.add(
+                            victim.location.direction.multiply(
+                                SettingsManager.enchant.getInt(
+                                    "shadowstep.$level.distance"
+                                ) * -1.0
+                            )
+                        )
+                    )
                 }
             } catch (ex: Exception) {
             }

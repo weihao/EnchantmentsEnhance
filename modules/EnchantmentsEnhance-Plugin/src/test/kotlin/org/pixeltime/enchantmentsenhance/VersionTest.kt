@@ -3,8 +3,7 @@ package org.pixeltime.enchantmentsenhance
 import junit.framework.TestCase
 import org.junit.Test
 import org.pixeltime.enchantmentsenhance.version.Version
-import java.util.ArrayList
-import java.util.Collections
+import java.util.*
 
 
 class VersionTest : TestCase() {
