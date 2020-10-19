@@ -1,4 +1,14 @@
 # Changelog
+## [8.0.0] - 2020-10-19 - WIP
+
+### Fixed
+
+- Fixed the bug that attacker's level was used instead of victim's level
+
+### Changes
+
+- Separated soulbound to soulbound and tradeable.
+
 ## [7.9.15] - 2020-5-5
 ### Fixed
 - Fixed an AnvilInventory error occured when repairing an item
@@ -51,7 +61,7 @@
 ## [7.9.6] - 2020-1-19
 ### Changed
 - **Changed mysql schema to not use id column**
-- **Changed charset from latin1 to utf8** 
+- **Changed charset from latin1 to utf8**
 
 ### Fixed
 - Fixed a mysql exception
