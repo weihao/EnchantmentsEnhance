@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.pixeltime.enchantmentsenhance.Main;
+import org.pixeltime.enchantmentsenhance.manager.ItemManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
@@ -40,21 +41,11 @@ public class PlayerDeathListener implements Listener {
         File playerFile = new File(m.getDataFolder() + "/death/" + p.getName() + ".yml");
         FileConfiguration pFile = YamlConfiguration.loadConfiguration(playerFile);
         pFile.set("PlayerName", p.getName());
-        if (!e.getDrops().isEmpty() || e.getDrops() != null) {
+        if (e.getDrops() != null || !e.getDrops().isEmpty()) {
             for (int i = 0; i < e.getDrops().size(); i++) {
                 ItemStack stack = e.getDrops().get(i);
-                if (stack.hasItemMeta()) {
-                    ItemMeta meta = stack.getItemMeta();
-                    if (meta.hasLore()) {
-                        List<String> lore = meta.getLore();
-                        for (String s : lore) {
-                            s = ChatColor.stripColor(s);
-                            if (s.contains(ChatColor.stripColor(Util.toColor(SettingsManager.lang.getString("lore.untradeableLore"))))
-                                    || s.contains(ChatColor.stripColor(Util.toColor(SettingsManager.lang.getString("lore.tradeableLore"))))) {
-                                newInventory.add(e.getDrops().get(i));
-                            }
-                        }
-                    }
+                if (ItemManager.getSoulbound(stack)) {
+                    newInventory.add(e.getDrops().get(i));
                 }
             }
             ItemStack[] newStack = newInventory.toArray(new ItemStack[newInventory.size()]);

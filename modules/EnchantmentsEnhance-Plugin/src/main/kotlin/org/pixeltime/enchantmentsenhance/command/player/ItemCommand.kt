@@ -63,8 +63,8 @@ class ItemCommand : SubCommand() {
                 }
                 args[0].equals("lore", ignoreCase = true) -> when {
                     args[1].equals("unbound", ignoreCase = true) -> SoulboundManager.removeLore(Util.getMainHand(player))
-                    args[1].equals("tradeable", ignoreCase = true) -> SoulboundManager.addLore(Util.getMainHand(player), true)
-                    args[1].equals("untradeable", ignoreCase = true) -> SoulboundManager.addLore(Util.getMainHand(player), false)
+                    args[1].equals("tradeable", ignoreCase = true) -> SoulboundManager.addLore(Util.getMainHand(player), true, player)
+                    args[1].equals("untradeable", ignoreCase = true) -> SoulboundManager.addLore(Util.getMainHand(player), false, player)
                 }
             }
         } else {

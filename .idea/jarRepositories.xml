@@ -2,24 +2,14 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="sk89q-repo" />
+      <option name="name" value="sk89q-repo" />
+      <option name="url" value="https://maven.sk89q.com/repo/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
-      <option name="name" value="central" />
-      <option name="url" value="https://repo1.maven.org/maven2" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="bukkit-repo" />
-      <option name="name" value="bukkit-repo" />
-      <option name="url" value="https://repo.md-5.net/content/groups/public/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="github" />
-      <option name="name" value="weihao" />
-      <option name="url" value="https://maven.pkg.github.com/weihao" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="sonatype-repo" />
-      <option name="name" value="sonatype-repo" />
-      <option name="url" value="https://oss.sonatype.org/content/groups/public/" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
@@ -27,24 +17,34 @@
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="placeholderapi" />
+      <option name="name" value="placeholderapi" />
+      <option name="url" value="http://repo.extendedclip.com/content/repositories/placeholderapi/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="central" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="sonatype-repo" />
+      <option name="name" value="sonatype-repo" />
+      <option name="url" value="https://oss.sonatype.org/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="github" />
+      <option name="name" value="weihao" />
+      <option name="url" value="https://maven.pkg.github.com/weihao" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="aikar" />
       <option name="name" value="aikar" />
       <option name="url" value="https://repo.aikar.co/content/groups/aikar/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="spigot-repo" />
-      <option name="name" value="spigot-repo" />
-      <option name="url" value="https://hub.spigotmc.org/nexus/content/groups/public/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="sk89q-repo" />
-      <option name="name" value="sk89q-repo" />
-      <option name="url" value="https://maven.sk89q.com/repo/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="CodeMC" />
-      <option name="name" value="CodeMC" />
-      <option name="url" value="https://repo.codemc.org/repository/maven-public" />
+      <option name="id" value="bukkit-repo" />
+      <option name="name" value="bukkit-repo" />
+      <option name="url" value="https://repo.md-5.net/content/groups/public/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="inventive-repo" />
@@ -52,14 +52,19 @@
       <option name="url" value="https://repo.inventivetalent.org/content/groups/public/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="placeholderapi" />
-      <option name="name" value="placeholderapi" />
-      <option name="url" value="http://repo.extendedclip.com/content/repositories/placeholderapi/" />
+      <option name="id" value="spigot-repo" />
+      <option name="name" value="spigot-repo" />
+      <option name="url" value="https://hub.spigotmc.org/nexus/content/groups/public/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="CodeMC" />
+      <option name="name" value="CodeMC" />
+      <option name="url" value="https://repo.codemc.org/repository/maven-public" />
     </remote-repository>
   </component>
 </project>
