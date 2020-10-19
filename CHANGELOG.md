@@ -7,7 +7,8 @@
 
 ### Changes
 
-- Separated soulbound to soulbound and tradeable.
+- Separated soulbound to soulbound and tradeable
+- Updated to kotlin 1.14.
 
 ## [7.9.15] - 2020-5-5
 
