@@ -22,7 +22,10 @@ class AnvilRestrict : Listener {
             if (item == null || item.type == Material.AIR)
                 return
 
-            if (event.inventory.type == InventoryType.ANVIL && (ItemManager.getItemEnchantLevel(item) > 0 || ItemManager.getToolEnchantLevel(item) > 0)) {
+            if (event.inventory.type == InventoryType.ANVIL && (ItemManager.getItemEnchantLevel(item) > 0 || ItemManager.getToolEnchantLevel(
+                    item
+                ) > 0)
+            ) {
                 if (!SettingsManager.config.getBoolean("enableAnvil")) {
                     event.isCancelled = true
                     Util.sendMessage(SettingsManager.lang.getString("anvil.disabled"), player)

@@ -2,8 +2,6 @@ package org.pixeltime.enchantmentsenhance.manager;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.pixeltime.enchantmentsenhance.manager.ItemManager;
-import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 public class SoulboundManager {

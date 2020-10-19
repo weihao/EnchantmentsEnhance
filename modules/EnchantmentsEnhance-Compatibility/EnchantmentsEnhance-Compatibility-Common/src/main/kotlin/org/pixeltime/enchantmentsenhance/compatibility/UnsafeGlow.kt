@@ -15,10 +15,10 @@ interface UnsafeGlow {
         private val CLASS_UNSAFE_GLOW by lazy {
             @Suppress("UNCHECKED_CAST")
             Class.forName(
-                    if (MinecraftBukkitVersion.isV113OrLater)
-                        "$PACKAGE.UnsafeGlow_V1_13"
-                    else
-                        "$PACKAGE.UnsafeGlow_V1_12"
+                if (MinecraftBukkitVersion.isV113OrLater)
+                    "$PACKAGE.UnsafeGlow_V1_13"
+                else
+                    "$PACKAGE.UnsafeGlow_V1_12"
             ) as Class<UnsafeGlow>
         }
 

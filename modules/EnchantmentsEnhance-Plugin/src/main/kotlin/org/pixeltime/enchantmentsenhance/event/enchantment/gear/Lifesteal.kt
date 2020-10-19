@@ -12,7 +12,10 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Lifesteal : EnchantmentListener() {
     override fun desc(): Array<String> {
-        return arrayOf("When attacking another player you have a chance of gaining some of your health back", "攻击别人有几率吸血")
+        return arrayOf(
+            "When attacking another player you have a chance of gaining some of your health back",
+            "攻击别人有几率吸血"
+        )
     }
 
     override fun lang(): Array<String> {
@@ -27,7 +30,11 @@ class Lifesteal : EnchantmentListener() {
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(entityDamageByEntityEvent.entity.world).getApplicableRegions(entityDamageByEntityEvent.entity.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(
+                    entityDamageByEntityEvent.entity.world
+                ).getApplicableRegions(entityDamageByEntityEvent.entity.location)
+                    .queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+            ) {
                 return
             }
 

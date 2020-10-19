@@ -10,9 +10,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener
 import org.pixeltime.enchantmentsenhance.manager.DropManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
-import java.util.ArrayList
-import java.util.HashSet
-import java.util.Random
+import java.util.*
 
 class Pumpking : EnchantmentListener() {
     override fun desc(): Array<String> {
@@ -31,8 +29,9 @@ class Pumpking : EnchantmentListener() {
         val player = blockBreakEvent.player
         val level = getLevel(player)
         if (level > 0
-                && (blockBreakEvent.block.type == XMaterial.PUMPKIN.toBukkit()
-                        || blockBreakEvent.block.type == XMaterial.MELON.toBukkit())) {
+            && (blockBreakEvent.block.type == XMaterial.PUMPKIN.toBukkit()
+                    || blockBreakEvent.block.type == XMaterial.MELON.toBukkit())
+        ) {
             val list = ArrayList<Material>()
 
             if (!list.contains(blockBreakEvent.block.type)) {
@@ -42,7 +41,9 @@ class Pumpking : EnchantmentListener() {
             val iterator = getNearbyBlocks(blockBreakEvent.block, list, HashSet()).iterator()
             while (iterator.hasNext()) {
                 val block = iterator.next()
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin().canBuild(player, block)) {
+                if (SettingsManager.enchant.getBoolean("allow-worldguard") && !WGBukkit.getPlugin()
+                        .canBuild(player, block)
+                ) {
                     return
                 }
                 if (DropManager.chopping.contains(block.type)) {

@@ -2,11 +2,11 @@ name: EnchantmentsEnhance
 version: ${project.version}
 description: This is a Black Desert Online Style of Enchantment enhancing
 author: HealPot
-authors: [HealPot, lgou2w]
+authors: [ HealPot, lgou2w ]
 load: POSTWORLD
 prefix: EnchantmentsEnhance
 api-version: 1.13
-softdepend: [Vault, WorldEdit, WorldGuard, PlaceholderAPI, MVdWPlaceholderAPI]
+softdepend: [ Vault, WorldEdit, WorldGuard, PlaceholderAPI, MVdWPlaceholderAPI ]
 
 main: org.pixeltime.enchantmentsenhance.Main
 database: false

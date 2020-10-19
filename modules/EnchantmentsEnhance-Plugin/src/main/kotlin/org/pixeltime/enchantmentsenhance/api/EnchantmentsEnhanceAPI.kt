@@ -8,7 +8,7 @@ import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.PlayerStatsManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 import org.pixeltime.enchantmentsenhance.util.Util
-import java.util.Collections
+import java.util.*
 
 
 class API : EnchantmentsEnhanceAPI {
@@ -33,7 +33,8 @@ class API : EnchantmentsEnhanceAPI {
             PlayerStatsManager.getPlayerStats(player)!!.items[type] = level
         } catch (e: Exception) {
             Main.getMain().logger.info(
-                    "Error when setting the player data.")
+                "Error when setting the player data."
+            )
         }
 
     }
@@ -102,9 +103,16 @@ class API : EnchantmentsEnhanceAPI {
         if (level != 0) {
             PlayerStatsManager.getPlayerStats(player)!!.valks.add(level)
             Collections.sort(PlayerStatsManager.getPlayerStats(player)!!.valks, Collections.reverseOrder())
-            Util.sendMessage(SettingsManager.lang.getString("save.createFailstack")
-            !!.replace("%failstack%".toRegex(), Integer.toString(getFailstack(
-                    player))), player)
+            Util.sendMessage(
+                SettingsManager.lang.getString("save.createFailstack")
+                !!.replace(
+                    "%failstack%".toRegex(), Integer.toString(
+                        getFailstack(
+                            player
+                        )
+                    )
+                ), player
+            )
             resetFailstack(player)
         }
     }

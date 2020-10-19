@@ -28,7 +28,9 @@ class Flame : EnchantmentListener() {
                 if (entityDamageByEntityEvent.isCancelled) {
                     return
                 }
-                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world).getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+                if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world)
+                        .getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+                ) {
                     return
                 }
                 val level = getLevel(victim)

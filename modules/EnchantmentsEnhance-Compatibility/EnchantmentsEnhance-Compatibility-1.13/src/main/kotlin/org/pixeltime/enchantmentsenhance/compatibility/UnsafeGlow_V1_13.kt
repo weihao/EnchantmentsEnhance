@@ -26,9 +26,9 @@ class UnsafeGlow_V1_13 : UnsafeGlow {
             val glow = UnsafeGlowWrapper()
             if (Enchantment.getByKey(glow.key) == null) {
                 val acceptingNew = FuzzyReflect.of(Enchantment::class.java, true)
-                        .useFieldMatcher()
-                        .withName("acceptingNew")
-                        .resultAccessorAs<Enchantment, Boolean>()
+                    .useFieldMatcher()
+                    .withName("acceptingNew")
+                    .resultAccessorAs<Enchantment, Boolean>()
                 acceptingNew[null] = true
                 Enchantment.registerEnchantment(glow)
                 acceptingNew[null] = false

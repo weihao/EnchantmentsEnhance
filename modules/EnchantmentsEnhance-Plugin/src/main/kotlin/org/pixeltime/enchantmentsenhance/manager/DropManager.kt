@@ -5,7 +5,10 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.util.Util
-import java.util.Random
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.List
+import kotlin.collections.forEach
 
 class DropManager {
 
@@ -43,62 +46,72 @@ class DropManager {
 
         @JvmField
         val miningChance = SettingsManager.config.getDouble(
-                "reward.mining.chance")
+            "reward.mining.chance"
+        )
 
         @JvmField
         val choppingChance = SettingsManager.config.getDouble(
-                "reward.chopping.chance")
+            "reward.chopping.chance"
+        )
 
         @JvmField
         val fishingChance = SettingsManager.config.getDouble(
-                "reward.fishing.chance")
+            "reward.fishing.chance"
+        )
 
         @JvmField
         val killingChance = SettingsManager.config.getDouble(
-                "reward.killing.chance")
+            "reward.killing.chance"
+        )
 
         @JvmField
         val breedingChance = SettingsManager.config.getDouble(
-                "reward.breeding.chance")
+            "reward.breeding.chance"
+        )
 
         @JvmField
         val smeltingChance = SettingsManager.config.getDouble(
-                "reward.smelting.chance")
+            "reward.smelting.chance"
+        )
 
         @JvmField
         val miningLootTable = SettingsManager.config
-                .getIntegerList("reward.mining.drops")
+            .getIntegerList("reward.mining.drops")
 
         @JvmField
         val choppingLootTable = SettingsManager.config
-                .getIntegerList("reward.chopping.drops")
+            .getIntegerList("reward.chopping.drops")
 
         @JvmField
         val fishingLootTable = SettingsManager.config
-                .getIntegerList("reward.fishing.drops")
+            .getIntegerList("reward.fishing.drops")
 
         @JvmField
         val killingLootTable = SettingsManager.config
-                .getIntegerList("reward.killing.drops")
+            .getIntegerList("reward.killing.drops")
 
         @JvmField
         val breedingLootTable = SettingsManager.config
-                .getIntegerList("reward.breeding.drops")
+            .getIntegerList("reward.breeding.drops")
 
         @JvmField
         val smeltingLootTable = SettingsManager.config
-                .getIntegerList("reward.smelting.drops")
+            .getIntegerList("reward.smelting.drops")
 
         @JvmStatic
         fun randomDrop(player: Player, table: List<Int>) {
             val stoneType = table[((0..table.size).random())]
             Main.getApi().addItem(
-                    player.name, stoneType, 1)
-            Util.sendMessage(SettingsManager.lang.getString("item.get")!!.replace("%ITEM%", SettingsManager.lang.getString("item.$stoneType")!!), player)
+                player.name, stoneType, 1
+            )
+            Util.sendMessage(
+                SettingsManager.lang.getString("item.get")!!
+                    .replace("%ITEM%", SettingsManager.lang.getString("item.$stoneType")!!), player
+            )
         }
 
         @JvmStatic
         fun ClosedRange<Int>.random() =
-                Random().nextInt(endInclusive - start) + start
+            Random().nextInt(endInclusive - start) + start
     }
 }

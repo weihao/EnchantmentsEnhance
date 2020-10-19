@@ -3,11 +3,11 @@ package org.pixeltime.enchantmentsenhance.command.player
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.pixeltime.enchantmentsenhance.command.SubCommand
-import org.pixeltime.enchantmentsenhance.manager.SoulboundManager
 import org.pixeltime.enchantmentsenhance.gui.Clickable
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu
 import org.pixeltime.enchantmentsenhance.manager.ItemManager
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager
+import org.pixeltime.enchantmentsenhance.manager.SoulboundManager
 import org.pixeltime.enchantmentsenhance.util.Util
 
 class ItemCommand : SubCommand() {
@@ -51,8 +51,10 @@ class ItemCommand : SubCommand() {
                         }
                         val curr = ItemManager.setName(item, Util.toColor(args[1]))
                         try {
-                            ItemManager.forgeItem(player, curr, level, true,
-                                    clicked)
+                            ItemManager.forgeItem(
+                                player, curr, level, true,
+                                clicked
+                            )
                             MainMenu.clearPlayer(player.name)
                         } catch (ex: Exception) {
                             Util.sendMessage(SettingsManager.lang.getString("config.invalidItem"), player)
@@ -62,14 +64,27 @@ class ItemCommand : SubCommand() {
                     }
                 }
                 args[0].equals("lore", ignoreCase = true) -> when {
-                    args[1].equals("unbound", ignoreCase = true) -> SoulboundManager.removeLore(Util.getMainHand(player))
-                    args[1].equals("tradeable", ignoreCase = true) -> SoulboundManager.addLore(Util.getMainHand(player), true, player)
-                    args[1].equals("untradeable", ignoreCase = true) -> SoulboundManager.addLore(Util.getMainHand(player), false, player)
+                    args[1].equals(
+                        "unbound",
+                        ignoreCase = true
+                    ) -> SoulboundManager.removeLore(Util.getMainHand(player))
+                    args[1].equals("tradeable", ignoreCase = true) -> SoulboundManager.addLore(
+                        Util.getMainHand(player),
+                        true,
+                        player
+                    )
+                    args[1].equals(
+                        "untradeable",
+                        ignoreCase = true
+                    ) -> SoulboundManager.addLore(Util.getMainHand(player), false, player)
                 }
             }
         } else {
-            Util.sendMessage(SettingsManager.lang.getString(
-                    "config.invalidNumber"), player)
+            Util.sendMessage(
+                SettingsManager.lang.getString(
+                    "config.invalidNumber"
+                ), player
+            )
         }
     }
 

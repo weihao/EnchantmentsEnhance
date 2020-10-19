@@ -13,7 +13,10 @@ import org.pixeltime.enchantmentsenhance.manager.SettingsManager
 
 class Purge : EnchantmentListener() {
     override fun desc(): Array<String> {
-        return arrayOf("A chance to call down a strike of lightning upon your enemy, removing all positive potion effects they have and damages them", "攻击别人有几率降下闪电并清除他的所有增益效果")
+        return arrayOf(
+            "A chance to call down a strike of lightning upon your enemy, removing all positive potion effects they have and damages them",
+            "攻击别人有几率降下闪电并清除他的所有增益效果"
+        )
     }
 
     override fun lang(): Array<String> {
@@ -30,7 +33,9 @@ class Purge : EnchantmentListener() {
             if (entityDamageByEntityEvent.isCancelled) {
                 return
             }
-            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world).getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY) {
+            if (SettingsManager.enchant.getBoolean("allow-worldguard") && WGBukkit.getRegionManager(victim.world)
+                    .getApplicableRegions(victim.location).queryState(null, DefaultFlag.PVP) == StateFlag.State.DENY
+            ) {
                 return
             }
             try {
