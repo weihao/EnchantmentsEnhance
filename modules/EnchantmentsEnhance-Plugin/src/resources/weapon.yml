@@ -1,0 +1,28 @@
+enhanceable_types:
+  - DIAMOND_SWORD
+  - GOLD_SWORD
+  - STONE_SWORD
+  - WOOD_SWORD
+  - IRON_SWORD
+  - DIAMOND_AXE
+  - GOLD_AXE
+  - STONE_AXE
+  - WOOD_AXE
+  - IRON_AXE
+levels:
+  "1":
+    baseChance: 50
+    chanceIncreasePerFailstack: 0
+    maximumFailstackApplied: 10
+    failstackGainedPerFail: 1
+    costToForceEnchant: 2
+    downgradeChanceIfFail: 0.0
+    destroyChanceIfFail: 0.0
+    requireConcentratedStones: false
+    broadcastEnhance: false
+    fireworkIfSuccessful: false
+    fireworkRounds: 1
+    prefix: ""
+    suffix: "&8+1"
+    enchantments: []
+    lore: []

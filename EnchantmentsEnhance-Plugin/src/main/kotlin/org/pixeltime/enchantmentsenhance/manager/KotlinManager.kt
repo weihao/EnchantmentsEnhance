@@ -1,6 +1,5 @@
 package org.pixeltime.enchantmentsenhance.manager
 
-import org.bukkit.ChatColor
 import org.bukkit.inventory.ItemStack
 import org.pixeltime.enchantmentsenhance.util.Util
 
@@ -14,7 +13,7 @@ class KotlinManager {
 
         @JvmStatic
         fun getLevel(lore: String, itemlore: List<String>): Int {
-            //TODO
+            // TODO
 //            itemlore.filter { lore == ChatColor.stripColor(it)!!.split(" ")[0] }.forEach {
 //                val temp = it.split(" ")
 //                try {
@@ -23,7 +22,17 @@ class KotlinManager {
 //                } catch (ex: NumberFormatException) {
 //                }
 //            }
+
             return 0
+        }
+
+        @JvmStatic
+        fun stripLore(item: ItemStack): List<String>? {
+            if (item.hasItemMeta() && item.itemMeta!!.hasLore() && item.itemMeta!!.lore!!.isNotEmpty()) {
+                val lores = item.itemMeta!!.lore
+                return lores!!.filter { !it.startsWith(Util.UNIQUEID) }
+            }
+            return null
         }
     }
 }
