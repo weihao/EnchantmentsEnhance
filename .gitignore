@@ -78,3 +78,13 @@ dependency-reduced-pom.xml
 pom.xml.versionsBackup
 target
 .idea/misc.xml
+
+
+build/
+
+# Visual Studio Code
+.settings
+.vscode
+.factorypath
+.idea/webServers.xml
+.idea/deployment.xml

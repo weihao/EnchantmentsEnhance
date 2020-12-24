@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>EnchantmentsEnhance-Model</artifactId>
+    <packaging>jar</packaging>
+    <name>EnchantmentsEnhance-Model</name>
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>EnchantmentsEnhance-Parent</artifactId>
+        <groupId>org.pixeltime</groupId>
+        <version>8.0.0</version>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+</project>

@@ -1,11 +1,21 @@
 language: java
+
 jdk:
   - oraclejdk8
-before_install:
+
+services:
+  - docker
+
+dist: trusty
+
+before_install: [ ]
+
 install:
-  - mvn install package
-after_success:
-  - mvn clean
+  - mvn install
+
+script:
+  - make docker-build
+
 cache:
   directories:
     - $HOME/.m2

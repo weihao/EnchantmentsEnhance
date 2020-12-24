@@ -6,12 +6,26 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="EnchantmentsEnhance-API" />
+        <module name="EnchantmentsEnhance-Plugin" />
         <module name="EnchantmentsEnhance-Compatibility-1.12" />
         <module name="EnchantmentsEnhance-Compatibility-1.13" />
+        <module name="EnchantmentsEnhance-API" />
         <module name="EnchantmentsEnhance-Compatibility-Common" />
-        <module name="EnchantmentsEnhance-Plugin" />
+        <module name="EnchantmentsEnhance-Model" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="EnchantmentsEnhance-API" target="1.8" />
+      <module name="EnchantmentsEnhance-Compatibility" target="1.8" />
+      <module name="EnchantmentsEnhance-Compatibility-1.12" target="1.8" />
+      <module name="EnchantmentsEnhance-Compatibility-1.13" target="1.8" />
+      <module name="EnchantmentsEnhance-Compatibility-Common" target="1.8" />
+      <module name="EnchantmentsEnhance-Model" target="1.8" />
+      <module name="EnchantmentsEnhance-Modules" target="1.8" />
+      <module name="EnchantmentsEnhance-Parent" target="1.8" />
+      <module name="EnchantmentsEnhance-Parent (1)" target="1.8" />
+      <module name="EnchantmentsEnhance-Plugin" target="8" />
+      <module name="EnchantmentsEnhance-Web" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

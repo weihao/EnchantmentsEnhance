@@ -1,68 +1,112 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <groupId>org.pixeltime</groupId>
     <artifactId>EnchantmentsEnhance-Parent</artifactId>
     <name>EnchantmentsEnhance</name>
-    <packaging>pom</packaging>
     <version>8.0.0</version>
-    <description>A plugin of enchantments enhancing system inspired by BDO.</description>
-    <url>https://github.com/25/EnchantmentsEnhance</url>
+    <packaging>pom</packaging>
+    <url>https://github.com/weihao/EnchantmentsEnhance</url>
+
+    <description>EE is a game progression mechanism plugin for spigot.</description>
+
+    <modules>
+        <module>modules</module>
+        <module>model</module>
+        <module>web</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <scm>
+        <url>git@github.com:weihao/EnchantmentsEnhance.git</url>
+        <connection>scm:git:git://github.com/weihao/EnchantmentsEnhance.git</connection>
+        <developerConnection>scm:git:git@github.com:weihao/EnchantmentsEnhance.git</developerConnection>
+    </scm>
+    <licenses>
+        <license>
+            <name>GNU General Public License v3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>weihao</name>
+            <email>weihao.gao@outlook.com</email>
+            <url>https://github.com/weihao</url>
+            <timezone>-5</timezone>
+            <roles>
+                <role>Owner</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>lgou2w</id>
+            <name>lgou2w</name>
+            <email>lgou2w@hotmail.com</email>
+            <url>https://lgou2w.com</url>
+            <timezone>+8</timezone>
+            <roles>
+                <role>Owner</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+
+    </developers>
+
+
+    <organization>
+        <name>PixelTime Network</name>
+        <url>https://github.com/PixelTimeNet</url>
+    </organization>
 
     <issueManagement>
-        <url>https://github.com/25/EnchantmentsEnhance/issues</url>
+        <url>https://github.com/weihao/EnchantmentsEnhance/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 
-    <properties>
-        <ldk.version>0.1.8-beta11</ldk.version>
-        <kotlin.version>1.3.31</kotlin.version>
-        <bukkit.version>1.13.2-R0.1-SNAPSHOT</bukkit.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+            <!-- Source Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
-    <modules>
-        <module>EnchantmentsEnhance-API</module>
-        <module>EnchantmentsEnhance-Compatibility</module>
-        <module>EnchantmentsEnhance-Plugin</module>
-    </modules>
 
-    <repositories>
+    <distributionManagement>
         <repository>
-            <id>bukkit-repo</id>
-            <url>http://repo.md-5.net/content/groups/public/</url>
+            <id>github</id>
+            <name>weihao</name>
+            <url>https://maven.pkg.github.com/weihao/EnchantmentsEnhance</url>
         </repository>
-        <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
-        </repository>
-    </repositories>
-
-    <dependencies>
-        <!-- Kotlin -->
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-        <!-- Spigot -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>${bukkit.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Bukkit -->
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>${bukkit.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-
+    </distributionManagement>
 </project>
+
