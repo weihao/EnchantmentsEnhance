@@ -24,14 +24,5 @@ class KotlinManager {
             }
             return 0
         }
-
-        @JvmStatic
-        fun stripLore(item: ItemStack): List<String>? {
-            if (item.hasItemMeta() && item.itemMeta!!.hasLore() && item.itemMeta!!.lore!!.isNotEmpty()) {
-                val lores = item.itemMeta!!.lore
-                return lores!!.filter { !it.startsWith(Util.UNIQUEID) }
-            }
-            return null
-        }
     }
 }

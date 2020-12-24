@@ -40,7 +40,6 @@ import org.pixeltime.enchantmentsenhance.manager.DependencyManager;
 import org.pixeltime.enchantmentsenhance.manager.DropManager;
 import org.pixeltime.enchantmentsenhance.manager.MaterialManager;
 import org.pixeltime.enchantmentsenhance.manager.NotifierManager;
-import org.pixeltime.enchantmentsenhance.manager.PackageManager;
 import org.pixeltime.enchantmentsenhance.manager.PlayerStatsManager;
 import org.pixeltime.enchantmentsenhance.manager.SettingsManager;
 import org.pixeltime.enchantmentsenhance.model.PlayerStat;
@@ -239,7 +238,6 @@ public class Main extends JavaPlugin implements Listener {
         MaterialManager.setUp();
         ActionBarAPI.setUp();
         ConfigManager.setUp();
-        PackageManager.initializeAll();
         DropManager.setUp();
         MVdWPlaceholderAPI.setUp();
 

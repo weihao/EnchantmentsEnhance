@@ -9,7 +9,6 @@ import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.command.SubCommand;
 import org.pixeltime.enchantmentsenhance.command.SubConsoleCommand;
 import org.pixeltime.enchantmentsenhance.command.console.AddConsoleCommand;
-import org.pixeltime.enchantmentsenhance.command.console.DebugConsoleCommand;
 import org.pixeltime.enchantmentsenhance.command.console.HelpConsoleCommand;
 import org.pixeltime.enchantmentsenhance.command.console.ReloadConsoleCommand;
 import org.pixeltime.enchantmentsenhance.command.console.VersionConsoleCommand;
@@ -23,7 +22,6 @@ import org.pixeltime.enchantmentsenhance.command.player.MenuCommand;
 import org.pixeltime.enchantmentsenhance.command.player.ReloadCommand;
 import org.pixeltime.enchantmentsenhance.command.player.SetCommand;
 import org.pixeltime.enchantmentsenhance.command.player.VersionCommand;
-import org.pixeltime.enchantmentsenhance.listener.EnchantmentListener;
 import org.pixeltime.enchantmentsenhance.util.Util;
 
 import java.util.ArrayList;
@@ -52,7 +50,6 @@ public class CommandManager implements CommandExecutor {
         this.commands.add(new EnchantmentCommand());
         this.commands.add(new SetCommand());
         this.consoleCommands.add(new AddConsoleCommand());
-        this.consoleCommands.add(new DebugConsoleCommand());
         this.consoleCommands.add(new HelpConsoleCommand());
         this.consoleCommands.add(new ReloadConsoleCommand());
         this.consoleCommands.add(new VersionConsoleCommand());
@@ -213,18 +210,6 @@ public class CommandManager implements CommandExecutor {
         }
     }
 
-    /**
-     * Print enchantments for a player.
-     *
-     * @param player
-     */
-    public void printEnchantments(Player player) {
-        String tag = "&b&l&m          &d EnchantmentsEnhance&b&l&m          ";
-        Util.sendMessage(tag, player, false);
-        for (EnchantmentListener ench : PackageManager.getEnabled()) {
-            Util.sendMessage("&b" + ench.name() + " &a" + SettingsManager.lang.getString("descriptions." + ench.getClass().getSimpleName().toLowerCase()), player, false);
-        }
-    }
 
     /**
      * Print help for console.

@@ -212,7 +212,6 @@ public class ItemManager {
         }
 
         // Getting Unique Name.
-        List<String> oldLore = KotlinManager.stripLore(item);
 
         if (enchantLevel == 1 && getItemName(currItem).equals("") && SettingsManager.config.getBoolean("enableRename")) {
             currItem = setName(currItem, currItem.getItemMeta().getDisplayName());
@@ -225,7 +224,6 @@ public class ItemManager {
             renameItem(currItem, clicked);
         }
 
-        addlore(currItem, oldLore, clicked, player.getDisplayName());
         if (!SettingsManager.config.getString("lore.bound").equalsIgnoreCase("disabled")) {
             soulbound(currItem);
         }
@@ -236,29 +234,6 @@ public class ItemManager {
     public static ItemStack forgeItemWithoutReplacement(Player player, ItemStack item, int enchantLevel, boolean addition, Clickable clicked) {
         ItemStack currItem = forgeItem(player, item.clone(), enchantLevel, addition, clicked);
         return currItem;
-    }
-
-    private static void addlore(ItemStack currItem, List<String> old, Clickable clicked, String playerName) {
-        ItemMeta im = currItem.getItemMeta();
-        List<String> lore = (old != null && old.size() > 0) ? old : new ArrayList<>();
-        List<String> newlore = im.hasLore() ? im.getLore() : new ArrayList<>();
-        newlore.removeIf(e -> (!e.startsWith(Util.UNIQUEID + Util.toColor("&7"))));
-        List<String> applyingLores = null;
-        if (clicked.equals(MainMenu.gear)) {
-            applyingLores = (List<String>) SettingsManager.config.getList("enhance." + getItemEnchantLevel(currItem) + ".lore");
-        } else if (clicked.equals(MainMenu.tool)) {
-            applyingLores = (List<String>) SettingsManager.config.getList("enhance." + getToolEnchantLevel(currItem) + ".lore");
-        }
-        if (applyingLores != null) {
-            for (String s : applyingLores) {
-                lore.add(Util.UNIQUEID + Util.toColor(s)
-                        .replaceAll("%player%", playerName)
-                        .replaceAll("%date%", Util.getCurrentDate()));
-            }
-        }
-        newlore.addAll(lore);
-        im.setLore(newlore);
-        currItem.setItemMeta(im);
     }
 
     public static ItemStack applyEnchantments(ItemStack item, boolean addition, Clickable clicked) {
@@ -373,9 +348,9 @@ public class ItemManager {
     }
 
     public static boolean applyEnchantmentToItem(ItemStack item, String ench, int level) {
-        if (PackageManager.getDisabled().contains(ench)) {
-            return false;
-        }
+//        if (PackageManager.getDisabled().contains(ench)) {
+//            return false;
+//        }
         ItemMeta meta = item.getItemMeta();
         List<String> newlore = (meta.hasLore() ? meta.getLore() : new ArrayList<>());
         Enchantment vanilla = Enchantment.getByName(ench.toUpperCase());
@@ -389,48 +364,44 @@ public class ItemManager {
             }
             return true;
         } else {
-            if (ench.equalsIgnoreCase("random")) {
-                String name = PackageManager.getEnabled().get(new Random().nextInt(PackageManager.getEnabled().size())).name();
-                return applyEnchantmentToItem(item, name, level);
-            }
-            String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
-            int keptLevel = 0;
-            if (enchantment != null) {
-                String currEnch = ChatColor.stripColor(Util.toColor(enchantment));
-                for (int i = 0; i < newlore.size(); i++) {
-                    String[] curr = ChatColor.stripColor(newlore.get(i)).split(
-                            " ");
-                    if (curr.length == 2 && curr[0].equals(currEnch)) {
-                        // Adds original level.
-                        keptLevel += Util.romanToInt(curr[1]);
-                        newlore.remove(i);
-                        i--;
-                    }
-                }
-                int max = 1;
-                try {
-                    max = Main.getApi().getEnchantmentMaxLevel(ench);
-                } catch (NullPointerException ex) {
-                }
-                int finalLevel = ((level + keptLevel) > max) ? max : level + keptLevel;
-                if (finalLevel > 0) {
-                    newlore.add(Util.UNIQUEID + Util.toColor("&7" + enchantment + " " + Util.intToRoman(finalLevel)));
-                    meta.setLore(newlore);
-                    item.setItemMeta(meta);
-                    if (item.getEnchantments().isEmpty()) {
-                        CompatibilityManager.glow
-                                .addGlow(item);
-                    }
-                    return true;
-                } else {
-                    meta.setLore(newlore);
-                    item.setItemMeta(meta);
-                    if (item.getEnchantments().isEmpty()) {
-                        CompatibilityManager.glow
-                                .addGlow(item);
-                    }
-                }
-            }
+//            String enchantment = SettingsManager.lang.getString("enchantments." + ench.toLowerCase());
+//            int keptLevel = 0;
+//            if (enchantment != null) {
+//                String currEnch = ChatColor.stripColor(Util.toColor(enchantment));
+//                for (int i = 0; i < newlore.size(); i++) {
+//                    String[] curr = ChatColor.stripColor(newlore.get(i)).split(
+//                            " ");
+//                    if (curr.length == 2 && curr[0].equals(currEnch)) {
+//                        // Adds original level.
+//                        keptLevel += Util.romanToInt(curr[1]);
+//                        newlore.remove(i);
+//                        i--;
+//                    }
+//                }
+//                int max = 1;
+//                try {
+//                    max = Main.getApi().getEnchantmentMaxLevel(ench);
+//                } catch (NullPointerException ex) {
+//                }
+//                int finalLevel = ((level + keptLevel) > max) ? max : level + keptLevel;
+//                if (finalLevel > 0) {
+//                    newlore.add(Util.UNIQUEID + Util.toColor("&7" + enchantment + " " + Util.intToRoman(finalLevel)));
+//                    meta.setLore(newlore);
+//                    item.setItemMeta(meta);
+//                    if (item.getEnchantments().isEmpty()) {
+//                        CompatibilityManager.glow
+//                                .addGlow(item);
+//                    }
+//                    return true;
+//                } else {
+//                    meta.setLore(newlore);
+//                    item.setItemMeta(meta);
+//                    if (item.getEnchantments().isEmpty()) {
+//                        CompatibilityManager.glow
+//                                .addGlow(item);
+//                    }
+//                }
+//            }
             return false;
         }
     }

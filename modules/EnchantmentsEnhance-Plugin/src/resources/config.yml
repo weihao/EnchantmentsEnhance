@@ -304,6 +304,7 @@ accessory:
 
 # Vanilla Enchantments Reference: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
 # Custom Enchantments Reference: https://github.com/weihao/EnchantmentsEnhance/wiki/Enchantments-en
+version: 2
 enhance:
   "0":
     # The success rate of item at the level.
@@ -360,26 +361,15 @@ enhance:
     prefix: ""
     suffix: "&8+1"
     enchantments:
-      WEAPON:
-        - Endless:1
-        - Random:1
-      ARMOR:
-        - Endless:1
-        - Random:1
-      PICKAXE:
-        - Endless:1
-      AXE:
-        - Endless:1
-      HOE:
-        - Endless:1
-      SHOEVEL:
-        - Endless:1
-      BOW:
-        - Endless:1
-      KNIFE:
-        - Endless:1
-      Rod:
-        - Endless:1
+      WEAPON: []
+      ARMOR: []
+      PICKAXE: []
+      AXE: []
+      HOE: []
+      SHOEVEL: []
+      BOW: []
+      KNIFE: []
+      Rod: []
     lore:
       - "&3&l&m                                  "
       - "&9&lLow Tier."
@@ -399,10 +389,8 @@ enhance:
     suffix: "&8+2"
     enchantments:
       WEAPON:
-        - ^Damage_All!Stealth:1
         - Damage_All!Damage_All:1
-      ARMOR:
-        - Pyromaniac:1
+      ARMOR: []
       PICKAXE:
         - Dig_Speed:1
       AXE:
