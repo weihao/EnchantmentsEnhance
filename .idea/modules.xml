@@ -10,7 +10,6 @@
       <module fileurl="file://$PROJECT_DIR$/model/EnchantmentsEnhance-Model.iml" filepath="$PROJECT_DIR$/model/EnchantmentsEnhance-Model.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/EnchantmentsEnhance-Modules.iml" filepath="$PROJECT_DIR$/modules/EnchantmentsEnhance-Modules.iml" />
       <module fileurl="file://$PROJECT_DIR$/EnchantmentsEnhance-Parent.iml" filepath="$PROJECT_DIR$/EnchantmentsEnhance-Parent.iml" />
-      <module fileurl="file://$PROJECT_DIR$/EnchantmentsEnhance-Parent (1).iml" filepath="$PROJECT_DIR$/EnchantmentsEnhance-Parent (1).iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/EnchantmentsEnhance-Plugin/EnchantmentsEnhance-Plugin.iml" filepath="$PROJECT_DIR$/modules/EnchantmentsEnhance-Plugin/EnchantmentsEnhance-Plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/web/EnchantmentsEnhance-Web.iml" filepath="$PROJECT_DIR$/web/EnchantmentsEnhance-Web.iml" />
     </modules>
