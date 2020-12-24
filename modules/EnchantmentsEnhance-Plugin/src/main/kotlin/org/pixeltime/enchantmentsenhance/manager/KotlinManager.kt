@@ -14,14 +14,15 @@ class KotlinManager {
 
         @JvmStatic
         fun getLevel(lore: String, itemlore: List<String>): Int {
-            itemlore.filter { lore == ChatColor.stripColor(it)!!.split(" ")[0] }.forEach {
-                val temp = it.split(" ")
-                try {
-                    val level = Util.romanToInt((temp)[temp.size - 1])
-                    return level
-                } catch (ex: NumberFormatException) {
-                }
-            }
+            //TODO
+//            itemlore.filter { lore == ChatColor.stripColor(it)!!.split(" ")[0] }.forEach {
+//                val temp = it.split(" ")
+//                try {
+//                    val level = Util.romanToInt((temp)[temp.size - 1])
+//                    return level
+//                } catch (ex: NumberFormatException) {
+//                }
+//            }
             return 0
         }
     }
