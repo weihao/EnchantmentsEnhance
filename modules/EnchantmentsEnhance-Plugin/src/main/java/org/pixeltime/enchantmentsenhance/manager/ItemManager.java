@@ -13,7 +13,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.pixeltime.enchantmentsenhance.Main;
 import org.pixeltime.enchantmentsenhance.enums.ItemType;
 import org.pixeltime.enchantmentsenhance.gui.Clickable;
 import org.pixeltime.enchantmentsenhance.gui.menu.MainMenu;
@@ -229,7 +228,7 @@ public class ItemManager {
             soulbound(currItem);
         }
         ItemMeta itemMeta = currItem.getItemMeta();
-        itemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
+        itemMeta.addItemFlags(new ItemFlag[]{ItemFlag.HIDE_ENCHANTS});
 
         currItem.setItemMeta(itemMeta);
 

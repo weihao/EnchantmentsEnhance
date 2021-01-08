@@ -81,11 +81,12 @@ You can find the output file in the `target` directory of the corresponding modu
 PRs are welcome! If you want, added yourself in the CONTRIBUTORS.md when you submit a PR.
 
 ## Disclaimer
+
 I claim no copyright to the included assets of:
+
 - The images used in the repository.
 
 These assets are copyrighted to the its copyright owner.
-
 
 ## License
 

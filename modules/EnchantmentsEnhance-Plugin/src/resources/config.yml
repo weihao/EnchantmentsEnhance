@@ -341,15 +341,15 @@ enhance:
     prefix: ""
     suffix: "&8+1"
     enchantments:
-      WEAPON: []
-      ARMOR: []
-      PICKAXE: []
-      AXE: []
-      HOE: []
-      SHOEVEL: []
-      BOW: []
-      KNIFE: []
-      Rod: []
+      WEAPON: [ ]
+      ARMOR: [ ]
+      PICKAXE: [ ]
+      AXE: [ ]
+      HOE: [ ]
+      SHOEVEL: [ ]
+      BOW: [ ]
+      KNIFE: [ ]
+      Rod: [ ]
   "2":
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -367,7 +367,7 @@ enhance:
     enchantments:
       WEAPON:
         - Damage_All!Damage_All:1
-      ARMOR: []
+      ARMOR: [ ]
       PICKAXE:
         - Dig_Speed:1
       AXE:

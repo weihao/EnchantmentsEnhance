@@ -7,8 +7,6 @@ import org.pixeltime.enchantmentsenhance.Main
 import org.pixeltime.enchantmentsenhance.util.Util
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.collections.List
-import kotlin.collections.forEach
 
 class DropManager {
 
