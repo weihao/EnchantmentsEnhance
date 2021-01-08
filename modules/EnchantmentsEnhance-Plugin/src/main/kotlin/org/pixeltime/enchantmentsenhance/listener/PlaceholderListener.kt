@@ -11,10 +11,6 @@ class PlaceholderListener : PlaceholderExpansion() {
         return "ee"
     }
 
-    override fun getPlugin(): String {
-        return "EnchantmentsEnhance"
-    }
-
     override fun getAuthor(): String {
         return "HealPot"
     }
