@@ -1,0 +1,2 @@
+| Enchantments ID| Effect| Level|
+| :---:| :---------| :---: |
