@@ -324,9 +324,6 @@ enhance:
       BOW: []
       KNIFE: []
       ROD: []
-    # Item engraving supports: %player% %date%
-    #成功增强后，可以将额外的lores添加于该道具
-    lore: []
   "1":
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -362,9 +359,6 @@ enhance:
         - Endless:1
       Rod:
         - Endless:1
-    lore:
-      - "&3&l&m                                  "
-      - "&7&lD级"
 #附魔id网页:https://github.com/weihao/EnchantmentsEnhance/wiki/%E8%87%AA%E5%AE%9A%E4%B9%89%E9%99%84%E9%AD%94
 #PAPI变量网页:https://github.com/weihao/EnchantmentsEnhance/wiki/PAPI%E5%8F%98%E9%87%8F
   "2":
@@ -401,9 +395,6 @@ enhance:
         - Fire_Aspect:1
       ROD:
         - Lure:1
-    lore:
-      - "&3&l&m                                  "
-      - "&7&lD级"
   "3":
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -439,9 +430,6 @@ enhance:
         - Fire_Aspect:1
       ROD:
         - Lure:1
-    lore:
-      - "&3&l&m                                  "
-      - "&7&lD级"
   "4":
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -480,9 +468,6 @@ enhance:
         - Damage_Arthropods:1
       ROD:
         - Lure:1
-    lore:
-      - "&3&l&m                                  "
-      - "&7&lD级"
   "5":
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -522,9 +507,6 @@ enhance:
         - Damage_Arthropods:1
       ROD:
         - Lure:1
-    lore:
-      - "&3&l&m                                  "
-      - "&7&lD级"
   "6":
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -563,9 +545,6 @@ enhance:
         - Damage_Arthropods:1
       ROD:
         - Lure:1
-    lore:
-      - "&3&l&m                                  "
-      - "&a&lC级"
   "7":
     baseChance: 100
     chanceIncreasePerFailstack: 0
@@ -603,9 +582,6 @@ enhance:
         - Damage_Arthropods:1
       ROD:
         - Luck:1
-    lore:
-      - "&3&l&m                                  "
-      - "&a&lC级"
   "8":
     baseChance: 20
     chanceIncreasePerFailstack: 2.5
@@ -641,9 +617,6 @@ enhance:
         - Damage_Arthropods:1
       ROD:
         - Luck:1
-    lore:
-      - "&3&l&m                                  "
-      - "&a&lC级"
   "9":
     baseChance: 17.5
     chanceIncreasePerFailstack: 2.0
@@ -680,9 +653,6 @@ enhance:
         - Damage_Undead:1
       ROD:
         - Luck:1
-    lore:
-      - "&3&l&m                                  "
-      - "&a&lC级"
   "10":
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -719,9 +689,6 @@ enhance:
         - Damage_Undead:1
       ROD:
         - Luck:1
-    lore:
-      - "&3&l&m                                  "
-      - "&b&lB级"
   "11":
     baseChance: 12.5
     chanceIncreasePerFailstack: 1.25
@@ -758,9 +725,6 @@ enhance:
         - Damage_Undead:1
       ROD:
         - Luck:1
-    lore:
-      - "&3&l&m                                  "
-      - "&b&lB级"
   "12":
     baseChance: 10
     chanceIncreasePerFailstack: 0.75
@@ -798,9 +762,6 @@ enhance:
         - Damage_Undead:1
       ROD:
         - Luck:1
-    lore:
-      - "&3&l&m                                  "
-      - "&b&lB级"
   "13":
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.63
@@ -835,9 +796,6 @@ enhance:
         - Damage_Undead:1
       ROD:
         - Luck:1
-    lore:
-      - "&3&l&m                                  "
-      - "&b&lB级"
   "14":
     baseChance: 5
     chanceIncreasePerFailstack: 0.5
@@ -872,9 +830,6 @@ enhance:
         - Loot_Bonus_Mobs:1
       ROD:
         - Luck:1
-    lore:
-      - "&3&l&m                                  "
-      - "&b&lB级"
   "15":
     baseChance: 2.5
     chanceIncreasePerFailstack: 0.5
@@ -907,9 +862,6 @@ enhance:
         - Arrow_Damage:1
       KNIFE:
         - Loot_Bonus_Mobs:1
-    lore:
-      - "&3&l&m                                  "
-      - "&d&lA级."
   "16":
     baseChance: 15
     chanceIncreasePerFailstack: 1.5
@@ -946,9 +898,6 @@ enhance:
         - Loot_Bonus_Mobs:1
       ROD:
         - Luck:1
-    lore:
-      - "&3&l&m                                  "
-      - "&d&lA级"
   "17":
     baseChance: 7.5
     chanceIncreasePerFailstack: 0.75
@@ -988,9 +937,6 @@ enhance:
         - Loot_Bonus_Mobs:1
       ROD:
         - Knockback:5
-    lore:
-      - "&3&l&m                                  "
-      - "&d&lA+级."
   "18":
     baseChance: 5.0
     chanceIncreasePerFailstack: 0.5
@@ -1030,9 +976,6 @@ enhance:
         - Loot_Bonus_Mobs:1
       ROD:
         - Luck:10
-    lore:
-      - "&3&l&m                                  "
-      - "&6&lS级."
   "19":
     baseChance: 2.0
     chanceIncreasePerFailstack: 0.25
@@ -1072,9 +1015,6 @@ enhance:
         - Damage_All:1-5
       ROD:
         - Lure:10
-    lore:
-      - "&3&l&m                                  "
-      - "&e&lSS级."
   "20":
     baseChance: 1.5
     chanceIncreasePerFailstack: 0.25
@@ -1113,9 +1053,4 @@ enhance:
         - Damage_All:1-5
       ROD:
         - Damage_All:1-20
-    lore:
-      - "&8&l&m                                  "
-      - "&c&lSSS级！."
-      - "&9&l所属玩家: %player%"
-      - "&9&l锻造时间: %date%"
 ```
