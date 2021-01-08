@@ -12,7 +12,7 @@ on:
     paths:
       - 'wiki/**'
     branches:
-      - 'main'
+      - 'master'
     #
     # Releases cause this action to also fire.
     # Using this prevents this problem.
